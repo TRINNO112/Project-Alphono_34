@@ -4,6 +4,11 @@ import { motion, useScroll, useSpring } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Infrastructure from './pages/Infrastructure'
+import Energy from './pages/Energy'
+import Water from './pages/Water'
+import Labor from './pages/Labor'
+import Economics from './pages/Economics'
+import Materials from './pages/Materials'
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true)
@@ -33,6 +38,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/infrastructure" element={<Infrastructure />} />
+          <Route path="/energy" element={<Energy />} />
+          <Route path="/water" element={<Water />} />
+          <Route path="/labor" element={<Labor />} />
+          <Route path="/economics" element={<Economics />} />
+          <Route path="/materials" element={<Materials />} />
         </Routes>
 
         {/* Global Footer */}

@@ -1,0 +1,141 @@
+import { motion } from 'framer-motion'
+import { Users, AlertTriangle, Gem, Factory, CheckCircle } from 'lucide-react'
+import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
+
+const sources = [
+  { title: "A war in the Gulf, a crisis in Gujarat's Morbi: India's ceramics capital counts the cost", publication: "The Print, 2026", url: "https://theprint.in/economy/a-war-in-the-gulf-a-crisis-in-gujarats-morbi-indias-ceramics-capital-counts-the-cost/2877673/" },
+  { title: "DNA Special: How lakhs of tile factory workers transformed Morbi into 'Mini India'", publication: "DNA India", url: "https://www.dnaindia.com/analysis/report-dna-special-how-lakhs-of-tile-factory-workers-transformed-morbi-into-mini-india-3006707" },
+  { title: "Over 400 Ceramic Units in Morbi Shut Due to Gas Crisis Amid West Asia War", publication: "DeshGujarat, Mar 2026", url: "https://deshgujarat.com/2026/03/18/over-400-ceramic-units-in-morbi-shut-due-to-gas-crisis-amid-west-asia-war/" },
+  { title: "Low production, low demand — diamond hub Surat pins hope on Diwali for some recovery", publication: "The Print, 2024", url: "https://theprint.in/economy/low-production-low-demand-diamond-hub-surat-pins-hope-on-diwali-for-some-recovery/480572/" },
+  { title: "Job losses, factory closures pushing Surat's diamond workers to the edge. 71 suicides in 18 months", publication: "The Print, 2024", url: "https://theprint.in/india/job-losses-factory-closures-pushing-surats-diamond-workers-to-the-edge-71-suicides-in-18-months/2339805/" },
+  { title: "Paying for a Distant War: Surat's Migrant Textile Workforce Is Leaving", publication: "TexFash, 2026", url: "https://texfash.com/special/paying-for-a-distant-war-surat-s-migrant-textile-workforce-is-leaving-coz-it-has-run-out-of-gas" },
+  { title: "LPG crisis, polls, SIR trigger exodus of migrant workers from cities", publication: "The Federal, 2026", url: "https://thefederal.com/category/news/migrant-workers-return-home-exodus-lpg-crisis-elections-sir-236984" },
+  { title: "War Brings Covid Nightmare Back to Gujarat's Factory Towns", publication: "Vibes of India, 2026", url: "https://www.vibesofindia.com/war-revives-ghost-of-covid-in-gujarats-manufacturing-hubs/" },
+  { title: "Gujarat: No impact of Covid-19 pandemic on Surat's diamond industry", publication: "Business Standard, 2021", url: "https://www.business-standard.com/article/economy-policy/gujarat-no-impact-of-covid-19-pandemic-on-surat-s-diamond-industry-121041600867_1.html" },
+  { title: "Migrant worker virus exodus plunges India's factories into crisis", publication: "Jakarta Post / Reuters, 2020", url: "https://www.thejakartapost.com/news/2020/06/07/migrant-worker-virus-exodus-plunges-indias-factories-into-crisis.html" },
+  { title: "Fuel Crisis Threatens Morbi's Ceramic Industry as Propane Supply Disruptions Mount", publication: "Telangana Tribune, 2026", url: "https://www.telanganatribune.com/fuel-crisis-threatens-morbis-ceramic-industry-as-propane-supply-disruptions-mount/" },
+  { title: "Demonetisation impact: Migrant workers head back home", publication: "Business Standard, 2016", url: "https://www.business-standard.com/article/economy-policy/demonetisation-impact-migrant-workers-head-back-home-116120901022_1.html" },
+  { title: "Morbi Ceramic Industry — The Ceramic City Of India", publication: "Sakar Marbo", url: "https://www.sakarmarbo.com/morbi-the-ceramic-tiles-city-of-india/" },
+]
+
+export default function Labor() {
+  return (
+    <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      {/* Hero */}
+      <section className="space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-flex flex-col md:flex-row items-start md:items-center gap-4 text-crimson font-semibold tracking-widest text-sm mb-4">
+            <span>PILLAR 04</span>
+            <span className="hidden md:block w-8 h-px bg-crimson" />
+            <span>DEPENDENCY ANALYSIS</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+            Migrant Labor <span className="italic text-crimson">Ecosystem</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
+            Gujarat's multi-billion dollar manufacturing hubs — from Morbi's ceramics to Surat's diamonds and textiles — run on an <strong className="font-semibold text-gray-900 dark:text-white">imported human supply chain</strong>. When migrant workers leave, as they did during COVID-19 and the 2026 West Asia gas crisis, entire industries grind to a halt within days.
+          </p>
+        </motion.div>
+      </section>
+
+      <div className="space-y-20">
+
+        {/* Morbi Ceramics */}
+        <Section icon={<Factory className="w-8 h-8 text-gray-600 dark:text-gray-400" />} title="Morbi: India's Ceramic Capital — Built on Migrant Hands">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <StatBox value="1,200" label="Manufacturing Units" color="crimson" />
+            <StatBox value="4 Lakh" label="Direct Workers" color="purple" />
+            <StatBox value="70%" label="Outsider Workforce" color="red" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <DataCard title="The 'Mini India' Phenomenon">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Morbi produces <strong className="text-gray-900 dark:text-white">80-90% of India's ceramic tiles and sanitaryware</strong> with an annual turnover of Rs 50,000 crore and exports to 150+ countries.<Ref n={13} /> The cluster supports nearly 9 lakh livelihoods, with around 4 lakh workers directly employed.<Ref n={1} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                About <strong className="text-gray-900 dark:text-white">70% of labourers are outsiders</strong>, primarily from Uttar Pradesh, Bihar, Odisha, and Jharkhand.<Ref n={2} /> Every third or fourth person in Morbi is a migrant — earning it the name "Mini India."<Ref n={2} />
+              </p>
+            </DataCard>
+
+            <DataCard title="2026 Gas Crisis: 400+ Units Shut" alert={true}>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Over 400 ceramic units suspended operations for 3+ weeks due to the West Asia conflict disrupting gas supply.<Ref n={3} /> Nearly <strong className="text-gray-900 dark:text-white">60% of Morbi units depend on propane</strong>, which was completely halted.<Ref n={11} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Migrant workers began returning to their home states en masse — a pattern eerily similar to the 2020 COVID exodus. Industry observers warn: once workers leave, it takes months to bring them back.<Ref n={8} />
+              </p>
+            </DataCard>
+          </div>
+        </Section>
+
+        {/* Surat Diamond & Textile */}
+        <Section icon={<Gem className="w-8 h-8 text-purple-600 dark:text-purple-400" />} title="Surat: The Diamond & Textile Dependency">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <DataCard title="Diamond Polishing Industry">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Surat is the <strong className="text-gray-900 dark:text-white">world's largest diamond polishing hub</strong>, with approximately 4,000 cutting-polishing units employing <strong>7.5-10 lakh workers</strong>.<Ref n={4} /> While the majority come from within Gujarat (Saurashtra and North Gujarat), about <strong className="text-gray-900 dark:text-white">10% are interstate migrants</strong> from UP, MP, and Bihar.<Ref n={9} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                During COVID-19, <strong className="text-gray-900 dark:text-white">more than two-thirds of workers fled</strong>, and many factories could not reopen for months.<Ref n={10} />
+              </p>
+            </DataCard>
+
+            <DataCard title="Textile Industry: The Cash Economy">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Surat's textile industry employs approximately <strong className="text-gray-900 dark:text-white">10 lakh migrant workers</strong>, most of them interstate migrants from UP, Bihar, Jharkhand, Uttarakhand, and Odisha — without local ration cards, permanent addresses, or registered LPG connections.<Ref n={6} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                An estimated <strong className="text-gray-900 dark:text-white">90-95% of wages are paid in cash</strong>. These workers remit around <strong>Rs 500 crore annually</strong> to their families in Odisha, Bihar, and UP.<Ref n={6} /> The 2016 demonetisation caused immediate reverse migration as cash wages evaporated overnight.<Ref n={12} />
+              </p>
+            </DataCard>
+          </div>
+
+          <DataCard title="The Human Cost: 71 Suicides in 18 Months" alert={true}>
+            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+              Job losses and factory closures in Surat's diamond sector pushed workers to breaking point — <strong>71 diamond workers died by suicide in just 18 months</strong>, according to The Print's investigation.<Ref n={5} /> The industry downturn was driven by falling global demand for lab-grown diamonds and reduced rough diamond imports.
+            </p>
+          </DataCard>
+        </Section>
+
+        {/* COVID Exodus */}
+        <Section icon={<AlertTriangle className="w-8 h-8 text-red-500" />} title="The Exodus Pattern: COVID, Demonetisation & West Asia">
+          <div className="bg-white/70 dark:bg-dark-surface/70 p-10 rounded-3xl border border-gray-200 dark:border-dark-border shadow-xl backdrop-blur-md relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-200 dark:bg-purple-900 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
+            <h3 className="text-3xl font-serif font-bold mb-6 text-gray-900 dark:text-white relative z-10">Three Exodus Events in Six Years</h3>
+            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed relative z-10 mb-8 max-w-3xl">
+              Gujarat has experienced three mass migrant worker departures, each crippling its manufacturing base:
+            </p>
+            <div className="space-y-6 relative z-10">
+              <div className="flex gap-6 items-start">
+                <div className="min-w-[80px] text-crimson font-bold font-serif text-xl">2020</div>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <strong>COVID-19 lockdown:</strong> An estimated 100 million migrant workers nationally — nearly a fifth of the labour force — fled. In Surat, 90% of the world's diamonds are cut and polished, but factories couldn't reopen after two-thirds of workers left. Gujarat's salt refineries doubled salaries to lure staff back.<Ref n={10} />
+                </p>
+              </div>
+              <div className="flex gap-6 items-start">
+                <div className="min-w-[80px] text-crimson font-bold font-serif text-xl">2016</div>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <strong>Demonetisation:</strong> With 90-95% of textile wages paid in cash, demonetisation instantly collapsed the informal economy. Migrant workers headed home as there was no cash to pay them.<Ref n={12} />
+                </p>
+              </div>
+              <div className="flex gap-6 items-start">
+                <div className="min-w-[80px] text-crimson font-bold font-serif text-xl">2026</div>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <strong>West Asia gas crisis:</strong> LPG and propane supply disruptions shut 400+ Morbi units and triggered exodus from Surat's textile hubs. Odisha, Bihar, and UP now offer local industrial jobs, making return migration harder than ever.<Ref n={7} /><Ref n={8} />
+                </p>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+      </div>
+
+      <SourceList sources={sources} />
+    </main>
+  )
+}
