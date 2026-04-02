@@ -9,6 +9,10 @@ import Water from './pages/Water'
 import Labor from './pages/Labor'
 import Economics from './pages/Economics'
 import Materials from './pages/Materials'
+import Summary from './pages/Summary'
+import Education from './pages/Education'
+import Environment from './pages/Environment'
+import SearchBar from './components/SearchBar'
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true)
@@ -43,7 +47,12 @@ export default function App() {
           <Route path="/labor" element={<Labor />} />
           <Route path="/economics" element={<Economics />} />
           <Route path="/materials" element={<Materials />} />
+          <Route path="/education" element={<Education />} />
+          <Route path="/summary" element={<Summary />} />
+          <Route path="/environment" element={<Environment />} />
         </Routes>
+
+        <SearchBar />
 
         {/* Global Footer */}
         <footer className="w-full border-t border-gray-300 dark:border-dark-border py-12 mt-20 text-center text-gray-500 dark:text-gray-500 font-serif">

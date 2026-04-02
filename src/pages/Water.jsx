@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
-import { Droplets, AlertTriangle, MapPin, CheckCircle } from 'lucide-react'
+import { Droplets, AlertTriangle, MapPin, CheckCircle, Factory } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
+import { PillarChart } from '../components/PillarChart'
+import { CounterArgument } from '../components/CounterArgument'
+import { ComparisonTable } from '../components/ComparisonTable'
 
 const sources = [
   { title: "Sardar Sarovar Dam", publication: "Wikipedia", url: "https://en.wikipedia.org/wiki/Sardar_Sarovar_Dam" },
@@ -13,6 +16,10 @@ const sources = [
   { title: "Gujarat groundwater depletion — Environmental Justice Atlas", publication: "EJAtlas", url: "https://ejatlas.org/conflict/groundwater-depletion" },
   { title: "Assessment of Groundwater Storage Change Using GRACE/GRACE-FO Satellite Observations over Gujarat", publication: "AGU Fall Meeting 2024", url: "https://ui.adsabs.harvard.edu/abs/2024AGUFM.H06...08U/abstract" },
   { title: "Positive externalities of irrigation from the Sardar Sarovar Project", publication: "Intl Journal of Water Resources Development", url: "https://www.tandfonline.com/doi/abs/10.1080/07900627.2014.880228" },
+  { title: "Drought-Hit Gujarat Has Water For Factories, But Not For Farmers", publication: "IndiaSpend, Apr 2019", url: "https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers" },
+  { title: "In Gujarat, lands for which Narmada dam was built reel under drought even as factories get water", publication: "Scroll.in, Apr 2019", url: "https://scroll.in/article/920278/in-gujarat-lands-for-which-narmada-dam-was-built-reel-under-drought-even-as-factories-get-water" },
+  { title: "Reliance expands desalination plant at Jamnagar refinery", publication: "Oil & Gas Journal", url: "https://www.ogj.com/refining-processing/refining/operations/article/17271589/reliance-expands-desalination-plant-at-jamnagar-refinery" },
+  { title: "Inauguration of first industrial purpose desalination plant at Dahej", publication: "DeshGujarat, Jun 2022", url: "https://deshgujarat.com/2022/06/16/inauguration-of-first-industrial-purpose-desalination-plant-at-dahej-today/" },
 ]
 
 export default function Water() {
@@ -48,6 +55,18 @@ export default function Water() {
             <StatBox value="20.38 Lakh Ha" label="Land Irrigated" color="blue" />
             <StatBox value="75%" label="Command Area Drought-Prone" color="red" />
           </div>
+
+          <PillarChart
+            type="pie"
+            data={[
+              { name: 'Madhya Pradesh', value: 65 },
+              { name: 'Gujarat', value: 32 },
+              { name: 'Rajasthan', value: 2 },
+              { name: 'Maharashtra', value: 1 },
+            ]}
+            title="Narmada Water Allocation by State (%)"
+            caption="Gujarat receives only 9 MAF out of 28 MAF total allocation"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Scale of Dependency">
@@ -99,6 +118,18 @@ export default function Water() {
             </DataCard>
           </div>
 
+          <PillarChart
+            type="bar"
+            data={[
+              { name: 'Annual Recharge', value: 6.88 },
+              { name: 'Withdrawal', value: 6.54 },
+              { name: 'Remaining Buffer', value: 0.34 },
+            ]}
+            title="North Gujarat Aquifer Balance (km³/year)"
+            caption="Only 0.34 km³ buffer between recharge and withdrawal — razor-thin margin"
+            colors={['#16A34A', '#D32F2F', '#CA8A04']}
+          />
+
           <DataCard title="20 Years of GRACE Satellite Data: The Verdict">
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
               A study using GRACE/GRACE-FO satellite data and ~1,600 CGWB well observations (2003-2023) reveals a stark north-south divergence: <strong>increased groundwater depletion in Northern Gujarat</strong> versus recharge in Southern Gujarat and Saurashtra.<Ref n={9} />
@@ -125,7 +156,66 @@ export default function Water() {
           </div>
         </Section>
 
+        {/* Industrial Water Demand */}
+        <Section icon={<Factory className="w-8 h-8 text-amber-600 dark:text-amber-500" />} title="Industrial Water Demand: The Invisible Competitor">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <StatBox value="844 MLD" label="Industrial Intake (Kutch & Saurashtra)" color="red" />
+            <StatBox value="18%" label="Narmada Water to Industry/Domestic" color="amber" />
+            <StatBox value="400 MLD" label="Jamnagar Refinery Desalination" color="blue" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <DataCard title="Factories vs. Farms: The Narmada Diversion">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                The Gujarat government originally mandated that only <strong className="text-gray-900 dark:text-white">11% of Narmada water</strong> would serve industrial and domestic purposes. By 2016, the actual figure had risen to over <strong className="text-gray-900 dark:text-white">18%</strong> — nearly double the original provision.<Ref n={11} /> Industries in Kutch and Saurashtra alone were drawing <strong className="text-gray-900 dark:text-white">844.85 MLD</strong> against their allocation of just 675.88 MLD — a 25% overshoot.<Ref n={11} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Meanwhile, the Narmada canal network built to irrigate drought-prone farmland is only <strong className="text-gray-900 dark:text-white">36% complete</strong> — 27,189 km out of the planned 74,000 km — leaving agriculture far short of its promised allocation.<Ref n={12} /> During the 2019 drought, industries in Mundra and Kutch continued receiving Narmada water while <strong>no water was released for agricultural purposes</strong> in Kutch — the very region the dam was built to serve.<Ref n={11} />
+              </p>
+            </DataCard>
+
+            <DataCard title="The GWIL Loophole">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                The state-owned Gujarat Water Infrastructure Ltd (GWIL) was constituted as a special purpose vehicle whose stated mission is to provide <strong className="text-gray-900 dark:text-white">drinking water</strong>. Being an SPV, GWIL does not fall under the RTI Act. However, investigations revealed that GWIL distributes water to both domestic and <strong className="text-gray-900 dark:text-white">industrial consumers</strong> — effectively routing Narmada water to factories under a drinking-water mandate.<Ref n={11} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                In Lakhpat taluka — one of the worst drought-hit areas since 1919 — three cement factories and two power plants (including Adani and Tata Power) received Narmada water between 2014 and 2018, while farming families in the same region struggled for basic supply.<Ref n={12} />
+              </p>
+            </DataCard>
+          </div>
+
+          <DataCard title="Industrial Desalination: Solving Scarcity or Entrenching Dependency?" alert={true}>
+            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+              The Reliance Jamnagar refinery — the world's largest single-site refinery — operates a desalination complex with a total capacity of approximately <strong>400 MLD</strong>, making it one of the largest industrial desalination setups globally.<Ref n={13} /> At Dahej, GIDC invested <strong>Rs 881 crore</strong> in a 100 MLD desalination plant specifically because chemical and petrochemical industries — which constitute 80% of the Dahej PCPIR — were facing production crises due to Narmada water scarcity and rising river salinity.<Ref n={14} />
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              While desalination reduces direct competition with agriculture, it raises a deeper question: Gujarat's industrial model is so water-intensive that it requires building billion-rupee seawater purification infrastructure just to sustain operations. The existing Dahej water supply of 454 MLD — primarily sourced from the Narmada — still dwarfs the 100 MLD desalination supplement.<Ref n={14} /> Industry remains structurally tethered to the same river that agriculture depends on.
+            </p>
+          </DataCard>
+        </Section>
+
       </div>
+
+      <ComparisonTable
+        title="Groundwater Extraction: State Comparison"
+        columns={[
+          { key: 'extraction', label: 'Extraction Rate' },
+          { key: 'status', label: 'CGWB Status' },
+          { key: 'primaryRisk', label: 'Primary Risk' },
+        ]}
+        rows={[
+          { state: 'Gujarat', extraction: '95% of recharge', status: 'Over-exploited (North)', primaryRisk: 'Fluoride, salinity' },
+          { state: 'Punjab', extraction: '149% of recharge', status: 'Critical', primaryRisk: 'Water table decline' },
+          { state: 'Rajasthan', extraction: '137% of recharge', status: 'Critical', primaryRisk: 'Arsenic, fluoride' },
+          { state: 'Haryana', extraction: '133% of recharge', status: 'Over-exploited', primaryRisk: 'Saline ingression' },
+          { state: 'Tamil Nadu', extraction: '77% of recharge', status: 'Semi-critical', primaryRisk: 'Coastal salinity' },
+        ]}
+      />
+
+      <CounterArgument
+        argument="The Sardar Sarovar Project solved Gujarat's water crisis, irrigating 20 lakh hectares and supplying 3 crore people. It is a triumph of engineering."
+        rebuttal="3 crore people on a single dam with only 75% dependability allocation. No redundancy. The North Gujarat aquifer is at 95% withdrawal. One multi-year drought threatens both agriculture and urban supply simultaneously."
+      />
 
       <SourceList sources={sources} />
     </main>

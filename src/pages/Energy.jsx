@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
-import { Zap, AlertTriangle, Flame, Wind, CheckCircle } from 'lucide-react'
+import { Zap, AlertTriangle, Flame, Wind, CheckCircle, Atom } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
+import { PillarChart } from '../components/PillarChart'
+import { CounterArgument } from '../components/CounterArgument'
+import { ComparisonTable } from '../components/ComparisonTable'
 
 const sources = [
   { title: "Mundra Thermal Power Project (Adani) — 4,620 MW imported coal plant", publication: "Global Energy Monitor", url: "https://www.gem.wiki/Mundra_Thermal_Power_Project_(Adani)" },
@@ -17,6 +20,10 @@ const sources = [
   { title: "Power ministry directs imported-coal plants to run at full capacity", publication: "Business Standard, Mar 2026", url: "https://www.business-standard.com/industry/news/power-ministry-directs-plants-using-imported-coal-to-run-at-full-capacity-126032500941_1.html" },
   { title: "Over 400 Ceramic Units in Morbi Shut Due to Gas Crisis Amid West Asia War", publication: "DeshGujarat, Mar 2026", url: "https://deshgujarat.com/2026/03/18/over-400-ceramic-units-in-morbi-shut-due-to-gas-crisis-amid-west-asia-war/" },
   { title: "India's LNG imports continue to increase", publication: "LNG Prime", url: "https://lngprime.com/lng-terminals/indias-lng-imports-continue-to-increase/141762/" },
+  { title: "Kakrapar Atomic Power Station — Units, capacity, and commissioning history", publication: "Wikipedia", url: "https://en.wikipedia.org/wiki/Kakrapar_Atomic_Power_Station" },
+  { title: "Nuclear Power in India — capacity, generation share, and plant details", publication: "World Nuclear Association", url: "https://world-nuclear.org/information-library/country-profiles/countries-g-n/india" },
+  { title: "Possibility of New Nuclear Plant in Gujarat Being Explored — Mithi Virdi relocation and GUVNL feasibility study", publication: "The Secretariat, 2025", url: "https://thesecretariat.in/article/possibility-of-new-nuclear-plant-in-gujarat-being-explored" },
+  { title: "NPCIL seeks proposals for privately funded Bharat Small Reactors — 16 sites across 6 states, 5 in Gujarat", publication: "World Nuclear News, 2025", url: "https://www.world-nuclear-news.org/articles/npcil-seeks-proposals-for-privately-funded-small-reactor-projects" },
 ]
 
 export default function Energy() {
@@ -108,6 +115,21 @@ export default function Energy() {
               The 2026 West Asia conflict has already caused over <strong>400 ceramic units in Morbi to shut</strong> due to gas supply disruptions, with nearly 60% of Morbi units dependent on propane that has been completely halted.<Ref n={13} />
             </p>
           </DataCard>
+
+          <PillarChart
+            type="pie"
+            data={[
+              { name: 'Qatar', value: 45 },
+              { name: 'UAE', value: 12 },
+              { name: 'Oman', value: 12 },
+              { name: 'USA', value: 10 },
+              { name: 'Russia', value: 8 },
+              { name: 'Australia', value: 8 },
+              { name: 'Others', value: 5 },
+            ]}
+            title="India's LNG Import Sources (Estimated %)"
+            caption="69% of LNG transits the Strait of Hormuz (Qatar + UAE + Oman)"
+          />
         </Section>
 
         {/* Renewables Paradox */}
@@ -121,6 +143,18 @@ export default function Energy() {
             <StatBox value="22%" label="Actual Generation Share" color="red" />
             <StatBox value="58%" label="Coal Share in GUVNL" color="crimson" />
           </div>
+
+          <PillarChart
+            type="bar"
+            data={[
+              { name: 'Imported Coal', value: 8620 },
+              { name: 'RE Installed', value: 42583 },
+              { name: 'RE Actual Gen (equiv MW)', value: 9400 },
+            ]}
+            title="Capacity vs Reality: Energy Mix (MW)"
+            caption="Installed RE capacity dramatically overstates actual generation contribution"
+            colors={['#D32F2F', '#16A34A', '#CA8A04']}
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Capacity vs. Generation Gap">
@@ -137,7 +171,70 @@ export default function Energy() {
           </div>
         </Section>
 
+        {/* Nuclear Energy */}
+        <Section icon={<Atom className="w-8 h-8 text-purple-600 dark:text-purple-400" />} title="Nuclear Energy: The Missing Baseload">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
+            Gujarat is India's <strong className="text-gray-900 dark:text-white">second-largest nuclear power state</strong> with 1,840 MW at the Kakrapar Atomic Power Station — yet nuclear contributes barely <strong className="text-gray-900 dark:text-white">3% of national electricity generation</strong>.<Ref n={16} /> For a state whose refineries, ceramic kilns, and chemical plants demand uninterrupted 24/7 power, the absence of scaled nuclear baseload forces continued dependence on imported coal and LNG.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <StatBox value="1,840 MW" label="Kakrapar Nuclear Capacity" color="purple" />
+            <StatBox value="~3%" label="Nuclear Share in India's Generation" color="red" />
+            <StatBox value="6,000 MW" label="Mithi Virdi — Cancelled" color="crimson" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <DataCard title="Kakrapar: Gujarat's Sole Nuclear Asset">
+              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                The Kakrapar Atomic Power Station in Tapi district operates four units: KAPS-1 (220 MW, 1993), KAPS-2 (220 MW, 1995), and two indigenous 700 MW PHWRs — KAPP-3 (commissioned June 2023) and KAPP-4 (commercial operation March 2024).<Ref n={15} /> The newer units represent India's first domestically designed 700 MW pressurised heavy water reactors.
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Despite this expansion, Kakrapar's 1,840 MW is dwarfed by Gujarat's <strong className="text-gray-900 dark:text-white">8,620 MW of imported-coal thermal capacity</strong> at Mundra alone. Nuclear provides firm, round-the-clock baseload power — precisely what intermittent solar and wind cannot — yet it supplies only a fraction of the state's industrial demand.<Ref n={16} />
+              </p>
+            </DataCard>
+
+            <DataCard title="The Mithi Virdi Failure: 6,000 MW Lost">
+              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                A proposal for <strong className="text-gray-900 dark:text-white">six Westinghouse AP1000 reactors totalling 6,000 MW</strong> was prepared for Chhaya Mithi Virdi in Bhavnagar — announced at the Vibrant Gujarat Summit as a flagship Indo-US nuclear cooperation project.<Ref n={17} /> Had it been built, it would have quadrupled Gujarat's nuclear capacity and provided carbon-free baseload equivalent to both Mundra coal mega-plants combined.
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                After over a decade of opposition from villages including Mithivirdi, Jaspara, and Mandva — centred on the acquisition of 777 hectares of fertile agricultural land — the project was relocated to Kovvada, Andhra Pradesh.<Ref n={17} /> Gujarat's industrial economy lost its best prospect for indigenous baseload, reinforcing its structural lock-in to imported fossil fuels.
+              </p>
+            </DataCard>
+          </div>
+
+          <DataCard title="Bharat Small Reactors: Industrial Nuclear on the Horizon?" alert={true}>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              In December 2024, NPCIL issued a request for proposals for <strong>220 MW Bharat Small Reactors (BSRs)</strong> — compact pressurised heavy water reactors designed for captive industrial use. Six major companies responded, including Reliance Industries, Adani Power, and Tata Power, identifying <strong>16 prospective sites across six states — with five in Gujarat</strong>, the highest of any state.<Ref n={18} />
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              BSRs are designed to replace captive thermal plants at industrial clusters with steady, predictable baseload power. For Gujarat's ceramics belt in Morbi, its refinery corridor in Jamnagar, and its chemical hubs in Bharuch, small nuclear reactors could break the dependence on imported LNG and coal — but legislative amendments to the Atomic Energy Act and the Civil Liability for Nuclear Damage Act are required before private participation can proceed.<Ref n={18} />
+            </p>
+          </DataCard>
+        </Section>
+
       </div>
+
+      <ComparisonTable
+        title="Renewable Energy: Installed Capacity vs Actual Generation"
+        columns={[
+          { key: 'reCapacity', label: 'RE Capacity (GW)' },
+          { key: 'reGenShare', label: 'RE Generation %' },
+          { key: 'coalShare', label: 'Coal Generation %' },
+        ]}
+        rows={[
+          { state: 'Gujarat', reCapacity: '42.5', reGenShare: '22%', coalShare: '58%' },
+          { state: 'Rajasthan', reCapacity: '28.1', reGenShare: '31%', coalShare: '52%' },
+          { state: 'Maharashtra', reCapacity: '18.7', reGenShare: '15%', coalShare: '65%' },
+          { state: 'Tamil Nadu', reCapacity: '22.4', reGenShare: '38%', coalShare: '42%' },
+          { state: 'Karnataka', reCapacity: '20.9', reGenShare: '52%', coalShare: '24%' },
+        ]}
+      />
+
+      <CounterArgument
+        argument="Gujarat leads India in renewable energy with 42.5 GW installed capacity — more than any other state. The green transition is well underway."
+        rebuttal="42 GW installed translates to only 22% of actual generation. Coal remains 58% of GUVNL contracts. The Power Ministry still directs imported-coal plants to run at full capacity during peak demand."
+      />
 
       <SourceList sources={sources} />
     </main>
