@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
-import { Users, AlertTriangle, Gem, Factory, CheckCircle } from 'lucide-react'
+import { Users, AlertTriangle, Gem, Factory, CheckCircle, Cog } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
+import { PillarChart } from '../components/PillarChart'
+import { CounterArgument } from '../components/CounterArgument'
+import { Timeline } from '../components/Timeline'
 
 const sources = [
   { title: "A war in the Gulf, a crisis in Gujarat's Morbi: India's ceramics capital counts the cost", publication: "The Print, 2026", url: "https://theprint.in/economy/a-war-in-the-gulf-a-crisis-in-gujarats-morbi-indias-ceramics-capital-counts-the-cost/2877673/" },
@@ -16,6 +19,10 @@ const sources = [
   { title: "Fuel Crisis Threatens Morbi's Ceramic Industry as Propane Supply Disruptions Mount", publication: "Telangana Tribune, 2026", url: "https://www.telanganatribune.com/fuel-crisis-threatens-morbis-ceramic-industry-as-propane-supply-disruptions-mount/" },
   { title: "Demonetisation impact: Migrant workers head back home", publication: "Business Standard, 2016", url: "https://www.business-standard.com/article/economy-policy/demonetisation-impact-migrant-workers-head-back-home-116120901022_1.html" },
   { title: "Morbi Ceramic Industry — The Ceramic City Of India", publication: "Sakar Marbo", url: "https://www.sakarmarbo.com/morbi-the-ceramic-tiles-city-of-india/" },
+  { title: "Gujarat Skills Development Program", publication: "Asian Development Bank, 2024", url: "https://www.adb.org/projects/58033-001/main" },
+  { title: "Surat's Diamond Industry Embraces AI and Automation for Unprecedented Efficiency", publication: "Association of Intelligent Diamond International, 2024", url: "https://aidi.org/surat-diamond-industry-embraces-ai-automation/" },
+  { title: "Automation's Impact on India's Workforce: Challenges and Opportunities for Inclusive Growth", publication: "HRKatha, 2025", url: "https://www.hrkatha.com/special/editorial/automation-reshaping-india-workforce/" },
+  { title: "India Skills Report 2025", publication: "Wheebox / CII / AICTE, 2025", url: "https://wheebox.com/india-skills-report.htm" },
 ]
 
 export default function Labor() {
@@ -71,6 +78,17 @@ export default function Labor() {
               </p>
             </DataCard>
           </div>
+
+          <PillarChart
+            type="pie"
+            data={[
+              { name: 'Migrant Workers', value: 70 },
+              { name: 'Local Workers', value: 30 },
+            ]}
+            title="Morbi Ceramic Workforce Composition"
+            caption="70% of Morbi's 4 lakh workers are interstate migrants"
+            colors={['#D32F2F', '#16A34A']}
+          />
         </Section>
 
         {/* Surat Diamond & Textile */}
@@ -104,36 +122,86 @@ export default function Labor() {
 
         {/* COVID Exodus */}
         <Section icon={<AlertTriangle className="w-8 h-8 text-red-500" />} title="The Exodus Pattern: COVID, Demonetisation & West Asia">
-          <div className="bg-white/70 dark:bg-dark-surface/70 p-10 rounded-3xl border border-gray-200 dark:border-dark-border shadow-xl backdrop-blur-md relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-200 dark:bg-purple-900 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
-            <h3 className="text-3xl font-serif font-bold mb-6 text-gray-900 dark:text-white relative z-10">Three Exodus Events in Six Years</h3>
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed relative z-10 mb-8 max-w-3xl">
-              Gujarat has experienced three mass migrant worker departures, each crippling its manufacturing base:
-            </p>
-            <div className="space-y-6 relative z-10">
-              <div className="flex gap-6 items-start">
-                <div className="min-w-[80px] text-crimson font-bold font-serif text-xl">2020</div>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  <strong>COVID-19 lockdown:</strong> An estimated 100 million migrant workers nationally — nearly a fifth of the labour force — fled. In Surat, 90% of the world's diamonds are cut and polished, but factories couldn't reopen after two-thirds of workers left. Gujarat's salt refineries doubled salaries to lure staff back.<Ref n={10} />
-                </p>
-              </div>
-              <div className="flex gap-6 items-start">
-                <div className="min-w-[80px] text-crimson font-bold font-serif text-xl">2016</div>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  <strong>Demonetisation:</strong> With 90-95% of textile wages paid in cash, demonetisation instantly collapsed the informal economy. Migrant workers headed home as there was no cash to pay them.<Ref n={12} />
-                </p>
-              </div>
-              <div className="flex gap-6 items-start">
-                <div className="min-w-[80px] text-crimson font-bold font-serif text-xl">2026</div>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  <strong>West Asia gas crisis:</strong> LPG and propane supply disruptions shut 400+ Morbi units and triggered exodus from Surat's textile hubs. Odisha, Bihar, and UP now offer local industrial jobs, making return migration harder than ever.<Ref n={7} /><Ref n={8} />
-                </p>
-              </div>
-            </div>
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
+            Gujarat has experienced three mass migrant worker departures in six years, each crippling its manufacturing base within days:
+          </p>
+
+          <Timeline events={[
+            {
+              year: '2016',
+              title: 'Demonetisation Exodus',
+              severity: 'warning',
+              description: 'With 90-95% of textile wages paid in cash, demonetisation instantly collapsed the informal economy. Migrant workers headed home as there was no cash to pay them.',
+            },
+            {
+              year: '2020',
+              title: 'COVID-19 Lockdown',
+              severity: 'critical',
+              description: 'An estimated 100 million migrant workers nationally fled. In Surat, factories couldn\'t reopen after two-thirds of diamond workers left. Gujarat\'s salt refineries doubled salaries to lure staff back.',
+            },
+            {
+              year: '2024',
+              title: 'Diamond Industry Crisis',
+              severity: 'warning',
+              description: '71 diamond workers died by suicide in 18 months as falling global demand for lab-grown diamonds and reduced rough imports decimated the sector.',
+            },
+            {
+              year: '2026',
+              title: 'West Asia Gas Crisis',
+              severity: 'critical',
+              description: 'LPG and propane supply disruptions shut 400+ Morbi units and triggered exodus from Surat\'s textile hubs. Odisha, Bihar, and UP now offer local industrial jobs, making return migration harder than ever.',
+            },
+          ]} />
+        </Section>
+
+        {/* Skill Gap & Automation Risk */}
+        <Section icon={<Cog className="w-8 h-8 text-orange-500 dark:text-orange-400" />} title="Skill Gap & Automation Risk: The Coming Squeeze">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
+            Gujarat's manufacturing workforce faces a structural paradox: industries depend on low-skill migrant labour that is simultaneously too scarce (during exodus events) and too vulnerable (to automation). A third of Gujarat's youth aged 15-29 are classified as NEET — not in education, employment, or training — while the state's ITI system remains misaligned with the demands of modern industry.<Ref n={14} />
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <StatBox value="33.9%" label="Youth NEET Rate (ages 15-29)" color="crimson" />
+            <StatBox value="~5%" label="India's Formally Skilled Workforce" color="red" />
+            <StatBox value="54.8%" label="Graduate Employability (India Skills Report 2025)" color="purple" />
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <DataCard title="The Skills Vacuum">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Despite having over <strong className="text-gray-900 dark:text-white">770 ITIs (274 government, 500+ private)</strong>, Gujarat's vocational training system remains focused on traditional trades and technologies — mismatched with the frontier skills demanded by its rapidly modernising industries.<Ref n={14} /> The ADB's labour market assessment identified seven priority sectors (logistics, automotive, manufacturing, IT, renewables, healthcare, agri-tech) where the skill demand-supply gap is widening.<Ref n={14} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Nationally, only <strong className="text-gray-900 dark:text-white">4% of Indians aged 15-59 report having received formal vocational training</strong> — compared to 52% in the US, 80% in Japan, and 96% in South Korea.<Ref n={14} /> The India Skills Report 2025 found that only 54.8% of Indian graduates are considered employable, underscoring the gap between education outputs and industry needs.<Ref n={17} />
+              </p>
+            </DataCard>
+
+            <DataCard title="Automation Arrives at the Factory Floor" alert={true}>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Surat's diamond industry is rapidly adopting <strong className="text-gray-900 dark:text-white">AI-driven cutting, robotic polishing systems, and automated quality control</strong> — technologies that operate 24/7 and reduce reliance on the skilled manual workforce that once defined the trade.<Ref n={15} /> Automated systems have compressed diamond processing timelines from months to days, while minimising material waste.<Ref n={15} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                McKinsey research estimates that <strong className="text-gray-900 dark:text-white">approximately 30% of work hours globally could be automated by 2030</strong>, with middle-skill, routine-heavy positions most vulnerable.<Ref n={16} /> In India, a SAGE Journals study found that automation risk across all occupations has measurably increased between 2011-12 and 2020-21, with manufacturing roles bearing the highest exposure.<Ref n={16} />
+              </p>
+            </DataCard>
+          </div>
+
+          <DataCard title="The Compounding Trap: Low Skills Meet High Automation">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Gujarat's labour dependency is thus squeezed from both sides. The migrant workers who power Morbi's kilns, Surat's looms, and diamond polishing benches are overwhelmingly low-skill — over <strong className="text-gray-900 dark:text-white">70% of India's manufacturing labourers are either illiterate or educated below primary level</strong>.<Ref n={16} /> These workers cannot be easily reskilled for the automated production lines replacing their roles. Meanwhile, Gujarat's NEET rate of 33.9% among youth — rising to <strong className="text-gray-900 dark:text-white">56.2% for young women</strong> — means the state is not producing local replacements either.<Ref n={14} />
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The Gujarat Textile Policy 2024 acknowledges this bind, offering free certification courses via the Gujarat Skill Development Mission alongside subsidies for automation adoption — policies that work at cross purposes.<Ref n={16} /> The state has also partnered with the ADB on a Skills Development Program (2025-2030) to bridge the gap, but the scale of the challenge — retraining lakhs of workers while industries automate — raises the question of whether Gujarat's manufacturing model can survive its own modernisation.<Ref n={14} />
+            </p>
+          </DataCard>
         </Section>
 
       </div>
+
+      <CounterArgument
+        argument="Migrants come to Gujarat because it offers the best wages and opportunities. This proves the state's economic strength and attractiveness."
+        rebuttal="Three mass exodus events in six years (2016, 2020, 2026) prove wages alone cannot retain workers during supply disruptions. 71 diamond worker suicides in 18 months show the human cost when the system fails."
+      />
 
       <SourceList sources={sources} />
     </main>

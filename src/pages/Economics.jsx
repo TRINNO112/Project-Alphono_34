@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
-import { TrendingUp, AlertTriangle, Landmark, Globe, CheckCircle } from 'lucide-react'
+import { TrendingUp, AlertTriangle, Landmark, Globe, CheckCircle, Building2 } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
+import { PillarChart } from '../components/PillarChart'
+import { CounterArgument } from '../components/CounterArgument'
+import { ComparisonTable } from '../components/ComparisonTable'
 
 const sources = [
   { title: "A Macro and Fiscal Landscape of the State of Gujarat", publication: "NITI Aayog, Mar 2025", url: "https://www.niti.gov.in/sites/default/files/2025-03/Summary-Report-Gujarat.pdf" },
@@ -15,6 +18,10 @@ const sources = [
   { title: "How NRI Remittances Significantly Bolster India's Economy", publication: "Abound", url: "https://www.joinabound.com/blog/nri-remittances-bolster-economy/" },
   { title: "Why NRIs Should Choose India's GIFT City for Investment in 2025", publication: "Sobha Ltd", url: "https://www.sobha.com/blog/nri-invest-india-gift-city/" },
   { title: "Scholarly Research: NRI Remittances and Gujarat Economy", publication: "SRJIS, 2023", url: "https://oaji.net/articles/2023/1174-1720079546.pdf" },
+  { title: "GIFT City: India's Tax And Repatriation Revolution For Global Capital: A 2026 Perspective", publication: "Mondaq, 2026", url: "https://www.mondaq.com/india/sales-taxes-vat-gst/1735786/gift-city-indias-tax-and-repatriation-revolution-for-global-capital-a-2026-perspective" },
+  { title: "GIFT City vs Dubai & Singapore – India's Global Edge", publication: "Kaavya Ratna, 2025", url: "https://www.kaavyaratna.com/blogs/gift-city-vs-singapore-and-dubai-can-indias-smart-city-hub-compete" },
+  { title: "GIFT City Tax Incentives 2025: Complete Business Advantage Guide", publication: "GIFT CFO, 2025", url: "https://www.giftcfo.com/post/gift-city-tax-incentives-2025-complete-business-advantage-guide" },
+  { title: "GIFT City Hiring 2026: GCC Recruitment Solutions in Gujarat", publication: "RK HR Management, 2026", url: "https://www.rkhrm.com/blog/gift-city-gcc-hiring-high-value-teams/" },
 ]
 
 export default function Economics() {
@@ -72,6 +79,19 @@ export default function Economics() {
               </p>
             </DataCard>
           </div>
+
+          <PillarChart
+            type="bar"
+            data={[
+              { name: '2012-13', value: 7.44 },
+              { name: '2016-17', value: 6.2 },
+              { name: '2020-21', value: 4.35 },
+              { name: '2022-23', value: 5.6 },
+            ]}
+            title="Own Tax Revenue as % of GSDP (Declining Trend)"
+            caption="A decade-long decline from 7.44% to 5.6%, with a nadir of 4.35% during COVID"
+            colors={['#16A34A', '#CA8A04', '#D32F2F', '#D32F2F']}
+          />
         </Section>
 
         {/* Central Transfers */}
@@ -95,6 +115,19 @@ export default function Economics() {
               </p>
             </DataCard>
           </div>
+
+          <PillarChart
+            type="bar"
+            data={[
+              { name: 'Gujarat', value: 8.7 },
+              { name: 'Median State', value: 19.9 },
+              { name: 'Kerala', value: 25.1 },
+              { name: 'Tamil Nadu', value: 16.8 },
+            ]}
+            title="Revenue Receipts as % of GSDP (State Comparison)"
+            caption="Gujarat collects less than half the median state's revenue relative to economic size"
+            colors={['#D32F2F', '#6B7280', '#2563EB', '#9333EA']}
+          />
         </Section>
 
         {/* NRI & GIFT City */}
@@ -124,7 +157,71 @@ export default function Economics() {
           </div>
         </Section>
 
+        {/* The GIFT City Paradox */}
+        <Section icon={<Building2 className="w-8 h-8 text-purple-600 dark:text-purple-400" />} title="The GIFT City Paradox: Global Capital, Local Vacuum">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
+            GIFT City hosts over <strong className="text-gray-900 dark:text-white">1,000 registered entities</strong> and manages <strong className="text-gray-900 dark:text-white">$12 billion in Alternative Investment Funds</strong> — a 300% year-over-year surge.<Ref n={13} /> Yet this financial supernova operates in a near-total tax vacuum: 100% income tax holidays, zero GST, zero STT, zero stamp duty. The paradox is stark — India's most ambitious financial hub sits on Gujarat's soil but contributes almost nothing to Gujarat's treasury.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <StatBox value="1,000+" label="Registered IFSC Entities" color="purple" />
+            <StatBox value="$12B" label="AIF Assets (Jan 2026)" color="purple" />
+            <StatBox value="~0%" label="Effective State Tax Rate" color="red" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <DataCard title="The Tax Exemption Architecture">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                GIFT City IFSC units enjoy a <strong className="text-gray-900 dark:text-white">100% income tax exemption for 10 consecutive years out of 15</strong> under Section 80LA. Even outside this window, the Minimum Alternate Tax is just 9% — compared to 15-22% for domestic firms.<Ref n={15} /> All transactions on IFSC exchanges are exempt from Securities Transaction Tax, Commodity Transaction Tax, GST, and stamp duty.<Ref n={13} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Management fees, advisory fees, and transaction costs that attract <strong className="text-gray-900 dark:text-white">18% GST in mainland India are entirely exempt inside the IFSC</strong>.<Ref n={15} /> Budget 2025 extended these benefits through March 2030 and expanded them to cover OTC derivatives, ETF relocations, and ship leasing SPVs. The result: a financial centre processing billions in transactions that generates effectively zero state-level tax revenue.
+              </p>
+            </DataCard>
+
+            <DataCard title="Scale vs. Comparable Hubs" alert={true}>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Dubai's DIFC hosts over <strong className="text-gray-900 dark:text-white">3,000 firms</strong> and offers a 0% tax rate renewable for 50 years. Singapore, with corporate tax at 17%, compensates through volume — it ranks among the world's top 5 financial centres.<Ref n={14} /> GIFT City's 1,000+ entities are growing fast, but its tax concessions are among the most aggressive globally.
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                The critical difference: Dubai and Singapore are sovereign city-states that capture indirect economic benefits (visa fees, real estate, consumption taxes) from their financial hubs. Gujarat, as a sub-national state, captures almost <strong className="text-gray-900 dark:text-white">none of these spillovers</strong> — GIFT City's regulatory regime is controlled by the central IFSCA, and the tax exemptions are granted by the Union government.<Ref n={14} />
+              </p>
+            </DataCard>
+          </div>
+
+          <DataCard title="The Employment Mirage">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              GIFT City currently employs approximately <strong className="text-gray-900 dark:text-white">25,000 professionals</strong>, with projections to scale to 150,000 within five years.<Ref n={16} /> But the talent composition reveals a structural mismatch. The rapid expansion of Global Capability Centres (GCCs) has outpaced the availability of qualified local professionals, creating what recruiters describe as intense "offer competition" — companies hiring from Mumbai, Bangalore, and NRI returnee pools rather than from Gujarat's own workforce.<Ref n={16} />
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Most roles demand high-skill profiles: risk analysts, compliance officers, KYC/AML specialists, and professionals experienced in communicating with global stakeholders and following international processes.<Ref n={16} /> GIFT City professionals earn <strong className="text-gray-900 dark:text-white">40-60% less than their Singapore counterparts</strong>, positioning the hub as a cost-arbitrage play for global firms rather than a wealth-creation engine for Gujaratis.<Ref n={14} /> The state provides PF reimbursements and hiring subsidies to attract companies — effectively paying firms to bring in workers who generate exempt income on exempt transactions.
+            </p>
+          </DataCard>
+        </Section>
+
       </div>
+
+      <ComparisonTable
+        title="Fiscal Comparison: Gujarat vs Major States"
+        columns={[
+          { key: 'debtGsdp', label: 'Debt / GSDP' },
+          { key: 'otrGsdp', label: 'OTR / GSDP' },
+          { key: 'revenueGsdp', label: 'Revenue / GSDP' },
+          { key: 'expenditureGsdp', label: 'Expenditure / GSDP' },
+        ]}
+        rows={[
+          { state: 'Gujarat', debtGsdp: '18.2%', otrGsdp: '5.6%', revenueGsdp: '8.7%', expenditureGsdp: '10.2%' },
+          { state: 'Maharashtra', debtGsdp: '19.3%', otrGsdp: '7.1%', revenueGsdp: '12.4%', expenditureGsdp: '14.1%' },
+          { state: 'Tamil Nadu', debtGsdp: '24.8%', otrGsdp: '7.8%', revenueGsdp: '16.8%', expenditureGsdp: '17.5%' },
+          { state: 'Karnataka', debtGsdp: '22.1%', otrGsdp: '8.2%', revenueGsdp: '14.6%', expenditureGsdp: '15.3%' },
+          { state: 'Median State', debtGsdp: '~32%', otrGsdp: '~6.5%', revenueGsdp: '19.9%', expenditureGsdp: '24.0%' },
+        ]}
+      />
+
+      <CounterArgument
+        argument="Gujarat's lowest debt-to-GSDP ratio (18.2%) proves exceptional fiscal discipline and prudent governance compared to other states."
+        rebuttal="Revenue receipts at 8.7% of GSDP vs. 19.9% median means the state under-collects and under-spends on public services. Own Tax Revenue declining from 7.44% to 5.6% signals structural revenue weakness, not fiscal strength."
+      />
 
       <SourceList sources={sources} />
     </main>
