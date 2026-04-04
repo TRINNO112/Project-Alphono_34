@@ -13,6 +13,9 @@ import Summary from './pages/Summary'
 import Education from './pages/Education'
 import Environment from './pages/Environment'
 import MigrantDiscrimination from './pages/MigrantDiscrimination'
+import Timeline from './pages/Timeline'
+import DistrictMap from './pages/DistrictMap'
+import DistrictAnalysis from './pages/DistrictAnalysis'
 import SearchBar from './components/SearchBar'
 import Footer from './components/Footer'
 
@@ -53,6 +56,9 @@ export default function App() {
           <Route path="/summary" element={<Summary />} />
           <Route path="/environment" element={<Environment />} />
           <Route path="/migrant-discrimination" element={<MigrantDiscrimination />} />
+          <Route path="/timeline" element={<Timeline />} />
+          <Route path="/map" element={<DistrictMap />} />
+          <Route path="/district/:id" element={<DistrictAnalysis />} />
         </Routes>
 
         <SearchBar />
