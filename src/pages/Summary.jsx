@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ArrowRight, FileText } from 'lucide-react'
+import { Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ArrowRight, FileText, ShieldAlert } from 'lucide-react'
 import { Section, DataCard, StatBox } from '../components/Shared'
 
 const pillars = [
@@ -100,6 +100,18 @@ const pillars = [
       { value: '4.2 tCO2', label: 'Per Capita Emissions', color: 'red' },
     ]
   },
+  {
+    num: 'IX',
+    icon: <ShieldAlert className="w-8 h-8 text-red-600 dark:text-red-500" />,
+    title: 'Migrant Discrimination',
+    path: '/migrant-discrimination',
+    summary: 'Gujarat relies on 50-60 lakh migrant workers, yet subjects them to systemic discrimination, wage theft, and violence. The 2018 anti-migrant pogrom forced 20,000+ workers to flee, organized by political leaders who faced no consequences. Silicosis deaths surged 216% in 2024-25, and non-Gujarati residents face the daily humiliation of derogatory slurs like "Hindira" under the exclusionary ideology of "Gujarati Asmita".',
+    stats: [
+      { value: '20,000+', label: 'Workers Fled (2018)', color: 'red' },
+      { value: '216%', label: 'Silicosis Death Surge', color: 'crimson' },
+      { value: '92.65%', label: 'Without Health Cover', color: 'purple' },
+    ]
+  },
 ]
 
 export default function Summary() {
@@ -121,7 +133,7 @@ export default function Summary() {
             Structural Dependencies: <span className="italic text-crimson">A Synthesis</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            This executive summary aggregates the <strong className="font-semibold text-gray-900 dark:text-white">top findings from eight pillars of analysis</strong>, each examining a structural dependency that underpins Gujarat's economic machine. Across 100+ cited sources, a consistent pattern emerges: <strong className="font-semibold text-gray-900 dark:text-white">extraordinary throughput built atop fragile, externally-controlled supply chains.</strong>
+            This executive summary aggregates the <strong className="font-semibold text-gray-900 dark:text-white">top findings from nine pillars of analysis</strong>, each examining a structural dependency that underpins Gujarat's economic machine. Across 100+ cited sources, a consistent pattern emerges: <strong className="font-semibold text-gray-900 dark:text-white">extraordinary throughput built atop fragile, externally-controlled supply chains.</strong>
           </p>
         </motion.div>
       </section>
@@ -163,7 +175,7 @@ export default function Summary() {
               Gujarat's economic engine is real, productive, and globally competitive. But this analysis reveals that the engine runs on fuel it does not produce, water it does not source, labor it does not retain, capital it does not fully tax, human capital it does not adequately develop, and environmental costs it does not account for.
             </p>
             <p>
-              The question is not whether Gujarat is economically powerful — it clearly is. The question is <strong className="text-gray-900 dark:text-white">how resilient that power is when any of these external supply lines is disrupted</strong>. The events of 2020, 2016, and 2026 have already provided partial answers.
+              The question is not whether Gujarat is economically powerful — it clearly is. The question is <strong className="text-gray-900 dark:text-white">how resilient that power is when any of these external supply lines is disrupted</strong>. The mass exoduses of 2018, 2020, and 2026 have already provided partial answers.
             </p>
             <p>
               This project does not argue that dependency is unique to Gujarat. Every modern economy depends on external inputs. But the <strong className="text-gray-900 dark:text-white">concentration</strong> of these dependencies — a single port operator, a single dam, a single source country for APIs, a single geopolitical chokepoint for LNG — creates a fragility profile that warrants serious, evidence-based scrutiny.
@@ -180,7 +192,7 @@ export default function Summary() {
         className="text-center"
       >
         <p className="text-gray-500 dark:text-gray-500 italic font-serif">
-          This summary synthesizes findings from 100+ cited sources across 8 pillars. See individual pillar pages for full references and source URLs.
+          This summary synthesizes findings from 100+ cited sources across 9 pillars. See individual pillar pages for full references and source URLs.
         </p>
       </motion.section>
     </main>
