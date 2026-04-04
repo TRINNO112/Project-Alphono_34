@@ -43,7 +43,7 @@ export function PillarChart({ type, data, title, caption, height = 300, colors }
       <BarChart data={data}>
         <XAxis dataKey="name" tick={{ fill: tickFill, fontSize: 13 }} />
         <YAxis tick={{ fill: tickFill, fontSize: 13 }} />
-        <Tooltip contentStyle={tooltipStyle} cursor={{ fill: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }} />
+        <Tooltip contentStyle={tooltipStyle} itemStyle={{ color: isDark ? '#e5e7eb' : '#1f2937' }} cursor={{ fill: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }} />
         <Bar dataKey="value" radius={[6, 6, 0, 0]}>
           {data.map((_, index) => (
             <Cell key={`cell-${index}`} fill={palette[index % palette.length]} />
@@ -71,7 +71,7 @@ export function PillarChart({ type, data, title, caption, height = 300, colors }
             <Cell key={`cell-${index}`} fill={palette[index % palette.length]} />
           ))}
         </Pie>
-        <Tooltip contentStyle={tooltipStyle} />
+        <Tooltip contentStyle={tooltipStyle} itemStyle={{ color: isDark ? '#e5e7eb' : '#1f2937' }} />
       </PieChart>
     </ResponsiveContainer>
   )
