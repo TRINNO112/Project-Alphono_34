@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText } from 'lucide-react'
+import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert } from 'lucide-react'
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip } from 'recharts'
 import { useSyncExternalStore } from 'react'
 import { SupplyChainMap } from '../components/SupplyChainMap'
@@ -18,21 +18,22 @@ export default function Home() {
   const isDark = useSyncExternalStore(subscribeDarkMode, getIsDark)
 
   const sectors = [
-    { id: 'infrastructure', title: "Infrastructure & Logistics", icon: <Ship className="w-8 h-8 text-blue-600 dark:text-blue-400" />, desc: "An analysis of maritime gateway concentration and structural bottlenecks.", path: "/infrastructure", stat: "200 MMT", statLabel: "Mundra Port FY25" },
-    { id: 'energy', title: "Energy Grid & Power Supply", icon: <Zap className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />, desc: "Evaluating imported fuel reliance and central grid stability.", path: "/energy", stat: "8,620 MW", statLabel: "Imported Coal Plants" },
-    { id: 'materials', title: "Industrial Raw Materials", icon: <Factory className="w-8 h-8 text-gray-600 dark:text-gray-400" />, desc: "Tracking the true origins of manufacturing base ingredients.", path: "/materials", stat: "~85%", statLabel: "Crude Oil Imported" },
-    { id: 'water', title: "Water Security", icon: <Droplets className="w-8 h-8 text-teal-600 dark:text-teal-500" />, desc: "Evaluating the vulnerability of the Sardar Sarovar single point of failure.", path: "/water", stat: "95%", statLabel: "Aquifer Withdrawal Rate" },
-    { id: 'labor', title: "Migrant Labor Ecosystem", icon: <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />, desc: "Understanding the migrant workforce fueling mega-industries.", path: "/labor", stat: "70%", statLabel: "Morbi Outsider Workforce" },
-    { id: 'economics', title: "Governance & Fiscal", icon: <TrendingUp className="w-8 h-8 text-green-600 dark:text-green-500" />, desc: "The impact of diaspora remittances and central subsidization.", path: "/economics", stat: "18.2%", statLabel: "Debt-to-GSDP (Lowest)" },
-    { id: 'education', title: "Education & Healthcare", icon: <GraduationCap className="w-8 h-8 text-pink-600 dark:text-pink-400" />, desc: "Brain drain, medical tourism dependency, and rural healthcare gaps.", path: "/education", stat: "97%", statLabel: "Specialist Vacancy" },
-    { id: 'environment', title: "Environment & Climate", icon: <TreePine className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />, desc: "Industrial pollution hotspots, coastal erosion, and climate vulnerability.", path: "/environment", stat: "6", statLabel: "CPCB Critical Areas" },
+    { id: 'infrastructure', title: "Infrastructure & Logistics", icon: <Ship className="w-8 h-8 text-blue-600 dark:text-blue-400" />, desc: "Maritime gateway monopoly, bridge collapses, and zero digital connectivity.", path: "/infrastructure", stat: "500.8 MMT", statLabel: "APSEZ FY26 Cargo" },
+    { id: 'energy', title: "Energy Grid & Power Supply", icon: <Zap className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />, desc: "Imported coal lock-in, 550 Morbi units shut, and grid collapse events.", path: "/energy", stat: "550+", statLabel: "Morbi Units Shut (2026)" },
+    { id: 'materials', title: "Industrial Raw Materials", icon: <Factory className="w-8 h-8 text-gray-600 dark:text-gray-400" />, desc: "Russia now #1 crude supplier, 65-70% Chinese APIs, 100% potash import.", path: "/materials", stat: "36%", statLabel: "Crude from Russia" },
+    { id: 'water', title: "Water Security", icon: <Droplets className="w-8 h-8 text-teal-600 dark:text-teal-500" />, desc: "Narmada single point of failure, fluoride at 17.5 mg/L, industry vs farms.", path: "/water", stat: "132%", statLabel: "Mehsana Extraction Rate" },
+    { id: 'labor', title: "Migrant Labor Ecosystem", icon: <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />, desc: "5-6 lakh workers fled in 2026, US tariffs crush diamonds, Rs 100 Cr/day losses.", path: "/labor", stat: "5-6L", statLabel: "Workers Fled (2026)" },
+    { id: 'economics', title: "Governance & Fiscal", icon: <TrendingUp className="w-8 h-8 text-green-600 dark:text-green-500" />, desc: "CAG flags overstated surplus, OTR at 4.9%, GIFT City 20-year tax holiday.", path: "/economics", stat: "15.3%", statLabel: "Debt-to-GSDP (FY25)" },
+    { id: 'education', title: "Education & Healthcare", icon: <GraduationCap className="w-8 h-8 text-pink-600 dark:text-pink-400" />, desc: "2.4 lakh dropouts (#1 in India), primary GER collapsed to 79.6%.", path: "/education", stat: "2.4L", statLabel: "Annual Dropouts (#1)" },
+    { id: 'environment', title: "Environment & Climate", icon: <TreePine className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />, desc: "Sabarmati 'cesspool' ruling, Deesa 21 dead, 36 sq km mangrove loss.", path: "/environment", stat: "21", statLabel: "Deesa Explosion Deaths" },
+    { id: 'migrant-discrimination', title: "Migrant Discrimination", icon: <ShieldAlert className="w-8 h-8 text-red-600 dark:text-red-500" />, desc: "2018 pogrom: 20,000+ fled. Language barriers, wage theft, bonded labour, zero welfare.", path: "/migrant-discrimination", stat: "20K+", statLabel: "Workers Attacked (2018)" },
   ]
 
-  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII']
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
 
   const headlines = [
     { value: "100+", label: "Cited Sources" },
-    { value: "8", label: "Pillars of Analysis" },
+    { value: "9", label: "Pillars of Analysis" },
     { value: "40%", label: "India's Cargo via Gujarat" },
     { value: "$40B+", label: "Gujarat NRI Deposits" },
   ]
@@ -49,14 +50,15 @@ export default function Home() {
   ]
 
   const findings = [
-    { pillar: "Infrastructure", finding: "Mundra Port handled 200 MMT in FY25 — yet 3 packages of the Delhi-Mumbai Expressway in Gujarat sit at 5-42% completion, delayed to 2027-28.", metric: "200 MMT / 5% complete" },
-    { pillar: "Energy", finding: "Gujarat's LNG terminals account for 60% of India's import capacity. 69% of LNG imports transit the Strait of Hormuz — a single chokepoint.", metric: "69% Hormuz exposure" },
-    { pillar: "Water", finding: "The North Gujarat aquifer is pumped at 95% of its 6.88 km³ annual recharge. 75% of the Narmada command area is drought-prone.", metric: "95% aquifer withdrawal" },
-    { pillar: "Labor", finding: "70% of Morbi's ceramic workforce is migrant. During COVID, 2/3 of Surat's diamond workers fled. In 2026, 400+ factories shut due to gas crisis.", metric: "70% migrant workforce" },
-    { pillar: "Fiscal", finding: "Own Tax Revenue declined from 7.44% to 5.6% of GSDP in a decade. Revenue receipts are 8.7% of GSDP vs. median state at 19.9%.", metric: "5.6% OTR/GSDP" },
-    { pillar: "Materials", finding: "India imports ~85% of crude oil. 65-70% of pharma APIs come from China. Paracetamol: 91% Chinese. Streptomycin: 100% Chinese.", metric: "85% imported crude" },
-    { pillar: "Education", finding: "32,000+ teaching posts vacant. GER at 20.1% vs national 28.4%. Only 1 Gujarat institute in NIRF top 100. 97% specialist doctor vacancies at rural CHCs.", metric: "97% specialist vacancy" },
-    { pillar: "Environment", finding: "6 CPCB critically polluted clusters. Vapi CEPI 90.75 (India's highest). 27.6% of coastline eroding. Per capita CO2 emissions 91% above national average.", metric: "90.75 CEPI score" },
+    { pillar: "Infrastructure", finding: "APSEZ crossed 500.8 MMT (FY26), controlling 28% of India's port volumes. Gambhira Bridge collapse killed 22. Zero submarine cable landing stations despite 1,600 km coastline.", metric: "500.8 MMT / 0 cables" },
+    { pillar: "Energy", finding: "550+ Morbi units shut in 2026 gas crisis. Tata Mundra UMPP offline for 9 months. South Gujarat grid collapsed — 4,000 MW dropped in 90 minutes. Khavda 9.4 GW but evacuation only 60% complete.", metric: "550+ units / 9-month shutdown" },
+    { pillar: "Water", finding: "Mehsana aquifer at 132% extraction. Fluoride at 17.5 mg/L (11x WHO limit). SSNNL earns Rs 545 Cr from industry vs Rs 11.72 Cr from agriculture. SAUNI at Rs 18,563 Cr (69% cost overrun).", metric: "132% extraction / 17.5 mg/L F" },
+    { pillar: "Labor", finding: "5-6 lakh migrant workers fled in 2026 twin shocks (gas crisis + US tariffs). 1.5 lakh diamond jobs lost. Surat powerloom losses Rs 100 Cr/day. Bharuch: 130 worker deaths (2018-25).", metric: "5-6L fled / 1.5L jobs lost" },
+    { pillar: "Fiscal", finding: "CAG flags Rs 11,929 Cr overstated surplus. OTR declining to 4.9% of GSDP. Central grants crashed to 0.53%. GIFT City tax holiday doubled to 20 years. FDI dropped from top 3.", metric: "4.9% OTR / 0.53% grants" },
+    { pillar: "Materials", finding: "Russia now #1 crude supplier at 36%. Nayara (Rosneft) faces EU sanctions risk. API imports hit $3.6B. 100% potash imported. 93% rare earth magnets from China.", metric: "36% Russia / $3.6B APIs" },
+    { pillar: "Education", finding: "2.4 lakh annual dropouts (#1 in India). Primary GER collapsed to 79.6%. 1,027 schools closed. PARAKH scores below national average. 97% specialist doctor vacancies at rural CHCs.", metric: "2.4L dropouts / 79.6% GER" },
+    { pillar: "Environment", finding: "Gujarat HC calls Sabarmati a 'cesspool'. Deesa explosion killed 21. 36.39 sq km mangrove loss. Alang volume down 75%. Ahmedabad is a CPCB non-attainment city.", metric: "21 dead / 36 sq km lost" },
+    { pillar: "Migrant Rights", finding: "2018: 20,000+ workers fled after anti-migrant violence across 6+ districts. 2020: workers walked 1,000+ km home. 92.65% without ESI. 38 silicosis deaths in 2024-25. Wages closer to Bihar than Kerala.", metric: "20K+ fled / 38 silicosis deaths" },
   ]
 
   return (
@@ -267,7 +269,7 @@ export default function Home() {
         <div className="text-center mb-16">
           <div className="flex items-center gap-3 justify-center mb-4">
             <span className="text-crimson text-lg font-sans font-bold">IV.</span>
-            <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white">Eight Pillars of Analysis</h2>
+            <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white">Nine Pillars of Analysis</h2>
           </div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Select a sector to explore the fully detailed research findings, quantitative dependencies, and bottlenecks.</p>
         </div>
