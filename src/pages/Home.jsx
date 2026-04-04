@@ -1,7 +1,7 @@
 import { useState, Fragment } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown } from 'lucide-react'
+import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin } from 'lucide-react'
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip } from 'recharts'
 import { useSyncExternalStore } from 'react'
 import { SupplyChainMap } from '../components/SupplyChainMap'
@@ -446,6 +446,46 @@ export default function Home() {
           </table>
         </div>
       </motion.section>
+
+      {/* Additional Explorations Section */}
+      <section className="py-24 border-t border-gray-200 dark:border-dark-border">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-6">Explore the <span className="italic text-crimson">Database</span></h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
+              Dive deeper into the critical findings through specialized geographic mapping and chronological analysis of state-level events.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <Link to="/map" className="group p-10 rounded-3xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface hover:border-crimson dark:hover:border-crimson transition-colors">
+              <div className="w-16 h-16 rounded-2xl bg-red-50 dark:bg-crimson/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <MapPin className="w-8 h-8 text-crimson" />
+              </div>
+              <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4">Geographic District Database</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                Interactive mapping of Gujarat's 33 districts. Explore localized vulnerability metrics, specific structural dependencies, and records of industrial incidents across the state.
+              </p>
+              <span className="flex items-center text-crimson font-bold uppercase tracking-widest text-sm mt-auto">
+                Explore Map <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
+              </span>
+            </Link>
+
+            <Link to="/timeline" className="group p-10 rounded-3xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface hover:border-crimson dark:hover:border-crimson transition-colors">
+              <div className="w-16 h-16 rounded-2xl bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <AlertTriangle className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4">The Compounding Crisis Timeline</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                A chronological mapping of systemic vulnerabilities, demonstrating the cascade of failures from the 2016 demonetization shocks through the 2026 twin-crisis.
+              </p>
+              <span className="flex items-center text-orange-600 font-bold uppercase tracking-widest text-sm mt-auto">
+                View Timeline <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ═══════════════════ VI. METHODOLOGY ═══════════════════ */}
       <motion.section
