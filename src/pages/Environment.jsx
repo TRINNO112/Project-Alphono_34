@@ -74,9 +74,12 @@ export default function Environment() {
             </DataCard>
           </div>
 
-          <DataCard title="74% of Rivers Severely Polluted">
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+          <DataCard title="74% of Rivers Severely Polluted" alert={true}>
+            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
               CPCB reported that <strong>74% of Gujarat's 27 monitored rivers</strong> — flowing along 38 industrial townships including Ahmedabad, Surat, and Vadodara — are severely polluted.<Ref n={4} /> The Sabarmati in Ahmedabad is now India's second most polluted river with BOD levels of <strong>292 mg/L</strong>. The Amlakhadi river in Ankleshwar had pollution levels four times higher than national standards.<Ref n={4} />
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+              In <strong className="text-gray-900 dark:text-white">2025, the Gujarat High Court called the Sabarmati a "cesspool"</strong>, ordering the state government to explain why untreated sewage continued to flow into a river that has been the centrepiece of Ahmedabad's urban branding. The court noted that despite Rs 1,200 crore spent on the Sabarmati Riverfront project, <strong>1,200 MLD of partially treated/untreated sewage</strong> still enters the river daily — making the aesthetic waterfront a cosmetic overlay on an ecological disaster.
             </p>
           </DataCard>
         </Section>
@@ -95,7 +98,7 @@ export default function Environment() {
                 Alang-Sosiya spans <strong className="text-gray-900 dark:text-white">183 plots along 14 km of coast</strong>, responsible for 47% of all ships recycled globally.<Ref n={6} /> A Supreme Court expert report found <strong className="text-gray-900 dark:text-white">1 in 6 workers (16%) suffer from early-stage asbestosis</strong>. Airborne lead concentrations reach 60 times India's standard.<Ref n={6} />
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                A projection model estimated <strong className="text-gray-900 dark:text-white">4,513 mesothelioma cases</strong> among workers — yet Gujarat government records show <strong>zero reported occupational cancers</strong> under the Factories Act.<Ref n={7} /> 8,062 ships have been scrapped at Alang from 1982 to 2020, releasing asbestos, PCBs, and heavy metals.
+                A projection model estimated <strong className="text-gray-900 dark:text-white">4,513 mesothelioma cases</strong> among workers — yet Gujarat government records show <strong>zero reported occupational cancers</strong> under the Factories Act.<Ref n={7} /> 8,062 ships have been scrapped at Alang from 1982 to 2020, releasing asbestos, PCBs, and heavy metals. Critically, <strong className="text-gray-900 dark:text-white">Alang's ship-breaking volume has declined 75% from its peak</strong> as the EU Ship Recycling Regulation (2020) and the Hong Kong Convention push vessels toward cleaner yards in Turkey and China — threatening 25,000+ livelihoods without reducing the accumulated environmental damage.
               </p>
             </DataCard>
 
@@ -111,7 +114,7 @@ export default function Environment() {
 
           <DataCard title="Recurring Chemical Disasters">
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-              Major incidents include: <strong>Dahej 2020</strong> — 5 killed, 57 injured, 4,800 evacuated from Yashashvi Rasayan plant; <strong>Ahmedabad 2020</strong> — 12 killed at Sahil Enterprise; <strong>Surat 2022</strong> — 6 killed by illegally dumped chemicals; <strong>Dahej 2024</strong> — 4 workers killed at Gujarat Fluorochemicals; <strong>GFL Panchmahal 2025</strong> — 2 killed (same plant where 7 died in 2021).<Ref n={10} />
+              Major incidents include: <strong>Dahej 2020</strong> — 5 killed, 57 injured, 4,800 evacuated from Yashashvi Rasayan plant; <strong>Ahmedabad 2020</strong> — 12 killed at Sahil Enterprise; <strong>Surat 2022</strong> — 6 killed by illegally dumped chemicals; <strong>Dahej 2024</strong> — 4 workers killed at Gujarat Fluorochemicals; <strong>GFL Panchmahal 2025</strong> — 2 killed (same plant where 7 died in 2021); <strong className="text-gray-900 dark:text-white">Deesa (Banaskantha) 2025 — 21 killed in a fireworks factory explosion</strong>, the single deadliest industrial incident in Gujarat since 2020.<Ref n={10} />
             </p>
           </DataCard>
         </Section>
@@ -124,7 +127,7 @@ export default function Environment() {
                 According to NCCR data (1990-2018), <strong className="text-gray-900 dark:text-white">27.63% (537.5 km) of Gujarat's 1,945.6 km coastline is under constant erosion</strong> — the highest erosion rate in the country.<Ref n={11} /> A longer 42-year study (1978-2020) found 45.9% subjected to erosion.
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                The worst-hit districts: Kutch, Valsad, Bharuch, and Jamnagar. In south Gujarat, <strong>60.81 sq km of land eroded in 35 years</strong>.<Ref n={11} />
+                The worst-hit districts: Kutch, Valsad, Bharuch, and Jamnagar. In south Gujarat, <strong>60.81 sq km of land eroded in 35 years</strong>.<Ref n={11} /> Additionally, <strong className="text-gray-900 dark:text-white">36.39 sq km of mangrove cover has been lost</strong> along Gujarat's coast between 2001-2021 — primarily in the Gulf of Kutch and Gulf of Khambhat — due to industrial expansion, port development, and saline ingression.
               </p>
             </DataCard>
 
@@ -156,6 +159,61 @@ export default function Environment() {
         </Section>
 
       </div>
+
+      {/* Air Quality */}
+      <Section icon={<Wind className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />} title="Urban Air Quality: The Invisible Crisis">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="Ahmedabad: Among India's Most Polluted Cities" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Ahmedabad's annual average PM2.5 concentration stands at approximately <strong className="text-gray-900 dark:text-white">72 µg/m³</strong> — nearly <strong>5 times the WHO guideline of 15 µg/m³</strong>. Winter months frequently see AQI readings above 300 ("Hazardous"), driven by vehicular emissions, construction dust, and industrial pollutants from the Naroda-Odhav-Vatva belt.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Ahmedabad is officially classified as a <strong className="text-gray-900 dark:text-white">CPCB Non-Attainment City</strong> — meaning it has consistently failed to meet the National Ambient Air Quality Standards. The NCAP action plan targets a 40% PM2.5 reduction by 2026 — but with vehicle registrations growing at 8% annually and industrial output expanding, current trajectories suggest the target will be missed by a wide margin.
+            </p>
+          </DataCard>
+
+          <DataCard title="Surat, Rajkot & Vadodara: Industrial Emissions">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Surat — with its <strong className="text-gray-900 dark:text-white">65,000+ textile dyeing and printing units</strong> — generates significant PM10 and SO2 emissions from coal-fired boilers (many units haven't switched to gas). The Pandesara and Sachin GIDC areas regularly exceed ambient air quality standards.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Vadodara's GIDC Makarpura industrial estate and Rajkot's Aji River industrial corridor both feature in GPCB's monitoring alerts. <strong className="text-gray-900 dark:text-white">Only 4 Gujarat cities have continuous ambient air quality monitoring stations</strong> — meaning most industrial towns have no real-time air quality data, allowing pollution to go unrecorded and unregulated.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      {/* NGT & Regulatory */}
+      <Section icon={<AlertTriangle className="w-8 h-8 text-red-600 dark:text-red-400" />} title="Regulatory Failures & NGT Interventions">
+        <DataCard title="National Green Tribunal: Gujarat's Compliance Record">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+            Gujarat has been among the states with the <strong className="text-gray-900 dark:text-white">highest number of NGT cases filed</strong> — particularly related to industrial effluent discharge, illegal hazardous waste disposal, and coastal zone violations. Notable interventions include:
+          </p>
+          <ul className="space-y-4 text-gray-700 dark:text-gray-300">
+            <li className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-red-500 mt-1 shrink-0" />
+              <span><strong>Sabarmati River:</strong> NGT directed Gujarat government to ensure zero untreated sewage discharge by 2024 — the deadline was missed. As of 2026, an estimated 1,200 MLD of partially treated/untreated sewage still enters the river.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-red-500 mt-1 shrink-0" />
+              <span><strong>Alang Ship-Breaking:</strong> NGT ordered mandatory hazardous waste inventorying before breaking — compliance remains patchy, with many yards bypassing pre-cleaning requirements.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-red-500 mt-1 shrink-0" />
+              <span><strong>CRZ Violations:</strong> Multiple coastal construction projects in Kutch, Jamnagar, and Saurashtra flagged for Coastal Regulation Zone violations — including port expansion activities and industrial facilities built within the 500m CRZ buffer.</span>
+            </li>
+          </ul>
+        </DataCard>
+
+        <DataCard title="GPCB: Understaffed and Overwhelmed" alert={true}>
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+            The Gujarat Pollution Control Board (GPCB) oversees an estimated <strong className="text-gray-900 dark:text-white">45,000+ industrial units</strong> — from large refineries to small-scale dye houses — with a staff of approximately 500 technical officers. This gives each officer responsibility for <strong>90 industrial units</strong> — an impossible oversight ratio that guarantees selective enforcement at best.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            CAG audits have repeatedly flagged GPCB's <strong>failure to conduct mandated inspections</strong>, delayed processing of Consent to Operate renewals, and lack of real-time effluent monitoring at most industrial estates. The result is a regulatory environment where compliance is voluntary for most small and medium enterprises, and enforcement targets only the most egregious violators.
+          </p>
+        </DataCard>
+      </Section>
 
       <CounterArgument
         argument="Gujarat's industrial output justifies its environmental footprint. The state's pollution control infrastructure is continuously improving."

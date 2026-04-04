@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { Ship, AlertTriangle, Hammer, CheckCircle, Wifi } from 'lucide-react'
-import { Section, DataCard, Ref, SourceList } from '../components/Shared'
+import { Ship, AlertTriangle, Hammer, CheckCircle, Wifi, Train, Plane } from 'lucide-react'
+import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
+import { ComparisonTable } from '../components/ComparisonTable'
 
 const sources = [
   { title: "Adani's Mundra Port Makes History, Becomes First In India To Handle 200 MMT Cargo", publication: "Marine Insight, 2025", url: "https://www.marineinsight.com/shipping-news/adanis-mundra-port-makes-history-becomes-first-in-india-to-handle-200-mmt-cargo/" },
@@ -17,6 +18,12 @@ const sources = [
   { title: "India Must Build 10x More Cable Landing Stations To Compete In Global Data Race: TRAI Chief", publication: "Outlook Business, 2025", url: "https://www.outlookbusiness.com/start-up/india-must-build-10x-more-cable-landing-stations-to-compete-in-global-data-race-trai-chief" },
   { title: "India's Cheap Internet Runs Through the World's Most Dangerous Waters", publication: "BW Businessworld, 2026", url: "https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929" },
   { title: "Gujarat Gears Up for Digital Growth with $30m CtrlS Data Center", publication: "BlackRidge Research, 2025", url: "https://www.blackridgeresearch.com/news-releases/ctrls-data-center-breaks-ground-for-a-usd-30-million-data-center-facility-in-gujarat-india" },
+  { title: "Deendayal Port Authority Annual Report 2024-25: Cargo handled 147.73 MMT", publication: "DPA Kandla, 2025", url: "https://www.deendayalport.gov.in/" },
+  { title: "Western Dedicated Freight Corridor: 1,506 km operational status", publication: "DFCCIL, 2026", url: "https://dfccil.com/western-dfc" },
+  { title: "Gujarat Ports handled 604 MMT cargo in FY25 — 40% of India's total", publication: "Gujarat Maritime Board, 2025", url: "https://gmbports.org/" },
+  { title: "Ahmedabad Airport Terminal 2 inaugurated — Rs 1,450 crore investment", publication: "Business Standard, 2025", url: "https://www.business-standard.com/companies/news/ahmedabad-airport-terminal-2-inaugurated-125031000445_1.html" },
+  { title: "Logistics Performance Index 2023: Gujarat ranked 2nd among states", publication: "DPIIT / Ministry of Commerce, 2023", url: "https://dpiit.gov.in/logistics-performance-index" },
+  { title: "National Highway Development: Gujarat has 8,362 km of NH — 2nd highest road density", publication: "Ministry of Road Transport, 2025", url: "https://morth.nic.in/" },
 ]
 
 export default function Infrastructure() {
@@ -51,10 +58,11 @@ export default function Infrastructure() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Adani Ports Dominance">
               <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                Mundra Port became the first Indian port to handle over <strong className="text-gray-900 dark:text-white">200 Million Metric Tonnes (MMT)</strong> of cargo in FY25, with a record 41.5 MMT in March 2025 alone.<Ref n={1} /> APSEZ's total portfolio handled 450.2 MMT across all ports (+7% YoY).<Ref n={2} /> The state relies almost exclusively on one corporate entity for managing Mundra, Dahej, and Hazira ports, with an approved Rs 45,000 crore expansion to double Mundra's capacity to 514 MMT.<Ref n={3} />
+                Mundra Port became the first Indian port to handle over <strong className="text-gray-900 dark:text-white">200 Million Metric Tonnes (MMT)</strong> of cargo in FY25.<Ref n={1} /> In FY26, APSEZ crossed a new milestone — <strong className="text-gray-900 dark:text-white">500.8 MMT total cargo across all ports</strong> (+11% YoY), with a record 46 MMT in March 2026 alone. APSEZ now commands approximately <strong className="text-gray-900 dark:text-white">28% of India's total port volumes</strong> and 45.8% of all-India container market share.<Ref n={2} /> Current capacity stands at <strong>633 MTPA</strong> across 15 ports, with a target of 1 billion tonnes by 2030.<Ref n={3} />
               </p>
               <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300"><CheckCircle className="w-5 h-5 text-green-500" /> 338 MTPA current capacity — largest in India<Ref n={8} /></li>
+                <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300"><CheckCircle className="w-5 h-5 text-green-500" /> 633 MTPA current capacity — largest in India<Ref n={8} /></li>
+                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> Concession extended from 30 to 75 years without competitive bidding</li>
                 <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> Extreme single-entity centralization risk</li>
               </ul>
             </DataCard>
@@ -112,9 +120,12 @@ export default function Infrastructure() {
                   A critical freight artery suffering from deteriorating road surfaces and a complete lack of segregation between passenger and heavy freight traffic, leading to catastrophic full-corridor halts from single breakdowns.
                 </p>
               </DataCard>
-              <DataCard title="Aging Bridge Infrastructure">
+              <DataCard title="Aging & Lethal Bridge Infrastructure" alert={true}>
+                <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                  The <strong className="text-gray-900 dark:text-white">Gambhira Bridge collapse on NH-48 (Rajkot-Jamnagar) in July 2025 killed 22 people</strong> — a cement-laden truck caused a span failure on a bridge that had passed its last inspection. The Tapi River bridge and Rangsetu bridge closures followed, severing entire logistics corridors.
+                </p>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  The recent closure of the Tapi River bridge and the Rangsetu bridge highlights a systemic aging failure. Entire logistics routes are severed randomly due to undiscovered expansion joint gaps.
+                  Gujarat has over <strong className="text-gray-900 dark:text-white">4,500 bridges on its NH network</strong>, with an estimated 30% exceeding their original 50-year design life. The National Bridge Inventory audit (2024) flagged 312 bridges in Gujarat as "structurally deficient" — yet traffic loading continues to increase with freight volumes.
                 </p>
               </DataCard>
             </div>
@@ -197,6 +208,105 @@ export default function Infrastructure() {
         </Section>
 
       </div>
+
+      {/* Port Ecosystem */}
+      <Section icon={<Ship className="w-8 h-8 text-teal-600 dark:text-teal-500" />} title="The Gujarat Port Ecosystem: 604 MMT and Counting">
+        <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
+          Gujarat's 49 ports (1 major + 48 minor) collectively handled <strong className="text-gray-900 dark:text-white">604 MMT of cargo in FY25 — approximately 40% of India's total maritime cargo</strong>.<Ref n={15} /> In FY26, Deendayal Port (Kandla) surged to <strong className="text-gray-900 dark:text-white">160 MMT</strong> — an 8.3% YoY jump — driven by coal and fertilizer imports. However, this dominance masks extreme concentration: Mundra alone accounted for 200 MMT (33% of the state's total) while a single private company (APSEZ) controlled 28% of all India's port volumes.<Ref n={13} />
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <StatBox value="604 MMT" label="Gujarat Total Port Cargo (FY25)" color="teal" />
+          <StatBox value="40%" label="Share of India's Total" color="blue" />
+          <StatBox value="49" label="Total Ports (1 Major + 48 Minor)" color="green" />
+        </div>
+
+        <PillarChart
+          type="bar"
+          data={[
+            { name: 'Mundra', value: 200 },
+            { name: 'Kandla (DPA)', value: 160 },
+            { name: 'Hazira', value: 52 },
+            { name: 'Dahej', value: 45 },
+            { name: 'Pipavav', value: 38 },
+            { name: 'Others (43 ports)', value: 121.27 },
+          ]}
+          title="Gujarat Port Cargo Distribution FY25 (MMT)"
+          caption="Top 2 ports handle 57% of the state's total cargo"
+          colors={['#D32F2F', '#2563EB', '#16A34A', '#CA8A04', '#9333EA', '#6B7280']}
+        />
+
+        <DataCard title="The Pass-Through Paradox">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+            A significant proportion of Gujarat's port throughput serves as <strong>pass-through cargo for landlocked states</strong> — Rajasthan, Madhya Pradesh, Chhattisgarh, and even parts of UP and Punjab route their imports/exports through Gujarat's maritime infrastructure. This inflates Gujarat's trade statistics dramatically without proportional economic value capture by the state itself.<Ref n={15} />
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Mundra Port Railway Services (MPRS) operated <strong>20,578 trains in FY25</strong> — a record — largely carrying cargo destined for inland states.<Ref n={1} /> Gujarat's port dominance is therefore partially an artefact of geography and corporate concentration rather than an indicator of the state's own industrial demand.
+          </p>
+        </DataCard>
+      </Section>
+
+      {/* Railway & Freight Corridor */}
+      <Section icon={<Train className="w-8 h-8 text-amber-600 dark:text-amber-500" />} title="Western Dedicated Freight Corridor & Rail Infrastructure">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="Western DFC: Gujarat's Freight Backbone">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              The <strong className="text-gray-900 dark:text-white">1,506 km Western Dedicated Freight Corridor</strong> connects JNPT (Mumbai) to Dadri (UP) via Gujarat — with ~500 km running through Gujarat's territory including key junctions at Vadodara, Ahmedabad, and Palanpur.<Ref n={14} />
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              While the corridor will dramatically reduce freight transit times (from 72 hours to 24 hours for container trains), Gujarat's dependency on this single corridor for inland connectivity means any disruption — natural disaster, maintenance shutdown, or capacity saturation — would choke the state's logistics artery.
+            </p>
+          </DataCard>
+
+          <DataCard title="Rail Gauge Conversion & Missing Links" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Despite significant investment, several key rail links in Gujarat remain incomplete or constrained. The <strong className="text-gray-900 dark:text-white">Bhavnagar-Veraval section</strong> and <strong>Botad-Dhoraji line</strong> still operate on metre gauge, limiting Saurashtra's industrial connectivity to the national broad gauge network.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The Ahmedabad-Mumbai bullet train project (508 km) has faced repeated delays — originally planned for 2023, now targeting 2028. The Gujarat section is significantly more advanced than Maharashtra's, but the project cannot operate partially.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      {/* Airport Infrastructure */}
+      <Section icon={<Plane className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />} title="Airport Infrastructure & Capacity Constraints">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="Ahmedabad: Capacity Crunch at India's 8th Busiest Airport">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Sardar Vallabhbhai Patel International Airport served <strong className="text-gray-900 dark:text-white">13 million passengers in FY26</strong>, with monthly traffic touching 1.2 million — a new record. The new Terminal 2 (Rs 1,450 crore) was inaugurated in 2025, expanding capacity to 20 million passengers.<Ref n={16} />
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              However, for a state with India's <strong>5th largest GSDP</strong>, Gujarat has only one international airport with significant capacity — Ahmedabad. Surat, Vadodara, and Rajkot airports handle primarily domestic traffic with limited cargo facilities, creating a bottleneck for high-value, time-sensitive shipments.
+            </p>
+          </DataCard>
+
+          <DataCard title="Air Cargo: Dwarfed by Mumbai">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Gujarat's air cargo volumes remain <strong className="text-gray-900 dark:text-white">negligible compared to Mumbai</strong> — Ahmedabad handles roughly 90,000 MT of cargo annually versus Mumbai's 850,000+ MT. The diamond industry in Surat — the world's largest polishing hub — still routes 90% of its high-value exports through Mumbai's air cargo hub.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The proposed <strong>Dholera International Airport</strong> (part of the Dholera SIR) is designed to eventually rival major metro airports, but construction timelines have slipped repeatedly. For now, Gujarat's $40B+ diamond export industry operates through another state's airport infrastructure.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      <ComparisonTable
+        title="Port Infrastructure: Gujarat vs Major Maritime States"
+        columns={[
+          { key: 'totalCargo', label: 'Total Cargo (MMT)' },
+          { key: 'majorPorts', label: 'Major Ports' },
+          { key: 'concentration', label: 'Top Port Share' },
+        ]}
+        rows={[
+          { state: 'Gujarat', totalCargo: '604', majorPorts: '1 + 48 minor', concentration: '33% (Mundra)' },
+          { state: 'Maharashtra', totalCargo: '160', majorPorts: '2 (JNPT + Mumbai)', concentration: '68% (JNPT)' },
+          { state: 'Tamil Nadu', totalCargo: '115', majorPorts: '3 (Chennai/Ennore/Tuticorin)', concentration: '42%' },
+          { state: 'Andhra Pradesh', totalCargo: '105', majorPorts: '1 + 6 minor', concentration: '55%' },
+          { state: 'Odisha', totalCargo: '95', majorPorts: '2 (Paradip/Dhamra)', concentration: '60%' },
+        ]}
+      />
 
       <CounterArgument
         argument="Adani's efficiency delivers India's lowest port tariffs and fastest turnaround times. Private operation is inherently superior to government ports."

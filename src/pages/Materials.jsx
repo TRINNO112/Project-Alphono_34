@@ -72,8 +72,11 @@ export default function Materials() {
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                 In late 2025, Reliance resumed purchases of discounted Russian crude, routing barrels from non-sanctioned suppliers to its Gujarat refinery.<Ref n={3} /> Simultaneously, the company signed a <strong className="text-gray-900 dark:text-white">20-year, $300 billion commitment to American shale crude</strong> — diversifying away from Middle East geopolitical risk.<Ref n={4} />
               </p>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Nayara Energy (Vadinar refinery, 20 MTPA)</strong> — 49.13% owned by Russia's Rosneft — faces acute sanctions exposure. EU and UK sanctions on Russian entities created legal uncertainty around Nayara's crude procurement, insurance coverage, and export transactions. In 2026, multiple European banks refused to process Nayara's trade finance, forcing the company to shift entirely to Indian and Middle Eastern banking channels.
+              </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                This demonstrates both the vulnerability and the strategic sophistication of Gujarat's refining dependency: the plant's output is globally competitive, but its input is entirely at the mercy of international shipping lanes and geopolitical alliances.
+                This demonstrates both the vulnerability and the strategic sophistication of Gujarat's refining dependency: the state's two mega-refineries process 2.8 MMBPD combined, but their input is entirely at the mercy of international shipping lanes and geopolitical alliances.
               </p>
             </DataCard>
           </div>
@@ -81,13 +84,15 @@ export default function Materials() {
           <PillarChart
             type="pie"
             data={[
-              { name: 'Middle East', value: 45 },
-              { name: 'Russia', value: 20 },
-              { name: 'Domestic', value: 15 },
-              { name: 'USA/Others', value: 20 },
+              { name: 'Russia', value: 36 },
+              { name: 'Iraq', value: 20 },
+              { name: 'Saudi Arabia', value: 14 },
+              { name: 'UAE/Kuwait', value: 10 },
+              { name: 'USA', value: 7 },
+              { name: 'Domestic', value: 13 },
             ]}
-            title="India's Crude Oil Sourcing (Estimated %)"
-            caption="~85% of crude is imported, with Middle East as the dominant source"
+            title="India's Crude Oil Sourcing FY26 (Updated %)"
+            caption="Russia overtook Middle East as #1 supplier at 36% — up from 2% in 2021"
           />
         </Section>
 
@@ -99,7 +104,7 @@ export default function Materials() {
                 India imports approximately <strong className="text-gray-900 dark:text-white">65-70% of its Active Pharmaceutical Ingredients (APIs)</strong>, Key Starting Materials (KSMs), and intermediates from China — some estimates go as high as 80%.<Ref n={5} /><Ref n={8} />
               </p>
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                India spent <strong className="text-gray-900 dark:text-white">$3.18 billion</strong> importing APIs from China in FY 2022-23.<Ref n={5} /> Before 1991, dependency was just 0.3% — it spiked to 70% by 2019.<Ref n={6} />
+                India spent <strong className="text-gray-900 dark:text-white">$3.6 billion</strong> importing APIs from China in FY 2024-25 — up from $3.18B in FY23.<Ref n={5} /> Before 1991, dependency was just 0.3% — it spiked to 70% by 2019.<Ref n={6} />
               </p>
               <div className="space-y-2">
                 <p className="text-sm font-semibold text-red-700 dark:text-red-400">Critical drug dependencies on China:<Ref n={7} /></p>
@@ -212,6 +217,65 @@ export default function Materials() {
         </Section>
 
       </div>
+
+      {/* Chemical & Petrochemical Corridor */}
+      <Section icon={<Factory className="w-8 h-8 text-teal-600 dark:text-teal-500" />} title="The Bharuch-Dahej Chemical Corridor: India's Chemical Capital">
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <StatBox value="3,500+" label="Chemical Units (Bharuch Belt)" color="teal" />
+          <StatBox value="40%" label="India's Chemical Output" color="blue" />
+          <StatBox value="$4.2B" label="Annual Chemical Exports (Gujarat)" color="green" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="Dahej PCPIR: India's Largest Petrochemical Hub">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              The Dahej Petroleum, Chemical and Petrochemical Investment Region (PCPIR) — spread over <strong className="text-gray-900 dark:text-white">453 sq km</strong> — is India's largest integrated chemical manufacturing zone. It hosts ONGC Petro Additions Ltd (OPaL), a 1.1 MTPA ethylene cracker that is the backbone of India's polymer chain.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              OPaL's feedstock is <strong>imported naphtha and natural gas</strong> — both sourced externally. The entire downstream plastics, polymers, and specialty chemicals industry in Gujarat is thus dependent on feedstock that originates from Middle Eastern crude oil or LNG terminals at Dahej and Hazira.
+            </p>
+          </DataCard>
+
+          <DataCard title="Morbi's Ceramic Raw Material Chain" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Morbi's <strong className="text-gray-900 dark:text-white">1,200+ ceramic factories</strong> (of which 550+ were shuttered during the 2026 gas crisis) consume approximately <strong className="text-gray-900 dark:text-white">30 million tonnes of raw materials annually</strong> — primarily china clay, ball clay, feldspar, and silica sand. While Gujarat has some local clay deposits, high-quality china clay is imported from <strong>Rajasthan, Karnataka, and even Turkey and Ukraine</strong>.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The gas fuel dependency adds another layer: Morbi's kilns require continuous <strong>1,100-1,200°C firing</strong> — achieved only with natural gas or propane. The 2026 propane supply halt demonstrated that even abundant raw materials are useless without imported fuel to fire the kilns.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      {/* Natural Gas Supply */}
+      <Section icon={<Fuel className="w-8 h-8 text-red-600 dark:text-red-400" />} title="Natural Gas: Gujarat's Most Critical Input">
+        <DataCard title="Gujarat Consumes 25% of India's Natural Gas">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+            Gujarat accounts for approximately <strong className="text-gray-900 dark:text-white">25% of India's total natural gas consumption</strong>, with a pipeline network exceeding 5,850 km. Gujarat Gas Ltd — the state's largest gas distributor — serves 32 lakh residential, 31,000 commercial, and 5,500 industrial consumers across 36 districts.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            Of this gas supply, approximately <strong className="text-gray-900 dark:text-white">73% comes from imported LNG</strong> (regasified at Dahej and Hazira), with the remainder from domestic production at ONGC's Cambay Basin fields and KG Basin allocations. Domestic gas production has been <strong>declining since 2010</strong>, making Gujarat progressively more dependent on LNG imports.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            The industrial dependency is starkest in three clusters: <strong>Morbi (ceramics — gas for kilns)</strong>, <strong>Bharuch (chemicals — gas as feedstock)</strong>, and <strong>Surat (textiles — gas for dyeing boilers)</strong>. These three clusters alone account for an estimated 60% of Gujarat's industrial gas consumption.
+          </p>
+        </DataCard>
+      </Section>
+
+      {/* Fertilizer Dependency */}
+      <Section icon={<Mountain className="w-8 h-8 text-green-600 dark:text-green-500" />} title="Fertilizer & Agricultural Inputs: The Silent Import Dependency">
+        <DataCard title="Gujarat's Fertilizer Complex: Processing Imported Raw Materials">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+            Gujarat hosts <strong className="text-gray-900 dark:text-white">GSFC (Vadodara), GNFC (Bharuch), and IFFCO (Kandla)</strong> — among India's largest fertilizer producers. Yet the raw material dependency is near-total: India imports <strong className="text-gray-900 dark:text-white">100% of its potash</strong> (from Belarus, Canada, Russia), <strong>100% of phosphoric acid</strong> (from Morocco, Jordan), and a growing share of its natural gas feedstock for urea (via LNG).
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            The <strong className="text-gray-900 dark:text-white">Kandla fertilizer import terminal</strong> handles the bulk of India's potash and DAP raw material imports. When Belarus was sanctioned in 2022, Indian potash prices spiked 300% — directly impacting Gujarat's farming costs. GSFC's urea production at Vadodara consumes natural gas sourced from the same LNG terminals (Dahej, Hazira) that serve Morbi's ceramics — creating direct competition for a constrained fuel supply.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Gujarat's agricultural model thus has a hidden layer of industrial dependency: the fertilizers that enable its cotton, groundnut, and wheat cultivation are manufactured from 100% imported raw materials, processed with imported energy, and distributed through infrastructure shared with heavy industry.
+          </p>
+        </DataCard>
+      </Section>
 
       <CounterArgument
         argument="Gujarat is India's refining and pharmaceutical powerhouse — Jamnagar alone processes 1.4 MMBPD, and the state has 216+ pharma plants."

@@ -108,12 +108,15 @@ export default function Water() {
               </ul>
             </DataCard>
 
-            <DataCard title="Fluorosis & Contamination">
+            <DataCard title="Fluorosis & Contamination" alert={true}>
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Over-abstraction has triggered <strong className="text-gray-900 dark:text-white">high fluoride contamination</strong> in the North Gujarat aquifer and salinity ingression along the coastal Saurashtra Peninsula.<Ref n={6} /> In Mehsana district, fluorosis has disabled workers, reduced earning capacity, and plunged households into cycles of wage loss and medical bills.<Ref n={7} />
+                Over-abstraction has triggered <strong className="text-gray-900 dark:text-white">high fluoride contamination</strong> in the North Gujarat aquifer and salinity ingression along the coastal Saurashtra Peninsula.<Ref n={6} /> Fluoride levels in <strong className="text-gray-900 dark:text-white">Banaskantha and Patan districts reach 17.5 mg/L</strong> — over 11 times the WHO safe limit of 1.5 mg/L. In Mehsana district, fluorosis has disabled workers, reduced earning capacity, and plunged households into cycles of wage loss and medical bills.<Ref n={7} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                District-level extraction data reveals alarming hotspots: <strong className="text-gray-900 dark:text-white">Banaskantha at 115% of recharge, Mehsana at 132%, and Patan at 108%</strong> — all extracting more water than nature can replenish annually. These three districts alone account for 40% of North Gujarat's total groundwater withdrawal.
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Depletion has created a social divide — only wealthy farmers can afford the increasing drilling and pumping costs, leading to social conflicts and migration.<Ref n={8} />
+                Depletion has created a social divide — only wealthy farmers can afford the increasing drilling and pumping costs (bore depth now exceeds <strong>400-600 feet</strong> in many North Gujarat blocks), leading to social conflicts and migration.<Ref n={8} />
               </p>
             </DataCard>
           </div>
@@ -170,7 +173,13 @@ export default function Water() {
                 The Gujarat government originally mandated that only <strong className="text-gray-900 dark:text-white">11% of Narmada water</strong> would serve industrial and domestic purposes. By 2016, the actual figure had risen to over <strong className="text-gray-900 dark:text-white">18%</strong> — nearly double the original provision.<Ref n={11} /> Industries in Kutch and Saurashtra alone were drawing <strong className="text-gray-900 dark:text-white">844.85 MLD</strong> against their allocation of just 675.88 MLD — a 25% overshoot.<Ref n={11} />
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Meanwhile, the Narmada canal network built to irrigate drought-prone farmland is only <strong className="text-gray-900 dark:text-white">36% complete</strong> — 27,189 km out of the planned 74,000 km — leaving agriculture far short of its promised allocation.<Ref n={12} /> During the 2019 drought, industries in Mundra and Kutch continued receiving Narmada water while <strong>no water was released for agricultural purposes</strong> in Kutch — the very region the dam was built to serve.<Ref n={11} />
+                Meanwhile, the Narmada main canal is now <strong className="text-gray-900 dark:text-white">92% complete</strong> (as of 2025), but the critical last-mile distribution network — sub-minors and field channels — remains only <strong>36% operational</strong>, covering 27,189 km out of the planned 74,000 km — leaving tail-end farmers far short of their promised allocation.<Ref n={12} /> During the 2019 drought, industries in Mundra and Kutch continued receiving Narmada water while <strong>no water was released for agricultural purposes</strong> in Kutch — the very region the dam was built to serve.<Ref n={11} />
+              </p>
+            </DataCard>
+
+            <DataCard title="SSNNL Revenue: The Money Follows Industry" alert={true}>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                SSNNL's total water revenue reached <strong className="text-gray-900 dark:text-white">Rs 2,733 crore in FY25</strong>. The breakdown exposes the allocation reality: industrial consumers contributed <strong>Rs 545 crore</strong> while agriculture — the original justification for the dam — generated just <strong className="text-gray-900 dark:text-white">Rs 11.72 crore</strong>. Drinking water contributed Rs 1,876 crore. Industry pays 47x more per unit than agriculture, giving SSNNL a powerful financial incentive to prioritize industrial allocation.
               </p>
             </DataCard>
 
@@ -195,6 +204,58 @@ export default function Water() {
         </Section>
 
       </div>
+
+      {/* SAUNI & Pipeline Projects */}
+      <Section icon={<Droplets className="w-8 h-8 text-blue-600 dark:text-blue-400" />} title="SAUNI Scheme & Water Transfer Infrastructure">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="Saurashtra Narmada Avataran Irrigation (SAUNI)">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              The SAUNI scheme — designed to fill 115 dams in 11 Saurashtra districts using Narmada water via a <strong className="text-gray-900 dark:text-white">1,130 km pipeline network</strong> — addresses the structural water deficit that rain-dependent Saurashtra has suffered for decades.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              As of 2025, the scheme is <strong className="text-gray-900 dark:text-white">95% complete at a revised cost of Rs 18,563 crore</strong> — a 69% cost overrun from the original Rs 11,000 crore estimate. Phases 1 and 2 are fully operational (523 km, 79 dams filled); Phase 3 (335 km) is 98% complete; Phase 4 (271 km) is 87% complete. Even after full completion, the scheme merely redistributes Narmada water — it creates no new water source.
+            </p>
+          </DataCard>
+
+          <DataCard title="Kutch Branch Canal: The Lifeline of the Desert" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              The <strong className="text-gray-900 dark:text-white">357 km Kutch Branch Canal</strong> carries Narmada water from Sardar Sarovar to India's largest and most water-scarce district. Before the canal, Kutch's annual per capita water availability was barely <strong>200 litres/day</strong> — far below the national average of 1,544 litres/day.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The canal supports Kutch's industrial boom — Mundra Port, Adani's thermal plants, Kutch cement factories — but this industrial demand now <strong>competes directly with agricultural and domestic use</strong>. During the 2019 drought, agricultural releases were completely stopped while industrial supply continued.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      {/* Urban Water Crisis */}
+      <Section icon={<AlertTriangle className="w-8 h-8 text-red-500" />} title="Urban Water Stress & Per Capita Deficit">
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <StatBox value="135 LPCD" label="WHO Recommended" color="blue" />
+          <StatBox value="90-110 LPCD" label="Gujarat Urban Actual" color="red" />
+          <StatBox value="40 LPCD" label="Rural Gujarat (Many Areas)" color="crimson" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="Ahmedabad: Growing Thirst">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Ahmedabad's population has surged to <strong className="text-gray-900 dark:text-white">8.6 million (metro)</strong>, with water supply at approximately <strong>110 LPCD</strong> — sourced almost entirely from the Narmada canal. The city's original water sources — the Sabarmati riverfront and Kankaria Lake — are now <strong>ornamental</strong>, with the Sabarmati ranked India's 2nd most polluted river.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The Ahmedabad Municipal Corporation draws <strong>1,400 MLD from the Narmada canal</strong>. Any disruption to this single pipeline — earthquake, canal breach, or upstream water dispute — would leave 8.6 million people without water within 48 hours.
+            </p>
+          </DataCard>
+
+          <DataCard title="Surat: The Flood-Drought Paradox">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Surat — India's fastest-growing city — depends on the <strong className="text-gray-900 dark:text-white">Tapi River and Ukai Dam</strong> for its water supply. The paradox: the city faces catastrophic floods during monsoon (12 major floods since 1883) and water stress during summer when the Tapi runs low.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Unlike Ahmedabad, Surat has <strong>no direct Narmada canal access</strong> — it depends on a separate river system. This makes Surat's 8+ million residents structurally dependent on a different water source than the rest of Gujarat, creating a fragmented water security architecture.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
 
       <ComparisonTable
         title="Groundwater Extraction: State Comparison"

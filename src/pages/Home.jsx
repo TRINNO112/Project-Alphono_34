@@ -272,30 +272,45 @@ export default function Home() {
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Select a sector to explore the fully detailed research findings, quantitative dependencies, and bottlenecks.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {sectors.map((sector, index) => (
             <motion.div
               key={sector.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
             >
               <Link to={sector.path} className="group block h-full">
-                <div className="h-full p-8 rounded-3xl border border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/60 backdrop-blur-sm shadow-sm hover:shadow-xl hover:border-crimson/30 dark:hover:border-crimson/30 transition-all duration-300 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-2 h-full bg-crimson/20 group-hover:bg-crimson transition-colors" />
-                  <div className="mb-6 p-4 bg-gray-100 dark:bg-dark-bg inline-block rounded-2xl">
-                    {sector.icon}
-                  </div>
-                  <h3 className="text-2xl font-serif font-bold mb-3 text-gray-900 dark:text-white group-hover:text-crimson transition-colors">{sector.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">{sector.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-crimson font-semibold">
-                      Read Analysis <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+                <div className="h-full flex items-stretch rounded-2xl border border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/60 backdrop-blur-sm shadow-sm hover:shadow-xl hover:border-crimson/30 dark:hover:border-crimson/30 transition-all duration-300 overflow-hidden">
+                  {/* Left accent strip */}
+                  <div className="w-1.5 shrink-0 bg-crimson/20 group-hover:bg-crimson transition-colors" />
+
+                  {/* Content area */}
+                  <div className="flex flex-1 items-center gap-5 p-5 min-w-0">
+                    {/* Icon */}
+                    <div className="shrink-0 p-3 bg-gray-100 dark:bg-dark-bg rounded-xl">
+                      {sector.icon}
                     </div>
-                    <div className="text-right">
-                      <div className="text-xl font-bold text-gray-900 dark:text-white">{sector.stat}</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-500 uppercase tracking-wider">{sector.statLabel}</div>
+
+                    {/* Title + Description */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-[11px] font-bold text-crimson/60 tracking-widest font-sans uppercase">Pillar {romanNumerals[index]}</span>
+                      </div>
+                      <h3 className="text-lg font-serif font-bold text-gray-900 dark:text-white group-hover:text-crimson transition-colors leading-snug mb-1">{sector.title}</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">{sector.desc}</p>
+                    </div>
+
+                    {/* Stat + Arrow */}
+                    <div className="shrink-0 text-right pl-4 border-l border-gray-200 dark:border-dark-border flex flex-col items-end justify-center gap-2">
+                      <div>
+                        <div className="text-xl font-bold text-gray-900 dark:text-white leading-tight">{sector.stat}</div>
+                        <div className="text-[10px] text-gray-500 dark:text-gray-500 uppercase tracking-wider max-w-[110px] text-right leading-tight mt-0.5">{sector.statLabel}</div>
+                      </div>
+                      <div className="flex items-center text-xs text-crimson font-semibold">
+                        Read <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
                   </div>
                 </div>

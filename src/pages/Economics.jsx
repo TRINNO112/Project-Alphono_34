@@ -53,15 +53,15 @@ export default function Economics() {
         {/* Fiscal Overview */}
         <Section icon={<Landmark className="w-8 h-8 text-green-600 dark:text-green-500" />} title="The Fiscal Paradox: Low Debt, Low Revenue">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <StatBox value="18.2%" label="Debt-to-GSDP Ratio" color="green" />
-            <StatBox value="5.6%" label="Own Tax Revenue / GSDP" color="red" />
+            <StatBox value="15.3%" label="Debt-to-GSDP (FY25)" color="green" />
+            <StatBox value="5.2%" label="Own Tax Revenue / GSDP (Declining)" color="red" />
             <StatBox value="8.7%" label="Revenue Receipts / GSDP" color="crimson" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Debt Discipline — The Good">
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Gujarat's debt-to-GSDP ratio fell from 18.9% in 2022-23 to <strong className="text-gray-900 dark:text-white">18.2% in 2023-24</strong>, the lowest among India's 21 major states. Over the last decade, the state reduced public debt by 4.5% of GSDP — the highest reduction nationally.<Ref n={2} />
+                Gujarat's debt-to-GSDP ratio continued declining — from 18.9% (2022-23) to <strong className="text-gray-900 dark:text-white">15.3% in 2024-25</strong>, projected at 14.7% for 2026-27. This remains the lowest among India's 21 major states.<Ref n={2} /> However, CAG flagged that <strong className="text-gray-900 dark:text-white">Gujarat's reported revenue surplus of Rs 18,943 crore is overstated by Rs 11,929 crore</strong> — because the state failed to discharge mandatory NPS contributions and Consolidated Sinking Fund obligations worth Rs 4,396 crore. The actual surplus is closer to Rs 7,000 crore.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300"><CheckCircle className="w-5 h-5 text-green-500" /> Fiscal deficit 1.9% of GSDP (FY 2024-25)<Ref n={3} /></li>
@@ -72,7 +72,7 @@ export default function Economics() {
 
             <DataCard title="Revenue Generation — The Concern" alert={true}>
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Own Tax Revenue (OTR) as a percentage of GSDP has <strong className="text-gray-900 dark:text-white">consistently declined from 7.44% in 2012-13 to 4.35% in 2020-21</strong>, recovering only marginally to 5.6% in 2022-23.<Ref n={4} />
+                Own Tax Revenue (OTR) as a percentage of GSDP has <strong className="text-gray-900 dark:text-white">consistently declined from 7.44% in 2012-13 to 4.35% in 2020-21</strong>, with only marginal recovery to 5.6% (2022-23) and further decline to <strong className="text-gray-900 dark:text-white">5.2% in FY25, projected to hit 4.9% in FY27</strong> — now 30% below the national average for states.<Ref n={4} />
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 The state collects <strong className="text-gray-900 dark:text-white">revenue receipts of just 8.7% of GSDP</strong> — compared to the median Indian state at 19.9%. Similarly, expenditure at 10.2% of GSDP is far below the median state's 24%.<Ref n={1} /> This suggests the state may be under-spending on public services relative to its economic size.
@@ -87,10 +87,12 @@ export default function Economics() {
               { name: '2016-17', value: 6.2 },
               { name: '2020-21', value: 4.35 },
               { name: '2022-23', value: 5.6 },
+              { name: '2024-25', value: 5.2 },
+              { name: '2026-27 (BE)', value: 4.9 },
             ]}
             title="Own Tax Revenue as % of GSDP (Declining Trend)"
-            caption="A decade-long decline from 7.44% to 5.6%, with a nadir of 4.35% during COVID"
-            colors={['#16A34A', '#CA8A04', '#D32F2F', '#D32F2F']}
+            caption="15-year decline from 7.44% to 4.9% — now 30% below national average"
+            colors={['#16A34A', '#CA8A04', '#D32F2F', '#D32F2F', '#D32F2F', '#9A0007']}
           />
         </Section>
 
@@ -99,7 +101,7 @@ export default function Economics() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Tax Devolution & Grants">
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Gujarat's share in central taxes increased from <strong className="text-gray-900 dark:text-white">3.1% under the 14th Finance Commission to 3.5% under the 15th FC</strong>.<Ref n={3} /> In 2024-25, the state's share in central taxes was estimated at Rs 42,245 crore (+1% over previous year), while grants from the Centre totalled Rs 18,783 crore (a decrease of 10%).<Ref n={3} />
+                Under the <strong className="text-gray-900 dark:text-white">16th Finance Commission (2026-31)</strong>, Gujarat's share rose from 3.47% to <strong>3.75%</strong> — gaining Rs 4,228 crore from the revised formula that includes a new GDP-contribution criterion.<Ref n={3} /> For FY27, the state's share in central taxes is estimated at Rs 57,254 crore (+18% over FY26). However, <strong className="text-gray-900 dark:text-white">central grants to Gujarat crashed to just 0.53% of GSDP in FY25</strong> — down from 1.68% in 2020-21, a decline of Rs 13,000 crore in absolute terms over four years.
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 The declining OTR/GSDP ratio means the state's <strong>dependency on central transfers is structurally increasing</strong>, even as its absolute fiscal numbers look healthy. If central devolution were reduced, Gujarat's low own-revenue base would become a visible vulnerability.<Ref n={4} />
@@ -160,7 +162,7 @@ export default function Economics() {
         {/* The GIFT City Paradox */}
         <Section icon={<Building2 className="w-8 h-8 text-purple-600 dark:text-purple-400" />} title="The GIFT City Paradox: Global Capital, Local Vacuum">
           <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
-            GIFT City hosts over <strong className="text-gray-900 dark:text-white">1,000 registered entities</strong> and manages <strong className="text-gray-900 dark:text-white">$12 billion in Alternative Investment Funds</strong> — a 300% year-over-year surge.<Ref n={13} /> Yet this financial supernova operates in a near-total tax vacuum: 100% income tax holidays, zero GST, zero STT, zero stamp duty. The paradox is stark — India's most ambitious financial hub sits on Gujarat's soil but contributes almost nothing to Gujarat's treasury.
+            GIFT City hosts over <strong className="text-gray-900 dark:text-white">1,034 registered entities</strong> (up from 82 in 2020 — a 12x surge in 5 years), manages <strong className="text-gray-900 dark:text-white">$26.3 billion in fund commitments</strong>, and its banking assets have crossed <strong className="text-gray-900 dark:text-white">$100 billion</strong>. It now ranks 43rd in the Global Financial Centres Index 2025, climbing 9 positions.<Ref n={13} /> Yet this financial supernova operates in a near-total tax vacuum — and the <strong className="text-gray-900 dark:text-white">Union Budget 2026 doubled the IFSC tax holiday from 10 to 20 consecutive years</strong> (within a 25-year block), effectively granting tax exemptions for an entity's entire operational life.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -172,7 +174,7 @@ export default function Economics() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The Tax Exemption Architecture">
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                GIFT City IFSC units enjoy a <strong className="text-gray-900 dark:text-white">100% income tax exemption for 10 consecutive years out of 15</strong> under Section 80LA. Even outside this window, the Minimum Alternate Tax is just 9% — compared to 15-22% for domestic firms.<Ref n={15} /> All transactions on IFSC exchanges are exempt from Securities Transaction Tax, Commodity Transaction Tax, GST, and stamp duty.<Ref n={13} />
+                GIFT City IFSC units now enjoy a <strong className="text-gray-900 dark:text-white">100% income tax exemption for 20 consecutive years out of 25</strong> (doubled from the original 10/15 in Budget 2026) under Section 80LA. Even outside this window, the Minimum Alternate Tax is just 9% — compared to 15-22% for domestic firms.<Ref n={15} /> All transactions on IFSC exchanges are exempt from Securities Transaction Tax, Commodity Transaction Tax, GST, and stamp duty.<Ref n={13} />
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 Management fees, advisory fees, and transaction costs that attract <strong className="text-gray-900 dark:text-white">18% GST in mainland India are entirely exempt inside the IFSC</strong>.<Ref n={15} /> Budget 2025 extended these benefits through March 2030 and expanded them to cover OTC derivatives, ETF relocations, and ship leasing SPVs. The result: a financial centre processing billions in transactions that generates effectively zero state-level tax revenue.
@@ -200,6 +202,74 @@ export default function Economics() {
         </Section>
 
       </div>
+
+      {/* GST & Industrial Tax */}
+      <Section icon={<Landmark className="w-8 h-8 text-blue-600 dark:text-blue-400" />} title="GST Collections & The Industrial Tax Gap">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="GST Revenue: Impressive But Misleading">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Gujarat's gross GST collection was approximately <strong className="text-gray-900 dark:text-white">Rs 95,000 crore in FY25</strong>, ranking 4th nationally after Maharashtra, Karnataka, and Tamil Nadu. However, as a consumption-based tax under the destination principle, a significant portion of Gujarat's manufacturing output generates GST revenue in <strong>consuming states rather than the producing state</strong>.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              This creates a paradox for a manufacturing powerhouse: Gujarat produces goods but <strong>doesn't fully capture the tax benefit of that production</strong>. Petroleum products — Gujarat's largest industrial sector — remain outside GST entirely, further shrinking the state's tax base from its most productive industry.
+            </p>
+          </DataCard>
+
+          <DataCard title="Off-Budget Borrowings: The Hidden Debt" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              While Gujarat's headline debt-to-GSDP ratio of 18.2% looks pristine, this excludes borrowings by state public sector enterprises. Gujarat's PSUs — including GUVNL, GWIL, GSPC, and various SPVs — carry <strong className="text-gray-900 dark:text-white">additional off-budget liabilities</strong> that don't appear in the state's fiscal accounts.<Ref n={4} />
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The 16th Finance Commission study specifically flagged the need to assess these <strong>quasi-fiscal activities</strong> — SPVs that borrow on the state's implicit guarantee but whose debt remains off the official balance sheet. When including these obligations, Gujarat's effective debt burden is significantly higher than the headline number suggests.<Ref n={4} />
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      {/* Disinvestment & FDI */}
+      <Section icon={<TrendingUp className="w-8 h-8 text-orange-600 dark:text-orange-400" />} title="The Disinvestment Mirage & FDI Vulnerability">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="PSU Disinvestment: Zero Receipts" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Gujarat budgeted <strong className="text-gray-900 dark:text-white">Rs 17,500 crore per year from PSU disinvestment</strong> in both FY24 and FY25 but received <strong className="text-gray-900 dark:text-white">zero in both years</strong>. In FY26, the target was raised to Rs 19,700 crore, then revised down to Rs 5,000 crore. For FY27, the budget again projects Rs 20,000 crore — a pattern of systematically inflated non-debt capital receipts.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Meanwhile, <strong>24 of 97 state PSUs report negative net worth</strong>. The committed expenditure — salaries (Rs 60,427 cr) + pensions (Rs 26,530 cr) + interest (Rs 28,025 cr) + subsidies (Rs 26,212 cr) — consumes <strong className="text-gray-900 dark:text-white">65% of all revenue receipts</strong>, leaving only 35% for developmental priorities.
+            </p>
+          </DataCard>
+
+          <DataCard title="FDI: Dropped Out of Top 3">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Gujarat received <strong className="text-gray-900 dark:text-white">$5.71 billion in FDI in FY25</strong> (ranked 3rd nationally). But in H1 FY26, inflows fell to just <strong className="text-gray-900 dark:text-white">$2.39 billion</strong> — dropping the state from the top 3 as US tariff impacts hit core sectors (textiles, chemicals, diamond processing).
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Cumulatively since 2000, Gujarat accounts for 15% of India's total FDI equity at $49.9 billion. But the declining trend — combined with falling NRI deposit inflows (down 26% nationally in 2025, with Gujaratis comprising 60%+ of North American Indians) — signals vulnerability in external capital flows that have historically inflated the state's economic velocity.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      {/* Vibrant Gujarat Reality */}
+      <Section icon={<Globe className="w-8 h-8 text-green-600 dark:text-green-500" />} title="Vibrant Gujarat Summit: MoUs vs Reality">
+        <DataCard title="The MoU Conversion Gap">
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            <div className="md:w-2/3 space-y-4">
+              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                The Vibrant Gujarat Global Summit has attracted headline-grabbing MoU values — <strong className="text-gray-900 dark:text-white">Rs 27.96 lakh crore ($330 billion)</strong> in 2024 alone. However, the actual conversion rate of these MoUs into realized investments has historically ranged between <strong>12-18%</strong>.
+              </p>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                A large proportion of signed MoUs are renewal commitments, expansions of existing operations, or intent-based agreements that never materialize. The true FDI inflow to Gujarat — while significant — is a fraction of the summit's announced figures. This gap between announcement and execution inflates Gujarat's investment narrative while masking the actual pace of industrial diversification.
+              </p>
+            </div>
+            <div className="md:w-1/3 w-full bg-green-100/50 dark:bg-green-950/30 p-6 rounded-xl border border-green-200 dark:border-green-900/50 flex flex-col items-center text-center">
+              <span className="text-4xl font-bold text-green-600 dark:text-green-500 mb-2">12-18%</span>
+              <span className="text-sm text-green-800 dark:text-green-400 uppercase tracking-widest font-semibold">MoU Conversion Rate</span>
+              <hr className="w-full border-green-300 dark:border-green-800/50 my-4" />
+              <span className="text-lg font-serif text-green-900 dark:text-green-300">Of Rs 27.96L Cr Signed</span>
+            </div>
+          </div>
+        </DataCard>
+      </Section>
 
       <ComparisonTable
         title="Fiscal Comparison: Gujarat vs Major States"

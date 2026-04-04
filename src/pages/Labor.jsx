@@ -94,12 +94,15 @@ export default function Labor() {
         {/* Surat Diamond & Textile */}
         <Section icon={<Gem className="w-8 h-8 text-purple-600 dark:text-purple-400" />} title="Surat: The Diamond & Textile Dependency">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <DataCard title="Diamond Polishing Industry">
+            <DataCard title="Diamond Polishing Industry" alert={true}>
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                 Surat is the <strong className="text-gray-900 dark:text-white">world's largest diamond polishing hub</strong>, with approximately 4,000 cutting-polishing units employing <strong>7.5-10 lakh workers</strong>.<Ref n={4} /> While the majority come from within Gujarat (Saurashtra and North Gujarat), about <strong className="text-gray-900 dark:text-white">10% are interstate migrants</strong> from UP, MP, and Bihar.<Ref n={9} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                 During COVID-19, <strong className="text-gray-900 dark:text-white">more than two-thirds of workers fled</strong>, and many factories could not reopen for months.<Ref n={10} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                The <strong className="text-gray-900 dark:text-white">US tariff escalation of 2025-26</strong> dealt a devastating blow: with reciprocal tariffs making Indian polished diamonds uncompetitive in the American market (which absorbs 30% of Surat's output), an estimated <strong className="text-gray-900 dark:text-white">1.5 lakh workers were laid off or furloughed</strong>. Rough diamond imports fell 25% YoY, and multiple large units shifted to 4-day work weeks to avoid mass termination.
               </p>
             </DataCard>
 
@@ -147,9 +150,9 @@ export default function Labor() {
             },
             {
               year: '2026',
-              title: 'West Asia Gas Crisis',
+              title: 'West Asia Gas Crisis + US Tariffs',
               severity: 'critical',
-              description: 'LPG and propane supply disruptions shut 400+ Morbi units and triggered exodus from Surat\'s textile hubs. Odisha, Bihar, and UP now offer local industrial jobs, making return migration harder than ever.',
+              description: 'Twin shocks: gas supply disruptions shut 550+ Morbi units while US tariffs devastated Surat diamonds (1.5 lakh jobs lost). An estimated 5-6 lakh migrant workers returned to home states. Surat powerloom sector alone reported Rs 100 crore/day production losses. Bihar, UP, and Odisha now offer competitive local industrial wages, making return migration harder than ever.',
             },
           ]} />
         </Section>
@@ -197,6 +200,53 @@ export default function Labor() {
         </Section>
 
       </div>
+
+      {/* Wage & Working Conditions */}
+      <Section icon={<Users className="w-8 h-8 text-amber-600 dark:text-amber-500" />} title="Wage Structure & Working Conditions: The Hidden Economy">
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <StatBox value="Rs 350-500" label="Daily Wage (Morbi Unskilled)" color="amber" />
+          <StatBox value="90-95%" label="Cash Payment (Textile)" color="crimson" />
+          <StatBox value="12-16 hrs" label="Average Shift (Peak Season)" color="red" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="The Cash Economy: Invisible Workforce" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              An estimated <strong className="text-gray-900 dark:text-white">90-95% of wages in Surat's textile sector are paid in cash</strong> — keeping the entire workforce invisible to formal social security systems.<Ref n={6} /> Workers have no PF accounts, no ESI coverage, no formal contracts, and no registered addresses.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              This cash economy — estimated at <strong>Rs 500 crore in annual remittances</strong> from Surat alone — functions as an invisible GDP transfer from Gujarat to Bihar, UP, and Odisha.<Ref n={6} /> It also means that any shock to the cash system (as demonetisation proved) or the physical workplace (as the 2026 gas crisis showed) instantly triggers mass departure.
+            </p>
+          </DataCard>
+
+          <DataCard title="Safety & Health: The Unrecorded Toll" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              In Morbi, a PTRC study found <strong className="text-gray-900 dark:text-white">29% of ceramic workers have direct silica contact</strong>, putting them at risk of silicosis, TB, and lung cancer. 92.65% reported having no ESI health coverage despite the area being under ESI since 1967.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              The October 2022 Morbi suspension bridge collapse — which killed <strong className="text-gray-900 dark:text-white">135 people</strong>, many of them migrant workers and their families — exposed the broader infrastructure neglect in worker-dependent industrial towns.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The <strong className="text-gray-900 dark:text-white">Bharuch-Dahej chemical corridor recorded 90 major industrial accidents and 130 worker deaths</strong> between 2018-2025 — an average of one fatal incident every 3 weeks. Most victims were contractual migrant workers with no life insurance or compensation. The Surat powerloom belt — employing 6 lakh workers — reported <strong>Rs 100 crore/day in production losses</strong> during the March 2026 gas crisis, with workers left stranded without wages for weeks before migrating home.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      {/* Source State Competition */}
+      <Section icon={<AlertTriangle className="w-8 h-8 text-orange-500" />} title="Source States Fighting Back: The New Competition">
+        <DataCard title="UP, Bihar & Odisha: Building Local Industry">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+            The traditional source states for Gujarat's migrant labour are increasingly developing their own industrial ecosystems. <strong className="text-gray-900 dark:text-white">Uttar Pradesh's GSDP growth at 9.3% (FY25)</strong> is now competitive with Gujarat's. Bihar's industrial corridors — Hajipur, Patna, Muzaffarpur — and Odisha's steel and aluminium belt are creating local employment alternatives.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            The implications are structural: as source states industrialise, the <strong>wage premium Gujarat offers shrinks</strong>. A Morbi kiln worker earning Rs 400-500/day in Gujarat can now find Rs 300-400/day work in eastern UP or Jharkhand — without the costs and dislocation of migration. The 2026 exodus accelerated this trend, with workers discovering that <strong>returning home is now economically viable</strong>.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            The ADB's Gujarat Skills Development Program acknowledges this reality — the state must either automate, upskill, or permanently lose its labour advantage. The demographic window is closing.<Ref n={14} />
+          </p>
+        </DataCard>
+      </Section>
 
       <CounterArgument
         argument="Migrants come to Gujarat because it offers the best wages and opportunities. This proves the state's economic strength and attractiveness."
