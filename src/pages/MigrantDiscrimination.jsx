@@ -342,14 +342,13 @@ export default function MigrantDiscrimination() {
           <PillarChart
             type="bar"
             data={[
-              { name: 'Kerala', wage: 850, fill: '#16A34A' },
-              { name: 'Tamil Nadu', wage: 550, fill: '#2563EB' },
-              { name: 'Maharashtra', wage: 450, fill: '#7C3AED' },
-              { name: 'Gujarat', wage: 350, fill: '#D32F2F' },
-              { name: 'UP', wage: 330, fill: '#F59E0B' },
-              { name: 'Bihar', wage: 300, fill: '#6B7280' },
+              { name: 'Kerala', value: 850, fill: '#16A34A' },
+              { name: 'Tamil Nadu', value: 550, fill: '#2563EB' },
+              { name: 'Maharashtra', value: 450, fill: '#7C3AED' },
+              { name: 'Gujarat', value: 350, fill: '#D32F2F' },
+              { name: 'UP', value: 330, fill: '#F59E0B' },
+              { name: 'Bihar', value: 300, fill: '#6B7280' },
             ]}
-            dataKey="wage"
             title="Average Non-Agricultural Daily Wage by State (₹)"
             caption="Gujarat's wages are closer to Bihar and UP than to Kerala or Tamil Nadu (RBI data, 2023-24)"
           />

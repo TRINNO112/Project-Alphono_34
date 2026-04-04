@@ -35,8 +35,9 @@ export function SupplyChainMap() {
   const nodeBorder = isDark ? '#444444' : '#e3c285'
   const glowColor = isDark ? 'rgba(211,47,47,0.4)' : 'rgba(211,47,47,0.2)'
 
-  const cx = 400, cy = 265 // center of SVG
-  const orbitR = 175 // radius of orbit
+  const cx = 400, cy = 310 // shifted down to avoid overlapping with top title
+  const orbitR = 190 // radius of orbit increased to give more space
+
 
   // Nodes positioned in a hexagonal orbit around center
   const nodes = [
@@ -58,8 +59,8 @@ export function SupplyChainMap() {
     }
   })
 
-  const nodeR = 58 // node hexagon radius
-  const centerR = 52 // center hexagon radius
+  const nodeR = 62 // slightly larger node hexagon radius
+  const centerR = 60 // slightly larger center hexagon radius
 
   // Arrow path from node edge to center edge
   function getArrowPath(nx, ny) {
@@ -112,9 +113,9 @@ export function SupplyChainMap() {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <svg viewBox="0 0 800 530" className="w-full h-auto" role="img" aria-label="Hexagonal hub map showing Gujarat's external dependencies">
+      <svg viewBox="0 0 800 600" className="w-full h-auto" role="img" aria-label="Hexagonal hub map showing Gujarat's external dependencies">
         {/* Background */}
-        <rect x="0" y="0" width="800" height="530" rx="16" fill={bgRect} />
+        <rect x="0" y="0" width="800" height="600" rx="16" fill={bgRect} />
 
         {/* Defs */}
         <defs>
@@ -197,7 +198,7 @@ export function SupplyChainMap() {
           style={{ transformOrigin: `${cx}px ${cy}px` }}
         />
         <motion.text
-          x={cx} y={cy - 8}
+          x={cx} y={cy}
           textAnchor="middle" dominantBaseline="middle"
           fill={centralTextColor}
           fontFamily="'Playfair Display', Georgia, serif"
@@ -208,19 +209,6 @@ export function SupplyChainMap() {
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           GUJARAT
-        </motion.text>
-        <motion.text
-          x={cx} y={cy + 12}
-          textAnchor="middle" dominantBaseline="middle"
-          fill="rgba(255,255,255,0.7)"
-          fontFamily="'Inter', system-ui, sans-serif"
-          fontSize="9" letterSpacing="2"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
-          DEPENDENT STATE
         </motion.text>
 
         {/* Outer dependency nodes */}
@@ -306,7 +294,7 @@ export function SupplyChainMap() {
       </svg>
 
       <p className="text-center text-sm text-gray-500 mt-4 italic font-serif">
-        Figure 2: Gujarat&apos;s primary external supply chain dependencies — hexagonal hub schematic
+        Figure 2: Gujarat's primary external supply chain dependencies — the state acts as dependent hub.
       </p>
     </motion.div>
   )

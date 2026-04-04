@@ -14,6 +14,7 @@ import Education from './pages/Education'
 import Environment from './pages/Environment'
 import MigrantDiscrimination from './pages/MigrantDiscrimination'
 import SearchBar from './components/SearchBar'
+import Footer from './components/Footer'
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true)
@@ -56,10 +57,7 @@ export default function App() {
 
         <SearchBar />
 
-        {/* Global Footer */}
-        <footer className="w-full border-t border-gray-300 dark:border-dark-border py-12 mt-20 text-center text-gray-500 dark:text-gray-500 font-serif">
-          <p className="text-lg">Project Alphono 34 — A Critical Research Endeavor</p>
-        </footer>
+        <Footer />
       </div>
     </Router>
   )
