@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion'
+import { useState, Fragment } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert } from 'lucide-react'
+import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown } from 'lucide-react'
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip } from 'recharts'
 import { useSyncExternalStore } from 'react'
 import { SupplyChainMap } from '../components/SupplyChainMap'
@@ -18,15 +19,15 @@ export default function Home() {
   const isDark = useSyncExternalStore(subscribeDarkMode, getIsDark)
 
   const sectors = [
-    { id: 'infrastructure', title: "Infrastructure & Logistics", icon: <Ship className="w-8 h-8 text-blue-600 dark:text-blue-400" />, desc: "Maritime gateway monopoly, bridge collapses, and zero digital connectivity.", path: "/infrastructure", stat: "500.8 MMT", statLabel: "APSEZ FY26 Cargo" },
-    { id: 'energy', title: "Energy Grid & Power Supply", icon: <Zap className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />, desc: "Imported coal lock-in, 550 Morbi units shut, and grid collapse events.", path: "/energy", stat: "550+", statLabel: "Morbi Units Shut (2026)" },
-    { id: 'materials', title: "Industrial Raw Materials", icon: <Factory className="w-8 h-8 text-gray-600 dark:text-gray-400" />, desc: "Russia now #1 crude supplier, 65-70% Chinese APIs, 100% potash import.", path: "/materials", stat: "36%", statLabel: "Crude from Russia" },
-    { id: 'water', title: "Water Security", icon: <Droplets className="w-8 h-8 text-teal-600 dark:text-teal-500" />, desc: "Narmada single point of failure, fluoride at 17.5 mg/L, industry vs farms.", path: "/water", stat: "132%", statLabel: "Mehsana Extraction Rate" },
-    { id: 'labor', title: "Migrant Labor Ecosystem", icon: <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />, desc: "5-6 lakh workers fled in 2026, US tariffs crush diamonds, Rs 100 Cr/day losses.", path: "/labor", stat: "5-6L", statLabel: "Workers Fled (2026)" },
-    { id: 'economics', title: "Governance & Fiscal", icon: <TrendingUp className="w-8 h-8 text-green-600 dark:text-green-500" />, desc: "CAG flags overstated surplus, OTR at 4.9%, GIFT City 20-year tax holiday.", path: "/economics", stat: "15.3%", statLabel: "Debt-to-GSDP (FY25)" },
-    { id: 'education', title: "Education & Healthcare", icon: <GraduationCap className="w-8 h-8 text-pink-600 dark:text-pink-400" />, desc: "2.4 lakh dropouts (#1 in India), primary GER collapsed to 79.6%.", path: "/education", stat: "2.4L", statLabel: "Annual Dropouts (#1)" },
-    { id: 'environment', title: "Environment & Climate", icon: <TreePine className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />, desc: "Sabarmati 'cesspool' ruling, Deesa 21 dead, 36 sq km mangrove loss.", path: "/environment", stat: "21", statLabel: "Deesa Explosion Deaths" },
-    { id: 'migrant-discrimination', title: "Migrant Discrimination", icon: <ShieldAlert className="w-8 h-8 text-red-600 dark:text-red-500" />, desc: "2018 pogrom: 20,000+ fled. Language barriers, wage theft, bonded labour, zero welfare.", path: "/migrant-discrimination", stat: "20K+", statLabel: "Workers Attacked (2018)" },
+    { id: 'infrastructure', title: "Infrastructure & Logistics", icon: <Ship className="w-8 h-8 text-blue-600 dark:text-blue-400" />, desc: "Maritime gateway monopoly, bridge collapses, and zero digital connectivity.", path: "/infrastructure", stat: "500.8 MMT", statLabel: "APSEZ FY26 Cargo", sources: 18 },
+    { id: 'energy', title: "Energy Grid & Power Supply", icon: <Zap className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />, desc: "Imported coal lock-in, 550 Morbi units shut, and grid collapse events.", path: "/energy", stat: "550+", statLabel: "Morbi Units Shut (2026)", sources: 18 },
+    { id: 'materials', title: "Industrial Raw Materials", icon: <Factory className="w-8 h-8 text-gray-600 dark:text-gray-400" />, desc: "Russia now #1 crude supplier, 65-70% Chinese APIs, 100% potash import.", path: "/materials", stat: "36%", statLabel: "Crude from Russia", sources: 17 },
+    { id: 'water', title: "Water Security", icon: <Droplets className="w-8 h-8 text-teal-600 dark:text-teal-500" />, desc: "Narmada single point of failure, fluoride at 17.5 mg/L, industry vs farms.", path: "/water", stat: "132%", statLabel: "Mehsana Extraction Rate", sources: 14 },
+    { id: 'labor', title: "Migrant Labor Ecosystem", icon: <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />, desc: "5-6 lakh workers fled in 2026, US tariffs crush diamonds, Rs 100 Cr/day losses.", path: "/labor", stat: "5-6L", statLabel: "Workers Fled (2026)", sources: 17 },
+    { id: 'economics', title: "Governance & Fiscal", icon: <TrendingUp className="w-8 h-8 text-green-600 dark:text-green-500" />, desc: "CAG flags overstated surplus, OTR at 4.9%, GIFT City 20-year tax holiday.", path: "/economics", stat: "15.3%", statLabel: "Debt-to-GSDP (FY25)", sources: 20 },
+    { id: 'education', title: "Education & Healthcare", icon: <GraduationCap className="w-8 h-8 text-pink-600 dark:text-pink-400" />, desc: "2.4 lakh dropouts (#1 in India), primary GER collapsed to 79.6%.", path: "/education", stat: "2.4L", statLabel: "Annual Dropouts (#1)", sources: 14 },
+    { id: 'environment', title: "Environment & Climate", icon: <TreePine className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />, desc: "Sabarmati 'cesspool' ruling, Deesa 21 dead, 36 sq km mangrove loss.", path: "/environment", stat: "21", statLabel: "Deesa Explosion Deaths", sources: 14 },
+    { id: 'migrant-discrimination', title: "Migrant Discrimination", icon: <ShieldAlert className="w-8 h-8 text-red-600 dark:text-red-500" />, desc: "2018 pogrom: 20,000+ fled. Language barriers, wage theft, bonded labour, zero welfare.", path: "/migrant-discrimination", stat: "20K+", statLabel: "Workers Attacked (2018)", sources: 33 },
   ]
 
   const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
@@ -49,16 +50,55 @@ export default function Home() {
     { pillar: 'Environment', dependency: 80 },
   ]
 
+  const [expandedRows, setExpandedRows] = useState({})
+  const toggleRow = (i) => setExpandedRows(prev => ({ ...prev, [i]: !prev[i] }))
+
   const findings = [
-    { pillar: "Infrastructure", finding: "APSEZ crossed 500.8 MMT (FY26), controlling 28% of India's port volumes. Gambhira Bridge collapse killed 22. Zero submarine cable landing stations despite 1,600 km coastline.", metric: "500.8 MMT / 0 cables" },
-    { pillar: "Energy", finding: "550+ Morbi units shut in 2026 gas crisis. Tata Mundra UMPP offline for 9 months. South Gujarat grid collapsed — 4,000 MW dropped in 90 minutes. Khavda 9.4 GW but evacuation only 60% complete.", metric: "550+ units / 9-month shutdown" },
-    { pillar: "Water", finding: "Mehsana aquifer at 132% extraction. Fluoride at 17.5 mg/L (11x WHO limit). SSNNL earns Rs 545 Cr from industry vs Rs 11.72 Cr from agriculture. SAUNI at Rs 18,563 Cr (69% cost overrun).", metric: "132% extraction / 17.5 mg/L F" },
-    { pillar: "Labor", finding: "5-6 lakh migrant workers fled in 2026 twin shocks (gas crisis + US tariffs). 1.5 lakh diamond jobs lost. Surat powerloom losses Rs 100 Cr/day. Bharuch: 130 worker deaths (2018-25).", metric: "5-6L fled / 1.5L jobs lost" },
-    { pillar: "Fiscal", finding: "CAG flags Rs 11,929 Cr overstated surplus. OTR declining to 4.9% of GSDP. Central grants crashed to 0.53%. GIFT City tax holiday doubled to 20 years. FDI dropped from top 3.", metric: "4.9% OTR / 0.53% grants" },
-    { pillar: "Materials", finding: "Russia now #1 crude supplier at 36%. Nayara (Rosneft) faces EU sanctions risk. API imports hit $3.6B. 100% potash imported. 93% rare earth magnets from China.", metric: "36% Russia / $3.6B APIs" },
-    { pillar: "Education", finding: "2.4 lakh annual dropouts (#1 in India). Primary GER collapsed to 79.6%. 1,027 schools closed. PARAKH scores below national average. 97% specialist doctor vacancies at rural CHCs.", metric: "2.4L dropouts / 79.6% GER" },
-    { pillar: "Environment", finding: "Gujarat HC calls Sabarmati a 'cesspool'. Deesa explosion killed 21. 36.39 sq km mangrove loss. Alang volume down 75%. Ahmedabad is a CPCB non-attainment city.", metric: "21 dead / 36 sq km lost" },
-    { pillar: "Migrant Rights", finding: "2018: 20,000+ workers fled after anti-migrant violence across 6+ districts. 2020: workers walked 1,000+ km home. 92.65% without ESI. 38 silicosis deaths in 2024-25. Wages closer to Bihar than Kerala.", metric: "20K+ fled / 38 silicosis deaths" },
+    { pillar: "Infrastructure", finding: "APSEZ crossed 500.8 MMT (FY26), controlling 28% of India's port volumes. Gambhira Bridge collapse killed 22. Zero submarine cable landing stations despite 1,600 km coastline.", metric: "500.8 MMT / 0 cables", citations: [
+      { text: "Adani's Mundra Port Makes History — First in India to Handle 200 MMT", url: "https://www.marineinsight.com/shipping-news/adanis-mundra-port-makes-history-becomes-first-in-india-to-handle-200-mmt-cargo/" },
+      { text: "Delhi-Mumbai Expressway Package-Wise Update on Gujarat Section", url: "https://deshgujarat.com/2026/01/26/delhi-mumbai-expressway-latest-package-wise-update-on-gujarat-section/" },
+      { text: "India's Undersea Cable Vulnerability in War Zones", url: "https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929" },
+    ]},
+    { pillar: "Energy", finding: "550+ Morbi units shut in 2026 gas crisis. Tata Mundra UMPP offline for 9 months. South Gujarat grid collapsed — 4,000 MW dropped in 90 minutes. Khavda 9.4 GW but evacuation only 60% complete.", metric: "550+ units / 9-month shutdown", citations: [
+      { text: "Mundra Thermal Power Project — Global Energy Monitor", url: "https://www.gem.wiki/Mundra_Thermal_Power_Project_(Adani)" },
+      { text: "West Asia Tensions Threaten LNG Flows as Hormuz Risk Intensifies", url: "https://www.businesstoday.in/latest/economy/story/west-asia-tensions-threaten-lng-flows-to-india-as-hormuz-chokepoint-risk-intensifies-whats-at-stake-519504-2026-03-06" },
+      { text: "Gujarat Emerges as India's Largest Renewable Energy Contributor", url: "https://www.angelone.in/news/economy/gujarat-emerges-as-india-s-largest-renewable-energy-contributor-with-42-583-gw-capacity" },
+    ]},
+    { pillar: "Water", finding: "Mehsana aquifer at 132% extraction. Fluoride at 17.5 mg/L (11x WHO limit). SSNNL earns Rs 545 Cr from industry vs Rs 11.72 Cr from agriculture. SAUNI at Rs 18,563 Cr (69% cost overrun).", metric: "132% extraction / 17.5 mg/L F", citations: [
+      { text: "Sardar Sarovar Dam — Wikipedia", url: "https://en.wikipedia.org/wiki/Sardar_Sarovar_Dam" },
+      { text: "Groundwater 2025: Depletion and Contamination Rising", url: "https://sandrp.in/2026/03/25/groundwater-2025-depletion-and-contamination-rising/" },
+      { text: "Drought-Hit Gujarat Has Water for Factories, Not for Farmers", url: "https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers" },
+    ]},
+    { pillar: "Labor", finding: "5-6 lakh migrant workers fled in 2026 twin shocks (gas crisis + US tariffs). 1.5 lakh diamond jobs lost. Surat powerloom losses Rs 100 Cr/day. Bharuch: 130 worker deaths (2018-25).", metric: "5-6L fled / 1.5L jobs lost", citations: [
+      { text: "A War in the Gulf, a Crisis in Gujarat's Morbi — The Print", url: "https://theprint.in/economy/a-war-in-the-gulf-a-crisis-in-gujarats-morbi-indias-ceramics-capital-counts-the-cost/2877673/" },
+      { text: "Over 400 Ceramic Units Shut Due to Gas Crisis", url: "https://deshgujarat.com/2026/03/18/over-400-ceramic-units-in-morbi-shut-due-to-gas-crisis-amid-west-asia-war/" },
+      { text: "71 Suicides Among Surat's Diamond Workers in 18 Months", url: "https://theprint.in/india/job-losses-factory-closures-pushing-surats-diamond-workers-to-the-edge-71-suicides-in-18-months/2339805/" },
+    ]},
+    { pillar: "Fiscal", finding: "CAG flags Rs 11,929 Cr overstated surplus. OTR declining to 4.9% of GSDP. Central grants crashed to 0.53%. GIFT City tax holiday doubled to 20 years. FDI dropped from top 3.", metric: "4.9% OTR / 0.53% grants", citations: [
+      { text: "NITI Aayog Macro Fiscal Landscape — Gujarat Summary", url: "https://www.niti.gov.in/sites/default/files/2025-03/Summary-Report-Gujarat.pdf" },
+      { text: "CAG Flags Gujarat's Fiscal Paradox: Growth Amid Declining Revenues", url: "https://deshgujarat.com/2026/03/26/cag-flags-gujarats-fiscal-paradox-10-15-growth-amid-declining-revenues-overstated-surplus/" },
+      { text: "Central Grants to Gujarat Fall to 0.53% of GSDP", url: "https://english.gujaratsamachar.com/news/gujarat/central-grants-to-gujarat-fall-to-0-53-of-gsdp-in-202425-down-13-000-cr-in-4-years-cag-11584368371.html" },
+    ]},
+    { pillar: "Materials", finding: "Russia now #1 crude supplier at 36%. Nayara (Rosneft) faces EU sanctions risk. API imports hit $3.6B. 100% potash imported. 93% rare earth magnets from China.", metric: "36% Russia / $3.6B APIs", citations: [
+      { text: "Jamnagar Refinery — Wikipedia", url: "https://en.wikipedia.org/wiki/Jamnagar_refinery" },
+      { text: "Reliance Resumes Russian Oil Imports for Jamnagar — Bloomberg", url: "https://www.bloomberg.com/news/articles/2025-12-24/reliance-resumes-russian-oil-imports-to-feed-jamnagar-refinery" },
+      { text: "How Rare Earth Shortages Stall India's EV Sector — Al Jazeera", url: "https://www.aljazeera.com/economy/2025/8/28/how-rare-earth-shortages-are-stalling-indias-burgeoning-ev-sector" },
+    ]},
+    { pillar: "Education", finding: "2.4 lakh annual dropouts (#1 in India). Primary GER collapsed to 79.6%. 1,027 schools closed. PARAKH scores below national average. 97% specialist doctor vacancies at rural CHCs.", metric: "2.4L dropouts / 79.6% GER", citations: [
+      { text: "Teacher Shortage: 32,000+ Vacancies in Gujarat Schools", url: "https://www.prokerala.com/news/articles/a1560997.html" },
+      { text: "Gujarat Slips in NIRF 2025 Rankings", url: "https://english.gujaratsamachar.com/news/gujarat/gujarat-slips-in-nirf-2025-rankings-iit-gn-only-institute-in-overall-top-100" },
+      { text: "Over 90% Specialist Doctor Posts Vacant in Rural Gujarat", url: "https://www.dnaindia.com/ahmedabad/report-over-90-specialist-doctor-posts-vacant-in-rural-gujarat-2774771" },
+    ]},
+    { pillar: "Environment", finding: "Gujarat HC calls Sabarmati a 'cesspool'. Deesa explosion killed 21. 36.39 sq km mangrove loss. Alang volume down 75%. Ahmedabad is a CPCB non-attainment city.", metric: "21 dead / 36 sq km lost", citations: [
+      { text: "Vapi Among World's Most Polluted Places — TIME", url: "https://content.time.com/time/specials/2007/article/0,28804,1661031_1661028_1661019,00.html" },
+      { text: "74% of Gujarat Rivers Severely Polluted — Down to Earth", url: "https://www.downtoearth.org.in/news/water/despite-efforts-clean-water-is-scarce-in-india-s-industrial-gujarat-state-57603" },
+      { text: "Alang Ship-Breaking: A Dangerous Environmental Time Bomb", url: "https://www.marineinsight.com/environment/alang-gujarat-the-world%E2%80%99s-biggest-ship-breaking-yard-a-dangerous-environmental-time-bomb/" },
+    ]},
+    { pillar: "Migrant Rights", finding: "2018: 20,000+ workers fled after anti-migrant violence across 6+ districts. 2020: workers walked 1,000+ km home. 92.65% without ESI. 38 silicosis deaths in 2024-25. Wages closer to Bihar than Kerala.", metric: "20K+ fled / 38 silicosis deaths", citations: [
+      { text: "Attacks on Migrant Workers: 500 Rounded Up, 20,000 Flee — Scroll.in", url: "https://scroll.in/article/897402/attacks-on-migrant-workers-in-gujarat-over-500-rounded-up-20000-flee-state" },
+      { text: "Gujarat Migrant Attacks: How Social Media Fuelled Hate — NDTV", url: "https://www.ndtv.com/india-news/gujarat-migrant-worker-attacks-how-social-media-fuelled-anti-outsider-hate-1929893" },
+      { text: "2018 Gujarat Attacks on Migrant Workers — Wikipedia", url: "https://en.wikipedia.org/wiki/2018_Gujarat_attacks_on_migrant_workers" },
+    ]},
   ]
 
   return (
@@ -302,6 +342,10 @@ export default function Home() {
                       </div>
                       <h3 className="text-lg font-serif font-bold text-gray-900 dark:text-white group-hover:text-crimson transition-colors leading-snug mb-1">{sector.title}</h3>
                       <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">{sector.desc}</p>
+                      <span className="inline-flex items-center gap-1 mt-2 px-2.5 py-0.5 rounded-full bg-gray-100 dark:bg-dark-bg text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-dark-border">
+                        <FileText className="w-3 h-3" />
+                        {sector.sources} sources
+                      </span>
                     </div>
 
                     {/* Stat + Arrow */}
@@ -342,15 +386,61 @@ export default function Home() {
                 <th className="text-left py-4 px-6 text-xs uppercase tracking-widest text-crimson font-semibold font-sans w-[120px]">Pillar</th>
                 <th className="text-left py-4 px-6 text-xs uppercase tracking-widest text-crimson font-semibold font-sans">Key Finding</th>
                 <th className="text-left py-4 px-6 text-xs uppercase tracking-widest text-crimson font-semibold font-sans w-[180px]">Key Metric</th>
+                <th className="w-10 py-4 px-3"></th>
               </tr>
             </thead>
             <tbody>
               {findings.map((f, i) => (
-                <tr key={i} className="border-b border-gray-200 dark:border-dark-border hover:bg-white/80 dark:hover:bg-dark-surface/60 transition-colors">
-                  <td className="py-4 px-6 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider align-top">{f.pillar}</td>
-                  <td className="py-4 px-6 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{f.finding}</td>
-                  <td className="py-4 px-6 text-sm font-bold text-crimson whitespace-nowrap align-top">{f.metric}</td>
-                </tr>
+                <Fragment key={i}>
+                  <tr
+                    onClick={() => toggleRow(i)}
+                    className="border-b border-gray-200 dark:border-dark-border hover:bg-white/80 dark:hover:bg-dark-surface/60 transition-colors cursor-pointer select-none"
+                  >
+                    <td className="py-4 px-6 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider align-top">{f.pillar}</td>
+                    <td className="py-4 px-6 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{f.finding}</td>
+                    <td className="py-4 px-6 text-sm font-bold text-crimson whitespace-nowrap align-top">{f.metric}</td>
+                    <td className="py-4 px-3 align-top">
+                      <motion.div animate={{ rotate: expandedRows[i] ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                        <ChevronDown className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                      </motion.div>
+                    </td>
+                  </tr>
+                  <AnimatePresence>
+                    {expandedRows[i] && (
+                      <tr>
+                        <td colSpan={4} className="p-0">
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: 'easeInOut' }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-6 py-4 bg-gray-50/80 dark:bg-dark-bg/60 border-b border-gray-200 dark:border-dark-border">
+                              <p className="text-[11px] uppercase tracking-widest text-gray-400 dark:text-gray-500 font-semibold mb-3">Key Sources</p>
+                              <div className="space-y-2">
+                                {f.citations.map((c, j) => (
+                                  <a
+                                    key={j}
+                                    href={c.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-crimson dark:hover:text-crimson transition-colors group"
+                                  >
+                                    <span className="text-crimson font-bold shrink-0">[{j + 1}]</span>
+                                    <span className="group-hover:underline">{c.text}</span>
+                                    <ExternalLink className="w-3 h-3 shrink-0 mt-1 opacity-50 group-hover:opacity-100" />
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          </motion.div>
+                        </td>
+                      </tr>
+                    )}
+                  </AnimatePresence>
+                </Fragment>
               ))}
             </tbody>
           </table>
