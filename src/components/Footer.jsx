@@ -3,8 +3,15 @@ import { ShieldAlert, BookOpen, AlertTriangle } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-gray-200 dark:border-dark-border bg-white dark:bg-dark-bg mt-24">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <footer className="w-full relative overflow-hidden border-t border-gray-200 dark:border-dark-border bg-white dark:bg-dark-bg mt-24">
+      {/* Magazine Typography Watermark */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0 opacity-40 dark:opacity-20 mix-blend-overlay dark:mix-blend-screen">
+        <h1 className="text-[10rem] md:text-[18rem] lg:text-[24rem] font-sans font-black text-gray-900 dark:text-gray-100 uppercase tracking-tighter leading-none whitespace-nowrap">
+          PROJECT 34
+        </h1>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
           
           <div className="md:col-span-2 space-y-4">
