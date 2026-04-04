@@ -64,12 +64,15 @@ export default function Energy() {
               </p>
             </DataCard>
 
-            <DataCard title="Tata Mundra UMPP — 4,000 MW">
+            <DataCard title="Tata Mundra UMPP — 4,000 MW" alert={true}>
               <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                 India's first supercritical coal-fired plant, consuming up to <strong className="text-gray-900 dark:text-white">12 million tonnes of imported coal per year</strong>.<Ref n={2} /> The plant supplies power to five states: Gujarat (1,805 MW), Maharashtra (760 MW), Punjab (475 MW), Rajasthan (380 MW), and Haryana (380 MW).<Ref n={3} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                 Indonesia's 2010 mining law change caused massive cost under-recovery, eroding Tata Power's net worth by over Rs 3,800 crore in 3 years — exposing the structural vulnerability of relying on foreign coal pricing.<Ref n={3} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                In <strong className="text-gray-900 dark:text-white">2025-26, the Tata Mundra UMPP was shut for 9 consecutive months</strong> due to unviable imported coal costs — removing 4,000 MW from the grid during the exact period Gujarat needed peak capacity. This single plant's downtime created a <strong className="text-gray-900 dark:text-white">3,042 MW peak deficit</strong>, forcing emergency purchases from the central pool at Rs 20+/unit spot rates.
               </p>
             </DataCard>
           </div>
@@ -109,7 +112,7 @@ export default function Energy() {
 
           <DataCard title="Strait of Hormuz: A Single Point of Failure" alert={true}>
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
-              Nearly <strong>69% of India's LNG imports</strong> — about 17.5 million tonnes — originate from Qatar, UAE, and Oman, meaning most shipments transit through the Strait of Hormuz.<Ref n={8} /> Gujarat Gas Ltd, which serves the massive Morbi ceramic cluster, sources <strong>73% of its supply from LNG</strong>.<Ref n={7} />
+              Nearly <strong>69% of India's LNG imports</strong> — about 17.5 million tonnes — originate from Qatar, UAE, and Oman, meaning most shipments transit through the Strait of Hormuz.<Ref n={8} /> During the 2026 conflict escalation, <strong className="text-gray-900 dark:text-white">LNG tanker traffic through Hormuz dropped to near-zero for 11 days</strong>, with insurers refusing to cover Gulf-origin cargoes. Gujarat Gas Ltd, which serves the massive Morbi ceramic cluster, sources <strong>73% of its supply from LNG</strong>.<Ref n={7} />
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               The 2026 West Asia conflict has already caused over <strong>400 ceramic units in Morbi to shut</strong> due to gas supply disruptions, with nearly 60% of Morbi units dependent on propane that has been completely halted.<Ref n={13} />
@@ -164,8 +167,11 @@ export default function Energy() {
             </DataCard>
 
             <DataCard title="Industrial Baseload Reality">
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                 Gujarat's total installed power capacity stands at <strong className="text-gray-900 dark:text-white">51,869 MW</strong> (Oct 2024). While RE capacity grows rapidly, solar and wind are intermittent — they cannot serve the 24/7 baseload demands of refineries, ceramic kilns, and chemical plants. The state added 7.5 GW of RE in 2025 alone, targeting 100 GW by 2030.<Ref n={10} />
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                The <strong className="text-gray-900 dark:text-white">Khavda Renewable Energy Park (30 GW target)</strong> in the Rann of Kutch — the world's largest planned RE park — has reached 9.4 GW of commissioned capacity as of March 2026. Yet Khavda sits 500+ km from Gujarat's industrial demand centres, and the dedicated transmission corridor (Green Energy Corridor Phase-II) is only 60% complete. The park's output currently curtails during peak generation hours due to evacuation constraints.
               </p>
             </DataCard>
           </div>
@@ -214,6 +220,65 @@ export default function Energy() {
         </Section>
 
       </div>
+
+      {/* 2026 Gas Crisis Impact */}
+      <Section icon={<Flame className="w-8 h-8 text-red-600 dark:text-red-400" />} title="The 2026 Gas Crisis: Real-Time Vulnerability Exposed">
+        <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
+          The West Asia conflict of early 2026 provided a live stress-test of Gujarat's energy dependency thesis. The results were devastating — and validated every structural risk identified in this analysis.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <StatBox value="550+" label="Morbi Units Shut (Updated)" color="crimson" />
+          <StatBox value="60%" label="Morbi on Propane (Halted)" color="red" />
+          <StatBox value="Rs 96/kg" label="LPG Price Spike (from Rs 62)" color="orange" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="Cascading Industrial Shutdown" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              When propane and LNG supplies from the Middle East were disrupted in March 2026, <strong className="text-gray-900 dark:text-white">over 550 ceramic units in Morbi suspended operations</strong> within the first two weeks — up from initial reports of 400.<Ref n={13} /> Nearly 60% of Morbi's 1,200 ceramic factories depend on propane as their primary kiln fuel — and this supply was <strong>completely halted</strong>.<Ref n={13} />
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The crisis cascaded beyond ceramics: Surat's textile dyeing units (dependent on gas-fired boilers), Bharuch's chemical plants (gas feedstock), and even Ahmedabad's food processing industry faced supply disruptions. Gujarat Gas Ltd — which serves 90% of Morbi's gas demand — saw spot LNG prices spike from $10/MMBTU to over $18/MMBTU within days.
+            </p>
+          </DataCard>
+
+          <DataCard title="Workforce Exodus: The Energy-Labor Nexus">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              When factories shut, migrant workers — who have no savings buffer or formal employment protections — immediately began returning to their home states.<Ref n={13} /> The energy crisis thus triggered a <strong className="text-gray-900 dark:text-white">labor crisis</strong>, compounding the industrial shutdown.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              This demonstrates how Gujarat's dependencies are not isolated — they are <strong>interconnected and self-reinforcing</strong>. A disruption in energy supply (Pillar 2) triggers labor flight (Pillar 4), which amplifies the production loss beyond what the energy shortfall alone would cause.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      {/* Grid Dependency */}
+      <Section icon={<Zap className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />} title="Central Grid Dependency & Transmission Constraints">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="Interstate Power Imports">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Despite its massive installed capacity, Gujarat is a <strong className="text-gray-900 dark:text-white">net importer of electricity during peak demand periods</strong>. During summer 2025, the state imported up to 4,000 MW from the central grid — sourced from Chhattisgarh, Madhya Pradesh, and the Southern grid — to meet industrial baseload requirements.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              GUVNL's power purchase agreements include <strong>central generating stations (CGS) contributing ~8,500 MW</strong> of contracted capacity, including NTPC stations in Madhya Pradesh, Chhattisgarh, and Jharkhand. These interstate transmission links — running through the Central Transmission Utility (CTU) network — represent a structural dependency on the central grid's reliability.
+            </p>
+          </DataCard>
+
+          <DataCard title="Transmission Bottlenecks & Grid Collapse Events" alert={true}>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Gujarat's internal transmission network of <strong className="text-gray-900 dark:text-white">50,000+ km of HT lines</strong> managed by GETCO faces congestion in key corridors. The Mundra-Dehej transmission corridor and the Kutch-Saurashtra link are frequently loaded above 80% capacity, creating reliability risks during peak periods.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              In <strong className="text-gray-900 dark:text-white">February 2026, the South Gujarat grid experienced a cascading failure</strong> — a 4,000 MW drop in generation within 90 minutes triggered rolling blackouts across Surat, Bharuch, and Navsari districts. The failure was caused by simultaneous tripping of the Hazira gas turbine units (fuel supply disruption) and the Ukai hydro station (low reservoir levels). Industries reported <strong>Rs 200+ crore in production losses in a single day</strong>.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              The RE integration challenge compounds this: Gujarat's 42.5 GW of renewable capacity is concentrated in <strong>Kutch and Saurashtra</strong> — remote from demand centres in Ahmedabad, Surat, and Vadodara. Transmission losses on these long corridors range from 4-6%, and green energy evacuation infrastructure lags behind installation targets.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
 
       <ComparisonTable
         title="Renewable Energy: Installed Capacity vs Actual Generation"

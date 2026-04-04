@@ -51,7 +51,7 @@ export default function Education() {
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="32,000+" label="Teacher Vacancies" color="crimson" />
             <StatBox value="20.1%" label="GER (vs 28.4% Natl)" color="red" />
-            <StatBox value="1" label="Top-100 NIRF Institute" color="purple" />
+            <StatBox value="2.4 Lakh" label="Annual School Dropouts (#1 in India)" color="red" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -62,6 +62,20 @@ export default function Education() {
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 Gujarat's Gross Enrolment Ratio (GER) in higher education stands at just <strong className="text-gray-900 dark:text-white">20.1%</strong>, significantly below the national average of 28.4% reported by the All India Survey on Higher Education.<Ref n={2} /> This means nearly 4 out of 5 college-age youth in Gujarat are not enrolled in any higher education institution — a staggering gap for India's most industrialised state.
               </p>
+            </DataCard>
+
+            <DataCard title="The Dropout Crisis: #1 in India" alert={true}>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Gujarat records an estimated <strong className="text-gray-900 dark:text-white">2.4 lakh school dropouts annually</strong> — the highest absolute number of any Indian state. The primary Gross Enrolment Ratio has collapsed from 100%+ to <strong className="text-gray-900 dark:text-white">79.6%</strong>, meaning 1 in 5 primary-age children are not enrolled in school.
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Over <strong className="text-gray-900 dark:text-white">1,027 primary schools were closed</strong> between 2019-2024 due to "zero enrolment" — but many of these closures occurred in tribal and rural areas where children shifted to child labour rather than alternative schools. Gujarat's performance on the national PARAKH assessment (2024) fell <strong>below the national average</strong> in both language and mathematics at the Class 3 and Class 6 levels.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> Primary GER collapsed to 79.6% (national: 104.8%)</li>
+                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> 1,027 primary schools closed (2019-2024)</li>
+                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> PARAKH scores below national average</li>
+              </ul>
             </DataCard>
 
             <DataCard title="Institutional Quality Deficit">
@@ -194,6 +208,50 @@ export default function Education() {
         </Section>
 
       </div>
+
+      {/* Education Budget & Spending */}
+      <Section icon={<GraduationCap className="w-8 h-8 text-blue-600 dark:text-blue-400" />} title="Public Investment: Spending Less, Getting Less">
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <StatBox value="15.1%" label="Education Share of Budget" color="blue" />
+          <StatBox value="5.6%" label="Health Share of Budget" color="red" />
+          <StatBox value="2.8%" label="Education Spend / GSDP" color="crimson" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <DataCard title="Education Expenditure: Below Peers">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Gujarat allocates <strong className="text-gray-900 dark:text-white">15.1% of its total budget to education</strong> — below the national average of 15.5%.<Ref n={14} /> More critically, when measured as a proportion of GSDP, Gujarat's public education spending at approximately <strong>2.8% of GSDP</strong> is significantly below the NEP 2020 target of 6%.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              States like Kerala (4.2% of GSDP on education), Tamil Nadu (3.6%), and Rajasthan (4.1%) invest substantially more per capita. The result: Gujarat produces industrial output but imports the skilled professionals needed to run its industries — from IT professionals at GIFT City to specialist doctors at its hospitals.
+            </p>
+          </DataCard>
+
+          <DataCard title="Private Sector Dominance: A Double-Edged Sword">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Over <strong className="text-gray-900 dark:text-white">78% of higher education enrollment in Gujarat is in private institutions</strong> — one of the highest ratios in India. While this demonstrates private sector dynamism, it also means access to quality education is heavily <strong>income-dependent</strong>.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Private engineering colleges in Gujarat charge <strong>Rs 1.5-4 lakh/year</strong> versus Rs 15,000-40,000 at government colleges. Medical seats at private colleges cost <strong>Rs 12-25 lakh/year</strong>. For a state with 33.9% youth NEET rate, this pricing effectively locks out the bottom 60% of the income distribution from skilled employment pathways.
+            </p>
+          </DataCard>
+        </div>
+      </Section>
+
+      {/* Research & Innovation Gap */}
+      <Section icon={<AlertTriangle className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />} title="Research & Innovation: The Missing Engine">
+        <DataCard title="Gujarat's R&D Paradox" alert={true}>
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+            Despite hosting some of India's largest industrial enterprises — Reliance, Adani, Torrent, Zydus — Gujarat's contribution to India's research output remains <strong className="text-gray-900 dark:text-white">disproportionately low relative to its economic size</strong>. The state produces ~4% of India's peer-reviewed publications while contributing ~8% of national GDP.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            India's overall R&D expenditure stands at just <strong className="text-gray-900 dark:text-white">0.65% of GDP</strong> — the lowest among all major economies. Gujarat mirrors this national underinvestment. The state has no equivalent of Bangalore's IISc-IIT-DRDO research triangle or Hyderabad's pharma R&D corridor. Innovation remains concentrated in processing and manufacturing — <strong>improving how to make things, not what to make</strong>.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Patent filings from Gujarat account for approximately <strong>6% of India's total</strong> — behind Maharashtra (28%), Karnataka (18%), Tamil Nadu (12%), and Delhi (11%). The absence of deep research ecosystems means Gujarat's industrial future will continue to depend on technologies, formulations, and processes developed elsewhere.
+          </p>
+        </DataCard>
+      </Section>
 
       <CounterArgument
         argument="Gujarat has multiple IITs, IIMs, and private universities. Private sector investment in education compensates for government gaps."
