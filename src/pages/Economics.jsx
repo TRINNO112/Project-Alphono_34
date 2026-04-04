@@ -255,7 +255,7 @@ export default function Economics() {
           <div className="flex flex-col md:flex-row gap-8 items-start">
             <div className="md:w-2/3 space-y-4">
               <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                The Vibrant Gujarat Global Summit has attracted headline-grabbing MoU values — <strong className="text-gray-900 dark:text-white">Rs 27.96 lakh crore ($330 billion)</strong> in 2024 alone. However, the actual conversion rate of these MoUs into realized investments has historically ranged between <strong>12-18%</strong>.
+                The Vibrant Gujarat Global Summit has attracted headline-grabbing MoU values — <strong className="text-gray-900 dark:text-white">Rs 26.33 lakh crore for 41,299 projects</strong> in 2024 alone. However, Gujarat's own Socio-Economic Review (2011/12) revealed that <strong className="text-gray-900 dark:text-white">just ~1% of investments promised at the 2011 summit had materialized</strong>, with another 12% in "implementation stage." Recent estimates range from 1-18% depending on methodology.
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 A large proportion of signed MoUs are renewal commitments, expansions of existing operations, or intent-based agreements that never materialize. The true FDI inflow to Gujarat — while significant — is a fraction of the summit's announced figures. This gap between announcement and execution inflates Gujarat's investment narrative while masking the actual pace of industrial diversification.
