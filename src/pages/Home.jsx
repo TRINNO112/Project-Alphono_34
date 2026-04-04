@@ -34,7 +34,7 @@ export default function Home() {
     { value: "100+", label: "Cited Sources" },
     { value: "8", label: "Pillars of Analysis" },
     { value: "40%", label: "India's Cargo via Gujarat" },
-    { value: "$136B", label: "NRI Remittances FY25" },
+    { value: "$40B+", label: "Gujarat NRI Deposits" },
   ]
 
   const dependencyData = [
@@ -237,6 +237,7 @@ export default function Home() {
                   fontFamily: 'Inter',
                   fontSize: '13px',
                 }}
+                itemStyle={{ color: isDark ? '#e5e7eb' : '#1f2937' }}
                 formatter={(value) => [`${value}%`, 'External Dependency']}
               />
             </RadarChart>
