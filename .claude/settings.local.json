@@ -6,7 +6,8 @@
       "Bash(node:*)",
       "Bash(npx eslint:*)",
       "Bash(npx vite:*)",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "Bash(do echo:*)"
     ]
   }
 }

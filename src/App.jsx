@@ -12,6 +12,7 @@ import Materials from './pages/Materials'
 import Summary from './pages/Summary'
 import Education from './pages/Education'
 import Environment from './pages/Environment'
+import MigrantDiscrimination from './pages/MigrantDiscrimination'
 import SearchBar from './components/SearchBar'
 
 export default function App() {
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/education" element={<Education />} />
           <Route path="/summary" element={<Summary />} />
           <Route path="/environment" element={<Environment />} />
+          <Route path="/migrant-discrimination" element={<MigrantDiscrimination />} />
         </Routes>
 
         <SearchBar />

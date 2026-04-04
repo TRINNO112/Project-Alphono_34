@@ -22,6 +22,10 @@ const sources = [
   { title: "GIFT City vs Dubai & Singapore – India's Global Edge", publication: "Kaavya Ratna, 2025", url: "https://www.kaavyaratna.com/blogs/gift-city-vs-singapore-and-dubai-can-indias-smart-city-hub-compete" },
   { title: "GIFT City Tax Incentives 2025: Complete Business Advantage Guide", publication: "GIFT CFO, 2025", url: "https://www.giftcfo.com/post/gift-city-tax-incentives-2025-complete-business-advantage-guide" },
   { title: "GIFT City Hiring 2026: GCC Recruitment Solutions in Gujarat", publication: "RK HR Management, 2026", url: "https://www.rkhrm.com/blog/gift-city-gcc-hiring-high-value-teams/" },
+  { title: "Gujarat Budget Analysis 2026-27", publication: "PRS India, 2026", url: "https://prsindia.org/budgets/states/gujarat-budget-analysis-2026-27" },
+  { title: "CAG Flags Gujarat's Fiscal Paradox: 10-15% Growth Amid Declining Revenues", publication: "DeshGujarat, Mar 2026", url: "https://deshgujarat.com/2026/03/26/cag-flags-gujarats-fiscal-paradox-10-15-growth-amid-declining-revenues-overstated-surplus/" },
+  { title: "Central grants to Gujarat fall to 0.53% of GSDP in 2024-25", publication: "Gujarat Samachar, 2026", url: "https://english.gujaratsamachar.com/news/gujarat/central-grants-to-gujarat-fall-to-0-53-of-gsdp-in-202425-down-13-000-cr-in-4-years-cag-11584368371.html" },
+  { title: "Gujarat Drops From FDI Top Five", publication: "Vibes of India, 2026", url: "https://www.vibesofindia.com/gujarat-drops-from-fdi-top-five-but-long-term-growth-picture-holds/" },
 ]
 
 export default function Economics() {
@@ -262,10 +266,10 @@ export default function Economics() {
               </p>
             </div>
             <div className="md:w-1/3 w-full bg-green-100/50 dark:bg-green-950/30 p-6 rounded-xl border border-green-200 dark:border-green-900/50 flex flex-col items-center text-center">
-              <span className="text-4xl font-bold text-green-600 dark:text-green-500 mb-2">12-18%</span>
+              <span className="text-4xl font-bold text-green-600 dark:text-green-500 mb-2">~1-13%</span>
               <span className="text-sm text-green-800 dark:text-green-400 uppercase tracking-widest font-semibold">MoU Conversion Rate</span>
               <hr className="w-full border-green-300 dark:border-green-800/50 my-4" />
-              <span className="text-lg font-serif text-green-900 dark:text-green-300">Of Rs 27.96L Cr Signed</span>
+              <span className="text-lg font-serif text-green-900 dark:text-green-300">Of Rs 26.33L Cr Signed</span>
             </div>
           </div>
         </DataCard>

@@ -63,4 +63,13 @@ export const searchIndex = [
   { pillar: 'Economics', path: '/economics', claim: 'GIFT City workers earn 40-60% less than Singapore counterparts', keywords: ['gift city', 'salary', 'singapore', 'cost arbitrage'] },
   { pillar: 'Materials', path: '/materials', claim: 'India imports 100% of lithium, cobalt, nickel — 93% of rare earth magnets from China', keywords: ['lithium', 'rare earth', 'cobalt', 'china', 'ev', 'battery'] },
   { pillar: 'Materials', path: '/materials', claim: 'Tata investing Rs 13,000 crore in 20 GWh battery cell factory in Sanand', keywords: ['tata', 'battery', 'sanand', 'ev', 'lithium ion'] },
+  // Migrant Discrimination
+  { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: '2018: 20,000+ migrant workers fled Gujarat after coordinated anti-migrant violence across 6+ districts', keywords: ['2018', 'pogrom', 'attack', 'migrant', 'violence', 'exodus', 'sabarkantha'] },
+  { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: 'Rape of 14-month-old in Sabarkantha triggered state-wide collective punishment of all Hindi-speaking workers', keywords: ['rape', 'sabarkantha', 'trigger', 'hindi', 'collective punishment'] },
+  { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: 'COVID 2020: Migrant workers walked 1,000+ km home from Gujarat with no transport', keywords: ['covid', 'walking', 'exodus', '2020', 'lockdown', 'highway'] },
+  { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: 'Gujarat pays among India\'s lowest daily wages — closer to Bihar than Kerala (RBI data)', keywords: ['wages', 'low', 'exploitation', 'rbi', 'comparison', 'kerala', 'bihar'] },
+  { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: '92.65% of Morbi ceramic workers lack ESI despite 58 years of applicability', keywords: ['esi', 'morbi', 'health', 'insurance', 'silicosis'] },
+  { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: 'Anti-Slavery International categorises Gujarat brick kilns as modern slavery', keywords: ['bonded', 'slavery', 'brick kiln', 'trafficking', 'child labour'] },
+  { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: 'Language discrimination: Gujarati-only schools, hospitals, and administration exclude Hindi-speaking migrants', keywords: ['language', 'discrimination', 'gujarati', 'hindi', 'school', 'hospital'] },
+  { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: 'Gujarat vs Kerala: Kerala provides Aawaz health insurance, worker hostels, Hindi-medium schools for migrants', keywords: ['kerala', 'comparison', 'aawaz', 'welfare', 'registration'] },
 ]
