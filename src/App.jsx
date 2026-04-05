@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -16,8 +16,18 @@ import MigrantDiscrimination from './pages/MigrantDiscrimination'
 import Timeline from './pages/Timeline'
 import DistrictMap from './pages/DistrictMap'
 import DistrictAnalysis from './pages/DistrictAnalysis'
+import Methodology from './pages/Methodology'
+import Sources from './pages/Sources'
 import SearchBar from './components/SearchBar'
 import Footer from './components/Footer'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true)
@@ -34,8 +44,9 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-parchment-50 dark:bg-dark-bg transition-colors duration-500 font-sans text-gray-900 dark:text-gray-200 selection:bg-crimson selection:text-white">
-        
+
         {/* Global Scroll Progress Bar */}
         <motion.div 
           className="fixed top-0 left-0 right-0 h-1 bg-crimson origin-left z-50 shadow-[0_0_10px_rgba(211,47,47,0.5)] pointer-events-none"
@@ -59,6 +70,8 @@ export default function App() {
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/map" element={<DistrictMap />} />
           <Route path="/district/:id" element={<DistrictAnalysis />} />
+          <Route path="/methodology" element={<Methodology />} />
+          <Route path="/sources" element={<Sources />} />
         </Routes>
 
         <SearchBar />
