@@ -38,8 +38,8 @@ export default function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li><Link to="/summary" className="hover:text-crimson transition-colors">Executive Summary</Link></li>
-              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-crimson transition-colors">Source Data</a></li>
-              <li><a href="#" className="hover:text-crimson transition-colors">Research Methodology</a></li>
+              <li><Link to="/sources" className="hover:text-crimson transition-colors">Source Data</Link></li>
+              <li><Link to="/methodology" className="hover:text-crimson transition-colors">Research Methodology</Link></li>
             </ul>
           </div>
 
