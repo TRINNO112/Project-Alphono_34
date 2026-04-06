@@ -153,10 +153,10 @@ const connections = [
 ]
 
 // Layout constants
-const NODE_W = 180
-const NODE_H = 72
-const TIER_GAP_Y = 120
-const COL_GAP_X = 220
+const NODE_W = 210
+const NODE_H = 78
+const TIER_GAP_Y = 125
+const COL_GAP_X = 240
 const PADDING_X = 60
 const PADDING_TOP = 40
 
@@ -197,6 +197,8 @@ function CurvedArrow({ from, to, index, isDark }) {
 function NodeBox({ node, isSelected, onSelect, index, isDark }) {
   const pos = getNodePos(node)
   const Icon = node.icon
+  const active = isSelected === node.id
+  const gradId = `grad-${node.id}`
 
   return (
     <motion.g
@@ -207,81 +209,101 @@ function NodeBox({ node, isSelected, onSelect, index, isDark }) {
       style={{ cursor: 'pointer' }}
       onClick={() => onSelect(node.id === isSelected ? null : node.id)}
     >
-      {/* Glow effect when selected */}
-      {isSelected === node.id && (
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={node.color} stopOpacity={active ? 0.18 : 0.08} />
+          <stop offset="100%" stopColor={node.color} stopOpacity={0} />
+        </linearGradient>
+      </defs>
+
+      {/* Outer glow when selected */}
+      {active && (
         <rect
-          x={pos.x - NODE_W / 2 - 4}
-          y={pos.y - NODE_H / 2 - 4}
-          width={NODE_W + 8}
-          height={NODE_H + 8}
+          x={pos.x - NODE_W / 2 - 3}
+          y={pos.y - NODE_H / 2 - 3}
+          width={NODE_W + 6}
+          height={NODE_H + 6}
           rx={18}
           fill="none"
           stroke={node.color}
-          strokeWidth={2}
-          opacity={0.6}
+          strokeWidth={1.5}
+          opacity={0.5}
+          strokeDasharray="4,3"
         />
       )}
 
-      {/* Node background */}
+      {/* Card background with subtle gradient fill */}
       <rect
         x={pos.x - NODE_W / 2}
         y={pos.y - NODE_H / 2}
         width={NODE_W}
         height={NODE_H}
         rx={14}
-        fill={isDark ? '#1E1E1E' : '#ffffff'}
-        stroke={isSelected === node.id ? node.color : (isDark ? '#333' : '#e5e7eb')}
-        strokeWidth={isSelected === node.id ? 2 : 1}
+        fill={`url(#${gradId})`}
+        stroke={active ? node.color : (isDark ? '#333' : '#e5e7eb')}
+        strokeWidth={active ? 1.5 : 0.75}
+      />
+      {/* Inner solid fill for readability */}
+      <rect
+        x={pos.x - NODE_W / 2 + 0.5}
+        y={pos.y - NODE_H / 2 + 0.5}
+        width={NODE_W - 1}
+        height={NODE_H - 1}
+        rx={13}
+        fill={isDark ? 'rgba(30,30,30,0.85)' : 'rgba(255,255,255,0.88)'}
       />
 
-      {/* Left color accent bar */}
+      {/* Top accent line */}
       <rect
-        x={pos.x - NODE_W / 2}
+        x={pos.x - NODE_W / 2 + 14}
         y={pos.y - NODE_H / 2}
-        width={4}
-        height={NODE_H}
-        rx={2}
+        width={NODE_W - 28}
+        height={2.5}
+        rx={1.25}
         fill={node.color}
+        opacity={active ? 1 : 0.6}
       />
 
       {/* Icon circle */}
       <circle
-        cx={pos.x - NODE_W / 2 + 28}
-        cy={pos.y}
-        r={14}
-        fill={node.color + '20'}
+        cx={pos.x - NODE_W / 2 + 30}
+        cy={pos.y + 2}
+        r={15}
+        fill={node.color + '18'}
+        stroke={node.color + '30'}
+        strokeWidth={1}
       />
 
-      {/* Icon (as text placeholder — real icon rendered via foreignObject) */}
+      {/* Icon via foreignObject */}
       <foreignObject
-        x={pos.x - NODE_W / 2 + 14}
-        y={pos.y - 14}
-        width={28}
-        height={28}
+        x={pos.x - NODE_W / 2 + 15}
+        y={pos.y - 13}
+        width={30}
+        height={30}
       >
         <div xmlns="http://www.w3.org/1999/xhtml" className="flex items-center justify-center w-full h-full">
-          <Icon size={16} color={node.color} />
+          <Icon size={15} color={node.color} />
         </div>
       </foreignObject>
 
-      {/* Label */}
+      {/* Label — truncated with ellipsis for long text */}
       <text
-        x={pos.x - NODE_W / 2 + 50}
-        y={pos.y - 6}
+        x={pos.x - NODE_W / 2 + 54}
+        y={pos.y - 4}
         fill={isDark ? '#f3f4f6' : '#111827'}
-        fontSize={12}
+        fontSize={11.5}
         fontWeight={700}
         fontFamily="Inter, sans-serif"
       >
-        {node.label}
+        {node.label.length > 22 ? node.label.slice(0, 21) + '…' : node.label}
       </text>
 
       {/* Sublabel */}
       <text
-        x={pos.x - NODE_W / 2 + 50}
-        y={pos.y + 12}
+        x={pos.x - NODE_W / 2 + 54}
+        y={pos.y + 14}
         fill={isDark ? '#6b7280' : '#9ca3af'}
-        fontSize={10}
+        fontSize={9.5}
         fontFamily="Inter, sans-serif"
       >
         {node.sublabel}

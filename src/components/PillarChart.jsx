@@ -53,6 +53,33 @@ export function PillarChart({ type, data, title, caption, height = 300, colors }
     </ResponsiveContainer>
   )
 
+  const renderPieLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, name, value, index }) => {
+    const RADIAN = Math.PI / 180
+    const radius = outerRadius + 28
+    let x = cx + radius * Math.cos(-midAngle * RADIAN)
+    let y = cy + radius * Math.sin(-midAngle * RADIAN)
+
+    // Nudge small adjacent slices apart to prevent label overlap
+    if (value < 8) {
+      const nudge = index % 2 === 0 ? -10 : 10
+      y += nudge
+    }
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill={isDark ? '#d1d5db' : '#374151'}
+        textAnchor={x > cx ? 'start' : 'end'}
+        dominantBaseline="central"
+        fontSize={12}
+        fontFamily="Inter, sans-serif"
+      >
+        {`${name}: ${value}%`}
+      </text>
+    )
+  }
+
   const renderPie = () => (
     <ResponsiveContainer width="100%" height={height}>
       <PieChart>
@@ -65,7 +92,7 @@ export function PillarChart({ type, data, title, caption, height = 300, colors }
           innerRadius={60}
           outerRadius={100}
           paddingAngle={2}
-          label={({ name, value }) => `${name}: ${value}%`}
+          label={renderPieLabel}
         >
           {data.map((_, index) => (
             <Cell key={`cell-${index}`} fill={palette[index % palette.length]} />
