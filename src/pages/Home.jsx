@@ -5,6 +5,7 @@ import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTrian
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip } from 'recharts'
 import { useSyncExternalStore } from 'react'
 import { SupplyChainMap } from '../components/SupplyChainMap'
+import { CascadeDiagram } from '../components/CascadeDiagram'
 
 function subscribeDarkMode(callback) {
   const observer = new MutationObserver(callback)
@@ -102,7 +103,7 @@ export default function Home() {
   ]
 
   return (
-    <main className="w-full max-w-6xl mx-auto px-6 pt-40 pb-32 space-y-28">
+    <main className="w-full max-w-6xl mx-auto px-6 pt-28 md:pt-40 pb-20 md:pb-32 space-y-20 md:space-y-28">
 
       {/* ═══════════════════ HERO ═══════════════════ */}
       <section className="text-center space-y-8 relative">
@@ -118,7 +119,7 @@ export default function Home() {
             <AlertTriangle className="w-4 h-4" />
             Critical Research Endeavor
           </div>
-          <h1 className="text-6xl md:text-8xl font-serif font-bold mb-6 leading-tight tracking-tight text-gray-900 dark:text-white">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold mb-6 leading-tight tracking-tight text-gray-900 dark:text-white">
             Anatomy of a <br/><span className="text-crimson italic pr-4">Dependent State</span>
           </h1>
 
@@ -302,9 +303,28 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* ═══════════════════ THE 2026 CASCADE ═══════════════════ */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="flex items-center gap-3 mb-10 justify-center">
+          <span className="text-crimson text-lg font-sans font-bold">III-B.</span>
+          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">Crisis Propagation Map</h2>
+        </div>
+        <div className="bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border rounded-2xl p-8 backdrop-blur-sm">
+          <CascadeDiagram />
+        </div>
+        <p className="text-center text-sm text-gray-500 dark:text-gray-500 mt-4 italic font-serif">
+          Figure 2: How the March 2026 West Asia crisis cascaded across Gujarat's structural pillars — each arrow represents a documented dependency failure
+        </p>
+      </motion.section>
+
       <hr className="border-gray-300 dark:border-dark-border w-1/2 mx-auto" />
 
-      {/* ═══════════════════ IV. EIGHT PILLARS ═══════════════════ */}
+      {/* ═══════════════════ IV. NINE PILLARS ═══════════════════ */}
       <section>
         <div className="text-center mb-16">
           <div className="flex items-center gap-3 justify-center mb-4">
@@ -374,6 +394,7 @@ export default function Home() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
+        className="hidden md:block"
       >
         <div className="flex items-center gap-3 mb-10 justify-center">
           <span className="text-crimson text-lg font-sans font-bold">V.</span>

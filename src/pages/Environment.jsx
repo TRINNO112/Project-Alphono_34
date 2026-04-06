@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { Factory, AlertTriangle, Wind, Droplets, Flame } from 'lucide-react'
+import { Factory, AlertTriangle, Wind, Droplets } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
+import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 
 const sources = [
@@ -54,6 +55,23 @@ export default function Environment() {
             <StatBox value="74%" label="Rivers Severely Polluted" color="red" />
           </div>
 
+          {/* Chart: CEPI Scores for Gujarat Industrial Clusters */}
+          <PillarChart
+            type="bar"
+            title="CEPI Scores: Gujarat's Critically Polluted Industrial Clusters"
+            caption="Figure 1: Six Gujarat industrial areas score above the CPCB critical threshold of 70. Vapi peaked at 90.75 — the highest in all of India. Source: CPCB/CAG"
+            data={[
+              { name: 'Vapi', value: 90.75 },
+              { name: 'Ankleshwar', value: 88.50 },
+              { name: 'Ahmedabad', value: 75.28 },
+              { name: 'Vatva', value: 74.77 },
+              { name: 'Bhavnagar', value: 70.99 },
+              { name: 'Junagadh', value: 70.82 },
+            ]}
+            colors={['#991B1B', '#B91C1C', '#DC2626', '#EF4444', '#F87171', '#FCA5A5']}
+            height={320}
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Vapi: One of the World's Most Polluted" alert={true}>
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
@@ -92,6 +110,22 @@ export default function Environment() {
             <StatBox value="16%" label="Alang Workers w/ Asbestosis" color="red" />
           </div>
 
+          {/* Chart: Morbi SO2 Emissions Growth */}
+          <PillarChart
+            type="bar"
+            title="Morbi SO2 Emissions Detected by NASA OMI (kt/year)"
+            caption="Figure 3: NASA satellite data shows Morbi's SO2 emissions tripled from ~100 kt/year to ~300 kt/year between 2009-2016. Source: NASA Aura"
+            data={[
+              { name: '2009', value: 100 },
+              { name: '2011', value: 150 },
+              { name: '2013', value: 220 },
+              { name: '2015', value: 270 },
+              { name: '2016', value: 300 },
+            ]}
+            colors={['#F59E0B', '#F59E0B', '#EF4444', '#DC2626', '#991B1B']}
+            height={280}
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Alang: World's Largest Ship-Breaking Yard" alert={true}>
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
@@ -121,6 +155,24 @@ export default function Environment() {
 
         {/* Coastal Erosion & Climate */}
         <Section icon={<Droplets className="w-8 h-8 text-blue-600 dark:text-blue-400" />} title="Coastal Erosion, Desertification & Climate">
+          {/* Chart: Coastal Erosion by State */}
+          <PillarChart
+            type="bar"
+            title="Coastline Under Erosion by State (%)"
+            caption="Figure 2: Gujarat leads India with 27.6% of its coastline under active erosion — equivalent to 537.5 km. Source: NCCR 1990-2018 study"
+            data={[
+              { name: 'Gujarat', value: 27.6 },
+              { name: 'West Bengal', value: 24.8 },
+              { name: 'Kerala', value: 22.1 },
+              { name: 'Tamil Nadu', value: 18.7 },
+              { name: 'Odisha', value: 17.3 },
+              { name: 'Maharashtra', value: 15.9 },
+              { name: 'Karnataka', value: 12.4 },
+            ]}
+            colors={['#D32F2F', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280']}
+            height={300}
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="27.6% of Coastline Eroding — Highest in India">
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
@@ -152,6 +204,27 @@ export default function Environment() {
               <StatBox value="91%" label="Above National Average" color="red" />
               <StatBox value="370K" label="Coastal Residents at Risk" color="blue" />
             </div>
+
+            {/* Chart: Per Capita CO2 Emissions Comparison */}
+            <div className="relative z-10 mt-6">
+              <PillarChart
+                type="bar"
+                title="Per Capita CO2 Emissions: Gujarat vs Major States (tCO2)"
+                caption="Figure 4: Gujarat's per capita emissions are 91% above the national average, driven by refining, chemicals, and ceramics. Source: CEEW / India Data Map"
+                data={[
+                  { name: 'Gujarat', value: 4.2 },
+                  { name: 'Chhattisgarh', value: 3.8 },
+                  { name: 'Jharkhand', value: 3.1 },
+                  { name: 'National Avg', value: 2.2 },
+                  { name: 'Maharashtra', value: 2.0 },
+                  { name: 'Tamil Nadu', value: 1.9 },
+                  { name: 'Kerala', value: 0.9 },
+                ]}
+                colors={['#D32F2F', '#9CA3AF', '#9CA3AF', '#6B7280', '#9CA3AF', '#9CA3AF', '#16A34A']}
+                height={280}
+              />
+            </div>
+
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed relative z-10 mt-8">
               A rise of 0.1 to 0.5 metres in sea level would cause <strong className="text-gray-900 dark:text-white">wetland losses of 2,508-12,541 sq km</strong> in Gujarat. Surat has experienced 12 major floods since 1883, and faces projected flooding under low-emission scenarios. ~370,000 people in Surat, Navsari, and Valsad districts are at risk. The Gulf of Kutch is designated a Critically Vulnerable Coastal Area.<Ref n={14} />
             </p>
@@ -162,6 +235,25 @@ export default function Environment() {
 
       {/* Air Quality */}
       <Section icon={<Wind className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />} title="Urban Air Quality: The Invisible Crisis">
+        {/* Chart: Annual Average PM2.5 by City */}
+        <PillarChart
+          type="bar"
+          title="Annual Average PM2.5 Concentration (µg/m³)"
+          caption="Figure 5: Ahmedabad's PM2.5 at 72 µg/m³ is nearly 5x the WHO guideline of 15 µg/m³. Gujarat cities highlighted in red. Source: CPCB / NCAP"
+          data={[
+            { name: 'Delhi', value: 108 },
+            { name: 'Ahmedabad', value: 72 },
+            { name: 'Surat', value: 52 },
+            { name: 'Vadodara', value: 48 },
+            { name: 'Rajkot', value: 45 },
+            { name: 'Mumbai', value: 39 },
+            { name: 'Bangalore', value: 32 },
+            { name: 'WHO Limit', value: 15 },
+          ]}
+          colors={['#6B7280', '#D32F2F', '#DC2626', '#EF4444', '#F87171', '#6B7280', '#6B7280', '#16A34A']}
+          height={320}
+        />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <DataCard title="Ahmedabad: Among India's Most Polluted Cities" alert={true}>
             <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">

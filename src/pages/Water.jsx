@@ -133,6 +133,23 @@ export default function Water() {
             colors={['#16A34A', '#D32F2F', '#CA8A04']}
           />
 
+          {/* Chart: District-Level Groundwater Extraction */}
+          <PillarChart
+            type="bar"
+            data={[
+              { name: 'Mehsana', value: 132 },
+              { name: 'Banaskantha', value: 115 },
+              { name: 'Patan', value: 108 },
+              { name: 'Sabarkantha', value: 95 },
+              { name: 'Gandhinagar', value: 87 },
+              { name: 'Safe Limit', value: 70 },
+            ]}
+            title="Groundwater Extraction as % of Annual Recharge (by District)"
+            caption="Mehsana extracts 132% of its annual recharge — pumping 32% more than nature replaces. Source: CGWB / SANDRP"
+            colors={['#991B1B', '#B91C1C', '#DC2626', '#EF4444', '#F59E0B', '#16A34A']}
+            height={300}
+          />
+
           <DataCard title="20 Years of GRACE Satellite Data: The Verdict">
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
               A study using GRACE/GRACE-FO satellite data and ~1,600 CGWB well observations (2003-2023) reveals a stark north-south divergence: <strong>increased groundwater depletion in Northern Gujarat</strong> versus recharge in Southern Gujarat and Saurashtra.<Ref n={9} />
@@ -216,6 +233,22 @@ export default function Water() {
               As of 2025, the scheme is <strong className="text-gray-900 dark:text-white">95% complete at a revised cost of Rs 18,563 crore</strong> — a 69% cost overrun from the original Rs 11,000 crore estimate. Phases 1 and 2 are fully operational (523 km, 79 dams filled); Phase 3 (335 km) is 98% complete; Phase 4 (271 km) is 87% complete. Even after full completion, the scheme merely redistributes Narmada water — it creates no new water source.
             </p>
           </DataCard>
+
+          {/* Chart: SAUNI Cost Overrun */}
+          <PillarChart
+            type="bar"
+            data={[
+              { name: 'Original Budget', value: 11000 },
+              { name: 'Phase 1-2 Actual', value: 8200 },
+              { name: 'Phase 3 Revised', value: 4500 },
+              { name: 'Phase 4 Revised', value: 5863 },
+              { name: 'Total Revised', value: 18563 },
+            ]}
+            title="SAUNI Scheme: Budget vs Actual Cost (Rs Crore)"
+            caption="69% cost overrun — from Rs 11,000 Cr original estimate to Rs 18,563 Cr revised. And it creates no new water source."
+            colors={['#16A34A', '#F59E0B', '#EF4444', '#EF4444', '#991B1B']}
+            height={280}
+          />
 
           <DataCard title="Kutch Branch Canal: The Lifeline of the Desert" alert={true}>
             <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">

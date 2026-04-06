@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import React from 'react'
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps'
 import { ArrowRight, ShieldAlert } from 'lucide-react'
 
@@ -81,6 +82,18 @@ const gujaratCoords = [71.5, 22.5]
 export function SupplyChainMap() {
   const [hoveredNode, setHoveredNode] = useState(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const timeoutRef = React.useRef(null)
+
+  const handleMouseEnter = (node) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setHoveredNode(node)
+  }
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setHoveredNode(null)
+    }, 150)
+  }
 
   const handleMouseMove = (evt) => {
     setMousePosition({ x: evt.clientX, y: evt.clientY })
@@ -106,7 +119,7 @@ export function SupplyChainMap() {
         {/* SINGLE unified ComposableMap - expanded to fill available width */}
         <ComposableMap
           projection="geoMercator"
-          projectionConfig={{ scale: 450, center: [78, 22] }}
+          projectionConfig={{ scale: 450, center: [78, 24] }}
           style={{ width: '100%', height: 'auto', aspectRatio: '1.7 / 1' }}
         >
           <defs>
@@ -127,8 +140,8 @@ export function SupplyChainMap() {
               geographies.map((geo) => (
                 <Geography
                   key={geo.rsmKey} geography={geo}
-                  onMouseEnter={() => setHoveredNode(foreignNodes.china)}
-                  onMouseLeave={() => setHoveredNode(null)}
+                  onMouseEnter={() => handleMouseEnter(foreignNodes.china)}
+                  onMouseLeave={handleMouseLeave}
                   style={{
                     default: { fill: foreignNodes.china.fill, outline: "none", stroke: foreignNodes.china.color, strokeWidth: 0.5 },
                     hover: { fill: foreignNodes.china.color, outline: "none", cursor: "pointer" },
@@ -146,8 +159,8 @@ export function SupplyChainMap() {
                 geographies.map((geo) => (
                   <Geography
                     key={geo.rsmKey} geography={geo}
-                    onMouseEnter={() => setHoveredNode(foreignNodes.middleEast)}
-                    onMouseLeave={() => setHoveredNode(null)}
+                    onMouseEnter={() => handleMouseEnter(foreignNodes.middleEast)}
+                    onMouseLeave={handleMouseLeave}
                     style={{
                       default: { fill: foreignNodes.middleEast.fill, outline: "none", stroke: foreignNodes.middleEast.color, strokeWidth: 0.5 },
                       hover: { fill: foreignNodes.middleEast.color, outline: "none", cursor: "pointer" },
@@ -165,8 +178,8 @@ export function SupplyChainMap() {
               geographies.map((geo) => (
                 <Geography
                   key={geo.rsmKey} geography={geo}
-                  onMouseEnter={() => setHoveredNode(foreignNodes.indonesia)}
-                  onMouseLeave={() => setHoveredNode(null)}
+                  onMouseEnter={() => handleMouseEnter(foreignNodes.indonesia)}
+                  onMouseLeave={handleMouseLeave}
                   style={{
                     default: { fill: foreignNodes.indonesia.fill, outline: "none", stroke: foreignNodes.indonesia.color, strokeWidth: 0.5 },
                     hover: { fill: foreignNodes.indonesia.color, outline: "none", cursor: "pointer" },
@@ -184,8 +197,18 @@ export function SupplyChainMap() {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  onMouseEnter={() => setHoveredNode({ category: "Target Vector", name: "India", stat: "Economic Hub", desc: "The industrial convergence point of external dependencies.", color: "#DC2626" })}
-                  onMouseLeave={() => setHoveredNode(null)}
+                  onMouseEnter={() => {
+                    const stateName = geo.properties.st_nm;
+                    const flow = domesticFlows.find(f => f.name === stateName);
+                    if (flow) {
+                      handleMouseEnter({ ...laborTelemetry, name: flow.name });
+                    } else if (stateName === "Gujarat") {
+                      handleMouseEnter({ category: "Target Vector", name: "Gujarat", stat: "Economic Hub", desc: "The industrial convergence point of external dependencies.", color: "#DC2626" });
+                    } else {
+                      handleMouseEnter({ category: "Indian State", name: stateName || "India", stat: "Domestic Node", desc: "Part of the interconnected national supply chain network.", color: "#6B7280" });
+                    }
+                  }}
+                  onMouseLeave={handleMouseLeave}
                   style={{
                     default: { fill: "#E5E7EB", outline: "none", stroke: "#9CA3AF", strokeWidth: 0.5 },
                     hover: { fill: "#D1D5DB", outline: "none", stroke: "#6B7280", cursor: "pointer" },
@@ -208,8 +231,8 @@ export function SupplyChainMap() {
               />
               <Marker
                 coordinates={flow.coords}
-                onMouseEnter={() => setHoveredNode({ ...laborTelemetry, name: flow.name })}
-                onMouseLeave={() => setHoveredNode(null)}
+                onMouseEnter={() => handleMouseEnter({ ...laborTelemetry, name: flow.name })}
+                onMouseLeave={handleMouseLeave}
               >
                 <circle r={10} fill="#D8B4FE" opacity={0.5} filter="url(#glow)" className="cursor-pointer" />
                 <circle r={3} fill="#9333EA" />
@@ -266,8 +289,14 @@ export function SupplyChainMap() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 5 }}
               transition={{ duration: 0.15 }}
-              className="fixed z-50 pointer-events-none"
-              style={{ left: mousePosition.x + 20, top: mousePosition.y + 20, width: '240px' }}
+              className="fixed z-50 pointer-events-auto cursor-default"
+              onMouseEnter={() => handleMouseEnter(hoveredNode)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                left: Math.min(mousePosition.x + 20, typeof window !== 'undefined' ? window.innerWidth - 260 : 1000),
+                top: Math.min(mousePosition.y + 20, typeof window !== 'undefined' ? window.innerHeight - 150 : 1000),
+                width: '240px'
+              }}
             >
               <div className="bg-white/95 dark:bg-dark-surface/95 backdrop-blur-md border border-gray-200 dark:border-dark-border shadow-2xl p-4 rounded-2xl">
                 <div className="flex items-center gap-2 mb-1">

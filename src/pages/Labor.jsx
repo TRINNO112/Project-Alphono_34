@@ -155,6 +155,21 @@ export default function Labor() {
               description: 'Twin shocks: gas supply disruptions shut 550+ Morbi units while US tariffs devastated Surat diamonds (1.5 lakh jobs lost). An estimated 5-6 lakh migrant workers returned to home states. Surat powerloom sector alone reported Rs 100 crore/day production losses. Bihar, UP, and Odisha now offer competitive local industrial wages, making return migration harder than ever.',
             },
           ]} />
+
+          {/* Chart: Exodus Scale by Crisis Event */}
+          <PillarChart
+            type="bar"
+            data={[
+              { name: '2016 DeMon', value: 2 },
+              { name: '2020 COVID', value: 10 },
+              { name: '2024 Diamond', value: 1.5 },
+              { name: '2026 Twin Crisis', value: 5.5 },
+            ]}
+            title="Estimated Migrant Worker Exodus from Gujarat (Lakhs)"
+            caption="Each crisis strips the industrial base of its workforce within days. The 2026 twin crisis (gas + US tariffs) displaced 5-6 lakh workers."
+            colors={['#F59E0B', '#DC2626', '#9333EA', '#991B1B']}
+            height={280}
+          />
         </Section>
 
         {/* Skill Gap & Automation Risk */}
@@ -208,6 +223,22 @@ export default function Labor() {
           <StatBox value="90-95%" label="Cash Payment (Textile)" color="crimson" />
           <StatBox value="12-16 hrs" label="Average Shift (Peak Season)" color="red" />
         </div>
+
+        {/* Chart: Migrant Wage Comparison */}
+        <PillarChart
+          type="bar"
+          data={[
+            { name: 'Kerala', value: 750 },
+            { name: 'Maharashtra', value: 550 },
+            { name: 'Gujarat', value: 425 },
+            { name: 'UP (Local)', value: 350 },
+            { name: 'Bihar (Local)', value: 320 },
+          ]}
+          title="Average Daily Wages for Unskilled Factory Workers (Rs)"
+          caption="Gujarat's migrant wages are closer to Bihar's local rates than to Kerala's — as source states industrialize, the wage gap narrows and return migration becomes permanent."
+          colors={['#16A34A', '#2563EB', '#D32F2F', '#6B7280', '#6B7280']}
+          height={280}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <DataCard title="The Cash Economy: Invisible Workforce" alert={true}>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { GraduationCap, Heart, AlertTriangle, CheckCircle } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
+import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 
 const sources = [
@@ -53,6 +54,42 @@ export default function Education() {
             <StatBox value="20.1%" label="GER (vs 28.4% Natl)" color="red" />
             <StatBox value="2.4 Lakh" label="Annual School Dropouts (#1 in India)" color="red" />
           </div>
+
+          {/* Chart: Higher Education GER Comparison */}
+          <PillarChart
+            type="bar"
+            title="Higher Education GER: Gujarat vs Major States (%)"
+            caption="Figure 1: Gujarat's Gross Enrolment Ratio in higher education (20.1%) trails the national average of 28.4%. Source: AISHE 2021-22"
+            data={[
+              { name: 'Tamil Nadu', value: 46.9 },
+              { name: 'Kerala', value: 43.1 },
+              { name: 'Karnataka', value: 32.8 },
+              { name: 'Maharashtra', value: 32.5 },
+              { name: 'National Avg', value: 28.4 },
+              { name: 'Gujarat', value: 20.1 },
+              { name: 'Rajasthan', value: 18.3 },
+              { name: 'Bihar', value: 14.8 },
+            ]}
+            colors={['#2563EB', '#2563EB', '#2563EB', '#2563EB', '#6B7280', '#D32F2F', '#9CA3AF', '#9CA3AF']}
+            height={320}
+          />
+
+          {/* Chart: Dropout Numbers by State */}
+          <PillarChart
+            type="bar"
+            title="Annual School Dropouts: Top States (Lakhs)"
+            caption="Figure 2: Gujarat leads India in absolute school dropout numbers. Source: UDISE+ / Ministry of Education"
+            data={[
+              { name: 'Gujarat', value: 2.4 },
+              { name: 'Uttar Pradesh', value: 2.1 },
+              { name: 'Madhya Pradesh', value: 1.8 },
+              { name: 'Rajasthan', value: 1.7 },
+              { name: 'Bihar', value: 1.5 },
+              { name: 'Karnataka', value: 0.9 },
+            ]}
+            colors={['#D32F2F', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280']}
+            height={280}
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Hollow Classrooms: The Teacher Crisis" alert={true}>
@@ -116,6 +153,39 @@ export default function Education() {
             <StatBox value="2.87L" label="Bed Deficit" color="crimson" />
             <StatBox value="97%" label="Specialist Vacancy" color="red" />
           </div>
+
+          {/* Chart: Specialist Doctor Vacancies at Rural CHCs */}
+          <PillarChart
+            type="bar"
+            title="Specialist Doctor Vacancies at Rural CHCs (%)"
+            caption="Figure 3: Between 86-97% of specialist posts at Gujarat's Community Health Centres remain unfilled. Source: DNA India / RHS"
+            data={[
+              { name: 'Surgeons', value: 97 },
+              { name: 'OB-GYN', value: 86 },
+              { name: 'Physicians', value: 91 },
+              { name: 'Paediatricians', value: 89 },
+            ]}
+            colors={['#D32F2F', '#EF4444', '#DC2626', '#F87171']}
+            height={280}
+          />
+
+          {/* Chart: Health Expenditure as % of GSDP */}
+          <PillarChart
+            type="bar"
+            title="Government Health Expenditure as % of GSDP"
+            caption="Figure 4: Gujarat spends just 0.8% of GSDP on public health — well below the 2.5% NHP target. Source: PRS India / Factly.in"
+            data={[
+              { name: 'NHP Target', value: 2.5 },
+              { name: 'Kerala', value: 1.7 },
+              { name: 'Tamil Nadu', value: 1.4 },
+              { name: 'Rajasthan', value: 1.3 },
+              { name: 'National Avg', value: 1.2 },
+              { name: 'Maharashtra', value: 0.9 },
+              { name: 'Gujarat', value: 0.8 },
+            ]}
+            colors={['#16A34A', '#2563EB', '#2563EB', '#2563EB', '#6B7280', '#9CA3AF', '#D32F2F']}
+            height={280}
+          />
 
           <DataCard title="Systemic Underspending on Public Health" alert={true}>
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
@@ -216,6 +286,40 @@ export default function Education() {
           <StatBox value="5.6%" label="Health Share of Budget" color="red" />
           <StatBox value="2.8%" label="Education Spend / GSDP" color="crimson" />
         </div>
+
+        {/* Chart: Education Spending as % of GSDP */}
+        <PillarChart
+          type="bar"
+          title="Public Education Expenditure as % of GSDP"
+          caption="Figure 5: Gujarat's education spending at 2.8% of GSDP falls far short of the NEP 2020 target of 6%. Source: PRS India Budget Analysis"
+          data={[
+            { name: 'NEP Target', value: 6.0 },
+            { name: 'Kerala', value: 4.2 },
+            { name: 'Rajasthan', value: 4.1 },
+            { name: 'Tamil Nadu', value: 3.6 },
+            { name: 'National Avg', value: 3.1 },
+            { name: 'Gujarat', value: 2.8 },
+            { name: 'Maharashtra', value: 2.7 },
+          ]}
+          colors={['#16A34A', '#2563EB', '#2563EB', '#2563EB', '#6B7280', '#D32F2F', '#9CA3AF']}
+          height={280}
+        />
+
+        {/* Chart: Gujarat Budget Allocation Pie */}
+        <PillarChart
+          type="pie"
+          title="Gujarat Budget 2024-25: Key Sectoral Allocation"
+          caption="Figure 6: Education gets 15.1% of the budget while health receives just 5.6% — a ratio that perpetuates human capital deficits. Source: PRS India"
+          data={[
+            { name: 'Education', value: 15.1 },
+            { name: 'Health', value: 5.6 },
+            { name: 'Rural Dev', value: 6.8 },
+            { name: 'Roads & Infra', value: 12.3 },
+            { name: 'Other', value: 60.2 },
+          ]}
+          colors={['#2563EB', '#D32F2F', '#16A34A', '#F59E0B', '#6B7280']}
+          height={320}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <DataCard title="Education Expenditure: Below Peers">
