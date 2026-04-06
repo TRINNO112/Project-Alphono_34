@@ -360,6 +360,11 @@ export default function Education() {
       <CounterArgument
         argument="Gujarat has multiple IITs, IIMs, and private universities. Private sector investment in education compensates for government gaps."
         rebuttal="Only 1 Gujarat institute in NIRF overall top 100. GER at 20.1% is 30% below national average. 32,000+ government teacher posts vacant. 86-97% specialist doctor positions unfilled at rural CHCs. Private sector cannot substitute for systemic public investment gaps."
+        stats={[
+          { value: '20.1%', label: 'GER (vs 28.4% Natl)' },
+          { value: '32,000+', label: 'Teacher Vacancies' },
+          { value: '97%', label: 'Specialist Vacant' },
+        ]}
       />
 
       <SourceList sources={sources} />

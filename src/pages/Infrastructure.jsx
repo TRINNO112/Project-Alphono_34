@@ -311,6 +311,11 @@ export default function Infrastructure() {
       <CounterArgument
         argument="Adani's efficiency delivers India's lowest port tariffs and fastest turnaround times. Private operation is inherently superior to government ports."
         rebuttal="Single-entity concentration means a regulatory dispute, operational failure, or geopolitical sanction has no failover. When one company controls 40% of national cargo capacity, efficiency becomes fragility."
+        stats={[
+          { value: '40%', label: 'India Cargo (1 firm)' },
+          { value: '0', label: 'Submarine Cables' },
+          { value: '22', label: 'Bridge Deaths' },
+        ]}
       />
 
       <SourceList sources={sources} />
