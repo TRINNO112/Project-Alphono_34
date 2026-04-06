@@ -94,6 +94,23 @@ export default function Materials() {
             title="India's Crude Oil Sourcing FY26 (Updated %)"
             caption="Russia overtook Middle East as #1 supplier at 36% — up from 2% in 2021"
           />
+
+          {/* Time-Series: Russia Crude Dependency Growth */}
+          <PillarChart
+            type="bar"
+            data={[
+              { name: 'FY21', value: 2 },
+              { name: 'FY22', value: 3 },
+              { name: 'FY23', value: 22 },
+              { name: 'FY24', value: 31 },
+              { name: 'FY25', value: 34 },
+              { name: 'FY26', value: 36 },
+            ]}
+            title="Russia's Share of India's Crude Imports (%) — Post-Ukraine Surge"
+            caption="From 2% to 36% in four years. Gujarat's Jamnagar and Nayara refineries are primary processors of Russian crude. Source: Bloomberg / Vortexa"
+            colors={['#9CA3AF', '#9CA3AF', '#F59E0B', '#EF4444', '#DC2626', '#991B1B']}
+            height={280}
+          />
         </Section>
 
         {/* Pharmaceutical APIs */}
@@ -138,6 +155,23 @@ export default function Materials() {
             title="Critical Drug API Dependency on China (%)"
             caption="India's pharmaceutical sector is near-completely dependent on Chinese APIs for essential drugs"
             colors={['#D32F2F', '#D32F2F', '#9A0007', '#D32F2F']}
+          />
+
+          {/* Time-Series: API Import Value Growth */}
+          <PillarChart
+            type="bar"
+            data={[
+              { name: 'FY20', value: 2.4 },
+              { name: 'FY21', value: 2.6 },
+              { name: 'FY22', value: 2.9 },
+              { name: 'FY23', value: 3.18 },
+              { name: 'FY24', value: 3.4 },
+              { name: 'FY25', value: 3.6 },
+            ]}
+            title="India's API Imports from China ($Billion/Year)"
+            caption="API import value has grown 50% in five years — from $2.4B to $3.6B. Pre-1991 dependency was just 0.3%. Source: DGFT / Pharmexcil"
+            colors={['#F59E0B', '#F59E0B', '#EF4444', '#EF4444', '#DC2626', '#991B1B']}
+            height={280}
           />
         </Section>
 

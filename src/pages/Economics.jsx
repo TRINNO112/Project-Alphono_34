@@ -134,6 +134,38 @@ export default function Economics() {
             caption="Gujarat collects less than half the median state's revenue relative to economic size"
             colors={['#D32F2F', '#6B7280', '#2563EB', '#9333EA']}
           />
+
+          {/* Time-Series: Central Grants as % of GSDP */}
+          <PillarChart
+            type="bar"
+            data={[
+              { name: 'FY21', value: 1.68 },
+              { name: 'FY22', value: 1.32 },
+              { name: 'FY23', value: 1.05 },
+              { name: 'FY24', value: 0.78 },
+              { name: 'FY25', value: 0.53 },
+            ]}
+            title="Central Grants to Gujarat as % of GSDP (Crashing Trajectory)"
+            caption="A Rs 13,000 crore decline in 4 years — from 1.68% to 0.53% of GSDP. Source: CAG / Gujarat Samachar"
+            colors={['#16A34A', '#CA8A04', '#F59E0B', '#EF4444', '#991B1B']}
+          />
+
+          {/* Time-Series: Debt-to-GSDP Ratio */}
+          <PillarChart
+            type="bar"
+            data={[
+              { name: 'FY20', value: 19.8 },
+              { name: 'FY21', value: 21.2 },
+              { name: 'FY22', value: 19.5 },
+              { name: 'FY23', value: 18.9 },
+              { name: 'FY24', value: 16.1 },
+              { name: 'FY25', value: 15.3 },
+              { name: 'FY27 (P)', value: 14.7 },
+            ]}
+            title="Debt-to-GSDP Ratio: Gujarat's Declining Trajectory (%)"
+            caption="The one genuinely positive fiscal metric — debt-to-GSDP remains India's lowest. Source: PRS India / FintechBizNews"
+            colors={['#EF4444', '#EF4444', '#F59E0B', '#F59E0B', '#16A34A', '#16A34A', '#059669']}
+          />
         </Section>
 
         {/* NRI & GIFT City */}
