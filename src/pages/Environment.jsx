@@ -310,6 +310,11 @@ export default function Environment() {
       <CounterArgument
         argument="Gujarat's industrial output justifies its environmental footprint. The state's pollution control infrastructure is continuously improving."
         rebuttal="6 CPCB critically polluted zones, Vapi mercury at 96x WHO limits, 74% of rivers severely polluted, zero reported occupational cancers at Alang despite 4,513 projected mesothelioma cases. Over 50% of land under desertification. The environmental costs are being externalized, not managed."
+        stats={[
+          { value: '90.75', label: 'Vapi CEPI' },
+          { value: '96x', label: 'Mercury (vs WHO)' },
+          { value: '4,513', label: 'Projected Cancers' },
+        ]}
       />
 
       <SourceList sources={sources} />

@@ -299,6 +299,11 @@ export default function Energy() {
       <CounterArgument
         argument="Gujarat leads India in renewable energy with 42.5 GW installed capacity — more than any other state. The green transition is well underway."
         rebuttal="42 GW installed translates to only 22% of actual generation. Coal remains 58% of GUVNL contracts. The Power Ministry still directs imported-coal plants to run at full capacity during peak demand."
+        stats={[
+          { value: '22%', label: 'Actual RE Gen' },
+          { value: '550+', label: 'Morbi Units Shut' },
+          { value: '4,000 MW', label: 'Grid Drop (90 min)' },
+        ]}
       />
 
       <SourceList sources={sources} />

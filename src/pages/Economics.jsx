@@ -327,6 +327,11 @@ export default function Economics() {
       <CounterArgument
         argument="Gujarat's lowest debt-to-GSDP ratio (18.2%) proves exceptional fiscal discipline and prudent governance compared to other states."
         rebuttal="Revenue receipts at 8.7% of GSDP vs. 19.9% median means the state under-collects and under-spends on public services. Own Tax Revenue declining from 7.44% to 5.6% signals structural revenue weakness, not fiscal strength."
+        stats={[
+          { value: '4.9%', label: 'OTR / GSDP' },
+          { value: '₹11,929Cr', label: 'CAG Overstatement' },
+          { value: '0.53%', label: 'Central Grants' },
+        ]}
       />
 
       <SourceList sources={sources} />

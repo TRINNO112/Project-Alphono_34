@@ -314,6 +314,11 @@ export default function Materials() {
       <CounterArgument
         argument="Gujarat is India's refining and pharmaceutical powerhouse — Jamnagar alone processes 1.4 MMBPD, and the state has 216+ pharma plants."
         rebuttal="The 'powerhouse' runs on 85% imported crude and 65-70% Chinese APIs. Gujarat processes but does not produce — it is a pass-through economy vulnerable to any disruption in international supply chains."
+        stats={[
+          { value: '85%', label: 'Crude Imported' },
+          { value: '36%', label: 'From Russia' },
+          { value: '$3.6B', label: 'Chinese APIs' },
+        ]}
       />
 
       <SourceList sources={sources} />

@@ -282,6 +282,11 @@ export default function Labor() {
       <CounterArgument
         argument="Migrants come to Gujarat because it offers the best wages and opportunities. This proves the state's economic strength and attractiveness."
         rebuttal="Three mass exodus events in six years (2016, 2020, 2026) prove wages alone cannot retain workers during supply disruptions. 71 diamond worker suicides in 18 months show the human cost when the system fails."
+        stats={[
+          { value: '5-6L', label: 'Workers Fled (2026)' },
+          { value: '71', label: 'Suicides (18 mo)' },
+          { value: '₹100Cr/day', label: 'Loom Losses' },
+        ]}
       />
 
       <SourceList sources={sources} />

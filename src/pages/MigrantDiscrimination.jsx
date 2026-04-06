@@ -521,6 +521,11 @@ export default function MigrantDiscrimination() {
       <CounterArgument
         argument="Migrants come to Gujarat because it offers the best opportunities. The state is free of discrimination — everyone is welcome."
         rebuttal="The 2018 pogrom (organised by a leader who later joined the ruling party), the COVID exodus, Gujarat's wage levels closer to Bihar than Kerala, the Supreme Court finding Gujarat in violation of Article 21, 10 years of non-compliance with compensation orders, 141 dead at Morbi bridge with zero convictions, salt workers' bones calcifying in 52°C heat, and the everyday humiliation of being called 'Hindira' tell a very different story. Gujarat's economy cannot function without people from other states — but its social and political systems treat them as disposable."
+        stats={[
+          { value: '20,000+', label: 'Fled in 2018 Pogrom' },
+          { value: '₹425/day', label: 'Gujarat Migrant Wage' },
+          { value: '141', label: 'Morbi Dead, 0 Convicted' },
+        ]}
       />
 
       <SourceList sources={sources} />
