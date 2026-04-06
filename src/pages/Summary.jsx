@@ -239,7 +239,10 @@ export default function Summary() {
                   borderRadius: '8px',
                   fontSize: '13px',
                   fontFamily: 'Inter',
+                  color: isDark ? '#e5e7eb' : '#1f2937',
                 }}
+                itemStyle={{ color: isDark ? '#e5e7eb' : '#1f2937' }}
+                labelStyle={{ color: isDark ? '#d1d5db' : '#374151' }}
                 formatter={(value, name, props) => [`${value}% — ${props.payload.tier}`, 'Dependency Score']}
               />
               <Bar dataKey="score" radius={[0, 6, 6, 0]}>
