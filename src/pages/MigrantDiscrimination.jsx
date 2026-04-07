@@ -286,7 +286,7 @@ export default function MigrantDiscrimination() {
                 </li>
                 <li className="leading-relaxed">
                   <strong className="text-gray-900 dark:text-white block mb-1">Daily Micro-Aggressions & Slurs:</strong>
-                  The term <strong className="text-gray-900 dark:text-white">"bhaiyya"</strong> is used pejoratively for North Indian workers. More pointedly, the slur <strong className="text-gray-900 dark:text-white">"Hindira"</strong> — a derogatory term specifically targeting Hindi-speaking people — is used in daily interactions to mark non-Gujaratis as inferior outsiders. Workers and professionals alike report being refused service, mocked for their language, and treated as second-class residents.
+                  The term <strong className="text-gray-900 dark:text-white">"bhaiyya"</strong> is used pejoratively for North Indian workers. More pointedly, the Gujarati slur <strong className="text-gray-900 dark:text-white">"Hindira"</strong> (હિંદીરા) — a derogatory term specifically targeting Hindi-speaking people — is commonly used in daily interactions, workplaces, and schools to mark non-Gujaratis as inferior outsiders. Unlike "bhaiyya" which is pan-Indian, "Hindira" is a distinctly Gujarati term of contempt with no equivalent elsewhere. Hindi-speaking residents are routinely mocked for their language, refused rental housing, and treated as permanent outsiders regardless of whether they have lived in the state for 5 years or 20. The social distance between Gujarati and non-Gujarati communities — visible in workplaces, classrooms, and neighbourhoods — is not mandated by law, but the cumulative effect of sustained exclusion produces divisions that function similarly.<sup className="text-crimson cursor-pointer">*</sup>
                 </li>
               </ul>
             </DataCard>
@@ -518,15 +518,22 @@ export default function MigrantDiscrimination() {
 
       </div>
 
-      <CounterArgument
-        argument="Migrants come to Gujarat because it offers the best opportunities. The state is free of discrimination — everyone is welcome."
-        rebuttal="The 2018 pogrom (organised by a leader who later joined the ruling party), the COVID exodus, Gujarat's wage levels closer to Bihar than Kerala, the Supreme Court finding Gujarat in violation of Article 21, 10 years of non-compliance with compensation orders, 141 dead at Morbi bridge with zero convictions, salt workers' bones calcifying in 52°C heat, and the everyday humiliation of being called 'Hindira' tell a very different story. Gujarat's economy cannot function without people from other states — but its social and political systems treat them as disposable."
-        stats={[
-          { value: '20,000+', label: 'Fled in 2018 Pogrom' },
-          { value: '₹425/day', label: 'Gujarat Migrant Wage' },
-          { value: '141', label: 'Morbi Dead, 0 Convicted' },
-        ]}
-      />
+      <CounterArgument messages={[
+        { from: 'raju', text: 'Migrants come to Gujarat because everyone is welcome here. We treat them like family. They get jobs, housing — what more do they need?' },
+        { from: 'priya', text: 'In October 2018, **20,000+** workers fled after organized mobs attacked migrant settlements across the state. The leader who organized the attacks later joined the ruling party. That\'s not a welcome, Rajubhai.', source: 'Scroll.in / Indian Express Oct 2018' },
+        { from: 'raju', text: 'That was one incident. One bad actor. You can\'t judge a whole state by that.' },
+        { from: 'priya', text: '**589 tribal migrants** from MP\'s Alirajpur and Jhabua died of silicosis in Gujarat\'s quartz factories over a decade. Paid Rs 150/day, no masks, factory owners destroyed muster rolls weekly to avoid accountability. The NHRC had to intervene.', source: 'Business Standard / NHRC Notice 2016' },
+        { from: 'raju', text: 'Working conditions are improving. The economy can\'t function without these workers — that proves we need them.' },
+        { from: 'priya', text: 'Needing someone and protecting them are different things. **70%** of Morbi\'s ceramic workers are migrants — yet **92%** have no ESI coverage despite being legally entitled since 1967. Silicosis deaths surged **216%** in 2024-25. Migrants from UP and Bihar were among the **141 dead** at Morbi bridge — zero convictions. Gujarat\'s economy runs on people it won\'t even insure.', source: 'Counterview / PTRC / Morbi Commission' },
+      ]} />
+
+      {/* Author's Note */}
+      <div className="mt-12 p-6 rounded-2xl border border-amber-200 dark:border-amber-900/30 bg-amber-50/50 dark:bg-amber-950/20">
+        <p className="text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
+          <strong className="block mb-2 text-amber-900 dark:text-amber-200">* Author's Note on Everyday Discrimination</strong>
+          The observations about the use of the slur "Hindira," language-based mocking, social distance in classrooms and workplaces, and the treatment of long-term residents as permanent outsiders are <strong>not sourced from any published newspaper report or academic study</strong>. This data is drawn from the <strong>direct, lived experience of the author</strong> — a non-Gujarati resident of Gujarat for over a decade — and corroborated by the shared experiences of numerous Hindi-speaking professionals, students, and workers living in the state. The absence of formal documentation on this phenomenon is itself part of the problem: everyday social exclusion rarely makes headlines, but its cumulative impact on millions of non-Gujarati residents is real, measurable in their alienation, and visible to anyone who has experienced it firsthand.
+        </p>
+      </div>
 
       <SourceList sources={sources} />
     </main>

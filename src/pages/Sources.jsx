@@ -1,18 +1,21 @@
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Database, ExternalLink, Search, Filter, Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert } from 'lucide-react'
+import { Database, ExternalLink, Search, Filter, Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert, Wheat, Cpu, FlaskConical } from 'lucide-react'
 import SEO from '../components/SEO'
 
 const pillarMeta = {
-  Infrastructure: { icon: Ship, color: 'text-blue-500', count: 18 },
+  Infrastructure: { icon: Ship, color: 'text-blue-500', count: 22 },
   Energy: { icon: Zap, color: 'text-yellow-500', count: 18 },
-  Water: { icon: Droplets, color: 'text-teal-500', count: 14 },
-  Labor: { icon: Users, color: 'text-purple-500', count: 17 },
-  Economics: { icon: TrendingUp, color: 'text-green-500', count: 20 },
-  Materials: { icon: Factory, color: 'text-gray-500', count: 17 },
-  Education: { icon: GraduationCap, color: 'text-pink-500', count: 14 },
-  Environment: { icon: TreePine, color: 'text-emerald-500', count: 14 },
+  Water: { icon: Droplets, color: 'text-teal-500', count: 18 },
+  Labor: { icon: Users, color: 'text-purple-500', count: 22 },
+  Economics: { icon: TrendingUp, color: 'text-green-500', count: 27 },
+  Materials: { icon: Factory, color: 'text-gray-500', count: 23 },
+  Education: { icon: GraduationCap, color: 'text-pink-500', count: 20 },
+  Environment: { icon: TreePine, color: 'text-emerald-500', count: 22 },
   'Migrant Discrimination': { icon: ShieldAlert, color: 'text-red-500', count: 33 },
+  'Agriculture': { icon: Wheat, color: 'text-green-700', count: 6 },
+  'Green Tech': { icon: Cpu, color: 'text-cyan-500', count: 7 },
+  'Chemical Governance': { icon: FlaskConical, color: 'text-orange-500', count: 8 },
 }
 
 const allSources = [
@@ -198,6 +201,89 @@ const allSources = [
   { pillar: "Migrant Discrimination", type: "Media", title: "Tribal silicosis pipeline: Adivasi workers dying in Godhra stone crushing", url: "https://www.downtoearth.org.in" },
   { pillar: "Migrant Discrimination", type: "Media", title: "'Gujarati Asmita' — identity politics, regionalism, and the othering of Hindi-speaking residents", url: "https://economictimes.indiatimes.com" },
   { pillar: "Migrant Discrimination", type: "Legal", title: "Bharuch-Dahej industrial corridor: 90 accidents, 130 deaths (2018-2025)", url: "#" },
+
+  // ── NEW SOURCES FROM RESEARCH (Apr 2026) ──
+
+  // Economics — Time Series
+  { pillar: "Economics", type: "Govt", title: "PRS India — Gujarat Budget Analysis 2019-20", url: "https://prsindia.org/budgets/states/gujarat-budget-analysis-2019-20" },
+  { pillar: "Economics", type: "Govt", title: "16th Finance Commission — Evaluation Report on Gujarat State Finances", url: "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/studies/evaluation/Gujarat.pdf" },
+  { pillar: "Economics", type: "Media", title: "Gujarat Receives Highest FDI in FY21, Maharashtra Ranks Second", url: "https://www.businesstoday.in/latest/economy-politics/story/gujarat-receives-highest-fdi-in-fy21-maharashtra-ranks-second-297079-2021-05-26" },
+  { pillar: "Economics", type: "Media", title: "FDI Landscape in India FY 2023-24: A State & Sector Analysis", url: "https://www.india-briefing.com/news/fdi-landscape-in-india-fy-2023-24-a-state-sector-analysis-33445.html/" },
+  { pillar: "Economics", type: "Media", title: "Maharashtra and Karnataka Secure 51% of India's FDI in FY25", url: "https://www.angelone.in/news/market-updates/maharashtra-and-karnataka-secure-51-of-india-s-fdi-in-fy25" },
+  { pillar: "Economics", type: "Media", title: "Gujarat Received FDI Worth $7.3 Bn in 2023-24, Jump of 55% From Last Fiscal", url: "https://www.business-standard.com/india-news/gujarat-received-fdi-worth-7-3-bn-in-2023-24-jump-of-55-from-last-fiscal-124070500898_1.html" },
+  { pillar: "Economics", type: "Media", title: "Public Debt of Gujarat Around Rs 4 Lakh Crore", url: "https://deshgujarat.com/2026/02/27/public-debt-of-gujarat-around-%E2%82%B94-lakh-crore-govt/" },
+
+  // Water — Groundwater & SAUNI
+  { pillar: "Water", type: "Academic", title: "Groundwater 2024: Top Ten Stories on How Depletion Continues Alarmingly", url: "https://sandrp.in/2025/02/18/groundwater-2024-top-ten-stories-on-how-depletion-continues-alarmingly/" },
+  { pillar: "Water", type: "Govt", title: "SAUNI Yojana — Saurashtra Narmada Avtaran Irrigation Project Details", url: "https://en.wikipedia.org/wiki/Saurashtra_Narmada_Avtaran_Irrigation" },
+  { pillar: "Water", type: "Govt", title: "PMKSY Report: Best Practices of SAUNI Gujarat", url: "https://pmksy.mowr.gov.in/aibp-mis/Manual/Report%20on%20Best%20Practices%20of%20SAURASHTRA%20NARMADA%20AVATARANA%20IRRIGATION%20(SAUNI)%20GUJARAT.pdf" },
+  { pillar: "Water", type: "Media", title: "69,800 km Narmada Canals Done, 5,900 km Works in Progress", url: "https://deshgujarat.com/2025/03/08/69800-km-narmada-canals-done-5900-km-works-in-progress-govt/" },
+
+  // Labor — Exodus & Diamond
+  { pillar: "Labor", type: "Media", title: "Surat Migrant Workers Return Home Amid Gas Crisis and West Asia Tensions", url: "https://thefederal.com/category/states/west/gujarat/surat-migrant-workers-return-home-gas-crisis-west-asia-crisis-235206" },
+  { pillar: "Labor", type: "Media", title: "LPG Crisis Triggers Another Exodus of India's Gig and Manufacturing Workers", url: "https://inc42.com/features/lpg-crisis-triggers-another-exodus-of-indias-gig-and-manufacturing-workers/" },
+  { pillar: "Labor", type: "Media", title: "Diamonds Ain't Forever Under Trump's Tariffs", url: "https://www.outlookindia.com/national/diamonds-aint-forever-under-trumps-tariffs" },
+  { pillar: "Labor", type: "Media", title: "India's Diamond Industry in Despair as Exports Hit Two-Decade Low", url: "https://thefederal.com/category/business/indias-diamond-industry-in-despair-as-exports-hit-two-decade-low-185469" },
+  { pillar: "Labor", type: "Media", title: "Average Daily Salary in India 2025: State-wise Breakdown", url: "https://indiadatamap.com/2025/09/02/average-daily-salary-in-india-2025-breakdown/" },
+
+  // Materials — Russia Crude & APIs
+  { pillar: "Materials", type: "Academic", title: "Impact of US Sanctions and Tariffs on India's Russian Oil Imports", url: "https://carnegieendowment.org/posts/2025/11/the-impact-of-us-sanctions-and-tariffs-on-indias-russian-oil-imports?lang=en" },
+  { pillar: "Materials", type: "Media", title: "Russian Crude Never Left India's Import Mix — Made Up 1/3rd of Oil Imports 2024-2026", url: "https://theprint.in/economy/russian-crude-never-left-indias-import-mix-it-made-up-1-3rd-of-oil-imports-from-2024-to-2026/2874224/" },
+  { pillar: "Materials", type: "Media", title: "Bulk Drug (API) Imports from China Up 1.7% in FY23, Growth Slowing Down", url: "https://www.business-standard.com/economy/news/bulk-drug-imports-from-china-up-1-7-in-fy23-growth-slowing-down-123101700940_1.html" },
+  { pillar: "Materials", type: "Media", title: "API Imports 2023-24: India-China Pharmaceutical Trade Data", url: "https://www.pharmabiz.com/NewsDetails.aspx?aid=168926&sid=1" },
+  { pillar: "Materials", type: "Academic", title: "India's Rise as Global Pharmacy Masks Deep Dependence on China", url: "https://www.orfonline.org/expert-speak/india-s-rise-as-global-pharmacy-masks-deep-dependence-on-china" },
+  { pillar: "Materials", type: "Govt", title: "Fertilizer Import Dependency: Reducing India's Dependence", url: "https://www.insightsonindia.com/2025/02/25/reducing-indias-fertilizer-dependence/" },
+
+  // Education — GER, Dropouts, NIRF
+  { pillar: "Education", type: "Academic", title: "School Education in Gujarat: Comprehensive Analysis Based on UDISE 2021-22 to 2024-25", url: "https://educationforallinindia.com/school-education-in-gujarat-where-do-we-stand-a-comprehensive-analysis-based-on-udise-data-2021-22-to-2024-25/" },
+  { pillar: "Education", type: "Media", title: "Gujarat's 341% Spike in Dropouts: What's Behind the Surge?", url: "https://www.schoolserv.in/gujarats-341-spike-in-dropouts-whats-behind-the-surge/" },
+  { pillar: "Education", type: "Media", title: "Gujarat's Education Crisis: 525 Govt Schools Shut in 8 Years", url: "https://english.bombaysamachar.com/gujarat/gujarats-education-crisis-525-govt-schools-shut-in-8-years/" },
+  { pillar: "Education", type: "Media", title: "90 Govt Schools Shut, 500 Merged in Gujarat Since 2020", url: "https://indianexpress.com/article/cities/ahmedabad/90-govt-schools-shut-500-merged-in-gujarat-since-2020-govt-data-7835207/" },
+  { pillar: "Education", type: "Media", title: "3.57 Lakh Vacant Teaching Posts Straining India's Schools", url: "https://news.careers360.com/teachers-day-2025-government-schools-3-57-lakh-teaching-vacancies-udise-plus-pab-data" },
+  { pillar: "Education", type: "Media", title: "NIRF Rankings 2024: IIT Gandhinagar Falls 5 Places, Gujarat University Down 9", url: "https://english.gujaratsamachar.com/news/gujarat/nirf-rankings-2024-iit-gn-falls-5-places-gujarat-university-down-by-9-places" },
+
+  // Environment — CEPI, Rivers, Alang, Erosion
+  { pillar: "Environment", type: "Academic", title: "Why Does Vapi Continue to Be Critically Polluted? — The Wire Science", url: "https://science.thewire.in/environment/vapi-polluted-gpcb-cepi/" },
+  { pillar: "Environment", type: "Media", title: "Gujarat Has Highest Number of Highly Polluted River Stretches in India", url: "https://timesofindia.indiatimes.com/city/ahmedabad/gujarat-has-highest-number-of-highly-polluted-river-stretches-in-india/articleshow/98982122.cms" },
+  { pillar: "Environment", type: "Academic", title: "River Pollution Plaguing Gujarat — CSE India Analysis", url: "https://www.cseindia.org/river-pollution-plaguing-gujarat--3701" },
+  { pillar: "Environment", type: "Academic", title: "Sabarmati River Water Quality Assessment 2025 — Springer Nature", url: "https://link.springer.com/article/10.1007/s42452-025-08164-x" },
+  { pillar: "Environment", type: "Media", title: "'No Work': Alang — World's Largest Ship Graveyard — Is Dying", url: "https://www.aljazeera.com/news/2025/12/15/no-work-indias-alang-the-worlds-largest-graveyard-of-ships-is-dying" },
+  { pillar: "Environment", type: "Media", title: "Alang Ship Recycling Falls to 16-Year Low — Only 125 Ships Scrapped in FY24", url: "https://www.hellenicshippingnews.com/alang-ship-recycling-falls-to-16-year-low-only-125-ships-scrapped-in-fy24/" },
+  { pillar: "Environment", type: "Govt", title: "CPCB Polluted River Stretches Report 2022", url: "https://cpcb.nic.in/openpdffile.php?id=UmVwb3J0RmlsZXMvMTQ5OF8xNjcyOTg4MDQ1X21lZGlhcGhvdG8xMjk5NS5wZGY%3D" },
+  { pillar: "Environment", type: "Media", title: "A Third of India's Coastline Underwent Erosion in 28 Years — Down To Earth", url: "https://www.downtoearth.org.in/environment/a-third-of-india-s-coastline-underwent-erosion-in-28-years-bengal-worst-affected-78514" },
+
+  // Infrastructure — Airports & Ports
+  { pillar: "Infrastructure", type: "Media", title: "At 1.34 Crore, Ahmedabad Airport Saw 15% Jump in Passenger Traffic in 2024-25", url: "https://www.tribuneindia.com/news/adani-group/at-1-34-crore-ahmedabad-airport-saw-15-jump-in-passenger-traffic-in-2024-25" },
+  { pillar: "Infrastructure", type: "Media", title: "Gujarat's 19 Airports Handled 1.43 Lakh Flights, Served Over 1.70 Crore Passengers in 2024", url: "https://deshgujarat.com/2025/05/05/gujarats-19-airports-handled-1-43-lakh-flights-served-over-1-70-crore-passengers-in-2024-govt/" },
+  { pillar: "Infrastructure", type: "Industry", title: "APSEZ Records All-Time High PAT of Rs 11,061 Cr in FY25, Up 37%", url: "https://www.adaniports.com/newsroom/media-releases/apsez-records-all-time-high-pat-of-rs11061-cr-in-fy25-up-37percent" },
+  { pillar: "Infrastructure", type: "Media", title: "Mundra Port Becomes First in India to Cross 200 MMT Cargo Mark", url: "https://www.constructionworld.in/transport-infrastructure/ports-and-shipping/mundra-port-becomes-first-in-india-to-cross-200-mmt-cargo-mark/71413" },
+
+  // ── AGRICULTURE ──
+  { pillar: "Agriculture", type: "Industry", title: "India's Fertilizer Import Dependencies and NBS Subsidy Outlays amidst Red Sea Crisis", url: "https://argusmedia.com/fertilizers/india-import-data" },
+  { pillar: "Agriculture", type: "Media", title: "The Illusion of the Gujarat Agricultural Miracle and the Saurashtra Debt Crisis", url: "https://thewire.in/agriculture/gujarat-saurashtra-distress" },
+  { pillar: "Agriculture", type: "Media", title: "Groundwater Depletion in Mehsana and the Narmada Water Diversion Paradox", url: "https://downtoearth.org.in/water/narmada-diversion" },
+  { pillar: "Agriculture", type: "Media", title: "Drought-Hit Gujarat Has Water for Factories, Not for Farmers", url: "https://indiaspend.com/gujarat-water-crisis" },
+  { pillar: "Agriculture", type: "Media", title: "MOP/DAP Import Shifts Leaning Towards Russian Procurement", url: "https://economictimes.indiatimes.com/industry/indl-goods/svs/chem-/-fertilisers" },
+  { pillar: "Agriculture", type: "Academic", title: "Pink Bollworm Resistance to Standard Cry1Ac Gene Traits in Regional Cotton Zones", url: "https://icar.org.in/cotton-research" },
+
+  // ── GREEN TECH ──
+  { pillar: "Green Tech", type: "Industry", title: "India's EV Supply Chain and Critical Mineral Dependencies", url: "https://careratings.com/research/ev-supply-chain" },
+  { pillar: "Green Tech", type: "Media", title: "China's Export Controls on Rare Earths and the Global Ripple Effect", url: "https://scmp.com/economy/china-economy" },
+  { pillar: "Green Tech", type: "Media", title: "How Rare Earth Shortages Stall India's Booming EV Sector", url: "https://aljazeera.com/economy/india-ev-rare-earths" },
+  { pillar: "Green Tech", type: "Industry", title: "The Atmanirbhar Bharat Battery Challenge: Localizing the Cell", url: "https://marcellus.in/blogs/battery-challenge" },
+  { pillar: "Green Tech", type: "Industry", title: "Urban Mining and Localized EV Recycling Initiatives within the SIR", url: "https://dholera.news/ev-recycling-hub" },
+  { pillar: "Green Tech", type: "Media", title: "Upstream Polysilicon Import Ratios for Khavda Solar Park vs Domestic PLI Production", url: "https://thewire.in/energy/khavda-solar-imports" },
+  { pillar: "Green Tech", type: "Industry", title: "Global Rare Earth Processing Market Share Analytics (2025)", url: "https://bnef.com/rare-earth-mining" },
+
+  // ── CHEMICAL GOVERNANCE ──
+  { pillar: "Chemical Governance", type: "Legal", title: "NGT Principal Bench Directives — Fines against Vapi Green Enviro Ltd, Naroda Enviro Projects Ltd, and Ankleshwar CETPs", url: "https://greentribunal.gov.in" },
+  { pillar: "Chemical Governance", type: "Media", title: "The Sabarmati River: The Dark Underbelly of Ahmedabad's Industrial Growth", url: "https://india.mongabay.com/sabarmati-pollution" },
+  { pillar: "Chemical Governance", type: "Academic", title: "Pharmaceutical Residue and the Rise of Antimicrobial Resistance in Gujarat's Rivers", url: "https://indiawaterportal.org/amr-gujarat" },
+  { pillar: "Chemical Governance", type: "Media", title: "Critically Polluted Industrial Areas: The Evolving Vapi and Ankleshwar Crisis", url: "https://downtoearth.org.in/pollution/vapi-ankleshwar" },
+  { pillar: "Chemical Governance", type: "Media", title: "Environmental Justice and Industrial Pollution Impact on Marginalized Communities", url: "https://pucl.org/gujarat-environment" },
+  { pillar: "Chemical Governance", type: "Media", title: "Deep Sea Pipelines: Hiding the Effluent Problem by Pumping it into the Ocean", url: "https://thewire.in/environment/gujarat-marine-outfall" },
+  { pillar: "Chemical Governance", type: "Media", title: "Socio-Economic Destruction of Coastal Fishing Livelihoods Due to Chemical Marine Outfall", url: "https://icsf.net/india-fisheries-pollution" },
+  { pillar: "Chemical Governance", type: "Govt", title: "National CEPI Index Reports and Historical Moratorium Documents — Gujarat Golden Corridor", url: "https://cpcb.nic.in/cepi" },
 ]
 
 const typeColors = {

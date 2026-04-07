@@ -31,6 +31,9 @@ export default function Footer() {
               <li><Link to="/energy" className="hover:text-crimson transition-colors">Energy Grid & Power</Link></li>
               <li><Link to="/water" className="hover:text-crimson transition-colors">Water Security</Link></li>
               <li><Link to="/migrant-discrimination" className="hover:text-crimson transition-colors text-crimson font-medium">Migrant Discrimination</Link></li>
+              <li><Link to="/agriculture" className="hover:text-crimson transition-colors">Agriculture & Agrarian Distress</Link></li>
+              <li><Link to="/greentech" className="hover:text-crimson transition-colors">Green Tech Dependency</Link></li>
+              <li><Link to="/chemical-governance" className="hover:text-crimson transition-colors">Chemical Governance</Link></li>
             </ul>
           </div>
 

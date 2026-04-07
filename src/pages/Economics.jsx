@@ -324,15 +324,14 @@ export default function Economics() {
         ]}
       />
 
-      <CounterArgument
-        argument="Gujarat's lowest debt-to-GSDP ratio (18.2%) proves exceptional fiscal discipline and prudent governance compared to other states."
-        rebuttal="Revenue receipts at 8.7% of GSDP vs. 19.9% median means the state under-collects and under-spends on public services. Own Tax Revenue declining from 7.44% to 5.6% signals structural revenue weakness, not fiscal strength."
-        stats={[
-          { value: '4.9%', label: 'OTR / GSDP' },
-          { value: '₹11,929Cr', label: 'CAG Overstatement' },
-          { value: '0.53%', label: 'Central Grants' },
-        ]}
-      />
+      <CounterArgument messages={[
+        { from: 'raju', text: 'Gujarat has India\'s lowest debt-to-GSDP ratio at **18.2%**. That\'s fiscal discipline. No other state comes close.' },
+        { from: 'priya', text: 'Low debt because the state barely spends on public services. Revenue receipts at **8.7%** of GSDP — the median state is at **19.9%**. That\'s not discipline, that\'s under-collection.', source: 'PRS India Budget Analysis FY27' },
+        { from: 'raju', text: 'Less government spending means less waste. The private sector fills the gap more efficiently.' },
+        { from: 'priya', text: 'The CAG found **Rs 11,929 Cr** of overstated surplus. Own Tax Revenue has fallen from 7.44% to **4.9%** of GSDP in a decade. Central grants crashed to **0.53%**. Who fills that gap?', source: 'CAG Gujarat Fiscal Audit FY25' },
+        { from: 'raju', text: 'GST compensates for that. Gujarat is a net contributor to the national pool.' },
+        { from: 'priya', text: 'GST compensation ended. And being a "net contributor" while your own revenue base erodes means you\'re subsidizing other states while under-investing in your own people. **32,000** teacher vacancies don\'t fill themselves.', source: 'NITI Aayog Macro-Fiscal Report' },
+      ]} />
 
       <SourceList sources={sources} />
     </main>

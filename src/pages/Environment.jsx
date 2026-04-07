@@ -307,15 +307,14 @@ export default function Environment() {
         </DataCard>
       </Section>
 
-      <CounterArgument
-        argument="Gujarat's industrial output justifies its environmental footprint. The state's pollution control infrastructure is continuously improving."
-        rebuttal="6 CPCB critically polluted zones, Vapi mercury at 96x WHO limits, 74% of rivers severely polluted, zero reported occupational cancers at Alang despite 4,513 projected mesothelioma cases. Over 50% of land under desertification. The environmental costs are being externalized, not managed."
-        stats={[
-          { value: '90.75', label: 'Vapi CEPI' },
-          { value: '96x', label: 'Mercury (vs WHO)' },
-          { value: '4,513', label: 'Projected Cancers' },
-        ]}
-      />
+      <CounterArgument messages={[
+        { from: 'raju', text: 'Gujarat\'s industrial output justifies the environmental footprint. Pollution control infrastructure is continuously improving — Vapi even got off the critical list.' },
+        { from: 'priya', text: 'Vapi\'s CEPI "improved" because CPCB changed the methodology in 2016. Under the original 2009 formula, it scored **90.75** — India\'s worst. The pollution didn\'t decrease, the yardstick moved.', source: 'CAG Pollution Control Audit 2022' },
+        { from: 'raju', text: 'That\'s a central agency issue, not Gujarat\'s fault. We\'re investing in effluent treatment plants.' },
+        { from: 'priya', text: 'The Sabarmati has a BOD of **292 mg/L** — the permissible limit is 3. Mercury in Vapi groundwater at **96x** WHO limits. **74%** of Gujarat\'s rivers are severely polluted. ETPs exist on paper.', source: 'CPCB Polluted River Stretches 2022' },
+        { from: 'raju', text: 'Industrial states always have environmental trade-offs. It\'s the price of development.' },
+        { from: 'priya', text: '**4,513** projected mesothelioma cases at Alang with zero reported. **27.6%** of coastline eroding. Per capita CO2 at **4.2 tons** — 91% above national average. This isn\'t a trade-off, Rajubhai. It\'s an externality nobody is accounting for.', source: 'NCCR / Alang Health Studies' },
+      ]} />
 
       <SourceList sources={sources} />
     </main>

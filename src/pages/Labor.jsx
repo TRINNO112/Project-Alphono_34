@@ -279,15 +279,14 @@ export default function Labor() {
         </DataCard>
       </Section>
 
-      <CounterArgument
-        argument="Migrants come to Gujarat because it offers the best wages and opportunities. This proves the state's economic strength and attractiveness."
-        rebuttal="Three mass exodus events in six years (2016, 2020, 2026) prove wages alone cannot retain workers during supply disruptions. 71 diamond worker suicides in 18 months show the human cost when the system fails."
-        stats={[
-          { value: '5-6L', label: 'Workers Fled (2026)' },
-          { value: '71', label: 'Suicides (18 mo)' },
-          { value: '₹100Cr/day', label: 'Loom Losses' },
-        ]}
-      />
+      <CounterArgument messages={[
+        { from: 'raju', text: 'Migrants come to Gujarat because it offers the best opportunities. **60 lakh+** workers can\'t be wrong — they vote with their feet.' },
+        { from: 'priya', text: 'They come because home is worse, not because Gujarat is great. Average migrant wage is **Rs 425/day** — Kerala pays **Rs 750**. They\'re not choosing Gujarat, they\'re trapped by proximity.', source: 'Periodic Labour Force Survey 2023-24' },
+        { from: 'raju', text: 'If conditions were so bad, why would they keep coming back after COVID?' },
+        { from: 'priya', text: 'Many didn\'t. Only **10%** returned to Surat after the 2020 exodus. And then 2026 hit — **5-6 lakh** fled again. Three mass exits in six years isn\'t loyalty, it\'s desperation cycling.', source: 'The Federal / ThePrint Mar 2026' },
+        { from: 'raju', text: 'The diamond industry is recovering. Surat always bounces back.' },
+        { from: 'priya', text: '**1.5 lakh** diamond jobs gone. **71 suicides** in 18 months. Powerloom losses at **Rs 100 Cr/day**. At what point do we stop calling it a bounce-back and start calling it structural fragility?', source: 'ThePrint — Diamond Worker Suicides Report' },
+      ]} />
 
       <SourceList sources={sources} />
     </main>

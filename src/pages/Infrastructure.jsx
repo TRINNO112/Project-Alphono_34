@@ -308,15 +308,14 @@ export default function Infrastructure() {
         ]}
       />
 
-      <CounterArgument
-        argument="Adani's efficiency delivers India's lowest port tariffs and fastest turnaround times. Private operation is inherently superior to government ports."
-        rebuttal="Single-entity concentration means a regulatory dispute, operational failure, or geopolitical sanction has no failover. When one company controls 40% of national cargo capacity, efficiency becomes fragility."
-        stats={[
-          { value: '40%', label: 'India Cargo (1 firm)' },
-          { value: '0', label: 'Submarine Cables' },
-          { value: '22', label: 'Bridge Deaths' },
-        ]}
-      />
+      <CounterArgument messages={[
+        { from: 'raju', text: 'Bhai, Gujarat ports handle **40%** of India\'s cargo. Mundra just crossed 200 MMT. Name one state that comes close.' },
+        { from: 'priya', text: 'Impressive throughput, no doubt. But **70%** is pass-through cargo — it doesn\'t stay in Gujarat. And one company, APSEZ, controls almost all of it.', source: 'CAG FY25 Audit Report' },
+        { from: 'raju', text: 'So? Private efficiency beats government ports every time. That\'s the Gujarat model.' },
+        { from: 'priya', text: 'Efficiency with zero redundancy is fragility. **4,500** bridges past design life, **zero** submarine cable landings, and **22** dead in Morbi — that\'s the infrastructure behind the cargo numbers.', source: 'IRC Bridge Report / Morbi Commission' },
+        { from: 'raju', text: 'Morbi was a tragedy, not a pattern.' },
+        { from: 'priya', text: 'One port operator, one expressway stuck at **5%** completion, one bridge collapse with zero convictions. At what point does concentration become a pattern?', source: 'NHAI Progress Report FY26' },
+      ]} />
 
       <SourceList sources={sources} />
     </main>

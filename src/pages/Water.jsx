@@ -306,15 +306,14 @@ export default function Water() {
         ]}
       />
 
-      <CounterArgument
-        argument="The Sardar Sarovar Project solved Gujarat's water crisis, irrigating 20 lakh hectares and supplying 3 crore people. It is a triumph of engineering."
-        rebuttal="3 crore people on a single dam with only 75% dependability allocation. No redundancy. The North Gujarat aquifer is at 95% withdrawal. One multi-year drought threatens both agriculture and urban supply simultaneously."
-        stats={[
-          { value: '132%', label: 'Mehsana Extraction' },
-          { value: '75%', label: 'Water Dependability' },
-          { value: '17.5 mg/L', label: 'Fluoride (11x WHO)' },
-        ]}
-      />
+      <CounterArgument messages={[
+        { from: 'raju', text: 'Sardar Sarovar is an engineering marvel — irrigates **20 lakh hectares**, supplies water to **3 crore** people. Without it, Gujarat would be a desert.' },
+        { from: 'priya', text: 'Exactly my point. **3 crore people** on a single dam with only **75%** dependability allocation. What happens in a two-year drought?', source: 'Narmada Control Authority Data' },
+        { from: 'raju', text: 'That\'s why we built SAUNI — linking Narmada to Saurashtra\'s reservoirs.' },
+        { from: 'priya', text: 'SAUNI went from Rs 11,000 Cr to Rs **18,563 Cr** — a **69%** cost overrun. Meanwhile Mehsana is pumping at **132%** of recharge. The aquifer is literally being mined.', source: 'CGWB / PMKSY Report' },
+        { from: 'raju', text: 'Groundwater is a local issue. The state is managing it.' },
+        { from: 'priya', text: 'Managing it with fluoride at **17.5 mg/L** — that\'s **11x** the WHO limit. Children in North Gujarat are developing skeletal fluorosis. That\'s not management, Rajubhai.', source: 'CGWB Groundwater Quality Report' },
+      ]} />
 
       <SourceList sources={sources} />
     </main>
