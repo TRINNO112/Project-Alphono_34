@@ -10,11 +10,11 @@ const fade = (delay = 0) => ({
 })
 
 const sourceBreakdown = [
-  { type: "Government & Institutional", pct: 28, count: 46, color: "bg-blue-500", examples: "CAG Reports, NITI Aayog, Finance Commission, RBI, NPCIL, GPCB" },
-  { type: "Investigative Journalism", pct: 35, count: 58, color: "bg-crimson", examples: "The Print, Scroll.in, IndiaSpend, Down To Earth, Business Standard" },
-  { type: "Academic & Research", pct: 18, count: 30, color: "bg-purple-500", examples: "Peer-reviewed journals, RIS Discussion Papers, WHO/LANCET studies" },
-  { type: "Industry & Domain Reports", pct: 12, count: 20, color: "bg-amber-500", examples: "Global Energy Monitor, Marine Insight, IBEF, World Nuclear Association" },
-  { type: "Legal & Court Records", pct: 7, count: 11, color: "bg-emerald-500", examples: "Gujarat HC rulings, Supreme Court orders, CAG audit objections" },
+  { type: "Government & Institutional", pct: 26, count: 47, color: "bg-blue-500", examples: "CAG Reports, NITI Aayog, Finance Commission, RBI, NPCIL, GPCB, CPCB" },
+  { type: "Investigative Journalism", pct: 37, count: 68, color: "bg-crimson", examples: "The Print, Scroll.in, IndiaSpend, Down To Earth, Business Standard, The Wire, Mongabay" },
+  { type: "Academic & Research", pct: 17, count: 32, color: "bg-purple-500", examples: "Peer-reviewed journals, RIS Discussion Papers, ICAR, WHO/LANCET studies, India Water Portal" },
+  { type: "Industry & Domain Reports", pct: 14, count: 26, color: "bg-amber-500", examples: "Global Energy Monitor, Marine Insight, IBEF, BNEF, CARE Ratings, Argus Media, Marcellus" },
+  { type: "Legal & Court Records", pct: 6, count: 12, color: "bg-emerald-500", examples: "Gujarat HC rulings, Supreme Court orders, NGT directives, CAG audit objections" },
 ]
 
 const verificationSteps = [
@@ -62,10 +62,10 @@ export default function Methodology() {
           <SectionNumber n="1" />
           <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4">Research Framework</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-            This investigation employs a <strong className="text-gray-900 dark:text-white">mixed-methods structural dependency analysis</strong> — combining quantitative data extraction from government records with qualitative assessment drawn from investigative journalism, court proceedings, and field reporting.
+            This investigation employs a <strong className="text-gray-900 dark:text-white">mixed-methods structural dependency analysis</strong> — combining quantitative data extraction from government records with qualitative assessment drawn from investigative journalism, court proceedings, and field reporting. Phase II expanded the scope with deep-dive research into agrarian distress, green technology supply chain vulnerabilities, and industrial chemical toxicity governance.
           </p>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-            The core thesis — that Gujarat's industrial economy contains deep, under-examined structural vulnerabilities — is tested across <strong className="text-gray-900 dark:text-white">9 interdependent pillars</strong>: Infrastructure, Energy, Water, Labor, Fiscal Governance, Raw Materials, Education, Environment, and Migrant Discrimination.
+            The core thesis — that Gujarat's industrial economy contains deep, under-examined structural vulnerabilities — is tested across <strong className="text-gray-900 dark:text-white">12 interdependent pillars</strong>: Infrastructure, Energy, Water, Labor, Fiscal Governance, Raw Materials, Education, Environment, Migrant Discrimination, Agriculture & Agrarian Distress, Green Tech Dependency, and Chemical Governance.
           </p>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
             Each pillar is not analyzed in isolation. The research deliberately maps <strong className="text-gray-900 dark:text-white">cross-pillar dependencies</strong> — for example, how energy price shocks (Pillar 2) cascade into labor exodus (Pillar 4), which in turn impacts industrial output (Pillar 6) and fiscal receipts (Pillar 5).
@@ -78,7 +78,7 @@ export default function Methodology() {
           <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-6">Data Collection Protocol</h2>
 
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-            A total of <strong className="text-gray-900 dark:text-white">165 sources</strong> across 9 pillars were collected, verified, and cited. Sources are classified into five categories:
+            A total of <strong className="text-gray-900 dark:text-white">186 sources</strong> across 12 pillars were collected, verified, and cited. Sources are classified into five categories:
           </p>
 
           {/* Source breakdown bars */}

@@ -296,15 +296,14 @@ export default function Energy() {
         ]}
       />
 
-      <CounterArgument
-        argument="Gujarat leads India in renewable energy with 42.5 GW installed capacity — more than any other state. The green transition is well underway."
-        rebuttal="42 GW installed translates to only 22% of actual generation. Coal remains 58% of GUVNL contracts. The Power Ministry still directs imported-coal plants to run at full capacity during peak demand."
-        stats={[
-          { value: '22%', label: 'Actual RE Gen' },
-          { value: '550+', label: 'Morbi Units Shut' },
-          { value: '4,000 MW', label: 'Grid Drop (90 min)' },
-        ]}
-      />
+      <CounterArgument messages={[
+        { from: 'raju', text: 'Gujarat leads India in renewable energy — **42.5 GW** installed. We have the world\'s largest solar park at Khavda. That\'s leadership.' },
+        { from: 'priya', text: '42.5 GW installed, but only **22%** of actual generation comes from renewables. Coal still runs **58%** of GUVNL contracts.', source: 'GUVNL Annual Report FY25' },
+        { from: 'raju', text: 'Transition takes time. At least we\'re building capacity.' },
+        { from: 'priya', text: 'Meanwhile, **550+ Morbi units** shut in March 2026 because gas hit $17/MMBtu. The grid dropped **4,000 MW** in 90 minutes. Workers didn\'t have time to wait for the transition.', source: 'Desh Gujarat / Grid Report Mar 2026' },
+        { from: 'raju', text: 'That was a war situation. You can\'t plan for everything.' },
+        { from: 'priya', text: 'When **69%** of your LNG passes through one strait and your two mega-plants run on imported coal — yes, you can plan for it. That\'s what energy security means.', source: 'Global Energy Monitor — Mundra' },
+      ]} />
 
       <SourceList sources={sources} />
     </main>

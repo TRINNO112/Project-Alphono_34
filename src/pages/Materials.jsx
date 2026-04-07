@@ -311,15 +311,14 @@ export default function Materials() {
         </DataCard>
       </Section>
 
-      <CounterArgument
-        argument="Gujarat is India's refining and pharmaceutical powerhouse — Jamnagar alone processes 1.4 MMBPD, and the state has 216+ pharma plants."
-        rebuttal="The 'powerhouse' runs on 85% imported crude and 65-70% Chinese APIs. Gujarat processes but does not produce — it is a pass-through economy vulnerable to any disruption in international supply chains."
-        stats={[
-          { value: '85%', label: 'Crude Imported' },
-          { value: '36%', label: 'From Russia' },
-          { value: '$3.6B', label: 'Chinese APIs' },
-        ]}
-      />
+      <CounterArgument messages={[
+        { from: 'raju', text: 'Jamnagar is the world\'s largest refinery — **1.4 million barrels per day**. Gujarat has **216+** pharma plants. We\'re a manufacturing powerhouse.' },
+        { from: 'priya', text: 'A powerhouse that runs on **85%** imported crude and **65-70%** Chinese APIs. Gujarat processes, but doesn\'t produce. That\'s a pass-through economy.', source: 'MoC Tradestats / Pharmexcil FY25' },
+        { from: 'raju', text: 'Import dependency is normal for any manufacturing hub. Japan, Korea — they all import raw materials.' },
+        { from: 'priya', text: 'Japan diversified suppliers over decades. Gujarat went from **2%** Russian crude in FY21 to **36%** in FY25 — in the opposite direction of diversification. Nayara is literally half-owned by Rosneft.', source: 'Carnegie Endowment / Bloomberg' },
+        { from: 'raju', text: 'Russian crude is cheap. Smart economics.' },
+        { from: 'priya', text: 'Cheap until sanctions bite. Paracetamol API: **91%** from China. Streptomycin: **100%**. Potash: **100%** imported. One supply chain disruption and Gujarat\'s pharma + agriculture collapse simultaneously.', source: 'ORF / Pharmabiz FY25 Data' },
+      ]} />
 
       <SourceList sources={sources} />
     </main>

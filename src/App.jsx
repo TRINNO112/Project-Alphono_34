@@ -18,6 +18,9 @@ import DistrictMap from './pages/DistrictMap'
 import DistrictAnalysis from './pages/DistrictAnalysis'
 import Methodology from './pages/Methodology'
 import Sources from './pages/Sources'
+import Agriculture from './pages/Agriculture'
+import GreenTech from './pages/GreenTech'
+import ChemicalGovernance from './pages/ChemicalGovernance'
 import SearchBar from './components/SearchBar'
 import Footer from './components/Footer'
 
@@ -72,6 +75,9 @@ export default function App() {
           <Route path="/district/:id" element={<DistrictAnalysis />} />
           <Route path="/methodology" element={<Methodology />} />
           <Route path="/sources" element={<Sources />} />
+          <Route path="/agriculture" element={<Agriculture />} />
+          <Route path="/greentech" element={<GreenTech />} />
+          <Route path="/chemical-governance" element={<ChemicalGovernance />} />
         </Routes>
 
         <SearchBar />

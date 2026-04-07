@@ -1,65 +1,130 @@
 import { motion } from 'framer-motion'
-import { CheckCircle, AlertTriangle } from 'lucide-react'
 
-export function CounterArgument({ argument, rebuttal, stats }) {
+const CHARACTERS = {
+  raju: {
+    name: 'Rajubhai',
+    location: 'Ahmedabad',
+    emoji: '\u{1F5E3}\u{FE0F}',
+  },
+  priya: {
+    name: 'Priya',
+    location: 'Delhi',
+    emoji: '\u{1F4CA}',
+  },
+}
+
+function parseBold(text) {
+  const parts = text.split(/\*\*/)
+  return parts.map((part, i) =>
+    i % 2 === 1
+      ? <strong key={i} className="text-crimson font-bold">{part}</strong>
+      : <span key={i}>{part}</span>
+  )
+}
+
+function fakeTime(index) {
+  const base = 9
+  const min = index * 1 + 1
+  const h = base + Math.floor(min / 60)
+  const m = min % 60
+  return `${h}:${String(m).padStart(2, '0')} AM`
+}
+
+export function CounterArgument({ messages, argument, rebuttal, stats }) {
+  // Backwards compatibility: convert old props to messages format
+  const chatMessages = messages || [
+    { from: 'raju', text: argument || '' },
+    {
+      from: 'priya',
+      text: (stats ? stats.map(s => `**${s.value}** ${s.label}`).join('. ') + '. ' : '') + (rebuttal || ''),
+    },
+  ]
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="rounded-2xl overflow-hidden border border-gray-200 dark:border-dark-border my-8"
+      transition={{ duration: 0.5 }}
+      className="rounded-2xl overflow-hidden border border-gray-200 dark:border-dark-border my-8 bg-stone-50/80 dark:bg-dark-surface/30"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {/* Left column — The Optimist's Narrative */}
-        <div className="bg-green-50/50 dark:bg-green-950/20 p-6 md:p-8 relative">
-          <div className="flex items-center gap-2 mb-4">
-            <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-            <span className="text-sm uppercase tracking-widest font-semibold text-green-700 dark:text-green-400">
-              The Optimist
-            </span>
+      {/* Header */}
+      <div className="px-5 py-3.5 bg-emerald-800 dark:bg-emerald-950 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-emerald-200/80">The Debate</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm">{CHARACTERS.raju.emoji}</span>
+            <span className="text-[10px] text-emerald-200/70 font-semibold">{CHARACTERS.raju.name}</span>
           </div>
-          <div className="bg-white/60 dark:bg-dark-surface/40 rounded-xl p-5 border border-green-200/50 dark:border-green-900/30 relative">
-            {/* Speech bubble tail */}
-            <div className="absolute -top-2 left-6 w-4 h-4 bg-white/60 dark:bg-dark-surface/40 border-l border-t border-green-200/50 dark:border-green-900/30 transform rotate-45" />
-            <p className="text-green-800 dark:text-green-300 leading-relaxed italic font-serif text-lg relative z-10">
-              &ldquo;{argument}&rdquo;
-            </p>
+          <span className="text-emerald-400/40 text-xs">vs</span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm">{CHARACTERS.priya.emoji}</span>
+            <span className="text-[10px] text-emerald-200/70 font-semibold">{CHARACTERS.priya.name}</span>
           </div>
         </div>
+      </div>
 
-        {/* Right column — The Data Strikes Back */}
-        <div className="bg-red-50/50 dark:bg-red-950/20 p-6 md:p-8 border-l-0 md:border-l-2 border-t-2 md:border-t-0 border-crimson/20">
-          <div className="flex items-center gap-2 mb-4">
-            <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400" />
-            <span className="text-sm uppercase tracking-widest font-semibold text-red-700 dark:text-red-400">
-              The Data
-            </span>
-          </div>
+      {/* Chat area */}
+      <div className="px-4 py-5 space-y-3 min-h-[200px]" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(16,185,129,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(211,47,47,0.03) 0%, transparent 50%)' }}>
+        {chatMessages.map((msg, i) => {
+          const char = CHARACTERS[msg.from] || CHARACTERS.raju
+          const isRaju = msg.from === 'raju'
 
-          {/* Stat callouts — if provided */}
-          {stats && stats.length > 0 && (
-            <div className="flex flex-wrap gap-3 mb-4">
-              {stats.map((s, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.2 + i * 0.1 }}
-                  className="px-3 py-2 bg-red-100/60 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 rounded-lg"
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: 0.1 + i * 0.12 }}
+              className={`flex ${isRaju ? 'justify-start' : 'justify-end'}`}
+            >
+              <div className={`max-w-[78%] ${isRaju ? 'pr-8' : 'pl-8'}`}>
+                {/* Bubble */}
+                <div
+                  className={`relative px-4 py-3 text-[15px] leading-relaxed ${
+                    isRaju
+                      ? 'bg-green-100/90 dark:bg-green-950/50 text-green-900 dark:text-green-200 rounded-2xl rounded-bl-sm'
+                      : 'bg-white dark:bg-dark-surface/80 text-gray-800 dark:text-gray-200 rounded-2xl rounded-br-sm border-l-[3px] border-crimson/60'
+                  }`}
                 >
-                  <span className="text-lg font-bold text-crimson">{s.value}</span>
-                  <span className="text-[10px] text-red-700 dark:text-red-400 uppercase tracking-wider font-semibold ml-1.5">{s.label}</span>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                  {/* Character tag */}
+                  <span className={`text-[10px] font-bold uppercase tracking-wider block mb-1 ${
+                    isRaju
+                      ? 'text-green-700 dark:text-green-400'
+                      : 'text-crimson/80 dark:text-red-400'
+                  }`}>
+                    {char.emoji} {char.name}
+                  </span>
 
-          <p className="text-red-800 dark:text-red-300 leading-relaxed text-lg">
-            {rebuttal}
-          </p>
-        </div>
+                  <p className="font-sans">{parseBold(msg.text)}</p>
+
+                  {/* Source citation */}
+                  {msg.source && (
+                    <span className="mt-1.5 flex items-center gap-1 text-[10px] text-gray-400 dark:text-gray-500">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.172 13.828a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                      {msg.source}
+                    </span>
+                  )}
+                </div>
+
+                {/* Timestamp */}
+                <span className={`text-[9px] text-gray-400 dark:text-gray-600 mt-0.5 block ${isRaju ? 'text-left ml-2' : 'text-right mr-2'}`}>
+                  {fakeTime(i)}
+                </span>
+              </div>
+            </motion.div>
+          )
+        })}
+      </div>
+
+      {/* Footer disclaimer */}
+      <div className="px-5 py-2.5 border-t border-gray-200 dark:border-dark-border bg-gray-50/50 dark:bg-dark-bg/30">
+        <p className="text-[9px] text-gray-400 dark:text-gray-600 text-center uppercase tracking-widest">
+          Dramatized exchange based on documented claims and verified data
+        </p>
       </div>
     </motion.div>
   )

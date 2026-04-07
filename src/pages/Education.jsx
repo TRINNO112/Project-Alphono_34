@@ -357,15 +357,14 @@ export default function Education() {
         </DataCard>
       </Section>
 
-      <CounterArgument
-        argument="Gujarat has multiple IITs, IIMs, and private universities. Private sector investment in education compensates for government gaps."
-        rebuttal="Only 1 Gujarat institute in NIRF overall top 100. GER at 20.1% is 30% below national average. 32,000+ government teacher posts vacant. 86-97% specialist doctor positions unfilled at rural CHCs. Private sector cannot substitute for systemic public investment gaps."
-        stats={[
-          { value: '20.1%', label: 'GER (vs 28.4% Natl)' },
-          { value: '32,000+', label: 'Teacher Vacancies' },
-          { value: '97%', label: 'Specialist Vacant' },
-        ]}
-      />
+      <CounterArgument messages={[
+        { from: 'raju', text: 'Gujarat has IITs, IIMs, multiple private universities. The private sector is filling education gaps better than any government scheme.' },
+        { from: 'priya', text: 'Only **1 Gujarat institution** in NIRF top 100 — IIT Gandhinagar, which is centrally funded. Higher education GER is **20.1%**, almost 30% below the national average of 28.4%.', source: 'AISHE 2021-22 / NIRF 2025' },
+        { from: 'raju', text: 'Students here are practical — they join family businesses or get industry jobs directly. Not everyone needs a degree.' },
+        { from: 'priya', text: '**2.4 lakh** annual dropouts — highest in India. **32,000+** teaching posts vacant. **18,237** students left Gujarat for education abroad last year. They\'re not choosing industry — they\'re fleeing the system.', source: 'UDISE+ / Gujarat University Data' },
+        { from: 'raju', text: 'Healthcare is improving — new AIIMS, medical colleges opening.' },
+        { from: 'priya', text: 'Meanwhile **97%** of surgeon posts at rural CHCs are vacant. Health spending is **0.8%** of GSDP — one-third the NHP target. You can\'t announce colleges while **2.87 lakh** hospital beds are missing.', source: 'DNA India / PRS Budget Analysis' },
+      ]} />
 
       <SourceList sources={sources} />
     </main>

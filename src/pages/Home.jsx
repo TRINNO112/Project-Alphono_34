@@ -1,7 +1,7 @@
 import { useState, Fragment } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin } from 'lucide-react'
+import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin, Wheat, Cpu, FlaskConical } from 'lucide-react'
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip } from 'recharts'
 import { useSyncExternalStore } from 'react'
 import { SupplyChainMap } from '../components/SupplyChainMap'
@@ -29,13 +29,16 @@ export default function Home() {
     { id: 'education', title: "Education & Healthcare", icon: <GraduationCap className="w-8 h-8 text-pink-600 dark:text-pink-400" />, desc: "2.4 lakh dropouts (#1 in India), primary GER collapsed to 79.6%.", path: "/education", stat: "2.4L", statLabel: "Annual Dropouts (#1)", sources: 14 },
     { id: 'environment', title: "Environment & Climate", icon: <TreePine className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />, desc: "Sabarmati 'cesspool' ruling, Deesa 21 dead, 36 sq km mangrove loss.", path: "/environment", stat: "21", statLabel: "Deesa Explosion Deaths", sources: 14 },
     { id: 'migrant-discrimination', title: "Migrant Discrimination", icon: <ShieldAlert className="w-8 h-8 text-red-600 dark:text-red-500" />, desc: "2018 pogrom: 20,000+ fled. Language barriers, wage theft, bonded labour, zero welfare.", path: "/migrant-discrimination", stat: "20K+", statLabel: "Workers Attacked (2018)", sources: 33 },
+    { id: 'agriculture', title: "Agriculture & Agrarian Distress", icon: <Wheat className="w-8 h-8 text-green-700 dark:text-green-400" />, desc: "67% DAP imported, 100% MOP imported, Bt Cotton trap, groundwater at 132% over-extraction.", path: "/agriculture", stat: "100%", statLabel: "MOP Import Dependency", sources: 6 },
+    { id: 'greentech', title: "Green Tech Dependency", icon: <Cpu className="w-8 h-8 text-cyan-600 dark:text-cyan-400" />, desc: "90% rare earth processing by China, 80%+ PV wafers imported, Dholera SIR mirage.", path: "/greentech", stat: "90%", statLabel: "China RE Processing", sources: 7 },
+    { id: 'chemical-governance', title: "Chemical Governance & Toxicity", icon: <FlaskConical className="w-8 h-8 text-orange-600 dark:text-orange-400" />, desc: "400km Golden Corridor, Sabarmati BOD 292 mg/L, CETP failures, ₹100Cr+ NGT fines.", path: "/chemical-governance", stat: "292", statLabel: "BOD (mg/L) Sabarmati", sources: 8 },
   ]
 
-  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
 
   const headlines = [
-    { value: "100+", label: "Cited Sources" },
-    { value: "9", label: "Pillars of Analysis" },
+    { value: "186", label: "Cited Sources" },
+    { value: "12", label: "Pillars of Analysis" },
     { value: "40%", label: "India's Cargo via Gujarat" },
     { value: "$40B+", label: "Gujarat NRI Deposits" },
   ]
@@ -49,6 +52,9 @@ export default function Home() {
     { pillar: 'Materials', dependency: 85 },
     { pillar: 'Education', dependency: 72 },
     { pillar: 'Environment', dependency: 80 },
+    { pillar: 'Agriculture', dependency: 88 },
+    { pillar: 'Green Tech', dependency: 92 },
+    { pillar: 'Chemical', dependency: 75 },
   ]
 
   const [expandedRows, setExpandedRows] = useState({})
@@ -99,6 +105,21 @@ export default function Home() {
       { text: "Attacks on Migrant Workers: 500 Rounded Up, 20,000 Flee — Scroll.in", url: "https://scroll.in/article/897402/attacks-on-migrant-workers-in-gujarat-over-500-rounded-up-20000-flee-state" },
       { text: "Gujarat Migrant Attacks: How Social Media Fuelled Hate — NDTV", url: "https://www.ndtv.com/india-news/gujarat-migrant-worker-attacks-how-social-media-fuelled-anti-outsider-hate-1929893" },
       { text: "2018 Gujarat Attacks on Migrant Workers — Wikipedia", url: "https://en.wikipedia.org/wiki/2018_Gujarat_attacks_on_migrant_workers" },
+    ]},
+    { pillar: "Agriculture", finding: "67% DAP imported, 100% MOP imported from sanctioned nations. Bt Cotton pesticide treadmill. Groundwater at 132% over-extraction in Mehsana. Narmada water diverted to industry.", metric: "100% MOP / 132% extraction", citations: [
+      { text: "India's Fertilizer Import Dependencies — Argus Media", url: "https://argusmedia.com/fertilizers/india-import-data" },
+      { text: "Groundwater Depletion in Mehsana — Down To Earth", url: "https://downtoearth.org.in/water/narmada-diversion" },
+      { text: "Drought-Hit Gujarat Has Water for Factories, Not Farmers — IndiaSpend", url: "https://indiaspend.com/gujarat-water-crisis" },
+    ]},
+    { pillar: "Green Tech", finding: "90% rare earth processing controlled by China. 80%+ PV wafers imported. Dholera gigafactories assemble imported cells. Gallium/Germanium export controls weaponized.", metric: "90% China / 80%+ wafers", citations: [
+      { text: "China's Export Controls on Rare Earths — SCMP", url: "https://scmp.com/economy/china-economy" },
+      { text: "How Rare Earth Shortages Stall India's EV Sector — Al Jazeera", url: "https://aljazeera.com/economy/india-ev-rare-earths" },
+      { text: "Global Rare Earth Processing Market Share — BNEF", url: "https://bnef.com/rare-earth-mining" },
+    ]},
+    { pillar: "Chem Gov", finding: "400km Golden Corridor: Sabarmati BOD 292 mg/L (97× safe). CETPs from 1990s discharge MORE toxic than influent. ₹100Cr+ NGT fines with zero lasting compliance. AMR superbugs incubating.", metric: "292 BOD / ₹100Cr+ fines", citations: [
+      { text: "Sabarmati River: Dark Underbelly of Ahmedabad — Mongabay", url: "https://india.mongabay.com/sabarmati-pollution" },
+      { text: "AMR in Gujarat's Rivers — India Water Portal", url: "https://indiawaterportal.org/amr-gujarat" },
+      { text: "Vapi & Ankleshwar Crisis — Down To Earth", url: "https://downtoearth.org.in/pollution/vapi-ankleshwar" },
     ]},
   ]
 
@@ -329,7 +350,7 @@ export default function Home() {
         <div className="text-center mb-16">
           <div className="flex items-center gap-3 justify-center mb-4">
             <span className="text-crimson text-lg font-sans font-bold">IV.</span>
-            <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white">Nine Pillars of Analysis</h2>
+            <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white">Twelve Pillars of Analysis</h2>
           </div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Select a sector to explore the fully detailed research findings, quantitative dependencies, and bottlenecks.</p>
         </div>
