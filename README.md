@@ -50,11 +50,11 @@ Project-Alphono_34/
 |-- package.json                   # Dependencies & scripts
 |-- vite.config.js                 # Vite + Tailwind + React config
 |-- eslint.config.js               # ESLint rules
-|-- plan.md                        # Active upgrade plan (6 phases)
 |
 |-- public/
 |   |-- favicon.svg
 |   |-- icons.svg
+|   |-- geo/                       # Local GeoJSON files (Gujarat, India, countries)
 |
 |-- src/
     |-- main.jsx                   # ReactDOM entry point
@@ -201,13 +201,13 @@ npm run lint
 
 ---
 
-## 9. Planned Upgrades (See `plan.md`)
+## 9. Completed Upgrades
 
 | Phase | Description | Status |
 |-------|------------|--------|
-| 1 | Cascade/Sankey diagram — 2026 crisis propagation across pillars | Pending |
-| 2 | Charts for Education & Environment pages | Pending |
-| 3 | Time-series charts across all existing pages | Pending |
-| 4 | 10 new district profiles with researched data | Pending |
-| 5 | Summary page full rebuild — risk matrix, scenarios | Pending |
-| 6 | CounterArgument micro-visualizations with character debate | Pending |
+| 1 | Cascade/Sankey diagram — 2026 crisis propagation across pillars | Done |
+| 2 | Charts for Education & Environment pages | Done |
+| 3 | Time-series charts across all existing pages | Done |
+| 4 | 10 new district profiles with researched data | Done |
+| 5 | Summary page full rebuild — risk matrix, scenarios | Done |
+| 6 | CounterArgument → WhatsApp-style DebateChat (Rajubhai vs Priya) | Done |

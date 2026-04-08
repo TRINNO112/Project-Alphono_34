@@ -4,26 +4,22 @@ import React from 'react'
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps'
 import { ArrowRight, ShieldAlert } from 'lucide-react'
 
-// === PERFECT India base map ===
-const indiaUrl = "https://raw.githubusercontent.com/udit-001/india-maps-data/main/geojson/india.geojson";
+// === Local GeoJSON files (bundled in public/geo/ for offline reliability) ===
+const indiaUrl = "/geo/india.geojson";
 
-// === Standard lat/long country GeoJSONs from the johan repository ===
-const countryBaseUrl = "https://raw.githubusercontent.com/johan/world.geo.json/master/countries";
-
-// Middle East cluster - multiple countries to fill the region visually
 const middleEastCountries = [
-  `${countryBaseUrl}/SAU.geo.json`, // Saudi Arabia
-  `${countryBaseUrl}/ARE.geo.json`, // UAE
-  `${countryBaseUrl}/IRQ.geo.json`, // Iraq
-  `${countryBaseUrl}/IRN.geo.json`, // Iran
-  `${countryBaseUrl}/OMN.geo.json`, // Oman
-  `${countryBaseUrl}/KWT.geo.json`, // Kuwait
-  `${countryBaseUrl}/QAT.geo.json`, // Qatar
-  `${countryBaseUrl}/YEM.geo.json`, // Yemen
+  "/geo/SAU.geo.json", // Saudi Arabia
+  "/geo/ARE.geo.json", // UAE
+  "/geo/IRQ.geo.json", // Iraq
+  "/geo/IRN.geo.json", // Iran
+  "/geo/OMN.geo.json", // Oman
+  "/geo/KWT.geo.json", // Kuwait
+  "/geo/QAT.geo.json", // Qatar
+  "/geo/YEM.geo.json", // Yemen
 ];
 
-const chinaUrl = `${countryBaseUrl}/CHN.geo.json`;
-const indonesiaUrl = `${countryBaseUrl}/IDN.geo.json`;
+const chinaUrl = "/geo/CHN.geo.json";
+const indonesiaUrl = "/geo/IDN.geo.json";
 
 // Heat-Map Core Origination Centers
 const domesticFlows = [
