@@ -6,7 +6,7 @@ import { getDistricts } from '../data/districtsData'
 import { useState } from 'react'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 
-const geoUrl = "https://raw.githubusercontent.com/udit-001/india-maps-data/main/geojson/states/gujarat.geojson";
+const geoUrl = "/geo/gujarat.geojson";
 
 // Normalize district strings from the GeoJSON to match our local IDs (e.g., "Gir Somnath" -> "gir-somnath")
 const normalizeId = (name) => name ? name.toLowerCase().replace(/\s+/g, '-') : '';
