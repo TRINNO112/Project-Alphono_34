@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { FlaskConical, Skull, Scale, Waves, AlertTriangle, Droplets } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
+import ScrollSpy from '../components/ScrollSpy'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 
@@ -15,9 +16,18 @@ const sources = [
   { title: "National CEPI Index Reports and Historical Moratorium Documents — Gujarat Golden Corridor", publication: "Central Pollution Control Board (CPCB)", url: "https://cpcb.nic.in/cepi" },
 ]
 
+const spySections = [
+  { id: 'the-total-collapse-of-the-sabarmati-river', label: 'Sabarmati Collapse' },
+  { id: 'common-effluent-treatment-plant-cetp-failures', label: 'CETP Failures' },
+  { id: 'deep-sea-marine-outfall-out-of-sight-out-of-mind', label: 'Marine Outfall' },
+  { id: 'judicial-interventions-regulatory-capture', label: 'Judicial Capture' },
+  { id: 'timeline-of-toxicity-events', label: 'Toxicity Timeline' },
+]
+
 export default function ChemicalGovernance() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

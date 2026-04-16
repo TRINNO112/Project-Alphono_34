@@ -5,6 +5,21 @@ import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { Timeline } from '../components/Timeline'
 import { ComparisonTable } from '../components/ComparisonTable'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'case-study-the-2018-anti-migrant-pogrom', label: '2018 Pogrom' },
+  { id: 'case-study-the-2020-walking-exodus', label: '2020 Exodus' },
+  { id: 'case-study-2026-the-triple-shock', label: '2026 Triple Shock' },
+  { id: 'the-pattern-every-crisis-exposes-the-same-truth', label: 'Crisis Pattern' },
+  { id: 'state-based-discrimination-the-daily-reality', label: 'Daily Discrimination' },
+  { id: 'the-wage-trap-gujarat-pays-among-indias-lowest', label: 'Wage Trap' },
+  { id: 'dying-at-the-worksite-health-safety', label: 'Health & Safety' },
+  { id: 'the-forgotten-agariya-salt-workers', label: 'Agariya Workers' },
+  { id: 'supreme-court-found-gujarat-guilty', label: 'Supreme Court' },
+  { id: 'government-inaction-a-systematic-failure', label: 'Gov. Inaction' },
+  { id: 'the-comparison-gujarat-vs-kerala', label: 'Gujarat vs Kerala' },
+]
 
 const sources = [
   { title: "Attacks on migrant workers in Gujarat: Over 500 rounded up, 20,000 flee state", publication: "Scroll.in, Oct 2018", url: "https://scroll.in/article/897402/attacks-on-migrant-workers-in-gujarat-over-500-rounded-up-20000-flee-state" },
@@ -45,6 +60,7 @@ const sources = [
 export default function MigrantDiscrimination() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

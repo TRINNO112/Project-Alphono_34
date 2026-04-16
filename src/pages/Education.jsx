@@ -3,6 +3,15 @@ import { GraduationCap, Heart, AlertTriangle, CheckCircle } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'education-system-gaps', label: 'Education Gaps' },
+  { id: 'healthcare-infrastructure-crisis', label: 'Healthcare Crisis' },
+  { id: 'medical-brain-drain-structural-outflow', label: 'Brain Drain' },
+  { id: 'public-investment-spending-less-getting-less', label: 'Public Investment' },
+  { id: 'research-innovation-the-missing-engine', label: 'R&D Gap' },
+]
 
 const sources = [
   { title: "Gujarat government schools face massive teacher shortage with 32,000+ vacancies", publication: "ProKerala, 2025", url: "https://www.prokerala.com/news/articles/a1560997.html" },
@@ -24,6 +33,7 @@ const sources = [
 export default function Education() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

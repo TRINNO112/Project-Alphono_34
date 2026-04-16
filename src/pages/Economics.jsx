@@ -4,6 +4,17 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'the-fiscal-paradox-low-debt-low-revenue', label: 'Fiscal Paradox' },
+  { id: 'central-government-fiscal-relationship', label: 'Central Transfers' },
+  { id: 'diaspora-capital-gift-city-external-economic-velocity', label: 'Diaspora & GIFT' },
+  { id: 'the-gift-city-paradox-global-capital-local-vacuum', label: 'GIFT Paradox' },
+  { id: 'gst-collections-the-industrial-tax-gap', label: 'GST & Tax Gap' },
+  { id: 'the-disinvestment-mirage-fdi-vulnerability', label: 'FDI & Disinvestment' },
+  { id: 'vibrant-gujarat-summit-mous-vs-reality', label: 'Vibrant Gujarat' },
+]
 
 const sources = [
   { title: "A Macro and Fiscal Landscape of the State of Gujarat", publication: "NITI Aayog, Mar 2025", url: "https://www.niti.gov.in/sites/default/files/2025-03/Summary-Report-Gujarat.pdf" },
@@ -31,6 +42,7 @@ const sources = [
 export default function Economics() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

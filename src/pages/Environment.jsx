@@ -3,6 +3,15 @@ import { Factory, AlertTriangle, Wind, Droplets } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'industrial-pollution-hotspots', label: 'Pollution Hotspots' },
+  { id: 'alang-ship-breaking-morbi-emissions', label: 'Alang & Morbi' },
+  { id: 'coastal-erosion-desertification-climate', label: 'Erosion & Climate' },
+  { id: 'urban-air-quality-the-invisible-crisis', label: 'Air Quality' },
+  { id: 'regulatory-failures-ngt-interventions', label: 'Regulatory Failures' },
+]
 
 const sources = [
   { title: "The World's Most Polluted Places — Vapi, Gujarat", publication: "TIME / Blacksmith Institute, 2007", url: "https://content.time.com/time/specials/2007/article/0,28804,1661031_1661028_1661019,00.html" },
@@ -24,6 +33,7 @@ const sources = [
 export default function Environment() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

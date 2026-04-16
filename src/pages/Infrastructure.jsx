@@ -4,6 +4,17 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'corporate-centralization-monopolies', label: 'Corporate Monopolies' },
+  { id: 'vulnerability-bottlenecks-in-corridors', label: 'Vulnerability Bottlenecks' },
+  { id: 'raw-material-innovation-steel-slag', label: 'Steel Slag Innovation' },
+  { id: 'digital-infrastructure-dependencies', label: 'Digital Infrastructure' },
+  { id: 'the-gujarat-port-ecosystem-604-mmt-and-counting', label: 'Port Ecosystem' },
+  { id: 'western-dedicated-freight-corridor-rail-infrastructure', label: 'Rail & DFC' },
+  { id: 'airport-infrastructure-capacity-constraints', label: 'Airport Infrastructure' },
+]
 
 const sources = [
   { title: "Adani's Mundra Port Makes History, Becomes First In India To Handle 200 MMT Cargo", publication: "Marine Insight, 2025", url: "https://www.marineinsight.com/shipping-news/adanis-mundra-port-makes-history-becomes-first-in-india-to-handle-200-mmt-cargo/" },
@@ -29,6 +40,7 @@ const sources = [
 export default function Infrastructure() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Detail Page Hero */}
       <section className="space-y-6">
         <motion.div

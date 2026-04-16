@@ -4,6 +4,16 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { Timeline } from '../components/Timeline'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'morbi-india-s-ceramic-capital-built-on-migrant-hands', label: 'Morbi Ceramics' },
+  { id: 'surat-the-diamond-textile-dependency', label: 'Surat Diamond' },
+  { id: 'the-exodus-pattern-covid-demonetisation-west-asia', label: 'Exodus Pattern' },
+  { id: 'skill-gap-automation-risk-the-coming-squeeze', label: 'Skill Gap' },
+  { id: 'wage-structure-working-conditions-the-hidden-economy', label: 'Wages & Conditions' },
+  { id: 'source-states-fighting-back-the-new-competition', label: 'Source States' },
+]
 
 const sources = [
   { title: "A war in the Gulf, a crisis in Gujarat's Morbi: India's ceramics capital counts the cost", publication: "The Print, 2026", url: "https://theprint.in/economy/a-war-in-the-gulf-a-crisis-in-gujarats-morbi-indias-ceramics-capital-counts-the-cost/2877673/" },
@@ -28,6 +38,7 @@ const sources = [
 export default function Labor() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

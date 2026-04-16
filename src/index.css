@@ -72,5 +72,30 @@
   border: 2px solid var(--color-dark-bg);
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-crimson-dark); 
+  background: var(--color-crimson-dark);
+}
+
+/* Shimmer animation for skeleton loading */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 100%
+  );
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
