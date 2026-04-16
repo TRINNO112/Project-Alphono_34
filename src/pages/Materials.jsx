@@ -3,6 +3,17 @@ import { Factory, AlertTriangle, Fuel, Pill, Mountain, CheckCircle, Battery } fr
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'the-crude-oil-import-machine', label: 'Crude Oil' },
+  { id: 'pharmaceutical-apis-the-china-dependency', label: 'Pharma APIs' },
+  { id: 'minerals-the-eastern-supply-chain', label: 'Minerals' },
+  { id: 'rare-earth-battery-metals-the-next-dependency-frontier', label: 'Rare Earth' },
+  { id: 'the-bharuch-dahej-chemical-corridor-india-s-chemical-capital', label: 'Chemical Corridor' },
+  { id: 'natural-gas-gujarat-s-most-critical-input', label: 'Natural Gas' },
+  { id: 'fertilizer-agricultural-inputs-the-silent-import-dependency', label: 'Fertilizers' },
+]
 
 const sources = [
   { title: "Jamnagar refinery — World's largest oil refinery", publication: "Wikipedia", url: "https://en.wikipedia.org/wiki/Jamnagar_refinery" },
@@ -27,6 +38,7 @@ const sources = [
 export default function Materials() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

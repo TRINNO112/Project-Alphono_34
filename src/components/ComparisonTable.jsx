@@ -14,7 +14,7 @@ export function ComparisonTable({ title, columns, rows, highlightState = 'Gujara
       )}
       <div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/40 backdrop-blur-sm">
         <table className="w-full border-collapse">
-          <thead>
+          <thead className="sticky top-0 z-10 bg-white/95 dark:bg-dark-surface/95 backdrop-blur-sm">
             <tr className="border-b-2 border-crimson">
               <th className="text-left py-3 px-4 text-xs uppercase tracking-widest text-crimson font-semibold font-sans">State</th>
               {columns.map((col) => (

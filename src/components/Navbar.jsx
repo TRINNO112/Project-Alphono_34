@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
 import { Moon, Sun, ShieldAlert, ChevronLeft } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
+import { motion } from 'framer-motion'
+
+const navLinks = [
+  { to: '/map', label: 'Geographic Map' },
+  { to: '/timeline', label: 'Crisis Timeline' },
+  { to: '/summary', label: 'Executive Summary' },
+]
 
 export default function Navbar({ darkMode, setDarkMode }) {
   const location = useLocation()
@@ -21,11 +28,31 @@ export default function Navbar({ darkMode, setDarkMode }) {
       </div>
       <div className="flex items-center gap-6">
         <nav className="hidden md:flex gap-6 text-sm font-bold tracking-widest uppercase mr-4">
-          <Link to="/map" className="text-gray-500 hover:text-crimson dark:text-gray-400 dark:hover:text-crimson transition-colors">Geographic Map</Link>
-          <Link to="/timeline" className="text-gray-500 hover:text-crimson dark:text-gray-400 dark:hover:text-crimson transition-colors">Crisis Timeline</Link>
-          <Link to="/summary" className="text-gray-500 hover:text-crimson dark:text-gray-400 dark:hover:text-crimson transition-colors">Executive Summary</Link>
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.to
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`relative py-1 transition-colors ${
+                  isActive
+                    ? 'text-crimson'
+                    : 'text-gray-500 hover:text-crimson dark:text-gray-400 dark:hover:text-crimson'
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="nav-underline"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-crimson rounded-full"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </Link>
+            )
+          })}
         </nav>
-        <button 
+        <button
           onClick={() => setDarkMode(!darkMode)}
           className="p-3 rounded-full hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors border border-transparent dark:border-dark-border"
           title="Toggle Theme"

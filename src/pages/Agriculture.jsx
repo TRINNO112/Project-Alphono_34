@@ -3,6 +3,7 @@ import { Wheat, Droplets, Bug, TrendingDown, AlertTriangle } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
+import ScrollSpy from '../components/ScrollSpy'
 
 const sources = [
   { title: "India's Fertilizer Import Dependencies and NBS Subsidy Outlays amidst Red Sea Crisis", publication: "Argus Media Energy & Agriculture Reports, 2025/2026", url: "https://argusmedia.com/fertilizers/india-import-data" },
@@ -13,9 +14,18 @@ const sources = [
   { title: "Pink Bollworm Resistance to Standard Cry1Ac Gene Traits in Regional Cotton Zones", publication: "ICAR Research Papers", url: "https://icar.org.in/cotton-research" },
 ]
 
+const spySections = [
+  { id: 'the-fertilizer-import-trap', label: 'Fertilizer Imports' },
+  { id: 'seed-sovereignty-the-bt-cotton-trap', label: 'Bt Cotton Trap' },
+  { id: 'water-monopolization-groundwater-collapse', label: 'Water Collapse' },
+  { id: 'the-rural-urban-flight', label: 'Rural Flight' },
+  { id: 'timeline-of-agrarian-events', label: 'Timeline' },
+]
+
 export default function Agriculture() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

@@ -1,13 +1,17 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Copy, Check } from 'lucide-react'
 
-export function Section({ icon, title, children }) {
+export function Section({ icon, title, children, id }) {
+  const sectionId = id || title?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
   return (
-    <motion.section 
+    <motion.section
+      id={sectionId}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="space-y-8"
+      className="space-y-8 scroll-mt-24"
     >
       <div className="flex items-center gap-5 border-b border-gray-300 dark:border-dark-border pb-6">
         <div className="p-4 bg-white dark:bg-dark-surface shadow-md dark:shadow-none rounded-2xl border border-gray-200 dark:border-dark-border">
@@ -54,6 +58,34 @@ export function Ref({ n }) {
   )
 }
 
+function CopyButton({ text }) {
+  const [copied, setCopied] = useState(false)
+  const handleCopy = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    })
+  }
+  return (
+    <button
+      onClick={handleCopy}
+      className="inline-flex items-center gap-1 ml-2 px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider transition-all hover:bg-gray-200 dark:hover:bg-dark-bg text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 shrink-0"
+      title="Copy URL"
+    >
+      {copied ? (
+        <>
+          <Check className="w-3 h-3 text-green-500" />
+          <span className="text-green-500">Copied</span>
+        </>
+      ) : (
+        <Copy className="w-3 h-3" />
+      )}
+    </button>
+  )
+}
+
 export function SourceList({ sources }) {
   return (
     <motion.section
@@ -66,15 +98,18 @@ export function SourceList({ sources }) {
       <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-8">Sources & References</h2>
       <ol className="space-y-4 list-none">
         {sources.map((s, i) => (
-          <li key={i} id={`ref-${i + 1}`} className="flex gap-4 text-sm leading-relaxed">
+          <li key={i} id={`ref-${i + 1}`} className="flex gap-4 text-sm leading-relaxed group">
             <span className="text-crimson font-bold min-w-[2rem] text-right">[{i + 1}]</span>
             <div>
               <span className="text-gray-700 dark:text-gray-300">{s.title}</span>
               {s.publication && <span className="text-gray-500 dark:text-gray-500 italic"> — {s.publication}</span>}
               {s.url && (
-                <a href={s.url} target="_blank" rel="noopener noreferrer" className="block text-crimson hover:underline break-all mt-1">
-                  {s.url}
-                </a>
+                <span className="flex items-center gap-0 mt-1">
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-crimson hover:underline break-all">
+                    {s.url}
+                  </a>
+                  <CopyButton text={s.url} />
+                </span>
               )}
             </div>
           </li>

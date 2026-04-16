@@ -6,6 +6,7 @@ import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Responsi
 import { useSyncExternalStore } from 'react'
 import { SupplyChainMap } from '../components/SupplyChainMap'
 import { CascadeDiagram } from '../components/CascadeDiagram'
+import AnimatedCounter from '../components/AnimatedCounter'
 
 function subscribeDarkMode(callback) {
   const observer = new MutationObserver(callback)
@@ -37,10 +38,10 @@ export default function Home() {
   const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
 
   const headlines = [
-    { value: "186", label: "Cited Sources" },
-    { value: "12", label: "Pillars of Analysis" },
-    { value: "40%", label: "India's Cargo via Gujarat" },
-    { value: "$40B+", label: "Gujarat NRI Deposits" },
+    { value: 186, suffix: '', prefix: '', label: "Cited Sources" },
+    { value: 12, suffix: '', prefix: '', label: "Pillars of Analysis" },
+    { value: 40, suffix: '%', prefix: '', label: "India's Cargo via Gujarat" },
+    { value: 40, suffix: 'B+', prefix: '$', label: "Gujarat NRI Deposits" },
   ]
 
   const dependencyData = [
@@ -185,7 +186,9 @@ export default function Home() {
       >
         {headlines.map((h, i) => (
           <div key={i} className="text-center p-6 rounded-2xl bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border backdrop-blur-sm">
-            <div className="text-3xl md:text-4xl font-bold text-crimson mb-2">{h.value}</div>
+            <div className="text-3xl md:text-4xl font-bold text-crimson mb-2">
+              <AnimatedCounter value={h.value} suffix={h.suffix} prefix={h.prefix} />
+            </div>
             <div className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-widest font-semibold">{h.label}</div>
           </div>
         ))}
@@ -363,6 +366,8 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
+              whileHover={{ y: -4, transition: { duration: 0.25 } }}
+              style={{ perspective: 800 }}
             >
               <Link to={sector.path} className="group block h-full">
                 <div className="h-full flex items-stretch rounded-2xl border border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/60 backdrop-blur-sm shadow-sm hover:shadow-xl hover:border-crimson/30 dark:hover:border-crimson/30 transition-all duration-300 overflow-hidden">

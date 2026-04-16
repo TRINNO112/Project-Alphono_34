@@ -3,6 +3,14 @@ import { Cpu, Zap, Sun, Battery, AlertTriangle, ArrowRight } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'dholera-sir-the-ev-mirage', label: 'EV Mirage' },
+  { id: 'the-lithium-ion-cell-assembly-deficit', label: 'Li-ion Deficit' },
+  { id: 'the-solar-photovoltaic-gap', label: 'Solar PV Gap' },
+  { id: 'timeline-of-greentech-vulnerability', label: 'Timeline' },
+]
 
 const sources = [
   { title: "India's EV Supply Chain and Critical Mineral Dependencies", publication: "CARE Ratings / Market Reports, 2025", url: "https://careratings.com/research/ev-supply-chain" },
@@ -17,6 +25,7 @@ const sources = [
 export default function GreenTech() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

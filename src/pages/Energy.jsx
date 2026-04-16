@@ -4,6 +4,16 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'imported-coal-the-coastal-thermal-trap', label: 'Imported Coal' },
+  { id: 'lng-import-terminals-the-hormuz-chokepoint', label: 'LNG Terminals' },
+  { id: 'the-renewable-energy-paradox', label: 'RE Paradox' },
+  { id: 'nuclear-energy-the-missing-baseload', label: 'Nuclear Energy' },
+  { id: 'the-2026-gas-crisis-real-time-vulnerability-exposed', label: '2026 Gas Crisis' },
+  { id: 'central-grid-dependency-transmission-constraints', label: 'Grid Dependency' },
+]
 
 const sources = [
   { title: "Mundra Thermal Power Project (Adani) — 4,620 MW imported coal plant", publication: "Global Energy Monitor", url: "https://www.gem.wiki/Mundra_Thermal_Power_Project_(Adani)" },
@@ -29,6 +39,7 @@ const sources = [
 export default function Energy() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div

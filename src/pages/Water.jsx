@@ -4,6 +4,16 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
+import ScrollSpy from '../components/ScrollSpy'
+
+const spySections = [
+  { id: 'the-narmada-lifeline-single-point-of-failure', label: 'Narmada Lifeline' },
+  { id: 'groundwater-depletion-the-silent-crisis', label: 'Groundwater Crisis' },
+  { id: 'agricultural-dependencies-benefits', label: 'Agriculture' },
+  { id: 'industrial-water-demand-the-invisible-competitor', label: 'Industrial Demand' },
+  { id: 'sauni-scheme-water-transfer-infrastructure', label: 'SAUNI Scheme' },
+  { id: 'urban-water-stress-per-capita-deficit', label: 'Urban Stress' },
+]
 
 const sources = [
   { title: "Sardar Sarovar Dam", publication: "Wikipedia", url: "https://en.wikipedia.org/wiki/Sardar_Sarovar_Dam" },
@@ -25,6 +35,7 @@ const sources = [
 export default function Water() {
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">
         <motion.div
