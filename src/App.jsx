@@ -29,6 +29,7 @@ const GreenTech = lazy(() => import('./pages/GreenTech'))
 const ChemicalGovernance = lazy(() => import('./pages/ChemicalGovernance'))
 const DigitalSovereignty = lazy(() => import('./pages/DigitalSovereignty'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const GlobalTradeIndex = lazy(() => import('./pages/GlobalTradeIndex'))
 
 const pageVariants = {
   initial: { opacity: 0, y: 24 },
@@ -83,6 +84,7 @@ function AnimatedRoutes() {
           <Route path="/greentech" element={<PageTransition><GreenTech /></PageTransition>} />
           <Route path="/chemical-governance" element={<PageTransition><ChemicalGovernance /></PageTransition>} />
           <Route path="/digital-sovereignty" element={<PageTransition><DigitalSovereignty /></PageTransition>} />
+          <Route path="/global-trade" element={<PageTransition><GlobalTradeIndex /></PageTransition>} />
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
       </Suspense>
