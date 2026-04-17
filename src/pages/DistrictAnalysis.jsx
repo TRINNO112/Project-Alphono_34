@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, AlertTriangle, MapPin, Database } from 'lucide-react'
 import { getDistrictById } from '../data/districtsData'
@@ -7,6 +7,7 @@ import { Section, DataCard, StatBox } from '../components/Shared'
 
 export default function DistrictAnalysis() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const district = getDistrictById(id)
 
   if (!district) {
@@ -40,9 +41,9 @@ export default function DistrictAnalysis() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Link to="/map" className="inline-flex items-center text-sm font-semibold text-gray-500 hover:text-crimson transition-colors mb-8">
+          <button onClick={() => navigate(-1)} className="inline-flex items-center text-sm font-semibold text-gray-500 hover:text-crimson transition-colors mb-8 bg-transparent border-none cursor-pointer p-0">
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to Geographic Index
-          </Link>
+          </button>
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
             <div>

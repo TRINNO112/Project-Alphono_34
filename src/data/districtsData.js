@@ -457,7 +457,7 @@ export const districtsData = [
   {
     id: "kheda", name: "Kheda", region: "Central Gujarat", coordinates: [72.6841, 22.7535], tagline: "The Tobacco Dust",
     pillars: ["Agriculture", "Health", "Water"], stats: [{ label: "Bidi Worker Wages", value: "Sub-minimum", status: "critical" }, { label: "Tobacco Subsidy Gap", value: "Severe", status: "danger" }, { label: "Groundwater Quality", value: "Deteriorating", status: "warning" }],
-    summary: "Kheda is synonymous with Gujarat's tobacco cultivation and processing industry. The bidi-rolling workforce suffers from chronic occupational health hazards and sub-minimum wages. While dairy cooperatives offer some buffer, legacy agricultural sectors are locked in exploitative loops.", keyCrises: [{ year: "2023", title: "Bidi Workers Unrest", detail: "Exploitative piece-rate wages led to massive unsupported strikes among women bidi rollers. (Source: Labor Union)"}]
+    summary: "Kheda is synonymous with Gujarat's tobacco cultivation and processing industry. The bidi-rolling workforce suffers from chronic occupational health hazards and sub-minimum wages. While dairy cooperatives offer some buffer, legacy agricultural sectors are locked in exploitative loops.", keyCrises: [{ year: "2023", title: "Bidi Workers Unrest", detail: "Exploitative piece-rate wages led to massive unsupported strikes among women bidi rollers. (Source: Gujarat Bidi Kamgar Union / SEWA)"}]
   },
   {
     id: "aravalli", name: "Aravalli", region: "North Gujarat", coordinates: [73.3082, 23.4243], tagline: "The Rocky Deficit",

@@ -29,6 +29,8 @@ export default function DistrictMap() {
     if (geoId === 'panch mahals') mappedId = 'panchmahal';
     if (geoId === 'sabar kantha') mappedId = 'sabarkantha';
     if (geoId === 'banas kantha') mappedId = 'banaskantha';
+    if (geoId === 'devbhumi dwarka') mappedId = 'devbhoomi-dwarka';
+    if (geoId === 'chhota udaipur') mappedId = 'chhota-udepur';
 
     const foundDistrict = districts.find(d => d.id === mappedId);
     
@@ -120,6 +122,8 @@ export default function DistrictMap() {
                   if (geoId === 'panch mahals') mappedId = 'panchmahal';
                   if (geoId === 'sabar kantha') mappedId = 'sabarkantha';
                   if (geoId === 'banas kantha') mappedId = 'banaskantha';
+                  if (geoId === 'devbhumi dwarka') mappedId = 'devbhoomi-dwarka';
+                  if (geoId === 'chhota udaipur') mappedId = 'chhota-udepur';
 
                   const localDist = districts.find(d => d.id === mappedId);
                   const hasData = localDist?.pillars?.length > 0;

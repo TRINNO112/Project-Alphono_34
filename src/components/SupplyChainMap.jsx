@@ -79,12 +79,23 @@ const gujaratCoords = [71.5, 22.5]
 
 export function SupplyChainMap() {
   const [hoveredNode, setHoveredNode] = useState(null)
+  const [clickedNode, setClickedNode] = useState(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const timeoutRef = React.useRef(null)
 
   const handleMouseEnter = (node) => {
+    if (clickedNode) return
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
     setHoveredNode(node)
+  }
+
+  const handleMouseClick = (node) => {
+    if (clickedNode?.name === node.name) {
+      setClickedNode(null)
+    } else {
+      setClickedNode(node)
+      setHoveredNode(null)
+    }
   }
 
   const handleMouseLeave = () => {
@@ -145,6 +156,7 @@ export function SupplyChainMap() {
                   key={geo.rsmKey} geography={geo}
                   onMouseEnter={() => handleMouseEnter(foreignNodes.china)}
                   onMouseLeave={handleMouseLeave}
+                  onClick={() => handleMouseClick(foreignNodes.china)}
                   style={{
                     default: { fill: foreignNodes.china.fill, outline: "none", stroke: foreignNodes.china.color, strokeWidth: 0.5 },
                     hover: { fill: foreignNodes.china.color, outline: "none", cursor: "pointer" },
@@ -164,6 +176,7 @@ export function SupplyChainMap() {
                     key={geo.rsmKey} geography={geo}
                     onMouseEnter={() => handleMouseEnter(foreignNodes.middleEast)}
                     onMouseLeave={handleMouseLeave}
+                    onClick={() => handleMouseClick(foreignNodes.middleEast)}
                     style={{
                       default: { fill: foreignNodes.middleEast.fill, outline: "none", stroke: foreignNodes.middleEast.color, strokeWidth: 0.5 },
                       hover: { fill: foreignNodes.middleEast.color, outline: "none", cursor: "pointer" },
@@ -183,6 +196,7 @@ export function SupplyChainMap() {
                   key={geo.rsmKey} geography={geo}
                   onMouseEnter={() => handleMouseEnter(foreignNodes.indonesia)}
                   onMouseLeave={handleMouseLeave}
+                  onClick={() => handleMouseClick(foreignNodes.indonesia)}
                   style={{
                     default: { fill: foreignNodes.indonesia.fill, outline: "none", stroke: foreignNodes.indonesia.color, strokeWidth: 0.5 },
                     hover: { fill: foreignNodes.indonesia.color, outline: "none", cursor: "pointer" },
@@ -212,6 +226,17 @@ export function SupplyChainMap() {
                     }
                   }}
                   onMouseLeave={handleMouseLeave}
+                  onClick={() => {
+                    const stateName = geo.properties.st_nm;
+                    const flow = domesticFlows.find(f => f.name === stateName);
+                    if (flow) {
+                      handleMouseClick({ ...laborTelemetry, name: flow.name });
+                    } else if (stateName === "Gujarat") {
+                      handleMouseClick({ category: "Target Vector", name: "Gujarat", stat: "Economic Hub", desc: "The industrial convergence point of external dependencies.", color: "#DC2626", path: "/summary" });
+                    } else {
+                      handleMouseClick({ category: "Indian State", name: stateName || "India", stat: "Domestic Node", desc: "Part of the interconnected national supply chain network.", color: "#6B7280", path: "/labor" });
+                    }
+                  }}
                   style={{
                     default: { fill: "#E5E7EB", outline: "none", stroke: "#9CA3AF", strokeWidth: 0.5 },
                     hover: { fill: "#D1D5DB", outline: "none", stroke: "#6B7280", cursor: "pointer" },
@@ -236,6 +261,7 @@ export function SupplyChainMap() {
                 coordinates={flow.coords}
                 onMouseEnter={() => handleMouseEnter({ ...laborTelemetry, name: flow.name })}
                 onMouseLeave={handleMouseLeave}
+                onClick={() => handleMouseClick({ ...laborTelemetry, name: flow.name })}
               >
                 <circle r={10} fill="#D8B4FE" opacity={0.5} filter="url(#glow)" className="cursor-pointer" />
                 <circle r={3} fill="#9333EA" />
@@ -249,6 +275,7 @@ export function SupplyChainMap() {
               <Marker coordinates={node.lineOrigin}
                 onMouseEnter={() => handleMouseEnter(node)}
                 onMouseLeave={handleMouseLeave}
+                onClick={() => handleMouseClick(node)}
               >
                 <circle r={8} fill={node.color} stroke="#FFFFFF" strokeWidth={1.5} className="cursor-pointer" />
               </Marker>
@@ -282,6 +309,7 @@ export function SupplyChainMap() {
             coordinates={gujaratCoords}
             onMouseEnter={() => handleMouseEnter({ category: "Target Vector", name: "Gujarat", stat: "Economic Hub", desc: "The industrial convergence point of external dependencies.", color: "#DC2626", path: "/summary" })}
             onMouseLeave={handleMouseLeave}
+            onClick={() => handleMouseClick({ category: "Target Vector", name: "Gujarat", stat: "Economic Hub", desc: "The industrial convergence point of external dependencies.", color: "#DC2626", path: "/summary" })}
           >
             <circle r={10} fill="#DC2626" stroke="#FFFFFF" strokeWidth={2} className="cursor-pointer" />
             <text textAnchor="end" x={-15} y={5} style={{ fontFamily: "serif", fontSize: "14px", fontWeight: "bold", fill: "#DC2626" }} className="pointer-events-none">
@@ -293,15 +321,13 @@ export function SupplyChainMap() {
 
         {/* ============ HOVER TOOLTIP ============ */}
         <AnimatePresence>
-          {hoveredNode && (
+          {hoveredNode && !clickedNode && (
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 5 }}
               transition={{ duration: 0.15 }}
-              className="fixed z-50 pointer-events-auto cursor-default"
-              onMouseEnter={() => handleMouseEnter(hoveredNode)}
-              onMouseLeave={handleMouseLeave}
+              className="fixed z-50 pointer-events-none cursor-default"
               style={{
                 left: Math.min(mousePosition.x + 20, typeof window !== 'undefined' ? window.innerWidth - 260 : 1000),
                 top: Math.min(mousePosition.y + 20, typeof window !== 'undefined' ? window.innerHeight - 150 : 1000),
@@ -324,12 +350,60 @@ export function SupplyChainMap() {
                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
                   {hoveredNode.desc}
                 </p>
+                <div className="mt-3 pt-3 border-t border-gray-100 dark:border-dark-border flex items-center justify-between text-[10px] font-bold text-gray-500 tracking-wider transition-colors cursor-pointer group">
+                  <span className="flex items-center uppercase">
+                    (Click Node to Inspect)
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* ============ CLICKED OVERLAY ============ */}
+        <AnimatePresence>
+          {clickedNode && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 5 }}
+              transition={{ duration: 0.15 }}
+              className="fixed z-50 pointer-events-auto cursor-default"
+              style={{
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '280px'
+              }}
+            >
+              <div className="bg-white/95 dark:bg-dark-surface/95 backdrop-blur-md border border-gray-200 dark:border-dark-border shadow-2xl p-5 rounded-2xl relative">
+                <button
+                  onClick={() => setClickedNode(null)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 dark:hover:text-white transition bg-gray-100 dark:bg-dark-bg p-1 rounded-full"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: clickedNode.color }}></div>
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400">
+                    {clickedNode.category}
+                  </span>
+                </div>
+                <h4 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-2 leading-tight">
+                  {clickedNode.name}
+                </h4>
+                <p className="font-mono text-crimson font-bold text-sm bg-red-50 dark:bg-red-900/10 px-2 py-1 rounded inline-block mb-3">
+                  {clickedNode.stat}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                  {clickedNode.desc}
+                </p>
                 <Link 
-                  to={hoveredNode.path || "/summary"}
-                  className="mt-3 pt-3 border-t border-gray-100 dark:border-dark-border flex items-center justify-between text-[10px] font-bold text-gray-500 hover:text-crimson dark:text-gray-400 dark:hover:text-crimson tracking-wider transition-colors cursor-pointer group"
+                  to={clickedNode.path || "/summary"}
+                  className="mt-4 pt-3 border-t border-gray-100 dark:border-dark-border flex items-center justify-between text-[11px] font-bold text-gray-500 hover:text-crimson dark:text-gray-400 dark:hover:text-crimson tracking-wider transition-colors cursor-pointer group"
                 >
                   <span className="flex items-center">
-                    <ArrowRight className="w-3 h-3 mr-1 group-hover:translate-x-1 transition-transform" /> 
+                    <ArrowRight className="w-3 h-3 mr-2 group-hover:translate-x-1 transition-transform" /> 
                     SUPPLY CHAIN VULNERABILITY
                   </span>
                 </Link>
