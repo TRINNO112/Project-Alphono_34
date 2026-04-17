@@ -248,9 +248,20 @@ export default function Home() {
               <FileText className="w-5 h-5 text-crimson" />
               <span className="font-serif text-lg font-bold text-crimson">Executive Summary</span>
             </div>
-            <ArrowRight className="w-4 h-4 text-crimson group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-5 h-5 text-crimson opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
           </div>
         </Link>
+        <Link to="/global-trade" className="group block mb-4">
+          <div className="flex items-center justify-between p-4 rounded-xl bg-[#FDFBF7] dark:bg-dark-surface/80 border border-[#8D6E63] hover:border-[#3E2723] transition-colors relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(#E8E0D5_1px,transparent_1px)] dark:bg-[radial-gradient(#3E2723_1px,transparent_1px)] [background-size:20px_20px] opacity-20 pointer-events-none"></div>
+            <div className="flex items-center gap-3 relative z-10">
+              <svg className="w-5 h-5 text-[#8B0000]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+              <span className="font-serif text-lg font-bold text-[#3E2723] dark:text-[#EBE3D5] tracking-widest uppercase">Index Mercantilis: Global Trade Cartography</span>
+            </div>
+            <ArrowRight className="w-5 h-5 text-[#8B0000] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all relative z-10" />
+          </div>
+        </Link>
+
         <div className="space-y-0">
           {sectors.map((sector, i) => (
             <Link key={sector.id} to={sector.path} className="group block">
