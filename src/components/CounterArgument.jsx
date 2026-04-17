@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 
 const CHARACTERS = {
@@ -30,7 +31,7 @@ function fakeTime(index) {
   return `${h}:${String(m).padStart(2, '0')} AM`
 }
 
-export function CounterArgument({ messages, argument, rebuttal, stats }) {
+function CounterArgumentInner({ messages, argument, rebuttal, stats }) {
   // Backwards compatibility: convert old props to messages format
   const chatMessages = messages || [
     { from: 'raju', text: argument || '' },
@@ -49,18 +50,18 @@ export function CounterArgument({ messages, argument, rebuttal, stats }) {
       className="rounded-2xl overflow-hidden border border-gray-200 dark:border-dark-border my-8 bg-stone-50/80 dark:bg-dark-surface/30"
     >
       {/* Header */}
-      <div className="px-5 py-3.5 bg-emerald-800 dark:bg-emerald-950 flex items-center justify-between">
+      <div role="heading" aria-level={3} className="px-5 py-3.5 bg-emerald-800 dark:bg-emerald-950 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-emerald-200/80">The Debate</span>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1.5">
-            <span className="text-sm">{CHARACTERS.raju.emoji}</span>
+            <span className="text-sm" aria-hidden="true">{CHARACTERS.raju.emoji}</span>
             <span className="text-[10px] text-emerald-200/70 font-semibold">{CHARACTERS.raju.name}</span>
           </div>
-          <span className="text-emerald-400/40 text-xs">vs</span>
+          <span className="text-emerald-400/40 text-xs" aria-hidden="true">vs</span>
           <div className="flex items-center gap-1.5">
-            <span className="text-sm">{CHARACTERS.priya.emoji}</span>
+            <span className="text-sm" aria-hidden="true">{CHARACTERS.priya.emoji}</span>
             <span className="text-[10px] text-emerald-200/70 font-semibold">{CHARACTERS.priya.name}</span>
           </div>
         </div>
@@ -71,10 +72,11 @@ export function CounterArgument({ messages, argument, rebuttal, stats }) {
         {chatMessages.map((msg, i) => {
           const char = CHARACTERS[msg.from] || CHARACTERS.raju
           const isRaju = msg.from === 'raju'
+          const msgKey = `${msg.from}-${(msg.text || '').slice(0, 30)}-${i}`
 
           return (
             <motion.div
-              key={i}
+              key={msgKey}
               initial={{ opacity: 0, y: 10, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
@@ -96,7 +98,7 @@ export function CounterArgument({ messages, argument, rebuttal, stats }) {
                       ? 'text-green-700 dark:text-green-400'
                       : 'text-crimson/80 dark:text-red-400'
                   }`}>
-                    {char.emoji} {char.name}
+                    <span aria-hidden="true">{char.emoji}</span> {char.name}
                   </span>
 
                   <p className="font-sans">{parseBold(msg.text)}</p>
@@ -129,3 +131,5 @@ export function CounterArgument({ messages, argument, rebuttal, stats }) {
     </motion.div>
   )
 }
+
+export const CounterArgument = memo(CounterArgumentInner)

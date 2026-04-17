@@ -14,9 +14,9 @@
 
 Project Alphono 34 is a large-scale, source-cited React application that functions as an interactive critical dependency analysis of Gujarat. Unlike standard economic portals that celebrate output metrics, this project systematically dissects the **structural vulnerabilities, external supply chain dependencies, and single points of failure** underpinning one of India's most industrialized states.
 
-The project analyzes 9 structural pillars across 16 routes, backed by **100+ cited sources** from CAG reports, NITI Aayog data, news organizations (Business Standard, The Print, Economic Times), CPCB assessments, and academic research. Every claim carries an inline citation linked to a verifiable URL.
+The project analyzes **13 structural pillars across 20 routes**, backed by **150+ cited sources** from CAG reports, NITI Aayog data, news organizations (Business Standard, The Print, Economic Times, Rest of World, Reuters), CPCB assessments, TRAI filings, DoT QoS reports, and academic research. Every claim carries an inline citation linked to a verifiable URL.
 
-**Core thesis**: Gujarat's economic engine is built on supply chains that originate far beyond its borders — from imported Indonesian coal powering coastal mega-plants, to Chinese APIs sustaining its pharma sector, to migrant workers from Bihar and Odisha running its factories, to a single dam supplying water to 3 crore people.
+**Core thesis**: Gujarat's economic engine is built on supply chains that originate far beyond its borders — from imported Indonesian coal powering coastal mega-plants, to Chinese APIs sustaining its pharma sector, to migrant workers from Bihar and Odisha running its factories, to a single dam supplying water to 3 crore people, to submarine internet cables that land exclusively in Mumbai.
 
 ---
 
@@ -35,10 +35,11 @@ The project analyzes 9 structural pillars across 16 routes, backed by **100+ cit
 | SEO | react-helmet-async | 3.0 |
 
 **Key architectural decisions**:
-- **No state management library** — Global dark mode via props from App.jsx; page-level state is self-contained
-- **Tailwind v4** — Uses `@theme` block in `index.css` (no `tailwind.config.js`)
-- **Dark mode detection** — `useSyncExternalStore` with MutationObserver (React 19 pattern, not useState+useEffect)
-- **All data hardcoded** — No API calls; data is embedded in page components and `src/data/` files
+- **No state management library** — Dark-mode source-of-truth lifted to `App.jsx` which mutates `document.documentElement.classList`; leaf components (`PillarChart`, `CascadeDiagram`) read the theme via `useSyncExternalStore` + MutationObserver for React 19-correct reactivity.
+- **Tailwind v4** — Uses `@theme` block in `index.css` (no `tailwind.config.js`).
+- **Route-level code splitting** — Every page is loaded via `React.lazy` + `<Suspense>`; first paint ships only the Home bundle.
+- **Error-safe routing** — `<ErrorBoundary>` wraps all routes; invalid paths hit a proper 404 page.
+- **All research data hardcoded** — No API calls; data is embedded in page components and `src/data/` files.
 
 ---
 
@@ -50,37 +51,46 @@ Project-Alphono_34/
 |-- package.json                   # Dependencies & scripts
 |-- vite.config.js                 # Vite + Tailwind + React config
 |-- eslint.config.js               # ESLint rules
+|-- README.md                      # This file
+|-- CONTRIBUTING.md                # How to add pillars, code style, citation rules
+|-- RESUME.md                      # Session checkpoint (mid-work recovery log)
 |
 |-- public/
 |   |-- favicon.svg
 |   |-- icons.svg
-|   |-- geo/                       # Local GeoJSON files (Gujarat, India, countries)
+|   |-- geo/                       # Local GeoJSON (Gujarat, India, 10 supply-chain countries)
 |
 |-- src/
     |-- main.jsx                   # ReactDOM entry point
-    |-- App.jsx                    # Router (16 routes), scroll bar, theme provider
+    |-- App.jsx                    # Router (20 routes), lazy-loaded, ErrorBoundary-wrapped
     |-- App.css                    # Utility overrides
-    |-- index.css                  # Tailwind v4 @theme, CSS variables, custom scrollbars
+    |-- index.css                  # Tailwind v4 @theme, CSS vars, scrollbars, .sr-only, reduced-motion
     |
     |-- assets/
     |   |-- hero.png               # Landing banner
     |
-    |-- components/
-    |   |-- Navbar.jsx             # Fixed nav, dark mode toggle, back button
+    |-- components/                # 15 shared components
+    |   |-- Navbar.jsx             # Semantic nav, mobile hamburger, a11y, dark-mode source
+    |   |-- Footer.jsx             # Pillar + resource links (contentinfo landmark)
     |   |-- Shared.jsx             # Section, DataCard, Ref, SourceList, StatBox, PendingDataBox
-    |   |-- PillarChart.jsx        # Recharts wrapper (bar/pie) with dark mode
-    |   |-- ComparisonTable.jsx    # State-vs-state comparison with Gujarat highlight
-    |   |-- CounterArgument.jsx    # Two-column narrative vs. data rebuttal
-    |   |-- Timeline.jsx           # Vertical chronological event display
+    |   |-- SEO.jsx                # react-helmet-async wrapper
+    |   |-- PillarChart.jsx        # Recharts wrapper (bar/pie), memoized, a11y-tagged
+    |   |-- ComparisonTable.jsx    # State-vs-state table, sticky header, scoped th, memoized
+    |   |-- CounterArgument.jsx    # Debate chat (Rajubhai vs Priya), a11y-friendly
+    |   |-- Timeline.jsx           # Vertical chronological events
     |   |-- SupplyChainMap.jsx     # SVG world map with animated dependency flows
-    |   |-- SearchBar.jsx          # Ctrl+K floating search modal
-    |   |-- Footer.jsx             # Navigation footer
+    |   |-- CascadeDiagram.jsx     # 2026 crisis propagation (custom SVG Sankey)
+    |   |-- SearchBar.jsx          # Ctrl+K floating search modal (aria-live results)
+    |   |-- ScrollSpy.jsx          # Sidebar section tracker for long pages
+    |   |-- Skeleton.jsx           # Loading placeholder (shimmer)
+    |   |-- AnimatedCounter.jsx    # In-view number counter
+    |   |-- ErrorBoundary.jsx      # Catches render errors, themed fallback
     |
     |-- data/
-    |   |-- searchIndex.js         # 75 searchable claims across 9 pillars
-    |   |-- districtsData.js       # 33 district profiles (7 deep + 25 placeholder)
+    |   |-- searchIndex.js         # ~85 searchable claims across 13 pillars
+    |   |-- districtsData.js       # 33 district profiles (7 deep + 26 placeholder)
     |
-    |-- pages/
+    |-- pages/                     # 21 routed pages
         |-- Home.jsx               # Landing: hero, abstract, ToC, radar, supply chain map, pillars
         |-- Infrastructure.jsx     # Pillar I: Ports, bridges, DFC, digital gap
         |-- Energy.jsx             # Pillar II: Coal, LNG, renewables, grid collapse
@@ -91,12 +101,17 @@ Project-Alphono_34/
         |-- Education.jsx          # Pillar VII: Dropouts, GER collapse, healthcare
         |-- Environment.jsx        # Pillar VIII: Pollution, Alang, mangroves, erosion
         |-- MigrantDiscrimination.jsx  # Pillar IX: 2018 pogrom, labor rights, ESI gaps
-        |-- Summary.jsx            # Executive synthesis across all pillars
+        |-- Agriculture.jsx        # Pillar X: Cotton, BT, groundwater, MSP gap
+        |-- GreenTech.jsx          # Pillar XI: Solar imports, EV battery, hydrogen
+        |-- ChemicalGovernance.jsx # Pillar XII: Chemical clusters, compliance audit
+        |-- DigitalSovereignty.jsx # Pillar XIII: Submarine cables, cloud, UPI/Aadhaar deps
+        |-- Summary.jsx            # Executive synthesis, risk matrix, scenarios
         |-- Timeline.jsx           # Chronological crisis timeline (2016-2026)
         |-- DistrictMap.jsx        # Interactive Gujarat map (33 districts)
         |-- DistrictAnalysis.jsx   # Individual district deep-dive (route param)
         |-- Methodology.jsx        # Research methodology explanation
         |-- Sources.jsx            # Master source reference page
+        |-- NotFound.jsx           # 404 catch-all
 ```
 
 ---
@@ -120,55 +135,78 @@ Project-Alphono_34/
 ### Component Pattern (Per Pillar Page)
 ```
 Hero (PILLAR XX label)
-  → Section blocks with DataCards
-    → PillarChart visualizations
-      → ComparisonTable (state vs. state)
-        → CounterArgument (narrative vs. data)
-          → SourceList (cited URLs at bottom)
+  -> ScrollSpy sidebar (sticky section TOC)
+    -> Section blocks with DataCards + Charts
+      -> ComparisonTable (state vs. state)
+        -> CounterArgument (Rajubhai vs Priya chat)
+          -> SourceList (cited URLs at bottom)
 ```
 
 ---
 
-## 5. Research Pillars (9 Sectors)
+## 5. Research Pillars (13 Sectors)
 
-| # | Pillar | Route | Key Metric | Charts | Sources |
-|---|--------|-------|-----------|--------|---------|
-| I | Infrastructure & Logistics | `/infrastructure` | 500.8 MMT (APSEZ FY26) | 2 bar charts, 1 comparison table | 19 |
-| II | Energy Grid & Power | `/energy` | 550+ Morbi units shut | 3 charts (RE paradox, LNG, capacity) | 18 |
-| III | Water Security | `/water` | 132% Mehsana extraction | 2 charts (allocation, aquifer) | 14 |
-| IV | Migrant Labor Ecosystem | `/labor` | 5-6L workers fled (2026) | 1 pie chart, 1 timeline | 17 |
-| V | Governance & Fiscal | `/economics` | 4.9% OTR / Rs 11,929 Cr CAG flag | 3 charts (OTR, revenue, MoU) | 20 |
-| VI | Industrial Raw Materials | `/materials` | 36% crude from Russia | 2 charts (crude sources, APIs) | 16 |
-| VII | Education & Healthcare | `/education` | 2.4L dropouts (#1 India) | **0 charts** (upgrade pending) | 14 |
-| VIII | Environment & Climate | `/environment` | Sabarmati "cesspool" ruling | **0 charts** (upgrade pending) | 14 |
-| IX | Migrant Discrimination | `/migrant-discrimination` | 20K+ workers attacked (2018) | Multiple sections | 33 |
-
-**Total cited sources**: 100+ across all pillars
+| # | Pillar | Route | Key Metric | Sources |
+|---|--------|-------|-----------|---------|
+| I | Infrastructure & Logistics | `/infrastructure` | 500.8 MMT (APSEZ FY26) | 19 |
+| II | Energy Grid & Power | `/energy` | 550+ Morbi units shut | 18 |
+| III | Water Security | `/water` | 132% Mehsana extraction | 14 |
+| IV | Migrant Labor Ecosystem | `/labor` | 5-6L workers fled (2026) | 17 |
+| V | Governance & Fiscal | `/economics` | 4.9% OTR / Rs 11,929 Cr CAG flag | 20 |
+| VI | Industrial Raw Materials | `/materials` | 36% crude from Russia | 16 |
+| VII | Education & Healthcare | `/education` | 2.4L dropouts (#1 India) | 14 |
+| VIII | Environment & Climate | `/environment` | Sabarmati "cesspool" ruling | 14 |
+| IX | Migrant Discrimination | `/migrant-discrimination` | 20K+ workers attacked (2018) | 33 |
+| X | Agriculture | `/agriculture` | BT cotton collapse, MSP gap | 14 |
+| XI | Green Tech & Transition | `/greentech` | Chinese solar cell dependency | 13 |
+| XII | Chemical Governance | `/chemical-governance` | Vapi/Ankleshwar compliance gaps | 15 |
+| XIII | Digital Sovereignty | `/digital-sovereignty` | 0 submarine cable landings | 13 |
 
 ---
 
 ## 6. Additional Features
 
-### Interactive District Map (`/map` → `/district/:id`)
+### Interactive District Map (`/map` -> `/district/:id`)
 - Geographic exploration of Gujarat's 33 districts
 - 7 deeply researched profiles: Morbi, Surat, Kutch, Jamnagar, Mehsana, Bharuch, Ahmedabad
 - Each profile includes: key stats, crisis timeline, dependency summary, pillar tags
-- 25 additional districts in placeholder state (expansion planned)
+- 26 additional districts in placeholder state (expansion planned)
 
 ### Crisis Timeline (`/timeline`)
 - Chronological mapping of systemic failures from 2016 demonetization through 2026 twin-crisis
 
-### Global Search (Ctrl+K)
-- 75 indexed claims across 9 pillars with keyword matching
+### Global Search (Ctrl+K / Cmd+K)
+- ~85 indexed claims across 13 pillars with keyword matching
+- Results grouped by pillar, aria-live announced to screen readers
 - Instant navigation to relevant pillar page
 
 ---
 
-## 7. Research Methodology
+## 7. Accessibility
+
+The application targets WCAG 2.1 AA:
+
+- Semantic landmarks: `<header role="banner">`, `<nav aria-label="Primary">`, `<main id="main">`, `<footer role="contentinfo">`.
+- Skip-to-content link as the first focusable element.
+- `aria-current="page"` on active nav links; `aria-pressed` on the theme toggle.
+- Mobile hamburger menu exposes all 13 pillar routes + resource pages below the `md:` breakpoint (previously nav was hidden on mobile).
+- All icon-only buttons have descriptive `aria-label`s.
+- Charts (`PillarChart`), the supply-chain map, and the cascade diagram are wrapped in `<figure role="img">` with text `<figcaption>` fallbacks for screen readers.
+- Tables have `<caption>` and `scope="col"` on headers.
+- `@media (prefers-reduced-motion: reduce)` disables non-essential animations.
+
+## 8. Mobile
+
+- Responsive from 320 px up.
+- Below `md:` (768 px), the Navbar collapses to a hamburger that slides down a full-height sheet containing the primary nav + every pillar + resources. The sheet closes on route change, Esc, or backdrop click, and returns focus to the toggle on close.
+
+---
+
+## 9. Research Methodology
 
 All data points sourced from:
-- **Government reports**: NITI Aayog, CAG, CEA, Finance Commission, CGWB, CPCB
-- **News organizations**: Business Standard, The Print, Economic Times, NDTV, Scroll.in
+- **Government reports**: NITI Aayog, CAG, CEA, Finance Commission, CGWB, CPCB, TRAI, DoT, MeitY, UIDAI, NPCI
+- **News organizations**: Business Standard, The Print, Economic Times, NDTV, Scroll.in, Rest of World, Reuters, Bloomberg, Hindustan Times
 - **Academic/NGO research**: Down to Earth, IndiaSpend, Global Energy Monitor
 - **Industry data**: APSEZ annual reports, RBI bulletins, CMIE
 
@@ -180,7 +218,7 @@ All data points sourced from:
 
 ---
 
-## 8. Running the Project
+## 10. Running the Project
 
 ```bash
 # Install dependencies
@@ -199,15 +237,4 @@ npm run preview
 npm run lint
 ```
 
----
-
-## 9. Completed Upgrades
-
-| Phase | Description | Status |
-|-------|------------|--------|
-| 1 | Cascade/Sankey diagram — 2026 crisis propagation across pillars | Done |
-| 2 | Charts for Education & Environment pages | Done |
-| 3 | Time-series charts across all existing pages | Done |
-| 4 | 10 new district profiles with researched data | Done |
-| 5 | Summary page full rebuild — risk matrix, scenarios | Done |
-| 6 | CounterArgument → WhatsApp-style DebateChat (Rajubhai vs Priya) | Done |
+See `CONTRIBUTING.md` for how to add a new pillar or component.

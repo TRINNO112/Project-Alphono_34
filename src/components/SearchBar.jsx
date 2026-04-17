@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, X } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Search } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { searchIndex } from '../data/searchIndex'
 
 const pillarColors = {
@@ -30,6 +30,7 @@ export default function SearchBar() {
   const [query, setQuery] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const inputRef = useRef(null)
+  const navigate = useNavigate()
 
   const results = query.trim()
     ? searchIndex.filter(item =>
@@ -79,10 +80,17 @@ export default function SearchBar() {
     <>
       {/* Floating search button */}
       <button
-        className="fixed bottom-6 right-6 z-50 p-4 bg-crimson text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+        type="button"
+        aria-label="Open search (Ctrl+K)"
+        aria-expanded={isOpen}
+        className="group fixed bottom-6 right-6 z-50 flex items-center gap-2 pl-4 pr-3 py-3 bg-crimson text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
         onClick={() => setIsOpen(true)}
       >
-        <Search className="w-5 h-5" />
+        <Search className="w-5 h-5" aria-hidden="true" />
+        <span className="hidden sm:inline text-xs font-medium opacity-90">Search</span>
+        <kbd className="hidden sm:inline text-[10px] font-semibold px-1.5 py-0.5 rounded bg-white/20 border border-white/30 text-white">
+          Ctrl K
+        </kbd>
       </button>
 
       {/* Search modal */}
@@ -107,18 +115,19 @@ export default function SearchBar() {
               <div className="bg-white dark:bg-dark-surface rounded-2xl border border-gray-200 dark:border-dark-border shadow-2xl overflow-hidden">
                 {/* Input */}
                 <div className="flex items-center gap-3 p-4 border-b border-gray-200 dark:border-dark-border">
-                  <Search className="w-5 h-5 text-gray-400" />
+                  <Search className="w-5 h-5 text-gray-400" aria-hidden="true" />
                   <input
                     ref={inputRef}
                     type="text"
+                    aria-label="Search across all pillars"
                     placeholder="Search claims, topics, sources..."
                     className="flex-1 bg-transparent outline-none text-gray-900 dark:text-white placeholder-gray-400 text-lg"
                     value={query}
                     onChange={e => setQuery(e.target.value)}
                   />
-                  {query && (
-                    <span className="text-xs text-gray-400 mr-2">{results.length} result{results.length !== 1 ? 's' : ''}</span>
-                  )}
+                  <span role="status" aria-live="polite" className="text-xs text-gray-400 mr-2">
+                    {query ? `${results.length} result${results.length !== 1 ? 's' : ''}` : ''}
+                  </span>
                   <kbd className="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-dark-bg text-gray-500 border border-gray-200 dark:border-dark-border">ESC</kbd>
                 </div>
 
@@ -136,15 +145,18 @@ export default function SearchBar() {
                           <span className="text-[10px] text-gray-400">{grouped[pillar].length}</span>
                           <div className="flex-1 h-px bg-gray-200 dark:bg-dark-border" />
                         </div>
-                        {grouped[pillar].map((item, i) => (
-                          <Link
-                            key={i}
-                            to={item.path}
-                            onClick={handleClose}
-                            className="block p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors"
+                        {grouped[pillar].map((item) => (
+                          <button
+                            key={`${item.path}-${item.claim.slice(0, 40)}`}
+                            type="button"
+                            onClick={() => {
+                              navigate(item.path, { state: { searchQuery: query, searchClaim: item.claim } })
+                              handleClose()
+                            }}
+                            className="block w-full text-left p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
                           >
                             <div className="text-sm text-gray-700 dark:text-gray-300">{item.claim}</div>
-                          </Link>
+                          </button>
                         ))}
                       </div>
                     ))

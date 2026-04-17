@@ -24,7 +24,7 @@ const verificationSteps = [
 ]
 
 const limitations = [
-  "RTI responses pending for 3 districts — some granular data gaps exist in Kutch, Narmada, and Dahod district-level breakdowns.",
+  "Deep audits are currently active for 17 districts. The remaining 16 placeholder districts are presently mapped using predictive gap-analysis and state-aggregate overlays pending Phase 3 on-the-ground validation.",
   "Corporate financial data relies on publicly filed documents; internal operational data (e.g., Adani port efficiency metrics) is not independently verifiable.",
   "Migrant worker statistics are inherently undercounted — no comprehensive interstate migration registry exists in India. Figures represent best available estimates.",
   "Environmental monitoring data from GPCB has known reliability issues flagged by CAG — we note this where applicable but cannot independently re-test.",
@@ -220,6 +220,15 @@ export default function Methodology() {
               <span>Direct clickable URL to the original source</span>
             </li>
           </ul>
+        </motion.section>
+
+        {/* §7 — Phase 3 Unaudited Districts */}
+        <motion.section {...fade(0.1)} className="mt-16">
+          <SectionNumber n="7" />
+          <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4">Phase 3: Unaudited District Protocol</h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+            For the 16 districts currently pending a deep audit, preliminary vulnerability matrices are constructed using predictive gap-analysis. This involves extrapolating localized risk from state-wide aggregates, using satellite telemetry for crop and environmental distress mapping, and leveraging spatial proxy data. Full factual grounding is marked as <strong className="text-gray-900 dark:text-white">Pending Synthesis</strong> until primary RTI responses, governmental dataset validations, and empirical field reports complete the verification pipeline.
+          </p>
         </motion.section>
 
       </div>

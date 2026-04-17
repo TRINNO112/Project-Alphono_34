@@ -1,28 +1,34 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { motion, useScroll, useSpring, useMotionValueEvent, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, lazy, Suspense } from 'react'
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import Infrastructure from './pages/Infrastructure'
-import Energy from './pages/Energy'
-import Water from './pages/Water'
-import Labor from './pages/Labor'
-import Economics from './pages/Economics'
-import Materials from './pages/Materials'
-import Summary from './pages/Summary'
-import Education from './pages/Education'
-import Environment from './pages/Environment'
-import MigrantDiscrimination from './pages/MigrantDiscrimination'
-import Timeline from './pages/Timeline'
-import DistrictMap from './pages/DistrictMap'
-import DistrictAnalysis from './pages/DistrictAnalysis'
-import Methodology from './pages/Methodology'
-import Sources from './pages/Sources'
-import Agriculture from './pages/Agriculture'
-import GreenTech from './pages/GreenTech'
-import ChemicalGovernance from './pages/ChemicalGovernance'
 import SearchBar from './components/SearchBar'
+import SearchHighlight from './components/SearchHighlight'
 import Footer from './components/Footer'
+import ErrorBoundary from './components/ErrorBoundary'
+import { SkeletonChart } from './components/Skeleton'
+
+const Home = lazy(() => import('./pages/Home'))
+const Infrastructure = lazy(() => import('./pages/Infrastructure'))
+const Energy = lazy(() => import('./pages/Energy'))
+const Water = lazy(() => import('./pages/Water'))
+const Labor = lazy(() => import('./pages/Labor'))
+const Economics = lazy(() => import('./pages/Economics'))
+const Materials = lazy(() => import('./pages/Materials'))
+const Summary = lazy(() => import('./pages/Summary'))
+const Education = lazy(() => import('./pages/Education'))
+const Environment = lazy(() => import('./pages/Environment'))
+const MigrantDiscrimination = lazy(() => import('./pages/MigrantDiscrimination'))
+const Timeline = lazy(() => import('./pages/Timeline'))
+const DistrictMap = lazy(() => import('./pages/DistrictMap'))
+const DistrictAnalysis = lazy(() => import('./pages/DistrictAnalysis'))
+const Methodology = lazy(() => import('./pages/Methodology'))
+const Sources = lazy(() => import('./pages/Sources'))
+const Agriculture = lazy(() => import('./pages/Agriculture'))
+const GreenTech = lazy(() => import('./pages/GreenTech'))
+const ChemicalGovernance = lazy(() => import('./pages/ChemicalGovernance'))
+const DigitalSovereignty = lazy(() => import('./pages/DigitalSovereignty'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 const pageVariants = {
   initial: { opacity: 0, y: 24 },
@@ -38,6 +44,14 @@ function PageTransition({ children }) {
   )
 }
 
+function RouteFallback() {
+  return (
+    <div className="max-w-5xl mx-auto px-6 pt-32 pb-32">
+      <SkeletonChart />
+    </div>
+  )
+}
+
 function AnimatedRoutes() {
   const location = useLocation()
 
@@ -47,40 +61,39 @@ function AnimatedRoutes() {
 
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-        <Route path="/infrastructure" element={<PageTransition><Infrastructure /></PageTransition>} />
-        <Route path="/energy" element={<PageTransition><Energy /></PageTransition>} />
-        <Route path="/water" element={<PageTransition><Water /></PageTransition>} />
-        <Route path="/labor" element={<PageTransition><Labor /></PageTransition>} />
-        <Route path="/economics" element={<PageTransition><Economics /></PageTransition>} />
-        <Route path="/materials" element={<PageTransition><Materials /></PageTransition>} />
-        <Route path="/education" element={<PageTransition><Education /></PageTransition>} />
-        <Route path="/summary" element={<PageTransition><Summary /></PageTransition>} />
-        <Route path="/environment" element={<PageTransition><Environment /></PageTransition>} />
-        <Route path="/migrant-discrimination" element={<PageTransition><MigrantDiscrimination /></PageTransition>} />
-        <Route path="/timeline" element={<PageTransition><Timeline /></PageTransition>} />
-        <Route path="/map" element={<PageTransition><DistrictMap /></PageTransition>} />
-        <Route path="/district/:id" element={<PageTransition><DistrictAnalysis /></PageTransition>} />
-        <Route path="/methodology" element={<PageTransition><Methodology /></PageTransition>} />
-        <Route path="/sources" element={<PageTransition><Sources /></PageTransition>} />
-        <Route path="/agriculture" element={<PageTransition><Agriculture /></PageTransition>} />
-        <Route path="/greentech" element={<PageTransition><GreenTech /></PageTransition>} />
-        <Route path="/chemical-governance" element={<PageTransition><ChemicalGovernance /></PageTransition>} />
-      </Routes>
+      <Suspense fallback={<RouteFallback />}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+          <Route path="/infrastructure" element={<PageTransition><Infrastructure /></PageTransition>} />
+          <Route path="/energy" element={<PageTransition><Energy /></PageTransition>} />
+          <Route path="/water" element={<PageTransition><Water /></PageTransition>} />
+          <Route path="/labor" element={<PageTransition><Labor /></PageTransition>} />
+          <Route path="/economics" element={<PageTransition><Economics /></PageTransition>} />
+          <Route path="/materials" element={<PageTransition><Materials /></PageTransition>} />
+          <Route path="/education" element={<PageTransition><Education /></PageTransition>} />
+          <Route path="/summary" element={<PageTransition><Summary /></PageTransition>} />
+          <Route path="/environment" element={<PageTransition><Environment /></PageTransition>} />
+          <Route path="/migrant-discrimination" element={<PageTransition><MigrantDiscrimination /></PageTransition>} />
+          <Route path="/timeline" element={<PageTransition><Timeline /></PageTransition>} />
+          <Route path="/map" element={<PageTransition><DistrictMap /></PageTransition>} />
+          <Route path="/district/:id" element={<PageTransition><DistrictAnalysis /></PageTransition>} />
+          <Route path="/methodology" element={<PageTransition><Methodology /></PageTransition>} />
+          <Route path="/sources" element={<PageTransition><Sources /></PageTransition>} />
+          <Route path="/agriculture" element={<PageTransition><Agriculture /></PageTransition>} />
+          <Route path="/greentech" element={<PageTransition><GreenTech /></PageTransition>} />
+          <Route path="/chemical-governance" element={<PageTransition><ChemicalGovernance /></PageTransition>} />
+          <Route path="/digital-sovereignty" element={<PageTransition><DigitalSovereignty /></PageTransition>} />
+          <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+        </Routes>
+      </Suspense>
     </AnimatePresence>
   )
 }
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true)
-  const [scrollPct, setScrollPct] = useState(0)
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
-
-  useMotionValueEvent(scrollYProgress, 'change', (v) => {
-    setScrollPct(Math.round(v * 100))
-  })
 
   useEffect(() => {
     if (darkMode) {
@@ -94,27 +107,28 @@ export default function App() {
     <Router>
       <div className="min-h-screen bg-parchment-50 dark:bg-dark-bg transition-colors duration-500 font-sans text-gray-900 dark:text-gray-200 selection:bg-crimson selection:text-white">
 
-        {/* Global Scroll Progress Bar + Percentage */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-md focus:bg-crimson focus:text-white focus:font-medium"
+        >
+          Skip to main content
+        </a>
+
+        {/* Global scroll progress bar (thin line only, no % pill) */}
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-crimson origin-left z-50 shadow-[0_0_10px_rgba(211,47,47,0.5)] pointer-events-none"
           style={{ scaleX }}
+          aria-hidden="true"
         />
-        <AnimatePresence>
-          {scrollPct > 2 && scrollPct < 99 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className="fixed top-3 right-4 z-50 px-2 py-0.5 rounded-full bg-crimson/90 text-white text-[10px] font-bold tracking-wider pointer-events-none backdrop-blur-sm"
-            >
-              {scrollPct}%
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
-        <AnimatedRoutes />
+        <main id="main" tabIndex={-1} className="outline-none">
+          <ErrorBoundary>
+            <AnimatedRoutes />
+            <SearchHighlight />
+          </ErrorBoundary>
+        </main>
 
         <SearchBar />
 

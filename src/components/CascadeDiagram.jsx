@@ -1,4 +1,4 @@
-import { useState, useSyncExternalStore } from 'react'
+import { memo, useState, useSyncExternalStore } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AlertTriangle, Zap, Factory, Users, TrendingDown, Droplets, Ship } from 'lucide-react'
 
@@ -169,7 +169,7 @@ function getNodePos(node) {
 const SVG_W = PADDING_X * 2 + 2 * COL_GAP_X + NODE_W
 const SVG_H = PADDING_TOP * 2 + 4 * TIER_GAP_Y + NODE_H
 
-function CurvedArrow({ from, to, index, isDark }) {
+const CurvedArrow = memo(function CurvedArrow({ from, to, index, isDark }) {
   const start = getNodePos(from)
   const end = getNodePos(to)
 
@@ -192,9 +192,9 @@ function CurvedArrow({ from, to, index, isDark }) {
       transition={{ duration: 0.8, delay: 0.3 + index * 0.08, ease: 'easeOut' }}
     />
   )
-}
+})
 
-function NodeBox({ node, isSelected, onSelect, index, isDark }) {
+const NodeBox = memo(function NodeBox({ node, isSelected, onSelect, index, isDark }) {
   const pos = getNodePos(node)
   const Icon = node.icon
   const active = isSelected === node.id
@@ -310,7 +310,7 @@ function NodeBox({ node, isSelected, onSelect, index, isDark }) {
       </text>
     </motion.g>
   )
-}
+})
 
 export function CascadeDiagram() {
   const isDark = useSyncExternalStore(subscribeDarkMode, getIsDark)
@@ -335,11 +335,15 @@ export function CascadeDiagram() {
       </div>
 
       {/* SVG Diagram */}
-      <div className="overflow-x-auto">
+      <figure className="overflow-x-auto" role="img" aria-label="Cascade diagram showing how the 2026 Gujarat crisis propagated across five tiers: Trigger, First Order, Second Order, Labor & Industry, and Fiscal Impact.">
+        <figcaption className="sr-only">
+          Five-tier flow from triggering event down through cascading consequences. Nodes at each level represent documented dependency failures; arrows connect causes to effects.
+        </figcaption>
         <svg
           viewBox={`0 0 ${SVG_W} ${SVG_H}`}
           className="w-full max-w-3xl mx-auto"
           style={{ minWidth: '600px' }}
+          aria-hidden="true"
         >
           {/* Tier labels */}
           {['TRIGGER', 'FIRST ORDER', 'SECOND ORDER', 'LABOR & INDUSTRY', 'FISCAL IMPACT'].map((label, i) => (
@@ -386,7 +390,7 @@ export function CascadeDiagram() {
             </g>
           ))}
         </svg>
-      </div>
+      </figure>
 
       {/* Detail panel */}
       <AnimatePresence>

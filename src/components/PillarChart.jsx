@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react'
+import { memo, useMemo, useSyncExternalStore } from 'react'
 import {
   ResponsiveContainer,
   BarChart,
@@ -23,20 +23,20 @@ function getIsDark() {
   return document.documentElement.classList.contains('dark')
 }
 
-export function PillarChart({ type, data, title, caption, height = 300, colors }) {
-  const palette = colors || DEFAULT_COLORS
+function PillarChartInner({ type, data, title, caption, height = 300, colors }) {
+  const palette = useMemo(() => colors || DEFAULT_COLORS, [colors])
   const isDark = useSyncExternalStore(subscribeDarkMode, getIsDark)
 
   const tickFill = isDark ? '#d1d5db' : '#374151'
 
-  const tooltipStyle = {
+  const tooltipStyle = useMemo(() => ({
     backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
     border: `1px solid ${isDark ? '#333' : '#e5e7eb'}`,
     borderRadius: '8px',
     color: isDark ? '#e5e7eb' : '#1f2937',
     fontSize: '14px',
     fontFamily: 'Inter, sans-serif',
-  }
+  }), [isDark])
 
   const renderBar = () => (
     <ResponsiveContainer width="100%" height={height}>
@@ -103,8 +103,15 @@ export function PillarChart({ type, data, title, caption, height = 300, colors }
     </ResponsiveContainer>
   )
 
+  const ariaDesc = (() => {
+    if (!data?.length) return title || 'Chart'
+    const summary = data.map((d) => `${d.name}: ${d.value}`).join('; ')
+    const kind = type === 'pie' ? 'Pie chart' : 'Bar chart'
+    return `${kind}${title ? ` — ${title}` : ''}. ${summary}.`
+  })()
+
   return (
-    <div className="my-8">
+    <figure className="my-8" role="img" aria-label={ariaDesc}>
       {title && (
         <h4 className="text-lg font-serif font-bold text-gray-900 dark:text-white mb-4">{title}</h4>
       )}
@@ -113,8 +120,10 @@ export function PillarChart({ type, data, title, caption, height = 300, colors }
         {type === 'pie' && renderPie()}
       </div>
       {caption && (
-        <p className="text-center text-sm text-gray-500 mt-3 italic font-serif">{caption}</p>
+        <figcaption className="text-center text-sm text-gray-500 mt-3 italic font-serif">{caption}</figcaption>
       )}
-    </div>
+    </figure>
   )
 }
+
+export const PillarChart = memo(PillarChartInner)
