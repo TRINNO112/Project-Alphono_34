@@ -1,7 +1,7 @@
 import { useState, Fragment } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin, Wheat, Cpu, FlaskConical } from 'lucide-react'
+import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin, Wheat, Cpu, FlaskConical, Cable } from 'lucide-react'
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip } from 'recharts'
 import { useSyncExternalStore } from 'react'
 import { SupplyChainMap } from '../components/SupplyChainMap'
@@ -33,13 +33,14 @@ export default function Home() {
     { id: 'agriculture', title: "Agriculture & Agrarian Distress", icon: <Wheat className="w-8 h-8 text-green-700 dark:text-green-400" />, desc: "67% DAP imported, 100% MOP imported, Bt Cotton trap, groundwater at 132% over-extraction.", path: "/agriculture", stat: "100%", statLabel: "MOP Import Dependency", sources: 6 },
     { id: 'greentech', title: "Green Tech Dependency", icon: <Cpu className="w-8 h-8 text-cyan-600 dark:text-cyan-400" />, desc: "90% rare earth processing by China, 80%+ PV wafers imported, Dholera SIR mirage.", path: "/greentech", stat: "90%", statLabel: "China RE Processing", sources: 7 },
     { id: 'chemical-governance', title: "Chemical Governance & Toxicity", icon: <FlaskConical className="w-8 h-8 text-orange-600 dark:text-orange-400" />, desc: "400km Golden Corridor, Sabarmati BOD 292 mg/L, CETP failures, ₹100Cr+ NGT fines.", path: "/chemical-governance", stat: "292", statLabel: "BOD (mg/L) Sabarmati", sources: 8 },
+    { id: 'digital-sovereignty', title: "Digital Sovereignty & Data Dependency", icon: <Cable className="w-8 h-8 text-blue-600 dark:text-blue-400" />, desc: "0 submarine cable landings on a 1,600 km coastline. GIFT City backhauls via Mumbai. AWS hosts state e-gov.", path: "/digital-sovereignty", stat: "0", statLabel: "Intl. Cables in Gujarat", sources: 15 },
   ]
 
-  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII']
 
   const headlines = [
     { value: 186, suffix: '', prefix: '', label: "Cited Sources" },
-    { value: 12, suffix: '', prefix: '', label: "Pillars of Analysis" },
+    { value: 13, suffix: '', prefix: '', label: "Pillars of Analysis" },
     { value: 40, suffix: '%', prefix: '', label: "India's Cargo via Gujarat" },
     { value: 40, suffix: 'B+', prefix: '$', label: "Gujarat NRI Deposits" },
   ]
@@ -56,6 +57,7 @@ export default function Home() {
     { pillar: 'Agriculture', dependency: 88 },
     { pillar: 'Green Tech', dependency: 92 },
     { pillar: 'Chemical', dependency: 75 },
+    { pillar: 'Digital', dependency: 88 },
   ]
 
   const [expandedRows, setExpandedRows] = useState({})
@@ -121,6 +123,11 @@ export default function Home() {
       { text: "Sabarmati River: Dark Underbelly of Ahmedabad — Mongabay", url: "https://india.mongabay.com/sabarmati-pollution" },
       { text: "AMR in Gujarat's Rivers — India Water Portal", url: "https://indiawaterportal.org/amr-gujarat" },
       { text: "Vapi & Ankleshwar Crisis — Down To Earth", url: "https://downtoearth.org.in/pollution/vapi-ankleshwar" },
+    ]},
+    { pillar: "Digital", finding: "Zero submarine cable landings on Gujarat's 1,600 km coastline — all international traffic backhauls via Mumbai. ~15 cables within 6 km of Versova beach = single-point-of-failure. GIFT City IFSC carries a ~30 ms latency penalty vs Singapore. State e-gov (iORA, Digital Gujarat) hosted on AWS Mumbai.", metric: "0 cables / ~30 ms penalty", citations: [
+      { text: "India Submarine Cable Landings — TeleGeography", url: "https://www.submarinecablemap.com/country/india" },
+      { text: "Why the World's Internet Quietly Routes Through Mumbai — Rest of World", url: "https://restofworld.org/2024/mumbai-submarine-cables/" },
+      { text: "TRAI Indian Telecom Services Performance Indicators", url: "https://www.trai.gov.in/release-publication/reports/performance-indicators-reports" },
     ]},
   ]
 
@@ -303,7 +310,9 @@ export default function Home() {
                   borderRadius: '12px',
                   fontFamily: 'Inter',
                   fontSize: '13px',
+                  color: isDark ? '#f3f4f6' : '#111827',
                 }}
+                labelStyle={{ color: isDark ? '#f3f4f6' : '#111827', fontWeight: 700, marginBottom: 4 }}
                 itemStyle={{ color: isDark ? '#e5e7eb' : '#1f2937' }}
                 formatter={(value) => [`${value}%`, 'External Dependency']}
               />
@@ -353,7 +362,7 @@ export default function Home() {
         <div className="text-center mb-16">
           <div className="flex items-center gap-3 justify-center mb-4">
             <span className="text-crimson text-lg font-sans font-bold">IV.</span>
-            <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white">Twelve Pillars of Analysis</h2>
+            <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white">Thirteen Pillars of Analysis</h2>
           </div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Select a sector to explore the fully detailed research findings, quantitative dependencies, and bottlenecks.</p>
         </div>

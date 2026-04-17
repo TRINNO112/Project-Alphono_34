@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 
-export function ComparisonTable({ title, columns, rows, highlightState = 'Gujarat' }) {
+function ComparisonTableInner({ title, columns, rows, highlightState = 'Gujarat' }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -14,11 +15,12 @@ export function ComparisonTable({ title, columns, rows, highlightState = 'Gujara
       )}
       <div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/40 backdrop-blur-sm">
         <table className="w-full border-collapse">
+          {title && <caption className="sr-only">{title}</caption>}
           <thead className="sticky top-0 z-10 bg-white/95 dark:bg-dark-surface/95 backdrop-blur-sm">
             <tr className="border-b-2 border-crimson">
-              <th className="text-left py-3 px-4 text-xs uppercase tracking-widest text-crimson font-semibold font-sans">State</th>
+              <th scope="col" className="text-left py-3 px-4 text-xs uppercase tracking-widest text-crimson font-semibold font-sans">State</th>
               {columns.map((col) => (
-                <th key={col.key} className="text-left py-3 px-4 text-xs uppercase tracking-widest text-crimson font-semibold font-sans">
+                <th scope="col" key={col.key} className="text-left py-3 px-4 text-xs uppercase tracking-widest text-crimson font-semibold font-sans">
                   {col.label}
                 </th>
               ))}
@@ -28,6 +30,7 @@ export function ComparisonTable({ title, columns, rows, highlightState = 'Gujara
             {rows.map((row, i) => (
               <tr
                 key={i}
+                aria-label={row.state === highlightState ? `${row.state} (highlighted)` : undefined}
                 className={`border-b border-gray-200 dark:border-dark-border transition-colors ${
                   row.state === highlightState
                     ? 'bg-crimson/5 dark:bg-crimson/10'
@@ -50,3 +53,5 @@ export function ComparisonTable({ title, columns, rows, highlightState = 'Gujara
     </motion.div>
   )
 }
+
+export const ComparisonTable = memo(ComparisonTableInner)

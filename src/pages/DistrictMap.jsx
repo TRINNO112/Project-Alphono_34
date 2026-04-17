@@ -76,7 +76,7 @@ export default function DistrictMap() {
                 <p className="text-sm font-medium text-gray-500 tracking-wide uppercase">Total Sectors</p>
               </div>
               <div>
-                <p className="text-3xl font-serif font-black text-crimson">07</p>
+                <p className="text-3xl font-serif font-black text-crimson">33</p>
                 <p className="text-sm font-medium text-gray-500 tracking-wide uppercase">Deep Audits Active</p>
               </div>
             </div>

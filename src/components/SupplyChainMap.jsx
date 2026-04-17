@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps'
 import { ArrowRight, ShieldAlert } from 'lucide-react'
 
@@ -40,6 +41,7 @@ const laborTelemetry = {
   stat: "Mass Ecosystem",
   desc: "Total structural dependency on millions of external workers across heavily industrialized corridors.",
   color: "#9333EA",
+  path: "/labor"
 }
 
 // Foreign dependency metadata
@@ -108,10 +110,15 @@ export function SupplyChainMap() {
         </p>
       </div>
 
-      <div
+      <figure
+        role="img"
+        aria-label="Map showing Gujarat's external supply-chain dependencies: China (pharma APIs, solar cells, chemicals), Middle East (crude oil from Iran, Iraq, Saudi Arabia, UAE, Kuwait, Qatar, Yemen, Oman), and Indonesia (thermal coal)."
         className="relative w-full mx-auto bg-gray-50/50 dark:bg-dark-bg/50 border border-gray-200 dark:border-dark-border rounded-3xl shadow-sm overflow-hidden"
         onMouseMove={handleMouseMove}
       >
+        <figcaption className="sr-only">
+          Gujarat (orange marker on India's west coast) is connected by supply-chain flows to China in the north-east, the Middle East in the west, and Indonesia in the south-east. Each region supplies critical inputs Gujarat cannot substitute domestically.
+        </figcaption>
         {/* SINGLE unified ComposableMap - expanded to fill available width */}
         <ComposableMap
           projection="geoMercator"
@@ -199,9 +206,9 @@ export function SupplyChainMap() {
                     if (flow) {
                       handleMouseEnter({ ...laborTelemetry, name: flow.name });
                     } else if (stateName === "Gujarat") {
-                      handleMouseEnter({ category: "Target Vector", name: "Gujarat", stat: "Economic Hub", desc: "The industrial convergence point of external dependencies.", color: "#DC2626" });
+                      handleMouseEnter({ category: "Target Vector", name: "Gujarat", stat: "Economic Hub", desc: "The industrial convergence point of external dependencies.", color: "#DC2626", path: "/summary" });
                     } else {
-                      handleMouseEnter({ category: "Indian State", name: stateName || "India", stat: "Domestic Node", desc: "Part of the interconnected national supply chain network.", color: "#6B7280" });
+                      handleMouseEnter({ category: "Indian State", name: stateName || "India", stat: "Domestic Node", desc: "Part of the interconnected national supply chain network.", color: "#6B7280", path: "/labor" });
                     }
                   }}
                   onMouseLeave={handleMouseLeave}
@@ -239,8 +246,11 @@ export function SupplyChainMap() {
           {/* Foreign Flow Lines + Anchor Dots */}
           {Object.values(foreignNodes).map((node) => (
             <g key={`for-flow-${node.name}`}>
-              <Marker coordinates={node.lineOrigin}>
-                <circle r={5} fill={node.color} stroke="#FFFFFF" strokeWidth={1.5} />
+              <Marker coordinates={node.lineOrigin}
+                onMouseEnter={() => handleMouseEnter(node)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <circle r={8} fill={node.color} stroke="#FFFFFF" strokeWidth={1.5} className="cursor-pointer" />
               </Marker>
               <Line
                 from={node.lineOrigin} to={gujaratCoords}
@@ -268,9 +278,13 @@ export function SupplyChainMap() {
           </Marker>
 
           {/* Gujarat Target */}
-          <Marker coordinates={gujaratCoords}>
-            <circle r={7} fill="#DC2626" stroke="#FFFFFF" strokeWidth={2} />
-            <text textAnchor="end" x={-12} y={5} style={{ fontFamily: "serif", fontSize: "12px", fontWeight: "bold", fill: "#DC2626" }}>
+          <Marker 
+            coordinates={gujaratCoords}
+            onMouseEnter={() => handleMouseEnter({ category: "Target Vector", name: "Gujarat", stat: "Economic Hub", desc: "The industrial convergence point of external dependencies.", color: "#DC2626", path: "/summary" })}
+            onMouseLeave={handleMouseLeave}
+          >
+            <circle r={10} fill="#DC2626" stroke="#FFFFFF" strokeWidth={2} className="cursor-pointer" />
+            <text textAnchor="end" x={-15} y={5} style={{ fontFamily: "serif", fontSize: "14px", fontWeight: "bold", fill: "#DC2626" }} className="pointer-events-none">
               GUJARAT
             </text>
           </Marker>
@@ -310,15 +324,21 @@ export function SupplyChainMap() {
                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
                   {hoveredNode.desc}
                 </p>
-                <div className="mt-3 pt-3 border-t border-gray-100 dark:border-dark-border flex items-center text-[10px] font-bold text-gray-400 dark:text-gray-500 tracking-wider">
-                  <ArrowRight className="w-3 h-3 mr-1" /> SUPPLY CHAIN VULNERABILITY
-                </div>
+                <Link 
+                  to={hoveredNode.path || "/summary"}
+                  className="mt-3 pt-3 border-t border-gray-100 dark:border-dark-border flex items-center justify-between text-[10px] font-bold text-gray-500 hover:text-crimson dark:text-gray-400 dark:hover:text-crimson tracking-wider transition-colors cursor-pointer group"
+                >
+                  <span className="flex items-center">
+                    <ArrowRight className="w-3 h-3 mr-1 group-hover:translate-x-1 transition-transform" /> 
+                    SUPPLY CHAIN VULNERABILITY
+                  </span>
+                </Link>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-      </div>
+      </figure>
 
       <p className="text-center text-sm text-gray-500 mt-6 italic font-serif">
         Figure 2: Gujarat's external supply chain dependencies. India rendered over foreign layers to preserve sovereign borders.

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Copy, Check } from 'lucide-react'
 
@@ -26,7 +26,7 @@ export function Section({ icon, title, children, id }) {
   )
 }
 
-export function DataCard({ title, children, alert = false }) {
+function DataCardInner({ title, children, alert = false }) {
   return (
     <div className={`p-8 rounded-2xl border ${alert ? 'border-red-200 dark:border-red-900/40 bg-red-50/40 dark:bg-red-900/10' : 'border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/60'} backdrop-blur-md shadow-sm hover:shadow-lg transition-all duration-300`}>
       <h3 className="text-2xl font-serif font-bold mb-6 text-gray-900 dark:text-white">{title}</h3>
@@ -34,8 +34,9 @@ export function DataCard({ title, children, alert = false }) {
     </div>
   )
 }
+export const DataCard = memo(DataCardInner)
 
-export function PendingDataBox({ label = "Awaiting DeepSeek Data Injection" }) {
+function PendingDataBoxInner({ label = "Awaiting DeepSeek Data Injection" }) {
   return (
     <div className="mt-8 h-48 bg-gray-100 dark:bg-dark-surface/30 rounded-2xl border-2 border-dashed border-gray-300 dark:border-dark-border flex flex-col items-center justify-center gap-4">
       <span className="text-gray-400 dark:text-gray-500 font-semibold tracking-widest uppercase text-sm">{label}</span>
@@ -49,11 +50,12 @@ export function PendingDataBox({ label = "Awaiting DeepSeek Data Injection" }) {
     </div>
   )
 }
+export const PendingDataBox = memo(PendingDataBoxInner)
 
 export function Ref({ n }) {
   return (
     <sup className="text-crimson cursor-help font-bold text-xs ml-0.5 hover:underline">
-      <a href={`#ref-${n}`}>[{n}]</a>
+      <a href={`#ref-${n}`} aria-label={`Citation ${n}`}>[{n}]</a>
     </sup>
   )
 }
@@ -119,20 +121,22 @@ export function SourceList({ sources }) {
   )
 }
 
-export function StatBox({ value, label, color = "crimson" }) {
-  const colorMap = {
-    crimson: "text-crimson",
-    red: "text-red-600 dark:text-red-500",
-    green: "text-green-600 dark:text-green-500",
-    blue: "text-blue-600 dark:text-blue-400",
-    yellow: "text-yellow-600 dark:text-yellow-500",
-    teal: "text-teal-600 dark:text-teal-400",
-    purple: "text-purple-600 dark:text-purple-400",
-  }
+const STAT_COLOR_MAP = {
+  crimson: "text-crimson",
+  red: "text-red-600 dark:text-red-500",
+  green: "text-green-600 dark:text-green-500",
+  blue: "text-blue-600 dark:text-blue-400",
+  yellow: "text-yellow-600 dark:text-yellow-500",
+  teal: "text-teal-600 dark:text-teal-400",
+  purple: "text-purple-600 dark:text-purple-400",
+}
+
+function StatBoxInner({ value, label, color = "crimson" }) {
   return (
     <div className="flex-1 bg-white dark:bg-dark-bg p-6 rounded-2xl border border-gray-200 dark:border-dark-border">
-      <div className={`${colorMap[color] || colorMap.crimson} font-bold text-3xl mb-2`}>{value}</div>
+      <div className={`${STAT_COLOR_MAP[color] || STAT_COLOR_MAP.crimson} font-bold text-3xl mb-2`}>{value}</div>
       <div className="text-gray-500 text-sm tracking-uppercase uppercase font-semibold">{label}</div>
     </div>
   )
 }
+export const StatBox = memo(StatBoxInner)

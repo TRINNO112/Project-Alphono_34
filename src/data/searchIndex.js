@@ -72,4 +72,12 @@ export const searchIndex = [
   { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: 'Anti-Slavery International categorises Gujarat brick kilns as modern slavery', keywords: ['bonded', 'slavery', 'brick kiln', 'trafficking', 'child labour'] },
   { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: 'Language discrimination: Gujarati-only schools, hospitals, and administration exclude Hindi-speaking migrants', keywords: ['language', 'discrimination', 'gujarati', 'hindi', 'school', 'hospital'] },
   { pillar: 'Migrant Rights', path: '/migrant-discrimination', claim: 'Gujarat vs Kerala: Kerala provides Aawaz health insurance, worker hostels, Hindi-medium schools for migrants', keywords: ['kerala', 'comparison', 'aawaz', 'welfare', 'registration'] },
+  // Digital Sovereignty
+  { pillar: 'Digital Sovereignty', path: '/digital-sovereignty', claim: 'Gujarat has zero international submarine cable landings despite a 1,600 km coastline', keywords: ['submarine', 'cable', 'coastline', 'sovereignty', 'gujarat'] },
+  { pillar: 'Digital Sovereignty', path: '/digital-sovereignty', claim: '~15 of India\'s submarine cables land within 6 km of Versova beach — a single-point-of-failure', keywords: ['versova', 'bottleneck', 'cable', 'mumbai', 'single point'] },
+  { pillar: 'Digital Sovereignty', path: '/digital-sovereignty', claim: 'GIFT City carries a ~30 ms latency penalty versus Singapore because all traffic backhauls via Mumbai', keywords: ['gift city', 'ifsc', 'latency', 'singapore', 'hft'] },
+  { pillar: 'Digital Sovereignty', path: '/digital-sovereignty', claim: 'Gujarat state e-governance services (iORA, Digital Gujarat) are hosted on AWS Mumbai and Azure', keywords: ['iora', 'digital gujarat', 'aws', 'azure', 'cloud', 'hosting'] },
+  { pillar: 'Digital Sovereignty', path: '/digital-sovereignty', claim: 'Gujarat tower fiberization trails Tamil Nadu and Karnataka — a quiet constraint on true-5G', keywords: ['5g', 'fiber', 'tower', 'fiberization', 'dot'] },
+  { pillar: 'Digital Sovereignty', path: '/digital-sovereignty', claim: 'NPCI UPI, UIDAI Aadhaar, and GSTN outages cascade directly into Gujarat service halts — with no state fallback', keywords: ['upi', 'aadhaar', 'gstn', 'outage', 'npci', 'uidai'] },
+  { pillar: 'Digital Sovereignty', path: '/digital-sovereignty', claim: 'TRAI and TeleGeography confirm zero Gujarat cable landings — all international bandwidth is rented from Maharashtra', keywords: ['trai', 'telegeography', 'bandwidth', 'maharashtra', 'dependency'] },
 ]

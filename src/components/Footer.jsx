@@ -19,12 +19,12 @@ function FooterLink({ to, children, highlight }) {
 
 export default function Footer() {
   return (
-    <footer className="w-full relative overflow-hidden border-t border-gray-200 dark:border-dark-border bg-white dark:bg-dark-bg mt-24">
+    <footer role="contentinfo" className="w-full relative overflow-hidden border-t border-gray-200 dark:border-dark-border bg-white dark:bg-dark-bg mt-24">
       {/* Magazine Typography Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0 opacity-40 dark:opacity-20 mix-blend-overlay dark:mix-blend-screen">
-        <h1 className="text-[10rem] md:text-[18rem] lg:text-[24rem] font-sans font-black text-gray-900 dark:text-gray-100 uppercase tracking-tighter leading-none whitespace-nowrap">
+      <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0 opacity-40 dark:opacity-20 mix-blend-overlay dark:mix-blend-screen">
+        <span className="text-[10rem] md:text-[18rem] lg:text-[24rem] font-sans font-black text-gray-900 dark:text-gray-100 uppercase tracking-tighter leading-none whitespace-nowrap block">
           PROJECT 34
-        </h1>
+        </span>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
@@ -40,8 +40,8 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Analysis Pillars</h4>
-            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <h4 id="footer-pillars-heading" className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Analysis Pillars</h4>
+            <ul aria-labelledby="footer-pillars-heading" className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <FooterLink to="/infrastructure">Infrastructure & Logistics</FooterLink>
               <FooterLink to="/labor">Migrant Labor Ecosystem</FooterLink>
               <FooterLink to="/energy">Energy Grid & Power</FooterLink>
@@ -50,12 +50,13 @@ export default function Footer() {
               <FooterLink to="/agriculture">Agriculture & Agrarian Distress</FooterLink>
               <FooterLink to="/greentech">Green Tech Dependency</FooterLink>
               <FooterLink to="/chemical-governance">Chemical Governance</FooterLink>
+              <FooterLink to="/digital-sovereignty">Digital Sovereignty</FooterLink>
             </ul>
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Resources</h4>
-            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <h4 id="footer-resources-heading" className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Resources</h4>
+            <ul aria-labelledby="footer-resources-heading" className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <FooterLink to="/summary">Executive Summary</FooterLink>
               <FooterLink to="/sources">Source Data</FooterLink>
               <FooterLink to="/methodology">Research Methodology</FooterLink>
@@ -67,7 +68,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-gray-200 dark:border-dark-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 dark:text-gray-500">
           <p>&copy; {new Date().getFullYear()} Project Alphono 34. All rights reserved.</p>
           <div className="flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4" />
+            <AlertTriangle className="w-4 h-4" aria-hidden="true" />
             <span>Independent Research Database</span>
           </div>
         </div>

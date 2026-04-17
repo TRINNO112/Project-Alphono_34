@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Database, ExternalLink, Search, Filter, Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert, Wheat, Cpu, FlaskConical } from 'lucide-react'
+import { Database, ExternalLink, Search, Filter, Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert, Wheat, Cpu, FlaskConical, Cable } from 'lucide-react'
 import SEO from '../components/SEO'
 
 const pillarMeta = {
@@ -16,6 +16,7 @@ const pillarMeta = {
   'Agriculture': { icon: Wheat, color: 'text-green-700', count: 6 },
   'Green Tech': { icon: Cpu, color: 'text-cyan-500', count: 7 },
   'Chemical Governance': { icon: FlaskConical, color: 'text-orange-500', count: 8 },
+  'Digital Sovereignty': { icon: Cable, color: 'text-blue-500', count: 15 },
 }
 
 const allSources = [
@@ -284,6 +285,22 @@ const allSources = [
   { pillar: "Chemical Governance", type: "Media", title: "Deep Sea Pipelines: Hiding the Effluent Problem by Pumping it into the Ocean", url: "https://thewire.in/environment/gujarat-marine-outfall" },
   { pillar: "Chemical Governance", type: "Media", title: "Socio-Economic Destruction of Coastal Fishing Livelihoods Due to Chemical Marine Outfall", url: "https://icsf.net/india-fisheries-pollution" },
   { pillar: "Chemical Governance", type: "Govt", title: "National CEPI Index Reports and Historical Moratorium Documents — Gujarat Golden Corridor", url: "https://cpcb.nic.in/cepi" },
+  // ── DIGITAL SOVEREIGNTY ──
+  { pillar: "Digital Sovereignty", type: "Govt", title: "TRAI Indian Telecom Services Performance Indicators — International Bandwidth and Cable Landings (Jan–Mar 2025)", url: "https://www.trai.gov.in/release-publication/reports/performance-indicators-reports" },
+  { pillar: "Digital Sovereignty", type: "Media", title: "Why the World's Internet Quietly Routes Through Mumbai — Versova Cable Cluster Investigation", url: "https://restofworld.org/2024/mumbai-submarine-cables/" },
+  { pillar: "Digital Sovereignty", type: "Industry", title: "Submarine Cable Map — India Landing Stations", url: "https://www.submarinecablemap.com/country/india" },
+  { pillar: "Digital Sovereignty", type: "Govt", title: "GIFT City IFSC — Operational Review and Infrastructure Audit (FY 2023–24)", url: "https://cag.gov.in/en/audit-report" },
+  { pillar: "Digital Sovereignty", type: "Industry", title: "AWS Global Infrastructure — Region Latency Map (Mumbai ap-south-1, Singapore ap-southeast-1)", url: "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/" },
+  { pillar: "Digital Sovereignty", type: "Govt", title: "MeitY Empanelled Cloud Service Providers — List and Compliance Framework", url: "https://www.meity.gov.in/cloud-computing" },
+  { pillar: "Digital Sovereignty", type: "Govt", title: "Gujarat State Data Centre — Annual Report and Hosting Disclosures", url: "https://gujaratindia.gov.in/state-profile/state-data-centre.htm" },
+  { pillar: "Digital Sovereignty", type: "Govt", title: "Department of Telecommunications QoS / PIB — State-wise Tower Fiberization", url: "https://pib.gov.in/" },
+  { pillar: "Digital Sovereignty", type: "Govt", title: "UIDAI Aadhaar Authentication Outage — Technical Bulletin 2024", url: "https://uidai.gov.in/" },
+  { pillar: "Digital Sovereignty", type: "Industry", title: "NPCI UPI Downtime — Service Status Log and Incident Advisories", url: "https://www.npci.org.in/what-we-do/upi/product-overview" },
+  { pillar: "Digital Sovereignty", type: "Govt", title: "GSTN Portal Outages and Return Filing Extensions — CBIC / PIB Press Releases", url: "https://www.gstn.org.in/" },
+  { pillar: "Digital Sovereignty", type: "Media", title: "Versova Submarine Cable Landing Density — Maharashtra Coastal Infrastructure", url: "https://telecom.economictimes.indiatimes.com/" },
+  { pillar: "Digital Sovereignty", type: "Industry", title: "India Data Centre Capacity Map — Installed MW by State (JLL H2 2024)", url: "https://www.jll.co.in/en/trends-and-insights/research" },
+  { pillar: "Digital Sovereignty", type: "Industry", title: "Reliance Jio True-5G Fiber-to-Tower Rollout — State Progress (Annual Report 2024–25)", url: "https://www.ril.com/InvestorRelations/FinancialReporting.aspx" },
+  { pillar: "Digital Sovereignty", type: "Govt", title: "NIC / MeghRaj Cloud Adoption Status — State Government Workload Distribution", url: "https://cloud.gov.in/" },
 ]
 
 const typeColors = {

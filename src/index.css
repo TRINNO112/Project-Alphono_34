@@ -99,3 +99,66 @@
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
+
+/* Screen-reader only utility (explicit so focus:not-sr-only reveal-on-focus works reliably) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Search match highlight — pulses briefly, then fades.
+   Applied via JS by wrapping the matched phrase in <mark class="search-hit">. */
+.search-hit {
+  background-color: rgba(211, 47, 47, 0.22);
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 3px;
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.35);
+  animation: search-hit-pulse 1.1s ease-out 0s 3;
+  transition: background-color 0.6s ease-out, box-shadow 0.6s ease-out;
+}
+.search-hit.search-hit-fade {
+  background-color: transparent;
+  box-shadow: 0 0 0 0 rgba(211, 47, 47, 0);
+}
+.dark .search-hit {
+  background-color: rgba(211, 47, 47, 0.35);
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.55);
+}
+@keyframes search-hit-pulse {
+  0%   { background-color: rgba(211, 47, 47, 0.22); }
+  50%  { background-color: rgba(211, 47, 47, 0.55); }
+  100% { background-color: rgba(211, 47, 47, 0.22); }
+}
+.dark @keyframes search-hit-pulse {
+  0%   { background-color: rgba(211, 47, 47, 0.35); }
+  50%  { background-color: rgba(211, 47, 47, 0.7); }
+  100% { background-color: rgba(211, 47, 47, 0.35); }
+}
+
+/* Respect OS-level reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
