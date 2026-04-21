@@ -5,6 +5,7 @@ import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { Timeline } from '../components/Timeline'
 import ScrollSpy from '../components/ScrollSpy'
+import StoryMarker from '../components/StoryMarker'
 
 const spySections = [
   { id: 'morbi-india-s-ceramic-capital-built-on-migrant-hands', label: 'Morbi Ceramics' },
@@ -130,6 +131,13 @@ export default function Labor() {
           <DataCard title="The Human Cost: 71 Suicides in 18 Months" alert={true}>
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
               Job losses and factory closures in Surat's diamond sector pushed workers to breaking point — <strong>71 diamond workers died by suicide in just 18 months</strong>, according to The Print's investigation.<Ref n={5} /> The industry downturn was driven by falling global demand for lab-grown diamonds and reduced rough diamond imports.
+            </p>
+            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+              Named cases from mainstream reporting:
+              <StoryMarker storyId="diamond-pravin-sarvaiya" />
+              <StoryMarker storyId="diamond-vinu-moradiya" />
+              <StoryMarker storyId="diamond-nikunj-tank" />
+              <StoryMarker storyId="diamond-jyanti" />
             </p>
           </DataCard>
         </Section>

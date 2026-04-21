@@ -153,6 +153,40 @@
   100% { background-color: rgba(211, 47, 47, 0.35); }
 }
 
+/* Break Simulator range slider — crimson thumb on parchment/dark track */
+.simulator-range {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.simulator-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-crimson);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(211, 47, 47, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.simulator-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.simulator-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-crimson);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(211, 47, 47, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+.dark .simulator-range::-webkit-slider-thumb,
+.dark .simulator-range::-moz-range-thumb {
+  border-color: var(--color-dark-bg);
+}
+
 /* Respect OS-level reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

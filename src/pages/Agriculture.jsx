@@ -4,6 +4,7 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import ScrollSpy from '../components/ScrollSpy'
+import StoryMarker from '../components/StoryMarker'
 
 const sources = [
   { title: "India's Fertilizer Import Dependencies and NBS Subsidy Outlays amidst Red Sea Crisis", publication: "Argus Media Energy & Agriculture Reports, 2025/2026", url: "https://argusmedia.com/fertilizers/india-import-data" },
@@ -248,8 +249,15 @@ export default function Agriculture() {
         {/* ═══ Section 4: Rural-Urban Flight ═══ */}
         <Section icon={<AlertTriangle className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />} title="The Rural-Urban Flight">
           <DataCard title="From Farmer to Factory Floor" alert={true}>
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
+            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
               The culmination of <strong className="text-gray-900 dark:text-white">soaring input costs</strong> (seeds + electricity + imported fertilizers), combined with <strong className="text-gray-900 dark:text-white">collapsing groundwater tables</strong>, leaves zero profit margin — forcing farmers to abandon agriculture entirely.<Ref n={2} />
+            </p>
+            <p className="mb-6 text-sm text-gray-600 dark:text-gray-400">
+              Named cases from the Nov 2025 unseasonal-rain crisis:
+              <StoryMarker storyId="farmer-shailesh-savaliya" />
+              <StoryMarker storyId="farmer-gaffar-unde" />
+              <StoryMarker storyId="farmer-karshan-vanoriya" />
+              <StoryMarker storyId="farmer-rabarika-65" />
             </p>
             
             {/* Migration flow visual */}

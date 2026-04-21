@@ -57,6 +57,8 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 id="footer-resources-heading" className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Resources</h4>
             <ul aria-labelledby="footer-resources-heading" className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <FooterLink to="/simulator">Break Simulator</FooterLink>
+              <FooterLink to="/stories">Human Stories</FooterLink>
               <FooterLink to="/summary">Executive Summary</FooterLink>
               <FooterLink to="/sources">Source Data</FooterLink>
               <FooterLink to="/methodology">Research Methodology</FooterLink>

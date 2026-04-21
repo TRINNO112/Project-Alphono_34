@@ -4,6 +4,7 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import ScrollSpy from '../components/ScrollSpy'
+import StoryMarker from '../components/StoryMarker'
 
 const spySections = [
   { id: 'industrial-pollution-hotspots', label: 'Pollution Hotspots' },
@@ -144,6 +145,12 @@ export default function Environment() {
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 A projection model estimated <strong className="text-gray-900 dark:text-white">4,513 mesothelioma cases</strong> among workers — yet Gujarat government records show <strong>zero reported occupational cancers</strong> under the Factories Act.<Ref n={7} /> 8,062 ships have been scrapped at Alang from 1982 to 2020, releasing asbestos, PCBs, and heavy metals. Critically, <strong className="text-gray-900 dark:text-white">Alang's ship-breaking volume has declined 75% from its peak</strong> as the EU Ship Recycling Regulation (2020) and the Hong Kong Convention push vessels toward cleaner yards in Turkey and China — threatening 25,000+ livelihoods without reducing the accumulated environmental damage.
               </p>
+              <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                Named workers:
+                <StoryMarker storyId="alang-satur-bhai" />
+                <StoryMarker storyId="alang-subash-vishwakarma" />
+                <StoryMarker storyId="alang-bhuddabhai" />
+              </p>
             </DataCard>
 
             <DataCard title="Morbi: NASA Detects 300% SO2 Surge">
@@ -159,6 +166,12 @@ export default function Environment() {
           <DataCard title="Recurring Chemical Disasters">
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
               Major incidents include: <strong>Dahej 2020</strong> — 5 killed, 57 injured, 4,800 evacuated from Yashashvi Rasayan plant; <strong>Ahmedabad 2020</strong> — 12 killed at Sahil Enterprise; <strong>Surat 2022</strong> — 6 killed by illegally dumped chemicals; <strong>Dahej 2024</strong> — 4 workers killed at Gujarat Fluorochemicals; <strong>GFL Panchmahal 2025</strong> — 2 killed (same plant where 7 died in 2021); <strong className="text-gray-900 dark:text-white">Deesa (Banaskantha) 2025 — 21 killed in a fireworks factory explosion</strong>, the single deadliest industrial incident in Gujarat since 2020.<Ref n={10} />
+            </p>
+            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+              Named in Ankleshwar GIDC gas leak (Dec 2015):
+              <StoryMarker storyId="chemical-rajabhaiya-singh" />
+              <StoryMarker storyId="chemical-satyendra-singh" />
+              <StoryMarker storyId="chemical-raju-prajapati" />
             </p>
           </DataCard>
         </Section>
