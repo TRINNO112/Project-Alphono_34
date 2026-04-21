@@ -6,6 +6,7 @@ import { CounterArgument } from '../components/CounterArgument'
 import { Timeline } from '../components/Timeline'
 import { ComparisonTable } from '../components/ComparisonTable'
 import ScrollSpy from '../components/ScrollSpy'
+import StoryMarker from '../components/StoryMarker'
 
 const spySections = [
   { id: 'case-study-the-2018-anti-migrant-pogrom', label: '2018 Pogrom' },
@@ -101,6 +102,13 @@ export default function MigrantDiscrimination() {
             </p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
               The violence was <strong className="text-gray-900 dark:text-white">organised through WhatsApp and Facebook</strong>. Hate messages explicitly called for attacks on "Hindi-speaking outsiders." Videos of assaults were circulated to spread fear. The social media amplification converted an isolated criminal case into a <strong className="text-gray-900 dark:text-white">state-wide anti-migrant campaign</strong>.<Ref n={2} /><Ref n={5} />
+            </p>
+            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+              Named in the public record:
+              <StoryMarker storyId="pogrom2018-ravindra-sahu" />
+              <span className="block mt-2 italic text-xs text-gray-500 dark:text-gray-500">
+                Individual pogrom victims remain anonymised in press reporting for their safety. Only the accused in the trigger case appears by name.
+              </span>
             </p>
           </DataCard>
 
@@ -408,6 +416,15 @@ export default function MigrantDiscrimination() {
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 And here's the most damning number: <strong className="text-gray-900 dark:text-white">92.65% of Morbi workers lack ESI health coverage</strong> — despite ESI being applicable in the area since <strong className="text-gray-900 dark:text-white">1967</strong>. That's 58 years of non-compliance.<Ref n={10} />
+              </p>
+              <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                Named silicosis cases:
+                <StoryMarker storyId="silicosis-dinesh-rai-singh" />
+                <StoryMarker storyId="silicosis-shaitan-malji" />
+                <StoryMarker storyId="silicosis-ramla-thavaria" />
+                <StoryMarker storyId="silicosis-samuben-darbar" />
+                <StoryMarker storyId="silicosis-hydersha-diwan" />
+                <StoryMarker storyId="silicosis-mohan-sullia" />
               </p>
             </DataCard>
 

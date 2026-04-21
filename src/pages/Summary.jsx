@@ -1,7 +1,7 @@
 import { useState, useSyncExternalStore } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ArrowRight, FileText, ShieldAlert, AlertTriangle } from 'lucide-react'
+import { Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ArrowRight, FileText, ShieldAlert, AlertTriangle, Wheat, Battery, FlaskConical, Wifi } from 'lucide-react'
 import { Section, DataCard, StatBox } from '../components/Shared'
 import { CascadeDiagram } from '../components/CascadeDiagram'
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell } from 'recharts'
@@ -124,14 +124,66 @@ const pillars = [
       { value: '92.65%', label: 'Without Health Cover', color: 'purple' },
     ]
   },
+  {
+    num: 'X',
+    icon: <Wheat className="w-8 h-8 text-amber-700 dark:text-amber-400" />,
+    title: 'Agriculture & Agrarian Distress',
+    path: '/agriculture',
+    summary: 'Groundwater-irrigated cash-crop economy (cotton, groundnut) has walked into climate and input-cost traps. BT cotton yields are stagnant, fertilizer subsidy dependency is structural, and smallholder debt is compounding as MSP coverage stays thin. Saurashtra-Kutch farmer suicides remain a running undercount.',
+    stats: [
+      { value: '70%+', label: 'Cotton Area Rain-Stressed', color: 'amber' },
+      { value: '100%', label: 'Potash Imported', color: 'red' },
+      { value: '17', label: 'Districts Drought-Prone', color: 'crimson' },
+    ]
+  },
+  {
+    num: 'XI',
+    icon: <Battery className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />,
+    title: 'Green Tech Dependency',
+    path: '/green-tech',
+    summary: 'Gujarat leads India on installed renewables, but the solar modules, cells, lithium-ion cells, wind-turbine magnets, and power electronics behind that capacity are overwhelmingly Chinese. "Green" decarbonisation has simply swapped Middle-Eastern oil dependency for Chinese rare-earth and cell-manufacturing dependency.',
+    stats: [
+      { value: '80%+', label: 'Solar Cells from China', color: 'emerald' },
+      { value: '~100%', label: 'Li-ion Cells Imported', color: 'red' },
+      { value: '90%+', label: 'Rare-Earth China Share', color: 'crimson' },
+    ]
+  },
+  {
+    num: 'XII',
+    icon: <FlaskConical className="w-8 h-8 text-fuchsia-600 dark:text-fuchsia-400" />,
+    title: 'Chemical Governance',
+    path: '/chemical-governance',
+    summary: 'Dahej, Vapi, Ankleshwar and Hazira host some of India\'s densest chemical corridors but are governed by a GPCB flagged by CAG for auditing failures. Recurrent reactor blasts, effluent-channel ruptures, and Vapi\'s 90.75 CEPI score point to a permissive regulatory regime subsidising a hazardous industrial economy.',
+    stats: [
+      { value: '90.75', label: 'Vapi CEPI (Highest)', color: 'fuchsia' },
+      { value: '6', label: 'CPCB Critical Zones', color: 'red' },
+      { value: 'CAG', label: 'GPCB Audit Flagged', color: 'crimson' },
+    ]
+  },
+  {
+    num: 'XIII',
+    icon: <Wifi className="w-8 h-8 text-sky-600 dark:text-sky-400" />,
+    title: 'Digital Sovereignty',
+    path: '/digital-sovereignty',
+    summary: 'Zero submarine cables land in Gujarat — GIFT City\'s "global fintech" status actually rides on Mumbai\'s Versova cable cluster via terrestrial backhaul. UPI, Aadhaar and GSTN outages in 2024-25 exposed the single-stack digital public infrastructure, while hyperscaler cloud regions for Gujarat workloads sit outside the state.',
+    stats: [
+      { value: '0', label: 'Cable Landings in GJ', color: 'sky' },
+      { value: '100%', label: 'Routed via Versova', color: 'red' },
+      { value: '15+', label: 'DPI Outages (12mo)', color: 'crimson' },
+    ]
+  },
 ]
 
 const dependencyRanking = [
   { name: 'Water', score: 90, tier: 'Critical' },
+  { name: 'Green Tech', score: 88, tier: 'Critical' },
+  { name: 'Digital Sov.', score: 87, tier: 'Critical' },
   { name: 'Infrastructure', score: 85, tier: 'Critical' },
   { name: 'Materials', score: 85, tier: 'Critical' },
+  { name: 'Chem. Gov.', score: 82, tier: 'High' },
   { name: 'Environment', score: 80, tier: 'High' },
   { name: 'Energy', score: 78, tier: 'High' },
+  { name: 'Agriculture', score: 76, tier: 'High' },
   { name: 'Education', score: 72, tier: 'High' },
   { name: 'Labor', score: 70, tier: 'Elevated' },
   { name: 'Migrant Rights', score: 68, tier: 'Elevated' },
@@ -206,7 +258,7 @@ export default function Summary() {
             Structural Dependencies: <span className="italic text-crimson">A Synthesis</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            This executive summary synthesizes findings from <strong className="font-semibold text-gray-900 dark:text-white">nine pillars of analysis backed by 100+ cited sources</strong>. The pattern is consistent: extraordinary economic throughput built atop fragile, externally-controlled supply chains — where any single disruption cascades across multiple sectors simultaneously.
+            This executive summary synthesizes findings from <strong className="font-semibold text-gray-900 dark:text-white">thirteen pillars of analysis plus the Index Mercantilis trade-route cartography — backed by 227+ cited sources</strong>. The pattern is consistent: extraordinary economic throughput built atop fragile, externally-controlled supply chains — where any single disruption cascades across multiple sectors simultaneously.
           </p>
         </motion.div>
       </section>
@@ -223,8 +275,8 @@ export default function Summary() {
           <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">External Dependency Severity Ranking</h2>
         </div>
         <div className="bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border rounded-2xl p-6 backdrop-blur-sm">
-          <ResponsiveContainer width="100%" height={360}>
-            <BarChart data={dependencyRanking} layout="vertical" margin={{ left: 80, right: 30 }}>
+          <ResponsiveContainer width="100%" height={520}>
+            <BarChart data={dependencyRanking} layout="vertical" margin={{ left: 95, right: 30 }}>
               <XAxis type="number" domain={[0, 100]} tick={{ fill: isDark ? '#9ca3af' : '#4b5563', fontSize: 12 }} />
               <YAxis
                 type="category"
@@ -349,7 +401,7 @@ export default function Summary() {
       {/* ═══════ SECTION 4: PILLAR SUMMARIES ═══════ */}
       <div className="space-y-20">
         <div className="text-center">
-          <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">Nine Pillars — Key Findings</h2>
+          <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">Thirteen Pillars — Key Findings</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">The core findings from each structural pillar, with key metrics and links to the full analysis.</p>
         </div>
         {pillars.map((pillar) => (
@@ -407,7 +459,7 @@ export default function Summary() {
         className="text-center"
       >
         <p className="text-gray-500 dark:text-gray-500 italic font-serif">
-          This summary synthesizes findings from 100+ cited sources across 9 pillars. See individual pillar pages for full references and source URLs.
+          This summary synthesizes findings from 227+ cited sources across 13 pillars plus the Index Mercantilis global-trade module. See individual pillar pages for full references and source URLs.
         </p>
       </motion.section>
     </main>

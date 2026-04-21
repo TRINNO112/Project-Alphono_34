@@ -10,17 +10,18 @@ const fade = (delay = 0) => ({
 })
 
 const sourceBreakdown = [
-  { type: "Government & Institutional", pct: 26, count: 47, color: "bg-blue-500", examples: "CAG Reports, NITI Aayog, Finance Commission, RBI, NPCIL, GPCB, CPCB" },
-  { type: "Investigative Journalism", pct: 37, count: 68, color: "bg-crimson", examples: "The Print, Scroll.in, IndiaSpend, Down To Earth, Business Standard, The Wire, Mongabay" },
-  { type: "Academic & Research", pct: 17, count: 32, color: "bg-purple-500", examples: "Peer-reviewed journals, RIS Discussion Papers, ICAR, WHO/LANCET studies, India Water Portal" },
-  { type: "Industry & Domain Reports", pct: 14, count: 26, color: "bg-amber-500", examples: "Global Energy Monitor, Marine Insight, IBEF, BNEF, CARE Ratings, Argus Media, Marcellus" },
-  { type: "Legal & Court Records", pct: 6, count: 12, color: "bg-emerald-500", examples: "Gujarat HC rulings, Supreme Court orders, NGT directives, CAG audit objections" },
+  { type: "Government & Institutional", pct: 24, count: 55, color: "bg-blue-500", examples: "CAG Reports, NITI Aayog, Finance Commission, RBI, NPCIL, GPCB, CPCB, MeitY, TRAI, DGH" },
+  { type: "Investigative Journalism", pct: 36, count: 81, color: "bg-crimson", examples: "The Print, Scroll.in, IndiaSpend, Down To Earth, Business Standard, The Wire, Mongabay, Reuters" },
+  { type: "Academic & Research", pct: 16, count: 37, color: "bg-purple-500", examples: "Peer-reviewed journals, RIS Discussion Papers, ICAR, WHO/LANCET studies, ORF, CSIS, VIF" },
+  { type: "Industry & Domain Reports", pct: 18, count: 40, color: "bg-amber-500", examples: "Kpler, Vortexa, S&P Global, Argus, Fastmarkets, Global Energy Monitor, BNEF, IBEF, TeleGeography" },
+  { type: "Legal & Court Records", pct: 6, count: 14, color: "bg-emerald-500", examples: "Gujarat HC rulings, Supreme Court orders, NGT directives, CAG audit objections" },
 ]
 
 const verificationSteps = [
   { step: "01", title: "Primary Source Identification", desc: "Every claim starts from a primary document — a government report, court filing, official dataset, or verified news report from an established publication.", icon: Search },
   { step: "02", title: "Cross-Reference Validation", desc: "Each data point is cross-referenced against at least two independent sources. Conflicting figures are flagged and the most conservative estimate is used.", icon: ShieldCheck },
   { step: "03", title: "Temporal Verification", desc: "All statistics are dated and version-tracked. When FY26 data supersedes FY25, the older figure is retired. No stale data is presented as current.", icon: CheckCircle },
+  { step: "04", title: "Cartographic Verification", desc: "For the Index Mercantilis trade-route module, every coordinate, tanker volume, and chokepoint statistic is verified against at least two of: Kpler / Vortexa tanker trackers, S&P Global commodity press, and official port/refinery disclosures.", icon: Scale },
 ]
 
 const limitations = [
@@ -62,10 +63,13 @@ export default function Methodology() {
           <SectionNumber n="1" />
           <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4">Research Framework</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-            This investigation employs a <strong className="text-gray-900 dark:text-white">mixed-methods structural dependency analysis</strong> — combining quantitative data extraction from government records with qualitative assessment drawn from investigative journalism, court proceedings, and field reporting. Phase II expanded the scope with deep-dive research into agrarian distress, green technology supply chain vulnerabilities, and industrial chemical toxicity governance.
+            This investigation employs a <strong className="text-gray-900 dark:text-white">mixed-methods structural dependency analysis</strong> — combining quantitative data extraction from government records with qualitative assessment drawn from investigative journalism, court proceedings, and field reporting. Phase II expanded the scope with deep-dive research into agrarian distress, green technology supply chain vulnerabilities, and industrial chemical toxicity governance. Phase III (April 2026) added a 13th pillar on digital sovereignty and a dedicated cartographic audit of Gujarat's maritime trade dependencies.
           </p>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-            The core thesis — that Gujarat's industrial economy contains deep, under-examined structural vulnerabilities — is tested across <strong className="text-gray-900 dark:text-white">12 interdependent pillars</strong>: Infrastructure, Energy, Water, Labor, Fiscal Governance, Raw Materials, Education, Environment, Migrant Discrimination, Agriculture & Agrarian Distress, Green Tech Dependency, and Chemical Governance.
+            The core thesis — that Gujarat's industrial economy contains deep, under-examined structural vulnerabilities — is tested across <strong className="text-gray-900 dark:text-white">13 interdependent pillars</strong>: Infrastructure, Energy, Water, Labor, Fiscal Governance, Raw Materials, Education, Environment, Migrant Discrimination, Agriculture &amp; Agrarian Distress, Green Tech Dependency, Chemical Governance, and Digital Sovereignty.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+            A parallel cartographic track — the <strong className="text-gray-900 dark:text-white">Index Mercantilis</strong> — maps Gujarat's external trade chokepoints (Hormuz, Malacca, Bab-el-Mandeb, Suez, Cape of Good Hope) and the origin/destination nodes that feed the state's refineries, LNG terminals, coal-fired power, steel mills, and chemical hubs. This module is sourced from 41 independent tanker-tracking, commodity, and geopolitical data streams.
           </p>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
             Each pillar is not analyzed in isolation. The research deliberately maps <strong className="text-gray-900 dark:text-white">cross-pillar dependencies</strong> — for example, how energy price shocks (Pillar 2) cascade into labor exodus (Pillar 4), which in turn impacts industrial output (Pillar 6) and fiscal receipts (Pillar 5).
@@ -78,7 +82,7 @@ export default function Methodology() {
           <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-6">Data Collection Protocol</h2>
 
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-            A total of <strong className="text-gray-900 dark:text-white">186 sources</strong> across 12 pillars were collected, verified, and cited. Sources are classified into five categories:
+            A total of <strong className="text-gray-900 dark:text-white">227 sources</strong> across 13 pillars plus the Index Mercantilis trade-route module were collected, verified, and cited. Sources are classified into five categories:
           </p>
 
           {/* Source breakdown bars */}

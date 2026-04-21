@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
 const navLinks = [
+  { to: '/simulator', label: 'Break Simulator' },
+  { to: '/stories', label: 'Human Stories' },
   { to: '/map', label: 'Geographic Map' },
   { to: '/timeline', label: 'Crisis Timeline' },
   { to: '/summary', label: 'Executive Summary' },

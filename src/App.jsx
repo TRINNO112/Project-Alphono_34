@@ -7,6 +7,8 @@ import SearchHighlight from './components/SearchHighlight'
 import Footer from './components/Footer'
 import ErrorBoundary from './components/ErrorBoundary'
 import { SkeletonChart } from './components/Skeleton'
+import { StoriesProvider } from './context/StoriesContext'
+import StorySideSheet from './components/StorySideSheet'
 
 const Home = lazy(() => import('./pages/Home'))
 const Infrastructure = lazy(() => import('./pages/Infrastructure'))
@@ -30,6 +32,8 @@ const ChemicalGovernance = lazy(() => import('./pages/ChemicalGovernance'))
 const DigitalSovereignty = lazy(() => import('./pages/DigitalSovereignty'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const GlobalTradeIndex = lazy(() => import('./pages/GlobalTradeIndex'))
+const BreakSimulator = lazy(() => import('./pages/BreakSimulator'))
+const Stories = lazy(() => import('./pages/Stories'))
 
 const pageVariants = {
   initial: { opacity: 0, y: 24 },
@@ -85,6 +89,8 @@ function AnimatedRoutes() {
           <Route path="/chemical-governance" element={<PageTransition><ChemicalGovernance /></PageTransition>} />
           <Route path="/digital-sovereignty" element={<PageTransition><DigitalSovereignty /></PageTransition>} />
           <Route path="/global-trade" element={<PageTransition><GlobalTradeIndex /></PageTransition>} />
+          <Route path="/simulator" element={<PageTransition><BreakSimulator /></PageTransition>} />
+          <Route path="/stories" element={<PageTransition><Stories /></PageTransition>} />
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
       </Suspense>
@@ -107,35 +113,38 @@ export default function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-parchment-50 dark:bg-dark-bg transition-colors duration-500 font-sans text-gray-900 dark:text-gray-200 selection:bg-crimson selection:text-white">
+      <StoriesProvider>
+        <div className="min-h-screen bg-parchment-50 dark:bg-dark-bg transition-colors duration-500 font-sans text-gray-900 dark:text-gray-200 selection:bg-crimson selection:text-white">
 
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-md focus:bg-crimson focus:text-white focus:font-medium"
-        >
-          Skip to main content
-        </a>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-md focus:bg-crimson focus:text-white focus:font-medium"
+          >
+            Skip to main content
+          </a>
 
-        {/* Global scroll progress bar (thin line only, no % pill) */}
-        <motion.div
-          className="fixed top-0 left-0 right-0 h-1 bg-crimson origin-left z-50 shadow-[0_0_10px_rgba(211,47,47,0.5)] pointer-events-none"
-          style={{ scaleX }}
-          aria-hidden="true"
-        />
+          {/* Global scroll progress bar (thin line only, no % pill) */}
+          <motion.div
+            className="fixed top-0 left-0 right-0 h-1 bg-crimson origin-left z-50 shadow-[0_0_10px_rgba(211,47,47,0.5)] pointer-events-none"
+            style={{ scaleX }}
+            aria-hidden="true"
+          />
 
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
-        <main id="main" tabIndex={-1} className="outline-none">
-          <ErrorBoundary>
-            <AnimatedRoutes />
-            <SearchHighlight />
-          </ErrorBoundary>
-        </main>
+          <main id="main" tabIndex={-1} className="outline-none">
+            <ErrorBoundary>
+              <AnimatedRoutes />
+              <SearchHighlight />
+            </ErrorBoundary>
+          </main>
 
-        <SearchBar />
+          <SearchBar />
+          <StorySideSheet />
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </StoriesProvider>
     </Router>
   )
 }

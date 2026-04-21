@@ -1,4 +1,16 @@
 export const searchIndex = [
+  // Break Simulator
+  { pillar: 'Simulator', path: '/simulator', claim: 'Interactive stress-test: trigger supply-chain, labor, water, and digital shocks and watch the cascade', keywords: ['simulator', 'break', 'stress test', 'war game', 'cascade', 'interactive', 'scenario'] },
+  { pillar: 'Simulator', path: '/simulator', claim: '2026 Twin Shock preset: Morbi gas + diamond/pogrom cascade', keywords: ['twin shock', '2026', 'morbi', 'diamond', 'preset', 'scenario'] },
+  { pillar: 'Simulator', path: '/simulator', claim: 'Full Decoupling preset: Russian crude cut + Chinese API halt + Versova cable severance', keywords: ['decoupling', 'sanctions', 'russian', 'chinese', 'versova', 'preset'] },
+  { pillar: 'Simulator', path: '/simulator', claim: 'Climate Black Swan preset: Mundra cyclone closure + Narmada deficit + Dahej LNG outage', keywords: ['climate', 'black swan', 'cyclone', 'narmada', 'dahej', 'preset'] },
+  { pillar: 'Simulator', path: '/simulator', claim: '2018 Pogrom Replay preset: anti-migrant violence surge simulation', keywords: ['pogrom', '2018', 'migrant', 'violence', 'replay', 'preset'] },
+  // Human Stories
+  { pillar: 'Stories', path: '/stories', claim: 'Named individuals behind Gujarat\'s structural statistics — 27+ stories from mainstream journalism', keywords: ['stories', 'humans', 'named', 'victims', 'people'] },
+  { pillar: 'Stories', path: '/stories', claim: 'Diamond worker suicides: Pravin Sarvaiya, Vinu Moradiya, Nikunj Tank — Surat slump 2023-24', keywords: ['diamond', 'surat', 'suicide', 'sarvaiya', 'moradiya', 'tank'] },
+  { pillar: 'Stories', path: '/stories', claim: 'Silicosis deaths of tribal migrants from Jhabua, MP working in Gujarat quartz units', keywords: ['silicosis', 'jhabua', 'tribal', 'quartz', 'godhra ki beemari'] },
+  { pillar: 'Stories', path: '/stories', claim: 'Morbi bridge collapse victims: Bodha family lost 12, Kundariya family lost 12, Majothi siblings', keywords: ['morbi', 'bridge', 'collapse', '2022', 'bodha', 'kundariya'] },
+  { pillar: 'Stories', path: '/stories', claim: 'Alang shipbreaking deaths: Satur Bhai, Subash Vishwakarma, Bhuddabhai — unsafe dismantling', keywords: ['alang', 'shipbreaking', 'satur', 'vishwakarma'] },
   // Infrastructure
   { pillar: 'Infrastructure', path: '/infrastructure', claim: 'Mundra Port handled 200 MMT in FY25 — India\'s largest commercial port', keywords: ['mundra', 'port', 'adani', 'cargo', 'apsez'] },
   { pillar: 'Infrastructure', path: '/infrastructure', claim: 'Adani Ports (APSEZ) controls majority of Gujarat\'s cargo throughput', keywords: ['adani', 'apsez', 'monopoly', 'port'] },

@@ -5,6 +5,7 @@ import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
 import ScrollSpy from '../components/ScrollSpy'
+import StoryMarker from '../components/StoryMarker'
 
 const spySections = [
   { id: 'corporate-centralization-monopolies', label: 'Corporate Monopolies' },
@@ -138,6 +139,15 @@ export default function Infrastructure() {
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   Gujarat has over <strong className="text-gray-900 dark:text-white">4,500 bridges on its NH network</strong>, with an estimated 30% exceeding their original 50-year design life. The National Bridge Inventory audit (2024) flagged 312 bridges in Gujarat as "structurally deficient" — yet traffic loading continues to increase with freight volumes.
+                </p>
+                <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                  Morbi 2022 (141 dead) — named families:
+                  <StoryMarker storyId="morbi-bodha-family" />
+                  <StoryMarker storyId="morbi-kundariya-family" />
+                  <StoryMarker storyId="morbi-majothi-siblings" />
+                  <StoryMarker storyId="morbi-faldu-parents" />
+                  <StoryMarker storyId="morbi-habibul" />
+                  <StoryMarker storyId="morbi-up-family" />
                 </p>
               </DataCard>
             </div>
