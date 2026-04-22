@@ -371,15 +371,20 @@ export default function ChemicalGovernance() {
 
       </div>
 
-      <CounterArgument
-        argument="The Golden Corridor is Gujarat's economic engine. It generates massive GDP, FDI, and employment. Pollution is an acceptable and manageable cost of industrial progress."
-        rebuttal="The Sabarmati records BOD of 292 mg/L — 97× the safe limit — with zero dissolved oxygen. CETPs designed in the 1990s discharge effluent MORE toxic than raw influent. Rs 100 Cr+ in NGT fines with zero lasting compliance. Pharmaceutical dumping is incubating AMR superbugs. And the 'solution'? Massive pipelines pumping it all into the ocean. The cost is externalized, not managed."
-        stats={[
+      <div>
+        <div className="flex justify-end mb-4 pr-2 sm:pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} stats={[
           { value: '292', label: 'BOD (mg/L)' },
           { value: '97×', label: 'Above Safe Limit' },
           { value: '₹100Cr+', label: 'NGT Fines' },
-        ]}
-      />
+        ]} messages={[
+          { from: 'student', text: `The Golden Corridor is Gujarat's economic engine. It generates massive GDP, FDI, and employment. Pollution is an acceptable and manageable cost of industrial progress.` },
+          { from: 'priya', text: `The Sabarmati records BOD of 292 mg/L — 97× the safe limit — with zero dissolved oxygen. CETPs designed in the 1990s discharge effluent MORE toxic than raw influent. Rs 100 Cr+ in NGT fines with zero lasting compliance. Pharmaceutical dumping is incubating AMR superbugs. And the 'solution'? Massive pipelines pumping it all into the ocean. The cost is externalized, not managed.` },
+          { from: 'gov', text: `Dahej PCPIR is broadly recognized as the most successful chemical investment region in India. The integration of Common Effluent Treatment Plants (CETP) and strict GPCB monitoring creates a balanced, world-class industrial hub.`, source: `Dept of Chemicals and Petrochemicals, Govt of India` }
+        ]} />
+      </div>
 
       <SourceList sources={sources} />
     </main>

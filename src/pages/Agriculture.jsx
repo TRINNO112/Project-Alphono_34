@@ -323,15 +323,20 @@ export default function Agriculture() {
 
       </div>
 
-      <CounterArgument
-        argument="Gujarat is India's agricultural success story. Cash crops like cotton and groundnut generate enormous output. The state's farming sector is thriving."
-        rebuttal="67% of DAP and 100% of MOP are imported. Groundwater extraction at 132% of recharge is mining fossil water. Bt Cotton has locked farmers into a pesticide treadmill with Bayer-controlled seeds. Narmada water promised to Saurashtra farmers was diverted to industrial corridors. The 'miracle' is a dependency trap."
-        stats={[
+      <div>
+        <div className="flex justify-end mb-4 pr-2 sm:pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} stats={[
           { value: '100%', label: 'MOP Imported' },
           { value: '132%', label: 'Over-Extraction' },
           { value: '0', label: 'Potash Reserves' },
-        ]}
-      />
+        ]} messages={[
+          { from: 'student', text: `Gujarat is India's agricultural success story. Cash crops like cotton and groundnut generate enormous output. The state's farming sector is thriving.` },
+          { from: 'priya', text: `67% of DAP and 100% of MOP are imported. Groundwater extraction at 132% of recharge is mining fossil water. Bt Cotton has locked farmers into a pesticide treadmill with Bayer-controlled seeds. Narmada water promised to Saurashtra farmers was diverted to industrial corridors. The 'miracle' is a dependency trap.` },
+          { from: 'gov', text: `Gujarat's dairy and agricultural cooperatives, anchored by AMUL, represent the most successful decentralized economic model in India. The SAUNI scheme and Narmada distribution have consistently stabilized farm incomes despite regional aridity.`, source: `GCMMF Annual Report / Gujarat Agriculture Dept` }
+        ]} />
+      </div>
 
       <SourceList sources={sources} />
       

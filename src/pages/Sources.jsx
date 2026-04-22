@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Database, Network, ExternalLink, Search, Filter, Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert, Wheat, Cpu, FlaskConical, Cable } from 'lucide-react'
 import SEO from '../components/SEO'
 
-const pillarMeta = {
+export const pillarMeta = {
   Infrastructure: { icon: Ship, color: 'text-blue-500', count: 22 },
   Energy: { icon: Zap, color: 'text-yellow-500', count: 18 },
   Water: { icon: Droplets, color: 'text-teal-500', count: 18 },
