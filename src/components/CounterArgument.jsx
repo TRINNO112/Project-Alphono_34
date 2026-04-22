@@ -12,6 +12,11 @@ const CHARACTERS = {
     location: 'Delhi',
     emoji: '\u{1F4CA}',
   },
+  gov: {
+    name: 'Gov\'t Spokesperson',
+    location: 'Gandhinagar',
+    emoji: '\u{2696}\u{FE0F}', // Scales emoji
+  },
 }
 
 function parseBold(text) {
@@ -31,7 +36,7 @@ function fakeTime(index) {
   return `${h}:${String(m).padStart(2, '0')} AM`
 }
 
-function CounterArgumentInner({ messages, argument, rebuttal, stats }) {
+function CounterArgumentInner({ messages, argument, rebuttal, stats, showGov }) {
   // Backwards compatibility: convert old props to messages format
   const chatMessages = messages || [
     { from: 'raju', text: argument || '' },
@@ -40,6 +45,11 @@ function CounterArgumentInner({ messages, argument, rebuttal, stats }) {
       text: (stats ? stats.map(s => `**${s.value}** ${s.label}`).join('. ') + '. ' : '') + (rebuttal || ''),
     },
   ]
+
+  const visibleMessages = chatMessages.filter(msg => {
+    if (msg.from === 'gov' && !showGov) return false
+    return true
+  })
 
   return (
     <motion.div
@@ -69,8 +79,9 @@ function CounterArgumentInner({ messages, argument, rebuttal, stats }) {
 
       {/* Chat area */}
       <div className="px-4 py-5 space-y-3 min-h-[200px]" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(16,185,129,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(211,47,47,0.03) 0%, transparent 50%)' }}>
-        {chatMessages.map((msg, i) => {
+        {visibleMessages.map((msg, i) => {
           const char = CHARACTERS[msg.from] || CHARACTERS.raju
+          const isLeft = msg.from === 'raju' || msg.from === 'gov'
           const isRaju = msg.from === 'raju'
           const msgKey = `${msg.from}-${(msg.text || '').slice(0, 30)}-${i}`
 
@@ -81,20 +92,24 @@ function CounterArgumentInner({ messages, argument, rebuttal, stats }) {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: 0.1 + i * 0.12 }}
-              className={`flex ${isRaju ? 'justify-start' : 'justify-end'}`}
+              className={`flex ${isLeft ? 'justify-start' : 'justify-end'}`}
             >
-              <div className={`max-w-[78%] ${isRaju ? 'pr-8' : 'pl-8'}`}>
+              <div className={`max-w-[78%] ${isLeft ? 'pr-8' : 'pl-8'}`}>
                 {/* Bubble */}
                 <div
                   className={`relative px-4 py-3 text-[15px] leading-relaxed ${
-                    isRaju
+                    msg.from === 'gov'
+                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-100 rounded-2xl rounded-bl-sm border border-blue-200 dark:border-blue-800/50'
+                      : isRaju
                       ? 'bg-green-100/90 dark:bg-green-950/50 text-green-900 dark:text-green-200 rounded-2xl rounded-bl-sm'
                       : 'bg-white dark:bg-dark-surface/80 text-gray-800 dark:text-gray-200 rounded-2xl rounded-br-sm border-l-[3px] border-crimson/60'
                   }`}
                 >
                   {/* Character tag */}
                   <span className={`text-[10px] font-bold uppercase tracking-wider block mb-1 ${
-                    isRaju
+                    msg.from === 'gov'
+                      ? 'text-blue-700 dark:text-blue-400'
+                      : isRaju
                       ? 'text-green-700 dark:text-green-400'
                       : 'text-crimson/80 dark:text-red-400'
                   }`}>
@@ -113,7 +128,7 @@ function CounterArgumentInner({ messages, argument, rebuttal, stats }) {
                 </div>
 
                 {/* Timestamp */}
-                <span className={`text-[9px] text-gray-400 dark:text-gray-600 mt-0.5 block ${isRaju ? 'text-left ml-2' : 'text-right mr-2'}`}>
+                <span className={`text-[9px] text-gray-400 dark:text-gray-600 mt-0.5 block ${isLeft ? 'text-left ml-2' : 'text-right mr-2'}`}>
                   {fakeTime(i)}
                 </span>
               </div>

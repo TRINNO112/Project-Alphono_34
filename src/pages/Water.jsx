@@ -5,6 +5,8 @@ import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
 import ScrollSpy from '../components/ScrollSpy'
+import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
+import { GovResponseToggle } from '../components/GovResponseToggle'
 
 const spySections = [
   { id: 'the-narmada-lifeline-single-point-of-failure', label: 'Narmada Lifeline' },
@@ -33,6 +35,8 @@ const sources = [
 ]
 
 export default function Water() {
+  const [showGov, setShowGov] = useLocalStorageToggle('showGovResponse', false)
+
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
       <ScrollSpy sections={spySections} />
@@ -55,6 +59,14 @@ export default function Water() {
             Gujarat's agricultural and industrial water supply is overwhelmingly dependent on a <strong className="font-semibold text-gray-900 dark:text-white">single engineering marvel — the Sardar Sarovar (Narmada) project</strong>. Meanwhile, North Gujarat's aquifers are being pumped dry at rates that exceed natural recharge, creating a ticking time bomb beneath the surface.
           </p>
         </motion.div>
+      </section>
+
+      {/* Decade Tracker — live values update as YearScrubber moves */}
+      <section aria-label="Water — decade tracker" className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        
+        
+        
       </section>
 
       <div className="space-y-20">
@@ -317,16 +329,24 @@ export default function Water() {
         ]}
       />
 
-      <CounterArgument messages={[
-        { from: 'raju', text: 'Sardar Sarovar is an engineering marvel — irrigates **20 lakh hectares**, supplies water to **3 crore** people. Without it, Gujarat would be a desert.' },
-        { from: 'priya', text: 'Exactly my point. **3 crore people** on a single dam with only **75%** dependability allocation. What happens in a two-year drought?', source: 'Narmada Control Authority Data' },
-        { from: 'raju', text: 'That\'s why we built SAUNI — linking Narmada to Saurashtra\'s reservoirs.' },
-        { from: 'priya', text: 'SAUNI went from Rs 11,000 Cr to Rs **18,563 Cr** — a **69%** cost overrun. Meanwhile Mehsana is pumping at **132%** of recharge. The aquifer is literally being mined.', source: 'CGWB / PMKSY Report' },
-        { from: 'raju', text: 'Groundwater is a local issue. The state is managing it.' },
-        { from: 'priya', text: 'Managing it with fluoride at **17.5 mg/L** — that\'s **11x** the WHO limit. Children in North Gujarat are developing skeletal fluorosis. That\'s not management, Rajubhai.', source: 'CGWB Groundwater Quality Report' },
-      ]} />
+      <div>
+        <div className="flex justify-end mb-4 pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} messages={[
+          { from: 'raju', text: 'Sardar Sarovar is an engineering marvel — irrigates **20 lakh hectares**, supplies water to **3 crore** people. Without it, Gujarat would be a desert.' },
+          { from: 'gov', text: 'The Narmada project is the lifeline of Gujarat. Through the extensive canal network and the historic SAUNI Yojana, we have permanently solved the water crises of Saurashtra and Kutch.', source: 'SSNNL Impact Assessment' },
+          { from: 'priya', text: 'Exactly my point. **3 crore people** on a single dam with only **75%** dependability allocation. What happens in a two-year drought?', source: 'Narmada Control Authority Data' },
+          { from: 'raju', text: 'That\'s why we built SAUNI — linking Narmada to Saurashtra\'s reservoirs.' },
+          { from: 'gov', text: 'SAUNI is an unprecedented feat of engineering, filling 115 dams across 11 districts. It ensures equitable distribution and protects farmers against monsoon vagaries.', source: 'Water Resources Dept, GoG' },
+          { from: 'priya', text: 'SAUNI went from Rs 11,000 Cr to Rs **18,563 Cr** — a **69%** cost overrun. Meanwhile Mehsana is pumping at **132%** of recharge. The aquifer is literally being mined.', source: 'CGWB / PMKSY Report' },
+          { from: 'raju', text: 'Groundwater is a local issue. The state is managing it.' },
+          { from: 'priya', text: 'Managing it with fluoride at **17.5 mg/L** — that\'s **11x** the WHO limit. Children in North Gujarat are developing skeletal fluorosis. That\'s not management, Rajubhai.', source: 'CGWB Groundwater Quality Report' },
+        ]} />
+      </div>
 
       <SourceList sources={sources} />
+      
     </main>
   )
 }

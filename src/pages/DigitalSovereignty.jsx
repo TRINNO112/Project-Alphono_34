@@ -4,6 +4,8 @@ import { Section, DataCard, Ref, SourceList, StatBox, PendingDataBox } from '../
 import { PillarChart } from '../components/PillarChart'
 import { ComparisonTable } from '../components/ComparisonTable'
 import { CounterArgument } from '../components/CounterArgument'
+import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
+import { GovResponseToggle } from '../components/GovResponseToggle'
 import ScrollSpy from '../components/ScrollSpy'
 
 const sources = [
@@ -34,6 +36,8 @@ const spySections = [
 ]
 
 export default function DigitalSovereignty() {
+  const [showGov, setShowGov] = useLocalStorageToggle('showGovResponse', false)
+
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
       <ScrollSpy sections={spySections} />
@@ -314,6 +318,7 @@ export default function DigitalSovereignty() {
       </div>
 
       <SourceList sources={sources} />
+      
     </main>
   )
 }

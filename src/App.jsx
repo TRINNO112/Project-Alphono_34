@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import ErrorBoundary from './components/ErrorBoundary'
 import { SkeletonChart } from './components/Skeleton'
 import { StoriesProvider } from './context/StoriesContext'
+import { YearProvider } from './context/YearContext'
 import StorySideSheet from './components/StorySideSheet'
 
 const Home = lazy(() => import('./pages/Home'))
@@ -34,6 +35,7 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 const GlobalTradeIndex = lazy(() => import('./pages/GlobalTradeIndex'))
 const BreakSimulator = lazy(() => import('./pages/BreakSimulator'))
 const Stories = lazy(() => import('./pages/Stories'))
+const SourceGraph = lazy(() => import('./pages/SourceGraph'))
 
 const pageVariants = {
   initial: { opacity: 0, y: 24 },
@@ -91,6 +93,7 @@ function AnimatedRoutes() {
           <Route path="/global-trade" element={<PageTransition><GlobalTradeIndex /></PageTransition>} />
           <Route path="/simulator" element={<PageTransition><BreakSimulator /></PageTransition>} />
           <Route path="/stories" element={<PageTransition><Stories /></PageTransition>} />
+          <Route path="/source-graph" element={<PageTransition><SourceGraph /></PageTransition>} />
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
       </Suspense>
@@ -99,21 +102,13 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true)
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [darkMode])
 
   return (
     <Router>
       <StoriesProvider>
+        <YearProvider>
         <div className="min-h-screen bg-parchment-50 dark:bg-dark-bg transition-colors duration-500 font-sans text-gray-900 dark:text-gray-200 selection:bg-crimson selection:text-white">
 
           <a
@@ -130,7 +125,7 @@ export default function App() {
             aria-hidden="true"
           />
 
-          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <Navbar />
 
           <main id="main" tabIndex={-1} className="outline-none">
             <ErrorBoundary>
@@ -144,6 +139,7 @@ export default function App() {
 
           <Footer />
         </div>
+        </YearProvider>
       </StoriesProvider>
     </Router>
   )

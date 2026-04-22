@@ -4,6 +4,8 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import ScrollSpy from '../components/ScrollSpy'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
+import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
+import { GovResponseToggle } from '../components/GovResponseToggle'
 
 const sources = [
   { title: "NGT Principal Bench Directives — Fines against Vapi Green Enviro Ltd, Naroda Enviro Projects Ltd, and Ankleshwar CETPs", publication: "National Green Tribunal (NGT) Official Court Records", url: "https://greentribunal.gov.in" },
@@ -25,6 +27,8 @@ const spySections = [
 ]
 
 export default function ChemicalGovernance() {
+  const [showGov, setShowGov] = useLocalStorageToggle('showGovResponse', false)
+
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
       <ScrollSpy sections={spySections} />
