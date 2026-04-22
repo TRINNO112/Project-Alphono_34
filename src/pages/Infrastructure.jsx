@@ -6,6 +6,8 @@ import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
 import ScrollSpy from '../components/ScrollSpy'
 import StoryMarker from '../components/StoryMarker'
+import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
+import { GovResponseToggle } from '../components/GovResponseToggle'
 
 const spySections = [
   { id: 'corporate-centralization-monopolies', label: 'Corporate Monopolies' },
@@ -39,6 +41,8 @@ const sources = [
 ]
 
 export default function Infrastructure() {
+  const [showGov, setShowGov] = useLocalStorageToggle('showGovResponse', false)
+
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
       <ScrollSpy sections={spySections} />
@@ -330,14 +334,21 @@ export default function Infrastructure() {
         ]}
       />
 
-      <CounterArgument messages={[
-        { from: 'raju', text: 'Bhai, Gujarat ports handle **40%** of India\'s cargo. Mundra just crossed 200 MMT. Name one state that comes close.' },
-        { from: 'priya', text: 'Impressive throughput, no doubt. But **70%** is pass-through cargo — it doesn\'t stay in Gujarat. And one company, APSEZ, controls almost all of it.', source: 'CAG FY25 Audit Report' },
-        { from: 'raju', text: 'So? Private efficiency beats government ports every time. That\'s the Gujarat model.' },
-        { from: 'priya', text: 'Efficiency with zero redundancy is fragility. **4,500** bridges past design life, **zero** submarine cable landings, and **22** dead in Morbi — that\'s the infrastructure behind the cargo numbers.', source: 'IRC Bridge Report / Morbi Commission' },
-        { from: 'raju', text: 'Morbi was a tragedy, not a pattern.' },
-        { from: 'priya', text: 'One port operator, one expressway stuck at **5%** completion, one bridge collapse with zero convictions. At what point does concentration become a pattern?', source: 'NHAI Progress Report FY26' },
-      ]} />
+      <div>
+        <div className="flex justify-end mb-4 pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} messages={[
+          { from: 'raju', text: 'Bhai, Gujarat ports handle **40%** of India\'s cargo. Mundra just crossed 200 MMT. Name one state that comes close.' },
+          { from: 'gov', text: 'Gujarat\'s "Port-led Development" model is creating world-class infrastructure. We have extended concessions to private operators to ensure long-term capital investment and global efficiency.', source: 'Vibrant Gujarat 2024 Summit' },
+          { from: 'priya', text: 'Impressive throughput, no doubt. But **70%** is pass-through cargo — it doesn\'t stay in Gujarat. And one company, APSEZ, controls almost all of it.', source: 'CAG FY25 Audit Report' },
+          { from: 'raju', text: 'So? Private efficiency beats government ports every time. That\'s the Gujarat model.' },
+          { from: 'gov', text: 'We are rapidly expanding the road network. The delayed Delhi-Mumbai Expressway is a NHAI project, but state-level connectivity to ports remains robust and uninterrupted.', source: 'Roads & Buildings Dept Press Release' },
+          { from: 'priya', text: 'Efficiency with zero redundancy is fragility. **4,500** bridges past design life, **zero** submarine cable landings, and **22** dead in Morbi — that\'s the infrastructure behind the cargo numbers.', source: 'IRC Bridge Report / Morbi Commission' },
+          { from: 'raju', text: 'Morbi was a tragedy, not a pattern.' },
+          { from: 'priya', text: 'One port operator, one expressway stuck at **5%** completion, one bridge collapse with zero convictions. At what point does concentration become a pattern?', source: 'NHAI Progress Report FY26' },
+        ]} />
+      </div>
 
       <SourceList sources={sources} />
     </main>

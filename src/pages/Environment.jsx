@@ -3,6 +3,8 @@ import { Factory, AlertTriangle, Wind, Droplets } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
+import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
+import { GovResponseToggle } from '../components/GovResponseToggle'
 import ScrollSpy from '../components/ScrollSpy'
 import StoryMarker from '../components/StoryMarker'
 
@@ -32,6 +34,8 @@ const sources = [
 ]
 
 export default function Environment() {
+  const [showGov, setShowGov] = useLocalStorageToggle('showGovResponse', false)
+
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
       <ScrollSpy sections={spySections} />

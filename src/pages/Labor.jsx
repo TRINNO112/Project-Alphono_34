@@ -6,6 +6,8 @@ import { CounterArgument } from '../components/CounterArgument'
 import { Timeline } from '../components/Timeline'
 import ScrollSpy from '../components/ScrollSpy'
 import StoryMarker from '../components/StoryMarker'
+import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
+import { GovResponseToggle } from '../components/GovResponseToggle'
 
 const spySections = [
   { id: 'morbi-india-s-ceramic-capital-built-on-migrant-hands', label: 'Morbi Ceramics' },
@@ -37,6 +39,8 @@ const sources = [
 ]
 
 export default function Labor() {
+  const [showGov, setShowGov] = useLocalStorageToggle('showGovResponse', false)
+
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
       <ScrollSpy sections={spySections} />
@@ -298,16 +302,24 @@ export default function Labor() {
         </DataCard>
       </Section>
 
-      <CounterArgument messages={[
-        { from: 'raju', text: 'Migrants come to Gujarat because it offers the best opportunities. **60 lakh+** workers can\'t be wrong — they vote with their feet.' },
-        { from: 'priya', text: 'They come because home is worse, not because Gujarat is great. Average migrant wage is **Rs 425/day** — Kerala pays **Rs 750**. They\'re not choosing Gujarat, they\'re trapped by proximity.', source: 'Periodic Labour Force Survey 2023-24' },
-        { from: 'raju', text: 'If conditions were so bad, why would they keep coming back after COVID?' },
-        { from: 'priya', text: 'Many didn\'t. Only **10%** returned to Surat after the 2020 exodus. And then 2026 hit — **5-6 lakh** fled again. Three mass exits in six years isn\'t loyalty, it\'s desperation cycling.', source: 'The Federal / ThePrint Mar 2026' },
-        { from: 'raju', text: 'The diamond industry is recovering. Surat always bounces back.' },
-        { from: 'priya', text: '**1.5 lakh** diamond jobs gone. **71 suicides** in 18 months. Powerloom losses at **Rs 100 Cr/day**. At what point do we stop calling it a bounce-back and start calling it structural fragility?', source: 'ThePrint — Diamond Worker Suicides Report' },
-      ]} />
+      <div>
+        <div className="flex justify-end mb-4 pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} messages={[
+          { from: 'raju', text: 'Migrants come to Gujarat because it offers the best opportunities. **60 lakh+** workers can\'t be wrong — they vote with their feet.' },
+          { from: 'gov', text: 'Gujarat provides a safe, peaceful, and business-friendly environment that naturally attracts talent. The Shramik Basera scheme provides subsidised housing to construction workers to ensure their welfare.', source: 'Gujarat Labour & Employment Dept' },
+          { from: 'priya', text: 'They come because home is worse, not because Gujarat is great. Average migrant wage is **Rs 425/day** — Kerala pays **Rs 750**. They\'re not choosing Gujarat, they\'re trapped by proximity.', source: 'Periodic Labour Force Survey 2023-24' },
+          { from: 'raju', text: 'If conditions were so bad, why would they keep coming back after COVID?' },
+          { from: 'gov', text: 'Post-pandemic, the state government arranged hundreds of Shramik Special trains and ensured rations. The rapid V-shaped recovery proved our commitment to our workforce.', source: 'CMO Gujarat COVID Relief Report' },
+          { from: 'priya', text: 'Many didn\'t. Only **10%** returned to Surat after the 2020 exodus. And then 2026 hit — **5-6 lakh** fled again. Three mass exits in six years isn\'t loyalty, it\'s desperation cycling.', source: 'The Federal / ThePrint Mar 2026' },
+          { from: 'raju', text: 'The diamond industry is recovering. Surat always bounces back.' },
+          { from: 'priya', text: '**1.5 lakh** diamond jobs gone. **71 suicides** in 18 months. Powerloom losses at **Rs 100 Cr/day**. At what point do we stop calling it a bounce-back and start calling it structural fragility?', source: 'ThePrint — Diamond Worker Suicides Report' },
+        ]} />
+      </div>
 
       <SourceList sources={sources} />
+      
     </main>
   )
 }

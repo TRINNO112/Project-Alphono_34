@@ -368,6 +368,78 @@ export default function Home() {
 
       <hr className="border-gray-300 dark:border-dark-border w-1/2 mx-auto" />
 
+      {/* ═══════════════════ III-C. INTERACTIVE TOOLS ═══════════════════ */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="text-center mb-10">
+          <div className="flex items-center gap-3 justify-center mb-4">
+            <span className="text-crimson text-lg font-sans font-bold">III-C.</span>
+            <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white">Experience the Research</h2>
+          </div>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Two interactive entry points — one lets you break the system, the other reminds you who pays when it breaks.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Link
+            to="/simulator"
+            className="group relative overflow-hidden rounded-2xl border border-crimson/40 bg-gradient-to-br from-crimson/10 via-white to-white dark:from-crimson/15 dark:via-dark-surface dark:to-dark-bg p-8 shadow-lg hover:shadow-2xl hover:border-crimson transition-all"
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-crimson/10 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:bg-crimson/20 transition" />
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-xl bg-crimson text-white shadow-md">
+                  <AlertTriangle className="w-6 h-6" aria-hidden="true" />
+                </div>
+                <span className="text-xs font-bold tracking-widest uppercase text-crimson">Interactive Simulation</span>
+              </div>
+              <h3 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-3 group-hover:text-crimson transition-colors">
+                Break Simulator
+              </h3>
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+                Pull 8 levers — Russian crude, Chinese APIs, Versova cable, climate, labor pogroms — and watch Gujarat's
+                GDP, jobs, and 33 districts respond in real time. Four presets reproduce real 2018–2026 crisis cascades.
+              </p>
+              <div className="inline-flex items-center gap-2 text-sm font-bold text-crimson group-hover:gap-3 transition-all">
+                Start the simulation <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            to="/stories"
+            className="group relative overflow-hidden rounded-2xl border border-gray-300 dark:border-dark-border bg-gradient-to-br from-gray-100 via-white to-white dark:from-dark-surface dark:via-dark-surface dark:to-dark-bg p-8 shadow-lg hover:shadow-2xl hover:border-crimson/60 transition-all"
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gray-400/10 dark:bg-white/5 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:bg-crimson/10 transition" />
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-md">
+                  <Users className="w-6 h-6" aria-hidden="true" />
+                </div>
+                <span className="text-xs font-bold tracking-widest uppercase text-gray-700 dark:text-gray-300">Named, Not Numbered</span>
+              </div>
+              <h3 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-3 group-hover:text-crimson transition-colors">
+                Human Stories
+              </h3>
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+                27 named individuals behind the statistics — diamond polishers, silicosis-stricken tribal migrants,
+                Morbi bridge families, farmer suicides, Alang shipbreakers. Full narrative accounts, sourced from
+                mainstream journalism.
+              </p>
+              <div className="inline-flex items-center gap-2 text-sm font-bold text-crimson group-hover:gap-3 transition-all">
+                Read the stories <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </div>
+            </div>
+          </Link>
+        </div>
+      </motion.section>
+
+      <hr className="border-gray-300 dark:border-dark-border w-1/2 mx-auto" />
+
       {/* ═══════════════════ IV. NINE PILLARS ═══════════════════ */}
       <section>
         <div className="text-center mb-16">

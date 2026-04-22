@@ -5,6 +5,8 @@ import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
 import ScrollSpy from '../components/ScrollSpy'
+import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
+import { GovResponseToggle } from '../components/GovResponseToggle'
 
 const spySections = [
   { id: 'imported-coal-the-coastal-thermal-trap', label: 'Imported Coal' },
@@ -37,6 +39,8 @@ const sources = [
 ]
 
 export default function Energy() {
+  const [showGov, setShowGov] = useLocalStorageToggle('showGovResponse', false)
+
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
       <ScrollSpy sections={spySections} />
@@ -307,16 +311,24 @@ export default function Energy() {
         ]}
       />
 
-      <CounterArgument messages={[
-        { from: 'raju', text: 'Gujarat leads India in renewable energy — **42.5 GW** installed. We have the world\'s largest solar park at Khavda. That\'s leadership.' },
-        { from: 'priya', text: '42.5 GW installed, but only **22%** of actual generation comes from renewables. Coal still runs **58%** of GUVNL contracts.', source: 'GUVNL Annual Report FY25' },
-        { from: 'raju', text: 'Transition takes time. At least we\'re building capacity.' },
-        { from: 'priya', text: 'Meanwhile, **550+ Morbi units** shut in March 2026 because gas hit $17/MMBtu. The grid dropped **4,000 MW** in 90 minutes. Workers didn\'t have time to wait for the transition.', source: 'Desh Gujarat / Grid Report Mar 2026' },
-        { from: 'raju', text: 'That was a war situation. You can\'t plan for everything.' },
-        { from: 'priya', text: 'When **69%** of your LNG passes through one strait and your two mega-plants run on imported coal — yes, you can plan for it. That\'s what energy security means.', source: 'Global Energy Monitor — Mundra' },
-      ]} />
+      <div>
+        <div className="flex justify-end mb-4 pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} messages={[
+          { from: 'raju', text: 'Gujarat leads India in renewable energy — **42.5 GW** installed. We have the world\'s largest solar park at Khavda. That\'s leadership.' },
+          { from: 'gov', text: 'Our transition to green energy is unmatched. We aim for 100 GW by 2030, reducing carbon emissions while powering the nation. The Green Energy Corridor ensures efficient evacuation.', source: 'Gujarat Energy Development Agency' },
+          { from: 'priya', text: '42.5 GW installed, but only **22%** of actual generation comes from renewables. Coal still runs **58%** of GUVNL contracts.', source: 'GUVNL Annual Report FY25' },
+          { from: 'raju', text: 'Transition takes time. At least we\'re building capacity.' },
+          { from: 'gov', text: 'We mandated imported-coal plants to run at full capacity recently only to shield citizens and industries from global supply shocks. Reliability remains our foremost priority.', source: 'Ministry of Power Directive' },
+          { from: 'priya', text: 'Meanwhile, **550+ Morbi units** shut in March 2026 because gas hit $17/MMBtu. The grid dropped **4,000 MW** in 90 minutes. Workers didn\'t have time to wait for the transition.', source: 'Desh Gujarat / Grid Report Mar 2026' },
+          { from: 'raju', text: 'That was a war situation. You can\'t plan for everything.' },
+          { from: 'priya', text: 'When **69%** of your LNG passes through one strait and your two mega-plants run on imported coal — yes, you can plan for it. That\'s what energy security means.', source: 'Global Energy Monitor — Mundra' },
+        ]} />
+      </div>
 
       <SourceList sources={sources} />
+      
     </main>
   )
 }

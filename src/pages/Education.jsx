@@ -3,6 +3,8 @@ import { GraduationCap, Heart, AlertTriangle, CheckCircle } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
+import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
+import { GovResponseToggle } from '../components/GovResponseToggle'
 import ScrollSpy from '../components/ScrollSpy'
 
 const spySections = [
@@ -31,6 +33,8 @@ const sources = [
 ]
 
 export default function Education() {
+  const [showGov, setShowGov] = useLocalStorageToggle('showGovResponse', false)
+
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
       <ScrollSpy sections={spySections} />

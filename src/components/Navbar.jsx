@@ -4,11 +4,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
 const navLinks = [
-  { to: '/simulator', label: 'Break Simulator' },
-  { to: '/stories', label: 'Human Stories' },
   { to: '/map', label: 'Geographic Map' },
   { to: '/timeline', label: 'Crisis Timeline' },
   { to: '/summary', label: 'Executive Summary' },
+]
+
+const featureLinks = [
+  { to: '/simulator', label: 'Break Simulator' },
+  { to: '/stories', label: 'Human Stories' },
 ]
 
 const pillarLinks = [
@@ -29,10 +32,11 @@ const pillarLinks = [
 
 const resourceLinks = [
   { to: '/sources', label: 'Sources' },
+  { to: '/source-graph', label: 'Source Graph' },
   { to: '/methodology', label: 'Methodology' },
 ]
 
-export default function Navbar({ darkMode, setDarkMode }) {
+export default function Navbar() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   const [menuOpen, setMenuOpen] = useState(false)
@@ -114,19 +118,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
           })}
         </nav>
 
-        {/* Theme toggle */}
-        <button
-          type="button"
-          onClick={() => setDarkMode(!darkMode)}
-          aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-          aria-pressed={darkMode}
-          title="Toggle Theme"
-          className="p-3 rounded-full hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors border border-transparent dark:border-dark-border focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
-        >
-          {darkMode
-            ? <Sun className="w-5 h-5 text-gray-200" aria-hidden="true" />
-            : <Moon className="w-5 h-5 text-gray-700" aria-hidden="true" />}
-        </button>
+
 
         {/* Mobile hamburger (hidden on md+) */}
         <button
@@ -175,6 +167,26 @@ export default function Navbar({ darkMode, setDarkMode }) {
                 <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-3">Navigate</h2>
                 <ul className="space-y-1">
                   {navLinks.map((link) => {
+                    const active = isActivePath(link.to)
+                    return (
+                      <li key={link.to}>
+                        <Link
+                          to={link.to}
+                          aria-current={active ? 'page' : undefined}
+                          className={`block py-2 text-base font-medium ${active ? 'text-crimson' : 'text-gray-800 dark:text-gray-200 hover:text-crimson dark:hover:text-crimson'}`}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </nav>
+
+              <nav aria-label="Features">
+                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-3">Interactive</h2>
+                <ul className="space-y-1">
+                  {featureLinks.map((link) => {
                     const active = isActivePath(link.to)
                     return (
                       <li key={link.to}>

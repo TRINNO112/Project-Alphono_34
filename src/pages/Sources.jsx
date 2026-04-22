@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Database, ExternalLink, Search, Filter, Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert, Wheat, Cpu, FlaskConical, Cable } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Database, Network, ExternalLink, Search, Filter, Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert, Wheat, Cpu, FlaskConical, Cable } from 'lucide-react'
 import SEO from '../components/SEO'
 
 const pillarMeta = {
@@ -13,13 +14,13 @@ const pillarMeta = {
   Education: { icon: GraduationCap, color: 'text-pink-500', count: 20 },
   Environment: { icon: TreePine, color: 'text-emerald-500', count: 22 },
   'Migrant Discrimination': { icon: ShieldAlert, color: 'text-red-500', count: 33 },
-  'Agriculture': { icon: Wheat, color: 'text-green-700', count: 6 },
-  'Green Tech': { icon: Cpu, color: 'text-cyan-500', count: 7 },
-  'Chemical Governance': { icon: FlaskConical, color: 'text-orange-500', count: 8 },
+  'Agriculture': { icon: Wheat, color: 'text-green-700', count: 9 },
+  'Green Tech': { icon: Cpu, color: 'text-cyan-500', count: 10 },
+  'Chemical Governance': { icon: FlaskConical, color: 'text-orange-500', count: 11 },
   'Digital Sovereignty': { icon: Cable, color: 'text-blue-500', count: 15 },
 }
 
-const allSources = [
+export const allSources = [
   // ── INFRASTRUCTURE ──
   { pillar: "Infrastructure", type: "Media", title: "Adani's Mundra Port Makes History, Becomes First In India To Handle 200 MMT Cargo", url: "https://www.marineinsight.com/shipping-news/adanis-mundra-port-makes-history-becomes-first-in-india-to-handle-200-mmt-cargo/" },
   { pillar: "Infrastructure", type: "Media", title: "APSEZ Handles All-Time High 450MMT Cargo Volume", url: "https://www.republicworld.com/initiatives/apsez-handles-all-time-high-450mmt-cargo-volume-mundra-first-indian-port-ever-to-cross-200-mmt-annual-cargo-volume" },
@@ -301,6 +302,19 @@ const allSources = [
   { pillar: "Digital Sovereignty", type: "Industry", title: "India Data Centre Capacity Map — Installed MW by State (JLL H2 2024)", url: "https://www.jll.co.in/en/trends-and-insights/research" },
   { pillar: "Digital Sovereignty", type: "Industry", title: "Reliance Jio True-5G Fiber-to-Tower Rollout — State Progress (Annual Report 2024–25)", url: "https://www.ril.com/InvestorRelations/FinancialReporting.aspx" },
   { pillar: "Digital Sovereignty", type: "Govt", title: "NIC / MeghRaj Cloud Adoption Status — State Government Workload Distribution", url: "https://cloud.gov.in/" },
+  
+  // ── NEWEST RESEARCH SOURCES (Apr 2026) ──
+  { pillar: "Agriculture", type: "Govt", title: "Gujarat Agriculture & Cooperation Department — Annual State Progress 2024", url: "https://agri.gujarat.gov.in/" },
+  { pillar: "Agriculture", type: "Industry", title: "AMUL GCMMF Business Performance Report 2025", url: "https://amul.com/m/about-us" },
+  { pillar: "Agriculture", type: "Govt", title: "Saurashtra Narmada Avtaran Irrigation (SAUNI) Yojana Impact", url: "https://narmada.gujarat.gov.in/" },
+  
+  { pillar: "Green Tech", type: "Govt", title: "Gujarat Energy Development Agency (GEDA) — 100 GW Target RoadMap", url: "https://geda.gujarat.gov.in/" },
+  { pillar: "Green Tech", type: "Industry", title: "Dholera SIR 5000 MW Solar Park Investment Profile", url: "https://dholera.gujarat.gov.in/" },
+  { pillar: "Green Tech", type: "Govt", title: "Gujarat Climate Change Department Action Plan 2030", url: "https://climatechange.gujarat.gov.in/" },
+
+  { pillar: "Chemical Governance", type: "Govt", title: "Dahej PCPIR Master Plan & Industrial Approvals", url: "https://pcpir.gujarat.gov.in/" },
+  { pillar: "Chemical Governance", type: "Govt", title: "GPCB Common Effluent Treatment Plant (CETP) Compliance Audit 2024", url: "https://gpcb.gujarat.gov.in/" },
+  { pillar: "Chemical Governance", type: "Legal", title: "Ministry of Environment & Forests (MoEF) Clearance Metrics for Gujarat Corridors", url: "https://parivesh.nic.in/" },
 ]
 
 const typeColors = {
@@ -366,6 +380,15 @@ export default function Sources() {
           <p className="text-lg text-gray-500 dark:text-gray-400 font-light leading-relaxed">
             {allSources.length} citations across {Object.keys(pillarMeta).length} pillars — every claim, sourced and linked.
           </p>
+          <div className="mt-6 flex items-center">
+            <Link
+              to="/source-graph"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-crimson text-white text-sm font-semibold rounded-lg hover:bg-crimson/90 transition-colors shadow-sm"
+            >
+              <Network className="w-4 h-4" />
+              View as Graph
+            </Link>
+          </div>
           <div className="mt-6 h-px bg-gray-200 dark:bg-gray-800" />
         </motion.div>
 
