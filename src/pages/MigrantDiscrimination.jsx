@@ -555,14 +555,20 @@ export default function MigrantDiscrimination() {
 
       </div>
 
-      <CounterArgument messages={[
+      <div>
+        <div className="flex justify-end mb-4 pr-2 sm:pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} messages={[
         { from: 'raju', text: 'Migrants come to Gujarat because everyone is welcome here. We treat them like family. They get jobs, housing — what more do they need?' },
         { from: 'priya', text: 'In October 2018, **20,000+** workers fled after organized mobs attacked migrant settlements across the state. The leader who organized the attacks later joined the ruling party. That\'s not a welcome, Rajubhai.', source: 'Scroll.in / Indian Express Oct 2018' },
         { from: 'raju', text: 'That was one incident. One bad actor. You can\'t judge a whole state by that.' },
         { from: 'priya', text: '**589 tribal migrants** from MP\'s Alirajpur and Jhabua died of silicosis in Gujarat\'s quartz factories over a decade. Paid Rs 150/day, no masks, factory owners destroyed muster rolls weekly to avoid accountability. The NHRC had to intervene.', source: 'Business Standard / NHRC Notice 2016' },
         { from: 'raju', text: 'Working conditions are improving. The economy can\'t function without these workers — that proves we need them.' },
         { from: 'priya', text: 'Needing someone and protecting them are different things. **70%** of Morbi\'s ceramic workers are migrants — yet **92%** have no ESI coverage despite being legally entitled since 1967. Silicosis deaths surged **216%** in 2024-25. Migrants from UP and Bihar were among the **141 dead** at Morbi bridge — zero convictions. Gujarat\'s economy runs on people it won\'t even insure.', source: 'Counterview / PTRC / Morbi Commission' },
-      ]} />
+        { from: 'gov', text: `The state is a beacon of opportunity. The 'Shramik Basera' scheme and extensive COVID-era operations demonstrate an enduring commitment to the welfare and dignity of our migrant workforce.`, source: `Gujarat Labour & Employment Dept` }
+        ]} />
+      </div>
 
       {/* Author's Note */}
       <div className="mt-12 p-6 rounded-2xl border border-amber-200 dark:border-amber-900/30 bg-amber-50/50 dark:bg-amber-950/20">

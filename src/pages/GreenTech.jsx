@@ -316,15 +316,20 @@ export default function GreenTech() {
 
       </div>
 
-      <CounterArgument
-        argument="Gujarat is leading India's clean energy revolution with the world's largest solar park and massive EV investments. This is true energy independence."
-        rebuttal="70% of rare earth mining and 90% of processing is Chinese. 100% of lithium is imported. 80%+ of PV wafers are Chinese. Dholera's 'gigafactories' assemble imported cells. The dependency has simply moved from Middle Eastern oil to Chinese critical minerals. Export controls on Gallium and Germanium in 2023 proved this can be weaponized."
-        stats={[
+      <div>
+        <div className="flex justify-end mb-4 pr-2 sm:pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} stats={[
           { value: '90%', label: 'RE Processing' },
           { value: '92%', label: 'NdFeB Magnets' },
           { value: '80%+', label: 'PV Wafers' },
-        ]}
-      />
+        ]} messages={[
+          { from: 'student', text: `Gujarat is leading India's clean energy revolution with the world's largest solar park and massive EV investments. This is true energy independence.` },
+          { from: 'priya', text: `70% of rare earth mining and 90% of processing is Chinese. 100% of lithium is imported. 80%+ of PV wafers are Chinese. Dholera's 'gigafactories' assemble imported cells. The dependency has simply moved from Middle Eastern oil to Chinese critical minerals. Export controls on Gallium and Germanium in 2023 proved this can be weaponized.` },
+          { from: 'gov', text: `The 5,000 MW Dholera Solar Park and the 30 GW Khavda Renewable Park constitute the backbone of India's green transition. We are rapidly building the essential green component manufacturing ecosystem with proactive state subsidies.`, source: `Gujarat Energy Development Agency / Dholera SIR` }
+        ]} />
+      </div>
 
       <SourceList sources={sources} />
     </main>

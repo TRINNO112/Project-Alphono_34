@@ -283,9 +283,12 @@ export default function DigitalSovereignty() {
 
         {/* ═══ Counter-argument ═══ */}
         <Section icon={<Globe className="w-8 h-8 text-gray-600 dark:text-gray-400" />} title="The Debate">
-          <CounterArgument
-            messages={[
-              {
+          <div>
+        <div className="flex justify-end mb-4 pr-2 sm:pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} messages={[
+        {
                 from: 'raju',
                 text: "Arre bhai, GIFT City is world-class. We have fiber, data centres, AWS, everything. Why are you crying about some cables?",
               },
@@ -311,8 +314,9 @@ export default function DigitalSovereignty() {
                 from: 'priya',
                 text: "**Exactly the point.** There is no such project commissioned. The 1,600 km coastline sits unused while the state brands itself as India's digital future. Marketing and infrastructure are not the same thing.",
               },
-            ]}
-          />
+        { from: 'gov', text: `Gujarat leads India in digital governance through initiatives like GSWAN and the upcoming CtrlS AI-ready data center in GIFT City, providing deeply integrated, transparent, and efficient civic services to all residents.`, source: `Gujarat Science & Technology Dept` }
+        ]} />
+      </div>
         </Section>
 
       </div>

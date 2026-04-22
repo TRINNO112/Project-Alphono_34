@@ -371,14 +371,20 @@ export default function Education() {
         </DataCard>
       </Section>
 
-      <CounterArgument messages={[
+      <div>
+        <div className="flex justify-end mb-4 pr-2 sm:pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} messages={[
         { from: 'raju', text: 'Gujarat has IITs, IIMs, multiple private universities. The private sector is filling education gaps better than any government scheme.' },
         { from: 'priya', text: 'Only **1 Gujarat institution** in NIRF top 100 — IIT Gandhinagar, which is centrally funded. Higher education GER is **20.1%**, almost 30% below the national average of 28.4%.', source: 'AISHE 2021-22 / NIRF 2025' },
         { from: 'raju', text: 'Students here are practical — they join family businesses or get industry jobs directly. Not everyone needs a degree.' },
         { from: 'priya', text: '**2.4 lakh** annual dropouts — highest in India. **32,000+** teaching posts vacant. **18,237** students left Gujarat for education abroad last year. They\'re not choosing industry — they\'re fleeing the system.', source: 'UDISE+ / Gujarat University Data' },
         { from: 'raju', text: 'Healthcare is improving — new AIIMS, medical colleges opening.' },
         { from: 'priya', text: 'Meanwhile **97%** of surgeon posts at rural CHCs are vacant. Health spending is **0.8%** of GSDP — one-third the NHP target. You can\'t announce colleges while **2.87 lakh** hospital beds are missing.', source: 'DNA India / PRS Budget Analysis' },
-      ]} />
+        { from: 'gov', text: `The 'Mission Schools of Excellence' initiative, backed by a $500M World Bank loan, is fundamentally transforming Gujarat's public education infrastructure, upgrading 20,000 schools with smart classrooms and STEM labs.`, source: `Education Department, Govt of Gujarat` }
+        ]} />
+      </div>
 
       <SourceList sources={sources} />
     </main>

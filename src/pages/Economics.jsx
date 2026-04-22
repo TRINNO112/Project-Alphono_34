@@ -340,14 +340,20 @@ export default function Economics() {
         ]}
       />
 
-      <CounterArgument messages={[
+      <div>
+        <div className="flex justify-end mb-4 pr-2 sm:pr-4">
+          <GovResponseToggle checked={showGov} onChange={setShowGov} />
+        </div>
+        <CounterArgument showGov={showGov} messages={[
         { from: 'raju', text: 'Gujarat has India\'s lowest debt-to-GSDP ratio at **18.2%**. That\'s fiscal discipline. No other state comes close.' },
         { from: 'priya', text: 'Low debt because the state barely spends on public services. Revenue receipts at **8.7%** of GSDP — the median state is at **19.9%**. That\'s not discipline, that\'s under-collection.', source: 'PRS India Budget Analysis FY27' },
         { from: 'raju', text: 'Less government spending means less waste. The private sector fills the gap more efficiently.' },
         { from: 'priya', text: 'The CAG found **Rs 11,929 Cr** of overstated surplus. Own Tax Revenue has fallen from 7.44% to **4.9%** of GSDP in a decade. Central grants crashed to **0.53%**. Who fills that gap?', source: 'CAG Gujarat Fiscal Audit FY25' },
         { from: 'raju', text: 'GST compensates for that. Gujarat is a net contributor to the national pool.' },
         { from: 'priya', text: 'GST compensation ended. And being a "net contributor" while your own revenue base erodes means you\'re subsidizing other states while under-investing in your own people. **32,000** teacher vacancies don\'t fill themselves.', source: 'NITI Aayog Macro-Fiscal Report' },
-      ]} />
+        { from: 'gov', text: `Gujarat consistently ranks among the top three states nationally for cumulative FDI inflows and attracts the highest intended investments during Vibrant Gujarat. This capital creates massive downstream employment that benefits the entire socioeconomic spectrum.`, source: `DPIIT FDI Statistics / Vibrant Gujarat 2024 Report` }
+        ]} />
+      </div>
 
       <SourceList sources={sources} />
       
