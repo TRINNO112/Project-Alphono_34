@@ -5,6 +5,9 @@ export const searchIndex = [
   { pillar: 'Simulator', path: '/simulator', claim: 'Full Decoupling preset: Russian crude cut + Chinese API halt + Versova cable severance', keywords: ['decoupling', 'sanctions', 'russian', 'chinese', 'versova', 'preset'] },
   { pillar: 'Simulator', path: '/simulator', claim: 'Climate Black Swan preset: Mundra cyclone closure + Narmada deficit + Dahej LNG outage', keywords: ['climate', 'black swan', 'cyclone', 'narmada', 'dahej', 'preset'] },
   { pillar: 'Simulator', path: '/simulator', claim: '2018 Pogrom Replay preset: anti-migrant violence surge simulation', keywords: ['pogrom', '2018', 'migrant', 'violence', 'replay', 'preset'] },
+  // Source Graph
+  { pillar: 'Source Graph', path: '/source-graph', claim: 'Interactive Cytoscape graph of all 241 citations linked to 13 pillars — see orphans, clusters, and cross-pillar sources', keywords: ['graph', 'cytoscape', 'network', 'sources', 'citations', 'provenance'] },
+  { pillar: 'Source Graph', path: '/source-graph', claim: 'Filter sources by type (news, report, academic, gov) and by pillar; highlight orphan domains cited only once', keywords: ['filter', 'orphan', 'domain', 'network', 'source'] },
   // Human Stories
   { pillar: 'Stories', path: '/stories', claim: 'Named individuals behind Gujarat\'s structural statistics — 27+ stories from mainstream journalism', keywords: ['stories', 'humans', 'named', 'victims', 'people'] },
   { pillar: 'Stories', path: '/stories', claim: 'Diamond worker suicides: Pravin Sarvaiya, Vinu Moradiya, Nikunj Tank — Surat slump 2023-24', keywords: ['diamond', 'surat', 'suicide', 'sarvaiya', 'moradiya', 'tank'] },

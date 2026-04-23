@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import SearchBar from './components/SearchBar'
@@ -36,6 +36,7 @@ const GlobalTradeIndex = lazy(() => import('./pages/GlobalTradeIndex'))
 const BreakSimulator = lazy(() => import('./pages/BreakSimulator'))
 const Stories = lazy(() => import('./pages/Stories'))
 const SourceGraph = lazy(() => import('./pages/SourceGraph'))
+const Brief = lazy(() => import('./pages/Brief'))
 
 const pageVariants = {
   initial: { opacity: 0, y: 24 },
@@ -94,6 +95,7 @@ function AnimatedRoutes() {
           <Route path="/simulator" element={<PageTransition><BreakSimulator /></PageTransition>} />
           <Route path="/stories" element={<PageTransition><Stories /></PageTransition>} />
           <Route path="/source-graph" element={<PageTransition><SourceGraph /></PageTransition>} />
+          <Route path="/brief" element={<PageTransition><Brief /></PageTransition>} />
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
       </Suspense>

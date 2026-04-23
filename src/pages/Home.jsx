@@ -165,6 +165,13 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mt-8 font-light leading-relaxed">
             A critical analysis of the structural vulnerabilities, systemic dependencies, and external supply chains underpinning the state of Gujarat.
           </p>
+
+          <Link
+            to="/brief"
+            className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 border border-crimson text-crimson hover:bg-crimson hover:text-white transition-colors text-xs tracking-[0.2em] uppercase font-semibold"
+          >
+            Open the Case Brief <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </motion.div>
       </section>
 
