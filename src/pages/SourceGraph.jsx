@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, ArrowLeft, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
-import { allSources, pillarMeta } from './Sources'
+import { allSources, pillarMeta } from '../data/sourcesData'
 
 const TYPE_STRIPE = {
   Govt: '#2563eb',

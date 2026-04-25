@@ -53,7 +53,7 @@ function PillarChartInner({ type, data, title, caption, height = 300, colors }) 
     </ResponsiveContainer>
   )
 
-  const renderPieLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, name, value, index }) => {
+  const renderPieLabel = ({ cx, cy, midAngle, outerRadius, name, value, index }) => {
     const RADIAN = Math.PI / 180
     const radius = outerRadius + 28
     let x = cx + radius * Math.cos(-midAngle * RADIAN)
