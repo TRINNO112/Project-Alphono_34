@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useInView, useSpring as useFramerSpring, useMotionValue } from 'framer-motion'
 
-export default function AnimatedCounter({ value, suffix = '', prefix = '', duration = 1.5, decimals = 0 }) {
+export default function AnimatedCounter({ value, suffix = '', prefix = '', decimals = 0 }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
   const [display, setDisplay] = useState('0')
