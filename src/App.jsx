@@ -37,6 +37,7 @@ const BreakSimulator = lazy(() => import('./pages/BreakSimulator'))
 const Stories = lazy(() => import('./pages/Stories'))
 const SourceGraph = lazy(() => import('./pages/SourceGraph'))
 const Brief = lazy(() => import('./pages/Brief'))
+const Confrontation = lazy(() => import('./pages/Confrontation'))
 
 const pageVariants = {
   initial: { opacity: 0, y: 24 },
@@ -96,6 +97,7 @@ function AnimatedRoutes() {
           <Route path="/stories" element={<PageTransition><Stories /></PageTransition>} />
           <Route path="/source-graph" element={<PageTransition><SourceGraph /></PageTransition>} />
           <Route path="/brief" element={<PageTransition><Brief /></PageTransition>} />
+          <Route path="/confrontation" element={<PageTransition><Confrontation /></PageTransition>} />
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
       </Suspense>
