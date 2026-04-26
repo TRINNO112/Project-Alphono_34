@@ -1,4 +1,6 @@
 export const searchIndex = [
+  // Cinematic Reel
+  { pillar: 'The Confrontation', path: '/confrontation', claim: 'Cinematic interactive confrontation — two voices debating the state\'s structural dependencies in a high-impact surveillance-style reel.', keywords: ['confrontation', 'cinematic', 'debate', 'surveillance', 'reel', 'landing'] },
   // Break Simulator
   { pillar: 'Simulator', path: '/simulator', claim: 'Interactive stress-test: trigger supply-chain, labor, water, and digital shocks and watch the cascade', keywords: ['simulator', 'break', 'stress test', 'war game', 'cascade', 'interactive', 'scenario'] },
   { pillar: 'Simulator', path: '/simulator', claim: '2026 Twin Shock preset: Morbi gas + diamond/pogrom cascade', keywords: ['twin shock', '2026', 'morbi', 'diamond', 'preset', 'scenario'] },

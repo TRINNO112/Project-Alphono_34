@@ -31,6 +31,7 @@ const pillarLinks = [
 ]
 
 const resourceLinks = [
+  { to: '/confrontation', label: 'The Confrontation' },
   { to: '/brief', label: 'Case Brief' },
   { to: '/sources', label: 'Sources' },
   { to: '/source-graph', label: 'Source Graph' },
