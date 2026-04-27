@@ -63,6 +63,7 @@ export default function Footer() {
               <FooterLink to="/sources">Source Data</FooterLink>
               <FooterLink to="/source-graph">Source Graph</FooterLink>
               <FooterLink to="/methodology">Research Methodology</FooterLink>
+              <FooterLink to="/authors-note" highlight>Author's Note</FooterLink>
             </ul>
           </div>
 

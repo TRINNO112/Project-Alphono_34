@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ShieldAlert, Skull, Scale, HeartCrack, Flame, Ban, AlertTriangle, MapPin, Users, Siren, Landmark, Thermometer, MessageCircleWarning } from 'lucide-react'
+import SEO from '../components/SEO'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
@@ -65,6 +66,12 @@ export default function MigrantDiscrimination() {
 
   return (
     <main className="w-full max-w-5xl mx-auto px-6 pt-32 pb-32 space-y-24">
+      <SEO
+        title="Migrant Discrimination in Gujarat — Pillar 09"
+        description="Documented evidence of discrimination against Hindi-speaking migrant workers in Gujarat: the 2018 anti-migrant pogrom, 2020 walking exodus, the Hindira slur, wage gap with Kerala, Agariya salt workers, and Supreme Court findings against the state."
+        path="/migrant-discrimination"
+        keywords="migrant discrimination Gujarat, Hindi speakers Gujarat experience, 2018 Gujarat migrant attacks, Hindira slur, anti-migrant violence Surat, non-Gujarati workers, Agariya salt workers, Gujarat vs Kerala wages, Supreme Court Gujarat migrants"
+      />
       <ScrollSpy sections={spySections} />
       {/* Hero */}
       <section className="space-y-6">

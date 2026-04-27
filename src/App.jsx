@@ -38,6 +38,7 @@ const Stories = lazy(() => import('./pages/Stories'))
 const SourceGraph = lazy(() => import('./pages/SourceGraph'))
 const Brief = lazy(() => import('./pages/Brief'))
 const Confrontation = lazy(() => import('./pages/Confrontation'))
+const AuthorsNote = lazy(() => import('./pages/AuthorsNote'))
 
 const pageVariants = {
   initial: { opacity: 0, y: 24 },
@@ -98,6 +99,7 @@ function AnimatedRoutes() {
           <Route path="/source-graph" element={<PageTransition><SourceGraph /></PageTransition>} />
           <Route path="/brief" element={<PageTransition><Brief /></PageTransition>} />
           <Route path="/confrontation" element={<PageTransition><Confrontation /></PageTransition>} />
+          <Route path="/authors-note" element={<PageTransition><AuthorsNote /></PageTransition>} />
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
       </Suspense>
