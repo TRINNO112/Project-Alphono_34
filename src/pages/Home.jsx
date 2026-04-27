@@ -655,6 +655,57 @@ export default function Home() {
           </p>
         </div>
       </motion.section>
+
+      {/* ═══════════════════ VII. FROM THE AUTHOR (personal, unsourced) ═══════════════════ */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="max-w-2xl mx-auto"
+        aria-labelledby="from-the-author-heading"
+      >
+        <div className="p-6 md:p-8 rounded-2xl bg-parchment-100/70 dark:bg-dark-surface/30 border-l-4 border-crimson border-y border-r border-y-parchment-200 border-r-parchment-200 dark:border-y-dark-border dark:border-r-dark-border shadow-sm">
+          <div className="flex items-baseline gap-2 mb-3">
+            <span className="text-crimson text-xs font-sans font-bold tracking-widest uppercase">VII · From the Author</span>
+            <span className="text-xs text-gray-500 dark:text-gray-500 italic">— not research, just experience</span>
+          </div>
+          <h3 id="from-the-author-heading" className="sr-only">From the Author</h3>
+          <div className="font-serif text-gray-700 dark:text-gray-300 leading-relaxed space-y-3 text-sm md:text-base italic">
+            <p>
+              The thirteen pillars above are sourced. This box is not. This is the part the
+              footnotes cannot hold.
+            </p>
+            <p>
+              I have lived here for over ten years as a Hindi speaker. The infrastructure is
+              great. The people are the problem. I am writing this down before I leave so that
+              the next person who arrives and feels gaslit by the internet's version of Gujarat
+              has somewhere to land.
+            </p>
+            <p className="not-italic font-semibold text-gray-900 dark:text-white">
+              You are not alone. People may change — slowly, over time. Build your own state so
+              the next generation does not have to walk into this room at all.
+            </p>
+            <p className="not-italic text-gray-700 dark:text-gray-300">
+              If this is also your story, raise your voice. Tweet what actually happened to you
+              with{' '}
+              <span className="font-mono font-semibold text-crimson not-italic">
+                #RealityOfGujarat
+              </span>
+              . If your account is honest and worth amplifying,{' '}
+              <span className="font-semibold">I will pick it up and feature it on this site</span>{' '}
+              (with your permission). The lived state needs to be indexed too.
+            </p>
+          </div>
+          <Link
+            to="/authors-note"
+            className="inline-flex items-center gap-2 mt-5 text-crimson font-semibold text-sm hover:underline"
+          >
+            Read the full Author's Note
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </motion.section>
     </main>
   )
 }
