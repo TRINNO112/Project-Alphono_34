@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block 404 catch-all and dynamic district template (real districts are in sitemap)
+Disallow: /404
+
+# Sitemap
+Sitemap: https://alphono34.netlify.app/sitemap.xml

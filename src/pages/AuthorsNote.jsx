@@ -122,9 +122,12 @@ export default function AuthorsNote() {
               find it. Maybe they will find this.
             </p>
 
-            <p>
-              I am not the last person who will publish this. I would like to be one of the first.
-            </p>
+            <blockquote className="border-l-4 border-crimson pl-6 py-3 not-italic my-8">
+              <p className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white leading-tight">
+                I am not the last person who will publish this.{' '}
+                <span className="text-crimson">I would like to be one of the first.</span>
+              </p>
+            </blockquote>
 
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white !mt-12 !mb-4">
               About the anger
@@ -149,21 +152,66 @@ export default function AuthorsNote() {
             </p>
 
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white !mt-12 !mb-4">
+              On who is to blame
+            </h2>
+
+            <p>
+              I want to say one thing carefully because I do not want to be misread.{' '}
+              <span className="font-semibold">Not every Gujarati is bad. Not every migrant is
+              good.</span> A lot of the suspicion the locals carry comes from the fact that
+              <em> some </em>migrants from northern states are dishonest, are cunning, do try to
+              fool people, and have given everyone else a bad name. That is real. I have seen
+              that too.
+            </p>
+
+            <p>
+              But the response to "some migrants are dishonest" cannot be "treat all of them as
+              less than human." Most of us are here for a livelihood. Some of us are here for a
+              dream. If the room we walked into were less hostile, the experience would not look
+              like hell. The deeper problem is not language and it is not state — it is{' '}
+              <span className="font-semibold">the corruption of the mind that money and greed
+              produce</span>, and that corruption exists in every state, including the ones we
+              came from.
+            </p>
+
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white !mt-12 !mb-4">
               For the reader who is also living this
             </h2>
 
             <p>
-              You are not crazy. The gap you feel between what people say about this state and
-              what you experience inside it is real. It has a shape. The thirteen pillars on this
-              site are an attempt to give that shape a name in language that holds up under
-              citation.
+              <span className="font-semibold">You are not alone.</span> The gap you feel between
+              what people say about this state and what you experience inside it is real. It
+              has a shape. The thirteen pillars on this site are an attempt to give that shape
+              a name in language that holds up under citation. There are thousands of people
+              quietly going through what you are going through right now. Find them. Tell your
+              story. Use{' '}
+              <span className="font-mono text-crimson">#RealityOfGujarat</span> on Twitter / X
+              if you want a hashtag — say what actually happened to you, with whatever level of
+              detail you are comfortable with. If I find a story that is honest and worth
+              amplifying, I will pick it up and add it to this site (with your permission).
             </p>
 
             <p>
               You do not have to forgive anyone. You do not have to learn the language. You do
-              not have to stay. You do, eventually, have to leave the room you were trapped in
-              for too long, and you do have to make sure the next person who walks into that
-              room knows what they are walking into.
+              not have to stay. You do not have to be scared.
+            </p>
+
+            <p>
+              The most useful thing you can do, in the long run, is{' '}
+              <span className="font-semibold">go back and build your own state</span>. The
+              reason migration to Gujarat exists is that the states we came from did not give
+              us what we needed at home. If we make our home regions strong, the next
+              generation will not have to walk into this room at all. That is the slow answer.
+              It is the only one that actually fixes the problem.
+            </p>
+
+            <p>
+              <span className="font-semibold">People may change.</span> Mindsets shift, but
+              slowly — over decades, over generations. The ones who came after Partition were
+              not the same as the ones who came after liberalisation. The ones who come after
+              this decade will not be the same either. Discrimination at this scale has shifted
+              before, every time it has shifted, and it has only ever shifted because people
+              wrote things down with their names on them while everyone else stayed quiet.
             </p>
 
             <p className="text-right italic text-gray-600 dark:text-gray-400 !mt-12">
