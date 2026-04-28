@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, lazy, Suspense } from 'react'
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import SearchBar from './components/SearchBar'
 import SearchHighlight from './components/SearchHighlight'
@@ -10,6 +10,7 @@ import { SkeletonChart } from './components/Skeleton'
 import { StoriesProvider } from './context/StoriesContext'
 import { YearProvider } from './context/YearContext'
 import StorySideSheet from './components/StorySideSheet'
+import { useScrollProgress } from './hooks/useScrollProgress'
 
 const Home = lazy(() => import('./pages/Home'))
 const Infrastructure = lazy(() => import('./pages/Infrastructure'))
@@ -108,8 +109,7 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
+  const { scaleX } = useScrollProgress()
 
   return (
     <Router>

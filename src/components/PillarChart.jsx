@@ -13,6 +13,25 @@ import {
 
 const DEFAULT_COLORS = ['#D32F2F', '#2563EB', '#16A34A', '#CA8A04', '#9333EA', '#6B7280']
 
+/**
+ * PillarChart - Responsive chart component supporting bar and pie charts
+ *
+ * Features:
+ * - Dark mode aware (uses useSyncExternalStore to detect theme changes)
+ * - Accessible with ARIA labels and figcaptions
+ * - Memoized for performance
+ * - Custom color palette support
+ *
+ * @param {Object} props
+ * @param {'bar'|'pie'} props.type - Chart type to render
+ * @param {Array<Object>} props.data - Chart data array with name and value properties
+ * @param {string} [props.title] - Optional chart title
+ * @param {string} [props.caption] - Optional caption text
+ * @param {number} [props.height=300] - Chart height in pixels
+ * @param {Array<string>} [props.colors] - Optional custom color palette
+ * @returns {JSX.Element} The rendered chart
+ */
+
 function subscribeDarkMode(callback) {
   const observer = new MutationObserver(callback)
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })

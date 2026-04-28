@@ -1,27 +1,29 @@
 // ============================================================================
-// Break Simulator — deterministic impact coefficients
+// Break Simulator V2 — deterministic impact coefficients
 // ----------------------------------------------------------------------------
 // Each lever defines how a shock propagates across the 13 pillars, which
 // districts take the heaviest hit, and a GDP/jobs-at-risk footprint.
 //
-// All numbers below are anchored to real, cited sources (links inline).
-// These are upper-bound stress-test estimates — the simulator explicitly
-// disclaims that on-page as a "break model", not a forecast.
+// V2 schema additions vs V1:
+//   - derivation: per-pillar { factors, formula, result } - "Why this %?"
+//   - affectedPopulations: named groups + headcount + ethnicity
+//   - affectedDistricts: name + reason (not just a list)
+//   - cascadeSteps: 4-7 step time-bucketed chain with citations
+//   - historicalAnalogue: a real past incident with date + sources
+//   - timeToFailure: human-readable buffer description
+//   - sources: minimum 3 per lever
 //
-// Lever shape:
-//   {
-//     id, label, description, type: 'slider' | 'toggle',
-//     min, max, step, unit (slider only),
-//     defaultValue,
-//     source: { title, url },
-//     // per-unit (per %, per day, per "on") impacts:
-//     pillarImpacts: { pillarId: percentDisruptionPerUnit },
-//     districts: [districtName, ...],          // which districts turn hot
-//     gdpCrorePerUnit: number,                 // ₹ crore lost per unit
-//     jobsPerUnit: number,                     // jobs put at risk per unit
-//     pendingData?: string,                    // explicit gap flag
-//   }
+// All numbers are anchored to real, cited sources. These are upper-bound
+// stress-test estimates - the simulator explicitly disclaims that on-page
+// as a "break model", not a forecast.
+//
+// See `simulatorTypes.js` for the JSDoc shape.
 // ============================================================================
+
+import { GROUP_A_LEVERS } from './_fragments/groupA_materials.js'
+import { GROUP_B_LEVERS } from './_fragments/groupB_physical.js'
+import { GROUP_C_LEVERS } from './_fragments/groupC_human.js'
+import { GROUP_D_LEVERS, PRESETS_V2 } from './_fragments/groupD_frontier_and_presets.js'
 
 export const PILLAR_IDS = [
   'infrastructure', 'energy', 'water', 'labor', 'economics',
@@ -55,261 +57,82 @@ export const GUJARAT_DISTRICTS = [
   'Tapi', 'Vadodara', 'Valsad',
 ]
 
+export const LEVER_GROUPS = {
+  materials: { label: 'Material Flows', short: 'MAT' },
+  physical: { label: 'Physical Systems', short: 'PHY' },
+  human: { label: 'Human Capital', short: 'HUM' },
+  frontier: { label: 'Frontier', short: 'FRO' },
+}
+
+/** @type {import('./simulatorTypes').Lever[]} */
 export const LEVERS = [
-  // ---- 1. Russian crude supply cut ----------------------------------------
-  {
-    id: 'russian-crude',
-    label: 'Russian Crude Supply Cut',
-    description: 'Jamnagar (RIL) + Vadinar (Nayara) lose Russian barrels. Reliance already paused SEZ imports in Nov 2025 post-Rosneft/Lukoil US sanctions.',
-    type: 'slider',
-    min: 0, max: 100, step: 5, unit: '%',
-    defaultValue: 0,
-    source: {
-      title: 'Reliance stops Russian crude into Jamnagar SEZ (Business Standard, Nov 2025)',
-      url: 'https://www.business-standard.com/industry/news/reliance-stops-import-of-russian-crude-oil-into-jamnagar-s-sez-refinery-125112001129_1.html',
-    },
-    // RIL Jamnagar Russian share went 3% (2021) -> ~50% (2025); Nayara 66%.
-    // A 100% cut effectively removes 50-66% of refinery throughput margin.
-    pillarImpacts: {
-      'materials': 0.65,             // crude feedstock is Materials pillar
-      'energy': 0.35,                // refined product availability
-      'economics': 0.40,             // export revenue hit
-      'infrastructure': 0.15,        // SEZ port throughput drop
-    },
-    districts: ['Jamnagar', 'Devbhumi Dwarka'],
-    gdpCrorePerUnit: 1100,           // ₹80k-1.2L cr at 100% -> ~₹1,100/% as midpoint
-    jobsPerUnit: 2600,               // 40-60k direct + 2L contract => ~260k at 100%
-  },
+  ...GROUP_A_LEVERS,
+  ...GROUP_B_LEVERS,
+  ...GROUP_C_LEVERS,
+  ...GROUP_D_LEVERS,
+]
 
-  // ---- 2. Mundra port closure ---------------------------------------------
-  {
-    id: 'mundra-closure',
-    label: 'Mundra Port Closure',
-    description: 'APSEZ handles 500.8 MMT/FY26 and ~33% of India container traffic. Cyclone Biparjoy (2023) shut Mundra ~6 days.',
-    type: 'slider',
-    min: 0, max: 30, step: 1, unit: ' days',
-    defaultValue: 0,
-    source: {
-      title: 'Adani Ports crosses 500 MMT in FY26 (DSIJ)',
-      url: 'https://insights.dsij.in/dsijarticledetail/adani-ports-crosses-500-mmt-milestone-in-fy26-smashes-monthly-cargo-record-in-march-2026-56298',
-    },
-    pillarImpacts: {
-      'infrastructure': 3.0,          // the pillar that most directly breaks
-      'economics': 1.8,
-      'materials': 1.4,               // import feedstock chain
-      'energy': 0.6,                  // coal/LNG re-routing delays
-    },
-    districts: ['Kutch', 'Ahmedabad', 'Surat'],
-    gdpCrorePerUnit: 3000,            // ₹15-25k cr @ 7 days => ~₹3,000/day midpoint
-    jobsPerUnit: 50000,               // dwell/demurrage spillover per day
-  },
+export const PRESETS = PRESETS_V2
 
-  // ---- 3. Morbi gas tariff spike ------------------------------------------
-  {
-    id: 'morbi-gas-spike',
-    label: 'Morbi Gas Tariff Spike',
-    description: 'Propane went ₹55/kg to ₹100-120/kg during the Iran war. 450+ of 700 units were shut by Mar 2026; 97% of Morbi Ceramic Association voted full-month shutdown.',
-    type: 'slider',
-    min: 0, max: 150, step: 5, unit: '%',
-    defaultValue: 0,
-    source: {
-      title: 'Over 400 ceramic units in Morbi shut due to gas crisis (DeshGujarat, Mar 2026)',
-      url: 'https://deshgujarat.com/2026/03/18/over-400-ceramic-units-in-morbi-shut-due-to-gas-crisis-amid-west-asia-war/',
-    },
-    pillarImpacts: {
-      'energy': 0.8,
-      'labor': 0.9,                    // 50%+ migrant workforce
-      'migrant-discrimination': 0.5,   // reverse migration accelerates exclusion
-      'economics': 0.7,
-      'chemical-governance': 0.2,      // propane infra governance
-    },
-    districts: ['Morbi', 'Rajkot', 'Surendranagar'],
-    gdpCrorePerUnit: 90,               // ₹8-12k cr annualized at full spike => ~₹90/%
-    jobsPerUnit: 2000,                 // 2-2.5L impacted at full spike
-  },
+// Quick lookup for engine + UI
+const LEVER_BY_ID = Object.fromEntries(LEVERS.map((l) => [l.id, l]))
+export function getLeverById(id) { return LEVER_BY_ID[id] }
 
-  // ---- 4. Narmada (SSP) inflow deficit ------------------------------------
+// ----------------------------------------------------------------------------
+// Education-cascade narratives (surfaced via EducationCascadePanel - NOT a lever)
+// Triggered when diamond-export-collapse, saurashtra-reverse-migration, or
+// migrant-violence are active.
+// ----------------------------------------------------------------------------
+export const EDUCATION_CASCADE_NARRATIVES = [
   {
-    id: 'narmada-deficit',
-    label: 'Narmada (SSP) Inflow Deficit',
-    description: 'Sardar Sarovar supplies ~3 crore people, 20.38 lakh ha irrigation, 10,000+ villages. 75% of command area is drought-prone; Kutch and Saurashtra most exposed.',
-    type: 'slider',
-    min: 0, max: 70, step: 5, unit: '%',
-    defaultValue: 0,
-    source: {
-      title: 'Sardar Sarovar Dam supplies water to 3 crore people (Newsgram, 2026)',
-      url: 'https://www.newsgram.com/india/2026/03/21/sardar-sarovar-dam-supplies-water-to-3-crore-people-irrigates-2038-lakh-hectares-in-gujarat-rajasthan',
-    },
-    pillarImpacts: {
-      'water': 1.2,
-      'agriculture': 1.1,
-      'environment': 0.5,
-      'economics': 0.6,
-      'labor': 0.3,                    // ag labor absorption shock
-    },
-    districts: ['Kutch', 'Banaskantha', 'Patan', 'Mehsana', 'Surendranagar', 'Rajkot', 'Jamnagar', 'Ahmedabad'],
-    gdpCrorePerUnit: 400,              // ₹20-35k cr @ 70% => ~₹400/%
-    jobsPerUnit: 18000,                // ~13L farming families at 70% => ~18k/%
-    pendingData: 'Urban daily-wage spillover + 2026 live-storage level',
+    id: 'surat-slc-pipeline',
+    title: 'Surat SLC pipeline',
+    triggers: ['diamond-export-collapse', 'saurashtra-reverse-migration'],
+    headline: '2,356 SLCs Nov 2024 - May 2025',
+    body: 'Surat Municipal Corporation logged 2,356 School Leaving Certificates between Nov 2024 and May 2025 (SMC School Board Chair Kapadiya). Varachha alone: 817 SLCs from 46 schools. Diamond-worker income evaporates -> rent + school fees first cuts -> child pulled from English-medium private, then govt school -> family decamps to Saurashtra ancestral village. ~200 are Class 9-10 children losing the academic year mid-stream.',
+    affected: { label: 'School-going children of diamond polishers at risk', headcount: 280000 },
+    sources: [
+      { title: 'Diamond recession hits Surat - 600 students drop out (Education Post)', url: 'https://educationpost.in/news/education/diamond-recession-hits-surat-over-600-students-drop-out-as-families-move-back-to-saurashtra' },
+      { title: 'US tariffs ruin education dreams (Al Jazeera)', url: 'https://www.aljazeera.com/economy/2025/12/9/us-tariffs-ruin-education-dreams-for-children-in-indias-diamond-hub' },
+    ],
   },
-
-  // ---- 5. Mumbai submarine cable severance --------------------------------
   {
-    id: 'cable-severance',
-    label: 'Mumbai Cable Severance (Versova)',
-    description: '15 of 17 international cables land within a 6km Versova stretch. 0 in Gujarat. 95% of India\'s bandwidth routes here. Repair = 3–5 months.',
-    type: 'toggle',
-    defaultValue: false,
-    source: {
-      title: 'India\'s cheap internet runs through the world\'s most dangerous waters (BW Businessworld)',
-      url: 'https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929',
-    },
-    pillarImpacts: {
-      'digital-sovereignty': 95,
-      'economics': 25,                 // GIFT City, BFSI, UPI
-      'infrastructure': 15,
-      'education': 10,                 // edtech / remote learning
-    },
-    districts: ['Gandhinagar', 'Ahmedabad', 'Surat'],  // GIFT City + IT hubs
-    gdpCrorePerUnit: 14000,            // ₹10-18k cr @ 48hr outage => midpoint ₹14k
-    jobsPerUnit: 0,                    // throughput-disruption not direct job loss
-    pendingData: 'Direct-jobs impact; NPCI outage-cost filings',
+    id: 'jagdish-babariya',
+    title: 'Documented case: Jagdish Babariya (14)',
+    triggers: ['diamond-export-collapse', 'saurashtra-reverse-migration'],
+    headline: 'Surat 4 km -> Tulshishyam village 45 km -> dropout in a month',
+    body: 'Jagdishbhai Babariya pulled his son Jagdish (14) from a Surat school 4 km away after diamond-unit closure. The Tulshishyam village school was 45 km by bus. Jagdish dropped out within a month. This pattern - Class 9-10 children losing the academic year mid-stream - is documented across Bhavnagar, Amreli, Junagadh, Gir Somnath, Rajkot.',
+    affected: { label: 'Documented case', headcount: 1 },
+    sources: [
+      { title: 'Surat diamond hub workers return villages - dropouts (The Federal)', url: 'https://thefederal.com/category/the-eighth-column/surat-diamond-hub-workers-jobless-return-villages-school-dropouts-increase-192807' },
+    ],
   },
-
-  // ---- 6. Chinese API shipment halt ---------------------------------------
   {
-    id: 'chinese-api-halt',
-    label: 'Chinese API Shipment Halt',
-    description: 'India-wide pharma 60–70% API-dependent on China. Gujarat bulk-drug clusters (Ankleshwar, Vapi, Vatva, Jhagadia) most exposed.',
-    type: 'toggle',
-    defaultValue: false,
-    source: {
-      title: 'India struggling to free pharma from Chinese APIs (Policy Circle)',
-      url: 'https://www.policycircle.org/industry/apis-import-depencence-on-china/',
-    },
-    pillarImpacts: {
-      'materials': 70,
-      'chemical-governance': 55,
-      'economics': 20,
-      'labor': 25,
-    },
-    districts: ['Bharuch', 'Valsad', 'Ahmedabad', 'Vadodara'],  // Ankleshwar, Vapi, Vatva, Jhagadia
-    gdpCrorePerUnit: 20000,            // ₹15-25k cr for 30-day halt
-    jobsPerUnit: 125000,               // 1-1.5L cluster jobs
-    pendingData: 'Gujarat-cluster-specific % (only India-wide 60–70% cited)',
+    id: 'migrant-children-panic',
+    title: 'Migrant children pulled in panic',
+    triggers: ['migrant-violence'],
+    headline: '~25% migrant share in Surat govt schools',
+    body: 'When the migrant-violence lever fires, migrant children are pulled from Surat municipal schools within a single news cycle. ~25% of Surat govt-school enrolment is migrant. The 2018 precedent: 50k families left in 12-14 months. Children re-enrol in UP/Bihar village schools where re-entry mid-session typically means losing the year.',
+    affected: { label: 'Migrant children at risk in Surat schools', headcount: 250000 },
+    sources: [
+      { title: 'Bihars politicians silent on migrant exodus (Scroll.in)', url: 'https://scroll.in/article/898062/they-have-no-solution-why-bihars-politicians-arent-speaking-up-on-migrant-exodus-from-gujarat' },
+    ],
   },
-
-  // ---- 7. Anti-migrant violence surge -------------------------------------
   {
-    id: 'migrant-violence',
-    label: 'Anti-Migrant Violence Surge',
-    description: '2018: 20,000+ workers fled in one week. Oct 2018: 50% factory absenteeism. 2025–26 diamond crisis drove ~50,000 out of Surat in 12–14 months.',
-    type: 'toggle',
-    defaultValue: false,
-    source: {
-      title: 'Gujarat CM appeals for calm as 20,000+ migrants flee (India TV, 2018)',
-      url: 'https://www.indiatvnews.com/news/india-gujarat-cm-appeals-for-calm-as-over-20-000-migrants-flee-state-within-a-week-469811',
-    },
-    pillarImpacts: {
-      'migrant-discrimination': 90,
-      'labor': 70,
-      'economics': 35,
-      'education': 15,                 // migrant children drop out
-    },
-    districts: ['Surat', 'Ahmedabad', 'Morbi', 'Rajkot', 'Sabarkantha', 'Vadodara'],
-    gdpCrorePerUnit: 35000,            // ₹25-50k cr midpoint (diamond export collapse)
-    jobsPerUnit: 900000,               // 8-10L diamond + 4L ceramic compounding
-  },
-
-  // ---- 8. Dahej/Hazira LNG outage -----------------------------------------
-  {
-    id: 'dahej-lng-outage',
-    label: 'Dahej / Hazira LNG Outage',
-    description: 'Petronet Dahej = ~74% of India\'s LNG imports, 22.5 MMTPA at 95.1% utilization. Gujarat = ~80% of India\'s LNG landing capacity.',
-    type: 'slider',
-    min: 0, max: 14, step: 1, unit: ' days',
-    defaultValue: 0,
-    source: {
-      title: 'Petronet Dahej expansion to 22.5 MMTPA (Shipping Tribune)',
-      url: 'https://www.shippingtribune.com/news/shipping/Petronet+LNG+commissions+Dahej+expansion,+capacity+rises+to+22.5+MMTPA',
-    },
-    pillarImpacts: {
-      'energy': 4.5,
-      'chemical-governance': 2.0,      // fertilizer + CGD networks
-      'agriculture': 1.5,              // fertilizer supply
-      'economics': 1.2,
-      'infrastructure': 0.8,
-    },
-    districts: ['Bharuch', 'Surat'],   // Dahej in Bharuch, Hazira in Surat
-    gdpCrorePerUnit: 1700,             // ₹18-30k cr @ 14 days => ~₹1,700/day
-    jobsPerUnit: 8000,                 // indirect: Morbi/fertilizer/CGD cascade
-    pendingData: 'Direct-jobs count at terminals',
+    id: 'orphaned-by-suicide',
+    title: '71 suicides -> ~150-200 children orphaned',
+    triggers: ['diamond-export-collapse'],
+    headline: 'Diamond Workers Union Gujarat (Bhavesh Tank)',
+    body: 'Diamond Workers Union Gujarat (Bhavesh Tank) documented 65 suicides in 18 months and 100 across 24 months - 71 confirmed at the time of writing. Estimated 150-200 children left orphaned or half-orphaned. 1,600+ helpline calls Jun-Aug 2025 alone.',
+    affected: { label: 'Children orphaned / half-orphaned', headcount: 175 },
+    sources: [
+      { title: 'Quiet tragedy of Surats diamond industry (Rapaport)', url: 'https://rapaport.com/magazine-article/the-quiet-tragedy-of-surats-diamond-industry/' },
+    ],
   },
 ]
 
 // ----------------------------------------------------------------------------
-// Preset scenarios — precomputed lever combinations.
-// Each preset sets specific levers to specific values; the impact engine
-// below sums them deterministically.
-// ----------------------------------------------------------------------------
-export const PRESETS = [
-  {
-    id: 'twin-shock-2026',
-    label: '2026 Twin Shock',
-    description: 'Morbi gas spike + Surat diamond/pogrom cascade happening simultaneously, as in Q1 2026.',
-    source: {
-      title: 'Iran war forces reverse migration in India\'s ceramic hub (Al Jazeera)',
-      url: 'https://www.aljazeera.com/news/2026/4/21/iran-war-forces-job-losses-reverse-migration-in-indias-ceramic-hub',
-    },
-    values: {
-      'morbi-gas-spike': 120,
-      'migrant-violence': true,
-    },
-  },
-  {
-    id: 'full-decoupling',
-    label: 'Full Decoupling',
-    description: 'Simultaneous China API halt + Russian crude cut + Versova cable cut — the triple-front sanctions scenario.',
-    source: {
-      title: 'Reliance halts Russian crude (Business Standard, Nov 2025)',
-      url: 'https://www.business-standard.com/industry/news/reliance-stops-import-of-russian-crude-oil-into-jamnagar-s-sez-refinery-125112001129_1.html',
-    },
-    values: {
-      'russian-crude': 100,
-      'chinese-api-halt': true,
-      'cable-severance': true,
-    },
-  },
-  {
-    id: 'climate-black-swan',
-    label: 'Climate Black Swan',
-    description: 'Concurrent cyclone (Mundra 7-day shut) + 50% Narmada deficit + heatwave drag.',
-    source: {
-      title: '29 Gujarat districts vulnerable to extreme climate (CEEW)',
-      url: 'https://www.ceew.in/press-releases/29-districts-gujarat-vulnerable-extreme-climate-events-ceew',
-    },
-    values: {
-      'mundra-closure': 7,
-      'narmada-deficit': 50,
-      'dahej-lng-outage': 3,
-    },
-  },
-  {
-    id: 'pogrom-replay',
-    label: '2018 Pogrom Replay',
-    description: 'Standalone migrant-exodus scenario triggered by festival-period violence.',
-    source: {
-      title: 'Gujarat govt appeal no balm, migrants\' exodus on (Tribune India, 2018)',
-      url: 'https://www.tribuneindia.com/news/archive/nation/gujarat-govt-appeal-no-balm-migrants-exodus-on-665151',
-    },
-    values: {
-      'migrant-violence': true,
-    },
-  },
-]
-
-// ----------------------------------------------------------------------------
-// Impact engine — deterministic, purely functional. No randomness.
+// Impact engine - deterministic, purely functional. No randomness.
 // ----------------------------------------------------------------------------
 
 /** Default lever state (all zero / off). */
@@ -321,68 +144,160 @@ export function defaultLeverState() {
   return state
 }
 
-/** Numeric magnitude for a lever at a given value. */
+/** Numeric magnitude for a lever at a given value (0-1 normalised for sliders, 0|1 for toggles). */
 function leverMagnitude(lever, value) {
+  if (lever.type === 'toggle') return value ? 1 : 0
+  const v = Number(value) || 0
+  const max = lever.max || 100
+  // For sliders, normalise to 0-1 over the lever's own range so derivation.result
+  // (which represents "% at 100% pull") can be linearly interpolated.
+  return max > 0 ? Math.max(0, v / max) : 0
+}
+
+/** Raw lever magnitude in user-facing units (for gdp/jobs scaling and contribution). */
+function rawMagnitude(lever, value) {
   if (lever.type === 'toggle') return value ? 1 : 0
   return Number(value) || 0
 }
 
 /**
  * Compute aggregate impact from a lever state.
- * Returns { pillarPercent: {pillarId: %}, districtScore: {districtName: 0-100},
- *           gdpCrore, jobsAtRisk, activeLevers: [{id, value}] }
  *
- * Pillar % is capped at 100. District score is capped at 100.
+ * Returns:
+ *   - pillarPercent: { pillarId: 0-100 } - aggregate disruption per pillar
+ *   - districtScore: { districtName: 0-100 } - heat-map intensity
+ *   - gdpCrore, jobsAtRisk - scalar headline numbers
+ *   - activeLevers: [{ id, value, label }]
+ *   - populationsAffected: AffectedPopulation[] - de-duplicated, sorted by headcount
+ *   - historicalActive: HistoricalAnalogue[] - one per active lever
+ *   - cascadeActive: { leverId, label, steps }[] - cascade chains for active levers
+ *   - derivationByPillar: { pillarId: { result, contributors: [{ leverId, label, factors, formula, result }] } }
+ *   - leverContributions: { districtName: [{ leverId, label, contribution }] } - top-3 attributable per district
+ *   - educationNarratives: EDUCATION_CASCADE_NARRATIVES filtered by active triggers
  */
 export function computeImpact(state) {
   const pillarRaw = Object.fromEntries(PILLAR_IDS.map((p) => [p, 0]))
   const districtRaw = {}
+  const districtContrib = {}
   let gdpCrore = 0
   let jobsAtRisk = 0
   const activeLevers = []
+  const populationsAffected = []
+  const historicalActive = []
+  const cascadeActive = []
+  const derivationByPillar = Object.fromEntries(PILLAR_IDS.map((p) => [p, { result: 0, contributors: [] }]))
+  const activeIds = new Set()
 
-  // Ensure every Gujarat district starts at 0 so nothing renders "invincible"
-  // when no lever explicitly names it — every district should show its
-  // baseline spillover from any active shock.
-  for (const d of GUJARAT_DISTRICTS) districtRaw[d] = 0
+  for (const d of GUJARAT_DISTRICTS) {
+    districtRaw[d] = 0
+    districtContrib[d] = []
+  }
 
   for (const lever of LEVERS) {
     const value = state[lever.id]
-    const mag = leverMagnitude(lever, value)
-    if (mag <= 0) continue
-    activeLevers.push({ id: lever.id, value })
+    const norm = leverMagnitude(lever, value)
+    if (norm <= 0) continue
+    const raw = rawMagnitude(lever, value)
+    activeLevers.push({ id: lever.id, value, label: lever.label })
+    activeIds.add(lever.id)
 
+    // Pillar aggregate via legacy pillarImpacts (per-unit slope)
     for (const [pillar, coef] of Object.entries(lever.pillarImpacts || {})) {
-      pillarRaw[pillar] = (pillarRaw[pillar] || 0) + coef * mag
+      pillarRaw[pillar] = (pillarRaw[pillar] || 0) + coef * raw
     }
 
-    // Primary districts (named by the lever) take the full hit.
+    // V2 derivation: contribute "% at 100% pull * normalised magnitude" per pillar
+    if (lever.derivation) {
+      for (const [pillar, der] of Object.entries(lever.derivation)) {
+        if (!derivationByPillar[pillar]) continue
+        const contribution = (der.result || 0) * norm
+        derivationByPillar[pillar].contributors.push({
+          leverId: lever.id,
+          label: lever.label,
+          factors: der.factors || [],
+          formula: der.formula || '',
+          result: der.result || 0,
+          contribution: Math.round(contribution),
+        })
+      }
+    }
+
+    // District spread: primary districts (named by lever) take the full hit;
+    // statewide ripple at ~15% of primary weight for non-primary districts.
     const primary = new Set(lever.districts || [])
-    const primaryWeight = lever.type === 'toggle' ? 60 : mag * 2
-
-    // Statewide ripple: a calamity of any kind always spills into the rest
-    // of the state via supply chains, labour mobility, fiscal contagion,
-    // cascading logistics. We model this as ~15% of the primary weight for
-    // every non-primary district. This guarantees no district is "invincible"
-    // when shocks are active — everyone feels it, just less than the hotspot.
+    const primaryWeight = lever.type === 'toggle' ? 60 : raw * 2
     const rippleWeight = primaryWeight * 0.15
-
     for (const district of GUJARAT_DISTRICTS) {
-      districtRaw[district] += primary.has(district) ? primaryWeight : rippleWeight
+      const w = primary.has(district) ? primaryWeight : rippleWeight
+      districtRaw[district] += w
+      if (w > 0) {
+        districtContrib[district].push({
+          leverId: lever.id,
+          label: lever.label,
+          contribution: Math.round(w),
+        })
+      }
     }
 
-    gdpCrore += (lever.gdpCrorePerUnit || 0) * mag
-    jobsAtRisk += (lever.jobsPerUnit || 0) * mag
+    gdpCrore += (lever.gdpCrorePerUnit || 0) * raw
+    jobsAtRisk += (lever.jobsPerUnit || 0) * raw
+
+    if (Array.isArray(lever.affectedPopulations)) {
+      for (const pop of lever.affectedPopulations) {
+        populationsAffected.push({ ...pop, leverId: lever.id, leverLabel: lever.label })
+      }
+    }
+    if (lever.historicalAnalogue) {
+      historicalActive.push({ ...lever.historicalAnalogue, leverId: lever.id, leverLabel: lever.label })
+    }
+    if (Array.isArray(lever.cascadeSteps) && lever.cascadeSteps.length > 0) {
+      cascadeActive.push({ leverId: lever.id, label: lever.label, steps: lever.cascadeSteps })
+    }
   }
 
   const pillarPercent = {}
   for (const [pillar, raw] of Object.entries(pillarRaw)) {
     pillarPercent[pillar] = Math.min(100, Math.round(raw))
   }
+  // V2: when a pillar has derivation contributors, prefer the derivation sum
+  // (capped) so the "Why this %?" math reconciles with the headline figure.
+  for (const pillar of PILLAR_IDS) {
+    const entry = derivationByPillar[pillar]
+    if (entry.contributors.length > 0) {
+      const sum = entry.contributors.reduce((acc, c) => acc + c.contribution, 0)
+      entry.result = Math.min(100, Math.round(sum))
+      pillarPercent[pillar] = entry.result
+    } else {
+      entry.result = pillarPercent[pillar] || 0
+    }
+  }
+
   const districtScore = {}
+  const leverContributions = {}
   for (const [district, raw] of Object.entries(districtRaw)) {
     districtScore[district] = Math.min(100, Math.round(raw))
+    const contribs = districtContrib[district]
+      .sort((a, b) => b.contribution - a.contribution)
+      .slice(0, 3)
+    leverContributions[district] = contribs
   }
+
+  // Sort + de-dupe populations by leverId+label so a multi-lever scenario
+  // doesn't double-count the same cohort (e.g. Surat polishers).
+  const popSeen = new Set()
+  const populationsDedup = []
+  populationsAffected
+    .sort((a, b) => (b.headcount || 0) - (a.headcount || 0))
+    .forEach((p) => {
+      const key = `${p.label}|${p.locality || ''}`
+      if (popSeen.has(key)) return
+      popSeen.add(key)
+      populationsDedup.push(p)
+    })
+
+  const educationNarratives = EDUCATION_CASCADE_NARRATIVES.filter((n) =>
+    n.triggers.some((t) => activeIds.has(t)),
+  )
 
   return {
     pillarPercent,
@@ -390,16 +305,29 @@ export function computeImpact(state) {
     gdpCrore: Math.round(gdpCrore),
     jobsAtRisk: Math.round(jobsAtRisk),
     activeLevers,
+    populationsAffected: populationsDedup,
+    historicalActive,
+    cascadeActive,
+    derivationByPillar,
+    leverContributions,
+    educationNarratives,
   }
 }
 
-/** Apply a preset on top of the current state. */
+/** Apply a preset on top of a fresh default state. */
 export function applyPreset(state, presetId) {
   const preset = PRESETS.find((p) => p.id === presetId)
   if (!preset) return state
   const next = defaultLeverState()
-  for (const [leverId, value] of Object.entries(preset.values)) {
-    next[leverId] = value
+  for (const [leverId, value] of Object.entries(preset.values || {})) {
+    const lever = LEVER_BY_ID[leverId]
+    if (!lever) continue
+    if (lever.type === 'toggle') {
+      next[leverId] = Boolean(value)
+    } else {
+      const max = lever.max || 100
+      next[leverId] = Math.max(0, Math.min(max, Number(value) || 0))
+    }
   }
   return next
 }

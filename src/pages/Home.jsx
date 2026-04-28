@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react'
+import { useState, Fragment, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin, Wheat, Cpu, FlaskConical, Cable } from 'lucide-react'
@@ -20,7 +20,7 @@ function getIsDark() {
 export default function Home() {
   const isDark = useSyncExternalStore(subscribeDarkMode, getIsDark)
 
-  const sectors = [
+  const sectors = useMemo(() => [
     { id: 'infrastructure', title: "Infrastructure & Logistics", icon: <Ship className="w-8 h-8 text-blue-600 dark:text-blue-400" />, desc: "Maritime gateway monopoly, bridge collapses, and zero digital connectivity.", path: "/infrastructure", stat: "500.8 MMT", statLabel: "APSEZ FY26 Cargo", sources: 18 },
     { id: 'energy', title: "Energy Grid & Power Supply", icon: <Zap className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />, desc: "Imported coal lock-in, 550 Morbi units shut, and grid collapse events.", path: "/energy", stat: "550+", statLabel: "Morbi Units Shut (2026)", sources: 18 },
     { id: 'materials', title: "Industrial Raw Materials", icon: <Factory className="w-8 h-8 text-gray-600 dark:text-gray-400" />, desc: "Russia now #1 crude supplier, 65-70% Chinese APIs, 100% potash import.", path: "/materials", stat: "36%", statLabel: "Crude from Russia", sources: 17 },
@@ -34,18 +34,18 @@ export default function Home() {
     { id: 'greentech', title: "Green Tech Dependency", icon: <Cpu className="w-8 h-8 text-cyan-600 dark:text-cyan-400" />, desc: "90% rare earth processing by China, 80%+ PV wafers imported, Dholera SIR mirage.", path: "/greentech", stat: "90%", statLabel: "China RE Processing", sources: 7 },
     { id: 'chemical-governance', title: "Chemical Governance & Toxicity", icon: <FlaskConical className="w-8 h-8 text-orange-600 dark:text-orange-400" />, desc: "400km Golden Corridor, Sabarmati BOD 292 mg/L, CETP failures, ₹100Cr+ NGT fines.", path: "/chemical-governance", stat: "292", statLabel: "BOD (mg/L) Sabarmati", sources: 8 },
     { id: 'digital-sovereignty', title: "Digital Sovereignty & Data Dependency", icon: <Cable className="w-8 h-8 text-blue-600 dark:text-blue-400" />, desc: "0 submarine cable landings on a 1,600 km coastline. GIFT City backhauls via Mumbai. AWS hosts state e-gov.", path: "/digital-sovereignty", stat: "0", statLabel: "Intl. Cables in Gujarat", sources: 15 },
-  ]
+  ], [])
 
-  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII']
+  const romanNumerals = useMemo(() => ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII'], [])
 
-  const headlines = [
+  const headlines = useMemo(() => [
     { value: 186, suffix: '', prefix: '', label: "Cited Sources" },
     { value: 13, suffix: '', prefix: '', label: "Pillars of Analysis" },
     { value: 40, suffix: '%', prefix: '', label: "India's Cargo via Gujarat" },
     { value: 40, suffix: 'B+', prefix: '$', label: "Gujarat NRI Deposits" },
-  ]
+  ], [])
 
-  const dependencyData = [
+  const dependencyData = useMemo(() => [
     { pillar: 'Infrastructure', dependency: 85 },
     { pillar: 'Energy', dependency: 78 },
     { pillar: 'Water', dependency: 90 },
@@ -58,7 +58,7 @@ export default function Home() {
     { pillar: 'Green Tech', dependency: 92 },
     { pillar: 'Chemical', dependency: 75 },
     { pillar: 'Digital', dependency: 88 },
-  ]
+  ], [])
 
   const [expandedRows, setExpandedRows] = useState({})
   const toggleRow = (i) => setExpandedRows(prev => ({ ...prev, [i]: !prev[i] }))

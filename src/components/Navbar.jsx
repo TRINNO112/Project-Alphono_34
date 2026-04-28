@@ -3,6 +3,19 @@ import { Moon, Sun, ShieldAlert, ChevronLeft, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
+/**
+ * Navbar - Main site navigation component with responsive design
+ *
+ * Features:
+ * - Desktop: Primary nav links (Map, Timeline, Summary) with active indicator
+ * - Mobile: Hamburger menu with slide-down panel containing all navigation
+ * - Back-to-home button on non-home pages
+ * - Keyboard accessible (Esc to close mobile menu, focus management)
+ * - Active path highlighting with animated underline
+ *
+ * @returns {JSX.Element} The rendered navigation header
+ */
+
 const navLinks = [
   { to: '/map', label: 'Geographic Map' },
   { to: '/timeline', label: 'Crisis Timeline' },

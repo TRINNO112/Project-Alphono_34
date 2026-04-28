@@ -19,6 +19,28 @@ const CHARACTERS = {
   },
 }
 
+/**
+ * CounterArgument - Chat-style debate component between Rajubhai and Priya
+ *
+ * Features:
+ * - Animated message bubbles with entrance effects
+ * - Character avatars with distinct styling
+ * - Scrollable message container
+ * - Memoized for performance
+ * - Supports both new messages format and legacy props
+ *
+ * @param {Object} props
+ * @param {Array<Object>} [props.messages] - Array of message objects (new format)
+ * @param {string} props.messages[].from - Speaker identifier ("raju", "priya", or "gov")
+ * @param {string} props.messages[].text - Message content
+ * @param {string} [props.messages[].source] - Optional source citation
+ * @param {string} [props.argument] - Legacy prop: Rajubhai's argument text
+ * @param {string} [props.rebuttal] - Legacy prop: Priya's rebuttal text
+ * @param {Array<Object>} [props.stats] - Legacy prop: Array of stats for Priya's message
+ * @param {boolean} [props.showGov=false] - Whether to show government spokesperson messages
+ * @returns {JSX.Element} The rendered chat component
+ */
+
 function parseBold(text) {
   const parts = text.split(/\*\*/)
   return parts.map((part, i) =>

@@ -1,0 +1,553 @@
+// Group D - Frontier (4 levers) + 8 V2 presets
+// Levers: cable-severance-versova, green-tech-china-shock, bt-cotton-collapse, monsoon-failure-saurashtra-kutch
+// Note: gift-latency-spike collapsed into LOW end (0-40) of cable-severance-versova severity slider
+// Note: solar-pv-import lives in Group A; this file's green-tech-china-shock adds Khavda/NdFeB/Adani-leverage framing
+
+export const GROUP_D_LEVERS = [
+  {
+    id: 'cable-severance-versova',
+    group: 'frontier',
+    tier: 'primary',
+    severity: 'critical',
+    label: 'Versova Cable Severance (severity)',
+    description: '15 of 17 international subsea cables land within a 6 km Versova-Madh strip; 0 in Gujarat. 0-40 = partial outage / GIFT City latency spike (2-4 cables down, packet-loss + jitter wipes IFSC FPGA arbitrage edge). 40-100 = full multi-cable severance, India\u2019s primary IP transit dark, 3-5 month repair window via E-Marine / SEAICOMA vessels.',
+    type: 'slider',
+    min: 0,
+    max: 100,
+    step: 5,
+    unit: '% severity',
+    defaultValue: 0,
+    source: {
+      title: 'India\u2019s cheap internet runs through the world\u2019s most dangerous waters (BW Businessworld, 2026)',
+      url: 'https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929',
+    },
+    derivation: {
+      'digital-sovereignty': {
+        factors: [
+          { label: 'Asset share (Versova lands 95% of India intl IP)', value: 0.95, cite: 'BW Businessworld 2026' },
+          { label: 'Dependency (GIFT/IFSC + DC anchor)', value: 0.9, cite: 'Submarine Networks' },
+          { label: 'Propagation (statewide eyeball + auth)', value: 1.0 },
+        ],
+        formula: '0.95 x 0.9 x 1.0 x 100',
+        result: 86,
+      },
+      'economics': {
+        factors: [
+          { label: 'GIFT IFSC daily turnover USD 10 bn / GSDP USD 360 bn', value: 0.028, cite: 'IFSCA Aug 2025' },
+          { label: 'Outage days', value: 30 },
+          { label: 'Propagation (BFSI + import-export hedging)', value: 1.5 },
+        ],
+        formula: '0.028 x 30 x 1.5 x 100 / 3 (normalized)',
+        result: 42,
+      },
+      'infrastructure': {
+        factors: [
+          { label: 'Mumbai DC capacity share of national', value: 0.53, cite: 'CtrlS' },
+          { label: 'Backhaul saturation Chennai re-route', value: 1.0 },
+          { label: 'Propagation (Gujarat secondary)', value: 0.5 },
+        ],
+        formula: '0.53 x 1.0 x 0.5 x 100',
+        result: 27,
+      },
+      'education': {
+        factors: [
+          { label: 'Edtech / remote learning bandwidth dependence', value: 0.4 },
+          { label: 'Propagation', value: 0.25 },
+        ],
+        formula: '0.4 x 0.25 x 100',
+        result: 10,
+      },
+    },
+    affectedPopulations: [
+      { label: 'GIFT City IFSC direct workforce', headcount: 25000, locality: 'Gandhinagar', cite: 'IFSCA 2025' },
+      { label: 'Indirect Gandhinagar/Ahmedabad service economy', headcount: 75000, locality: 'Gandhinagar + Ahmedabad' },
+      { label: 'Jio + Airtel subscribers degraded', headcount: 70000000, locality: 'Statewide Gujarat' },
+      { label: 'Aadhaar holders facing auth failures', headcount: 68000000, locality: 'Statewide Gujarat' },
+      { label: 'IFSC SME importers/exporters using FX hedging', headcount: 12000, locality: 'Surat / Morbi / pharma clusters' },
+    ],
+    affectedDistricts: [
+      { name: 'Gandhinagar', reason: 'GIFT City IFSC primary, statewide gov backbone' },
+      { name: 'Ahmedabad', reason: 'BFSI back-office, BSE Star MF, fintech' },
+      { name: 'Surat', reason: 'Diamond bourse Antwerp/HK price-feed dependence' },
+      { name: 'Vadodara', reason: 'Retail brokers, payment gateways' },
+      { name: 'Rajkot', reason: 'NSE retail brokers + SME hedging' },
+      { name: 'Kachchh', reason: 'Mundra/Adani group treasury IFSC accounts' },
+    ],
+    cascadeSteps: [
+      { n: 1, timeBucket: 'T+0 - 2 hr', text: 'Versova fault cuts cables; surviving capacity congested, packet loss to Singapore reaches 4%.', cite: 'Submarine Networks' },
+      { n: 2, timeBucket: 'T+2 - 6 hr', text: 'GIFT FPGA algos lose arbitrage edge; daily turnover USD 11 bn collapses to USD 3-4 bn (-65%).', cite: 'IFSCA extrapolation' },
+      { n: 3, timeBucket: 'T+6 - 24 hr', text: 'FCSS (Real-Time Forex Settlement) auto-reverts to T+1/T+2; ~USD 6-8 bn settlement queue.', cite: 'Marksmen Daily' },
+      { n: 4, timeBucket: 'T+1 - 3 days', text: 'Foreign banks (Citi, JPM, MUFG) re-route Asian flows to Singapore IFSC + Dubai DIFC; ~USD 2-3 bn/wk outflow.' },
+      { n: 5, timeBucket: 'T+1 - 7 days', text: 'Aadhaar e-KYC failure spikes; bank/SIM/PMJDY onboarding halts; UPI cached-cred fall-back exhausts in 24-48 hr.' },
+      { n: 6, timeBucket: 'T+30 - 150 days', text: 'CLS repair (E-Marine / SEAICOMA SLA 90-150 days); IFSC reputation premium takes 6-12 months to recover.' },
+    ],
+    historicalAnalogue: {
+      title: 'Red Sea cable cuts (SEACOM, AAE-1, EIG, TGN)',
+      date: 'June 2024',
+      summary: 'Multiple Asia-Europe cables severed in Red Sea war zone; Indian users saw 20-40% throughput degradation for ~6 weeks. HSBC + StanChart re-routed Asian flows around India for 4 weeks.',
+      metric: { label: 'Throughput degradation', value: '20-40% for 6 weeks' },
+      sources: [
+        { title: 'BW Businessworld 2026', url: 'https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929' },
+        { title: 'Submarine Networks Versova CLS', url: 'https://www.submarinenetworks.com/en/stations/asia/india/versova-mumbai' },
+      ],
+    },
+    timeToFailure: 'IFSC algo-arb collapse <2 hr; foreign-bank flow re-routing 24-72 hr; CLS repair 90-150 days; reputation recovery 6-12 mo',
+    pillarImpacts: {
+      'digital-sovereignty': 95,
+      'economics': 25,
+      'infrastructure': 15,
+      'education': 10,
+    },
+    districts: ['Gandhinagar', 'Ahmedabad', 'Surat'],
+    gdpCrorePerUnit: 14000,
+    jobsPerUnit: 0,
+    pendingData: 'Direct-jobs impact; NPCI outage-cost filings; partial-cut DC saturation arithmetic',
+    sources: [
+      { title: 'BW Businessworld - India\u2019s cheap internet vulnerability (2026)', url: 'https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929' },
+      { title: 'Submarine Networks - Versova-Mumbai CLS', url: 'https://www.submarinenetworks.com/en/stations/asia/india/versova-mumbai' },
+      { title: 'Marksmen Daily - FCSS Real-Time Forex Settlement at GIFT City (Oct 2025)', url: 'https://marksmendaily.com/business/fm-launches-real-time-forex-settlement-at-gift-city/' },
+      { title: 'CtrlS - India\u2019s submarine cables powering digital infrastructure', url: 'https://www.ctrls.com/blogs-indias-submarine-cables-powering-digital-infrastructure/' },
+      { title: 'getbelong - GIFT City IFSC overview (IFSCA Annual Report 2025)', url: 'https://getbelong.com/blog/ipo/gift-city-ifsc/' },
+    ],
+  },
+
+  {
+    id: 'green-tech-china-shock',
+    group: 'frontier',
+    tier: 'primary',
+    severity: 'critical',
+    label: 'Green-Tech China Shock (Khavda + NdFeB)',
+    description: 'China imposes export-licence regime on polysilicon/wafers/cells (precedent: 2024 Ga/Ge controls; 2025 graphite anode). Adani\u2019s 30 GW Khavda buildout (60 mn modules, 770 turbines, 72,400 ha; only 8 GW operational Apr 2026) and NdFeB rare-earth magnet supply for wind PMSG (92% China-controlled) both choke within 60-90 days.',
+    type: 'toggle',
+    defaultValue: false,
+    source: {
+      title: 'India\u2019s solar success remains wired to the dragon (Down To Earth)',
+      url: 'https://www.downtoearth.org.in/energy/indias-solar-success-is-riding-high-but-remains-wired-to-the-dragon',
+    },
+    derivation: {
+      'green-tech': {
+        factors: [
+          { label: 'China upstream share of India solar pipeline', value: 0.85, cite: 'Policy Circle / ORF America' },
+          { label: 'Khavda + Mundra dependency on Chinese wafers/cells', value: 0.95 },
+          { label: 'Propagation (statewide RE pipeline)', value: 1.0 },
+        ],
+        formula: '0.85 x 0.95 x 1.0 x 100',
+        result: 81,
+      },
+      'energy': {
+        factors: [
+          { label: 'Khavda share of Gujarat RE pipeline (30/50 GW)', value: 0.6, cite: 'Adani Green / Blackridge' },
+          { label: 'Delay factor (6-18 mo commissioning slip)', value: 0.6, cite: 'PV-Tech' },
+          { label: 'Propagation', value: 0.9 },
+        ],
+        formula: '0.6 x 0.6 x 0.9 x 100',
+        result: 32,
+      },
+      'economics': {
+        factors: [
+          { label: 'Adani cap-ex exposure (~Rs 1.5 lakh cr Khavda + Mundra)', value: 0.4 },
+          { label: 'Delay penalty trigger', value: 0.4 },
+          { label: 'Statewide propagation (Adani group leverage cascade)', value: 1.0 },
+        ],
+        formula: '0.4 x 0.4 x 1.0 x 100',
+        result: 16,
+      },
+      'environment': {
+        factors: [
+          { label: 'Coal-rebound emission share (Mundra TPS + Wanakbori ramp)', value: 0.14, cite: 'extrapolation, national figure' },
+          { label: 'Propagation', value: 0.6 },
+        ],
+        formula: '0.14 x 0.6 x 100',
+        result: 8,
+      },
+    },
+    affectedPopulations: [
+      { label: 'Khavda construction direct workforce', headcount: 15000, locality: 'Kachchh (Khavda)', cite: 'Adani Green' },
+      { label: 'Khavda contract migrant labor', headcount: 25000, locality: 'Kachchh', ethnicity: 'Bihar / UP / Odisha (ceramic-tile-style migrant pattern)' },
+      { label: 'Adani solar TechnoPark Mundra (ingot/wafer/module)', headcount: 8000, locality: 'Mundra' },
+      { label: 'Gujarat solar EPC ecosystem', headcount: 80000, locality: 'Charanka / Banaskantha / Patan / Dholera' },
+      { label: 'Suzlon wind OEM workers', headcount: 6000, locality: 'Vadodara / Pondicherry' },
+      { label: 'Inox Wind OEM workers', headcount: 2000, locality: 'Una' },
+    ],
+    affectedDistricts: [
+      { name: 'Kachchh', reason: 'Khavda + Mundra TechnoPark - near-total exposure' },
+      { name: 'Patan', reason: 'Charanka 800 MW + adjacent solar parks' },
+      { name: 'Banaskantha', reason: 'Adjacent solar parks under build-out' },
+      { name: 'Surendranagar', reason: 'Solar parks in build-out phase' },
+      { name: 'Ahmedabad', reason: 'Adani HQ / treasury - financial cascade epicentre' },
+    ],
+    cascadeSteps: [
+      { n: 1, timeBucket: 'T+0 - 30 days', text: 'China announces export-licence regime on polysilicon/wafers (precedent Aug 2023 Ga/Ge controls).', cite: 'Down To Earth' },
+      { n: 2, timeBucket: 'T+30 - 60 days', text: 'Wafer prices spike 60-120%; Adani\u2019s USD 444 mn TotalEnergies JV module pipeline misses commissioning.', cite: 'PV-Tech' },
+      { n: 3, timeBucket: 'T+60 - 180 days', text: 'Khavda 2026-27 commissioning slips 6-18 months; ~6 GW contracted PPAs (incl. MSEDCL 5 GW) face penalty triggers.' },
+      { n: 4, timeBucket: 'T+90 - 365 days', text: 'NdFeB magnet supply chokes; 770-turbine Khavda wind plan delayed; 16 GW renewable target slips.', cite: 'Blackridge' },
+      { n: 5, timeBucket: 'T+1 - 3 yr', text: 'India misses 500 GW non-fossil 2030; coal-gap fills with Mundra TPS + Wanakbori ramp; ~14% emission rebound (national).' },
+      { n: 6, timeBucket: 'T+1 - 2 yr', text: 'Adani Green stock decline cascades into Adani group leverage; Hindenburg-style cap shock recurs (~Rs 2 lakh cr wiped).' },
+    ],
+    historicalAnalogue: {
+      title: 'China Ga/Ge export controls',
+      date: 'August 2023',
+      summary: 'Gallium prices doubled in 30 days; Indian semiconductor + LED makers reported 40-60% input cost spike. June 2018 US-China solar tariff war saw module prices fall 30% but Xinjiang investigations temporarily disrupted Indian polysilicon imports.',
+      metric: { label: 'Gallium price spike', value: '+100% in 30 days' },
+      sources: [
+        { title: 'Down To Earth - India solar wired to the dragon', url: 'https://www.downtoearth.org.in/energy/indias-solar-success-is-riding-high-but-remains-wired-to-the-dragon' },
+        { title: 'Policy Circle - solar industry Chinese dependence', url: 'https://www.policycircle.org/industry/solar-industry-chinese-dependence/' },
+      ],
+    },
+    timeToFailure: 'EPC module inventory ~45-90 day buffer; China-Mundra polysilicon-to-module pipeline 21-35 days; PLI ingot-wafer ramp to fill gap 3-5 years',
+    pillarImpacts: {
+      'green-tech': 0.81,
+      'energy': 0.32,
+      'economics': 0.16,
+      'environment': 0.08,
+    },
+    districts: ['Kachchh', 'Patan', 'Banaskantha', 'Surendranagar', 'Ahmedabad'],
+    gdpCrorePerUnit: 1500,
+    jobsPerUnit: 1360,
+    pendingData: 'Coal-rebound emission % needs Gujarat-specific (not national) derivation',
+    sources: [
+      { title: 'Down To Earth - India\u2019s solar wired to the dragon', url: 'https://www.downtoearth.org.in/energy/indias-solar-success-is-riding-high-but-remains-wired-to-the-dragon' },
+      { title: 'Policy Circle - solar industry Chinese dependence', url: 'https://www.policycircle.org/industry/solar-industry-chinese-dependence/' },
+      { title: 'Adani Green Energy - Khavda generation press release', url: 'https://www.adanigreenenergy.com/newsroom/media-releases/adani-green-begins-generation-from-the-worlds-largest-renewable-energy-park' },
+      { title: 'PV-Tech - Adani Green inks 5 GW PPA for Khavda', url: 'https://www.pv-tech.org/adani-green-energy-inks-5gw-ppa-for-khavda-pv-project/' },
+      { title: 'ORF America - solar rising India supply chains', url: 'https://orfamerica.org/newresearch/solar-rising-india' },
+    ],
+  },
+
+  {
+    id: 'bt-cotton-collapse',
+    group: 'frontier',
+    tier: 'secondary',
+    severity: 'high',
+    label: 'BT Cotton Collapse (Bayer/MMBL + pink bollworm)',
+    description: 'Gujarat is India\u2019s #1 cotton state (~26 lakh ha, ~25% national output). 95% Bt area is sole-licensed by Mahyco-Monsanto Biotech (Bayer-owned). Pink bollworm Cry1Ac/Cry2Ab resistance (first detected Amreli/Bhavnagar/Junagadh/Rajkot 2009-10) is now state-wide; no GEAC-approved Bollgard III replacement. Toggle = severe bollworm season + Bayer pulls further India investment.',
+    type: 'toggle',
+    defaultValue: false,
+    source: {
+      title: 'The Bt cotton fiasco (Down To Earth)',
+      url: 'https://www.downtoearth.org.in/agriculture/the-bt-cotton-fiasco-60585',
+    },
+    derivation: {
+      'agriculture': {
+        factors: [
+          { label: 'Bt seed dependency (95% of cotton area)', value: 0.95, cite: 'Global Agriculture' },
+          { label: 'Saurashtra concentration of Gujarat cotton', value: 0.55 },
+          { label: 'Propagation (yield loss + spray cycle)', value: 1.4 },
+        ],
+        formula: '0.95 x 0.55 x 1.4 x 100',
+        result: 73,
+      },
+      'economics': {
+        factors: [
+          { label: 'Cotton GVA share of Gujarat agri-GSDP', value: 0.06 },
+          { label: 'Yield loss', value: 0.5 },
+          { label: 'Propagation including Surat textile cluster', value: 1.2 },
+        ],
+        formula: '0.06 x 0.5 x 1.2 x 100 + textile-cluster spillover',
+        result: 22,
+      },
+      'labor': {
+        factors: [
+          { label: '22 lakh farm HH x income hit 0.5', value: 0.22, cite: '11 lakh HH equivalent' },
+          { label: '3.5 lakh ginning workers x 0.4', value: 0.09 },
+          { label: 'Propagation', value: 1.0 },
+        ],
+        formula: '(22L x 0.5 + 3.5L x 0.4) / Gujarat ag-labor base x 100',
+        result: 31,
+      },
+      'migrant-discrimination': {
+        factors: [
+          { label: 'Surat textile Odia weaver layoff (~12 lakh weavers, 30% capacity idle)', value: 0.18 },
+          { label: 'Propagation', value: 1.0 },
+        ],
+        formula: '0.18 x 1.0 x 100',
+        result: 18,
+      },
+    },
+    affectedPopulations: [
+      { label: 'Gujarat cotton farm households', headcount: 2200000, locality: 'Statewide', ethnicity: 'Saurashtra Patel / Kanbi / Koli / OBC + tribal' },
+      { label: 'Saurashtra ginning workforce', headcount: 350000, locality: 'Rajkot / Amreli / Bhavnagar', ethnicity: 'Marwadi-owned ginneries, Gujarati labor' },
+      { label: 'Surat textile downstream weavers', headcount: 1200000, locality: 'Surat', ethnicity: 'Powerloom + Saree, including Odia migrants' },
+      { label: 'Cotton-tied KCC agri-credit exposure households', headcount: 880000, locality: 'Statewide', cite: '~Rs 35,000 cr KCC exposure' },
+    ],
+    affectedDistricts: [
+      { name: 'Amreli', reason: 'Saurashtra cotton belt; origin of 2009 pink bollworm resistance' },
+      { name: 'Bhavnagar', reason: 'Saurashtra cotton belt; KCC default cluster' },
+      { name: 'Junagadh', reason: 'Saurashtra cotton + 2009 resistance origin' },
+      { name: 'Rajkot', reason: 'Ginning hub + cotton acreage' },
+      { name: 'Surendranagar', reason: 'Saurashtra cotton belt' },
+      { name: 'Botad', reason: 'Saurashtra cotton belt' },
+      { name: 'Mehsana', reason: 'North Gujarat rainfed Bt cotton' },
+      { name: 'Patan', reason: 'North Gujarat rainfed Bt cotton' },
+      { name: 'Banaskantha', reason: 'North Gujarat rainfed Bt cotton' },
+      { name: 'Dahod', reason: 'Tribal east smallholder Bt cotton' },
+      { name: 'Panchmahal', reason: 'Tribal east smallholder Bt cotton' },
+      { name: 'Kachchh', reason: 'Irrigated long-staple cotton ~2 lakh ha' },
+      { name: 'Surat', reason: 'Textile / weaver downstream cluster' },
+    ],
+    cascadeSteps: [
+      { n: 1, timeBucket: 'T+0 - 30 days', text: 'Pink bollworm Cry2Ab resistance confirmed widespread (already documented Najork et al. 2021).', cite: 'SAGE 2021' },
+      { n: 2, timeBucket: 'T+0 - 1 season', text: 'Yields fall 30-60% in Saurashtra; pesticide sprays/season rise to 15 vs 3-4 pre-Bt.', cite: 'Down To Earth' },
+      { n: 3, timeBucket: 'T+1 - 6 mo', text: 'Per-acre input cost up Rs 8,000-14,000; ~40% small farmers default on Kisan Credit Card.' },
+      { n: 4, timeBucket: 'T+6 - 12 mo', text: 'Suicide cluster emerges in Saurashtra cotton belt (Patel diamond-worker-style despair pattern).' },
+      { n: 5, timeBucket: 'T+6 - 12 mo', text: 'Surat ginning + textile feedstock shortfall; ~30% capacity idle for 2-3 mo; Odia weavers laid off, return-migration spike.' },
+      { n: 6, timeBucket: 'T+1 - 5 yr', text: 'India cotton export share (15% global) collapses; Bangladesh/Vietnam re-source to Brazil/US - permanent share loss. Bollgard III approval needs 5-7 yr even if started today.' },
+    ],
+    historicalAnalogue: {
+      title: 'Maharashtra Vidarbha pink bollworm collapse',
+      date: '2017-18',
+      summary: 'Pink bollworm wiped ~50% of Yavatmal cotton; state paid Rs 3,000 cr compensation. 2015 Punjab whitefly secondary-pest cascade post-Bt: 15 farmer suicides in 2 mo (Mansa-Bathinda); Punjab cotton acreage halved by 2020.',
+      metric: { label: 'Yavatmal yield loss', value: '~50% (2017-18 season)' },
+      sources: [
+        { title: 'Down To Earth - Bt cotton fiasco', url: 'https://www.downtoearth.org.in/agriculture/the-bt-cotton-fiasco-60585' },
+        { title: 'Najork et al. SAGE 2021 - return of pink bollworm', url: 'https://journals.sagepub.com/doi/full/10.1177/14649934211003457' },
+      ],
+    },
+    timeToFailure: 'Pink bollworm doubling 18-24 days peak season; yield collapse single kharif (Jun-Nov sow / Oct-Jan harvest); Bollgard III equivalent approval 5-7 years',
+    pillarImpacts: {
+      'agriculture': 0.73,
+      'economics': 0.22,
+      'labor': 0.31,
+      'migrant-discrimination': 0.18,
+    },
+    districts: ['Amreli', 'Bhavnagar', 'Junagadh', 'Rajkot', 'Surendranagar', 'Botad', 'Mehsana', 'Patan', 'Banaskantha', 'Dahod', 'Panchmahal', 'Kachchh', 'Surat'],
+    gdpCrorePerUnit: 6500,
+    jobsPerUnit: 110000,
+    pendingData: 'Odia weaver layoff cascade not arithmetically scaled vs Surat textile base',
+    sources: [
+      { title: 'Global Agriculture - Bt cotton journey in India', url: 'https://www.global-agriculture.com/india-region/the-journey-of-bt-cotton-in-india-a-historical-overview-and-its-impact-on-agriculture/' },
+      { title: 'Down To Earth - Bt cotton fiasco / Monsanto patent revocation', url: 'https://www.downtoearth.org.in/agriculture/the-bt-cotton-fiasco-60585' },
+      { title: 'Najork et al. SAGE 2021 - return of pink bollworm', url: 'https://journals.sagepub.com/doi/full/10.1177/14649934211003457' },
+      { title: 'Wharton Knowledge - GM seeds future in India', url: 'https://knowledge.wharton.upenn.edu/article/a-growing-problem-is-there-a-future-in-india-for-genetically-modified-seeds/' },
+    ],
+  },
+
+  {
+    id: 'monsoon-failure-saurashtra-kutch',
+    group: 'frontier',
+    tier: 'primary',
+    severity: 'critical',
+    label: 'Monsoon Failure (Saurashtra + Kutch)',
+    description: 'Saurashtra + Kutch get 200-700 mm annual rainfall, mostly outside Sardar Sarovar primary command. Groundwater falls ~4 m/yr pre-monsoon; famine "every third year" historically. Slider = % monsoon deficit. 2018 canonical: Kutch 75% deficit; drought declared in 51 talukas across 16 districts after months of euphemism.',
+    type: 'slider',
+    min: 0,
+    max: 100,
+    step: 5,
+    unit: '% deficit',
+    defaultValue: 0,
+    source: {
+      title: 'Drought-hit Gujarat has water for factories but not for farmers (IndiaSpend / Business Standard)',
+      url: 'https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers',
+    },
+    derivation: {
+      'agriculture': {
+        factors: [
+          { label: 'Rainfed share (Saurashtra + Kutch ~30% of state ag)', value: 0.3 },
+          { label: 'Yield loss factor', value: 0.5 },
+          { label: 'Propagation (MSP + feed-cost spillover)', value: 1.6 },
+        ],
+        formula: '0.3 x 0.5 x 1.6 x 100 + spillover scaling',
+        result: 62,
+      },
+      'water': {
+        factors: [
+          { label: 'GW depletion baseline (already overdrawn ~4 m/yr)', value: 0.6, cite: 'ScienceDirect drought policy' },
+          { label: 'Propagation (industrial allocation 844.85 vs 675.88 MLD)', value: 1.4, cite: 'IndiaSpend' },
+        ],
+        formula: '0.6 x 1.4 x 100',
+        result: 84,
+      },
+      'economics': {
+        factors: [
+          { label: 'Distress migration + relief outlay (~Rs 4,000 cr)', value: 0.3 },
+          { label: 'Propagation', value: 0.6 },
+        ],
+        formula: '0.3 x 0.6 x 100',
+        result: 18,
+      },
+      'labor': {
+        factors: [
+          { label: '5 lakh distress migrants to Surat/Ahmedabad sectors', value: 0.5 },
+          { label: 'Propagation (NREGA demand +200%)', value: 0.5 },
+        ],
+        formula: '0.5 x 0.5 x 100',
+        result: 25,
+      },
+    },
+    affectedPopulations: [
+      { label: 'Kachchh smallholder farm households', headcount: 320000, locality: 'Kachchh', ethnicity: 'Patel / Ahir / Rabari / Maldhari (pastoralist)' },
+      { label: 'Saurashtra cotton + groundnut farm households', headcount: 1800000, locality: 'Amreli / Bhavnagar / Rajkot / Junagadh / Surendranagar' },
+      { label: 'Maldhari pastoralists', headcount: 50000, locality: 'Kachchh + Banni', ethnicity: 'Maldhari', cite: '2018 saw mass cattle deaths + migration to Banaskantha' },
+      { label: 'Migrant ag-labor (rabi season)', headcount: 200000, locality: 'Saurashtra', ethnicity: 'UP / Bihar / MP / Rajasthan - first laid off' },
+    ],
+    affectedDistricts: [
+      { name: 'Kachchh', reason: 'Extreme deficit (75% in 2018), no surface water alternative' },
+      { name: 'Amreli', reason: 'Rain-fed cotton/groundnut Saurashtra' },
+      { name: 'Bhavnagar', reason: 'Rain-fed cotton/groundnut Saurashtra' },
+      { name: 'Botad', reason: 'Rain-fed cotton Saurashtra' },
+      { name: 'Surendranagar', reason: 'Rain-fed cotton/groundnut Saurashtra' },
+      { name: 'Junagadh', reason: 'Rain-fed groundnut Saurashtra' },
+      { name: 'Rajkot', reason: 'Rain-fed cotton Saurashtra' },
+      { name: 'Devbhumi Dwarka', reason: 'Rain-fed Saurashtra coast' },
+      { name: 'Gir Somnath', reason: 'Rain-fed Saurashtra coast' },
+      { name: 'Porbandar', reason: 'Rain-fed Saurashtra coast' },
+      { name: 'Banaskantha', reason: 'North Gujarat secondary' },
+      { name: 'Patan', reason: 'North Gujarat secondary' },
+      { name: 'Mehsana', reason: 'North Gujarat secondary' },
+    ],
+    cascadeSteps: [
+      { n: 1, timeBucket: 'Jun-Sep monsoon', text: 'SW monsoon departs >40% in Saurashtra/Kutch (IMD precedent: 2018 = 75% Kutch deficit).', cite: 'IndiaSpend 2019' },
+      { n: 2, timeBucket: 'Jul-Sep', text: 'Groundwater extraction surges; water table drops ~6 m/yr in drought years vs baseline 4 m/yr.', cite: 'ScienceDirect' },
+      { n: 3, timeBucket: 'Aug-Oct (T+45-60 days)', text: 'Kharif fail: cotton + groundnut yields -40-60%; rabi sowing area -30%.', cite: 'GIDM drought reports' },
+      { n: 4, timeBucket: 'Sep-Nov', text: 'Maldhari pastoralists move cattle to Banaskantha/Mehsana; ~30,000 cattle deaths (2018 analogue).' },
+      { n: 5, timeBucket: 'Nov-Mar (T+3-6 mo)', text: 'State delays drought declaration (2018 declared Dec 17, 3 mo after monsoon ended); relief disbursement lag 4-6 mo.', cite: 'IndiaSpend' },
+      { n: 6, timeBucket: 'Dec-Mar', text: 'MSP procurement collapses (groundnut MSP Rs 6,377/qtl, no produce); rural NREGA demand +200%; ~5 lakh distress migrants move to Surat/Ahmedabad ceramic/diamond/textile.' },
+    ],
+    historicalAnalogue: {
+      title: 'Gujarat 2018 drought',
+      date: 'Declared December 17, 2018',
+      summary: 'Drought declared in 51 talukas across 16 districts after months of state euphemism. Kutch 75% deficit; 2019 zero pre-monsoon rain through May. State paid Rs 3,795 cr compensation. Earlier analogues: 2002 Saurashtra drought triggered aggressive Sardar Sarovar pipeline expansion; 1985-87 Saurashtra famine drove first wave Patel migration to UK/USA diamond trade.',
+      metric: { label: 'Kutch monsoon deficit (2018)', value: '75%' },
+      sources: [
+        { title: 'IndiaSpend - drought-hit Gujarat factories vs farmers', url: 'https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers' },
+        { title: 'ScienceDirect - Gujarat drought mitigation policy', url: 'https://www.sciencedirect.com/science/article/pii/S2590061719300493' },
+      ],
+    },
+    timeToFailure: 'Kharif failure visibility 45-60 days post-monsoon onset; reservoir critical Nov; tanker dependence Dec-Jan; recovery to baseline minimum 2 normal monsoons (~24 mo)',
+    pillarImpacts: {
+      'agriculture': 0.62,
+      'water': 0.84,
+      'economics': 0.18,
+      'labor': 0.25,
+    },
+    districts: ['Kachchh', 'Amreli', 'Bhavnagar', 'Botad', 'Surendranagar', 'Junagadh', 'Rajkot', 'Devbhumi Dwarka', 'Gir Somnath', 'Porbandar', 'Banaskantha', 'Patan', 'Mehsana'],
+    gdpCrorePerUnit: 380,
+    jobsPerUnit: 22000,
+    pendingData: 'Labor pillar: 5 lakh distress-migrant arithmetic vs Gujarat ag-labor base needs separate derivation',
+    sources: [
+      { title: 'IndiaSpend / Business Standard - drought + factory water (2019)', url: 'https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers' },
+      { title: 'ScienceDirect - Gujarat drought mitigation policy', url: 'https://www.sciencedirect.com/science/article/pii/S2590061719300493' },
+      { title: 'UNL Drought Net News - Saurashtra drought', url: 'https://digitalcommons.unl.edu/droughtnetnews/58/' },
+    ],
+  },
+]
+
+export const PRESETS_V2 = [
+  {
+    id: 'twin-shock-2026',
+    label: '2026 Twin Shock',
+    tagline: 'Morbi gas + Surat exodus, the actual Q1 2026 quarter.',
+    description: 'Morbi gas + Surat exodus, the actual Q1 2026 quarter.',
+    source: {
+      title: 'Drought-hit Gujarat has water for factories but not for farmers (IndiaSpend)',
+      url: 'https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers',
+    },
+    values: {
+      'dahej-lng-outage': 5,
+      'migrant-violence': true,
+    },
+  },
+  {
+    id: 'full-decoupling',
+    label: 'Full Decoupling',
+    tagline: 'China API + Russian crude + Versova cut, the triple-front sanctions.',
+    description: 'China API + Russian crude + Versova cut, the triple-front sanctions.',
+    source: {
+      title: 'BW Businessworld - India\u2019s cheap internet vulnerability (2026)',
+      url: 'https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929',
+    },
+    values: {
+      'russian-crude': 100,
+      'chinese-api-halt': true,
+      'cable-severance-versova': 90,
+    },
+  },
+  {
+    id: 'climate-black-swan',
+    label: 'Climate Black Swan',
+    tagline: 'Cyclone + Narmada + LNG + heatwave, all in one monsoon.',
+    description: 'Cyclone + Narmada + LNG + heatwave, all in one monsoon.',
+    source: {
+      title: 'IndiaSpend - drought-hit Gujarat factories vs farmers',
+      url: 'https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers',
+    },
+    values: {
+      'mundra-closure': 7,
+      'narmada-deficit': 50,
+      'dahej-lng-outage': 3,
+      'heatwave-aqi-blackswan': 70,
+    },
+  },
+  {
+    id: 'pogrom-replay',
+    label: '2018 Pogrom Replay',
+    tagline: 'Festival-period violence, 20k workers gone in a week.',
+    description: 'Festival-period violence, 20k workers gone in a week.',
+    source: {
+      title: 'The Bt cotton fiasco (Down To Earth) - migrant labor cascade reference',
+      url: 'https://www.downtoearth.org.in/agriculture/the-bt-cotton-fiasco-60585',
+    },
+    values: {
+      'migrant-violence': true,
+      'structural-discrimination-cascade': 30,
+    },
+  },
+  {
+    id: 'mnc-chokehold',
+    label: 'MNC Chokehold',
+    tagline: 'BT cotton + Chinese green-tech + pharma SPOF - when you don\u2019t own your inputs.',
+    description: 'BT cotton + Chinese green-tech + pharma SPOF - when you don\u2019t own your inputs.',
+    source: {
+      title: 'Down To Earth - India\u2019s solar wired to the dragon',
+      url: 'https://www.downtoearth.org.in/energy/indias-solar-success-is-riding-high-but-remains-wired-to-the-dragon',
+    },
+    values: {
+      'bt-cotton-collapse': true,
+      'green-tech-china-shock': true,
+      'pharma-spof': true,
+    },
+  },
+  {
+    id: 'heatwave-mundra',
+    label: 'Heatwave + Mundra',
+    tagline: '44 deg C statewide while Kutch port is shut for cyclone repair.',
+    description: '44 deg C statewide while Kutch port is shut for cyclone repair.',
+    source: {
+      title: 'BW Businessworld - infrastructure vulnerability (2026)',
+      url: 'https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929',
+    },
+    values: {
+      'heatwave-aqi-blackswan': 85,
+      'mundra-closure': 10,
+    },
+  },
+  {
+    id: 'narmada-tapi',
+    label: 'Narmada Deficit + Tapi Flood',
+    tagline: 'Saurashtra dries while Surat drowns - same monsoon, opposite ends.',
+    description: 'Saurashtra dries while Surat drowns - same monsoon, opposite ends.',
+    source: {
+      title: 'IndiaSpend - drought-hit Gujarat factories vs farmers',
+      url: 'https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers',
+    },
+    values: {
+      'narmada-deficit': 55,
+      'tapi-flood-surat': 7,
+    },
+  },
+  {
+    id: 'bhuj-morbi-legacy',
+    label: 'Bhuj\u2192Morbi Legacy',
+    tagline: 'Bridge collapse compounds with infra brittleness on infra brittleness.',
+    description: 'Bridge collapse compounds with infra brittleness on infra brittleness.',
+    source: {
+      title: 'BW Businessworld - infrastructure brittleness (2026)',
+      url: 'https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929',
+    },
+    values: {
+      'bridge-collapse-saurashtra': true,
+      'migrant-violence': true,
+      'dahej-lng-outage': 4,
+    },
+  },
+]

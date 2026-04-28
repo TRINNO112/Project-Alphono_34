@@ -2,6 +2,16 @@ import { memo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Copy, Check } from 'lucide-react'
 
+/**
+ * Section - Animated section wrapper with icon and title
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.icon - Icon element to display in section header
+ * @param {string} props.title - Section title text
+ * @param {React.ReactNode} props.children - Section content
+ * @param {string} [props.id] - Optional section ID (auto-generated from title if not provided)
+ * @returns {JSX.Element} The rendered section
+ */
 export function Section({ icon, title, children, id }) {
   const sectionId = id || title?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
   return (
@@ -26,6 +36,15 @@ export function Section({ icon, title, children, id }) {
   )
 }
 
+/**
+ * DataCard - Card component for displaying data with optional alert styling
+ *
+ * @param {Object} props
+ * @param {string} props.title - Card title
+ * @param {React.ReactNode} props.children - Card content
+ * @param {boolean} [props.alert=false] - Whether to show alert variant (red styling)
+ * @returns {JSX.Element} The rendered data card
+ */
 function DataCardInner({ title, children, alert = false }) {
   return (
     <div className={`p-8 rounded-2xl border ${alert ? 'border-red-200 dark:border-red-900/40 bg-red-50/40 dark:bg-red-900/10' : 'border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/60'} backdrop-blur-md shadow-sm hover:shadow-lg transition-all duration-300`}>
@@ -52,6 +71,13 @@ function PendingDataBoxInner({ label = "Awaiting DeepSeek Data Injection" }) {
 }
 export const PendingDataBox = memo(PendingDataBoxInner)
 
+/**
+ * Ref - Citation reference superscript that links to source
+ *
+ * @param {Object} props
+ * @param {number} props.n - Citation number
+ * @returns {JSX.Element} The rendered citation reference
+ */
 export function Ref({ n }) {
   return (
     <sup className="text-crimson cursor-help font-bold text-xs ml-0.5 hover:underline">
@@ -131,6 +157,15 @@ const STAT_COLOR_MAP = {
   purple: "text-purple-600 dark:text-purple-400",
 }
 
+/**
+ * StatBox - Statistic display box with value and label
+ *
+ * @param {Object} props
+ * @param {string|number} props.value - Statistic value to display
+ * @param {string} props.label - Label text for the statistic
+ * @param {string} [props.color="crimson"] - Color theme (crimson, red, green, blue, yellow, teal, purple)
+ * @returns {JSX.Element} The rendered stat box
+ */
 function StatBoxInner({ value, label, color = "crimson" }) {
   return (
     <div className="flex-1 bg-white dark:bg-dark-bg p-6 rounded-2xl border border-gray-200 dark:border-dark-border">

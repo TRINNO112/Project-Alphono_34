@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { searchIndex } from '../data/searchIndex'
+import { useDebounce } from '../hooks/useDebounce'
 
 const pillarColors = {
   'Infrastructure': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
@@ -32,10 +33,12 @@ export default function SearchBar() {
   const inputRef = useRef(null)
   const navigate = useNavigate()
 
-  const results = query.trim()
+  const debouncedQuery = useDebounce(query, 300)
+
+  const results = debouncedQuery.trim()
     ? searchIndex.filter(item =>
-        item.claim.toLowerCase().includes(query.toLowerCase()) ||
-        item.keywords.some(kw => kw.includes(query.toLowerCase()))
+        item.claim.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
+        item.keywords.some(kw => kw.includes(debouncedQuery.toLowerCase()))
       ).slice(0, 20)
     : []
 
@@ -71,10 +74,15 @@ export default function SearchBar() {
     }
   }, [isOpen])
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsOpen(false)
     setQuery('')
-  }
+  }, [])
+
+  const handleResultClick = useCallback((item) => {
+    navigate(item.path, { state: { searchQuery: query, searchClaim: item.claim } })
+    handleClose()
+  }, [navigate, query, handleClose])
 
   return (
     <>
@@ -149,10 +157,7 @@ export default function SearchBar() {
                           <button
                             key={`${item.path}-${item.claim.slice(0, 40)}`}
                             type="button"
-                            onClick={() => {
-                              navigate(item.path, { state: { searchQuery: query, searchClaim: item.claim } })
-                              handleClose()
-                            }}
+                            onClick={() => handleResultClick(item)}
                             className="block w-full text-left p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
                           >
                             <div className="text-sm text-gray-700 dark:text-gray-300">{item.claim}</div>
