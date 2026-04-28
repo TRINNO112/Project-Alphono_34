@@ -1,17 +1,21 @@
-import { useMemo, useState, useCallback } from 'react'
+import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { AlertTriangle, Zap, RotateCcw, Info } from 'lucide-react'
+import { AlertTriangle, Zap, RotateCcw, Info, ChevronDown } from 'lucide-react'
 import SEO from '../components/SEO'
 import { Section, DataCard, SourceList } from '../components/Shared'
 import AnimatedCounter from '../components/AnimatedCounter'
 import SimulatorLever from '../components/SimulatorLever'
 import SimulatorImpactBars from '../components/SimulatorImpactBars'
 import SimulatorImpactMap from '../components/SimulatorImpactMap'
+import NamedPopulationPanel from '../components/NamedPopulationPanel'
+import HistoricalPrecedentCard from '../components/HistoricalPrecedentCard'
+import CascadeTicker from '../components/CascadeTicker'
+import EducationCascadePanel from '../components/EducationCascadePanel'
 import {
-  LEVERS, PRESETS, defaultLeverState, computeImpact, applyPreset,
+  LEVERS, LEVER_GROUPS, PRESETS, PILLAR_LABELS,
+  defaultLeverState, computeImpact, applyPreset, getLeverById,
 } from '../data/simulatorCoefficients'
 
-// Curated source list for the Simulator page (SourceList at bottom)
 const sources = [
   { title: 'Reliance stops import of Russian crude oil into Jamnagar SEZ refinery', publication: 'Business Standard, Nov 2025', url: 'https://www.business-standard.com/industry/news/reliance-stops-import-of-russian-crude-oil-into-jamnagar-s-sez-refinery-125112001129_1.html' },
   { title: 'Behind India\'s massive Russian oil imports: Asia\'s richest man', publication: 'Al Jazeera, Aug 2025', url: 'https://www.aljazeera.com/economy/2025/8/22/behind-indias-massive-russian-oil-imports-asias-richest-man' },
@@ -32,8 +36,8 @@ const sources = [
 
 function formatCrore(n) {
   if (n <= 0) return '0'
-  if (n >= 100000) return `${(n / 100000).toFixed(2)}`      // 1 lakh crore
-  if (n >= 1000) return `${(n / 1000).toFixed(1)}`          // thousand crore (k)
+  if (n >= 100000) return `${(n / 100000).toFixed(2)}`
+  if (n >= 1000) return `${(n / 1000).toFixed(1)}`
   return `${n}`
 }
 function formatCroreSuffix(n) {
@@ -43,7 +47,7 @@ function formatCroreSuffix(n) {
 }
 function formatJobs(n) {
   if (n <= 0) return '0'
-  if (n >= 100000) return `${(n / 100000).toFixed(2)}`      // lakhs
+  if (n >= 100000) return `${(n / 100000).toFixed(2)}`
   if (n >= 1000) return `${(n / 1000).toFixed(0)}`
   return `${n}`
 }
@@ -53,24 +57,275 @@ function formatJobsSuffix(n) {
   return ''
 }
 
+const TAB_ORDER = ['materials', 'physical', 'human', 'frontier', 'all']
+const TAB_LABELS = {
+  materials: 'Materials',
+  physical: 'Physical',
+  human: 'Human',
+  frontier: 'Frontier',
+  all: 'All',
+}
+
+// ----- URL state helpers -----
+function parseLeversParam(str) {
+  if (!str) return null
+  const out = {}
+  for (const part of str.split(',')) {
+    const [id, raw] = part.split(':')
+    if (!id || raw === undefined) continue
+    const lever = getLeverById(id)
+    if (!lever) continue
+    if (lever.type === 'toggle') {
+      out[id] = raw === '1' || raw === 'true'
+    } else {
+      const n = Number(raw)
+      if (Number.isFinite(n)) out[id] = Math.max(0, Math.min(lever.max ?? 100, n))
+    }
+  }
+  return out
+}
+
+function serializeLevers(state) {
+  const parts = []
+  for (const lever of LEVERS) {
+    const v = state[lever.id]
+    if (lever.type === 'toggle') {
+      if (v) parts.push(`${lever.id}:1`)
+    } else if (Number(v) > 0) {
+      parts.push(`${lever.id}:${v}`)
+    }
+  }
+  return parts.join(',')
+}
+
+// ----- reducer -----
+const initialState = {
+  levers: defaultLeverState(),
+  focusedPillar: null,
+  focusedDistrict: null,
+  tab: 'materials',
+  activePresetId: null,
+  showSecondary: false,
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'set-lever':
+      return {
+        ...state,
+        levers: { ...state.levers, [action.id]: action.value },
+        activePresetId: null,
+      }
+    case 'apply-preset': {
+      const next = applyPreset(state.levers, action.presetId)
+      return { ...state, levers: next, activePresetId: action.presetId }
+    }
+    case 'reset':
+      return { ...state, levers: defaultLeverState(), activePresetId: null }
+    case 'focus-pillar':
+      return { ...state, focusedPillar: action.pillarId }
+    case 'focus-district':
+      return { ...state, focusedDistrict: action.name }
+    case 'set-tab':
+      return { ...state, tab: action.tab }
+    case 'toggle-secondary':
+      return { ...state, showSecondary: !state.showSecondary }
+    case 'hydrate':
+      return { ...state, ...action.payload }
+    default:
+      return state
+  }
+}
+
+// Lever -> education narrative synthesis (downstream-only)
+const EDU_NARRATIVE_BY_LEVER = {
+  'diamond-export-collapse': {
+    headline: '2,356 SLCs from Surat schools (Nov 2024 – May 2025)',
+    detail: 'Diamond-worker income evaporates → rent + school fees first cuts → child pulled from English-medium private, then govt school → family decamps to Saurashtra ancestral village. ~200 are Class 9–10 children losing the academic year mid-stream.',
+    headcount: 280000,
+  },
+  'saurashtra-reverse-migration': {
+    headline: 'Tulshishyam dropout pattern',
+    detail: 'Surat 4 km school → Tulshishyam village 45 km. Documented case (Jagdish Babariya, 14): dropout in a month. Pattern repeats across Bhavnagar, Amreli, Junagadh, Gir Somnath, Rajkot.',
+    headcount: 6000,
+  },
+  'migrant-violence': {
+    headline: '~25% migrant share in Surat govt schools',
+    detail: 'When violence fires, migrant children are pulled from Surat municipal schools within a single news cycle. 2018 precedent: 50k families left in 12–14 months. Mid-session re-entry in UP/Bihar village schools typically means losing the year.',
+    headcount: 250000,
+  },
+  'structural-discrimination-cascade': {
+    headline: 'Slow-burn migrant-school attrition',
+    detail: 'Schooling discrimination + Hindi-medium scarcity compounds across cohorts. Drop-out is gradual but cumulative.',
+    headcount: 80000,
+  },
+}
+
 export default function BreakSimulator() {
-  const [state, setState] = useState(defaultLeverState)
+  const [state, dispatch] = useReducer(reducer, initialState, (init) => {
+    if (typeof window === 'undefined') return init
+    const params = new URLSearchParams(window.location.search)
+    const presetId = params.get('preset')
+    if (presetId) {
+      const next = applyPreset(init.levers, presetId)
+      return { ...init, levers: next, activePresetId: PRESETS.find((p) => p.id === presetId) ? presetId : null }
+    }
+    const leverOverrides = parseLeversParam(params.get('levers'))
+    if (leverOverrides) {
+      return { ...init, levers: { ...init.levers, ...leverOverrides } }
+    }
+    return init
+  })
+
+  // Debounced URL writeback
+  const urlTimer = useRef(null)
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (urlTimer.current) clearTimeout(urlTimer.current)
+    urlTimer.current = setTimeout(() => {
+      const params = new URLSearchParams()
+      if (state.activePresetId) {
+        params.set('preset', state.activePresetId)
+      } else {
+        const ser = serializeLevers(state.levers)
+        if (ser) params.set('levers', ser)
+      }
+      const qs = params.toString()
+      const next = qs ? `${window.location.pathname}?${qs}` : window.location.pathname
+      window.history.replaceState({}, '', next)
+    }, 250)
+    return () => urlTimer.current && clearTimeout(urlTimer.current)
+  }, [state.levers, state.activePresetId])
 
   const updateLever = useCallback((id, value) => {
-    setState((prev) => ({ ...prev, [id]: value }))
+    dispatch({ type: 'set-lever', id, value })
   }, [])
 
-  const reset = useCallback(() => setState(defaultLeverState()), [])
-  const runPreset = useCallback((id) => setState((prev) => applyPreset(prev, id)), [])
+  const reset = useCallback(() => dispatch({ type: 'reset' }), [])
+  const runPreset = useCallback((id) => dispatch({ type: 'apply-preset', presetId: id }), [])
+  const setFocusedPillar = useCallback((p) => dispatch({ type: 'focus-pillar', pillarId: p }), [])
+  const setFocusedDistrict = useCallback((d) => dispatch({ type: 'focus-district', name: d }), [])
+  const setTab = useCallback((t) => dispatch({ type: 'set-tab', tab: t }), [])
+  const toggleSecondary = useCallback(() => dispatch({ type: 'toggle-secondary' }), [])
 
-  const impact = useMemo(() => computeImpact(state), [state])
+  const impact = useMemo(() => computeImpact(state.levers), [state.levers])
   const anyActive = impact.activeLevers.length > 0
 
+  // Total population + district filter
+  const filteredPopulations = useMemo(() => {
+    if (!state.focusedDistrict) return impact.populationsAffected
+    const needle = state.focusedDistrict.toLowerCase()
+    const match = impact.populationsAffected.filter(
+      (p) => p.locality && p.locality.toLowerCase().includes(needle),
+    )
+    return match.length > 0 ? match : impact.populationsAffected
+  }, [impact.populationsAffected, state.focusedDistrict])
+
+  const totalHeadcount = useMemo(
+    () => filteredPopulations.reduce((acc, p) => acc + (p.headcount || 0), 0),
+    [filteredPopulations],
+  )
+
+  // Adapt derivationByPillar.contributors -> array shape SimulatorImpactBars expects
+  const barsDerivations = useMemo(() => {
+    const out = {}
+    for (const [pillarId, entry] of Object.entries(impact.derivationByPillar || {})) {
+      if (!entry || !entry.contributors || entry.contributors.length === 0) continue
+      out[pillarId] = entry.contributors
+        .slice()
+        .sort((a, b) => b.contribution - a.contribution)
+        .map((c) => {
+          const lever = getLeverById(c.leverId)
+          const leverMax = lever?.type === 'toggle' ? 1 : (lever?.max ?? 100)
+          const rawValue = state.levers[c.leverId]
+          const leverValue = lever?.type === 'toggle' ? (rawValue ? 1 : 0) : Number(rawValue) || 0
+          return {
+            leverId: c.leverId,
+            label: c.label,
+            derivation: { factors: c.factors, formula: c.formula, result: c.result, sources: lever?.sources || [] },
+            leverValue,
+            leverMax,
+          }
+        })
+    }
+    return out
+  }, [impact.derivationByPillar, state.levers])
+
+  // Pillars-touched chip data per active lever (for SimulatorLever)
+  const pillarsTouchedByLever = useMemo(() => {
+    const out = {}
+    for (const [pillarId, entry] of Object.entries(impact.derivationByPillar || {})) {
+      for (const c of entry.contributors || []) {
+        if (!out[c.leverId]) out[c.leverId] = []
+        if (c.contribution > 0) out[c.leverId].push({ pillarId, percent: c.contribution })
+      }
+    }
+    for (const id of Object.keys(out)) {
+      out[id].sort((a, b) => b.percent - a.percent)
+      out[id] = out[id].slice(0, 4)
+    }
+    return out
+  }, [impact.derivationByPillar])
+
+  // Time to first failure: shortest among active levers carrying numeric "~N days"
+  const timeToFirstFailure = useMemo(() => {
+    let best = null
+    for (const al of impact.activeLevers) {
+      const lever = getLeverById(al.id)
+      const ttf = lever?.timeToFailure
+      if (!ttf) continue
+      const m = ttf.match(/(\d+)/)
+      if (!m) continue
+      const days = Number(m[1])
+      if (!Number.isFinite(days)) continue
+      if (best === null || days < best.days) best = { days, label: ttf, leverLabel: lever.label }
+    }
+    return best
+  }, [impact.activeLevers])
+
+  // Lever map.contributions -> map expects { districtName: [{leverId, leverLabel, percent}] }
+  const mapContributions = useMemo(() => {
+    const out = {}
+    for (const [district, contribs] of Object.entries(impact.leverContributions || {})) {
+      out[district] = contribs.map((c) => ({
+        leverId: c.leverId,
+        leverLabel: c.label,
+        percent: c.contribution,
+      }))
+    }
+    return out
+  }, [impact.leverContributions])
+
+  const allPendingData = useMemo(
+    () => impact.activeLevers.length > 0 && impact.activeLevers.every((al) => getLeverById(al.id)?.pendingData),
+    [impact.activeLevers],
+  )
+
+  // Education narratives synthesised from active levers
+  const educationNarratives = useMemo(() => {
+    const out = []
+    for (const al of impact.activeLevers) {
+      const tpl = EDU_NARRATIVE_BY_LEVER[al.id]
+      if (!tpl) continue
+      const lever = getLeverById(al.id)
+      out.push({ leverId: al.id, leverLabel: lever?.label || al.id, ...tpl })
+    }
+    return out
+  }, [impact.activeLevers])
+
+  // Lever rail: filter by tab + tier
+  const visibleLevers = useMemo(() => {
+    const list = state.tab === 'all' ? LEVERS : LEVERS.filter((l) => l.group === state.tab)
+    const primary = list.filter((l) => l.tier !== 'secondary')
+    const secondary = list.filter((l) => l.tier === 'secondary')
+    return { primary, secondary }
+  }, [state.tab])
+
   return (
-    <main className="w-full max-w-6xl mx-auto px-6 pt-32 pb-32 space-y-16">
+    <main className="w-full max-w-7xl mx-auto px-6 pt-32 pb-32 space-y-16">
       <SEO
         title="Break Simulator"
-        description="War-game Gujarat's structural dependencies. Interactively trigger supply-chain, labor, water, and digital failures and watch the cascade propagate across pillars and districts."
+        description="War-game Gujarat's structural dependencies. 20 cited levers, named populations, historical analogues, and cascading damage across 13 pillars."
         path="/simulator"
       />
 
@@ -94,6 +349,9 @@ export default function BreakSimulator() {
             shock — with a citation — and the damage numbers are computed deterministically
             from the pillar dependencies mapped throughout this project.
           </p>
+          <p className="mt-3 text-sm font-mono uppercase tracking-widest text-gray-500 dark:text-gray-400 pl-6">
+            {LEVERS.length} levers · 13 pillars · cited arithmetic
+          </p>
           <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 italic max-w-3xl pl-6">
             This is a stress-test tool, not a forecast. Coefficients are upper-bound
             estimates derived from the sources cited under each lever.
@@ -101,12 +359,12 @@ export default function BreakSimulator() {
         </motion.div>
       </section>
 
-      {/* Live impact counters (static summary bar) */}
+      {/* Live impact counters */}
       <section
         aria-label="Current cascade impact"
         className="rounded-2xl border border-crimson/40 bg-white/90 dark:bg-dark-surface/90 shadow-lg p-5"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
           <div>
             <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-1">
               GDP at Risk
@@ -162,6 +420,18 @@ export default function BreakSimulator() {
               Reset all
             </button>
           </div>
+
+          <div>
+            <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-1">
+              Time to First Failure
+            </div>
+            <div className="font-serif text-2xl md:text-3xl font-bold text-gray-900 dark:text-white tabular-nums">
+              {timeToFirstFailure ? `${timeToFirstFailure.days}d` : '—'}
+            </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate" title={timeToFirstFailure?.leverLabel || ''}>
+              {timeToFirstFailure ? timeToFirstFailure.leverLabel : 'No active lever'}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -172,55 +442,196 @@ export default function BreakSimulator() {
             Each preset sets specific levers to values anchored in a real event.
             Tap any preset to snap the simulation.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {PRESETS.map((preset) => (
-              <button
-                key={preset.id}
-                type="button"
-                onClick={() => runPreset(preset.id)}
-                className="text-left p-4 rounded-xl border border-gray-200 dark:border-dark-border hover:border-crimson hover:bg-crimson/5 transition-all focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
-              >
-                <div className="font-serif font-bold text-lg text-gray-900 dark:text-white mb-1">
-                  {preset.label}
-                </div>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 leading-relaxed">
-                  {preset.description}
-                </p>
-                <span className="text-[10px] tracking-widest uppercase font-semibold text-crimson">
-                  Modeled after: {preset.source.title}
-                </span>
-              </button>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+            {PRESETS.map((preset) => {
+              const isActive = state.activePresetId === preset.id
+              const leverCount = Object.keys(preset.values || {}).length
+              return (
+                <button
+                  key={preset.id}
+                  type="button"
+                  onClick={() => runPreset(preset.id)}
+                  aria-pressed={isActive}
+                  className={`text-left p-4 rounded-xl border transition-all focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 ${
+                    isActive
+                      ? 'border-crimson bg-crimson/10 dark:bg-crimson/20'
+                      : 'border-gray-200 dark:border-dark-border hover:border-crimson hover:bg-crimson/5'
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-2 mb-1">
+                    <div className="font-serif font-bold text-base text-gray-900 dark:text-white leading-tight">
+                      {preset.label}
+                    </div>
+                    <span className="shrink-0 text-[10px] font-mono px-1.5 py-0.5 rounded bg-gray-100 dark:bg-dark-bg text-gray-600 dark:text-gray-400">
+                      {leverCount} lever{leverCount !== 1 ? 's' : ''}
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 leading-relaxed">
+                    {preset.tagline || preset.description}
+                  </p>
+                  <span className="text-[10px] tracking-widest uppercase font-semibold text-crimson line-clamp-1">
+                    {preset.source.title}
+                  </span>
+                </button>
+              )
+            })}
           </div>
         </DataCard>
       </Section>
 
       {/* Levers + Impact panels */}
       <Section icon={<AlertTriangle className="w-8 h-8 text-crimson" />} title="Break Levers">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          {/* Left: levers */}
-          <div className="lg:col-span-2 space-y-3">
-            {LEVERS.map((lever) => (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Lever rail */}
+          <div className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto space-y-3 pr-1">
+            {/* Group tabs */}
+            <div role="tablist" aria-label="Lever groups" className="flex flex-wrap gap-1.5 pb-2 border-b border-gray-200 dark:border-dark-border">
+              {TAB_ORDER.map((t) => {
+                const active = state.tab === t
+                return (
+                  <button
+                    key={t}
+                    role="tab"
+                    aria-selected={active}
+                    type="button"
+                    onClick={() => setTab(t)}
+                    className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 ${
+                      active
+                        ? 'border-crimson bg-crimson text-white'
+                        : 'border-gray-200 dark:border-dark-border text-gray-600 dark:text-gray-400 hover:border-crimson hover:text-crimson'
+                    }`}
+                  >
+                    {TAB_LABELS[t]}
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Primary levers */}
+            {visibleLevers.primary.map((lever) => (
               <SimulatorLever
                 key={lever.id}
                 type={lever.type}
                 label={lever.label}
                 description={lever.description}
-                value={state[lever.id]}
+                value={state.levers[lever.id]}
                 onChange={(v) => updateLever(lever.id, v)}
                 min={lever.min}
                 max={lever.max}
                 step={lever.step}
                 unit={lever.unit}
                 source={lever.source}
+                pillarsTouched={pillarsTouchedByLever[lever.id]?.map((p) => ({
+                  pillarId: p.pillarId,
+                  percent: p.percent,
+                }))}
+                onPillarHover={setFocusedPillar}
+                timeToFailure={lever.timeToFailure}
+                severity={lever.severity}
+                group={lever.group}
+                showGroupBadge={state.tab === 'all'}
+                displayUnit={lever.unit}
               />
             ))}
+
+            {/* Secondary disclosure */}
+            {visibleLevers.secondary.length > 0 && (
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={toggleSecondary}
+                  aria-expanded={state.showSecondary}
+                  className="w-full flex items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-crimson py-2 px-3 rounded-lg border border-dashed border-gray-300 dark:border-dark-border focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+                >
+                  <span>
+                    {state.showSecondary ? 'Hide' : 'Show'} {visibleLevers.secondary.length} more lever{visibleLevers.secondary.length !== 1 ? 's' : ''}
+                  </span>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${state.showSecondary ? 'rotate-180' : ''}`}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                {state.showSecondary && (
+                  <div className="mt-3 space-y-3">
+                    {visibleLevers.secondary.map((lever) => (
+                      <SimulatorLever
+                        key={lever.id}
+                        type={lever.type}
+                        label={lever.label}
+                        description={lever.description}
+                        value={state.levers[lever.id]}
+                        onChange={(v) => updateLever(lever.id, v)}
+                        min={lever.min}
+                        max={lever.max}
+                        step={lever.step}
+                        unit={lever.unit}
+                        source={lever.source}
+                        pillarsTouched={pillarsTouchedByLever[lever.id]?.map((p) => ({
+                          pillarId: p.pillarId,
+                          percent: p.percent,
+                        }))}
+                        onPillarHover={setFocusedPillar}
+                        timeToFailure={lever.timeToFailure}
+                        severity={lever.severity}
+                        group={lever.group}
+                        showGroupBadge={state.tab === 'all'}
+                        displayUnit={lever.unit}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
-          {/* Right: impact viz */}
-          <div className="lg:col-span-3 space-y-6">
-            <SimulatorImpactBars pillarPercent={impact.pillarPercent} />
-            <SimulatorImpactMap districtScore={impact.districtScore} />
+          {/* Right column */}
+          <div className="lg:col-span-8 space-y-6">
+            {/* Row 1: bars + map */}
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              <SimulatorImpactBars
+                pillarPercent={impact.pillarPercent}
+                derivations={barsDerivations}
+                onPillarFocus={setFocusedPillar}
+              />
+              <SimulatorImpactMap
+                districtScore={impact.districtScore}
+                leverContributions={mapContributions}
+                onDistrictFocus={setFocusedDistrict}
+                pendingData={allPendingData ? 'Estimates pending data' : undefined}
+              />
+            </div>
+
+            {/* Row 2: population + historical + cascade */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <NamedPopulationPanel
+                groups={filteredPopulations}
+                totalHeadcount={totalHeadcount}
+                emptyState={
+                  state.focusedDistrict
+                    ? `No named populations matched ${state.focusedDistrict}.`
+                    : 'Move a lever to see who is affected.'
+                }
+              />
+              <HistoricalPrecedentCard
+                analogues={impact.historicalActive}
+                emptyState="Activate a lever to see a historical analogue."
+              />
+              <CascadeTicker
+                leverLabel={impact.cascadeActive[0]?.label}
+                steps={impact.cascadeActive[0]?.steps || []}
+              />
+            </div>
+
+            {/* Row 3: Education downstream */}
+            <EducationCascadePanel narratives={educationNarratives} />
+
+            {/* Focused-pillar hint */}
+            {state.focusedPillar && (
+              <p className="text-xs font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Focused: {PILLAR_LABELS[state.focusedPillar] || state.focusedPillar}
+              </p>
+            )}
           </div>
         </div>
       </Section>
@@ -235,17 +646,23 @@ export default function BreakSimulator() {
               cited source in <code className="font-mono text-xs bg-parchment-100 dark:bg-dark-bg px-1 rounded">src/data/simulatorCoefficients.js</code>.
             </li>
             <li>
-              Magnitudes sum linearly across active levers. Pillar and district scores
-              are capped at 100%; below that they reflect cumulative exposure.
+              <strong>&ldquo;Why this %?&rdquo;</strong> popovers expose the arithmetic:
+              <em> asset-share × dependency-weight × propagation-factor</em>. Each factor
+              is cited; the &ldquo;result&rdquo; is the % at 100% lever pull, scaled
+              linearly to the current lever value.
+            </li>
+            <li>
+              Magnitudes sum across active levers, capped at 100%. The named-population
+              panel de-duplicates cohorts so multi-lever scenarios don&apos;t double-count.
             </li>
             <li>
               Coefficients are <strong>upper-bound stress-test estimates</strong>, not
-              probability-weighted forecasts. The simulator is intended to expose which
-              pillars and districts break first, not to predict the exact drawdown.
+              probability-weighted forecasts. Gaps the sources don&apos;t cover are flagged
+              under <code className="font-mono text-xs bg-parchment-100 dark:bg-dark-bg px-1 rounded">pendingData</code>.
             </li>
             <li>
-              Gaps the sources don&apos;t cover (e.g., exact 2026 SSP live-storage, NPCI
-              outage cost per hour) are flagged in the data file under <code className="font-mono text-xs bg-parchment-100 dark:bg-dark-bg px-1 rounded">pendingData</code>.
+              Lever groups: {Object.values(LEVER_GROUPS).map((g) => g.label).join(' · ')}.
+              The 13 pillars range from infrastructure and energy to digital sovereignty.
             </li>
           </ul>
         </DataCard>

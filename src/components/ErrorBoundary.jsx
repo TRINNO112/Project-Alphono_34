@@ -1,6 +1,19 @@
 import { Component } from 'react'
 import { AlertTriangle } from 'lucide-react'
 
+/**
+ * ErrorBoundary - Class component that catches JavaScript errors in child component tree
+ *
+ * Features:
+ * - Catches errors during rendering, in lifecycle methods, and in constructors
+ * - Displays themed error fallback UI
+ * - Provides reload and home navigation options
+ * - Logs error details to console
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Child components to wrap
+ * @returns {JSX.Element} The rendered children or error fallback
+ */
 export default class ErrorBoundary extends Component {
   constructor(props) {
     super(props)

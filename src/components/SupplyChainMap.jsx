@@ -8,6 +8,19 @@ import { ArrowRight, ShieldAlert } from 'lucide-react'
 // === Local GeoJSON files (bundled in public/geo/ for offline reliability) ===
 const indiaUrl = "/geo/india.geojson";
 
+/**
+ * SupplyChainMap - Interactive world map showing Gujarat's external supply chain dependencies
+ *
+ * Features:
+ * - SVG-based map using react-simple-maps with local GeoJSON files
+ * - Three foreign dependency regions: China (pharma APIs), Middle East (crude oil), Indonesia (thermal coal)
+ * - Domestic labor flow visualization from 10 Indian states
+ * - Hover tooltips and click-to-inspect overlays
+ * - Accessible with ARIA labels and figcaption
+ *
+ * @returns {JSX.Element} The rendered supply chain map
+ */
+
 const middleEastCountries = [
   "/geo/SAU.geo.json", // Saudi Arabia
   "/geo/ARE.geo.json", // UAE

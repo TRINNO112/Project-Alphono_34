@@ -2,11 +2,15 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 /**
+ * SearchHighlight - Highlights search results after navigation
+ *
  * Mounts once inside <main>. Reads `location.state.searchQuery` (set by
  * SearchBar when a result is clicked) and, after the target page renders,
  * finds the first matching text in the main content area, wraps it in
  * <mark class="search-hit">, scrolls it into view, pulses it for ~3s,
  * then fades + unwraps.
+ *
+ * @returns {null} This component renders nothing (side-effect only)
  */
 export default function SearchHighlight() {
   const location = useLocation()

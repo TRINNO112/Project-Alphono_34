@@ -1,3 +1,11 @@
+/**
+ * SkeletonBlock - Basic skeleton loading block with shimmer animation
+ *
+ * @param {Object} props
+ * @param {string} [props.className=""] - Additional CSS classes
+ * @param {string} [props.height="h-48"] - Height class for the block
+ * @returns {JSX.Element} The rendered skeleton block
+ */
 export function SkeletonBlock({ className = '', height = 'h-48' }) {
   return (
     <div
@@ -19,6 +27,13 @@ export function SkeletonChart({ className = '' }) {
   )
 }
 
+/**
+ * SkeletonCard - Skeleton placeholder for card components
+ *
+ * @param {Object} props
+ * @param {string} [props.className=""] - Additional CSS classes
+ * @returns {JSX.Element} The rendered card skeleton
+ */
 export function SkeletonCard({ className = '' }) {
   return (
     <div className={`rounded-2xl border border-gray-200 dark:border-dark-border p-6 space-y-4 ${className}`}>

@@ -3,12 +3,20 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { PanelLeftOpen, PanelLeftClose } from 'lucide-react'
 
 /**
- * Left-rail table-of-contents.
+ * ScrollSpy - Left-rail table of contents with active section tracking
  *
- * - Collapsed by default (just a vertical set of dots + expand handle).
- * - When expanded: a slim sticky panel with section labels.
- * - Active-item highlight is positioned from a measured ref, not hardcoded
- *   math — so the last item never misaligns regardless of spacing.
+ * Features:
+ * - Collapsed by default (dots + expand handle)
+ * - Expanded panel with section labels and progress indicator
+ * - Active section highlight using measured refs (no hardcoded math)
+ * - Intersection Observer for scroll tracking
+ * - Click outside to close
+ *
+ * @param {Object} props
+ * @param {Array<Object>} props.sections - Array of section objects
+ * @param {string} props.sections[].id - Section ID for anchor linking
+ * @param {string} props.sections[].label - Section display label
+ * @returns {JSX.Element} The rendered scroll spy component
  */
 export default function ScrollSpy({ sections }) {
   const [activeId, setActiveId] = useState('')

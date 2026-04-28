@@ -1,0 +1,518 @@
+// Group A — Materials (5 levers): russian-crude, chinese-api-halt, dahej-lng-outage, solar-pv-import, pharma-spof
+
+export const GROUP_A_LEVERS = [
+  {
+    id: 'russian-crude',
+    group: 'materials',
+    tier: 'primary',
+    severity: 'critical',
+    label: 'Russian Crude Supply Cut',
+    description: 'Jamnagar (RIL) + Vadinar (Nayara) lose Russian barrels under EU/US sanctions.',
+    type: 'slider',
+    min: 0, max: 100, step: 5, unit: '%',
+    defaultValue: 0,
+    source: {
+      title: 'Reliance stops Russian crude into Jamnagar SEZ (Business Standard, Nov 2025)',
+      url: 'https://www.business-standard.com/industry/news/reliance-stops-import-of-russian-crude-oil-into-jamnagar-s-sez-refinery-125112001129_1.html',
+    },
+    derivation: {
+      materials: {
+        factors: [
+          { label: 'RIL+Nayara Russian share (weighted avg)', value: 0.56, cite: 'src-aljazeera-2025' },
+          { label: 'Materials feedstock weight', value: 0.85 },
+          { label: 'Propagation factor', value: 1.40 },
+        ],
+        formula: 'asset-share \u00d7 feedstock-weight \u00d7 propagation',
+        result: 66,
+      },
+      energy: {
+        factors: [
+          { label: 'Refined-product share of GJ output', value: 0.38 },
+          { label: 'Dependency weight', value: 0.90 },
+          { label: 'Propagation factor', value: 1.30 },
+        ],
+        formula: 'output-share \u00d7 dependency \u00d7 propagation',
+        result: 44,
+      },
+      economics: {
+        factors: [
+          { label: 'Refining + petchem share of GSDP', value: 0.22 },
+          { label: 'Shock fraction', value: 0.55 },
+          { label: 'Propagation factor', value: 1.50 },
+        ],
+        formula: 'GSDP-share \u00d7 shock \u00d7 propagation',
+        result: 18,
+      },
+      'chemical-governance': {
+        factors: [
+          { label: 'Cracker feedstock dependency', value: 0.70 },
+          { label: 'Propagation factor', value: 1.20 },
+        ],
+        formula: 'dependency \u00d7 propagation (asset-share term not itemised \u2014 research gap)',
+        result: 42,
+      },
+    },
+    affectedPopulations: [
+      { label: 'RIL Jamnagar refinery + petchem workers', headcount: 67000, locality: 'Jamnagar', ethnicity: 'gujarati-general' },
+      { label: 'Nayara Vadinar workers', headcount: 6000, locality: 'Devbhumi Dwarka', ethnicity: 'gujarati-general' },
+      { label: 'Truckers (Sikka + Vadinar SBM)', headcount: 240000, locality: 'Coastal corridor' },
+      { label: 'Saurashtra/Kutch farmers on diesel pumps', headcount: 1800000, locality: 'Saurashtra/Kutch', ethnicity: 'gujarati-general' },
+      { label: 'Petchem-downstream workers', headcount: 420000, locality: 'Dahej/Vapi/Ankleshwar' },
+    ],
+    affectedDistricts: [
+      { name: 'Jamnagar', reason: 'RIL SEZ + DTA, Sikka port \u2014 direct GRM hit' },
+      { name: 'Devbhumi Dwarka', reason: 'Nayara directly sanctioned' },
+      { name: 'Bharuch', reason: 'Naphtha/aromatic cracker feedstock shortage at Dahej/Hazira' },
+      { name: 'Surat', reason: 'Second-order: dyes, plastics intermediates' },
+      { name: 'Valsad', reason: 'Vapi chemical estate downstream' },
+      { name: 'Kutch', reason: 'Mundra refined-products trucking spillover' },
+    ],
+    cascadeSteps: [
+      { n: 1, timeBucket: 'Day 0\u20137', text: 'Sanctioned cargoes diverted; Vadinar utilization 90%\u219255%.', cite: 'src-reuters-oct2025' },
+      { n: 2, timeBucket: 'Week 2\u20134', text: 'RIL substitutes with Saudi/UAE term barrels at $4\u20137/bbl premium; GRM falls $9\u2192$4.', cite: 'src-crea' },
+      { n: 3, timeBucket: 'Month 1\u20132', text: 'Pump prices +\u20b93\u20136/L; PPAC dips into 5.33 MMT strategic reserve (~9.5 days).', cite: 'src-ppac' },
+      { n: 4, timeBucket: 'Month 2\u20133', text: 'Polymer prices +12\u201318%; Morbi tile glaze + Surat polyester yarn cost up.' },
+      { n: 5, timeBucket: 'Month 3\u20136', text: 'Nayara forced sale or unit shutdowns; ~6k direct + 25k indirect jobs at risk.' },
+      { n: 6, timeBucket: 'Year 1', text: 'Forex bill +$9\u201314bn; rupee 90+/USD; CPI fuel index +4\u20137%.' },
+    ],
+    historicalAnalogue: {
+      title: '2018-19 Iranian crude phase-out',
+      date: 'Nov 2018 \u2013 Apr 2019',
+      summary: 'Under US secondary sanctions, India\'s Iranian intake fell 23.5 MMT \u2192 0 in 6 months. Refiners switched to Saudi/Iraqi crude; pump prices +~\u20b94/L.',
+      metric: { label: 'Recovery', value: '~12 months' },
+      sources: [
+        { title: 'PPAC / MoPNG 2019 \u2014 Iran phase-out data', url: 'https://ppac.gov.in/' },
+      ],
+    },
+    timeToFailure: '~25\u201330 days (5.33 MMT strategic reserve + ~17\u201322 days commercial stocks)',
+    pillarImpacts: {
+      materials: 0.65,
+      energy: 0.35,
+      economics: 0.40,
+      infrastructure: 0.15,
+      'chemical-governance': 0.42,
+    },
+    districts: ['Jamnagar', 'Devbhumi Dwarka', 'Bharuch'],
+    gdpCrorePerUnit: 1100,
+    jobsPerUnit: 2600,
+    sources: [
+      { title: 'Al Jazeera (Aug 2025)', url: 'https://www.aljazeera.com/economy/2025/8/22/behind-indias-massive-russian-oil-imports' },
+      { title: 'Business Standard (Nov 2025)', url: 'https://www.business-standard.com/industry/news/reliance-stops-import-of-russian-crude-oil-into-jamnagar-s-sez-refinery-125112001129_1.html' },
+      { title: 'Wikipedia \u2014 Nayara Energy / EU 18th sanctions', url: 'https://en.wikipedia.org/wiki/Nayara_Energy' },
+      { title: 'BLiTZ (Nov 22 2025)', url: 'https://weeklyblitz.net/2025/11/22/reliances-russian-crude-phase-out-signals-indias-balancing-act-amid-intensifying-sanctions-pressure/' },
+    ],
+  },
+
+  {
+    id: 'chinese-api-halt',
+    group: 'materials',
+    tier: 'primary',
+    severity: 'critical',
+    label: 'Chinese API Shipment Halt',
+    description: 'China-side disruption halts containerized API/KSM shipments via Nhava Sheva and Mundra. Gujarat formulators (Ankleshwar, Vapi, Vatva, Jhagadia) run out of Key Starting Materials in 30\u201360 days.',
+    type: 'toggle',
+    defaultValue: false,
+    source: {
+      title: 'India struggling to free pharma from Chinese APIs (Policy Circle)',
+      url: 'https://www.policycircle.org/industry/apis-import-depencence-on-china/',
+    },
+    derivation: {
+      'chemical-governance': {
+        factors: [
+          { label: 'China KSM share of India APIs', value: 0.75, cite: 'src-orf' },
+          { label: 'Cluster concentration (Gujarat 5-district)', value: 0.85 },
+          { label: 'Propagation factor', value: 1.30 },
+        ],
+        formula: 'china-share \u00d7 cluster-concentration \u00d7 propagation',
+        result: 83,
+      },
+      materials: {
+        factors: [
+          { label: 'KSM share of pharma materials', value: 0.70 },
+          { label: 'Pharma share of materials sector', value: 0.45 },
+          { label: 'Propagation factor', value: 1.20 },
+        ],
+        formula: 'KSM-share \u00d7 sector-share \u00d7 propagation',
+        result: 38,
+      },
+      economics: {
+        factors: [
+          { label: 'Pharma share of GJ GSDP', value: 0.08 },
+          { label: 'Shock fraction', value: 0.70 },
+          { label: 'Propagation factor', value: 1.40 },
+        ],
+        formula: 'GSDP-share \u00d7 shock \u00d7 propagation',
+        result: 8,
+      },
+      labor: {
+        factors: [
+          { label: 'Gujarat pharma cluster workforce share', value: 0.25 },
+          { label: 'Propagation factor', value: 1.00 },
+        ],
+        formula: 'workforce-share \u00d7 propagation (asserted)',
+        result: 25,
+      },
+    },
+    affectedPopulations: [
+      { label: 'Gujarat pharma workers (cluster)', headcount: 550000, locality: 'Ankleshwar/Vapi/Vatva/Jhagadia/Sanand' },
+      { label: 'Bihar/UP/Odisha migrant workers in pharma SEZs', headcount: 180000, locality: 'Bharuch/Valsad', ethnicity: 'bihari-up-odisha-migrant' },
+      { label: 'Chronic-medication patients in Gujarat', headcount: 14000000, locality: 'Statewide' },
+      { label: 'National daily-prescription patients', headcount: 280000000, locality: 'India' },
+      { label: 'African + US generics-dependent patients', headcount: 250000000, locality: 'Export markets' },
+    ],
+    affectedDistricts: [
+      { name: 'Bharuch', reason: 'Ankleshwar/Jhagadia 700+ API/intermediate units' },
+      { name: 'Valsad', reason: 'Vapi GIDC \u2014 India\'s largest chemical estate, 400+ units' },
+      { name: 'Ahmedabad', reason: 'Vatva/Naroda/Odhav 600+ units; Zydus, Cadila, Torrent' },
+      { name: 'Vadodara', reason: 'Padra-Jambusar \u2014 Sun Pharma, Alembic' },
+      { name: 'Mehsana', reason: 'Kadi \u2014 Intas, Claris' },
+    ],
+    cascadeSteps: [
+      { n: 1, timeBucket: 'Week 1\u20132', text: 'Inventory burn; Ankleshwar batch sizes shrink 40%.' },
+      { n: 2, timeBucket: 'Week 3\u20136', text: 'First-line antibiotic prices +200\u2013400% (paracetamol \u20b9250\u2192\u20b9900/kg, COVID 2020 precedent).' },
+      { n: 3, timeBucket: 'Week 6\u201310', text: 'TB programme rifampicin/INH stock-outs; relapse climbs (24L active pts India, 3L Gujarat).' },
+      { n: 4, timeBucket: 'Month 3', text: 'Heparin shortage delays cardiac surgery (~80,000/yr Gujarat); 2008 Baxter precedent: 81 US deaths.' },
+      { n: 5, timeBucket: 'Month 4\u20136', text: 'Pharma exports collapse \u2014 Gujarat ~$10bn/yr \u2014 forex shock; layoffs in Vapi/Ankleshwar.' },
+      { n: 6, timeBucket: 'Month 6\u201312', text: '+12,000\u201325,000 excess Indian deaths over 12 months (extrapolated COVID supply analyses).' },
+    ],
+    historicalAnalogue: {
+      title: 'Feb\u2013Apr 2020 Hubei lockdown',
+      date: 'Feb\u2013Apr 2020',
+      summary: 'Paracetamol API tripled in 6 weeks; penicillin KSM +40% in a month; NPPA raised heparin ceiling 50%. Recovery ~8 months.',
+      metric: { label: 'Recovery', value: '~8 months' },
+      sources: [
+        { title: 'Policy Circle / PHARMEXCIL 2020', url: 'https://www.policycircle.org/industry/apis-import-depencence-on-china/' },
+      ],
+    },
+    timeToFailure: 'Pharmacy-level shortage onset ~8\u201310 weeks (formulator inventory 30\u201345d, KSM buffer 60\u201375d)',
+    pillarImpacts: {
+      materials: 0.38,
+      'chemical-governance': 0.83,
+      economics: 0.20,
+      labor: 0.25,
+    },
+    districts: ['Bharuch', 'Valsad', 'Ahmedabad', 'Vadodara'],
+    gdpCrorePerUnit: 20000,
+    jobsPerUnit: 125000,
+    pendingData: 'Gujarat-cluster-specific API % (only India-wide 60\u201380% cited); economics derivation is sectoral not statewide',
+    sources: [
+      { title: 'ORF \u2014 India\'s rise as global pharmacy masks deep dependence on China', url: 'https://www.orfonline.org/expert-speak/india-s-rise-as-global-pharmacy-masks-deep-dependence-on-china' },
+      { title: 'Policy Circle \u2014 API import dependence on China', url: 'https://www.policycircle.org/industry/apis-import-depencence-on-china/' },
+      { title: 'RIS Discussion Paper 268 (Chaudhuri)', url: 'https://ris.org.in/sites/default/files/Publication/DP%20268%20Prof%20Sudip%20Chaudhuri.pdf' },
+      { title: 'BW Healthcare \u2014 API dependence', url: 'https://www.bwhealthcareworld.com/article/api-dependence-indias-path-to-self-reliance-in-complex-drug-manufacturing-554815' },
+    ],
+  },
+
+  {
+    id: 'dahej-lng-outage',
+    group: 'materials',
+    tier: 'primary',
+    severity: 'critical',
+    label: 'Dahej / Hazira LNG Outage',
+    description: 'Petronet Dahej (22.5 MMTPA) suffers a multi-week outage \u2014 jetty cyclone damage, regas-train fire, or Hormuz/Bab-el-Mandeb shipping disruption. Hazira + Mundra cannot fully absorb. Gujarat = ~80% of India\'s LNG landing capacity.',
+    type: 'slider',
+    min: 0, max: 14, step: 1, unit: ' days',
+    defaultValue: 0,
+    source: {
+      title: 'Petronet Dahej expansion to 22.5 MMTPA (Shipping Tribune)',
+      url: 'https://www.shippingtribune.com/news/shipping/Petronet+LNG+commissions+Dahej+expansion,+capacity+rises+to+22.5+MMTPA',
+    },
+    derivation: {
+      energy: {
+        factors: [
+          { label: 'Dahej share of national LNG', value: 0.74, cite: 'src-petronet-q3-fy26' },
+          { label: 'LNG share of GJ energy mix', value: 0.32 },
+          { label: 'Propagation factor', value: 1.50 },
+        ],
+        formula: 'dahej-share \u00d7 lng-share \u00d7 propagation (35% national; ~72% Gujarat-specific)',
+        result: 35,
+      },
+      materials: {
+        factors: [
+          { label: 'Gas-feedstock fertilizer + petchem share', value: 0.45 },
+          { label: 'Propagation factor', value: 1.20 },
+        ],
+        formula: 'gas-feedstock-share \u00d7 propagation (asset-share term not explicit \u2014 research gap)',
+        result: 38,
+      },
+      'chemical-governance': {
+        factors: [
+          { label: 'Petchem cracker dependency', value: 0.55 },
+          { label: 'Propagation factor', value: 1.10 },
+        ],
+        formula: 'cracker-dependency \u00d7 propagation (asset-share term not explicit \u2014 research gap)',
+        result: 30,
+      },
+      agriculture: {
+        factors: [
+          { label: 'Urea share dependent on GNFC/IFFCO/GSFC', value: 0.30 },
+          { label: 'Propagation factor', value: 1.00 },
+        ],
+        formula: 'urea-share \u00d7 propagation (asserted from cascade)',
+        result: 30,
+      },
+    },
+    affectedPopulations: [
+      { label: 'Morbi ceramic + glass workers (450 ceramic + 250 glass units)', headcount: 800000, locality: 'Morbi' },
+      { label: 'Migrant ceramic workers (UP/Bihar/Odisha)', headcount: 120000, locality: 'Morbi', ethnicity: 'up-bihar-odisha-migrant' },
+      { label: 'Fertilizer workers + dependent farmers', headcount: 200000, locality: 'Bharuch/Vadodara/Kalol' },
+      { label: 'CGD/PNG households', headcount: 4500000, locality: 'Ahmedabad/Surat/Vadodara/Rajkot' },
+      { label: 'CNG auto/taxi drivers', headcount: 300000, locality: 'Statewide' },
+    ],
+    affectedDistricts: [
+      { name: 'Bharuch', reason: 'Dahej terminal + GNFC urea \u2014 direct' },
+      { name: 'Surat', reason: 'Hazira terminal \u2014 ONGC + Reliance + Shell' },
+      { name: 'Kutch', reason: 'Mundra GSPC-Adani LNG, cushion limited' },
+      { name: 'Morbi', reason: 'Ceramic capital, 65% of India tile output, gas-starved within 48h' },
+      { name: 'Ahmedabad', reason: 'CGD/PNG residential + CNG' },
+      { name: 'Vadodara', reason: 'GSFC fertilizer + CGD' },
+      { name: 'Rajkot', reason: 'CGD residential + Saurashtra industrial' },
+    ],
+    cascadeSteps: [
+      { n: 1, timeBucket: 'Hour 0\u201348', text: 'Dahej regas drops; grid pressure falls; Morbi 450 tile + 250 glass units forced shutdown (Iran-war Mar 2026 precedent).' },
+      { n: 2, timeBucket: 'Day 3\u20137', text: 'GNFC Bharuch urea halts; KKD/IFFCO follow within a week \u2014 ~30% GJ urea offline; kharif sowing at risk.' },
+      { n: 3, timeBucket: 'Week 2', text: 'Power-exchange RTC prices spike to \u20b910/kWh; load-shedding in semi-urban Saurashtra.' },
+      { n: 4, timeBucket: 'Week 3\u20134', text: 'CNG rationing in Ahmedabad/Surat; auto-rickshaw fares +25%.' },
+      { n: 5, timeBucket: 'Month 1\u20132', text: 'Morbi cluster exodus \u2014 1.2L UP/Bihar/Odisha migrant workers return home (2022/2023 precedent).' },
+      { n: 6, timeBucket: 'Month 2\u20133', text: 'Tile/glass exports \u201360%; Saudi/Gulf customers shift to Spanish/Italian suppliers; permanent market loss ~18%.' },
+    ],
+    historicalAnalogue: {
+      title: 'Iran-Israel war Mar 2026 / Russia-Ukraine 2022',
+      date: 'Mar 2026 / 2022',
+      summary: 'Hormuz risk doubled LNG spot to $22/MMBtu; 450 of 700 Morbi units shut for 11 weeks; partial recovery July 2026, full Oct 2026. 2022 spike: Petronet utilization 95%\u219265% for 9 months.',
+      metric: { label: 'Morbi shutdown duration', value: '11 weeks' },
+      sources: [
+        { title: 'Business Standard (Apr 2026)', url: 'https://www.business-standard.com/' },
+      ],
+    },
+    timeToFailure: 'Industrial shutdown onset 48\u201396 hours (Dahej storage 9 days at full draw, grid linepack ~3 days)',
+    pillarImpacts: {
+      energy: 0.35,
+      materials: 0.38,
+      'chemical-governance': 0.30,
+      agriculture: 0.30,
+      economics: 0.12,
+      infrastructure: 0.08,
+    },
+    districts: ['Bharuch', 'Surat', 'Morbi', 'Kutch'],
+    gdpCrorePerUnit: 1700,
+    jobsPerUnit: 8000,
+    pendingData: 'Materials & Chemical-Governance asset-share terms not itemized in research; direct-jobs count at terminals',
+    sources: [
+      { title: 'Petronet LNG Q3 FY26 results', url: 'https://www.petronetlng.in/w/press-release-q3-2025-26-financial-results' },
+      { title: 'Energy Connects \u2014 Petronet LNG ambitions', url: 'https://www.energyconnects.com/opinion/thought-leadership/2025/july/petronet-lng-powering-india-s-bold-ambitions-in-natural-gas/' },
+      { title: 'DCFmodeling \u2014 Petronet history & ownership', url: 'https://www.dcfmodeling.com/blogs/history/petronetns-history-mission-ownership' },
+      { title: 'DeshGujarat \u2014 Morbi gas crisis (Mar 2026)', url: 'https://deshgujarat.com/2026/03/18/over-400-ceramic-units-in-morbi-shut-due-to-gas-crisis-amid-west-asia-war/' },
+    ],
+  },
+
+  {
+    id: 'solar-pv-import',
+    group: 'materials',
+    tier: 'secondary',
+    severity: 'high',
+    label: 'Chinese Solar PV Import Block',
+    description: 'China imposes export controls on polysilicon/wafers/modules. Adani Khavda (30 GW target) and Gujarat developers stop receiving Chinese modules. Domestic ALMM assemblers exhaust polysilicon stock within 90 days; India\'s 500 GW non-fossil 2030 target slips 2\u20134 years.',
+    type: 'slider',
+    min: 0, max: 100, step: 5, unit: '%',
+    defaultValue: 0,
+    source: {
+      title: 'India\'s solar success remains wired to the dragon (Down to Earth)',
+      url: 'https://www.downtoearth.org.in/energy/indias-solar-success-is-riding-high-but-remains-wired-to-the-dragon',
+    },
+    derivation: {
+      'green-tech': {
+        factors: [
+          { label: 'China supply-chain share (polysilicon/wafer/module)', value: 0.75, cite: 'src-dte' },
+          { label: 'Gujarat exposure (Khavda + Mundra + Sanand)', value: 0.85 },
+          { label: 'Propagation factor', value: 1.40 },
+        ],
+        formula: 'china-share \u00d7 gujarat-exposure \u00d7 propagation',
+        result: 89,
+      },
+      energy: {
+        factors: [
+          { label: 'Solar share of GJ generation', value: 0.18 },
+          { label: 'Dependency weight', value: 0.80 },
+          { label: 'Propagation factor', value: 1.20 },
+        ],
+        formula: 'solar-share \u00d7 dependency \u00d7 propagation (short-run 17%; year-3 ~42% \u2014 year-3 derivation factors not itemized, research gap)',
+        result: 17,
+      },
+      economics: {
+        factors: [
+          { label: 'Renewable capex share of GJ FDI', value: 0.14 },
+          { label: 'Shock fraction', value: 0.60 },
+          { label: 'Propagation factor', value: 1.30 },
+        ],
+        formula: 'capex-share \u00d7 shock \u00d7 propagation',
+        result: 11,
+      },
+      materials: {
+        factors: [
+          { label: 'Polysilicon/wafer share of solar materials', value: 0.65 },
+          { label: 'Gujarat assembly concentration', value: 0.55 },
+          { label: 'Propagation factor', value: 1.10 },
+        ],
+        formula: 'polysilicon-share \u00d7 concentration \u00d7 propagation (asserted)',
+        result: 39,
+      },
+    },
+    affectedPopulations: [
+      { label: 'Khavda direct construction + O&M workers', headcount: 42000, locality: 'Kutch (Khavda)' },
+      { label: 'Module-factory workers (Mundra + Sanand)', headcount: 18000, locality: 'Kutch/Ahmedabad' },
+      { label: 'EPC migrant workers (Bihari/Odiya/Rajasthani)', headcount: 14000, locality: 'Kutch', ethnicity: 'bihari-odiya-rajasthani-migrant' },
+      { label: 'Gujarat electricity consumers (PPA tariff exposure)', headcount: 20000000, locality: 'Statewide' },
+      { label: 'National solar EPC/O&M/supply-chain workers', headcount: 1200000, locality: 'India' },
+      { label: 'Banni grasslands village population (resettlement freeze)', headcount: 8000, locality: 'Kutch \u2014 Banni' },
+    ],
+    affectedDistricts: [
+      { name: 'Kutch', reason: 'Khavda + Mundra \u2014 direct construction, O&M, panel landings' },
+      { name: 'Ahmedabad', reason: 'Sanand \u2014 Tata Power Solar, Waaree assembly' },
+      { name: 'Mehsana', reason: 'Solar farms (Charanka adjacency)' },
+      { name: 'Patan', reason: 'Charanka solar park' },
+      { name: 'Banaskantha', reason: 'Solar farms + transmission' },
+      { name: 'Surat', reason: 'Inverter, BoS components (Hitachi, Schneider)' },
+      { name: 'Vadodara', reason: 'BoS components downstream' },
+    ],
+    cascadeSteps: [
+      { n: 1, timeBucket: 'Week 0\u20134', text: 'Module shipments stall; bonded-warehouse stocks burn \u2014 domestic spot prices +30\u201350%.' },
+      { n: 2, timeBucket: 'Month 2\u20133', text: 'Khavda phase-3 EPC slows; Adani delays 5 GW PPA delivery to SECI/GUVNL.' },
+      { n: 3, timeBucket: 'Month 3\u20136', text: '~14,000 EPC workers (mostly migrant Bihari/Odiya/Rajasthani) demobilized.' },
+      { n: 4, timeBucket: 'Month 6\u20139', text: 'GUVNL invokes delay penalties; Adani Green stock-loss precedent (Hindenburg Jan 2023 wiped $150bn).' },
+      { n: 5, timeBucket: 'Year 1', text: 'Renewable-capacity addition FY27 falls 35 GW \u2192 ~18 GW; coal generation rises; CO2 +85 Mt.' },
+      { n: 6, timeBucket: 'Year 1\u20133', text: 'Discoms re-lock into thermal PPAs at \u20b96/kWh vs ~\u20b92.4/kWh solar.' },
+    ],
+    historicalAnalogue: {
+      title: 'FY22\u201323 BCD imposition + 2023 US UFLPA',
+      date: 'FY22\u201323 / 2023',
+      summary: 'BCD on modules (40%) and cells (25%) raised module prices +35\u201340% for 9 months; 12 GW pipelined projects delayed 6\u201318 months. UFLPA blocked Xinjiang polysilicon at US ports; traceability scramble lasted 14 months.',
+      metric: { label: 'Module price impact', value: '+35\u201340% for 9 months' },
+      sources: [
+        { title: 'MNRE/CEEW BCD analysis', url: 'https://www.ceew.in/' },
+      ],
+    },
+    timeToFailure: 'EPC slowdown onset 6\u20138 weeks; module bonded-warehouse stock ~60d, polysilicon at Mundra ~75\u201390d',
+    pillarImpacts: {
+      'green-tech': 0.89,
+      energy: 0.17,
+      economics: 0.11,
+      materials: 0.39,
+      labor: 0.10,
+    },
+    districts: ['Kutch', 'Ahmedabad', 'Patan'],
+    // rough: $7bn/yr FY24 imports + Khavda capex slip + GSDP-at-risk over capacity-addition slip; ~₹14k cr at 100% \u00f7 100% units \u2248 ₹140/% as upper bound
+    gdpCrorePerUnit: 140,
+    // rough: 42k Khavda + 18k assembly + 14k migrant EPC \u2248 74k direct at 100% \u00f7 100 \u2248 740/%
+    jobsPerUnit: 740,
+    pendingData: 'Year-3 Energy result (42%) derivation factors not itemized in research; long-run capacity-miss GDP impact under-specified',
+    sources: [
+      { title: 'Down to Earth \u2014 India solar wired to the dragon', url: 'https://www.downtoearth.org.in/energy/indias-solar-success-is-riding-high-but-remains-wired-to-the-dragon' },
+      { title: 'PV Magazine India (Jan 2025) \u2014 evolving solar manufacturing', url: 'https://www.pv-magazine-india.com/2025/01/02/the-evolving-landscape-of-solar-manufacturing/' },
+      { title: 'India Briefing \u2014 Investor\'s guide to solar manufacturing', url: 'https://www.india-briefing.com/news/an-investors-guide-to-solar-manufacturing-in-india-39923.html/' },
+      { title: 'PV-Tech \u2014 Adani Green 5 GW Khavda PPA', url: 'https://www.pv-tech.org/adani-green-energy-inks-5gw-ppa-for-khavda-pv-project/' },
+    ],
+  },
+
+  {
+    id: 'pharma-spof',
+    group: 'materials',
+    tier: 'secondary',
+    severity: 'critical',
+    label: 'Pharma Single-Point-of-Failure (SPOF)',
+    description: 'Targeted KSM/factory failure (e.g., Shijiazhuang penicillin G corridor or Hubei rifampicin) \u2014 not a blanket China halt. India has near-zero domestic capacity for these molecules; mortality is direct and quantifiable in weeks.',
+    type: 'toggle',
+    defaultValue: false,
+    source: {
+      title: 'USCC Testimony \u2014 Stephen Schondelmeyer (June 2025)',
+      url: 'https://www.uscc.gov/sites/default/files/2025-06/Stephen_Schondelmeyer_Testimony.pdf',
+    },
+    derivation: {
+      'chemical-governance': {
+        factors: [
+          { label: 'Single-source-API count (35 of 53)', value: 0.66, cite: 'src-bw-healthcare' },
+          { label: 'Patient-mortality weight', value: 0.90 },
+          { label: 'Propagation factor', value: 1.30 },
+        ],
+        formula: 'single-source-share \u00d7 mortality-weight \u00d7 propagation',
+        result: 77,
+      },
+      materials: {
+        factors: [
+          { label: 'Named-molecule share of total API basket', value: 0.22 },
+          { label: 'Propagation factor', value: 1.10 },
+        ],
+        formula: 'named-share \u00d7 propagation (dependency-weight term not itemized \u2014 research gap)',
+        result: 24,
+      },
+      education: {
+        factors: [
+          { label: 'Indirect surgery/recovery gaps for diamond/textile workers', value: 0.06 },
+        ],
+        formula: 'asserted \u2014 arithmetic not itemized (research gap)',
+        result: 6,
+      },
+      economics: {
+        factors: [
+          { label: 'Productivity loss from illness', value: 0.09 },
+        ],
+        formula: 'asserted \u2014 arithmetic not itemized (research gap)',
+        result: 9,
+      },
+    },
+    affectedPopulations: [
+      { label: 'Active TB patients (rifampicin/INH)', headcount: 2700000, locality: 'India (1.4L Gujarat)' },
+      { label: 'Cardiac-surgery + dialysis patients (heparin)', headcount: 520000, locality: 'India' },
+      { label: 'Paediatric rheumatic-heart-disease patients (penicillin G)', headcount: 700000, locality: 'India' },
+      { label: 'Cancer patients (cisplatin/paclitaxel)', headcount: 1400000, locality: 'India \u2014 ~30% China-API regimens' },
+      { label: 'Insulin-dependent diabetics', headcount: 15000000, locality: 'India' },
+      { label: 'High-burden TB district populations', headcount: 12000000, locality: 'Surat/Ahmedabad/Vadodara/Rajkot \u2014 slum + migrant', ethnicity: 'mixed-migrant-and-local' },
+    ],
+    affectedDistricts: [
+      { name: 'Surat', reason: 'High-burden TB district; slum + migrant population' },
+      { name: 'Ahmedabad', reason: 'High-burden TB + tertiary cardiac centres' },
+      { name: 'Vadodara', reason: 'High-burden TB + Sun Pharma/Alembic formulators' },
+      { name: 'Rajkot', reason: 'High-burden TB; Saurashtra district hospital network' },
+      { name: 'Bharuch', reason: 'Ankleshwar formulator cluster \u2014 batch idling' },
+      { name: 'Valsad', reason: 'Vapi formulator cluster' },
+    ],
+    cascadeSteps: [
+      { n: 1, timeBucket: 'Week 1\u20132', text: 'Hospital pharmacies note shortage; black-market premiums emerge (COVID remdesivir 20\u00d7 MRP precedent).' },
+      { n: 2, timeBucket: 'Week 3\u20134', text: 'TB DOTS programme falters \u2014 defaulter rate doubles 4% \u2192 ~9%.' },
+      { n: 3, timeBucket: 'Month 2', text: 'Cardiac procedures deferred \u2014 ~12,000 surgeries/month at risk in India; 2\u20134% in-window mortality.' },
+      { n: 4, timeBucket: 'Month 3\u20134', text: 'Neonatal sepsis case-fatality rises 14% \u2192 22\u201325% in district hospitals.' },
+      { n: 5, timeBucket: 'Month 6', text: 'Estimated excess deaths 8,000\u201318,000 nationally; Gujarat share ~700\u20131,400.' },
+      { n: 6, timeBucket: 'Month 6\u201312', text: 'Drug-resistance emergence accelerated; long-tail public-health cost \u20b915\u201325k crore.' },
+    ],
+    historicalAnalogue: {
+      title: '2008 Baxter heparin contamination + 2020 COVID Hubei lockdown',
+      date: '2008 / 2020',
+      summary: '2008 Baxter: 81 US deaths, 785 adverse events from porcine intestinal mucosa, Changzhou plant. 2020 Hubei: NPPA raised heparin ceiling 50%; paracetamol +200%; penicillin KSM +40% in one month.',
+      metric: { label: 'Baxter US deaths', value: '81' },
+      sources: [
+        { title: 'PMC \u2014 COVID-19 pharma supply chain', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7137871/' },
+      ],
+    },
+    timeToFailure: 'Critical-drug stock-out onset 3\u20135 weeks for single-source molecules (hospital 7\u201314d, distributor 30d)',
+    pillarImpacts: {
+      'chemical-governance': 0.77,
+      materials: 0.24,
+      education: 0.06,
+      economics: 0.09,
+      labor: 0.15,
+    },
+    districts: ['Surat', 'Ahmedabad', 'Bharuch', 'Vadodara'],
+    // rough: $1.5\u20132bn productivity + treatment-substitution + mortality cost over 6\u201312 months \u2248 ₹15\u201325k cr; toggle midpoint ~₹18,000 cr
+    gdpCrorePerUnit: 18000,
+    // rough: TB defaulter cohort productivity loss + cardiac deferrals + cluster idling \u2248 80\u2013120k jobs-equivalent productivity hit
+    jobsPerUnit: 95000,
+    pendingData: 'Education (6%) and Economics (9%) arithmetic not itemized in V2 spec \u2014 asserted from cascade narrative; Materials dependency-weight term also not itemized',
+    sources: [
+      { title: 'USCC Testimony Stephen Schondelmeyer (June 2025)', url: 'https://www.uscc.gov/sites/default/files/2025-06/Stephen_Schondelmeyer_Testimony.pdf' },
+      { title: 'Chaudhuri RIS DP 268', url: 'https://ris.org.in/sites/default/files/Publication/DP%20268%20Prof%20Sudip%20Chaudhuri.pdf' },
+      { title: 'PMC COVID-19 pharma supply chain', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7137871/' },
+      { title: 'Brookings \u2014 US drug supply chain exposure to China', url: 'https://www.brookings.edu/articles/us-drug-supply-chain-exposure-to-china/' },
+      { title: 'BW Healthcare \u2014 35 of 53 APIs >90% import-dependent', url: 'https://www.bwhealthcareworld.com/article/api-dependence-indias-path-to-self-reliance-in-complex-drug-manufacturing-554815' },
+    ],
+  },
+]

@@ -1,5 +1,6 @@
 import { memo, useMemo, useState } from 'react'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
+import { X } from 'lucide-react'
 
 const GUJARAT_URL = '/geo/gujarat.geojson'
 
@@ -12,9 +13,15 @@ function scoreToFill(score) {
   return '#E5E7EB'                    // neutral gray
 }
 
-function SimulatorImpactMapBase({ districtScore }) {
+function SimulatorImpactMapBase({
+  districtScore,
+  leverContributions,
+  onDistrictFocus,
+  pendingData,
+}) {
   const [hover, setHover] = useState(null)
   const [cursor, setCursor] = useState({ x: 0, y: 0 })
+  const [focused, setFocused] = useState(null)
 
   const summary = useMemo(() => {
     const hot = Object.entries(districtScore)
@@ -25,6 +32,22 @@ function SimulatorImpactMapBase({ districtScore }) {
       .join(', ')
     return hot || 'No districts impacted at current settings'
   }, [districtScore])
+
+  const handleClick = (name) => {
+    const next = focused === name ? null : name
+    setFocused(next)
+    if (onDistrictFocus) onDistrictFocus(next)
+  }
+
+  const clearFocus = () => {
+    setFocused(null)
+    if (onDistrictFocus) onDistrictFocus(null)
+  }
+
+  const hoverContribs =
+    hover && leverContributions && leverContributions[hover.name]
+      ? leverContributions[hover.name].slice(0, 3)
+      : []
 
   return (
     <figure
@@ -58,6 +81,24 @@ function SimulatorImpactMapBase({ districtScore }) {
           setCursor({ x: e.clientX - rect.left, y: e.clientY - rect.top })
         }}
       >
+        {focused && (
+          <button
+            type="button"
+            onClick={clearFocus}
+            aria-label={`Clear focus on ${focused}`}
+            className="absolute top-2 left-2 z-10 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-crimson text-white text-[10px] font-mono shadow-sm hover:bg-crimson/80 focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+          >
+            {focused}
+            <X className="w-3 h-3" aria-hidden="true" />
+          </button>
+        )}
+
+        {pendingData && (
+          <span className="absolute bottom-2 left-2 z-10 text-[10px] font-mono italic px-1.5 py-0.5 rounded bg-parchment-50 dark:bg-dark-surface border border-gray-200 dark:border-dark-border text-gray-500 dark:text-gray-400">
+            Estimates pending data
+          </span>
+        )}
+
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{ scale: 4200, center: [71.5, 22.6] }}
@@ -69,14 +110,21 @@ function SimulatorImpactMapBase({ districtScore }) {
                 const name = geo.properties.district
                 const score = districtScore[name] || 0
                 const fill = scoreToFill(score)
+                const isFocused = focused === name
                 return (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
                     onMouseEnter={() => setHover({ name, score })}
                     onMouseLeave={() => setHover(null)}
+                    onClick={() => handleClick(name)}
                     style={{
-                      default: { fill, outline: 'none', stroke: '#FFFFFF', strokeWidth: 0.6 },
+                      default: {
+                        fill,
+                        outline: 'none',
+                        stroke: isFocused ? '#111' : '#FFFFFF',
+                        strokeWidth: isFocused ? 1.6 : 0.6,
+                      },
                       hover:   { fill, outline: 'none', stroke: '#111', strokeWidth: 1.4, cursor: 'pointer' },
                       pressed: { fill, outline: 'none' },
                     }}
@@ -100,6 +148,15 @@ function SimulatorImpactMapBase({ districtScore }) {
             <div className="font-mono tabular-nums text-crimson dark:text-crimson">
               {hover.score}% impact
             </div>
+            {hoverContribs.length > 0 && (
+              <ul className="mt-1 space-y-0.5 border-t border-white/20 dark:border-gray-300 pt-1">
+                {hoverContribs.map((c) => (
+                  <li key={c.leverId} className="font-mono text-[10px] tabular-nums">
+                    {c.leverLabel} · {c.percent}%
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
       </div>
