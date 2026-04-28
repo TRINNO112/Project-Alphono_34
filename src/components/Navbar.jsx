@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { Moon, Sun, ShieldAlert, ChevronLeft, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import { useDarkMode } from '../hooks/useDarkMode'
 
 /**
  * Navbar - Main site navigation component with responsive design
@@ -56,6 +57,7 @@ export default function Navbar() {
   const isHome = location.pathname === '/'
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleRef = useRef(null)
+  const { isDark, toggleDarkMode } = useDarkMode()
 
   // Close mobile menu on route change
   const pathname = location.pathname
@@ -133,7 +135,16 @@ export default function Navbar() {
           })}
         </nav>
 
-
+        {/* Dark mode toggle */}
+        <button
+          type="button"
+          onClick={toggleDarkMode}
+          aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+          aria-pressed={isDark}
+          className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-dark-surface transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+        >
+          {isDark ? <Sun className="w-5 h-5" aria-hidden="true" /> : <Moon className="w-5 h-5" aria-hidden="true" />}
+        </button>
 
         {/* Mobile hamburger (hidden on md+) */}
         <button
