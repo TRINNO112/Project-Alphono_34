@@ -110,7 +110,7 @@ function NamedPopulationPanelBase({
     .join(', ')
 
   return (
-    <div className="rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface p-5">
+    <div className="rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface p-5 min-w-0 overflow-hidden">
       <div className="flex items-baseline justify-between gap-2 mb-3">
         <h4 className="font-serif text-base font-semibold text-gray-900 dark:text-white">
           Affected populations
@@ -156,7 +156,7 @@ function NamedPopulationPanelBase({
               className="flex flex-wrap items-center gap-2 py-1.5 border-b border-gray-100 dark:border-dark-border last:border-0"
             >
               <div className="flex-1 min-w-0">
-                <p className="text-sm text-gray-900 dark:text-white truncate">
+                <p className="text-sm text-gray-900 dark:text-white break-words">
                   {g.label}
                   {g.cite && (
                     <a

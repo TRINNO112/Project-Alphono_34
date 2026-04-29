@@ -34,7 +34,7 @@ function HistoricalPrecedentCardBase({
   const showPager = analogues.length > 1
 
   return (
-    <article className="relative rounded-2xl border border-gray-200 dark:border-dark-border border-l-4 border-l-crimson bg-white dark:bg-dark-surface p-5">
+    <article className="relative rounded-2xl border border-gray-200 dark:border-dark-border border-l-4 border-l-crimson bg-white dark:bg-dark-surface p-5 min-w-0 overflow-hidden">
       {showPager && (
         <div className="absolute top-3 right-3 flex items-center gap-1.5">
           <button
@@ -71,11 +71,11 @@ function HistoricalPrecedentCardBase({
         {a.date}
       </p>
 
-      <h3 className="font-serif text-lg font-bold text-gray-900 dark:text-white mt-1 leading-tight">
+      <h3 className="font-serif text-lg font-bold text-gray-900 dark:text-white mt-1 leading-tight break-words">
         {a.title}
       </h3>
 
-      <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+      <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed break-words">
         {a.summary}
       </p>
 
@@ -91,15 +91,16 @@ function HistoricalPrecedentCardBase({
       {Array.isArray(a.sources) && a.sources.length > 0 && (
         <ul className="mt-4 pt-3 border-t border-gray-100 dark:border-dark-border space-y-1.5">
           {a.sources.map((s, i) => (
-            <li key={i}>
+            <li key={i} className="min-w-0">
               <a
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs text-crimson hover:underline"
+                title={s.title}
+                className="flex items-center gap-1 text-xs text-crimson hover:underline min-w-0"
               >
                 <ExternalLink className="w-3 h-3 shrink-0" aria-hidden="true" />
-                <span className="truncate">{s.title}</span>
+                <span className="truncate min-w-0 flex-1">{s.title}</span>
               </a>
             </li>
           ))}

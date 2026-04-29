@@ -59,18 +59,18 @@ function EducationCascadePanelBase({ narratives = [] }) {
           return (
             <article
               key={n.leverId || i}
-              className="rounded-xl border border-gray-200 dark:border-dark-border bg-parchment-50 dark:bg-dark-bg p-4 hover:border-crimson/40 transition-colors"
+              className="rounded-xl border border-gray-200 dark:border-dark-border bg-parchment-50 dark:bg-dark-bg p-4 hover:border-crimson/40 transition-colors min-w-0 overflow-hidden"
             >
               {n.leverLabel && (
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-crimson mb-1.5">
                   {n.leverLabel}
                 </p>
               )}
-              <h4 className="font-serif text-sm font-bold text-gray-900 dark:text-white leading-snug">
+              <h4 className="font-serif text-sm font-bold text-gray-900 dark:text-white leading-snug break-words">
                 {n.headline}
               </h4>
               {n.detail && (
-                <p className="mt-1.5 text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="mt-1.5 text-xs text-gray-600 dark:text-gray-400 leading-relaxed break-words">
                   {n.detail}
                 </p>
               )}

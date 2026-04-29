@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { AlertTriangle, Zap, RotateCcw, Info, ChevronDown } from 'lucide-react'
+import { AlertTriangle, Zap, RotateCcw, Info, ChevronDown, BookOpen } from 'lucide-react'
 import SEO from '../components/SEO'
 import { Section, DataCard, SourceList } from '../components/Shared'
 import AnimatedCounter from '../components/AnimatedCounter'
@@ -342,7 +343,7 @@ export default function BreakSimulator() {
             <span>DEPENDENCY STRESS TEST</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
-            Break <span className="italic text-crimson">Gujarat</span>.
+            Stress-Test <span className="italic text-crimson">Gujarat</span>.
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
             Move the levers. Watch the cascade. Each control models a real, documented
@@ -356,6 +357,15 @@ export default function BreakSimulator() {
             This is a stress-test tool, not a forecast. Coefficients are upper-bound
             estimates derived from the sources cited under each lever.
           </p>
+          <div className="mt-5 pl-6">
+            <Link
+              to="/methodology#simulator"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-crimson/40 bg-crimson/10 text-crimson font-semibold text-sm hover:bg-crimson hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+            >
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+              Read the full methodology — every coefficient explained
+            </Link>
+          </div>
         </motion.div>
       </section>
 
@@ -636,35 +646,31 @@ export default function BreakSimulator() {
         </div>
       </Section>
 
-      {/* Methodology */}
-      <Section icon={<Info className="w-8 h-8 text-gray-600 dark:text-gray-400" />} title="Methodology">
-        <DataCard title="How the damage is computed">
-          <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-            <li>
-              Each lever carries a coefficient matrix mapping it to pillar disruption,
-              affected districts, ₹ crore GDP at risk, and jobs at risk — anchored to a
-              cited source in <code className="font-mono text-xs bg-parchment-100 dark:bg-dark-bg px-1 rounded">src/data/simulatorCoefficients.js</code>.
-            </li>
-            <li>
-              <strong>&ldquo;Why this %?&rdquo;</strong> popovers expose the arithmetic:
-              <em> asset-share × dependency-weight × propagation-factor</em>. Each factor
-              is cited; the &ldquo;result&rdquo; is the % at 100% lever pull, scaled
-              linearly to the current lever value.
-            </li>
-            <li>
-              Magnitudes sum across active levers, capped at 100%. The named-population
-              panel de-duplicates cohorts so multi-lever scenarios don&apos;t double-count.
-            </li>
-            <li>
-              Coefficients are <strong>upper-bound stress-test estimates</strong>, not
-              probability-weighted forecasts. Gaps the sources don&apos;t cover are flagged
-              under <code className="font-mono text-xs bg-parchment-100 dark:bg-dark-bg px-1 rounded">pendingData</code>.
-            </li>
-            <li>
-              Lever groups: {Object.values(LEVER_GROUPS).map((g) => g.label).join(' · ')}.
-              The 13 pillars range from infrastructure and energy to digital sovereignty.
-            </li>
-          </ul>
+      {/* Methodology summary — full version on /methodology#simulator */}
+      <Section icon={<Info className="w-8 h-8 text-gray-600 dark:text-gray-400" />} title="Methodology in 30 seconds">
+        <DataCard title="The short version">
+          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+            Each lever models one shock with a single canonical source. The &ldquo;Why?&rdquo;
+            button on every pillar bar shows the arithmetic for that pillar:
+          </p>
+          <div className="p-3 mb-3 bg-gray-900 dark:bg-black rounded-lg overflow-x-auto">
+            <code className="font-mono text-xs text-amber-300 whitespace-pre">
+              {`pillar % at full pull = asset_share × dependency_weight × propagation × 100`}
+            </code>
+          </div>
+          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+            Multiple active levers add linearly per pillar (capped at 100%). Districts get the full hit if named primary, plus a 15% statewide ripple otherwise. GDP and jobs scale per slider-point. Time-to-first-failure is the minimum buffer-stock window across active levers.
+          </p>
+          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            Coefficients are <strong>upper-bound stress-test estimates</strong>, not forecasts. Every weight is cited. Education has no slider — it appears as a downstream cascade panel only.
+          </p>
+          <Link
+            to="/methodology#simulator"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-crimson bg-crimson text-white font-semibold text-sm hover:bg-crimson/90 transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+          >
+            <BookOpen className="w-4 h-4" aria-hidden="true" />
+            Full methodology — every coefficient, every weight, every source
+          </Link>
         </DataCard>
       </Section>
 
