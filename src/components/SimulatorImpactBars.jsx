@@ -1,8 +1,7 @@
 import { memo, useState, useSyncExternalStore } from 'react'
-import { motion } from 'framer-motion'
-import { Info } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { HelpCircle, X } from 'lucide-react'
 import { PILLAR_IDS, PILLAR_LABELS } from '../data/simulatorCoefficients'
-import WhyThisPercent from './WhyThisPercent'
 
 function subscribeDarkMode(callback) {
   const observer = new MutationObserver(callback)
@@ -89,28 +88,74 @@ function SimulatorImpactBarsBase({ pillarPercent, derivations, onPillarFocus }) 
                   aria-label={`Show derivation for ${r.label}`}
                   aria-expanded={openWhy === r.id}
                   onClick={() => setOpenWhy(openWhy === r.id ? null : r.id)}
-                  className="inline-flex items-center gap-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-400 hover:text-crimson focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 rounded px-1"
+                  className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full border border-crimson/40 bg-crimson/10 text-crimson hover:bg-crimson hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
                 >
-                  <Info className="w-3 h-3" aria-hidden="true" />
-                  Why?
+                  <HelpCircle className="w-3 h-3" aria-hidden="true" />
+                  Why
                 </button>
               ) : (
                 <span aria-hidden="true" />
               )}
-              {hasWhy && openWhy === r.id && (
-                <div className="absolute right-0 top-full z-20 mt-1">
-                  <WhyThisPercent
-                    pillarLabel={r.label}
-                    percent={r.value}
-                    derivation={top.derivation}
-                    leverValue={top.leverValue}
-                    leverMax={top.leverMax}
-                    sources={(top.derivation && top.derivation.sources) || []}
-                    extraCount={extraCount}
-                    onClose={() => setOpenWhy(null)}
-                  />
-                </div>
-              )}
+              <AnimatePresence>
+                {hasWhy && openWhy === r.id && (
+                  <motion.div
+                    role="dialog"
+                    aria-modal="false"
+                    aria-label={`Derivation for ${r.label}`}
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.18 }}
+                    className="absolute right-0 top-full z-30 mt-1 w-80 max-h-[60vh] overflow-y-auto rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface shadow-xl p-4"
+                  >
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <h4 className="font-serif text-base font-bold text-gray-900 dark:text-white leading-tight break-words">
+                        Why {r.value}%?
+                      </h4>
+                      <button
+                        type="button"
+                        onClick={() => setOpenWhy(null)}
+                        aria-label="Close derivation"
+                        className="text-gray-400 hover:text-crimson transition-colors shrink-0"
+                      >
+                        <X className="w-4 h-4" aria-hidden="true" />
+                      </button>
+                    </div>
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
+                      {r.label}
+                    </p>
+                    {top.derivation?.formula && (
+                      <div className="mb-3 p-2 rounded-lg bg-gray-50 dark:bg-dark-bg border border-gray-100 dark:border-dark-border">
+                        <code className="text-xs font-mono text-gray-700 dark:text-gray-300 break-words whitespace-pre-wrap">
+                          {top.derivation.formula}
+                        </code>
+                      </div>
+                    )}
+                    {Array.isArray(top.derivation?.factors) && top.derivation.factors.length > 0 && (
+                      <dl className="space-y-1.5 mb-3">
+                        {top.derivation.factors.map((f, i) => (
+                          <div key={i} className="flex items-baseline justify-between gap-3 text-xs">
+                            <dt className="text-gray-600 dark:text-gray-400 flex-1 min-w-0 break-words">
+                              {f.label}
+                            </dt>
+                            <dd className="font-mono tabular-nums text-gray-900 dark:text-white shrink-0">
+                              {f.value}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed pt-2 border-t border-gray-100 dark:border-dark-border">
+                      Driver: <span className="font-semibold text-gray-700 dark:text-gray-300 break-words">{top.label}</span>
+                      {' '}at lever{' '}
+                      <span className="font-mono tabular-nums">{top.leverValue}/{top.leverMax}</span>.
+                      {extraCount > 0 && (
+                        <span className="block mt-1 text-gray-400 dark:text-gray-500">+{extraCount} more lever{extraCount > 1 ? 's' : ''} contributing</span>
+                      )}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </li>
           )
         })}

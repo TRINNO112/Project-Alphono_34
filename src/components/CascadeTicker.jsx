@@ -38,7 +38,7 @@ function CascadeTickerBase({ leverLabel, steps = [], onReplay }) {
   return (
     <section
       aria-label={leverLabel ? `Cascade timeline for ${leverLabel}` : 'Cascade timeline'}
-      className="relative rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface p-5"
+      className="relative rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface p-5 min-w-0 overflow-hidden"
     >
       <div className="flex items-baseline justify-between gap-2 mb-4">
         <h4 className="font-serif text-base font-semibold text-gray-900 dark:text-white">
@@ -106,7 +106,7 @@ function CascadeTickerBase({ leverLabel, steps = [], onReplay }) {
                     )
                   )}
                 </div>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white leading-snug mt-0.5">
+                <p className="text-sm font-semibold text-gray-900 dark:text-white leading-snug mt-0.5 break-words">
                   {s.text}
                   {s.cite && (
                     <a

@@ -25,3 +25,7 @@ dist-ssr
 
 # Claude Code
 .claude/
+
+# Local sandboxes / clones (not part of the app)
+free-claude-code/
+free-claude-code

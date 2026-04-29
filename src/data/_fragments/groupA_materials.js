@@ -321,7 +321,7 @@ export const GROUP_A_LEVERS = [
       url: 'https://www.downtoearth.org.in/energy/indias-solar-success-is-riding-high-but-remains-wired-to-the-dragon',
     },
     derivation: {
-      'green-tech': {
+      greentech: {
         factors: [
           { label: 'China supply-chain share (polysilicon/wafer/module)', value: 0.75, cite: 'src-dte' },
           { label: 'Gujarat exposure (Khavda + Mundra + Sanand)', value: 0.85 },
@@ -394,7 +394,7 @@ export const GROUP_A_LEVERS = [
     },
     timeToFailure: 'EPC slowdown onset 6\u20138 weeks; module bonded-warehouse stock ~60d, polysilicon at Mundra ~75\u201390d',
     pillarImpacts: {
-      'green-tech': 0.89,
+      greentech: 0.89,
       energy: 0.17,
       economics: 0.11,
       materials: 0.39,

@@ -125,7 +125,7 @@ export const GROUP_D_LEVERS = [
       url: 'https://www.downtoearth.org.in/energy/indias-solar-success-is-riding-high-but-remains-wired-to-the-dragon',
     },
     derivation: {
-      'green-tech': {
+      greentech: {
         factors: [
           { label: 'China upstream share of India solar pipeline', value: 0.85, cite: 'Policy Circle / ORF America' },
           { label: 'Khavda + Mundra dependency on Chinese wafers/cells', value: 0.95 },
@@ -196,10 +196,10 @@ export const GROUP_D_LEVERS = [
     },
     timeToFailure: 'EPC module inventory ~45-90 day buffer; China-Mundra polysilicon-to-module pipeline 21-35 days; PLI ingot-wafer ramp to fill gap 3-5 years',
     pillarImpacts: {
-      'green-tech': 0.81,
-      'energy': 0.32,
-      'economics': 0.16,
-      'environment': 0.08,
+      greentech: 0.81,
+      energy: 0.32,
+      economics: 0.16,
+      environment: 0.08,
     },
     districts: ['Kachchh', 'Patan', 'Banaskantha', 'Surendranagar', 'Ahmedabad'],
     gdpCrorePerUnit: 1500,
