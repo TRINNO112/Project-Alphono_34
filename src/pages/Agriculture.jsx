@@ -43,11 +43,11 @@ export default function Agriculture() {
             <span className="hidden md:block w-8 h-px bg-crimson" />
             <span>STRUCTURAL DEPENDENCY</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
             Agriculture & <span className="italic text-crimson">Agrarian Distress</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            Gujarat's agricultural "miracle" masks a <strong className="font-semibold text-gray-900 dark:text-white">total dependency on imported fertilizers</strong>, 
+          <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
+            Gujarat's agricultural "miracle" masks a <strong className="font-semibold text-gray-900">total dependency on imported fertilizers</strong>, 
             proprietary seed monopolies, and collapsing groundwater tables — trapping millions of farmers in an inescapable cycle of debt, distress, and forced urban migration.
           </p>
         </motion.div>
@@ -56,7 +56,7 @@ export default function Agriculture() {
       <div className="space-y-20">
 
         {/* ═══ Section 1: Fertilizer Import Dependency ═══ */}
-        <Section icon={<TrendingDown className="w-8 h-8 text-red-600 dark:text-red-400" />} title="The Fertilizer Import Trap">
+        <Section icon={<TrendingDown className="w-8 h-8 text-red-600" />} title="The Fertilizer Import Trap">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="67%" label="DAP Imported" color="crimson" />
             <StatBox value="100%" label="MOP Imported" color="red" />
@@ -98,39 +98,39 @@ export default function Agriculture() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The Geopolitical Fertilizer Chokepoint" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Western sanctions on <strong className="text-gray-900 dark:text-white">Belarus and Russia</strong> — two of India's top MOP suppliers — have forced the government into alternative payment arrangements that bypass SWIFT, creating massive friction in timely supply.<Ref n={1} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Western sanctions on <strong className="text-gray-900">Belarus and Russia</strong> — two of India's top MOP suppliers — have forced the government into alternative payment arrangements that bypass SWIFT, creating massive friction in timely supply.<Ref n={1} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Red Sea shipping disruptions in 2024 caused immediate <strong className="text-gray-900 dark:text-white">DAP price surges at Kandla Port</strong>, directly impacting Gujarat's Kharif and Rabi sowing seasons. When the NBS subsidy falls short, farmers face black market hoarding and adulterated fertilizers.<Ref n={5} />
+              <p className="text-gray-600 leading-relaxed">
+                Red Sea shipping disruptions in 2024 caused immediate <strong className="text-gray-900">DAP price surges at Kandla Port</strong>, directly impacting Gujarat's Kharif and Rabi sowing seasons. When the NBS subsidy falls short, farmers face black market hoarding and adulterated fertilizers.<Ref n={5} />
               </p>
             </DataCard>
 
             <DataCard title="NBS Subsidy: The Unsustainable Buffer">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                The <strong className="text-gray-900 dark:text-white">Nutrient-Based Subsidy (NBS) Scheme</strong> absorbs global price shocks — but when geopolitical tensions spike shipping costs, subsidy outlays balloon uncontrollably.<Ref n={1} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                The <strong className="text-gray-900">Nutrient-Based Subsidy (NBS) Scheme</strong> absorbs global price shocks — but when geopolitical tensions spike shipping costs, subsidy outlays balloon uncontrollably.<Ref n={1} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Every rupee the government cannot subsidize is passed directly onto the farmer — leading to <strong className="text-gray-900 dark:text-white">suppressed yields, mounting debt, and accelerated rural flight</strong>.
+              <p className="text-gray-600 leading-relaxed">
+                Every rupee the government cannot subsidize is passed directly onto the farmer — leading to <strong className="text-gray-900">suppressed yields, mounting debt, and accelerated rural flight</strong>.
               </p>
             </DataCard>
           </div>
         </Section>
 
         {/* ═══ Section 2: Bt Cotton & Seed Monopoly ═══ */}
-        <Section icon={<Bug className="w-8 h-8 text-orange-600 dark:text-orange-400" />} title="Seed Sovereignty & The Bt Cotton Trap">
+        <Section icon={<Bug className="w-8 h-8 text-orange-600" />} title="Seed Sovereignty & The Bt Cotton Trap">
 
           {/* The Pesticide Treadmill — Visual Flow */}
-          <div className="bg-white/70 dark:bg-dark-surface/70 p-8 md:p-10 rounded-3xl border border-gray-200 dark:border-dark-border shadow-xl backdrop-blur-md relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-200 dark:bg-orange-900 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
-            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-8 text-gray-900 dark:text-white relative z-10">The Pesticide Treadmill Cycle</h3>
+          <div className="bg-white/70 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl backdrop-blur-md relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-200 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
+            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-8 text-gray-900 relative z-10">The Pesticide Treadmill Cycle</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10">
               {[
-                { step: '01', title: 'Proprietary Seeds', desc: 'Farmers buy Bt Cotton (Monsanto/Bayer). Cannot replant — forced into annual purchase cycles.', color: 'border-orange-400 dark:border-orange-600' },
-                { step: '02', title: 'Pest Resistance', desc: 'Pink Bollworm develops resistance to Cry1Ac and Cry2Ab traits. Original promise of reduced pesticide use collapses.', color: 'border-red-400 dark:border-red-600' },
-                { step: '03', title: 'Cost Escalation', desc: 'Farmers forced to buy next-gen seeds (Bollgard II) PLUS higher volumes of toxic chemical pesticides.', color: 'border-crimson dark:border-red-500' },
-                { step: '04', title: 'Debt Spiral', desc: 'Massive upfront capital drives farmers to informal moneylenders at exorbitant interest rates. Cycle repeats.', color: 'border-red-700 dark:border-red-400' },
+                { step: '01', title: 'Proprietary Seeds', desc: 'Farmers buy Bt Cotton (Monsanto/Bayer). Cannot replant — forced into annual purchase cycles.', color: 'border-orange-400' },
+                { step: '02', title: 'Pest Resistance', desc: 'Pink Bollworm develops resistance to Cry1Ac and Cry2Ab traits. Original promise of reduced pesticide use collapses.', color: 'border-red-400' },
+                { step: '03', title: 'Cost Escalation', desc: 'Farmers forced to buy next-gen seeds (Bollgard II) PLUS higher volumes of toxic chemical pesticides.', color: 'border-crimson' },
+                { step: '04', title: 'Debt Spiral', desc: 'Massive upfront capital drives farmers to informal moneylenders at exorbitant interest rates. Cycle repeats.', color: 'border-red-700' },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -138,11 +138,11 @@ export default function Agriculture() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.12 }}
-                  className={`relative p-5 rounded-2xl bg-white/80 dark:bg-dark-bg/60 border-l-4 ${item.color} shadow-sm`}
+                  className={`relative p-5 rounded-2xl bg-white/80 border-l-4 ${item.color} shadow-sm`}
                 >
                   <span className="text-[10px] font-mono font-bold text-crimson tracking-widest">{item.step}</span>
-                  <h4 className="text-base font-bold text-gray-900 dark:text-white mt-1 mb-2 font-serif">{item.title}</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{item.desc}</p>
+                  <h4 className="text-base font-bold text-gray-900 mt-1 mb-2 font-serif">{item.title}</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
                   {i < 3 && (
                     <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 z-20 text-crimson text-xl font-bold">→</div>
                   )}
@@ -157,27 +157,27 @@ export default function Agriculture() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Loss of Indigenous Cultivation">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Before the Bt Cotton boom (early 2000s), farmers preserved and traded <strong className="text-gray-900 dark:text-white">indigenous "Desi cotton" varieties</strong>. The current model relies entirely on proprietary, commercial hybrid seeds.<Ref n={6} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Before the Bt Cotton boom (early 2000s), farmers preserved and traded <strong className="text-gray-900">indigenous "Desi cotton" varieties</strong>. The current model relies entirely on proprietary, commercial hybrid seeds.<Ref n={6} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Initially controlled by <strong className="text-gray-900 dark:text-white">Monsanto</strong> (now Bayer), farmers are <strong className="text-gray-900 dark:text-white">legally and biologically prevented</strong> from replanting next-generation seeds — forced into perpetual purchasing cycles.
+              <p className="text-gray-600 leading-relaxed">
+                Initially controlled by <strong className="text-gray-900">Monsanto</strong> (now Bayer), farmers are <strong className="text-gray-900">legally and biologically prevented</strong> from replanting next-generation seeds — forced into perpetual purchasing cycles.
               </p>
             </DataCard>
 
             <DataCard title="The Pink Bollworm Crisis" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Pests like the <strong className="text-gray-900 dark:text-white">Pink Bollworm</strong> have developed complete resistance to early-generation Bt cotton traits (Cry1Ac and Cry2Ab).<Ref n={6} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Pests like the <strong className="text-gray-900">Pink Bollworm</strong> have developed complete resistance to early-generation Bt cotton traits (Cry1Ac and Cry2Ab).<Ref n={6} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                The original promise of <strong className="text-gray-900 dark:text-white">massive reduction in pesticide use has completely collapsed</strong>. Farmers now deploy significantly higher volumes of toxic chemicals — locking them into massive upfront capital expenditures.
+              <p className="text-gray-600 leading-relaxed">
+                The original promise of <strong className="text-gray-900">massive reduction in pesticide use has completely collapsed</strong>. Farmers now deploy significantly higher volumes of toxic chemicals — locking them into massive upfront capital expenditures.
               </p>
             </DataCard>
           </div>
         </Section>
 
         {/* ═══ Section 3: Water Monopolization ═══ */}
-        <Section icon={<Droplets className="w-8 h-8 text-blue-600 dark:text-blue-400" />} title="Water Monopolization & Groundwater Collapse">
+        <Section icon={<Droplets className="w-8 h-8 text-blue-600" />} title="Water Monopolization & Groundwater Collapse">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="132%" label="Extraction vs Recharge" color="red" />
             <StatBox value="1000ft" label="Pump Depth (Mehsana)" color="crimson" />
@@ -201,9 +201,9 @@ export default function Agriculture() {
           />
 
           {/* Water Diversion Visual */}
-          <div className="bg-white/70 dark:bg-dark-surface/70 p-8 md:p-10 rounded-3xl border border-gray-200 dark:border-dark-border shadow-xl backdrop-blur-md relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-64 h-64 bg-blue-200 dark:bg-blue-900 rounded-full blur-[80px] -ml-32 -mt-32 pointer-events-none" />
-            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-6 text-gray-900 dark:text-white relative z-10">
+          <div className="bg-white/70 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl backdrop-blur-md relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-64 h-64 bg-blue-200 rounded-full blur-[80px] -ml-32 -mt-32 pointer-events-none" />
+            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-6 text-gray-900 relative z-10">
               Narmada Water: Promised to Farmers, Delivered to Factories
             </h3>
 
@@ -213,22 +213,22 @@ export default function Agriculture() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-6 rounded-2xl bg-blue-50/60 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/40"
+                className="p-6 rounded-2xl bg-blue-50/60 border border-blue-200"
               >
-                <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest mb-3 uppercase">Promise</div>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-                  Sardar Sarovar Dam was sold as <strong className="text-gray-900 dark:text-white">agricultural salvation for drought-prone Kutch & Saurashtra</strong>.
+                <div className="text-xs font-mono font-bold text-blue-600 tracking-widest mb-3 uppercase">Promise</div>
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  Sardar Sarovar Dam was sold as <strong className="text-gray-900">agricultural salvation for drought-prone Kutch & Saurashtra</strong>.
                 </p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-6 rounded-2xl bg-red-50/60 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40"
+                className="p-6 rounded-2xl bg-red-50/60 border border-red-200"
               >
-                <div className="text-xs font-mono font-bold text-red-600 dark:text-red-400 tracking-widest mb-3 uppercase">Reality</div>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-                  Water <strong className="text-gray-900 dark:text-white">systematically diverted via pipelines</strong> to fuel Sanand car assembly, Ahmedabad industries, Bharuch chemicals, and Dahej petrochemicals.<Ref n={3} /><Ref n={4} />
+                <div className="text-xs font-mono font-bold text-red-600 tracking-widest mb-3 uppercase">Reality</div>
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  Water <strong className="text-gray-900">systematically diverted via pipelines</strong> to fuel Sanand car assembly, Ahmedabad industries, Bharuch chemicals, and Dahej petrochemicals.<Ref n={3} /><Ref n={4} />
                 </p>
               </motion.div>
             </div>
@@ -251,12 +251,12 @@ export default function Agriculture() {
         </Section>
 
         {/* ═══ Section 4: Rural-Urban Flight ═══ */}
-        <Section icon={<AlertTriangle className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />} title="The Rural-Urban Flight">
+        <Section icon={<AlertTriangle className="w-8 h-8 text-yellow-600" />} title="The Rural-Urban Flight">
           <DataCard title="From Farmer to Factory Floor" alert={true}>
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
-              The culmination of <strong className="text-gray-900 dark:text-white">soaring input costs</strong> (seeds + electricity + imported fertilizers), combined with <strong className="text-gray-900 dark:text-white">collapsing groundwater tables</strong>, leaves zero profit margin — forcing farmers to abandon agriculture entirely.<Ref n={2} />
+            <p className="text-gray-700 text-lg leading-relaxed mb-4">
+              The culmination of <strong className="text-gray-900">soaring input costs</strong> (seeds + electricity + imported fertilizers), combined with <strong className="text-gray-900">collapsing groundwater tables</strong>, leaves zero profit margin — forcing farmers to abandon agriculture entirely.<Ref n={2} />
             </p>
-            <p className="mb-6 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mb-6 text-sm text-gray-600">
               Named cases from the Nov 2025 unseasonal-rain crisis:
               <StoryMarker storyId="farmer-shailesh-savaliya" />
               <StoryMarker storyId="farmer-gaffar-unde" />
@@ -277,14 +277,14 @@ export default function Agriculture() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className={`p-5 rounded-2xl bg-white/60 dark:bg-dark-bg/40 border-l-4 ${flow.color} shadow-sm`}
+                  className={`p-5 rounded-2xl bg-white/60/40 border-l-4 ${flow.color} shadow-sm`}
                 >
-                  <div className="text-xs font-mono text-gray-400 dark:text-gray-600 uppercase tracking-wider mb-1">Origin</div>
-                  <div className="text-sm font-bold text-gray-900 dark:text-white mb-3">{flow.from}</div>
+                  <div className="text-xs font-mono text-gray-400 uppercase tracking-wider mb-1">Origin</div>
+                  <div className="text-sm font-bold text-gray-900 mb-3">{flow.from}</div>
                   <div className="text-crimson font-bold text-lg mb-1">↓</div>
-                  <div className="text-xs font-mono text-gray-400 dark:text-gray-600 uppercase tracking-wider mb-1">Destination</div>
-                  <div className="text-sm font-bold text-gray-900 dark:text-white mb-3">{flow.to}</div>
-                  <div className="text-xs text-red-600 dark:text-red-400 font-medium mt-2 p-2 bg-red-50/50 dark:bg-red-950/20 rounded-lg">{flow.risk}</div>
+                  <div className="text-xs font-mono text-gray-400 uppercase tracking-wider mb-1">Destination</div>
+                  <div className="text-sm font-bold text-gray-900 mb-3">{flow.to}</div>
+                  <div className="text-xs text-red-600 font-medium mt-2 p-2 bg-red-50/50 rounded-lg">{flow.risk}</div>
                 </motion.div>
               ))}
             </div>
@@ -292,7 +292,7 @@ export default function Agriculture() {
         </Section>
 
         {/* ═══ Timeline ═══ */}
-        <Section icon={<Wheat className="w-8 h-8 text-green-700 dark:text-green-400" />} title="Timeline of Agrarian Events">
+        <Section icon={<Wheat className="w-8 h-8 text-green-700" />} title="Timeline of Agrarian Events">
           <div className="space-y-0">
             {[
               { year: '2002', event: 'India formally approves commercial cultivation of Bt Cotton, sparking the immediate shift away from Desi varieties in Gujarat.' },
@@ -314,7 +314,7 @@ export default function Agriculture() {
                 </div>
                 <div className="pb-8">
                   <span className="text-sm font-mono font-bold text-crimson tracking-wider">{item.year}</span>
-                  <p className="text-gray-700 dark:text-gray-300 mt-1 leading-relaxed">{item.event}</p>
+                  <p className="text-gray-700 mt-1 leading-relaxed">{item.event}</p>
                 </div>
               </motion.div>
             ))}

@@ -128,8 +128,8 @@ export function SupplyChainMap() {
           <ShieldAlert className="w-5 h-5" />
           <span>GLOBAL MACRO-DEPENDENCY</span>
         </div>
-        <h3 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white tracking-tight">External Dependency Network</h3>
-        <p className="text-lg text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto font-light leading-relaxed">
+        <h3 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 tracking-tight">External Dependency Network</h3>
+        <p className="text-lg text-gray-500 mt-4 max-w-2xl mx-auto font-light leading-relaxed">
           Tracing external supply chains directly into Gujarat. Hover over any region to inspect vulnerability metrics.
         </p>
       </div>
@@ -137,7 +137,7 @@ export function SupplyChainMap() {
       <figure
         role="img"
         aria-label="Map showing Gujarat's external supply-chain dependencies: China (pharma APIs, solar cells, chemicals), Middle East (crude oil from Iran, Iraq, Saudi Arabia, UAE, Kuwait, Qatar, Yemen, Oman), and Indonesia (thermal coal)."
-        className="relative w-full mx-auto bg-gray-50/50 dark:bg-dark-bg/50 border border-gray-200 dark:border-dark-border rounded-3xl shadow-sm overflow-hidden"
+        className="relative w-full mx-auto bg-gray-50/50 border border-gray-200 rounded-3xl shadow-sm overflow-hidden"
         onMouseMove={handleMouseMove}
       >
         <figcaption className="sr-only">
@@ -347,23 +347,23 @@ export function SupplyChainMap() {
                 width: '240px'
               }}
             >
-              <div className="bg-white/95 dark:bg-dark-surface/95 backdrop-blur-md border border-gray-200 dark:border-dark-border shadow-2xl p-4 rounded-2xl">
+              <div className="bg-white/95 backdrop-blur-md border border-gray-200 shadow-2xl p-4 rounded-2xl">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: hoveredNode.color }}></div>
-                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400">
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500">
                     {hoveredNode.category}
                   </span>
                 </div>
-                <h4 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2 leading-tight">
+                <h4 className="text-xl font-serif font-bold text-gray-900 mb-2 leading-tight">
                   {hoveredNode.name}
                 </h4>
-                <p className="font-mono text-crimson font-bold text-sm bg-red-50 dark:bg-red-900/10 px-2 py-1 rounded inline-block mb-3">
+                <p className="font-mono text-crimson font-bold text-sm bg-red-50 px-2 py-1 rounded inline-block mb-3">
                   {hoveredNode.stat}
                 </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                <p className="text-xs text-gray-600 leading-relaxed font-medium">
                   {hoveredNode.desc}
                 </p>
-                <div className="mt-3 pt-3 border-t border-gray-100 dark:border-dark-border flex items-center justify-between text-[10px] font-bold text-gray-500 tracking-wider transition-colors cursor-pointer group">
+                <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between text-[10px] font-bold text-gray-500 tracking-wider transition-colors cursor-pointer group">
                   <span className="flex items-center uppercase">
                     (Click Node to Inspect)
                   </span>
@@ -389,31 +389,31 @@ export function SupplyChainMap() {
                 width: '280px'
               }}
             >
-              <div className="bg-white/95 dark:bg-dark-surface/95 backdrop-blur-md border border-gray-200 dark:border-dark-border shadow-2xl p-5 rounded-2xl relative">
+              <div className="bg-white/95 backdrop-blur-md border border-gray-200 shadow-2xl p-5 rounded-2xl relative">
                 <button
                   onClick={() => setClickedNode(null)}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 dark:hover:text-white transition bg-gray-100 dark:bg-dark-bg p-1 rounded-full"
+                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition bg-gray-100 p-1 rounded-full"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: clickedNode.color }}></div>
-                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400">
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500">
                     {clickedNode.category}
                   </span>
                 </div>
-                <h4 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-2 leading-tight">
+                <h4 className="text-2xl font-serif font-bold text-gray-900 mb-2 leading-tight">
                   {clickedNode.name}
                 </h4>
-                <p className="font-mono text-crimson font-bold text-sm bg-red-50 dark:bg-red-900/10 px-2 py-1 rounded inline-block mb-3">
+                <p className="font-mono text-crimson font-bold text-sm bg-red-50 px-2 py-1 rounded inline-block mb-3">
                   {clickedNode.stat}
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                <p className="text-sm text-gray-600 leading-relaxed font-medium">
                   {clickedNode.desc}
                 </p>
-                <Link 
+                <Link
                   to={clickedNode.path || "/summary"}
-                  className="mt-4 pt-3 border-t border-gray-100 dark:border-dark-border flex items-center justify-between text-[11px] font-bold text-gray-500 hover:text-crimson dark:text-gray-400 dark:hover:text-crimson tracking-wider transition-colors cursor-pointer group"
+                  className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] font-bold text-gray-500 hover:text-crimson tracking-wider transition-colors cursor-pointer group"
                 >
                   <span className="flex items-center">
                     <ArrowRight className="w-3 h-3 mr-2 group-hover:translate-x-1 transition-transform" /> 

@@ -21,7 +21,7 @@ function formatHeadcount(n) {
 const ETHNICITY_BADGE = {
   'saurashtra-patel': {
     text: 'Local · Saurashtra Patel',
-    cls: 'border-gray-300 dark:border-dark-border bg-parchment-50 dark:bg-dark-bg text-gray-700 dark:text-gray-300',
+    cls: 'border-gray-300 bg-parchment-50 text-gray-700',
   },
   'up-bihar-migrant': {
     text: 'Migrant',
@@ -41,15 +41,15 @@ const ETHNICITY_BADGE = {
   },
   'gujarati-general': {
     text: 'Gujarati',
-    cls: 'border-gray-300 dark:border-dark-border bg-parchment-50 dark:bg-dark-bg text-gray-700 dark:text-gray-300',
+    cls: 'border-gray-300 bg-parchment-50 text-gray-700',
   },
   'maldhari': {
     text: 'Pastoralist',
-    cls: 'border-gray-300 dark:border-dark-border bg-parchment-50 dark:bg-dark-bg text-gray-700 dark:text-gray-300',
+    cls: 'border-gray-300 bg-parchment-50 text-gray-700',
   },
   'national': {
     text: 'National',
-    cls: 'border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300',
+    cls: 'border-gray-300 bg-gray-100 text-gray-600',
   },
 }
 
@@ -88,8 +88,8 @@ function NamedPopulationPanelBase({
 }) {
   if (!groups || groups.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-gray-300 dark:border-dark-border bg-white/40 dark:bg-dark-surface/40 p-6 text-center">
-        <p className="text-sm text-gray-500 dark:text-gray-400 italic">
+      <div className="rounded-2xl border border-dashed border-gray-300 bg-white/40 p-6 text-center">
+        <p className="text-sm text-gray-500 italic">
           {emptyState}
         </p>
       </div>
@@ -110,13 +110,13 @@ function NamedPopulationPanelBase({
     .join(', ')
 
   return (
-    <div className="rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface p-5 min-w-0 overflow-hidden">
+    <div className="rounded-2xl border border-gray-200 bg-white p-5 min-w-0 overflow-hidden">
       <div className="flex items-baseline justify-between gap-2 mb-3">
-        <h4 className="font-serif text-base font-semibold text-gray-900 dark:text-white">
+        <h4 className="font-serif text-base font-semibold text-gray-900">
           Affected populations
         </h4>
         <p className="font-mono tabular-nums text-sm font-bold text-crimson">
-          {formatHeadcount(totalHeadcount)} <span className="text-xs font-normal text-gray-500 dark:text-gray-400">people in scope</span>
+          {formatHeadcount(totalHeadcount)} <span className="text-xs font-normal text-gray-500">people in scope</span>
         </p>
       </div>
 
@@ -125,7 +125,7 @@ function NamedPopulationPanelBase({
           <div
             role="img"
             aria-label={`Composition: ${compLabel}`}
-            className="flex h-2 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-dark-bg"
+            className="flex h-2 w-full overflow-hidden rounded-full bg-gray-100"
           >
             {buckets.map((b) => (
               <div
@@ -136,7 +136,7 @@ function NamedPopulationPanelBase({
               />
             ))}
           </div>
-          <div className="mt-1.5 flex flex-wrap gap-3 text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+          <div className="mt-1.5 flex flex-wrap gap-3 text-[10px] font-semibold uppercase tracking-wider text-gray-500">
             {buckets.map((b) => (
               <span key={b.key} className="inline-flex items-center gap-1">
                 <span className={`w-2 h-2 rounded-full ${b.color}`} aria-hidden="true" />
@@ -153,10 +153,10 @@ function NamedPopulationPanelBase({
           return (
             <li
               key={i}
-              className="flex flex-wrap items-center gap-2 py-1.5 border-b border-gray-100 dark:border-dark-border last:border-0"
+              className="flex flex-wrap items-center gap-2 py-1.5 border-b border-gray-100 last:border-0"
             >
               <div className="flex-1 min-w-0">
-                <p className="text-sm text-gray-900 dark:text-white break-words">
+                <p className="text-sm text-gray-900 break-words">
                   {g.label}
                   {g.cite && (
                     <a
@@ -171,7 +171,7 @@ function NamedPopulationPanelBase({
                 </p>
                 <div className="flex flex-wrap items-center gap-1.5 mt-0.5">
                   {g.locality && (
-                    <span className="inline-block text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-parchment-50 dark:bg-dark-bg text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-dark-border">
+                    <span className="inline-block text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-parchment-50 text-gray-600 border border-gray-200">
                       {g.locality}
                     </span>
                   )}
@@ -184,7 +184,7 @@ function NamedPopulationPanelBase({
                   )}
                 </div>
               </div>
-              <p className="font-mono tabular-nums text-sm font-bold text-gray-900 dark:text-white shrink-0">
+              <p className="font-mono tabular-nums text-sm font-bold text-gray-900 shrink-0">
                 {formatHeadcount(g.headcount)}
               </p>
             </li>

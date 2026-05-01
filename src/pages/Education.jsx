@@ -50,11 +50,11 @@ export default function Education() {
             <span className="hidden md:block w-8 h-px bg-crimson" />
             <span>DEPENDENCY ANALYSIS</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
             Education & <span className="italic text-crimson">Healthcare</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            Gujarat's industrial narrative obscures a <strong className="font-semibold text-gray-900 dark:text-white">systemic underinvestment in human capital</strong>. With 32,000+ vacant teaching posts, a higher education enrolment rate below the national average, and up to 97% specialist doctor vacancies in rural areas, the state's dependency on external talent and private healthcare is structurally entrenched.
+          <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
+            Gujarat's industrial narrative obscures a <strong className="font-semibold text-gray-900">systemic underinvestment in human capital</strong>. With 32,000+ vacant teaching posts, a higher education enrolment rate below the national average, and up to 97% specialist doctor vacancies in rural areas, the state's dependency on external talent and private healthcare is structurally entrenched.
           </p>
         </motion.div>
       </section>
@@ -62,7 +62,7 @@ export default function Education() {
       <div className="space-y-20">
 
         {/* Section 1: Education System Gaps */}
-        <Section icon={<GraduationCap className="w-8 h-8 text-purple-600 dark:text-purple-400" />} title="Education System Gaps">
+        <Section icon={<GraduationCap className="w-8 h-8 text-purple-600" />} title="Education System Gaps">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="32,000+" label="Teacher Vacancies" color="crimson" />
             <StatBox value="20.1%" label="GER (vs 28.4% Natl)" color="red" />
@@ -107,35 +107,35 @@ export default function Education() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Hollow Classrooms: The Teacher Crisis" alert={true}>
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                Over <strong className="text-gray-900 dark:text-white">32,000 teaching posts</strong> remain vacant across Gujarat government schools, spanning primary, secondary, and higher secondary levels.<Ref n={1} /> This is not a temporary staffing gap but a chronic structural deficit that directly degrades learning outcomes for millions of students in the public education system.
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Over <strong className="text-gray-900">32,000 teaching posts</strong> remain vacant across Gujarat government schools, spanning primary, secondary, and higher secondary levels.<Ref n={1} /> This is not a temporary staffing gap but a chronic structural deficit that directly degrades learning outcomes for millions of students in the public education system.
               </p>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Gujarat's Gross Enrolment Ratio (GER) in higher education stands at just <strong className="text-gray-900 dark:text-white">20.1%</strong>, significantly below the national average of 28.4% reported by the All India Survey on Higher Education.<Ref n={2} /> This means nearly 4 out of 5 college-age youth in Gujarat are not enrolled in any higher education institution — a staggering gap for India's most industrialised state.
+              <p className="text-gray-700 leading-relaxed">
+                Gujarat's Gross Enrolment Ratio (GER) in higher education stands at just <strong className="text-gray-900">20.1%</strong>, significantly below the national average of 28.4% reported by the All India Survey on Higher Education.<Ref n={2} /> This means nearly 4 out of 5 college-age youth in Gujarat are not enrolled in any higher education institution — a staggering gap for India's most industrialised state.
               </p>
             </DataCard>
 
             <DataCard title="The Dropout Crisis: #1 in India" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Gujarat records an estimated <strong className="text-gray-900 dark:text-white">2.4 lakh school dropouts annually</strong> — the highest absolute number of any Indian state. The primary Gross Enrolment Ratio has collapsed from 100%+ to <strong className="text-gray-900 dark:text-white">79.6%</strong>, meaning 1 in 5 primary-age children are not enrolled in school.
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Gujarat records an estimated <strong className="text-gray-900">2.4 lakh school dropouts annually</strong> — the highest absolute number of any Indian state. The primary Gross Enrolment Ratio has collapsed from 100%+ to <strong className="text-gray-900">79.6%</strong>, meaning 1 in 5 primary-age children are not enrolled in school.
               </p>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Over <strong className="text-gray-900 dark:text-white">1,027 primary schools were closed</strong> between 2019-2024 due to "zero enrolment" — but many of these closures occurred in tribal and rural areas where children shifted to child labour rather than alternative schools. Gujarat's performance on the national PARAKH assessment (2024) fell <strong>below the national average</strong> in both language and mathematics at the Class 3 and Class 6 levels.
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Over <strong className="text-gray-900">1,027 primary schools were closed</strong> between 2019-2024 due to "zero enrolment" — but many of these closures occurred in tribal and rural areas where children shifted to child labour rather than alternative schools. Gujarat's performance on the national PARAKH assessment (2024) fell <strong>below the national average</strong> in both language and mathematics at the Class 3 and Class 6 levels.
               </p>
               <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> Primary GER collapsed to 79.6% (national: 104.8%)</li>
-                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> 1,027 primary schools closed (2019-2024)</li>
-                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> PARAKH scores below national average</li>
+                <li className="flex items-center gap-2 text-red-700"><AlertTriangle className="w-5 h-5 text-red-500" /> Primary GER collapsed to 79.6% (national: 104.8%)</li>
+                <li className="flex items-center gap-2 text-red-700"><AlertTriangle className="w-5 h-5 text-red-500" /> 1,027 primary schools closed (2019-2024)</li>
+                <li className="flex items-center gap-2 text-red-700"><AlertTriangle className="w-5 h-5 text-red-500" /> PARAKH scores below national average</li>
               </ul>
             </DataCard>
 
             <DataCard title="Institutional Quality Deficit">
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                In the <strong className="text-gray-900 dark:text-white">NIRF 2025 rankings</strong>, only IIT Gandhinagar featured in the overall top 100 nationally — a sharp decline from previous years.<Ref n={3} /> Not a single state university or private institution made the cut, exposing a quality vacuum that pushes ambitious students to look outward.
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                In the <strong className="text-gray-900">NIRF 2025 rankings</strong>, only IIT Gandhinagar featured in the overall top 100 nationally — a sharp decline from previous years.<Ref n={3} /> Not a single state university or private institution made the cut, exposing a quality vacuum that pushes ambitious students to look outward.
               </p>
               <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> Zero state universities in top 100<Ref n={3} /></li>
-                <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300"><CheckCircle className="w-5 h-5 text-green-500" /> IIT-Gn sole representative (centrally funded)<Ref n={3} /></li>
+                <li className="flex items-center gap-2 text-red-700"><AlertTriangle className="w-5 h-5 text-red-500" /> Zero state universities in top 100<Ref n={3} /></li>
+                <li className="flex items-center gap-2 text-gray-700"><CheckCircle className="w-5 h-5 text-green-500" /> IIT-Gn sole representative (centrally funded)<Ref n={3} /></li>
               </ul>
             </DataCard>
           </div>
@@ -143,18 +143,18 @@ export default function Education() {
           <DataCard title="The Student Exodus: Brain Drain by the Numbers">
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="md:w-2/3 space-y-4">
-                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                  In 2023-24, <strong className="text-gray-900 dark:text-white">18,237 students from Gujarat went abroad</strong> for higher education, placing it among the top 6 states for outbound student migration.<Ref n={4} /> Gujarat University itself reported a 40% decline in certificate verifications — not because fewer students leave, but because many now bypass traditional verification channels entirely.<Ref n={4} />
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  In 2023-24, <strong className="text-gray-900">18,237 students from Gujarat went abroad</strong> for higher education, placing it among the top 6 states for outbound student migration.<Ref n={4} /> Gujarat University itself reported a 40% decline in certificate verifications — not because fewer students leave, but because many now bypass traditional verification channels entirely.<Ref n={4} />
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  NITI Aayog's report on the globalisation of higher education found that for every 1 foreign student coming to India, <strong className="text-gray-900 dark:text-white">28 Indian students go abroad</strong> — a ratio that underscores the catastrophic quality perception gap.<Ref n={5} /> The report notably praised Gujarat's early push through Gujarat Biotechnology University (GBU) as a model, but one institution cannot reverse a systemic tide.<Ref n={5} />
+                <p className="text-gray-700 leading-relaxed">
+                  NITI Aayog's report on the globalisation of higher education found that for every 1 foreign student coming to India, <strong className="text-gray-900">28 Indian students go abroad</strong> — a ratio that underscores the catastrophic quality perception gap.<Ref n={5} /> The report notably praised Gujarat's early push through Gujarat Biotechnology University (GBU) as a model, but one institution cannot reverse a systemic tide.<Ref n={5} />
                 </p>
               </div>
-              <div className="md:w-1/3 w-full bg-purple-100/50 dark:bg-purple-950/30 p-6 rounded-xl border border-purple-200 dark:border-purple-900/50 flex flex-col items-center text-center">
-                <span className="text-4xl font-bold text-purple-600 dark:text-purple-500 mb-2">18,237</span>
-                <span className="text-sm text-purple-800 dark:text-purple-400 uppercase tracking-widest font-semibold">Students Left (2023-24)</span>
-                <hr className="w-full border-purple-300 dark:border-purple-800/50 my-4" />
-                <span className="text-lg font-serif text-purple-900 dark:text-purple-300">1:28 Inbound-Outbound Ratio</span>
+              <div className="md:w-1/3 w-full bg-purple-100/50 p-6 rounded-xl border border-purple-200 flex flex-col items-center text-center">
+                <span className="text-4xl font-bold text-purple-600 mb-2">18,237</span>
+                <span className="text-sm text-purple-800 uppercase tracking-widest font-semibold">Students Left (2023-24)</span>
+                <hr className="w-full border-purple-300 my-4" />
+                <span className="text-lg font-serif text-purple-900">1:28 Inbound-Outbound Ratio</span>
               </div>
             </div>
           </DataCard>
@@ -202,46 +202,46 @@ export default function Education() {
           />
 
           <DataCard title="Systemic Underspending on Public Health" alert={true}>
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
-              Gujarat's government health expenditure amounts to just <strong className="text-gray-900 dark:text-white">0.8% of GSDP</strong> — well below the National Health Policy target of 2.5% and lower than many less industrialised states.<Ref n={6} /> This chronic fiscal neglect has created a healthcare system that is structurally dependent on the private sector, where out-of-pocket expenses push vulnerable families into debt traps.
+            <p className="text-gray-700 text-lg leading-relaxed mb-4">
+              Gujarat's government health expenditure amounts to just <strong className="text-gray-900">0.8% of GSDP</strong> — well below the National Health Policy target of 2.5% and lower than many less industrialised states.<Ref n={6} /> This chronic fiscal neglect has created a healthcare system that is structurally dependent on the private sector, where out-of-pocket expenses push vulnerable families into debt traps.
             </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              The state budget analysis reveals a stark asymmetry: <strong className="text-gray-900 dark:text-white">15.1% of total expenditure goes to education, but only 5.6% to health</strong>.<Ref n={14} /> Even within education, much of the spending fails to close quality gaps, as evidenced by the 32,000+ unfilled teaching positions.
+            <p className="text-gray-700 leading-relaxed">
+              The state budget analysis reveals a stark asymmetry: <strong className="text-gray-900">15.1% of total expenditure goes to education, but only 5.6% to health</strong>.<Ref n={14} /> Even within education, much of the spending fails to close quality gaps, as evidenced by the 32,000+ unfilled teaching positions.
             </p>
           </DataCard>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The Hospital Bed Crisis">
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                Gujarat faces a staggering <strong className="text-gray-900 dark:text-white">2.87 lakh hospital bed deficit</strong> — an 81.6% shortfall against population-based requirements.<Ref n={7} /> The state's bed-to-population ratio falls dramatically short of WHO recommendations, with rural areas bearing the worst of this deficit.
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Gujarat faces a staggering <strong className="text-gray-900">2.87 lakh hospital bed deficit</strong> — an 81.6% shortfall against population-based requirements.<Ref n={7} /> The state's bed-to-population ratio falls dramatically short of WHO recommendations, with rural areas bearing the worst of this deficit.
               </p>
-              <div className="bg-red-50/60 dark:bg-red-950/20 p-4 rounded-xl border border-red-200 dark:border-red-900/30">
-                <p className="text-red-800 dark:text-red-400 text-sm font-semibold">81.6% shortfall — nearly 3 lakh beds missing from the public health system<Ref n={7} /></p>
+              <div className="bg-red-50/60 p-4 rounded-xl border border-red-200">
+                <p className="text-red-800 text-sm font-semibold">81.6% shortfall — nearly 3 lakh beds missing from the public health system<Ref n={7} /></p>
               </div>
             </DataCard>
 
             <DataCard title="Ghost Specialists: Rural CHC Vacancies">
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                Between <strong className="text-gray-900 dark:text-white">86% and 97% of specialist doctor posts</strong> at Community Health Centres (CHCs) across rural Gujarat remain vacant.<Ref n={8} /> Surgeons, OB-GYN specialists, physicians, and paediatricians are virtually absent from the public rural health infrastructure.
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Between <strong className="text-gray-900">86% and 97% of specialist doctor posts</strong> at Community Health Centres (CHCs) across rural Gujarat remain vacant.<Ref n={8} /> Surgeons, OB-GYN specialists, physicians, and paediatricians are virtually absent from the public rural health infrastructure.
               </p>
               <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> 97% surgeon posts vacant at CHCs<Ref n={8} /></li>
-                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> 86% OB-GYN posts vacant<Ref n={8} /></li>
-                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> Rural patients forced into private sector dependency</li>
+                <li className="flex items-center gap-2 text-red-700"><AlertTriangle className="w-5 h-5 text-red-500" /> 97% surgeon posts vacant at CHCs<Ref n={8} /></li>
+                <li className="flex items-center gap-2 text-red-700"><AlertTriangle className="w-5 h-5 text-red-500" /> 86% OB-GYN posts vacant<Ref n={8} /></li>
+                <li className="flex items-center gap-2 text-red-700"><AlertTriangle className="w-5 h-5 text-red-500" /> Rural patients forced into private sector dependency</li>
               </ul>
             </DataCard>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Medical Seats: Regional Disparity">
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Gujarat falls into the <strong className="text-gray-900 dark:text-white">"51% population, 25% seats" club</strong> — states that collectively house over half of India's population but control only a quarter of MBBS seats.<Ref n={9} /> Southern states dominate medical seat availability, while Gujarat's per-capita medical education capacity lags significantly behind.
+              <p className="text-gray-600 leading-relaxed">
+                Gujarat falls into the <strong className="text-gray-900">"51% population, 25% seats" club</strong> — states that collectively house over half of India's population but control only a quarter of MBBS seats.<Ref n={9} /> Southern states dominate medical seat availability, while Gujarat's per-capita medical education capacity lags significantly behind.
               </p>
             </DataCard>
 
             <DataCard title="PG Seats Going Empty">
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                After Round 3 of PG medical counselling in 2025, <strong className="text-gray-900 dark:text-white">849 postgraduate medical seats remained vacant</strong> across Gujarat.<Ref n={10} /> This paradox — specialist vacancies coexisting with unfilled training seats — points to systemic issues in compensation, rural posting conditions, and institutional attractiveness.
+              <p className="text-gray-600 leading-relaxed">
+                After Round 3 of PG medical counselling in 2025, <strong className="text-gray-900">849 postgraduate medical seats remained vacant</strong> across Gujarat.<Ref n={10} /> This paradox — specialist vacancies coexisting with unfilled training seats — points to systemic issues in compensation, rural posting conditions, and institutional attractiveness.
               </p>
             </DataCard>
           </div>
@@ -252,40 +252,40 @@ export default function Education() {
           <DataCard title="Bonded Doctors Who Never Serve" alert={true}>
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="md:w-2/3 space-y-4">
-                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                  Despite bond agreements requiring government medical graduates to serve in public facilities, <strong className="text-gray-900 dark:text-white">only 7-10% actually comply</strong>.<Ref n={11} /> The vast majority pay penalty fees and migrate to private practice or urban hospitals, leaving rural health centres perpetually understaffed.
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  Despite bond agreements requiring government medical graduates to serve in public facilities, <strong className="text-gray-900">only 7-10% actually comply</strong>.<Ref n={11} /> The vast majority pay penalty fees and migrate to private practice or urban hospitals, leaving rural health centres perpetually understaffed.
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed">
                   This is not merely a Gujarat problem, but the state's particularly acute rural specialist vacancies (86-97%) demonstrate that it suffers worse outcomes than the national pattern.<Ref n={8} /> The bond system, in practice, functions as a regressive tax on medical graduates rather than a tool for equitable healthcare distribution.
                 </p>
               </div>
-              <div className="md:w-1/3 w-full bg-red-100/50 dark:bg-red-950/30 p-6 rounded-xl border border-red-200 dark:border-red-900/50 flex flex-col items-center text-center">
-                <span className="text-4xl font-bold text-red-600 dark:text-red-500 mb-2">7-10%</span>
-                <span className="text-sm text-red-800 dark:text-red-400 uppercase tracking-widest font-semibold">Bond Compliance Rate</span>
-                <hr className="w-full border-red-300 dark:border-red-800/50 my-4" />
-                <span className="text-lg font-serif text-red-900 dark:text-red-300">90% Choose Private Sector</span>
+              <div className="md:w-1/3 w-full bg-red-100/50 p-6 rounded-xl border border-red-200 flex flex-col items-center text-center">
+                <span className="text-4xl font-bold text-red-600 mb-2">7-10%</span>
+                <span className="text-sm text-red-800 uppercase tracking-widest font-semibold">Bond Compliance Rate</span>
+                <hr className="w-full border-red-300 my-4" />
+                <span className="text-lg font-serif text-red-900">90% Choose Private Sector</span>
               </div>
             </div>
           </DataCard>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Medical Tourism: Gujarat Absent">
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                India's medical tourism boom is concentrated in <strong className="text-gray-900 dark:text-white">six cities — none in Gujarat</strong>. Chennai attracts 45% of all health tourists, followed by Mumbai, Delhi, Hyderabad, Bengaluru, and Kolkata.<Ref n={12} /> Despite its large hospital network, Gujarat fails to convert healthcare infrastructure into a competitive medical destination.
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                India's medical tourism boom is concentrated in <strong className="text-gray-900">six cities — none in Gujarat</strong>. Chennai attracts 45% of all health tourists, followed by Mumbai, Delhi, Hyderabad, Bengaluru, and Kolkata.<Ref n={12} /> Despite its large hospital network, Gujarat fails to convert healthcare infrastructure into a competitive medical destination.
               </p>
-              <div className="bg-yellow-50/60 dark:bg-yellow-950/20 p-4 rounded-xl border border-yellow-200 dark:border-yellow-900/30">
-                <p className="text-yellow-800 dark:text-yellow-400 text-sm font-semibold">Zero Gujarat cities in India's top 5 medical tourism destinations<Ref n={12} /></p>
+              <div className="bg-yellow-50/60 p-4 rounded-xl border border-yellow-200">
+                <p className="text-yellow-800 text-sm font-semibold">Zero Gujarat cities in India's top 5 medical tourism destinations<Ref n={12} /></p>
               </div>
             </DataCard>
 
             <DataCard title="Faculty Shortage Cascading Into Quality">
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                Medical colleges across India face an estimated <strong className="text-gray-900 dark:text-white">~40% faculty shortage</strong>, directly impacting the quality of training in Gujarat's government and private medical institutions.<Ref n={13} /> Without adequate faculty, even existing PG seats produce graduates with suboptimal clinical exposure.
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Medical colleges across India face an estimated <strong className="text-gray-900">~40% faculty shortage</strong>, directly impacting the quality of training in Gujarat's government and private medical institutions.<Ref n={13} /> Without adequate faculty, even existing PG seats produce graduates with suboptimal clinical exposure.
               </p>
               <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> 40% faculty positions unfilled nationally<Ref n={13} /></li>
-                <li className="flex items-center gap-2 text-red-700 dark:text-red-400"><AlertTriangle className="w-5 h-5 text-red-500" /> 849 PG seats vacant in Gujarat alone<Ref n={10} /></li>
-                <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300"><CheckCircle className="w-5 h-5 text-green-500" /> 5.6% of state budget allocated to health<Ref n={14} /></li>
+                <li className="flex items-center gap-2 text-red-700"><AlertTriangle className="w-5 h-5 text-red-500" /> 40% faculty positions unfilled nationally<Ref n={13} /></li>
+                <li className="flex items-center gap-2 text-red-700"><AlertTriangle className="w-5 h-5 text-red-500" /> 849 PG seats vacant in Gujarat alone<Ref n={10} /></li>
+                <li className="flex items-center gap-2 text-gray-700"><CheckCircle className="w-5 h-5 text-green-500" /> 5.6% of state budget allocated to health<Ref n={14} /></li>
               </ul>
             </DataCard>
           </div>
@@ -294,7 +294,7 @@ export default function Education() {
       </div>
 
       {/* Education Budget & Spending */}
-      <Section icon={<GraduationCap className="w-8 h-8 text-blue-600 dark:text-blue-400" />} title="Public Investment: Spending Less, Getting Less">
+      <Section icon={<GraduationCap className="w-8 h-8 text-blue-600" />} title="Public Investment: Spending Less, Getting Less">
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <StatBox value="15.1%" label="Education Share of Budget" color="blue" />
           <StatBox value="5.6%" label="Health Share of Budget" color="red" />
@@ -337,19 +337,19 @@ export default function Education() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <DataCard title="Education Expenditure: Below Peers">
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              Gujarat allocates <strong className="text-gray-900 dark:text-white">15.1% of its total budget to education</strong> — below the national average of 15.5%.<Ref n={14} /> More critically, when measured as a proportion of GSDP, Gujarat's public education spending at approximately <strong>2.8% of GSDP</strong> is significantly below the NEP 2020 target of 6%.
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Gujarat allocates <strong className="text-gray-900">15.1% of its total budget to education</strong> — below the national average of 15.5%.<Ref n={14} /> More critically, when measured as a proportion of GSDP, Gujarat's public education spending at approximately <strong>2.8% of GSDP</strong> is significantly below the NEP 2020 target of 6%.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               States like Kerala (4.2% of GSDP on education), Tamil Nadu (3.6%), and Rajasthan (4.1%) invest substantially more per capita. The result: Gujarat produces industrial output but imports the skilled professionals needed to run its industries — from IT professionals at GIFT City to specialist doctors at its hospitals.
             </p>
           </DataCard>
 
           <DataCard title="Private Sector Dominance: A Double-Edged Sword">
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              Over <strong className="text-gray-900 dark:text-white">78% of higher education enrollment in Gujarat is in private institutions</strong> — one of the highest ratios in India. While this demonstrates private sector dynamism, it also means access to quality education is heavily <strong>income-dependent</strong>.
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Over <strong className="text-gray-900">78% of higher education enrollment in Gujarat is in private institutions</strong> — one of the highest ratios in India. While this demonstrates private sector dynamism, it also means access to quality education is heavily <strong>income-dependent</strong>.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               Private engineering colleges in Gujarat charge <strong>Rs 1.5-4 lakh/year</strong> versus Rs 15,000-40,000 at government colleges. Medical seats at private colleges cost <strong>Rs 12-25 lakh/year</strong>. For a state with 33.9% youth NEET rate, this pricing effectively locks out the bottom 60% of the income distribution from skilled employment pathways.
             </p>
           </DataCard>
@@ -357,15 +357,15 @@ export default function Education() {
       </Section>
 
       {/* Research & Innovation Gap */}
-      <Section icon={<AlertTriangle className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />} title="Research & Innovation: The Missing Engine">
+      <Section icon={<AlertTriangle className="w-8 h-8 text-yellow-600" />} title="Research & Innovation: The Missing Engine">
         <DataCard title="Gujarat's R&D Paradox" alert={true}>
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
-            Despite hosting some of India's largest industrial enterprises — Reliance, Adani, Torrent, Zydus — Gujarat's contribution to India's research output remains <strong className="text-gray-900 dark:text-white">disproportionately low relative to its economic size</strong>. The state produces ~4% of India's peer-reviewed publications while contributing ~8% of national GDP.
+          <p className="text-gray-700 text-lg leading-relaxed mb-4">
+            Despite hosting some of India's largest industrial enterprises — Reliance, Adani, Torrent, Zydus — Gujarat's contribution to India's research output remains <strong className="text-gray-900">disproportionately low relative to its economic size</strong>. The state produces ~4% of India's peer-reviewed publications while contributing ~8% of national GDP.
           </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-            India's overall R&D expenditure stands at just <strong className="text-gray-900 dark:text-white">0.65% of GDP</strong> — the lowest among all major economies. Gujarat mirrors this national underinvestment. The state has no equivalent of Bangalore's IISc-IIT-DRDO research triangle or Hyderabad's pharma R&D corridor. Innovation remains concentrated in processing and manufacturing — <strong>improving how to make things, not what to make</strong>.
+          <p className="text-gray-700 leading-relaxed mb-4">
+            India's overall R&D expenditure stands at just <strong className="text-gray-900">0.65% of GDP</strong> — the lowest among all major economies. Gujarat mirrors this national underinvestment. The state has no equivalent of Bangalore's IISc-IIT-DRDO research triangle or Hyderabad's pharma R&D corridor. Innovation remains concentrated in processing and manufacturing — <strong>improving how to make things, not what to make</strong>.
           </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-gray-700 leading-relaxed">
             Patent filings from Gujarat account for approximately <strong>6% of India's total</strong> — behind Maharashtra (28%), Karnataka (18%), Tamil Nadu (12%), and Delhi (11%). The absence of deep research ecosystems means Gujarat's industrial future will continue to depend on technologies, formulations, and processes developed elsewhere.
           </p>
         </DataCard>

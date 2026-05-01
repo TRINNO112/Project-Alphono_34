@@ -355,18 +355,18 @@ export default function BreakSimulator() {
             <span className="hidden md:block w-8 h-px bg-crimson" />
             <span>DEPENDENCY STRESS TEST</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
             Stress-Test <span className="italic text-crimson">Gujarat</span>.
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
+          <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
             Move the levers. Watch the cascade. Each control models a real, documented
             shock — with a citation — and the damage numbers are computed deterministically
             from the pillar dependencies mapped throughout this project.
           </p>
-          <p className="mt-3 text-sm font-mono uppercase tracking-widest text-gray-500 dark:text-gray-400 pl-6">
+          <p className="mt-3 text-sm font-mono uppercase tracking-widest text-gray-500 pl-6">
             {LEVERS.length} levers · 13 pillars · cited arithmetic
           </p>
-          <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 italic max-w-3xl pl-6">
+          <p className="mt-4 text-sm text-gray-500 italic max-w-3xl pl-6">
             This is a stress-test tool, not a forecast. Coefficients are upper-bound
             estimates derived from the sources cited under each lever.
           </p>
@@ -385,11 +385,11 @@ export default function BreakSimulator() {
       {/* Live impact counters */}
       <section
         aria-label="Current cascade impact"
-        className="rounded-2xl border border-crimson/40 bg-white/90 dark:bg-dark-surface/90 shadow-lg p-5"
+        className="rounded-2xl border border-crimson/40 bg-white/90/90 shadow-lg p-5"
       >
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
           <div>
-            <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-1">
+            <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-1">
               GDP at Risk
             </div>
             <div className="font-serif text-3xl md:text-4xl font-bold text-crimson tabular-nums">
@@ -402,16 +402,16 @@ export default function BreakSimulator() {
                 decimals={impact.gdpCrore >= 1000 ? 1 : 0}
               />
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <div className="text-xs text-gray-500 mt-1">
               Aggregated from active levers
             </div>
           </div>
 
           <div>
-            <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-1">
+            <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-1">
               Jobs at Risk
             </div>
-            <div className="font-serif text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tabular-nums">
+            <div className="font-serif text-3xl md:text-4xl font-bold text-gray-900 tabular-nums">
               <AnimatedCounter
                 key={`jobs-${impact.jobsAtRisk}`}
                 value={formatJobs(impact.jobsAtRisk)}
@@ -420,24 +420,24 @@ export default function BreakSimulator() {
                 decimals={impact.jobsAtRisk >= 100000 ? 2 : 0}
               />
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <div className="text-xs text-gray-500 mt-1">
               Direct + compounding (upper-bound)
             </div>
           </div>
 
           <div>
-            <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-1">
+            <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-1">
               Active Levers
             </div>
-            <div className="font-serif text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tabular-nums">
+            <div className="font-serif text-3xl md:text-4xl font-bold text-gray-900 tabular-nums">
               {impact.activeLevers.length}
-              <span className="text-gray-400 dark:text-gray-500 text-xl"> / {LEVERS.length}</span>
+              <span className="text-gray-400 text-xl"> / {LEVERS.length}</span>
             </div>
             <button
               type="button"
               onClick={reset}
               disabled={!anyActive}
-              className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-crimson disabled:text-gray-400 dark:disabled:text-gray-600 hover:underline focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 rounded"
+              className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-crimson disabled:text-gray-400 hover:underline focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 rounded"
             >
               <RotateCcw className="w-3 h-3" aria-hidden="true" />
               Reset all
@@ -445,13 +445,13 @@ export default function BreakSimulator() {
           </div>
 
           <div>
-            <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-1">
+            <div className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-1">
               Time to First Failure
             </div>
-            <div className="font-serif text-2xl md:text-3xl font-bold text-gray-900 dark:text-white tabular-nums">
+            <div className="font-serif text-2xl md:text-3xl font-bold text-gray-900 tabular-nums">
               {timeToFirstFailure ? `${timeToFirstFailure.days}d` : '—'}
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate" title={timeToFirstFailure?.leverLabel || ''}>
+            <div className="text-xs text-gray-500 mt-1 truncate" title={timeToFirstFailure?.leverLabel || ''}>
               {timeToFirstFailure ? timeToFirstFailure.leverLabel : 'No active lever'}
             </div>
           </div>
@@ -461,7 +461,7 @@ export default function BreakSimulator() {
       {/* Preset scenarios */}
       <Section icon={<Zap className="w-8 h-8 text-crimson" />} title="Preset Scenarios">
         <DataCard title="Load a documented real-world cascade">
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-sm text-gray-600 mb-4">
             Each preset sets specific levers to values anchored in a real event.
             Tap any preset to snap the simulation.
           </p>
@@ -476,19 +476,19 @@ export default function BreakSimulator() {
                   onClick={() => runPreset(preset.id)}
                   aria-pressed={isActive}
                   className={`text-left p-4 rounded-xl border transition-all focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 ${isActive
-                      ? 'border-crimson bg-crimson/10 dark:bg-crimson/20'
-                      : 'border-gray-200 dark:border-dark-border hover:border-crimson hover:bg-crimson/5'
+                      ? 'border-crimson bg-crimson/10'
+                      : 'border-gray-200 hover:border-crimson hover:bg-crimson/5'
                     }`}
                 >
                   <div className="flex items-start justify-between gap-2 mb-1">
-                    <div className="font-serif font-bold text-base text-gray-900 dark:text-white leading-tight">
+                    <div className="font-serif font-bold text-base text-gray-900 leading-tight">
                       {preset.label}
                     </div>
-                    <span className="shrink-0 text-[10px] font-mono px-1.5 py-0.5 rounded bg-gray-100 dark:bg-dark-bg text-gray-600 dark:text-gray-400">
+                    <span className="shrink-0 text-[10px] font-mono px-1.5 py-0.5 rounded bg-gray-100 text-gray-600">
                       {leverCount} lever{leverCount !== 1 ? 's' : ''}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 leading-relaxed">
+                  <p className="text-xs text-gray-600 mb-2 leading-relaxed">
                     {preset.tagline || preset.description}
                   </p>
                   <span className="text-[10px] tracking-widest uppercase font-semibold text-crimson line-clamp-1">
@@ -507,7 +507,7 @@ export default function BreakSimulator() {
           {/* Lever rail */}
           <div className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto space-y-3 pr-1">
             {/* Group tabs */}
-            <div role="tablist" aria-label="Lever groups" className="flex flex-wrap gap-1.5 pb-2 border-b border-gray-200 dark:border-dark-border">
+            <div role="tablist" aria-label="Lever groups" className="flex flex-wrap gap-1.5 pb-2 border-b border-gray-200">
               {TAB_ORDER.map((t) => {
                 const active = state.tab === t
                 return (
@@ -519,7 +519,7 @@ export default function BreakSimulator() {
                     onClick={() => setTab(t)}
                     className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 ${active
                         ? 'border-crimson bg-crimson text-white'
-                        : 'border-gray-200 dark:border-dark-border text-gray-600 dark:text-gray-400 hover:border-crimson hover:text-crimson'
+                        : 'border-gray-200 text-gray-600 hover:border-crimson hover:text-crimson'
                       }`}
                   >
                     {TAB_LABELS[t]}
@@ -562,7 +562,7 @@ export default function BreakSimulator() {
                   type="button"
                   onClick={toggleSecondary}
                   aria-expanded={state.showSecondary}
-                  className="w-full flex items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-crimson py-2 px-3 rounded-lg border border-dashed border-gray-300 dark:border-dark-border focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+                  className="w-full flex items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-crimson py-2 px-3 rounded-lg border border-dashed border-gray-300 focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
                 >
                   <span>
                     {state.showSecondary ? 'Hide' : 'Show'} {visibleLevers.secondary.length} more lever{visibleLevers.secondary.length !== 1 ? 's' : ''}
@@ -649,7 +649,7 @@ export default function BreakSimulator() {
 
             {/* Focused-pillar hint */}
             {state.focusedPillar && (
-              <p className="text-xs font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <p className="text-xs font-mono uppercase tracking-wider text-gray-500">
                 Focused: {PILLAR_LABELS[state.focusedPillar] || state.focusedPillar}
               </p>
             )}
@@ -659,7 +659,7 @@ export default function BreakSimulator() {
 
       {/* Full methodology — inline, kid-friendly */}
       <Section icon={<Info className="w-8 h-8 text-crimson" />} title="The Whole Methodology — explained simply">
-        <p id="methodology" className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-6 max-w-3xl">
+        <p id="methodology" className="text-sm text-gray-700 leading-relaxed mb-6 max-w-3xl">
           This page is also a <strong>research instrument</strong>, so the math is open. Below is every coefficient,
           every weight, every assumption — written for a smart 12-year-old. If anything still feels like a
           black box after you read this, that&apos;s a bug — please flag it.
@@ -667,19 +667,19 @@ export default function BreakSimulator() {
 
         {/* §1 What a lever is */}
         <DataCard title="1. What is a &ldquo;lever&rdquo;?">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
             A lever is <strong>one real shock</strong> that has actually happened or could plausibly happen — like
             &ldquo;Russian crude supply gets cut&rdquo;, &ldquo;Mundra port shuts for 14 days&rdquo;, or
             &ldquo;migrant violence empties Surat factories&rdquo;. There are  <strong>{LEVERS.length} levers</strong>
             in this simulator, organized into 4 streams:
           </p>
-          <ul className="space-y-1.5 text-sm text-gray-700 dark:text-gray-300 ml-4 list-disc">
+          <ul className="space-y-1.5 text-sm text-gray-700 ml-4 list-disc">
             <li><strong>Materials</strong> — Russian crude, Chinese pharma APIs, Dahej LNG, solar PV imports, pharma single-points-of-failure</li>
             <li><strong>Physical</strong> — Mundra port closure, Narmada water deficit, Tapi flooding Surat, heatwave + AQI shock, Saurashtra bridge failure</li>
             <li><strong>Human</strong> — migrant violence, diamond-export collapse, textile collapse, structural discrimination, reverse migration</li>
             <li><strong>Frontier</strong> — Versova subsea cable cut, China green-tech shock, BT cotton collapse, Saurashtra/Kutch monsoon failure</li>
           </ul>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+          <p className="text-sm text-gray-700 leading-relaxed mt-3">
             Each lever ships with: a derivation formula, named populations affected, named districts affected,
             a 4–7 step cascade timeline, a real historical analogue, a buffer-stock estimate, and at minimum
             <strong> three independent sources</strong>.
@@ -688,22 +688,22 @@ export default function BreakSimulator() {
 
         {/* §2 Core formula */}
         <DataCard title="2. The core formula — three numbers and a multiply">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
             For every pillar a lever touches, the disruption % at <em>full lever pull</em> (slider at max) is just:
           </p>
-          <div className="p-4 mb-4 bg-gray-900 dark:bg-black rounded-lg overflow-x-auto">
+          <div className="p-4 mb-4 bg-gray-900 rounded-lg overflow-x-auto">
             <code className="font-mono text-sm text-amber-300 whitespace-pre">{`pillar % = asset_share × dependency_weight × propagation × 100`}</code>
           </div>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
             Three factors. Each one is a number between 0 and ~1.5, and each one is cited in the lever data.
             Worked example — <strong>&ldquo;Russian crude → Materials pillar&rdquo;</strong>:
           </p>
-          <div className="p-4 mb-3 bg-parchment-50 dark:bg-dark-bg rounded-lg border border-gray-200 dark:border-dark-border">
-            <code className="font-mono text-xs text-gray-800 dark:text-gray-200 whitespace-pre-wrap break-words">
+          <div className="p-4 mb-3 bg-parchment-50 rounded-lg border border-gray-200">
+            <code className="font-mono text-xs text-gray-800 whitespace-pre-wrap break-words">
               {`asset_share        = 0.56   ← weighted avg of RIL Jamnagar (~36%) +\n                              Nayara Vadinar (~70%) Russian intake\ndependency_weight  = 0.85   ← refinery feedstock cut hits petchem\n                              cracker output near-linearly\npropagation        = 1.40   ← no strategic substitute on India's west\n                              coast → second-order shock multiplier\n\n0.56 × 0.85 × 1.40 × 100  =  66.6%   ← Materials pillar reading`}
             </code>
           </div>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-gray-700 leading-relaxed">
             Slider at half? You get half the headline %. Slider at zero? Zero contribution.
           </p>
         </DataCard>
@@ -711,26 +711,26 @@ export default function BreakSimulator() {
         {/* §3 What each factor means */}
         <DataCard title="3. What each of the three factors actually means">
           <div className="space-y-3">
-            <div className="p-3 border-l-4 border-crimson bg-parchment-50 dark:bg-dark-bg rounded">
-              <p className="font-semibold text-gray-900 dark:text-white text-sm mb-1">Asset share <span className="text-xs font-mono text-gray-500 ml-2">(0.0 – 1.0)</span></p>
-              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+            <div className="p-3 border-l-4 border-crimson bg-parchment-50 rounded">
+              <p className="font-semibold text-gray-900 text-sm mb-1">Asset share <span className="text-xs font-mono text-gray-500 ml-2">(0.0 – 1.0)</span></p>
+              <p className="text-sm text-gray-700 leading-relaxed">
                 &ldquo;<em>What fraction of the pillar&apos;s critical inputs is exposed to this shock?</em>&rdquo;
                 If 56% of Gujarat&apos;s refining feedstock comes from Russia, that&apos;s 0.56 of the asset base at risk.
                 Source: Al Jazeera (Aug 2025) and Business Standard (Nov 2025).
               </p>
             </div>
-            <div className="p-3 border-l-4 border-crimson bg-parchment-50 dark:bg-dark-bg rounded">
-              <p className="font-semibold text-gray-900 dark:text-white text-sm mb-1">Dependency weight <span className="text-xs font-mono text-gray-500 ml-2">(0.5 – 1.0)</span></p>
-              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+            <div className="p-3 border-l-4 border-crimson bg-parchment-50 rounded">
+              <p className="font-semibold text-gray-900 text-sm mb-1">Dependency weight <span className="text-xs font-mono text-gray-500 ml-2">(0.5 – 1.0)</span></p>
+              <p className="text-sm text-gray-700 leading-relaxed">
                 &ldquo;<em>How load-bearing is that asset to the pillar?</em>&rdquo;
                 A refinery feedstock cut hits Materials at weight <strong>0.85</strong> (cracker output drops near-linearly with feed).
                 A truckers&apos; strike hits Materials at weight <strong>~0.4</strong> (rail substitution exists at the margin).
                 Higher = harder to substitute.
               </p>
             </div>
-            <div className="p-3 border-l-4 border-crimson bg-parchment-50 dark:bg-dark-bg rounded">
-              <p className="font-semibold text-gray-900 dark:text-white text-sm mb-1">Propagation factor <span className="text-xs font-mono text-gray-500 ml-2">(1.0 – 1.5)</span></p>
-              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+            <div className="p-3 border-l-4 border-crimson bg-parchment-50 rounded">
+              <p className="font-semibold text-gray-900 text-sm mb-1">Propagation factor <span className="text-xs font-mono text-gray-500 ml-2">(1.0 – 1.5)</span></p>
+              <p className="text-sm text-gray-700 leading-relaxed">
                 &ldquo;<em>How much does the rest of the system fail to absorb the shock?</em>&rdquo;
                 A propagation of <strong>1.4</strong> means: one unit of asset loss converts to 1.4 units of pillar damage,
                 because there&apos;s no strategic reserve / no substitute supplier / fragile downstream. Propagation = 1.0
@@ -742,24 +742,24 @@ export default function BreakSimulator() {
 
         {/* §4 Why concrete %s */}
         <DataCard title="4. Why concrete %s, not vague signals">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-gray-700 leading-relaxed">
             Every factor in the &ldquo;Why?&rdquo; popover is anchored to a published number — a Kpler tanker share,
             a CAG audit objection, a Reuters/Business Standard report, a TRAI / NPCIL filing, a peer-reviewed
             dependency study. The simulator does <strong>not</strong> hallucinate magnitudes. Where a citation gap exists
-            (rare), the lever ships an explicit <code className="font-mono text-xs bg-gray-100 dark:bg-dark-bg px-1 rounded">pendingData</code> flag
+            (rare), the lever ships an explicit <code className="font-mono text-xs bg-gray-100 px-1 rounded">pendingData</code> flag
             and the map shows an &ldquo;Estimates pending data&rdquo; tag.
           </p>
         </DataCard>
 
         {/* §5 Aggregation */}
         <DataCard title="5. What happens when multiple levers fire at once">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
             Per-pillar contributions <strong>add linearly</strong>, then cap at 100%. Example: Russian crude contributes
             33% to Materials, Chinese APIs contributes 24% — the bar reads <strong>57%</strong>. Pull a third lever and the
             sum hits 112% → the bar caps at 100% and the popover shows the cumulative arithmetic so you can see
             what got truncated.
           </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-gray-700 leading-relaxed">
             Why additive, not multiplicative? Because <em>shocks compound, they don&apos;t cancel</em>. Two simultaneous
             chokeholds on the same pillar are worse than either alone, even if neither alone is 100%.
           </p>
@@ -767,13 +767,13 @@ export default function BreakSimulator() {
 
         {/* §6 Map */}
         <DataCard title="6. How the district heatmap is computed (the 15% rule)">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
             Every lever names <strong>primary districts</strong> with reasons — e.g. Russian crude → Jamnagar
             (RIL SEZ + Sikka port), Devbhumi Dwarka (Nayara directly sanctioned), Bharuch (Dahej cracker feedstock).
             Primary districts take the full hit. The rest of Gujarat absorbs a <strong>15% statewide ripple</strong> of
             that hit.
           </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-gray-700 leading-relaxed">
             Where does 0.15 come from? It&apos;s the <em>median</em> propagation share observed in three documented
             Gujarat events: the 2018 Surat migrant exodus, Cyclone Biparjoy (2023), and the 2026 Morbi gas crisis.
             Each propagated economic damage to roughly 5–7 non-primary districts at a fraction of primary intensity,
@@ -783,18 +783,18 @@ export default function BreakSimulator() {
 
         {/* §7 GDP / jobs */}
         <DataCard title="7. How the GDP and Jobs scalars are derived">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-            Each lever carries two extra numbers: <code className="font-mono text-xs bg-gray-100 dark:bg-dark-bg px-1 rounded">gdpCrorePerUnit</code> and{' '}
-            <code className="font-mono text-xs bg-gray-100 dark:bg-dark-bg px-1 rounded">jobsPerUnit</code>. &ldquo;Per unit&rdquo; means per slider-point (or per active toggle).
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
+            Each lever carries two extra numbers: <code className="font-mono text-xs bg-gray-100 px-1 rounded">gdpCrorePerUnit</code> and{' '}
+            <code className="font-mono text-xs bg-gray-100 px-1 rounded">jobsPerUnit</code>. &ldquo;Per unit&rdquo; means per slider-point (or per active toggle).
           </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-            Worked example again — Russian crude. <code className="font-mono text-xs bg-gray-100 dark:bg-dark-bg px-1 rounded">gdpCrorePerUnit = 1100</code>.
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
+            Worked example again — Russian crude. <code className="font-mono text-xs bg-gray-100 px-1 rounded">gdpCrorePerUnit = 1100</code>.
             Where does 1100 come from? Back-calculated from the <strong>2018–19 Iranian phase-out</strong>: India&apos;s refining
             sector lost ~$8 bn (~₹56,000 cr) when Iranian intake went from 23.5 MMT to zero. That&apos;s
             ~0.23 MMT per slider-point, valued at the 5-year average crude/petchem GRM gap → ~₹1,100 cr per slider-point.
             Numbers like these are <strong>stress-test ceilings</strong>, not point forecasts.
           </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-gray-700 leading-relaxed">
             Jobs scale similarly. The <strong>2,600 jobs/unit</strong> for the Russian-crude lever combines RIL+Nayara
             direct headcount (~73k workers, ~73 per slider-point) with the trucker + petchem-downstream multiplier
             (~26×) typical of Indian refinery employment studies (Kpler / IBEF).
@@ -803,7 +803,7 @@ export default function BreakSimulator() {
 
         {/* §8 TTFF */}
         <DataCard title="8. Time-to-first-failure">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-gray-700 leading-relaxed">
             For levers with a buffer stock (oil reserves, LNG terminal storage, polysilicon at Mundra, bonded
             warehouses), we publish the <em>commercial + strategic days</em> until the first downstream consumer
             feels the cut. Russian crude is <strong>~25–30 days</strong> (5.33 MMT PPAC strategic reserve plus
@@ -815,13 +815,13 @@ export default function BreakSimulator() {
 
         {/* §9 Populations */}
         <DataCard title="9. Named populations — not abstract counts">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
             Each lever lists <em>named</em> populations: not &ldquo;migrant workers&rdquo; but{' '}
             <strong>&ldquo;UP/Bihar silicosis-exposed agate workers in Khambhat&rdquo;</strong>; not &ldquo;diamond workers&rdquo; but{' '}
             <strong>&ldquo;Saurashtra Patel polishers in Surat-Bhavnagar-Amreli (~80–90% locals, NOT migrants)&rdquo;</strong>.
             Headcounts come from the same documents that anchor the lever (DWUG, ThePrint, Scroll, Federal, Rapaport).
           </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-gray-700 leading-relaxed">
             Multi-lever scenarios <strong>de-duplicate</strong> by label + locality so the same Surat polisher cohort
             doesn&apos;t double-count when the diamond-collapse and reverse-migration levers both fire. Ethnicity
             badges (Local · Saurashtra Patel vs Migrant) are explicit — the project is opinionated about this
@@ -831,7 +831,7 @@ export default function BreakSimulator() {
 
         {/* §10 Education */}
         <DataCard title="10. Why Education has no slider">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-gray-700 leading-relaxed">
             School collapse in Gujarat is always a <strong>downstream signal</strong> of an upstream economic or
             violence shock. There&apos;s no &ldquo;break education&rdquo; lever. Instead, the Education Cascade panel
             reads from currently-active levers and surfaces specific narratives: the 2,356 SLCs from Surat
@@ -843,13 +843,13 @@ export default function BreakSimulator() {
 
         {/* §11 What it is not */}
         <DataCard title="11. What this simulator is NOT">
-          <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <ul className="space-y-2 text-sm text-gray-700 leading-relaxed">
             <li className="flex gap-2"><span className="text-crimson font-bold">×</span> Not a probabilistic forecast. There is no &ldquo;chance of this happening&rdquo;. A lever is either pulled or not.</li>
             <li className="flex gap-2"><span className="text-crimson font-bold">×</span> Not a Monte Carlo simulation. Outputs are deterministic given the same inputs.</li>
             <li className="flex gap-2"><span className="text-crimson font-bold">×</span> Not policy-prescriptive. The simulator surfaces breakage; the policy response sits in pillar pages and the Confrontation page.</li>
             <li className="flex gap-2"><span className="text-crimson font-bold">×</span> Not real-time. Coefficients are anchored to documents at the cited dates and reviewed when major sources publish revisions.</li>
           </ul>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+          <p className="text-sm text-gray-700 leading-relaxed mt-3">
             The point is not to predict — it is to make the <em>structure</em> of dependence visible. If a single
             slider can move five pillars at once, that&apos;s the simulator working as designed: it is the
             dependency you should already be worried about, made arithmetic.
@@ -858,18 +858,18 @@ export default function BreakSimulator() {
 
         {/* §12 Source of truth */}
         <DataCard title="12. Source of truth & reproducibility">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
             All {LEVERS.length} lever specifications — every factor, weight, propagation coefficient, named-population
             headcount, cascade step, historical analogue, and source URL — live in:
           </p>
-          <ul className="space-y-1.5 text-sm font-mono text-gray-700 dark:text-gray-300 ml-3">
-            <li>• <code className="bg-gray-100 dark:bg-dark-bg px-1 rounded">src/data/_fragments/groupA_materials.js</code></li>
-            <li>• <code className="bg-gray-100 dark:bg-dark-bg px-1 rounded">src/data/_fragments/groupB_physical.js</code></li>
-            <li>• <code className="bg-gray-100 dark:bg-dark-bg px-1 rounded">src/data/_fragments/groupC_human.js</code></li>
-            <li>• <code className="bg-gray-100 dark:bg-dark-bg px-1 rounded">src/data/_fragments/groupD_frontier_and_presets.js</code></li>
+          <ul className="space-y-1.5 text-sm font-mono text-gray-700 ml-3">
+            <li>• <code className="bg-gray-100 px-1 rounded">src/data/_fragments/groupA_materials.js</code></li>
+            <li>• <code className="bg-gray-100 px-1 rounded">src/data/_fragments/groupB_physical.js</code></li>
+            <li>• <code className="bg-gray-100 px-1 rounded">src/data/_fragments/groupC_human.js</code></li>
+            <li>• <code className="bg-gray-100 px-1 rounded">src/data/_fragments/groupD_frontier_and_presets.js</code></li>
           </ul>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
-            The engine that consumes them is <code className="font-mono text-xs bg-gray-100 dark:bg-dark-bg px-1 rounded">src/data/simulatorCoefficients.js</code>.
+          <p className="text-sm text-gray-700 leading-relaxed mt-3">
+            The engine that consumes them is <code className="font-mono text-xs bg-gray-100 px-1 rounded">src/data/simulatorCoefficients.js</code>.
             Nothing is computed server-side — the simulator runs entirely in your browser and is fully inspectable.
             See also <Link to="/methodology#simulator" className="text-crimson font-semibold hover:underline">the long-form §8 on the Methodology page</Link>.
           </p>
@@ -878,7 +878,7 @@ export default function BreakSimulator() {
 
       {/* Every cited source from every lever */}
       <Section icon={<BookOpen className="w-8 h-8 text-crimson" />} title={`Every simulator source (${allSimulatorSources.length})`}>
-        <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4 max-w-3xl">
+        <p className="text-sm text-gray-700 leading-relaxed mb-4 max-w-3xl">
           The full reference list pulled from every lever. Grouped by lever so you can see exactly which
           documents anchor which shock.
         </p>
@@ -886,9 +886,9 @@ export default function BreakSimulator() {
           {leverSourceGroups.map((group) => (
             <div
               key={group.id}
-              className="rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface p-5"
+              className="rounded-2xl border border-gray-200 bg-white p-5"
             >
-              <h3 className="font-serif text-base font-bold text-gray-900 dark:text-white mb-1">
+              <h3 className="font-serif text-base font-bold text-gray-900 mb-1">
                 {group.label}
               </h3>
               <p className="text-[11px] font-mono uppercase tracking-wider text-crimson mb-3">
@@ -902,7 +902,7 @@ export default function BreakSimulator() {
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-700 dark:text-gray-300 hover:text-crimson hover:underline break-words"
+                      className="text-gray-700 hover:text-crimson hover:underline break-words"
                     >
                       {s.title}
                     </a>

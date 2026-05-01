@@ -54,12 +54,12 @@ function ComparisonTableInner({ title, columns, rows, highlightState = 'Gujarat'
       className="my-8"
     >
       {title && (
-        <h4 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-6">{title}</h4>
+        <h4 className="text-xl font-serif font-bold text-gray-900 mb-6">{title}</h4>
       )}
-      <div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/40 backdrop-blur-sm">
+      <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white/60 backdrop-blur-sm">
         <table className="w-full border-collapse min-w-[500px]">
           {title && <caption className="sr-only">{title}</caption>}
-          <thead className="sticky top-0 z-10 bg-white/95 dark:bg-dark-surface/95 backdrop-blur-sm">
+          <thead className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm">
             <tr className="border-b-2 border-crimson">
               <th
                 scope="col"
@@ -91,17 +91,17 @@ function ComparisonTableInner({ title, columns, rows, highlightState = 'Gujarat'
               <tr
                 key={i}
                 aria-label={row.state === highlightState ? `${row.state} (highlighted)` : undefined}
-                className={`border-b border-gray-200 dark:border-dark-border transition-all duration-200 ${
+                className={`border-b border-gray-200 transition-all duration-200 ${
                   row.state === highlightState
-                    ? 'bg-crimson/5 dark:bg-crimson/10 shadow-inner'
-                    : 'hover:bg-white/80 dark:hover:bg-dark-surface/60 hover:scale-[1.01]'
+                    ? 'bg-crimson/5 shadow-inner'
+                    : 'hover:bg-white/80 hover:scale-[1.01]'
                 }`}
               >
-                <td className={`py-3 px-4 text-sm ${row.state === highlightState ? 'font-bold text-crimson' : 'font-semibold text-gray-900 dark:text-white'}`}>
+                <td className={`py-3 px-4 text-sm ${row.state === highlightState ? 'font-bold text-crimson' : 'font-semibold text-gray-900'}`}>
                   {row.state}
                 </td>
                 {columns.map((col) => (
-                  <td key={col.key} className={`py-3 px-4 text-sm ${row.state === highlightState ? 'font-bold text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-300'}`}>
+                  <td key={col.key} className={`py-3 px-4 text-sm ${row.state === highlightState ? 'font-bold text-gray-900' : 'text-gray-700'}`}>
                     {row[col.key]}
                   </td>
                 ))}
@@ -110,7 +110,7 @@ function ComparisonTableInner({ title, columns, rows, highlightState = 'Gujarat'
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-gray-500 dark:text-gray-500 mt-2 text-right">
+      <p className="text-xs text-gray-500 mt-2 text-right">
         Click column headers to sort
       </p>
     </motion.div>

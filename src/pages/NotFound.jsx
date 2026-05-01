@@ -20,11 +20,11 @@ export default function NotFound() {
             <span>ROUTE NOT INDEXED</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold text-gray-900 leading-tight">
             This <span className="italic text-crimson">path</span> is not in the research index.
           </h1>
 
-          <p className="text-lg text-gray-600 dark:text-gray-400 border-l-4 border-crimson pl-6 text-left">
+          <p className="text-lg text-gray-600 border-l-4 border-crimson pl-6 text-left">
             The URL you followed does not match any of the 13 pillars, districts, or reference pages
             in this dataset. It may have been renamed, or never existed.
           </p>
@@ -39,7 +39,7 @@ export default function NotFound() {
             </Link>
             <Link
               to="/sources"
-              className="px-6 py-3 rounded-full border border-parchment-200 dark:border-dark-border text-gray-900 dark:text-gray-200 font-medium hover:bg-parchment-100 dark:hover:bg-dark-surface transition-colors"
+              className="px-6 py-3 rounded-full border border-parchment-200 text-gray-900 font-medium hover:bg-parchment-100 transition-colors"
             >
               Browse all sources
             </Link>

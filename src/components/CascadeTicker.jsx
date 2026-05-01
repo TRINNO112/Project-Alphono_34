@@ -21,9 +21,9 @@ function CascadeTickerBase({ leverLabel, steps = [], onReplay }) {
     return (
       <section
         aria-label={leverLabel ? `Cascade for ${leverLabel}` : 'Cascade'}
-        className="rounded-2xl border border-dashed border-gray-300 dark:border-dark-border bg-white/40 dark:bg-dark-surface/40 p-6 text-center"
+        className="rounded-2xl border border-dashed border-gray-300 bg-white/40 p-6 text-center"
       >
-        <p className="text-sm text-gray-500 dark:text-gray-400 italic">
+        <p className="text-sm text-gray-500 italic">
           No cascade for the active lever.
         </p>
       </section>
@@ -38,10 +38,10 @@ function CascadeTickerBase({ leverLabel, steps = [], onReplay }) {
   return (
     <section
       aria-label={leverLabel ? `Cascade timeline for ${leverLabel}` : 'Cascade timeline'}
-      className="relative rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface p-5 min-w-0 overflow-hidden"
+      className="relative rounded-2xl border border-gray-200 bg-white p-5 min-w-0 overflow-hidden"
     >
       <div className="flex items-baseline justify-between gap-2 mb-4">
-        <h4 className="font-serif text-base font-semibold text-gray-900 dark:text-white">
+        <h4 className="font-serif text-base font-semibold text-gray-900">
           {leverLabel ? `Cascade · ${leverLabel}` : 'Cascade'}
         </h4>
         {!reduceMotion && (
@@ -90,23 +90,23 @@ function CascadeTickerBase({ leverLabel, steps = [], onReplay }) {
                 )}
                 <span
                   aria-hidden="true"
-                  className="absolute left-1 top-1.5 w-2 h-2 rounded-full bg-crimson ring-2 ring-white dark:ring-dark-surface"
+                  className="absolute left-1 top-1.5 w-2 h-2 rounded-full bg-crimson ring-2 ring-white"
                 />
 
                 <div className="flex flex-wrap items-baseline gap-2">
                   {s.timeBucket && (
                     isTimeLike ? (
-                      <time className="font-mono text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                      <time className="font-mono text-[11px] font-semibold uppercase tracking-wider text-gray-500">
                         {s.timeBucket}
                       </time>
                     ) : (
-                      <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                      <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-gray-500">
                         {s.timeBucket}
                       </span>
                     )
                   )}
                 </div>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white leading-snug mt-0.5 break-words">
+                <p className="text-sm font-semibold text-gray-900 leading-snug mt-0.5 break-words">
                   {s.text}
                   {s.cite && (
                     <a

@@ -112,10 +112,10 @@ export default function ScrollSpy({ sections }) {
               whileTap={{ scale: 0.97 }}
               aria-label="Open section navigation"
               aria-expanded={false}
-              className="group flex flex-col items-center gap-3 py-4 px-2 rounded-full bg-white/70 dark:bg-dark-surface/70 border border-gray-200/70 dark:border-dark-border/70 backdrop-blur-md shadow-sm hover:shadow-md hover:border-crimson/40 transition-all"
+              className="group flex flex-col items-center gap-3 py-4 px-2 rounded-full bg-white/70 border border-gray-200/70 backdrop-blur-md shadow-sm hover:shadow-md hover:border-crimson/40 transition-all"
             >
               {/* Vertical progress track with crimson fill */}
-              <div className="relative w-[3px] h-32 rounded-full bg-gray-200 dark:bg-dark-border overflow-hidden">
+              <div className="relative w-[3px] h-32 rounded-full bg-gray-200 overflow-hidden">
                 <motion.div
                   className="absolute inset-x-0 top-0 bg-crimson rounded-full"
                   animate={{ height: `${progress}%` }}
@@ -149,12 +149,12 @@ export default function ScrollSpy({ sections }) {
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 exit={{ opacity: 0, x: -12, scale: 0.97 }}
                 transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-                className="relative w-[240px] bg-white/85 dark:bg-dark-surface/85 border border-gray-200 dark:border-dark-border rounded-2xl backdrop-blur-md shadow-lg overflow-hidden"
+                className="relative w-[240px] bg-white/85 border border-gray-200 rounded-2xl backdrop-blur-md shadow-lg overflow-hidden"
                 aria-label="Table of contents"
               >
                 {/* Header */}
-                <div className="flex items-center justify-between px-4 py-2.5 border-b border-gray-200 dark:border-dark-border">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-between px-4 py-2.5 border-b border-gray-200">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-gray-500">
                     On this page
                   </span>
                   <button
@@ -170,14 +170,14 @@ export default function ScrollSpy({ sections }) {
                 {/* List */}
                 <div className="relative px-2 py-2">
                   {/* Left vertical guide line */}
-                  <div className="absolute left-[14px] top-2 bottom-2 w-[2px] bg-gray-200 dark:bg-dark-border rounded-full" />
+                  <div className="absolute left-[14px] top-2 bottom-2 w-[2px] bg-gray-200 rounded-full" />
 
                   <ul className="relative space-y-0.5">
                     {/* Measured active highlight — no hardcoded math */}
                     {activeIndex >= 0 && highlight.height > 0 && (
                       <motion.div
                         layoutId="spy-active"
-                        className="absolute -left-2 -right-2 bg-crimson/10 dark:bg-crimson/15 rounded-lg pointer-events-none z-0"
+                        className="absolute -left-2 -right-2 bg-crimson/10 rounded-lg pointer-events-none z-0"
                         animate={{ top: highlight.top, height: highlight.height }}
                         transition={{ type: 'spring', stiffness: 380, damping: 32, mass: 0.8 }}
                       />
@@ -200,7 +200,7 @@ export default function ScrollSpy({ sections }) {
                             className={`relative z-10 flex items-center gap-3 pl-4 pr-2 py-1.5 rounded-lg text-xs transition-colors ${
                               isActive
                                 ? 'text-crimson font-semibold'
-                                : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                : 'text-gray-500 hover:text-gray-900'
                             }`}
                           >
                             <motion.span
@@ -209,7 +209,7 @@ export default function ScrollSpy({ sections }) {
                                 scale: isActive ? 1.5 : 1,
                               }}
                               transition={{ duration: 0.25 }}
-                              className="w-1.5 h-1.5 rounded-full shrink-0 relative z-10 ring-2 ring-white dark:ring-dark-surface"
+                              className="w-1.5 h-1.5 rounded-full shrink-0 relative z-10 ring-2 ring-white"
                               aria-hidden="true"
                             />
                             <span className="truncate">{s.label}</span>
@@ -221,14 +221,14 @@ export default function ScrollSpy({ sections }) {
                 </div>
 
                 {/* Progress footer */}
-                <div className="px-4 py-2.5 border-t border-gray-200 dark:border-dark-border">
-                  <div className="flex items-center justify-between text-[10px] text-gray-400 dark:text-gray-500 mb-1.5">
+                <div className="px-4 py-2.5 border-t border-gray-200">
+                  <div className="flex items-center justify-between text-[10px] text-gray-400 mb-1.5">
                     <span className="uppercase tracking-wider font-medium">Progress</span>
                     <span className="tabular-nums">
                       {Math.max(activeIndex + 1, 1)} / {sections.length}
                     </span>
                   </div>
-                  <div className="h-1 bg-gray-200 dark:bg-dark-bg rounded-full overflow-hidden">
+                  <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-crimson rounded-full"
                       animate={{ width: `${progress}%` }}

@@ -48,7 +48,7 @@ export default function DistrictMap() {
   }
 
   return (
-    <main className="w-full relative mx-auto pt-24 pb-32 min-h-screen bg-gray-50 dark:bg-dark-bg font-sans">
+    <main className="w-full relative mx-auto pt-24 pb-32 min-h-screen bg-gray-50 font-sans">
       <SEO 
         title="Interactive Geographic Database" 
         description="Interactive geographic database of all 33 districts of Gujarat."
@@ -56,10 +56,10 @@ export default function DistrictMap() {
       />
 
       <div className="relative z-10 text-center mb-8 px-4 max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-serif font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
+        <h1 className="text-5xl md:text-7xl font-serif font-bold text-gray-900 mb-4 tracking-tight">
           District <span className="text-crimson">Geo-Index</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-light leading-relaxed">
+        <p className="text-lg md:text-xl text-gray-600 font-light leading-relaxed">
           Select any geographic sector to access isolated vulnerability matrices.
         </p>
       </div>
@@ -70,11 +70,11 @@ export default function DistrictMap() {
         {/* Left Info Panel */}
         <div className="hidden lg:flex flex-col gap-6 mt-12 w-full">
           {/* Dashboard Module */}
-          <div className="p-6 bg-white dark:bg-dark-surface border border-gray-200 dark:border-dark-border rounded-2xl shadow-sm">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-4 border-b border-gray-100 dark:border-dark-border pb-2">Index Scope</h3>
+          <div className="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 border-b border-gray-100 pb-2">Index Scope</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-3xl font-serif font-black text-gray-900 dark:text-white">33</p>
+                <p className="text-3xl font-serif font-black text-gray-900">33</p>
                 <p className="text-sm font-medium text-gray-500 tracking-wide uppercase">Total Sectors</p>
               </div>
               <div>
@@ -85,7 +85,7 @@ export default function DistrictMap() {
           </div>
 
           {/* Doodles/Analytics */}
-          <div className="p-6 bg-gradient-to-br from-red-50 to-orange-50 dark:from-crimson/10 dark:to-orange-900/10 border border-red-100 dark:border-crimson/20 rounded-2xl">
+          <div className="p-6 bg-gradient-to-br from-red-50 to-orange-50 border border-red-100 rounded-2xl">
             <div className="flex items-center gap-3 mb-3 text-crimson">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-crimson opacity-75"></span>
@@ -93,14 +93,14 @@ export default function DistrictMap() {
               </span>
               <span className="text-sm font-bold tracking-widest uppercase">Live System</span>
             </div>
-            <p className="text-xs text-gray-700 dark:text-gray-400 leading-relaxed font-mono">
+            <p className="text-xs text-gray-700 leading-relaxed font-mono">
               Hover tracking initialized. Vector lines rendered. Ready for user interaction sequence at mapping grid.
             </p>
           </div>
         </div>
 
         {/* Center Map Box */}
-        <div className="relative w-full bg-white dark:bg-dark-surface/60 border border-gray-200 dark:border-dark-border rounded-[2.5rem] p-2 md:p-6 overflow-visible shadow-xl lg:order-none order-first min-h-[500px]">
+        <div className="relative w-full bg-white/60 border border-gray-200 rounded-[2.5rem] p-2 md:p-6 overflow-visible shadow-xl lg:order-none order-first min-h-[500px]">
         
         {/* React Simple Maps Implementation */}
         <div 
@@ -177,7 +177,7 @@ export default function DistrictMap() {
                   top: mousePosition.y + 15,
                 }}
               >
-                <div className="bg-gray-900/90 dark:bg-black/90 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-xl border border-gray-700">
+                <div className="bg-gray-900/90 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-xl border border-gray-700">
                   <p className="font-serif font-bold">{hoveredNode.name}</p>
                   <p className="text-[10px] uppercase tracking-widest text-gray-300">
                     {hoveredNode.pillars?.length > 0 ? 'Click to inspect data' : 'No data available'}
@@ -204,15 +204,15 @@ export default function DistrictMap() {
                   maxWidth: '320px'
                 }}
               >
-                <div className="bg-white/95 dark:bg-dark-bg/95 backdrop-blur-md border border-gray-200 dark:border-dark-border p-5 rounded-2xl relative shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+                <div className="bg-white/95/95 backdrop-blur-md border border-gray-200 p-5 rounded-2xl relative shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
                   <button 
                     onClick={() => setSelectedNode(null)}
-                    className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 dark:hover:text-white transition"
+                    className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition"
                   >
                     <X className="w-4 h-4" />
                   </button>
                   <div className="flex justify-between items-start mb-2 pr-6">
-                    <h3 className={`text-xl font-serif font-bold ${selectedNode.pillars?.length > 0 ? 'text-crimson' : 'text-gray-900 dark:text-white'}`}>
+                    <h3 className={`text-xl font-serif font-bold ${selectedNode.pillars?.length > 0 ? 'text-crimson' : 'text-gray-900'}`}>
                       {selectedNode.name}
                     </h3>
                   </div>
@@ -222,8 +222,8 @@ export default function DistrictMap() {
                     <>
                       <div className="space-y-3 mb-4">
                         {selectedNode.stats?.map((stat, i) => (
-                          <div key={i} className="flex justify-between items-end border-b border-gray-100 dark:border-dark-surface pb-2">
-                            <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">{stat.label}</span>
+                          <div key={i} className="flex justify-between items-end border-b border-gray-100 pb-2">
+                            <span className="text-xs text-gray-600 font-medium">{stat.label}</span>
                             <span className={`text-sm font-bold ${stat.status === 'critical' ? 'text-red-600' : stat.status === 'danger' ? 'text-crimson' : 'text-blue-500'}`}>{stat.value}</span>
                           </div>
                         ))}
@@ -236,7 +236,7 @@ export default function DistrictMap() {
                       </Link>
                     </>
                   ) : (
-                    <div className="text-center py-4 bg-gray-50 dark:bg-dark-surface rounded-xl border border-gray-100 dark:border-dark-border">
+                    <div className="text-center py-4 bg-gray-50 rounded-xl border border-gray-100">
                       <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold text-center leading-relaxed">Local Audit Data is Pending Normalization</p>
                     </div>
                   )}
@@ -251,28 +251,28 @@ export default function DistrictMap() {
         {/* Right Info Panel */}
         <div className="hidden lg:flex flex-col gap-6 mt-12 w-full">
           {/* Key Legend Module */}
-          <div className="p-6 bg-white dark:bg-dark-surface border border-gray-200 dark:border-dark-border rounded-2xl shadow-sm">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-4 border-b border-gray-100 dark:border-dark-border pb-2">Map Legend</h3>
+          <div className="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 border-b border-gray-100 pb-2">Map Legend</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-md bg-[#DC2626] border border-gray-300 dark:border-dark-border"></div>
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Active Selection</span>
+                <div className="w-6 h-6 rounded-md bg-[#DC2626] border border-gray-300"></div>
+                <span className="text-sm font-semibold text-gray-700">Active Selection</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-md bg-[#FCA5A5] border border-gray-300 dark:border-dark-border"></div>
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Deep Audit Data</span>
+                <div className="w-6 h-6 rounded-md bg-[#FCA5A5] border border-gray-300"></div>
+                <span className="text-sm font-semibold text-gray-700">Deep Audit Data</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-md bg-[#E5E7EB] border border-gray-300 dark:border-dark-border"></div>
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Awaiting Sync</span>
+                <div className="w-6 h-6 rounded-md bg-[#E5E7EB] border border-gray-300"></div>
+                <span className="text-sm font-semibold text-gray-700">Awaiting Sync</span>
               </div>
             </div>
           </div>
 
-          <div className="p-6 bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-2xl relative overflow-hidden">
-            <Map className="absolute -right-4 -bottom-4 w-24 h-24 text-blue-200 dark:text-blue-800/30 rotate-12" />
-            <h4 className="text-blue-800 dark:text-blue-400 font-bold tracking-widest uppercase text-xs mb-2 relative z-10">Data Integrity</h4>
-            <p className="text-sm text-blue-900/80 dark:text-blue-200/80 leading-relaxed relative z-10 font-medium">
+          <div className="p-6 bg-blue-50 border border-blue-100 rounded-2xl relative overflow-hidden">
+            <Map className="absolute -right-4 -bottom-4 w-24 h-24 text-blue-200 rotate-12" />
+            <h4 className="text-blue-800 font-bold tracking-widest uppercase text-xs mb-2 relative z-10">Data Integrity</h4>
+            <p className="text-sm text-blue-900/80 leading-relaxed relative z-10 font-medium">
               Geographic coordinates bounded by 2011 Census Topological lines. Node alignment accurate to 0.05m radius.
             </p>
           </div>

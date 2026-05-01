@@ -55,11 +55,11 @@ export default function Materials() {
             <span className="hidden md:block w-8 h-px bg-crimson" />
             <span>DEPENDENCY ANALYSIS</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
             Industrial Raw <span className="italic text-crimson">Materials</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            Gujarat <strong className="font-semibold text-gray-900 dark:text-white">processes, but does not dig</strong>. The world's largest refinery runs on imported crude. The massive pharmaceutical sector depends on Chinese APIs. Mineral supply chains stretch to Odisha and Jharkhand. Gujarat is a processing powerhouse built atop a foundation of external raw material supply lines.
+          <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
+            Gujarat <strong className="font-semibold text-gray-900">processes, but does not dig</strong>. The world's largest refinery runs on imported crude. The massive pharmaceutical sector depends on Chinese APIs. Mineral supply chains stretch to Odisha and Jharkhand. Gujarat is a processing powerhouse built atop a foundation of external raw material supply lines.
           </p>
         </motion.div>
       </section>
@@ -67,7 +67,7 @@ export default function Materials() {
       <div className="space-y-20">
 
         {/* Crude Oil */}
-        <Section icon={<Fuel className="w-8 h-8 text-orange-600 dark:text-orange-400" />} title="The Crude Oil Import Machine">
+        <Section icon={<Fuel className="w-8 h-8 text-orange-600" />} title="The Crude Oil Import Machine">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="1.4 MMBPD" label="Jamnagar Refinery Capacity" color="crimson" />
             <StatBox value="216" label="Crude Grades Processed" color="blue" />
@@ -76,22 +76,22 @@ export default function Materials() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Jamnagar: World's Largest Refinery">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Reliance's Jamnagar refinery is the <strong className="text-gray-900 dark:text-white">world's largest single-site oil refinery</strong> with 1.4 million barrels per day (MMBPD) capacity and a complexity index of 21.1 — the highest globally.<Ref n={1} /> It has processed 216 different grades of crude from around the world.<Ref n={2} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Reliance's Jamnagar refinery is the <strong className="text-gray-900">world's largest single-site oil refinery</strong> with 1.4 million barrels per day (MMBPD) capacity and a complexity index of 21.1 — the highest globally.<Ref n={1} /> It has processed 216 different grades of crude from around the world.<Ref n={2} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Crude throughput at the Jamnagar SEZ alone reached <strong className="text-gray-900 dark:text-white">28.3 million tonnes</strong> in March 2024.<Ref n={1} /> India imports roughly 85% of its total crude needs, and Jamnagar — fed by Middle Eastern, Russian, and American crude — is overwhelmingly reliant on imported feedstock.
+              <p className="text-gray-600 leading-relaxed">
+                Crude throughput at the Jamnagar SEZ alone reached <strong className="text-gray-900">28.3 million tonnes</strong> in March 2024.<Ref n={1} /> India imports roughly 85% of its total crude needs, and Jamnagar — fed by Middle Eastern, Russian, and American crude — is overwhelmingly reliant on imported feedstock.
               </p>
             </DataCard>
 
             <DataCard title="Geopolitical Supply Chain Diversification">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                In late 2025, Reliance resumed purchases of discounted Russian crude, routing barrels from non-sanctioned suppliers to its Gujarat refinery.<Ref n={3} /> Simultaneously, the company signed a <strong className="text-gray-900 dark:text-white">20-year, $300 billion commitment to American shale crude</strong> — diversifying away from Middle East geopolitical risk.<Ref n={4} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                In late 2025, Reliance resumed purchases of discounted Russian crude, routing barrels from non-sanctioned suppliers to its Gujarat refinery.<Ref n={3} /> Simultaneously, the company signed a <strong className="text-gray-900">20-year, $300 billion commitment to American shale crude</strong> — diversifying away from Middle East geopolitical risk.<Ref n={4} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">Nayara Energy (Vadinar refinery, 20 MTPA)</strong> — 49.13% owned by Russia's Rosneft — faces acute sanctions exposure. EU and UK sanctions on Russian entities created legal uncertainty around Nayara's crude procurement, insurance coverage, and export transactions. In 2026, multiple European banks refused to process Nayara's trade finance, forcing the company to shift entirely to Indian and Middle Eastern banking channels.
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                <strong className="text-gray-900">Nayara Energy (Vadinar refinery, 20 MTPA)</strong> — 49.13% owned by Russia's Rosneft — faces acute sanctions exposure. EU and UK sanctions on Russian entities created legal uncertainty around Nayara's crude procurement, insurance coverage, and export transactions. In 2026, multiple European banks refused to process Nayara's trade finance, forcing the company to shift entirely to Indian and Middle Eastern banking channels.
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 This demonstrates both the vulnerability and the strategic sophistication of Gujarat's refining dependency: the state's two mega-refineries process 2.8 MMBPD combined, but their input is entirely at the mercy of international shipping lanes and geopolitical alliances.
               </p>
             </DataCard>
@@ -130,18 +130,18 @@ export default function Materials() {
         </Section>
 
         {/* Pharmaceutical APIs */}
-        <Section icon={<Pill className="w-8 h-8 text-blue-600 dark:text-blue-400" />} title="Pharmaceutical APIs: The China Dependency">
+        <Section icon={<Pill className="w-8 h-8 text-blue-600" />} title="Pharmaceutical APIs: The China Dependency">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="65-70% Import Dependency" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                India imports approximately <strong className="text-gray-900 dark:text-white">65-70% of its Active Pharmaceutical Ingredients (APIs)</strong>, Key Starting Materials (KSMs), and intermediates from China — some estimates go as high as 80%.<Ref n={5} /><Ref n={8} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                India imports approximately <strong className="text-gray-900">65-70% of its Active Pharmaceutical Ingredients (APIs)</strong>, Key Starting Materials (KSMs), and intermediates from China — some estimates go as high as 80%.<Ref n={5} /><Ref n={8} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                India spent <strong className="text-gray-900 dark:text-white">$3.6 billion</strong> importing APIs from China in FY 2024-25 — up from $3.18B in FY23.<Ref n={5} /> Before 1991, dependency was just 0.3% — it spiked to 70% by 2019.<Ref n={6} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                India spent <strong className="text-gray-900">$3.6 billion</strong> importing APIs from China in FY 2024-25 — up from $3.18B in FY23.<Ref n={5} /> Before 1991, dependency was just 0.3% — it spiked to 70% by 2019.<Ref n={6} />
               </p>
               <div className="space-y-2">
-                <p className="text-sm font-semibold text-red-700 dark:text-red-400">Critical drug dependencies on China:<Ref n={7} /></p>
-                <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm font-semibold text-red-700">Critical drug dependencies on China:<Ref n={7} /></p>
+                <ul className="space-y-1 text-sm text-gray-600">
                   <li className="flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-red-500" /> Paracetamol: 91% from China</li>
                   <li className="flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-red-500" /> Penicillin/salts: 95.8% from China</li>
                   <li className="flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-red-500" /> Streptomycin: 100% from China</li>
@@ -151,11 +151,11 @@ export default function Materials() {
             </DataCard>
 
             <DataCard title="Gujarat's Bharuch Bulk Drug Park">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                The Indian government approved three Bulk Drug Parks — in <strong className="text-gray-900 dark:text-white">Bharuch (Gujarat)</strong>, Una (Himachal Pradesh), and East Godavari (Andhra Pradesh) — to reduce API import dependency.<Ref n={13} /> Rs 300 crore was released to Gujarat's State Implementing Agency as the first installment.<Ref n={13} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                The Indian government approved three Bulk Drug Parks — in <strong className="text-gray-900">Bharuch (Gujarat)</strong>, Una (Himachal Pradesh), and East Godavari (Andhra Pradesh) — to reduce API import dependency.<Ref n={13} /> Rs 300 crore was released to Gujarat's State Implementing Agency as the first installment.<Ref n={13} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Under the Production Linked Incentive (PLI) scheme, financial incentives worth <strong className="text-gray-900 dark:text-white">Rs 6,940 crore</strong> target domestic manufacturing of 53 critical APIs, with an expected 25-30% reduction in imports within five years.<Ref n={12} /> By March 2025, import savings of Rs 1,362 crore were reported.<Ref n={12} />
+              <p className="text-gray-600 leading-relaxed">
+                Under the Production Linked Incentive (PLI) scheme, financial incentives worth <strong className="text-gray-900">Rs 6,940 crore</strong> target domestic manufacturing of 53 critical APIs, with an expected 25-30% reduction in imports within five years.<Ref n={12} /> By March 2025, import savings of Rs 1,362 crore were reported.<Ref n={12} />
               </p>
             </DataCard>
           </div>
@@ -192,32 +192,32 @@ export default function Materials() {
         </Section>
 
         {/* Minerals */}
-        <Section icon={<Mountain className="w-8 h-8 text-gray-600 dark:text-gray-400" />} title="Minerals & The Eastern Supply Chain">
-          <div className="bg-white/70 dark:bg-dark-surface/70 p-10 rounded-3xl border border-gray-200 dark:border-dark-border shadow-xl backdrop-blur-md relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gray-200 dark:bg-gray-800 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
-            <h3 className="text-3xl font-serif font-bold mb-6 text-gray-900 dark:text-white relative z-10">Bauxite, Iron Ore & Interstate Dependencies</h3>
+        <Section icon={<Mountain className="w-8 h-8 text-gray-600" />} title="Minerals & The Eastern Supply Chain">
+          <div className="bg-white/70 p-10 rounded-3xl border border-gray-200 shadow-xl backdrop-blur-md relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gray-200 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
+            <h3 className="text-3xl font-serif font-bold mb-6 text-gray-900 relative z-10">Bauxite, Iron Ore & Interstate Dependencies</h3>
             <div className="space-y-6 relative z-10">
-              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                India's mineral belt — Odisha, Jharkhand, Chhattisgarh — forms the backbone of raw material supply for Gujarat's manufacturing. Odisha alone contributes <strong className="text-gray-900 dark:text-white">76% of India's bauxite production</strong> and approximately 50% of national iron ore output.<Ref n={9} />
+              <p className="text-gray-700 text-lg leading-relaxed">
+                India's mineral belt — Odisha, Jharkhand, Chhattisgarh — forms the backbone of raw material supply for Gujarat's manufacturing. Odisha alone contributes <strong className="text-gray-900">76% of India's bauxite production</strong> and approximately 50% of national iron ore output.<Ref n={9} />
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white dark:bg-dark-bg p-6 rounded-2xl border border-gray-200 dark:border-dark-border">
-                  <h4 className="font-serif font-bold text-lg mb-3 text-gray-900 dark:text-white">Gujarat's Own Minerals</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                <div className="bg-white p-6 rounded-2xl border border-gray-200">
+                  <h4 className="font-serif font-bold text-lg mb-3 text-gray-900">Gujarat's Own Minerals</h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     Gujarat holds 62 million tonnes of bauxite reserves (Panchmahal, Dahod, Vadodara) and accounts for <strong>17% of national bauxite production</strong>.<Ref n={9} /> It leads with 8 operational mineral blocks. But for high-grade iron ore and bulk bauxite, it reaches into Odisha.<Ref n={11} />
                   </p>
                 </div>
 
-                <div className="bg-white dark:bg-dark-bg p-6 rounded-2xl border border-gray-200 dark:border-dark-border">
-                  <h4 className="font-serif font-bold text-lg mb-3 text-gray-900 dark:text-white">GMDC's Odisha Operations</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                <div className="bg-white p-6 rounded-2xl border border-gray-200">
+                  <h4 className="font-serif font-bold text-lg mb-3 text-gray-900">GMDC's Odisha Operations</h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     Gujarat Mineral Development Corporation (GMDC) operates the <strong>Baitarani-West Mine in Odisha</strong> for long-term bauxite supply — a direct interstate dependency link.<Ref n={10} /> This highlights how Gujarat's aluminium and manufacturing sectors are tethered to eastern India's mineral reserves.
                   </p>
                 </div>
               </div>
 
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Domestic bauxite production could reduce aluminium industry import dependence by 30% through 2027, while iron ore self-sufficiency would eliminate steel sector import requirements for standard grades.<Ref n={11} /> However, any disruption to the eastern railway corridors connecting Odisha-Jharkhand to Gujarat's ports would severely impact manufacturing output.
               </p>
             </div>
@@ -225,9 +225,9 @@ export default function Materials() {
         </Section>
 
         {/* Rare Earth & Battery Metals */}
-        <Section icon={<Battery className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />} title="Rare Earth & Battery Metals: The Next Dependency Frontier">
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
-            As Gujarat positions itself as an EV manufacturing hub — with Tata's 20 GWh battery cell factory in Sanand and Suzuki-Toshiba-Denso's cell plant — it is building a new dependency layer atop its existing ones. India imports <strong className="text-gray-900 dark:text-white">100% of its lithium, cobalt, nickel, and vanadium</strong>, and <strong className="text-gray-900 dark:text-white">93% of its rare earth magnets come from China</strong>.<Ref n={15} />
+        <Section icon={<Battery className="w-8 h-8 text-emerald-600" />} title="Rare Earth & Battery Metals: The Next Dependency Frontier">
+          <p className="text-gray-700 text-lg leading-relaxed mb-8">
+            As Gujarat positions itself as an EV manufacturing hub — with Tata's 20 GWh battery cell factory in Sanand and Suzuki-Toshiba-Denso's cell plant — it is building a new dependency layer atop its existing ones. India imports <strong className="text-gray-900">100% of its lithium, cobalt, nickel, and vanadium</strong>, and <strong className="text-gray-900">93% of its rare earth magnets come from China</strong>.<Ref n={15} />
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -238,30 +238,30 @@ export default function Materials() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The Lithium-Ion Supply Crisis" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                India's lithium-ion battery market has surged from <strong className="text-gray-900 dark:text-white">$384.6 million in imports (2019) to $2.8 billion (2023)</strong>, yet domestic manufacturing covers only 18 GWh — primarily pack assembly using imported Chinese cells.<Ref n={17} /> Demand is projected to reach 54 GWh by FY27 and 160 GWh by 2030.<Ref n={14} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                India's lithium-ion battery market has surged from <strong className="text-gray-900">$384.6 million in imports (2019) to $2.8 billion (2023)</strong>, yet domestic manufacturing covers only 18 GWh — primarily pack assembly using imported Chinese cells.<Ref n={17} /> Demand is projected to reach 54 GWh by FY27 and 160 GWh by 2030.<Ref n={14} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                India sources <strong className="text-gray-900 dark:text-white">70-80% of its lithium from China</strong>. While CareEdge projects import dependency dropping to 20% by FY27 as giga-scale factories come online, this assumes uninterrupted Chinese cathode material supply — the very chokepoint Beijing has weaponised.<Ref n={14} /> India has zero domestic production capacity for NCM cathode materials, given it produces no lithium carbonate, nickel sulfate, or cobalt sulfate domestically.<Ref n={17} />
+              <p className="text-gray-600 leading-relaxed">
+                India sources <strong className="text-gray-900">70-80% of its lithium from China</strong>. While CareEdge projects import dependency dropping to 20% by FY27 as giga-scale factories come online, this assumes uninterrupted Chinese cathode material supply — the very chokepoint Beijing has weaponised.<Ref n={14} /> India has zero domestic production capacity for NCM cathode materials, given it produces no lithium carbonate, nickel sulfate, or cobalt sulfate domestically.<Ref n={17} />
               </p>
             </DataCard>
 
             <DataCard title="Rare Earths: China's Geopolitical Lever">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                In FY 2024-25, India imported nearly <strong className="text-gray-900 dark:text-white">54,000 tonnes of rare earth magnets — 93% from China</strong> — worth approximately Rs 1,744 crore. Imports of permanent magnets nearly doubled year-over-year.<Ref n={15} /> China controls 70% of global REE mining, 87% of processing, and 91% of refining capacity.<Ref n={15} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                In FY 2024-25, India imported nearly <strong className="text-gray-900">54,000 tonnes of rare earth magnets — 93% from China</strong> — worth approximately Rs 1,744 crore. Imports of permanent magnets nearly doubled year-over-year.<Ref n={15} /> China controls 70% of global REE mining, 87% of processing, and 91% of refining capacity.<Ref n={15} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                When China imposed export licensing requirements on terbium and dysprosium in April 2025, Indian manufacturers including <strong className="text-gray-900 dark:text-white">Bajaj Auto and Maruti Suzuki immediately warned of production bottlenecks</strong>.<Ref n={16} /> India's EV sector consumed 870 tonnes of rare earth magnets in FY25 alone. Bajaj's Chetak electric scooter production was halved — from 20,384 to 10,824 units — due to rare earth shortages.<Ref n={16} />
+              <p className="text-gray-600 leading-relaxed">
+                When China imposed export licensing requirements on terbium and dysprosium in April 2025, Indian manufacturers including <strong className="text-gray-900">Bajaj Auto and Maruti Suzuki immediately warned of production bottlenecks</strong>.<Ref n={16} /> India's EV sector consumed 870 tonnes of rare earth magnets in FY25 alone. Bajaj's Chetak electric scooter production was halved — from 20,384 to 10,824 units — due to rare earth shortages.<Ref n={16} />
               </p>
             </DataCard>
           </div>
 
           <DataCard title="Gujarat's EV Ambition vs. Material Reality">
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              Gujarat is aggressively courting EV battery manufacturing: Tata's Agratas is investing <strong className="text-gray-900 dark:text-white">Rs 13,000 crore in a 20 GWh lithium-ion cell factory in Sanand</strong>, while Tata Chemicals is building a separate 10 GWh facility for Rs 4,000 crore. Gujarat Fluorochemicals and Neogen Chemicals plan electrolyte salt plants.<Ref n={17} /> The state's ports — Mundra and Kandla — already serve as the primary import gateway for battery materials.
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Gujarat is aggressively courting EV battery manufacturing: Tata's Agratas is investing <strong className="text-gray-900">Rs 13,000 crore in a 20 GWh lithium-ion cell factory in Sanand</strong>, while Tata Chemicals is building a separate 10 GWh facility for Rs 4,000 crore. Gujarat Fluorochemicals and Neogen Chemicals plan electrolyte salt plants.<Ref n={17} /> The state's ports — Mundra and Kandla — already serve as the primary import gateway for battery materials.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              But this mirrors the crude oil pattern: Gujarat builds world-class processing capacity while remaining entirely dependent on imported feedstock. India holds an estimated <strong className="text-gray-900 dark:text-white">5.9 million tonnes of lithium reserves in Jammu & Kashmir</strong>, but commercial extraction remains years away.<Ref n={17} /> The National Critical Mineral Mission (Rs 16,300 crore) and the Rs 7,300 crore rare earth permanent magnet scheme target long-term self-sufficiency, but for the foreseeable future, Gujarat's EV manufacturing ambitions will run on Chinese lithium and Chinese rare earths — replicating the same structural dependency that defines its petroleum and pharmaceutical sectors.<Ref n={15} />
+            <p className="text-gray-600 leading-relaxed">
+              But this mirrors the crude oil pattern: Gujarat builds world-class processing capacity while remaining entirely dependent on imported feedstock. India holds an estimated <strong className="text-gray-900">5.9 million tonnes of lithium reserves in Jammu & Kashmir</strong>, but commercial extraction remains years away.<Ref n={17} /> The National Critical Mineral Mission (Rs 16,300 crore) and the Rs 7,300 crore rare earth permanent magnet scheme target long-term self-sufficiency, but for the foreseeable future, Gujarat's EV manufacturing ambitions will run on Chinese lithium and Chinese rare earths — replicating the same structural dependency that defines its petroleum and pharmaceutical sectors.<Ref n={15} />
             </p>
           </DataCard>
         </Section>
@@ -269,7 +269,7 @@ export default function Materials() {
       </div>
 
       {/* Chemical & Petrochemical Corridor */}
-      <Section icon={<Factory className="w-8 h-8 text-teal-600 dark:text-teal-500" />} title="The Bharuch-Dahej Chemical Corridor: India's Chemical Capital">
+      <Section icon={<Factory className="w-8 h-8 text-teal-600" />} title="The Bharuch-Dahej Chemical Corridor: India's Chemical Capital">
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <StatBox value="3,500+" label="Chemical Units (Bharuch Belt)" color="teal" />
           <StatBox value="40%" label="India's Chemical Output" color="blue" />
@@ -278,19 +278,19 @@ export default function Materials() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <DataCard title="Dahej PCPIR: India's Largest Petrochemical Hub">
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              The Dahej Petroleum, Chemical and Petrochemical Investment Region (PCPIR) — spread over <strong className="text-gray-900 dark:text-white">453 sq km</strong> — is India's largest integrated chemical manufacturing zone. It hosts ONGC Petro Additions Ltd (OPaL), a 1.1 MTPA ethylene cracker that is the backbone of India's polymer chain.
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              The Dahej Petroleum, Chemical and Petrochemical Investment Region (PCPIR) — spread over <strong className="text-gray-900">453 sq km</strong> — is India's largest integrated chemical manufacturing zone. It hosts ONGC Petro Additions Ltd (OPaL), a 1.1 MTPA ethylene cracker that is the backbone of India's polymer chain.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               OPaL's feedstock is <strong>imported naphtha and natural gas</strong> — both sourced externally. The entire downstream plastics, polymers, and specialty chemicals industry in Gujarat is thus dependent on feedstock that originates from Middle Eastern crude oil or LNG terminals at Dahej and Hazira.
             </p>
           </DataCard>
 
           <DataCard title="Morbi's Ceramic Raw Material Chain" alert={true}>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              Morbi's <strong className="text-gray-900 dark:text-white">1,200+ ceramic factories</strong> (of which 550+ were shuttered during the 2026 gas crisis) consume approximately <strong className="text-gray-900 dark:text-white">30 million tonnes of raw materials annually</strong> — primarily china clay, ball clay, feldspar, and silica sand. While Gujarat has some local clay deposits, high-quality china clay is imported from <strong>Rajasthan, Karnataka, and even Turkey and Ukraine</strong>.
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Morbi's <strong className="text-gray-900">1,200+ ceramic factories</strong> (of which 550+ were shuttered during the 2026 gas crisis) consume approximately <strong className="text-gray-900">30 million tonnes of raw materials annually</strong> — primarily china clay, ball clay, feldspar, and silica sand. While Gujarat has some local clay deposits, high-quality china clay is imported from <strong>Rajasthan, Karnataka, and even Turkey and Ukraine</strong>.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               The gas fuel dependency adds another layer: Morbi's kilns require continuous <strong>1,100-1,200°C firing</strong> — achieved only with natural gas or propane. The 2026 propane supply halt demonstrated that even abundant raw materials are useless without imported fuel to fire the kilns.
             </p>
           </DataCard>
@@ -298,30 +298,30 @@ export default function Materials() {
       </Section>
 
       {/* Natural Gas Supply */}
-      <Section icon={<Fuel className="w-8 h-8 text-red-600 dark:text-red-400" />} title="Natural Gas: Gujarat's Most Critical Input">
+      <Section icon={<Fuel className="w-8 h-8 text-red-600" />} title="Natural Gas: Gujarat's Most Critical Input">
         <DataCard title="Gujarat Consumes 25% of India's Natural Gas">
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
-            Gujarat accounts for approximately <strong className="text-gray-900 dark:text-white">25% of India's total natural gas consumption</strong>, with a pipeline network exceeding 5,850 km. Gujarat Gas Ltd — the state's largest gas distributor — serves 32 lakh residential, 31,000 commercial, and 5,500 industrial consumers across 36 districts.
+          <p className="text-gray-700 text-lg leading-relaxed mb-4">
+            Gujarat accounts for approximately <strong className="text-gray-900">25% of India's total natural gas consumption</strong>, with a pipeline network exceeding 5,850 km. Gujarat Gas Ltd — the state's largest gas distributor — serves 32 lakh residential, 31,000 commercial, and 5,500 industrial consumers across 36 districts.
           </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-            Of this gas supply, approximately <strong className="text-gray-900 dark:text-white">73% comes from imported LNG</strong> (regasified at Dahej and Hazira), with the remainder from domestic production at ONGC's Cambay Basin fields and KG Basin allocations. Domestic gas production has been <strong>declining since 2010</strong>, making Gujarat progressively more dependent on LNG imports.
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Of this gas supply, approximately <strong className="text-gray-900">73% comes from imported LNG</strong> (regasified at Dahej and Hazira), with the remainder from domestic production at ONGC's Cambay Basin fields and KG Basin allocations. Domestic gas production has been <strong>declining since 2010</strong>, making Gujarat progressively more dependent on LNG imports.
           </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-gray-700 leading-relaxed">
             The industrial dependency is starkest in three clusters: <strong>Morbi (ceramics — gas for kilns)</strong>, <strong>Bharuch (chemicals — gas as feedstock)</strong>, and <strong>Surat (textiles — gas for dyeing boilers)</strong>. These three clusters alone account for an estimated 60% of Gujarat's industrial gas consumption.
           </p>
         </DataCard>
       </Section>
 
       {/* Fertilizer Dependency */}
-      <Section icon={<Mountain className="w-8 h-8 text-green-600 dark:text-green-500" />} title="Fertilizer & Agricultural Inputs: The Silent Import Dependency">
+      <Section icon={<Mountain className="w-8 h-8 text-green-600" />} title="Fertilizer & Agricultural Inputs: The Silent Import Dependency">
         <DataCard title="Gujarat's Fertilizer Complex: Processing Imported Raw Materials">
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
-            Gujarat hosts <strong className="text-gray-900 dark:text-white">GSFC (Vadodara), GNFC (Bharuch), and IFFCO (Kandla)</strong> — among India's largest fertilizer producers. Yet the raw material dependency is near-total: India imports <strong className="text-gray-900 dark:text-white">100% of its potash</strong> (from Belarus, Canada, Russia), <strong>100% of phosphoric acid</strong> (from Morocco, Jordan), and a growing share of its natural gas feedstock for urea (via LNG).
+          <p className="text-gray-700 text-lg leading-relaxed mb-4">
+            Gujarat hosts <strong className="text-gray-900">GSFC (Vadodara), GNFC (Bharuch), and IFFCO (Kandla)</strong> — among India's largest fertilizer producers. Yet the raw material dependency is near-total: India imports <strong className="text-gray-900">100% of its potash</strong> (from Belarus, Canada, Russia), <strong>100% of phosphoric acid</strong> (from Morocco, Jordan), and a growing share of its natural gas feedstock for urea (via LNG).
           </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-            The <strong className="text-gray-900 dark:text-white">Kandla fertilizer import terminal</strong> handles the bulk of India's potash and DAP raw material imports. When Belarus was sanctioned in 2022, Indian potash prices spiked 300% — directly impacting Gujarat's farming costs. GSFC's urea production at Vadodara consumes natural gas sourced from the same LNG terminals (Dahej, Hazira) that serve Morbi's ceramics — creating direct competition for a constrained fuel supply.
+          <p className="text-gray-700 leading-relaxed mb-4">
+            The <strong className="text-gray-900">Kandla fertilizer import terminal</strong> handles the bulk of India's potash and DAP raw material imports. When Belarus was sanctioned in 2022, Indian potash prices spiked 300% — directly impacting Gujarat's farming costs. GSFC's urea production at Vadodara consumes natural gas sourced from the same LNG terminals (Dahej, Hazira) that serve Morbi's ceramics — creating direct competition for a constrained fuel supply.
           </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-gray-700 leading-relaxed">
             Gujarat's agricultural model thus has a hidden layer of industrial dependency: the fertilizers that enable its cotton, groundnut, and wheat cultivation are manufactured from 100% imported raw materials, processed with imported energy, and distributed through infrastructure shared with heavy industry.
           </p>
         </DataCard>

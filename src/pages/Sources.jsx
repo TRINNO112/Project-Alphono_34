@@ -7,11 +7,11 @@ import { pillarMeta, allSources } from '../data/sourcesData'
 
 
 const typeColors = {
-  Govt: 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-500/20',
-  Media: 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 border-red-200 dark:border-red-500/20',
-  Academic: 'bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-500/20',
-  Industry: 'bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-500/20',
-  Legal: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/20',
+  Govt: 'bg-blue-50 text-blue-600 border-blue-200',
+  Media: 'bg-red-50 text-red-600 border-red-200',
+  Academic: 'bg-purple-50 text-purple-600 border-purple-200',
+  Industry: 'bg-amber-50 text-amber-600 border-amber-200',
+  Legal: 'bg-emerald-50 text-emerald-600 border-emerald-200',
 }
 
 const allTypes = ['All', 'Govt', 'Media', 'Academic', 'Industry', 'Legal']
@@ -44,7 +44,7 @@ export default function Sources() {
   const pillarOrder = Object.keys(pillarMeta)
 
   return (
-    <main className="w-full min-h-screen bg-gray-50 dark:bg-dark-bg font-sans pt-28 pb-32">
+    <main className="w-full min-h-screen bg-gray-50 font-sans pt-28 pb-32">
       <SEO
         title="Source Database"
         description="Complete pillar-wise source library with 165+ citations used across all analysis pillars in Project Alphono 34."
@@ -63,10 +63,10 @@ export default function Sources() {
             <Database className="w-4 h-4" />
             <span>Source Library</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-3 tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-3 tracking-tight leading-tight">
             Source Database
           </h1>
-          <p className="text-lg text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+          <p className="text-lg text-gray-500 font-light leading-relaxed">
             {allSources.length} citations across {Object.keys(pillarMeta).length} pillars — every claim, sourced and linked.
           </p>
           <div className="mt-6 flex items-center">
@@ -78,11 +78,11 @@ export default function Sources() {
               View as Graph
             </Link>
           </div>
-          <div className="mt-6 h-px bg-gray-200 dark:bg-gray-800" />
+          <div className="mt-6 h-px bg-gray-200" />
         </motion.div>
 
         {/* Filters */}
-        <div className="sticky top-16 z-20 bg-gray-50/90 dark:bg-dark-bg/90 backdrop-blur-xl pt-4 pb-4 -mx-5 px-5 border-b border-gray-200/50 dark:border-gray-800/50 mb-8 space-y-3">
+        <div className="sticky top-16 z-20 bg-gray-50/90 backdrop-blur-xl pt-4 pb-4 -mx-5 px-5 border-b border-gray-200/50 mb-8 space-y-3">
 
           {/* Search */}
           <div className="relative">
@@ -92,7 +92,7 @@ export default function Sources() {
               placeholder="Search sources..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-white/[0.04] border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:border-crimson/50 focus:ring-1 focus:ring-crimson/20 transition"
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-crimson/50 focus:ring-1 focus:ring-crimson/20 transition"
             />
           </div>
 
@@ -106,7 +106,7 @@ export default function Sources() {
                 className={`px-3 py-1 text-xs font-semibold rounded-full border transition-all ${
                   typeFilter === t
                     ? 'bg-crimson/10 border-crimson/30 text-crimson'
-                    : 'bg-white dark:bg-white/[0.03] border-gray-200 dark:border-gray-800 text-gray-500 hover:border-gray-300 dark:hover:border-gray-700'
+                    : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300'
                 }`}
               >
                 {t}
@@ -128,7 +128,7 @@ export default function Sources() {
                     className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-lg border transition-all ${
                       pillarFilter === p
                         ? 'bg-crimson/10 border-crimson/30 text-crimson'
-                        : 'bg-white dark:bg-white/[0.03] border-gray-200 dark:border-gray-800 text-gray-500 hover:border-gray-300 dark:hover:border-gray-700'
+                        : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300'
                     }`}
                   >
                     {PIcon && <PIcon className="w-3 h-3" />}
@@ -141,7 +141,7 @@ export default function Sources() {
         </div>
 
         {/* Results count */}
-        <p className="text-xs font-mono text-gray-400 dark:text-gray-600 mb-6 tracking-wider">
+        <p className="text-xs font-mono text-gray-400 mb-6 tracking-wider">
           {filtered.length} {filtered.length === 1 ? 'SOURCE' : 'SOURCES'} FOUND
         </p>
 
@@ -154,9 +154,9 @@ export default function Sources() {
               <section key={pillar}>
                 <div className="flex items-center gap-3 mb-4">
                   <PIcon className={`w-5 h-5 ${meta.color}`} />
-                  <h2 className="text-lg font-serif font-bold text-gray-900 dark:text-white">{pillar}</h2>
-                  <span className="text-xs font-mono text-gray-400 dark:text-gray-600">{grouped[pillar].length}</span>
-                  <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
+                  <h2 className="text-lg font-serif font-bold text-gray-900">{pillar}</h2>
+                  <span className="text-xs font-mono text-gray-400">{grouped[pillar].length}</span>
+                  <div className="flex-1 h-px bg-gray-200" />
                 </div>
 
                 <div className="space-y-2">
@@ -166,23 +166,23 @@ export default function Sources() {
                       href={source.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-start gap-3 p-3.5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-gray-800 hover:bg-white dark:hover:bg-white/[0.02] transition-all"
+                      className="group flex items-start gap-3 p-3.5 rounded-xl border border-transparent hover:border-gray-200 hover:bg-white transition-all"
                     >
-                      <span className="text-[10px] font-mono text-gray-400 dark:text-gray-600 mt-1 w-5 text-right shrink-0">
+                      <span className="text-[10px] font-mono text-gray-400 mt-1 w-5 text-right shrink-0">
                         {i + 1}
                       </span>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-crimson transition-colors leading-snug">
+                        <p className="text-sm font-medium text-gray-800 group-hover:text-crimson transition-colors leading-snug">
                           {source.title}
                         </p>
-                        <p className="text-xs text-gray-400 dark:text-gray-600 mt-1 truncate">
+                        <p className="text-xs text-gray-400 mt-1 truncate">
                           {source.url.replace(/^https?:\/\//, '').split('/')[0]}
                         </p>
                       </div>
                       <span className={`shrink-0 px-2 py-0.5 text-[10px] font-bold rounded border ${typeColors[source.type]}`}>
                         {source.type}
                       </span>
-                      <ExternalLink className="w-3.5 h-3.5 text-gray-300 dark:text-gray-700 group-hover:text-crimson shrink-0 mt-0.5 transition-colors" />
+                      <ExternalLink className="w-3.5 h-3.5 text-gray-300 group-hover:text-crimson shrink-0 mt-0.5 transition-colors" />
                     </a>
                   ))}
                 </div>
@@ -192,7 +192,7 @@ export default function Sources() {
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-16 text-gray-400 dark:text-gray-600">
+          <div className="text-center py-16 text-gray-400">
             <Database className="w-8 h-8 mx-auto mb-3 opacity-50" />
             <p className="text-sm">No sources match your filters.</p>
           </div>

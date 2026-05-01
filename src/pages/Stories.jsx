@@ -119,13 +119,13 @@ function StoryCard({ story }) {
   const narrative = EXPANDED[story.id] || story.circumstance
 
   return (
-    <article className="rounded-2xl border border-gray-200 dark:border-dark-border bg-white/70 dark:bg-dark-surface/70 shadow-sm hover:shadow-lg transition-all overflow-hidden">
+    <article className="rounded-2xl border border-gray-200 bg-white/70 shadow-sm hover:shadow-lg transition-all overflow-hidden">
       <div className="p-6 md:p-8">
         <header className="flex flex-wrap items-baseline justify-between gap-3 mb-4">
-          <h3 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">
+          <h3 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
             {story.name}
             {story.age != null && (
-              <span className="text-gray-500 dark:text-gray-400 font-normal text-xl">, {story.age}</span>
+              <span className="text-gray-500 font-normal text-xl">, {story.age}</span>
             )}
           </h3>
           <span className="text-[10px] font-bold tracking-widest uppercase text-crimson bg-crimson/10 rounded-full px-3 py-1">
@@ -133,7 +133,7 @@ function StoryCard({ story }) {
           </span>
         </header>
 
-        <div className="flex flex-wrap gap-x-5 gap-y-1 text-xs text-gray-600 dark:text-gray-400 mb-5">
+        <div className="flex flex-wrap gap-x-5 gap-y-1 text-xs text-gray-600 mb-5">
           {story.origin && (
             <span className="inline-flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
@@ -148,7 +148,7 @@ function StoryCard({ story }) {
           )}
         </div>
 
-        <p className="text-base leading-relaxed text-gray-800 dark:text-gray-200 first-letter:font-serif first-letter:text-3xl first-letter:font-bold first-letter:text-crimson first-letter:mr-1 first-letter:float-left first-letter:leading-none">
+        <p className="text-base leading-relaxed text-gray-800 first-letter:font-serif first-letter:text-3xl first-letter:font-bold first-letter:text-crimson first-letter:mr-1 first-letter:float-left first-letter:leading-none">
           {open || narrative.length < 420 ? narrative : `${narrative.slice(0, 380).trim()}…`}
         </p>
 
@@ -163,10 +163,10 @@ function StoryCard({ story }) {
         )}
 
         {story.sourceUrl && (
-          <footer className="mt-5 pt-4 border-t border-gray-200 dark:border-dark-border text-xs text-gray-500 dark:text-gray-400 flex items-start gap-2">
+          <footer className="mt-5 pt-4 border-t border-gray-200 text-xs text-gray-500 flex items-start gap-2">
             <LinkIcon className="w-3.5 h-3.5 mt-0.5 shrink-0" aria-hidden="true" />
             <span className="leading-snug">
-              Reported by <span className="font-semibold text-gray-700 dark:text-gray-300">{story.sourcePublication}</span>:{' '}
+              Reported by <span className="font-semibold text-gray-700">{story.sourcePublication}</span>:{' '}
               <a
                 href={story.sourceUrl}
                 target="_blank"
@@ -212,15 +212,15 @@ export default function Stories() {
             <Users className="w-5 h-5" aria-hidden="true" />
             <span>NAMED, NOT NUMBERED</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
             The <span className="italic text-crimson">people</span> behind the statistics.
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed border-l-4 border-crimson pl-6 mt-10">
+          <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed border-l-4 border-crimson pl-6 mt-10">
             Every number on this site is a life. Below are <strong className="font-bold text-crimson">{humanStories.length} accounts</strong>{' '}
             — a polisher, a child, a tribal migrant, a farmer, a shipbreaker —
             each anchored to a documented report in mainstream journalism.
           </p>
-          <p className="mt-6 text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="mt-6 text-base text-gray-600 leading-relaxed">
             This is not a list of names. It is an attempt to make the body count legible.
             If you find yourself skimming — slow down. These are not summaries. They are <em>obituaries</em>.
           </p>
@@ -228,9 +228,9 @@ export default function Stories() {
       </section>
 
       {/* Ethics note up top — answers "will this get me in trouble" */}
-      <aside className="rounded-2xl border border-yellow-300/60 dark:border-yellow-700/40 bg-yellow-50/60 dark:bg-yellow-900/10 p-6 flex gap-4">
-        <AlertTriangle className="w-6 h-6 text-yellow-700 dark:text-yellow-400 shrink-0 mt-0.5" aria-hidden="true" />
-        <div className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">
+      <aside className="rounded-2xl border border-yellow-300/60 bg-yellow-50/60 p-6 flex gap-4">
+        <AlertTriangle className="w-6 h-6 text-yellow-700 shrink-0 mt-0.5" aria-hidden="true" />
+        <div className="text-sm text-gray-800 leading-relaxed">
           <strong className="font-bold">A note on names.</strong> Every name below has already been
           published in mainstream Indian or international journalism (The Wire, Down to Earth, Al Jazeera,
           CNN, BBC, ThePrint, Business Standard, Gujarat Samachar, PARI, Public Eye, Caravan, Pulitzer
@@ -249,15 +249,15 @@ export default function Stories() {
 
         return (
           <section key={pillarKey} className="space-y-8 scroll-mt-24" id={pillarKey}>
-            <header className="border-b border-gray-300 dark:border-dark-border pb-6">
+            <header className="border-b border-gray-300 pb-6">
               <div className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-crimson mb-3">
                 <BookOpen className="w-4 h-4" aria-hidden="true" />
                 {meta.subtitle}
               </div>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
                 {meta.label}
               </h2>
-              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-3xl">
                 {meta.context}
               </p>
             </header>
@@ -272,11 +272,11 @@ export default function Stories() {
       })}
 
       {/* Why this page exists */}
-      <section className="rounded-2xl border border-gray-200 dark:border-dark-border bg-parchment-50 dark:bg-dark-surface p-8 space-y-3">
-        <h2 className="font-serif text-2xl font-bold text-gray-900 dark:text-white">
+      <section className="rounded-2xl border border-gray-200 bg-parchment-50 p-8 space-y-3">
+        <h2 className="font-serif text-2xl font-bold text-gray-900">
           Why this page exists
         </h2>
-        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+        <p className="text-base text-gray-700 leading-relaxed">
           Across the thirteen pillars of this project, there are charts showing '71 diamond suicides,'
           '141 dead at Morbi,' '589 silicosis deaths,' 'six farmer suicides in twenty-five days.' Numbers
           like these do a strange thing to a reader: they turn the dead into rounding errors. The Human

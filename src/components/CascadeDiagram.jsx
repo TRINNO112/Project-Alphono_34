@@ -1,15 +1,6 @@
-import { memo, useState, useSyncExternalStore } from 'react'
+import { memo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AlertTriangle, Zap, Factory, Users, TrendingDown, Droplets, Ship } from 'lucide-react'
-
-function subscribeDarkMode(callback) {
-  const observer = new MutationObserver(callback)
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-  return () => observer.disconnect()
-}
-function getIsDark() {
-  return document.documentElement.classList.contains('dark')
-}
 
 const nodes = [
   {
@@ -169,7 +160,7 @@ function getNodePos(node) {
 const SVG_W = PADDING_X * 2 + 2 * COL_GAP_X + NODE_W
 const SVG_H = PADDING_TOP * 2 + 4 * TIER_GAP_Y + NODE_H
 
-const CurvedArrow = memo(function CurvedArrow({ from, to, index, isDark }) {
+const CurvedArrow = memo(function CurvedArrow({ from, to, index }) {
   const start = getNodePos(from)
   const end = getNodePos(to)
 
@@ -183,7 +174,7 @@ const CurvedArrow = memo(function CurvedArrow({ from, to, index, isDark }) {
     <motion.path
       d={path}
       fill="none"
-      stroke={isDark ? 'rgba(211,47,47,0.35)' : 'rgba(211,47,47,0.25)'}
+      stroke="rgba(211,47,47,0.25)"
       strokeWidth={2}
       strokeDasharray="6,4"
       initial={{ pathLength: 0, opacity: 0 }}
@@ -194,7 +185,7 @@ const CurvedArrow = memo(function CurvedArrow({ from, to, index, isDark }) {
   )
 })
 
-const NodeBox = memo(function NodeBox({ node, isSelected, onSelect, index, isDark }) {
+const NodeBox = memo(function NodeBox({ node, isSelected, onSelect, index }) {
   const pos = getNodePos(node)
   const Icon = node.icon
   const active = isSelected === node.id
@@ -240,7 +231,7 @@ const NodeBox = memo(function NodeBox({ node, isSelected, onSelect, index, isDar
         height={NODE_H}
         rx={14}
         fill={`url(#${gradId})`}
-        stroke={active ? node.color : (isDark ? '#333' : '#e5e7eb')}
+        stroke={active ? node.color : '#e5e7eb'}
         strokeWidth={active ? 1.5 : 0.75}
       />
       {/* Inner solid fill for readability */}
@@ -250,7 +241,7 @@ const NodeBox = memo(function NodeBox({ node, isSelected, onSelect, index, isDar
         width={NODE_W - 1}
         height={NODE_H - 1}
         rx={13}
-        fill={isDark ? 'rgba(30,30,30,0.85)' : 'rgba(255,255,255,0.88)'}
+        fill="rgba(255,255,255,0.88)"
       />
 
       {/* Top accent line */}
@@ -290,7 +281,7 @@ const NodeBox = memo(function NodeBox({ node, isSelected, onSelect, index, isDar
       <text
         x={pos.x - NODE_W / 2 + 54}
         y={pos.y - 4}
-        fill={isDark ? '#f3f4f6' : '#111827'}
+        fill="#111827"
         fontSize={11.5}
         fontWeight={700}
         fontFamily="Inter, sans-serif"
@@ -302,7 +293,7 @@ const NodeBox = memo(function NodeBox({ node, isSelected, onSelect, index, isDar
       <text
         x={pos.x - NODE_W / 2 + 54}
         y={pos.y + 14}
-        fill={isDark ? '#6b7280' : '#9ca3af'}
+        fill="#9ca3af"
         fontSize={9.5}
         fontFamily="Inter, sans-serif"
       >
@@ -313,7 +304,6 @@ const NodeBox = memo(function NodeBox({ node, isSelected, onSelect, index, isDar
 })
 
 export function CascadeDiagram() {
-  const isDark = useSyncExternalStore(subscribeDarkMode, getIsDark)
   const [selected, setSelected] = useState(null)
 
   const selectedNode = nodes.find(n => n.id === selected)
@@ -326,10 +316,10 @@ export function CascadeDiagram() {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-2">
+        <h3 className="text-2xl font-serif font-bold text-gray-900 mb-2">
           The 2026 Cascade
         </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-sm text-gray-500">
           Click any node to see how one crisis triggered the next. Every connection represents a documented dependency failure.
         </p>
       </div>
@@ -351,7 +341,7 @@ export function CascadeDiagram() {
               key={label}
               x={12}
               y={PADDING_TOP + i * TIER_GAP_Y + NODE_H / 2 + 4}
-              fill={isDark ? '#4b5563' : '#d1d5db'}
+              fill="#d1d5db"
               fontSize={8}
               fontFamily="Inter, sans-serif"
               fontWeight={700}
@@ -372,7 +362,7 @@ export function CascadeDiagram() {
             )
             return (
               <g key={`${conn.from}-${conn.to}`} opacity={selected ? (isHighlighted ? 1 : 0.15) : 1}>
-                <CurvedArrow from={fromNode} to={toNode} index={i} isDark={isDark} />
+                <CurvedArrow from={fromNode} to={toNode} index={i} />
               </g>
             )
           })}
@@ -385,7 +375,6 @@ export function CascadeDiagram() {
                 isSelected={selected}
                 onSelect={setSelected}
                 index={i}
-                isDark={isDark}
               />
             </g>
           ))}
@@ -400,7 +389,7 @@ export function CascadeDiagram() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.25 }}
-            className="max-w-3xl mx-auto p-6 rounded-2xl border border-gray-200 dark:border-dark-border bg-white/80 dark:bg-dark-surface/80 backdrop-blur-md"
+            className="max-w-3xl mx-auto p-6 rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-md"
           >
             <div className="flex items-start gap-4">
               <div
@@ -410,16 +399,16 @@ export function CascadeDiagram() {
                 <selectedNode.icon size={20} color={selectedNode.color} />
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className="text-lg font-serif font-bold text-gray-900 dark:text-white mb-1">
+                <h4 className="text-lg font-serif font-bold text-gray-900 mb-1">
                   {selectedNode.label}
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">
                   {selectedNode.detail}
                 </p>
                 <div className="space-y-1">
-                  <p className="text-[10px] uppercase tracking-widest text-gray-400 dark:text-gray-500 font-semibold">Sources</p>
+                  <p className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Sources</p>
                   {selectedNode.sources.map((s, i) => (
-                    <p key={i} className="text-xs text-gray-500 dark:text-gray-400">
+                    <p key={i} className="text-xs text-gray-500">
                       <span className="text-crimson font-bold">[{i + 1}]</span> {s}
                     </p>
                   ))}
@@ -437,7 +426,7 @@ export function CascadeDiagram() {
       </AnimatePresence>
 
       {/* Legend */}
-      <div className="flex flex-wrap items-center justify-center gap-4 text-[10px] uppercase tracking-widest text-gray-400 dark:text-gray-500 font-semibold">
+      <div className="flex flex-wrap items-center justify-center gap-4 text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
         {[
           { color: '#D32F2F', label: 'Trigger Event' },
           { color: '#F59E0B', label: 'Energy Shock' },

@@ -115,7 +115,7 @@ export default function App() {
     <Router>
       <StoriesProvider>
         <YearProvider>
-        <div className="min-h-screen bg-parchment-50 dark:bg-dark-bg transition-colors duration-500 font-sans text-gray-900 dark:text-gray-200 selection:bg-crimson selection:text-white">
+        <div className="min-h-screen bg-parchment-50 font-sans text-gray-900 selection:bg-crimson selection:text-white">
 
           <a
             href="#main"

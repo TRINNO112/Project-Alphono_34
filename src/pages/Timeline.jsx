@@ -163,7 +163,7 @@ function StatCard({ stat, index }) {
     >
       <div className="flex items-center gap-2 mb-3">
         <div className={`w-2 h-2 rounded-full ${dotColors[stat.status] || dotColors.danger} animate-pulse`} />
-        <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+        <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">
           {stat.label}
         </span>
       </div>
@@ -256,7 +256,7 @@ export default function Timeline() {
       ref={containerRef}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="w-full relative min-h-screen bg-gray-50 dark:bg-dark-bg font-sans overflow-hidden"
+      className="w-full relative min-h-screen bg-gray-50 font-sans overflow-hidden"
     >
       <SEO
         title="Chronology of Crises"
@@ -284,12 +284,12 @@ export default function Timeline() {
       </div>
 
       {/* Subtle grid pattern overlay */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03] dark:opacity-[0.05]"
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
         style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }}
       />
 
       {/* ── Top bar: Year navigation ── */}
-      <div className="fixed top-16 left-0 right-0 z-30 pt-4 pb-3 bg-gray-50/80 dark:bg-dark-bg/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50">
+      <div className="fixed top-16 left-0 right-0 z-30 pt-4 pb-3 bg-gray-50/80 backdrop-blur-xl border-b border-gray-200/50">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex items-stretch justify-center">
             {timelineEvents.map((ev, idx) => {
@@ -300,7 +300,7 @@ export default function Timeline() {
                   key={idx}
                   onClick={() => goTo(idx)}
                   className={`group relative flex flex-col items-center px-3 md:px-5 py-2 transition-all duration-300 ${
-                    isActive ? '' : 'hover:bg-gray-100/60 dark:hover:bg-white/[0.03]'
+                    isActive ? '' : 'hover:bg-gray-100/60'
                   }`}
                 >
                   {/* Icon */}
@@ -308,8 +308,8 @@ export default function Timeline() {
                     isActive
                       ? `${ev.iconBg} shadow-sm`
                       : isPast
-                        ? 'bg-gray-100 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700/50'
-                        : 'bg-gray-50 dark:bg-gray-900/40 border-gray-200/60 dark:border-gray-800/40 group-hover:border-gray-300 dark:group-hover:border-gray-700'
+                        ? 'bg-gray-100 border-gray-200'
+                        : 'bg-gray-50 border-gray-200/60 group-hover:border-gray-300'
                   }`}>
                     <EventIcon
                       name={ev.iconName}
@@ -317,8 +317,8 @@ export default function Timeline() {
                         isActive
                           ? ev.iconColor
                           : isPast
-                            ? 'text-gray-400 dark:text-gray-500'
-                            : 'text-gray-300 dark:text-gray-600 group-hover:text-gray-400 dark:group-hover:text-gray-500'
+                            ? 'text-gray-400'
+                            : 'text-gray-300 group-hover:text-gray-400'
                       }`}
                     />
                   </div>
@@ -326,10 +326,10 @@ export default function Timeline() {
                   {/* Year */}
                   <span className={`text-xs md:text-sm font-mono font-bold tracking-wide transition-all duration-300 ${
                     isActive
-                      ? 'text-gray-900 dark:text-white'
+                      ? 'text-gray-900'
                       : isPast
-                        ? 'text-gray-500 dark:text-gray-500'
-                        : 'text-gray-350 dark:text-gray-600 group-hover:text-gray-500 dark:group-hover:text-gray-400'
+                        ? 'text-gray-500'
+                        : 'text-gray-350 group-hover:text-gray-500'
                   }`}>
                     {ev.year}
                   </span>
@@ -374,7 +374,7 @@ export default function Timeline() {
                   transition={{ duration: 0.6, type: 'spring', stiffness: 150 }}
                   className="relative mb-6"
                 >
-                  <span className="text-[120px] md:text-[180px] lg:text-[220px] font-serif font-black text-gray-100 dark:text-gray-900/60 leading-none select-none">
+                  <span className="text-[120px] md:text-[180px] lg:text-[220px] font-serif font-black text-gray-100 leading-none select-none">
                     {event.year}
                   </span>
                   {/* Icon overlay */}
@@ -396,7 +396,7 @@ export default function Timeline() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-crimson/10 dark:bg-crimson/5 border border-crimson/20 text-crimson text-xs font-bold uppercase tracking-[0.2em] rounded-full">
+                  <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-crimson/10 border border-crimson/20 text-crimson text-xs font-bold uppercase tracking-[0.2em] rounded-full">
                     <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
                     {event.category}
                   </span>
@@ -407,7 +407,7 @@ export default function Timeline() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="mt-4 text-xs font-mono text-gray-400 dark:text-gray-600 tracking-widest"
+                  className="mt-4 text-xs font-mono text-gray-400 tracking-widest"
                 >
                   {String(currentIndex + 1).padStart(2, '0')} / {String(timelineEvents.length).padStart(2, '0')}
                 </motion.p>
@@ -420,7 +420,7 @@ export default function Timeline() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white leading-[1.1] tracking-tight"
+                  className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-[1.1] tracking-tight"
                 >
                   {event.title}
                 </motion.h1>
@@ -430,7 +430,7 @@ export default function Timeline() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.25 }}
-                  className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light max-w-xl"
+                  className="text-lg md:text-xl text-gray-600 leading-relaxed font-light max-w-xl"
                 >
                   {event.desc}
                 </motion.p>
@@ -447,14 +447,14 @@ export default function Timeline() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
-                  className="relative p-6 rounded-2xl bg-white/50 dark:bg-white/[0.03] border border-gray-200/60 dark:border-gray-800 backdrop-blur-sm"
+                  className="relative p-6 rounded-2xl bg-white/50 border border-gray-200/60 backdrop-blur-sm"
                 >
                   <div className="absolute top-0 left-6 w-12 h-1 bg-crimson rounded-b-full" />
                   <div className="flex items-start gap-3 pt-2">
                     <AlertTriangle className="w-5 h-5 text-crimson shrink-0 mt-0.5" />
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-crimson mb-2">Forensic Impact</p>
-                      <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
+                      <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
                         {event.impact}
                       </p>
                     </div>
@@ -467,13 +467,13 @@ export default function Timeline() {
       </div>
 
       {/* ── Bottom Controls ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-30 pb-6 pt-4 bg-gradient-to-t from-gray-50 dark:from-dark-bg via-gray-50/80 dark:via-dark-bg/80 to-transparent">
+      <div className="fixed bottom-0 left-0 right-0 z-30 pb-6 pt-4 bg-gradient-to-t from-gray-50 via-gray-50/80 to-transparent">
         <div className="max-w-lg mx-auto flex items-center justify-center gap-4">
           {/* Prev */}
           <button
             onClick={goPrev}
             disabled={currentIndex === 0}
-            className="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-dark-surface/80 backdrop-blur-sm flex items-center justify-center text-gray-600 dark:text-gray-400 hover:border-crimson hover:text-crimson transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-gray-200 dark:disabled:hover:border-gray-800 disabled:hover:text-gray-600"
+            className="w-12 h-12 rounded-full border border-gray-200 bg-white/80 backdrop-blur-sm flex items-center justify-center text-gray-600 hover:border-crimson hover:text-crimson transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-gray-200 disabled:hover:text-gray-600"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -491,7 +491,7 @@ export default function Timeline() {
                     ? 'bg-crimson scale-125 shadow-md shadow-crimson/40'
                     : idx < currentIndex
                       ? 'bg-crimson/40 group-hover:bg-crimson/60'
-                      : 'bg-gray-300 dark:bg-gray-700 group-hover:bg-gray-400'
+                      : 'bg-gray-300 group-hover:bg-gray-400'
                 }`} />
               </button>
             ))}
@@ -503,7 +503,7 @@ export default function Timeline() {
             className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all ${
               isAutoPlaying
                 ? 'border-crimson bg-crimson/10 text-crimson'
-                : 'border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-dark-surface/80 text-gray-500 hover:border-crimson hover:text-crimson'
+                : 'border-gray-200 bg-white/80 text-gray-500 hover:border-crimson hover:text-crimson'
             } backdrop-blur-sm`}
           >
             {isAutoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
@@ -513,19 +513,19 @@ export default function Timeline() {
           <button
             onClick={goNext}
             disabled={currentIndex === timelineEvents.length - 1 && !isAutoPlaying}
-            className="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-dark-surface/80 backdrop-blur-sm flex items-center justify-center text-gray-600 dark:text-gray-400 hover:border-crimson hover:text-crimson transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-gray-200 dark:disabled:hover:border-gray-800 disabled:hover:text-gray-600"
+            className="w-12 h-12 rounded-full border border-gray-200 bg-white/80 backdrop-blur-sm flex items-center justify-center text-gray-600 hover:border-crimson hover:text-crimson transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-gray-200 disabled:hover:text-gray-600"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
 
         {/* Keyboard hint */}
-        <p className="text-center text-[10px] text-gray-400 dark:text-gray-600 mt-3 tracking-wider font-mono">
+        <p className="text-center text-[10px] text-gray-400 mt-3 tracking-wider font-mono">
           ← → NAVIGATE &nbsp;·&nbsp; SPACE AUTOPLAY &nbsp;·&nbsp; SWIPE ON MOBILE
         </p>
 
         {/* Data verification line */}
-        <div className="flex items-center justify-center gap-2 mt-2 text-[10px] text-gray-400 dark:text-gray-600">
+        <div className="flex items-center justify-center gap-2 mt-2 text-[10px] text-gray-400">
           <ShieldAlert className="w-3 h-3" />
           <span>Data verified against primary research and civil reports</span>
           <span>·</span>

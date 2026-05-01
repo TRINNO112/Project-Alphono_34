@@ -6,18 +6,18 @@ import { searchIndex } from '../data/searchIndex'
 import { useDebounce } from '../hooks/useDebounce'
 
 const pillarColors = {
-  'Infrastructure': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-  'Energy': 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400',
-  'Water': 'bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400',
-  'Labor': 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
-  'Economics': 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
-  'Materials': 'bg-gray-200 text-gray-700 dark:bg-gray-700/30 dark:text-gray-400',
-  'Education': 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400',
-  'Environment': 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
-  'Migrant Rights': 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-  'Agriculture': 'bg-lime-100 text-lime-700 dark:bg-lime-900/30 dark:text-lime-400',
-  'Green Tech': 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400',
-  'Chemical': 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
+  'Infrastructure': 'bg-blue-100 text-blue-700',
+  'Energy': 'bg-yellow-100 text-yellow-700',
+  'Water': 'bg-teal-100 text-teal-700',
+  'Labor': 'bg-purple-100 text-purple-700',
+  'Economics': 'bg-green-100 text-green-700',
+  'Materials': 'bg-gray-200 text-gray-700',
+  'Education': 'bg-pink-100 text-pink-700',
+  'Environment': 'bg-emerald-100 text-emerald-700',
+  'Migrant Rights': 'bg-red-100 text-red-700',
+  'Agriculture': 'bg-lime-100 text-lime-700',
+  'Green Tech': 'bg-cyan-100 text-cyan-700',
+  'Chemical': 'bg-orange-100 text-orange-700',
 }
 
 function getPillarColor(pillar) {
@@ -120,23 +120,23 @@ export default function SearchBar() {
               transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
               className="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-full max-w-2xl px-4"
             >
-              <div className="bg-white dark:bg-dark-surface rounded-2xl border border-gray-200 dark:border-dark-border shadow-2xl overflow-hidden">
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-2xl overflow-hidden">
                 {/* Input */}
-                <div className="flex items-center gap-3 p-4 border-b border-gray-200 dark:border-dark-border">
+                <div className="flex items-center gap-3 p-4 border-b border-gray-200">
                   <Search className="w-5 h-5 text-gray-400" aria-hidden="true" />
                   <input
                     ref={inputRef}
                     type="text"
                     aria-label="Search across all pillars"
                     placeholder="Search claims, topics, sources..."
-                    className="flex-1 bg-transparent outline-none text-gray-900 dark:text-white placeholder-gray-400 text-lg"
+                    className="flex-1 bg-transparent outline-none text-gray-900 placeholder-gray-400 text-lg"
                     value={query}
                     onChange={e => setQuery(e.target.value)}
                   />
                   <span role="status" aria-live="polite" className="text-xs text-gray-400 mr-2">
                     {query ? `${results.length} result${results.length !== 1 ? 's' : ''}` : ''}
                   </span>
-                  <kbd className="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-dark-bg text-gray-500 border border-gray-200 dark:border-dark-border">ESC</kbd>
+                  <kbd className="text-xs px-2 py-1 rounded bg-gray-100 text-gray-500 border border-gray-200">ESC</kbd>
                 </div>
 
                 {/* Grouped results */}
@@ -151,16 +151,16 @@ export default function SearchBar() {
                             {pillar}
                           </span>
                           <span className="text-[10px] text-gray-400">{grouped[pillar].length}</span>
-                          <div className="flex-1 h-px bg-gray-200 dark:bg-dark-border" />
+                          <div className="flex-1 h-px bg-gray-200" />
                         </div>
                         {grouped[pillar].map((item) => (
                           <button
                             key={`${item.path}-${item.claim.slice(0, 40)}`}
                             type="button"
                             onClick={() => handleResultClick(item)}
-                            className="block w-full text-left p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+                            className="block w-full text-left p-3 rounded-xl hover:bg-gray-100 transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
                           >
-                            <div className="text-sm text-gray-700 dark:text-gray-300">{item.claim}</div>
+                            <div className="text-sm text-gray-700">{item.claim}</div>
                           </button>
                         ))}
                       </div>

@@ -1,8 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Moon, Sun, ShieldAlert, ChevronLeft, Menu, X } from 'lucide-react'
+import { ShieldAlert, ChevronLeft, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { useDarkMode } from '../hooks/useDarkMode'
 
 /**
  * Navbar - Main site navigation component with responsive design
@@ -57,7 +56,6 @@ export default function Navbar() {
   const isHome = location.pathname === '/'
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleRef = useRef(null)
-  const { isDark, toggleDarkMode } = useDarkMode()
 
   // Close mobile menu on route change
   const pathname = location.pathname
@@ -84,14 +82,14 @@ export default function Navbar() {
   return (
     <header
       role="banner"
-      className="fixed top-0 w-full px-6 md:px-8 py-5 flex justify-between items-center z-40 bg-white/70 dark:bg-dark-bg/80 backdrop-blur-xl border-b border-gray-200 dark:border-dark-border transition-all duration-300"
+      className="fixed top-0 w-full px-6 md:px-8 py-5 flex justify-between items-center z-40 bg-white/70 backdrop-blur-xl border-b border-gray-200 transition-all duration-300"
     >
       <div className="flex items-center gap-4">
         {!isHome && (
           <Link
             to="/"
             aria-label="Go back to home"
-            className="p-2 -ml-2 rounded-full hover:bg-gray-200 dark:hover:bg-dark-surface transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+            className="p-2 -ml-2 rounded-full hover:bg-gray-200 transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
           >
             <ChevronLeft className="w-5 h-5" aria-hidden="true" />
           </Link>
@@ -119,7 +117,7 @@ export default function Navbar() {
                 className={`relative py-1 transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-4 rounded ${
                   active
                     ? 'text-crimson'
-                    : 'text-gray-500 hover:text-crimson dark:text-gray-400 dark:hover:text-crimson'
+                    : 'text-gray-500 hover:text-crimson'
                 }`}
               >
                 {link.label}
@@ -135,17 +133,6 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Dark mode toggle */}
-        <button
-          type="button"
-          onClick={toggleDarkMode}
-          aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-          aria-pressed={isDark}
-          className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-dark-surface transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
-        >
-          {isDark ? <Sun className="w-5 h-5" aria-hidden="true" /> : <Moon className="w-5 h-5" aria-hidden="true" />}
-        </button>
-
         {/* Mobile hamburger (hidden on md+) */}
         <button
           ref={toggleRef}
@@ -154,7 +141,7 @@ export default function Navbar() {
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={menuOpen}
           aria-controls="mobile-nav-panel"
-          className="md:hidden p-3 rounded-full hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors border border-transparent dark:border-dark-border focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+          className="md:hidden p-3 rounded-full hover:bg-gray-100 transition-colors border border-transparent focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
         >
           {menuOpen
             ? <X className="w-5 h-5" aria-hidden="true" />
@@ -187,10 +174,10 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden fixed left-0 right-0 top-[72px] max-h-[calc(100vh-72px)] overflow-y-auto bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-dark-border z-40 px-6 py-8 space-y-8"
+              className="md:hidden fixed left-0 right-0 top-[72px] max-h-[calc(100vh-72px)] overflow-y-auto bg-white border-b border-gray-200 z-40 px-6 py-8 space-y-8"
             >
               <nav aria-label="Primary">
-                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-3">Navigate</h2>
+                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 mb-3">Navigate</h2>
                 <ul className="space-y-1">
                   {navLinks.map((link) => {
                     const active = isActivePath(link.to)
@@ -199,7 +186,7 @@ export default function Navbar() {
                         <Link
                           to={link.to}
                           aria-current={active ? 'page' : undefined}
-                          className={`block py-2 text-base font-medium ${active ? 'text-crimson' : 'text-gray-800 dark:text-gray-200 hover:text-crimson dark:hover:text-crimson'}`}
+                          className={`block py-2 text-base font-medium ${active ? 'text-crimson' : 'text-gray-800 hover:text-crimson'}`}
                         >
                           {link.label}
                         </Link>
@@ -210,7 +197,7 @@ export default function Navbar() {
               </nav>
 
               <nav aria-label="Features">
-                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-3">Interactive</h2>
+                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 mb-3">Interactive</h2>
                 <ul className="space-y-1">
                   {featureLinks.map((link) => {
                     const active = isActivePath(link.to)
@@ -219,7 +206,7 @@ export default function Navbar() {
                         <Link
                           to={link.to}
                           aria-current={active ? 'page' : undefined}
-                          className={`block py-2 text-base font-medium ${active ? 'text-crimson' : 'text-gray-800 dark:text-gray-200 hover:text-crimson dark:hover:text-crimson'}`}
+                          className={`block py-2 text-base font-medium ${active ? 'text-crimson' : 'text-gray-800 hover:text-crimson'}`}
                         >
                           {link.label}
                         </Link>
@@ -230,7 +217,7 @@ export default function Navbar() {
               </nav>
 
               <nav aria-label="Pillars">
-                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-3">13 Pillars</h2>
+                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 mb-3">13 Pillars</h2>
                 <ul className="grid grid-cols-1 gap-x-4 gap-y-1">
                   {pillarLinks.map((link) => {
                     const active = isActivePath(link.to)
@@ -239,7 +226,7 @@ export default function Navbar() {
                         <Link
                           to={link.to}
                           aria-current={active ? 'page' : undefined}
-                          className={`block py-2 text-sm ${active ? 'text-crimson font-semibold' : link.highlight ? 'text-crimson font-medium' : 'text-gray-800 dark:text-gray-200 hover:text-crimson dark:hover:text-crimson'}`}
+                          className={`block py-2 text-sm ${active ? 'text-crimson font-semibold' : link.highlight ? 'text-crimson font-medium' : 'text-gray-800 hover:text-crimson'}`}
                         >
                           {link.label}
                         </Link>
@@ -250,7 +237,7 @@ export default function Navbar() {
               </nav>
 
               <nav aria-label="Resources">
-                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-3">Resources</h2>
+                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 mb-3">Resources</h2>
                 <ul className="space-y-1">
                   {resourceLinks.map((link) => {
                     const active = isActivePath(link.to)
@@ -259,7 +246,7 @@ export default function Navbar() {
                         <Link
                           to={link.to}
                           aria-current={active ? 'page' : undefined}
-                          className={`block py-2 text-sm ${active ? 'text-crimson font-semibold' : 'text-gray-800 dark:text-gray-200 hover:text-crimson dark:hover:text-crimson'}`}
+                          className={`block py-2 text-sm ${active ? 'text-crimson font-semibold' : 'text-gray-800 hover:text-crimson'}`}
                         >
                           {link.label}
                         </Link>

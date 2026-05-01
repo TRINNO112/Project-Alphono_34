@@ -1,4 +1,4 @@
-import { memo, useMemo, useSyncExternalStore } from 'react'
+import { memo, useMemo } from 'react'
 import {
   ResponsiveContainer,
   BarChart,
@@ -12,12 +12,22 @@ import {
 } from 'recharts'
 
 const DEFAULT_COLORS = ['#D32F2F', '#2563EB', '#16A34A', '#CA8A04', '#9333EA', '#6B7280']
+const TICK_FILL = '#374151'
+const TOOLTIP_STYLE = {
+  backgroundColor: '#ffffff',
+  border: '1px solid #e5e7eb',
+  borderRadius: '8px',
+  color: '#1f2937',
+  fontSize: '14px',
+  fontFamily: 'Inter, sans-serif',
+}
+const TOOLTIP_ITEM_STYLE = { color: '#1f2937' }
+const TOOLTIP_CURSOR = { fill: 'rgba(0,0,0,0.05)' }
 
 /**
  * PillarChart - Responsive chart component supporting bar and pie charts
  *
  * Features:
- * - Dark mode aware (uses useSyncExternalStore to detect theme changes)
  * - Accessible with ARIA labels and figcaptions
  * - Memoized for performance
  * - Custom color palette support
@@ -32,37 +42,15 @@ const DEFAULT_COLORS = ['#D32F2F', '#2563EB', '#16A34A', '#CA8A04', '#9333EA', '
  * @returns {JSX.Element} The rendered chart
  */
 
-function subscribeDarkMode(callback) {
-  const observer = new MutationObserver(callback)
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-  return () => observer.disconnect()
-}
-
-function getIsDark() {
-  return document.documentElement.classList.contains('dark')
-}
-
 function PillarChartInner({ type, data, title, caption, height = 300, colors }) {
   const palette = useMemo(() => colors || DEFAULT_COLORS, [colors])
-  const isDark = useSyncExternalStore(subscribeDarkMode, getIsDark)
-
-  const tickFill = isDark ? '#d1d5db' : '#374151'
-
-  const tooltipStyle = useMemo(() => ({
-    backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
-    border: `1px solid ${isDark ? '#333' : '#e5e7eb'}`,
-    borderRadius: '8px',
-    color: isDark ? '#e5e7eb' : '#1f2937',
-    fontSize: '14px',
-    fontFamily: 'Inter, sans-serif',
-  }), [isDark])
 
   const renderBar = () => (
     <ResponsiveContainer width="100%" height={height}>
       <BarChart data={data}>
-        <XAxis dataKey="name" tick={{ fill: tickFill, fontSize: 13 }} />
-        <YAxis tick={{ fill: tickFill, fontSize: 13 }} />
-        <Tooltip contentStyle={tooltipStyle} itemStyle={{ color: isDark ? '#e5e7eb' : '#1f2937' }} cursor={{ fill: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }} />
+        <XAxis dataKey="name" tick={{ fill: TICK_FILL, fontSize: 13 }} />
+        <YAxis tick={{ fill: TICK_FILL, fontSize: 13 }} />
+        <Tooltip contentStyle={TOOLTIP_STYLE} itemStyle={TOOLTIP_ITEM_STYLE} cursor={TOOLTIP_CURSOR} />
         <Bar dataKey="value" radius={[6, 6, 0, 0]}>
           {data.map((_, index) => (
             <Cell key={`cell-${index}`} fill={palette[index % palette.length]} />
@@ -88,7 +76,7 @@ function PillarChartInner({ type, data, title, caption, height = 300, colors }) 
       <text
         x={x}
         y={y}
-        fill={isDark ? '#d1d5db' : '#374151'}
+        fill={TICK_FILL}
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
         fontSize={12}
@@ -117,7 +105,7 @@ function PillarChartInner({ type, data, title, caption, height = 300, colors }) 
             <Cell key={`cell-${index}`} fill={palette[index % palette.length]} />
           ))}
         </Pie>
-        <Tooltip contentStyle={tooltipStyle} itemStyle={{ color: isDark ? '#e5e7eb' : '#1f2937' }} />
+        <Tooltip contentStyle={TOOLTIP_STYLE} itemStyle={TOOLTIP_ITEM_STYLE} />
       </PieChart>
     </ResponsiveContainer>
   )
@@ -132,9 +120,9 @@ function PillarChartInner({ type, data, title, caption, height = 300, colors }) 
   return (
     <figure className="my-8" role="img" aria-label={ariaDesc}>
       {title && (
-        <h4 className="text-lg font-serif font-bold text-gray-900 dark:text-white mb-4">{title}</h4>
+        <h4 className="text-lg font-serif font-bold text-gray-900 mb-4">{title}</h4>
       )}
-      <div className="bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border rounded-2xl p-6 backdrop-blur-sm">
+      <div className="bg-white/60 border border-gray-200 rounded-2xl p-6 backdrop-blur-sm">
         {type === 'bar' && renderBar()}
         {type === 'pie' && renderPie()}
       </div>

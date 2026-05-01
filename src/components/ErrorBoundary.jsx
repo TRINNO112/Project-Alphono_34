@@ -40,24 +40,24 @@ export default class ErrorBoundary extends Component {
       <main
         id="main"
         role="alert"
-        className="min-h-screen flex items-center justify-center px-6 py-32 bg-parchment-50 dark:bg-dark-bg"
+        className="min-h-screen flex items-center justify-center px-6 py-32 bg-parchment-50"
       >
         <div className="max-w-lg w-full text-center space-y-6">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-crimson/10 text-crimson">
             <AlertTriangle className="w-8 h-8" aria-hidden="true" />
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900">
             Something broke.
           </h1>
 
-          <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-base text-gray-600 leading-relaxed">
             An unexpected error prevented this view from rendering. Your data is not lost —
             the rest of the site is still reachable.
           </p>
 
           {this.state.error?.message && (
-            <pre className="text-left text-xs p-4 rounded-lg bg-parchment-100 dark:bg-dark-surface border border-parchment-200 dark:border-dark-border overflow-auto text-gray-700 dark:text-gray-300">
+            <pre className="text-left text-xs p-4 rounded-lg bg-parchment-100 border border-parchment-200 overflow-auto text-gray-700">
               {this.state.error.message}
             </pre>
           )}
@@ -72,7 +72,7 @@ export default class ErrorBoundary extends Component {
             </button>
             <a
               href="/"
-              className="px-5 py-2.5 rounded-full border border-parchment-200 dark:border-dark-border text-gray-900 dark:text-gray-200 font-medium hover:bg-parchment-100 dark:hover:bg-dark-surface transition-colors"
+              className="px-5 py-2.5 rounded-full border border-parchment-200 text-gray-900 font-medium hover:bg-parchment-100 transition-colors"
             >
               Back to home
             </a>
