@@ -99,12 +99,12 @@ function WhyThisPercentBase({
               maxHeight: '60vh',
               [flipUp ? 'bottom' : 'top']: 'calc(100% + 8px)',
             }}
-            className="absolute left-0 z-50 overflow-y-auto rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface shadow-xl p-4"
+            className="absolute left-0 z-50 overflow-y-auto rounded-2xl border border-gray-200 bg-white shadow-xl p-4"
           >
             <div className="flex items-start justify-between gap-2 mb-3">
               <h4
                 id={titleId}
-                className="font-serif text-base font-bold text-gray-900 dark:text-white leading-tight"
+                className="font-serif text-base font-bold text-gray-900 leading-tight"
               >
                 Why {percent}%?
               </h4>
@@ -118,13 +118,13 @@ function WhyThisPercentBase({
               </button>
             </div>
 
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-1">
               {pillarLabel}
             </p>
 
             {formula && (
-              <div className="mb-3 p-2 rounded-lg bg-gray-50 dark:bg-dark-bg border border-gray-100 dark:border-dark-border">
-                <code className="text-xs font-mono text-gray-700 dark:text-gray-300 break-words">
+              <div className="mb-3 p-2 rounded-lg bg-gray-50 border border-gray-100">
+                <code className="text-xs font-mono text-gray-700 break-words">
                   {formula}
                 </code>
               </div>
@@ -137,7 +137,7 @@ function WhyThisPercentBase({
                     key={i}
                     className="flex items-baseline justify-between gap-3 text-xs"
                   >
-                    <dt className="text-gray-600 dark:text-gray-400 flex-1 min-w-0">
+                    <dt className="text-gray-600 flex-1 min-w-0">
                       {f.label}
                       {f.cite && (
                         <a
@@ -149,7 +149,7 @@ function WhyThisPercentBase({
                         </a>
                       )}
                     </dt>
-                    <dd className="font-mono tabular-nums text-gray-900 dark:text-white shrink-0">
+                    <dd className="font-mono tabular-nums text-gray-900 shrink-0">
                       {f.value}
                     </dd>
                   </div>
@@ -157,9 +157,9 @@ function WhyThisPercentBase({
               </dl>
             )}
 
-            <div className="pt-3 mt-2 border-t border-gray-100 dark:border-dark-border">
-              <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                At lever = <span className="font-mono tabular-nums text-gray-700 dark:text-gray-300">{leverValue}/{leverMax}</span>:{' '}
+            <div className="pt-3 mt-2 border-t border-gray-100">
+              <p className="text-[11px] text-gray-500 leading-relaxed">
+                At lever = <span className="font-mono tabular-nums text-gray-700">{leverValue}/{leverMax}</span>:{' '}
                 <span className="font-bold text-crimson">{percent}%</span> of{' '}
                 <span className="font-mono tabular-nums">{result}%</span> headline
               </p>

@@ -29,14 +29,14 @@ export function Timeline({ events }) {
             <div className="flex flex-col items-center">
               <div className={`w-3 h-3 rounded-full ${colors.dot} ring-4 ${colors.ring} mt-2 shrink-0`} />
               {index < events.length - 1 && (
-                <div className="w-0.5 flex-1 bg-gray-200 dark:bg-dark-border" />
+                <div className="w-0.5 flex-1 bg-gray-200" />
               )}
             </div>
 
             {/* Content */}
             <div className="pl-6 pb-10">
-              <h4 className="font-serif font-bold text-lg text-gray-900 dark:text-white mb-2">{event.title}</h4>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{event.description}</p>
+              <h4 className="font-serif font-bold text-lg text-gray-900 mb-2">{event.title}</h4>
+              <p className="text-gray-600 leading-relaxed">{event.description}</p>
             </div>
           </motion.div>
         )

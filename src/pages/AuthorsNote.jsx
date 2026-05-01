@@ -23,15 +23,15 @@ export default function AuthorsNote() {
             <div className="text-crimson font-semibold tracking-widest text-sm uppercase">
               Author's Note · April 2026
             </div>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-gray-900 dark:text-white leading-tight">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-gray-900 leading-tight">
               The reason this <span className="italic text-crimson">exists</span>.
             </h1>
-            <p className="text-lg text-gray-500 dark:text-gray-400 italic">
+            <p className="text-lg text-gray-500 italic">
               A personal record. Not research. Not neutral. Written before leaving.
             </p>
           </header>
 
-          <section className="prose prose-lg dark:prose-invert max-w-none space-y-6 text-gray-800 dark:text-gray-300 font-serif leading-relaxed">
+          <section className="prose prose-lg max-w-none space-y-6 text-gray-800 font-serif leading-relaxed">
             <p>
               I am a Hindi speaker. I have lived in Gujarat for more than ten years.
               I am not from here, and after a decade in this state, I have learned that I will
@@ -49,7 +49,7 @@ export default function AuthorsNote() {
               . The other twelve grew around it.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white !mt-12 !mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
               What the data does not say
             </h2>
 
@@ -75,7 +75,7 @@ export default function AuthorsNote() {
               the moment — it deforms what you are capable of wanting.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white !mt-12 !mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
               What this project is not
             </h2>
 
@@ -85,7 +85,7 @@ export default function AuthorsNote() {
             </p>
 
             <blockquote className="border-l-4 border-crimson pl-6 py-2 not-italic">
-              <p className="text-2xl font-serif text-gray-900 dark:text-white">
+              <p className="text-2xl font-serif text-gray-900">
                 The infrastructure of Gujarat is great. The roads, the ports, the power, the
                 industrial scale — all of it works. <span className="text-crimson">The people
                 are the problem.</span> That distinction matters.
@@ -108,7 +108,7 @@ export default function AuthorsNote() {
               of them is indexed.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white !mt-12 !mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
               Why publish before leaving
             </h2>
 
@@ -123,13 +123,13 @@ export default function AuthorsNote() {
             </p>
 
             <blockquote className="border-l-4 border-crimson pl-6 py-3 not-italic my-8">
-              <p className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white leading-tight">
+              <p className="text-3xl md:text-4xl font-serif font-bold text-gray-900 leading-tight">
                 I am not the last person who will publish this.{' '}
                 <span className="text-crimson">I would like to be one of the first.</span>
               </p>
             </blockquote>
 
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white !mt-12 !mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
               About the anger
             </h2>
 
@@ -151,7 +151,7 @@ export default function AuthorsNote() {
               the document does not disappear.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white !mt-12 !mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
               On who is to blame
             </h2>
 
@@ -174,7 +174,7 @@ export default function AuthorsNote() {
               came from.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white !mt-12 !mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
               For the reader who is also living this
             </h2>
 
@@ -214,13 +214,13 @@ export default function AuthorsNote() {
               wrote things down with their names on them while everyone else stayed quiet.
             </p>
 
-            <p className="text-right italic text-gray-600 dark:text-gray-400 !mt-12">
+            <p className="text-right italic text-gray-600 !mt-12">
               — The author<br/>
               Gujarat, April 2026
             </p>
           </section>
 
-          <div className="border-t border-parchment-200 dark:border-dark-border pt-8 flex flex-wrap gap-3 justify-center">
+          <div className="border-t border-parchment-200 pt-8 flex flex-wrap gap-3 justify-center">
             <Link
               to="/migrant-discrimination"
               className="px-6 py-3 rounded-full bg-crimson text-white font-medium hover:bg-crimson-dark transition-colors inline-flex items-center gap-2"
@@ -230,7 +230,7 @@ export default function AuthorsNote() {
             </Link>
             <Link
               to="/stories"
-              className="px-6 py-3 rounded-full border border-parchment-200 dark:border-dark-border text-gray-900 dark:text-gray-200 font-medium hover:bg-parchment-100 dark:hover:bg-dark-surface transition-colors inline-flex items-center gap-2"
+              className="px-6 py-3 rounded-full border border-parchment-200 text-gray-900 font-medium hover:bg-parchment-100 transition-colors inline-flex items-center gap-2"
             >
               Human stories
               <ArrowRight className="w-4 h-4" aria-hidden="true" />

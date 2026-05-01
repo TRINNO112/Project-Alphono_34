@@ -43,16 +43,16 @@ export default function StorySideSheet() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 60 }}
             transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed top-0 right-0 h-full w-full max-w-md bg-white dark:bg-dark-bg border-l border-gray-200 dark:border-dark-border shadow-2xl z-[56] overflow-y-auto"
+            className="fixed top-0 right-0 h-full w-full max-w-md bg-white border-l border-gray-200 shadow-2xl z-[56] overflow-y-auto"
           >
-            <div className="flex items-center justify-between px-6 py-5 border-b border-gray-200 dark:border-dark-border sticky top-0 bg-white dark:bg-dark-bg z-10">
+            <div className="flex items-center justify-between px-6 py-5 border-b border-gray-200 sticky top-0 bg-white z-10">
               <span className="text-xs font-bold tracking-widest uppercase text-crimson">Human Story</span>
               <button
                 ref={closeRef}
                 type="button"
                 onClick={closeStory}
                 aria-label="Close"
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
+                className="p-2 rounded-full hover:bg-gray-100 transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2"
               >
                 <X className="w-5 h-5" aria-hidden="true" />
               </button>
@@ -60,13 +60,13 @@ export default function StorySideSheet() {
 
             <div className="px-6 py-8 space-y-6">
               <div>
-                <h2 className="font-serif text-3xl font-bold text-gray-900 dark:text-white leading-tight">
+                <h2 className="font-serif text-3xl font-bold text-gray-900 leading-tight">
                   {story.name}
                   {story.age != null && (
-                    <span className="text-gray-500 dark:text-gray-400 font-normal text-xl">, {story.age}</span>
+                    <span className="text-gray-500 font-normal text-xl">, {story.age}</span>
                   )}
                 </h2>
-                <div className="mt-3 flex flex-wrap gap-3 text-sm text-gray-600 dark:text-gray-400">
+                <div className="mt-3 flex flex-wrap gap-3 text-sm text-gray-600">
                   {story.origin && (
                     <span className="inline-flex items-center gap-1.5">
                       <MapPin className="w-4 h-4" aria-hidden="true" />
@@ -82,7 +82,7 @@ export default function StorySideSheet() {
                 </div>
               </div>
 
-              <p className="text-base leading-relaxed text-gray-800 dark:text-gray-200">
+              <p className="text-base leading-relaxed text-gray-800">
                 {story.circumstance}
               </p>
 
@@ -95,14 +95,14 @@ export default function StorySideSheet() {
                 >
                   <ExternalLink className="w-4 h-4" aria-hidden="true" />
                   Read original report
-                  <span className="text-gray-500 dark:text-gray-400 font-normal">
+                  <span className="text-gray-500 font-normal">
                     — {story.sourcePublication}
                   </span>
                 </a>
               )}
             </div>
 
-            <div className="px-6 py-5 border-t border-gray-200 dark:border-dark-border bg-parchment-50 dark:bg-dark-surface text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+            <div className="px-6 py-5 border-t border-gray-200 bg-parchment-50 text-xs text-gray-500 leading-relaxed">
               Names are sourced from publicly published mainstream journalism as cited above.
               If you are a family member and wish to request removal, please open an issue on the
               project repository.

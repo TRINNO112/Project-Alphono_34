@@ -79,10 +79,10 @@ function CounterArgumentInner({ messages, argument, rebuttal, stats, showGov }) 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="rounded-2xl overflow-hidden border border-gray-200 dark:border-dark-border my-8 bg-stone-50/80 dark:bg-dark-surface/30"
+      className="rounded-2xl overflow-hidden border border-gray-200 my-8 bg-stone-50/80"
     >
       {/* Header */}
-      <div role="heading" aria-level={3} className="px-5 py-3.5 bg-emerald-800 dark:bg-emerald-950 flex items-center justify-between">
+      <div role="heading" aria-level={3} className="px-5 py-3.5 bg-emerald-800 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-emerald-200/80">The Debate</span>
         </div>
@@ -121,19 +121,19 @@ function CounterArgumentInner({ messages, argument, rebuttal, stats, showGov }) 
                 <div
                   className={`relative px-4 py-3 text-[15px] leading-relaxed ${
                     msg.from === 'gov'
-                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-100 rounded-2xl rounded-bl-sm border border-blue-200 dark:border-blue-800/50'
+                      ? 'bg-blue-50 text-blue-900 rounded-2xl rounded-bl-sm border border-blue-200'
                       : isRaju
-                      ? 'bg-green-100/90 dark:bg-green-950/50 text-green-900 dark:text-green-200 rounded-2xl rounded-bl-sm'
-                      : 'bg-white dark:bg-dark-surface/80 text-gray-800 dark:text-gray-200 rounded-2xl rounded-br-sm border-l-[3px] border-crimson/60'
+                      ? 'bg-green-100/90 text-green-900 rounded-2xl rounded-bl-sm'
+                      : 'bg-white text-gray-800 rounded-2xl rounded-br-sm border-l-[3px] border-crimson/60'
                   }`}
                 >
                   {/* Character tag */}
                   <span className={`text-[10px] font-bold uppercase tracking-wider block mb-1 ${
                     msg.from === 'gov'
-                      ? 'text-blue-700 dark:text-blue-400'
+                      ? 'text-blue-700'
                       : isRaju
-                      ? 'text-green-700 dark:text-green-400'
-                      : 'text-crimson/80 dark:text-red-400'
+                      ? 'text-green-700'
+                      : 'text-crimson/80'
                   }`}>
                     <span aria-hidden="true">{char.emoji}</span> {char.name}
                   </span>
@@ -142,7 +142,7 @@ function CounterArgumentInner({ messages, argument, rebuttal, stats, showGov }) 
 
                   {/* Source citation */}
                   {msg.source && (
-                    <span className="mt-1.5 flex items-center gap-1 text-[10px] text-gray-400 dark:text-gray-500">
+                    <span className="mt-1.5 flex items-center gap-1 text-[10px] text-gray-400">
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.172 13.828a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
                       {msg.source}
                     </span>
@@ -150,7 +150,7 @@ function CounterArgumentInner({ messages, argument, rebuttal, stats, showGov }) 
                 </div>
 
                 {/* Timestamp */}
-                <span className={`text-[9px] text-gray-400 dark:text-gray-600 mt-0.5 block ${isLeft ? 'text-left ml-2' : 'text-right mr-2'}`}>
+                <span className={`text-[9px] text-gray-400 mt-0.5 block ${isLeft ? 'text-left ml-2' : 'text-right mr-2'}`}>
                   {fakeTime(i)}
                 </span>
               </div>
@@ -160,8 +160,8 @@ function CounterArgumentInner({ messages, argument, rebuttal, stats, showGov }) 
       </div>
 
       {/* Footer disclaimer */}
-      <div className="px-5 py-2.5 border-t border-gray-200 dark:border-dark-border bg-gray-50/50 dark:bg-dark-bg/30">
-        <p className="text-[9px] text-gray-400 dark:text-gray-600 text-center uppercase tracking-widest">
+      <div className="px-5 py-2.5 border-t border-gray-200 bg-gray-50/50">
+        <p className="text-[9px] text-gray-400 text-center uppercase tracking-widest">
           Dramatized exchange based on documented claims and verified data
         </p>
       </div>

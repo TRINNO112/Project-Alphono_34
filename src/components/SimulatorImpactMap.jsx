@@ -53,7 +53,7 @@ function SimulatorImpactMapBase({
     <figure
       role="img"
       aria-label={`Gujarat district impact heatmap. Top-affected: ${summary}.`}
-      className="relative rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface p-4"
+      className="relative rounded-2xl border border-gray-200 bg-white p-4"
     >
       <figcaption className="sr-only">
         Gujarat map colored by per-district damage score from 0 to 100. Districts
@@ -61,8 +61,8 @@ function SimulatorImpactMapBase({
       </figcaption>
 
       <div className="flex items-center justify-between mb-2">
-        <h3 className="font-serif font-bold text-lg text-gray-900 dark:text-white">District Impact</h3>
-        <div className="flex items-center gap-1 text-[10px] font-mono text-gray-500 dark:text-gray-400">
+        <h3 className="font-serif font-bold text-lg text-gray-900">District Impact</h3>
+        <div className="flex items-center gap-1 text-[10px] font-mono text-gray-500">
           <span>0%</span>
           <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: '#E5E7EB' }} />
           <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: '#FCA5A5' }} />
@@ -94,7 +94,7 @@ function SimulatorImpactMapBase({
         )}
 
         {pendingData && (
-          <span className="absolute bottom-2 left-2 z-10 text-[10px] font-mono italic px-1.5 py-0.5 rounded bg-parchment-50 dark:bg-dark-surface border border-gray-200 dark:border-dark-border text-gray-500 dark:text-gray-400">
+          <span className="absolute bottom-2 left-2 z-10 text-[10px] font-mono italic px-1.5 py-0.5 rounded bg-parchment-50 border border-gray-200 text-gray-500">
             Estimates pending data
           </span>
         )}
@@ -137,7 +137,7 @@ function SimulatorImpactMapBase({
 
         {hover && (
           <div
-            className="pointer-events-none absolute z-10 px-3 py-1.5 rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-semibold shadow-xl whitespace-nowrap"
+            className="pointer-events-none absolute z-10 px-3 py-1.5 rounded-lg bg-gray-900 text-white text-xs font-semibold shadow-xl whitespace-nowrap"
             style={{
               left: cursor.x + 14,
               top: cursor.y + 14,
@@ -145,11 +145,11 @@ function SimulatorImpactMapBase({
             }}
           >
             <div className="font-serif text-sm">{hover.name}</div>
-            <div className="font-mono tabular-nums text-crimson dark:text-crimson">
+            <div className="font-mono tabular-nums text-crimson">
               {hover.score}% impact
             </div>
             {hoverContribs.length > 0 && (
-              <ul className="mt-1 space-y-0.5 border-t border-white/20 dark:border-gray-300 pt-1">
+              <ul className="mt-1 space-y-0.5 border-t border-white/20 pt-1">
                 {hoverContribs.map((c) => (
                   <li key={c.leverId} className="font-mono text-[10px] tabular-nums">
                     {c.leverLabel} · {c.percent}%
@@ -164,11 +164,11 @@ function SimulatorImpactMapBase({
       <div
         role="status"
         aria-live="polite"
-        className="min-h-[2rem] mt-2 text-sm text-gray-700 dark:text-gray-300"
+        className="min-h-[2rem] mt-2 text-sm text-gray-700"
       >
         {hover
           ? <span><span className="font-bold">{hover.name}</span> — <span className="font-mono tabular-nums text-crimson">{hover.score}%</span> impact</span>
-          : <span className="text-gray-400 dark:text-gray-500 text-xs italic">Hover a district for its damage score</span>}
+          : <span className="text-gray-400 text-xs italic">Hover a district for its damage score</span>}
       </div>
     </figure>
   )

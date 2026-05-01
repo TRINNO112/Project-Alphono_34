@@ -19,10 +19,10 @@ function FooterLink({ to, children, highlight }) {
 
 export default function Footer() {
   return (
-    <footer role="contentinfo" className="w-full relative overflow-hidden border-t border-gray-200 dark:border-dark-border bg-white dark:bg-dark-bg mt-24">
+    <footer role="contentinfo" className="w-full relative overflow-hidden border-t border-gray-200 bg-white mt-24">
       {/* Magazine Typography Watermark */}
-      <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0 opacity-40 dark:opacity-20 mix-blend-overlay dark:mix-blend-screen">
-        <span className="text-[10rem] md:text-[18rem] lg:text-[24rem] font-sans font-black text-gray-900 dark:text-gray-100 uppercase tracking-tighter leading-none whitespace-nowrap block">
+      <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0 opacity-40 mix-blend-overlay">
+        <span className="text-[10rem] md:text-[18rem] lg:text-[24rem] font-sans font-black text-gray-900 uppercase tracking-tighter leading-none whitespace-nowrap block">
           PROJECT 34
         </span>
       </div>
@@ -31,17 +31,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
 
           <div className="md:col-span-2 space-y-4">
-            <h3 className="text-xl font-serif font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <h3 className="text-xl font-serif font-bold text-gray-900 flex items-center gap-2">
               <span className="text-crimson">Project</span> Alphono 34
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-sm">
+            <p className="text-sm text-gray-600 leading-relaxed max-w-sm">
               A critical research endeavor investigating the deep structural vulnerabilities, dependencies, and socio-economic realities of Gujarat's industrial economy.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h4 id="footer-pillars-heading" className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Analysis Pillars</h4>
-            <ul aria-labelledby="footer-pillars-heading" className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <h4 id="footer-pillars-heading" className="text-sm font-semibold uppercase tracking-wider text-gray-900">Analysis Pillars</h4>
+            <ul aria-labelledby="footer-pillars-heading" className="space-y-2 text-sm text-gray-600">
               <FooterLink to="/infrastructure">Infrastructure & Logistics</FooterLink>
               <FooterLink to="/labor">Migrant Labor Ecosystem</FooterLink>
               <FooterLink to="/energy">Energy Grid & Power</FooterLink>
@@ -55,8 +55,8 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 id="footer-resources-heading" className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Resources</h4>
-            <ul aria-labelledby="footer-resources-heading" className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <h4 id="footer-resources-heading" className="text-sm font-semibold uppercase tracking-wider text-gray-900">Resources</h4>
+            <ul aria-labelledby="footer-resources-heading" className="space-y-2 text-sm text-gray-600">
               <FooterLink to="/simulator">Break Simulator</FooterLink>
               <FooterLink to="/stories">Human Stories</FooterLink>
               <FooterLink to="/summary">Executive Summary</FooterLink>
@@ -69,7 +69,7 @@ export default function Footer() {
 
         </div>
 
-        <div className="pt-8 border-t border-gray-200 dark:border-dark-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 dark:text-gray-500">
+        <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p>&copy; {new Date().getFullYear()} Project Alphono 34. All rights reserved.</p>
           <div className="flex items-center gap-2">
             <AlertTriangle className="w-4 h-4" aria-hidden="true" />

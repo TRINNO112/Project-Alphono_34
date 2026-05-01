@@ -24,16 +24,16 @@ function EducationCascadePanelBase({ narratives = [] }) {
     return (
       <section
         aria-labelledby={headingId}
-        className="rounded-2xl border border-dashed border-gray-300 dark:border-dark-border bg-white/40 dark:bg-dark-surface/40 p-6"
+        className="rounded-2xl border border-dashed border-gray-300 bg-white/40 p-6"
       >
         <h3
           id={headingId}
-          className="flex items-center gap-2 font-serif text-base font-semibold text-gray-900 dark:text-white mb-2"
+          className="flex items-center gap-2 font-serif text-base font-semibold text-gray-900 mb-2"
         >
           <GraduationCap className="w-4 h-4 text-crimson" aria-hidden="true" />
           Downstream: Education
         </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 italic">
+        <p className="text-sm text-gray-500 italic">
           No active lever is propagating to Education yet.
         </p>
       </section>
@@ -43,11 +43,11 @@ function EducationCascadePanelBase({ narratives = [] }) {
   return (
     <section
       aria-labelledby={headingId}
-      className="rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface p-5"
+      className="rounded-2xl border border-gray-200 bg-white p-5"
     >
       <h3
         id={headingId}
-        className="flex items-center gap-2 font-serif text-base font-semibold text-gray-900 dark:text-white mb-4"
+        className="flex items-center gap-2 font-serif text-base font-semibold text-gray-900 mb-4"
       >
         <GraduationCap className="w-4 h-4 text-crimson" aria-hidden="true" />
         Downstream: Education
@@ -59,25 +59,25 @@ function EducationCascadePanelBase({ narratives = [] }) {
           return (
             <article
               key={n.leverId || i}
-              className="rounded-xl border border-gray-200 dark:border-dark-border bg-parchment-50 dark:bg-dark-bg p-4 hover:border-crimson/40 transition-colors min-w-0 overflow-hidden"
+              className="rounded-xl border border-gray-200 bg-parchment-50 p-4 hover:border-crimson/40 transition-colors min-w-0 overflow-hidden"
             >
               {n.leverLabel && (
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-crimson mb-1.5">
                   {n.leverLabel}
                 </p>
               )}
-              <h4 className="font-serif text-sm font-bold text-gray-900 dark:text-white leading-snug break-words">
+              <h4 className="font-serif text-sm font-bold text-gray-900 leading-snug break-words">
                 {n.headline}
               </h4>
               {n.detail && (
-                <p className="mt-1.5 text-xs text-gray-600 dark:text-gray-400 leading-relaxed break-words">
+                <p className="mt-1.5 text-xs text-gray-600 leading-relaxed break-words">
                   {n.detail}
                 </p>
               )}
               {(hc || n.cite) && (
-                <div className="mt-2 flex items-center justify-between gap-2 pt-2 border-t border-gray-200 dark:border-dark-border">
+                <div className="mt-2 flex items-center justify-between gap-2 pt-2 border-t border-gray-200">
                   {hc ? (
-                    <span className="font-mono tabular-nums text-xs font-bold text-gray-900 dark:text-white">
+                    <span className="font-mono tabular-nums text-xs font-bold text-gray-900">
                       {hc}
                     </span>
                   ) : (

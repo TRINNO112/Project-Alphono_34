@@ -1,4 +1,4 @@
-import { useState, useSyncExternalStore } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ArrowRight, FileText, ShieldAlert, AlertTriangle, Wheat, Battery, FlaskConical, Wifi } from 'lucide-react'
@@ -6,19 +6,10 @@ import { Section, DataCard, StatBox } from '../components/Shared'
 import { CascadeDiagram } from '../components/CascadeDiagram'
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell } from 'recharts'
 
-function subscribeDarkMode(callback) {
-  const observer = new MutationObserver(callback)
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-  return () => observer.disconnect()
-}
-function getIsDark() {
-  return document.documentElement.classList.contains('dark')
-}
-
 const pillars = [
   {
     num: 'I',
-    icon: <Ship className="w-8 h-8 text-blue-600 dark:text-blue-400" />,
+    icon: <Ship className="w-8 h-8 text-blue-600" />,
     title: 'Infrastructure & Logistics',
     path: '/infrastructure',
     summary: 'Gujarat handles nearly 40% of India\'s cargo volume through its ports, but this capacity is concentrated under a single corporate entity — Adani Ports (APSEZ). Mundra Port alone crossed 200 MMT in FY25, while critical road infrastructure like the Delhi-Mumbai Expressway remains severely delayed, with Package 8 at just 5% completion.',
@@ -30,7 +21,7 @@ const pillars = [
   },
   {
     num: 'II',
-    icon: <Zap className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />,
+    icon: <Zap className="w-8 h-8 text-yellow-600" />,
     title: 'Energy Grid & Power Supply',
     path: '/energy',
     summary: 'Despite leading India with 42.5 GW of installed renewable capacity, Gujarat\'s industrial baseload remains chained to imported fossil fuels. Two Mundra mega-plants (8,620 MW combined) run entirely on Indonesian coal. Gujarat\'s LNG terminals handle 60% of India\'s import capacity, with 69% of LNG transiting the Strait of Hormuz.',
@@ -42,7 +33,7 @@ const pillars = [
   },
   {
     num: 'III',
-    icon: <Droplets className="w-8 h-8 text-teal-600 dark:text-teal-500" />,
+    icon: <Droplets className="w-8 h-8 text-teal-600" />,
     title: 'Water Security',
     path: '/water',
     summary: 'The Sardar Sarovar Dam is a single point of failure supplying water to 3 crore people and irrigating 20.38 lakh hectares. Meanwhile, the North Gujarat aquifer is pumped at 95% of its annual recharge, with fluoride contamination at 17.5 mg/L (11x WHO limit) in Mehsana and Banaskantha.',
@@ -54,7 +45,7 @@ const pillars = [
   },
   {
     num: 'IV',
-    icon: <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />,
+    icon: <Users className="w-8 h-8 text-purple-600" />,
     title: 'Migrant Labor Ecosystem',
     path: '/labor',
     summary: 'Three mass exodus events in six years (2016 demonetisation, 2020 COVID, 2026 West Asia crisis) each crippled manufacturing within days. 5-6 lakh workers fled in 2026 alone. 71 diamond worker suicides documented in 18 months.',
@@ -66,7 +57,7 @@ const pillars = [
   },
   {
     num: 'V',
-    icon: <TrendingUp className="w-8 h-8 text-green-600 dark:text-green-500" />,
+    icon: <TrendingUp className="w-8 h-8 text-green-600" />,
     title: 'Governance & Fiscal',
     path: '/economics',
     summary: 'Own Tax Revenue declined from 7.44% to 4.9% of GSDP over a decade. CAG flags Rs 11,929 Cr overstated surplus. Central grants crashed to 0.53% of GSDP. Revenue receipts at 8.7% of GSDP are less than half the median state\'s 19.9%.',
@@ -78,7 +69,7 @@ const pillars = [
   },
   {
     num: 'VI',
-    icon: <Factory className="w-8 h-8 text-gray-600 dark:text-gray-400" />,
+    icon: <Factory className="w-8 h-8 text-gray-600" />,
     title: 'Industrial Raw Materials',
     path: '/materials',
     summary: 'Russia now supplies 36% of crude (up from 2% in FY21). India imports 65-70% of pharmaceutical APIs from China — Paracetamol at 91%, Streptomycin at 100%. Gujarat\'s mineral needs are tethered to Odisha\'s bauxite and iron ore. 100% potash imported.',
@@ -90,7 +81,7 @@ const pillars = [
   },
   {
     num: 'VII',
-    icon: <GraduationCap className="w-8 h-8 text-amber-600 dark:text-amber-400" />,
+    icon: <GraduationCap className="w-8 h-8 text-amber-600" />,
     title: 'Education & Healthcare',
     path: '/education',
     summary: '2.4 lakh annual dropouts (#1 in India). Higher education GER at 20.1% — 30% below national average. 86-97% specialist doctor posts vacant at rural CHCs. Health spending at 0.8% of GSDP is one-third the NHP target.',
@@ -102,7 +93,7 @@ const pillars = [
   },
   {
     num: 'VIII',
-    icon: <TreePine className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />,
+    icon: <TreePine className="w-8 h-8 text-emerald-600" />,
     title: 'Environment & Climate',
     path: '/environment',
     summary: '6 CPCB critically polluted zones. Vapi CEPI at 90.75 (India\'s highest). 74% of rivers severely polluted. 27.6% coastline eroding (highest in India). Per capita CO2 at 4.2 tons — 91% above national average.',
@@ -114,7 +105,7 @@ const pillars = [
   },
   {
     num: 'IX',
-    icon: <ShieldAlert className="w-8 h-8 text-red-600 dark:text-red-500" />,
+    icon: <ShieldAlert className="w-8 h-8 text-red-600" />,
     title: 'Migrant Discrimination',
     path: '/migrant-discrimination',
     summary: '20,000+ workers fled after the 2018 anti-migrant pogrom. Silicosis deaths surged 216% in 2024-25. 92.65% of ceramic workers lack ESI health coverage. Non-Gujarati workers face wage theft, language barriers, and systematic exclusion.',
@@ -126,7 +117,7 @@ const pillars = [
   },
   {
     num: 'X',
-    icon: <Wheat className="w-8 h-8 text-amber-700 dark:text-amber-400" />,
+    icon: <Wheat className="w-8 h-8 text-amber-700" />,
     title: 'Agriculture & Agrarian Distress',
     path: '/agriculture',
     summary: 'Groundwater-irrigated cash-crop economy (cotton, groundnut) has walked into climate and input-cost traps. BT cotton yields are stagnant, fertilizer subsidy dependency is structural, and smallholder debt is compounding as MSP coverage stays thin. Saurashtra-Kutch farmer suicides remain a running undercount.',
@@ -138,7 +129,7 @@ const pillars = [
   },
   {
     num: 'XI',
-    icon: <Battery className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />,
+    icon: <Battery className="w-8 h-8 text-emerald-600" />,
     title: 'Green Tech Dependency',
     path: '/green-tech',
     summary: 'Gujarat leads India on installed renewables, but the solar modules, cells, lithium-ion cells, wind-turbine magnets, and power electronics behind that capacity are overwhelmingly Chinese. "Green" decarbonisation has simply swapped Middle-Eastern oil dependency for Chinese rare-earth and cell-manufacturing dependency.',
@@ -150,7 +141,7 @@ const pillars = [
   },
   {
     num: 'XII',
-    icon: <FlaskConical className="w-8 h-8 text-fuchsia-600 dark:text-fuchsia-400" />,
+    icon: <FlaskConical className="w-8 h-8 text-fuchsia-600" />,
     title: 'Chemical Governance',
     path: '/chemical-governance',
     summary: 'Dahej, Vapi, Ankleshwar and Hazira host some of India\'s densest chemical corridors but are governed by a GPCB flagged by CAG for auditing failures. Recurrent reactor blasts, effluent-channel ruptures, and Vapi\'s 90.75 CEPI score point to a permissive regulatory regime subsidising a hazardous industrial economy.',
@@ -162,7 +153,7 @@ const pillars = [
   },
   {
     num: 'XIII',
-    icon: <Wifi className="w-8 h-8 text-sky-600 dark:text-sky-400" />,
+    icon: <Wifi className="w-8 h-8 text-sky-600" />,
     title: 'Digital Sovereignty',
     path: '/digital-sovereignty',
     summary: 'Zero submarine cables land in Gujarat — GIFT City\'s "global fintech" status actually rides on Mumbai\'s Versova cable cluster via terrestrial backhaul. UPI, Aadhaar and GSTN outages in 2024-25 exposed the single-stack digital public infrastructure, while hyperscaler cloud regions for Gujarat workloads sit outside the state.',
@@ -237,7 +228,6 @@ function getBarColor(score) {
 }
 
 export default function Summary() {
-  const isDark = useSyncExternalStore(subscribeDarkMode, getIsDark)
   const [activeScenario, setActiveScenario] = useState(null)
 
   return (
@@ -254,11 +244,11 @@ export default function Summary() {
             <span className="hidden md:block w-8 h-px bg-crimson" />
             <span>CROSS-PILLAR SYNTHESIS</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
             Structural Dependencies: <span className="italic text-crimson">A Synthesis</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            This executive summary synthesizes findings from <strong className="font-semibold text-gray-900 dark:text-white">thirteen pillars of analysis plus the Index Mercantilis trade-route cartography — backed by 227+ cited sources</strong>. The pattern is consistent: extraordinary economic throughput built atop fragile, externally-controlled supply chains — where any single disruption cascades across multiple sectors simultaneously.
+          <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
+            This executive summary synthesizes findings from <strong className="font-semibold text-gray-900">thirteen pillars of analysis plus the Index Mercantilis trade-route cartography — backed by 227+ cited sources</strong>. The pattern is consistent: extraordinary economic throughput built atop fragile, externally-controlled supply chains — where any single disruption cascades across multiple sectors simultaneously.
           </p>
         </motion.div>
       </section>
@@ -272,29 +262,29 @@ export default function Summary() {
       >
         <div className="flex items-center gap-3 mb-8">
           <AlertTriangle className="w-6 h-6 text-crimson" />
-          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">External Dependency Severity Ranking</h2>
+          <h2 className="text-3xl font-serif font-bold text-gray-900">External Dependency Severity Ranking</h2>
         </div>
-        <div className="bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border rounded-2xl p-6 backdrop-blur-sm">
+        <div className="bg-white/60 border border-gray-200 rounded-2xl p-6 backdrop-blur-sm">
           <ResponsiveContainer width="100%" height={520}>
             <BarChart data={dependencyRanking} layout="vertical" margin={{ left: 95, right: 30 }}>
-              <XAxis type="number" domain={[0, 100]} tick={{ fill: isDark ? '#9ca3af' : '#4b5563', fontSize: 12 }} />
+              <XAxis type="number" domain={[0, 100]} tick={{ fill: '#4b5563', fontSize: 12 }} />
               <YAxis
                 type="category"
                 dataKey="name"
-                tick={{ fill: isDark ? '#d1d5db' : '#374151', fontSize: 13, fontFamily: 'Inter' }}
+                tick={{ fill: '#374151', fontSize: 13, fontFamily: 'Inter' }}
                 width={80}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: isDark ? '#1e1e1e' : '#fff',
-                  border: `1px solid ${isDark ? '#333' : '#e5e7eb'}`,
+                  backgroundColor: '#fff',
+                  border: '1px solid #e5e7eb',
                   borderRadius: '8px',
                   fontSize: '13px',
                   fontFamily: 'Inter',
-                  color: isDark ? '#e5e7eb' : '#1f2937',
+                  color: '#1f2937',
                 }}
-                itemStyle={{ color: isDark ? '#e5e7eb' : '#1f2937' }}
-                labelStyle={{ color: isDark ? '#d1d5db' : '#374151' }}
+                itemStyle={{ color: '#1f2937' }}
+                labelStyle={{ color: '#374151' }}
                 formatter={(value, name, props) => [`${value}% — ${props.payload.tier}`, 'Dependency Score']}
               />
               <Bar dataKey="score" radius={[0, 6, 6, 0]}>
@@ -310,7 +300,7 @@ export default function Summary() {
             <span className="flex items-center gap-1.5 text-gray-500"><span className="w-3 h-3 rounded-sm bg-[#F59E0B]" /> Elevated (55-74)</span>
           </div>
         </div>
-        <p className="text-center text-sm text-gray-500 dark:text-gray-500 mt-4 italic font-serif">
+        <p className="text-center text-sm text-gray-500 mt-4 italic font-serif">
           Figure 1: Estimated external dependency index — higher scores indicate greater vulnerability to supply chain disruption
         </p>
       </motion.section>
@@ -324,12 +314,12 @@ export default function Summary() {
       >
         <div className="flex items-center gap-3 mb-8">
           <AlertTriangle className="w-6 h-6 text-crimson" />
-          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">2026 Crisis Propagation Map</h2>
+          <h2 className="text-3xl font-serif font-bold text-gray-900">2026 Crisis Propagation Map</h2>
         </div>
-        <div className="bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border rounded-2xl p-8 backdrop-blur-sm">
+        <div className="bg-white/60 border border-gray-200 rounded-2xl p-8 backdrop-blur-sm">
           <CascadeDiagram />
         </div>
-        <p className="text-center text-sm text-gray-500 dark:text-gray-500 mt-4 italic font-serif">
+        <p className="text-center text-sm text-gray-500 mt-4 italic font-serif">
           Figure 2: How the March 2026 West Asia crisis cascaded across Gujarat's structural pillars — each node is a documented event
         </p>
       </motion.section>
@@ -343,9 +333,9 @@ export default function Summary() {
       >
         <div className="flex items-center gap-3 mb-4">
           <AlertTriangle className="w-6 h-6 text-crimson" />
-          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">"What Breaks First" — Disruption Scenarios</h2>
+          <h2 className="text-3xl font-serif font-bold text-gray-900">"What Breaks First" — Disruption Scenarios</h2>
         </div>
-        <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-3xl">
+        <p className="text-gray-600 mb-8 max-w-3xl">
           Four hypothetical (but plausible) disruption scenarios showing which pillars collapse first and how the cascade propagates. Click a scenario to see the chain.
         </p>
 
@@ -360,18 +350,18 @@ export default function Summary() {
             >
               <button
                 onClick={() => setActiveScenario(activeScenario === s.id ? null : s.id)}
-                className="w-full text-left p-6 rounded-2xl border border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/60 backdrop-blur-sm hover:border-crimson/30 dark:hover:border-crimson/30 transition-all duration-300"
+                className="w-full text-left p-6 rounded-2xl border border-gray-200 bg-white/60 backdrop-blur-sm hover:border-crimson/30 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="shrink-0 w-3 h-3 rounded-full mt-2" style={{ backgroundColor: s.color }} />
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-serif font-bold text-gray-900 dark:text-white mb-1">{s.title}</h3>
+                    <h3 className="text-lg font-serif font-bold text-gray-900 mb-1">{s.title}</h3>
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {s.pillars.map(p => (
-                        <span key={p} className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-semibold bg-gray-100 dark:bg-dark-bg border border-gray-200 dark:border-dark-border rounded-full text-gray-500 dark:text-gray-400">{p}</span>
+                        <span key={p} className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-semibold bg-gray-100 border border-gray-200 rounded-full text-gray-500">{p}</span>
                       ))}
                     </div>
-                    <p className="text-xs text-gray-500 dark:text-gray-500 uppercase tracking-wider font-semibold">
+                    <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">
                       Probability: <span style={{ color: s.color }}>{s.probability}</span>
                     </p>
 
@@ -380,10 +370,10 @@ export default function Summary() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         transition={{ duration: 0.3 }}
-                        className="mt-4 pt-4 border-t border-gray-200 dark:border-dark-border"
+                        className="mt-4 pt-4 border-t border-gray-200"
                       >
                         <p className="text-[11px] uppercase tracking-widest text-gray-400 font-semibold mb-2">Cascade Chain</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">{s.cascade}</p>
+                        <p className="text-sm text-gray-600 leading-relaxed mb-3">{s.cascade}</p>
                         <p className="text-[11px] uppercase tracking-widest text-gray-400 font-semibold mb-1">Assessment</p>
                         <p className="text-sm font-semibold" style={{ color: s.color }}>{s.impact}</p>
                       </motion.div>
@@ -396,13 +386,13 @@ export default function Summary() {
         </div>
       </motion.section>
 
-      <hr className="border-gray-300 dark:border-dark-border w-1/2 mx-auto" />
+      <hr className="border-gray-300 w-1/2 mx-auto" />
 
       {/* ═══════ SECTION 4: PILLAR SUMMARIES ═══════ */}
       <div className="space-y-20">
         <div className="text-center">
-          <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">Thirteen Pillars — Key Findings</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">The core findings from each structural pillar, with key metrics and links to the full analysis.</p>
+          <h2 className="text-4xl font-serif font-bold text-gray-900 mb-4">Thirteen Pillars — Key Findings</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">The core findings from each structural pillar, with key metrics and links to the full analysis.</p>
         </div>
         {pillars.map((pillar) => (
           <Section key={pillar.num} icon={pillar.icon} title={`${pillar.num}. ${pillar.title}`}>
@@ -412,7 +402,7 @@ export default function Summary() {
               ))}
             </div>
             <DataCard title="Key Finding">
-              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">{pillar.summary}</p>
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">{pillar.summary}</p>
               <Link to={pillar.path} className="inline-flex items-center text-crimson font-semibold hover:underline">
                 Read Full Analysis <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
@@ -429,23 +419,23 @@ export default function Summary() {
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto"
       >
-        <div className="border-2 border-crimson/30 dark:border-crimson/20 p-10 md:p-12 rounded-3xl bg-crimson/5 dark:bg-crimson/5">
+        <div className="border-2 border-crimson/30 p-10 md:p-12 rounded-3xl bg-crimson/5">
           <div className="flex items-center gap-3 mb-6">
             <FileText className="w-6 h-6 text-crimson" />
-            <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-white">Conclusion</h2>
+            <h2 className="text-2xl font-serif font-bold text-gray-900">Conclusion</h2>
           </div>
-          <div className="space-y-5 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          <div className="space-y-5 text-lg text-gray-700 leading-relaxed">
             <p>
               Gujarat's economic engine is real, productive, and globally competitive. But this analysis reveals that the engine runs on fuel it does not produce, water it does not source, labor it does not retain, capital it does not fully tax, human capital it does not adequately develop, and environmental costs it does not account for.
             </p>
             <p>
-              The question is not whether Gujarat is economically powerful — it clearly is. The question is <strong className="text-gray-900 dark:text-white">how resilient that power is when any of these external supply lines is disrupted</strong>. The mass exoduses of 2018, 2020, and 2026 have already provided partial answers.
+              The question is not whether Gujarat is economically powerful — it clearly is. The question is <strong className="text-gray-900">how resilient that power is when any of these external supply lines is disrupted</strong>. The mass exoduses of 2018, 2020, and 2026 have already provided partial answers.
             </p>
             <p>
-              This project does not argue that dependency is unique to Gujarat. Every modern economy depends on external inputs. But the <strong className="text-gray-900 dark:text-white">concentration</strong> of these dependencies — a single port operator, a single dam, a single source country for APIs, a single geopolitical chokepoint for LNG — creates a fragility profile that warrants serious, evidence-based scrutiny.
+              This project does not argue that dependency is unique to Gujarat. Every modern economy depends on external inputs. But the <strong className="text-gray-900">concentration</strong> of these dependencies — a single port operator, a single dam, a single source country for APIs, a single geopolitical chokepoint for LNG — creates a fragility profile that warrants serious, evidence-based scrutiny.
             </p>
             <p>
-              The 2026 cascade proved the thesis: one geopolitical event in the Persian Gulf simultaneously shut 550+ factories, displaced 5-6 lakh workers, crashed diamond employment, destabilized the power grid, and eroded fiscal revenues — all within weeks. <strong className="text-gray-900 dark:text-white">That is not a resilient economy. That is an economy waiting for its next stress test.</strong>
+              The 2026 cascade proved the thesis: one geopolitical event in the Persian Gulf simultaneously shut 550+ factories, displaced 5-6 lakh workers, crashed diamond employment, destabilized the power grid, and eroded fiscal revenues — all within weeks. <strong className="text-gray-900">That is not a resilient economy. That is an economy waiting for its next stress test.</strong>
             </p>
           </div>
         </div>
@@ -458,7 +448,7 @@ export default function Summary() {
         viewport={{ once: true }}
         className="text-center"
       >
-        <p className="text-gray-500 dark:text-gray-500 italic font-serif">
+        <p className="text-gray-500 italic font-serif">
           This summary synthesizes findings from 227+ cited sources across 13 pillars plus the Index Mercantilis global-trade module. See individual pillar pages for full references and source URLs.
         </p>
       </motion.section>

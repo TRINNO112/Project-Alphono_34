@@ -42,12 +42,12 @@ export default function GreenTech() {
             <span className="hidden md:block w-8 h-px bg-crimson" />
             <span>DEPENDENCY ANALYSIS</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
             Green Tech & <span className="italic text-crimson">Critical Minerals</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            Gujarat's pivot from fossil fuels to "clean" energy merely <strong className="font-semibold text-gray-900 dark:text-white">swaps one dependency for another</strong> — 
-            replacing Middle Eastern crude oil with an absolute, hardwired reliance on <strong className="font-semibold text-gray-900 dark:text-white">Chinese critical mineral supply chains</strong> for EVs, batteries, and solar panels.
+          <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
+            Gujarat's pivot from fossil fuels to "clean" energy merely <strong className="font-semibold text-gray-900">swaps one dependency for another</strong> — 
+            replacing Middle Eastern crude oil with an absolute, hardwired reliance on <strong className="font-semibold text-gray-900">Chinese critical mineral supply chains</strong> for EVs, batteries, and solar panels.
           </p>
         </motion.div>
       </section>
@@ -59,10 +59,10 @@ export default function GreenTech() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white/70 dark:bg-dark-surface/70 p-8 md:p-12 rounded-3xl border border-gray-200 dark:border-dark-border shadow-xl backdrop-blur-md relative overflow-hidden"
+          className="bg-white/70 p-8 md:p-12 rounded-3xl border border-gray-200 shadow-xl backdrop-blur-md relative overflow-hidden"
         >
-          <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-200 dark:bg-cyan-900 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none opacity-40" />
-          <h3 className="text-2xl md:text-3xl font-serif font-bold mb-8 text-gray-900 dark:text-white relative z-10 text-center">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-200 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none opacity-40" />
+          <h3 className="text-2xl md:text-3xl font-serif font-bold mb-8 text-gray-900 relative z-10 text-center">
             The Dependency Swap
           </h3>
           
@@ -71,12 +71,12 @@ export default function GreenTech() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex-1 max-w-xs p-6 rounded-2xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 text-center"
+              className="flex-1 max-w-xs p-6 rounded-2xl bg-amber-50/60 border border-amber-200 text-center"
             >
               <div className="text-4xl mb-3">🛢️</div>
-              <div className="text-xs font-mono font-bold text-amber-600 dark:text-amber-400 tracking-widest mb-2 uppercase">Old Model</div>
-              <h4 className="text-lg font-bold font-serif text-gray-900 dark:text-white mb-2">Middle Eastern Crude Oil</h4>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Dependency on OPEC nations, Strait of Hormuz chokepoint, petrodollar geopolitics</p>
+              <div className="text-xs font-mono font-bold text-amber-600 tracking-widest mb-2 uppercase">Old Model</div>
+              <h4 className="text-lg font-bold font-serif text-gray-900 mb-2">Middle Eastern Crude Oil</h4>
+              <p className="text-sm text-gray-600">Dependency on OPEC nations, Strait of Hormuz chokepoint, petrodollar geopolitics</p>
             </motion.div>
 
             <motion.div
@@ -86,7 +86,7 @@ export default function GreenTech() {
               transition={{ delay: 0.2 }}
               className="shrink-0"
             >
-              <div className="w-16 h-16 rounded-full bg-crimson/10 dark:bg-crimson/20 flex items-center justify-center border-2 border-crimson/30">
+              <div className="w-16 h-16 rounded-full bg-crimson/10 flex items-center justify-center border-2 border-crimson/30">
                 <ArrowRight className="w-8 h-8 text-crimson" />
               </div>
             </motion.div>
@@ -96,22 +96,22 @@ export default function GreenTech() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="flex-1 max-w-xs p-6 rounded-2xl bg-red-50/60 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 text-center"
+              className="flex-1 max-w-xs p-6 rounded-2xl bg-red-50/60 border border-red-200 text-center"
             >
               <div className="text-4xl mb-3">⛏️</div>
-              <div className="text-xs font-mono font-bold text-red-600 dark:text-red-400 tracking-widest mb-2 uppercase">New Model</div>
-              <h4 className="text-lg font-bold font-serif text-gray-900 dark:text-white mb-2">Chinese Critical Minerals</h4>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Dependency on Chinese rare earths, Li-ion cells, polysilicon — export controls as weapons of state</p>
+              <div className="text-xs font-mono font-bold text-red-600 tracking-widest mb-2 uppercase">New Model</div>
+              <h4 className="text-lg font-bold font-serif text-gray-900 mb-2">Chinese Critical Minerals</h4>
+              <p className="text-sm text-gray-600">Dependency on Chinese rare earths, Li-ion cells, polysilicon — export controls as weapons of state</p>
             </motion.div>
           </div>
 
-          <p className="text-center text-sm text-gray-500 dark:text-gray-500 mt-6 italic font-serif relative z-10">
+          <p className="text-center text-sm text-gray-500 mt-6 italic font-serif relative z-10">
             Same structural vulnerability, different resource. The chokepoint moved from the Strait of Hormuz to the Chinese Ministry of Commerce.
           </p>
         </motion.div>
 
         {/* ═══ Section 1: Rare Earth & EV Dependency ═══ */}
-        <Section icon={<Battery className="w-8 h-8 text-cyan-600 dark:text-cyan-400" />} title="Dholera SIR & The EV Mirage">
+        <Section icon={<Battery className="w-8 h-8 text-cyan-600" />} title="Dholera SIR & The EV Mirage">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="70%" label="China: RE Mining" color="red" />
             <StatBox value="90%" label="China: RE Processing" color="crimson" />
@@ -152,27 +152,27 @@ export default function GreenTech() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The NdFeB Magnet Chokepoint" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                EV traction motors require ultra-strong <strong className="text-gray-900 dark:text-white">Neodymium-Iron-Boron (NdFeB)</strong> permanent magnets. China holds <strong className="text-gray-900 dark:text-white">~92% of global NdFeB production</strong>.<Ref n={7} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                EV traction motors require ultra-strong <strong className="text-gray-900">Neodymium-Iron-Boron (NdFeB)</strong> permanent magnets. China holds <strong className="text-gray-900">~92% of global NdFeB production</strong>.<Ref n={7} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Dholera's multi-billion dollar EV assembly lines exist entirely <strong className="text-gray-900 dark:text-white">at the mercy of Chinese state export licensing</strong> — supply can be throttled overnight for diplomatic leverage.<Ref n={1} />
+              <p className="text-gray-600 leading-relaxed">
+                Dholera's multi-billion dollar EV assembly lines exist entirely <strong className="text-gray-900">at the mercy of Chinese state export licensing</strong> — supply can be throttled overnight for diplomatic leverage.<Ref n={1} />
               </p>
             </DataCard>
 
             <DataCard title="Export Controls as Weapons of State">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                In 2023-2025, China's Ministry of Commerce implemented <strong className="text-gray-900 dark:text-white">stringent export controls on Gallium, Germanium</strong>, and rare earth extraction technologies.<Ref n={2} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                In 2023-2025, China's Ministry of Commerce implemented <strong className="text-gray-900">stringent export controls on Gallium, Germanium</strong>, and rare earth extraction technologies.<Ref n={2} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                These are not market fluctuations — they are <strong className="text-gray-900 dark:text-white">deliberate geopolitical instruments</strong> that can stall Indian green tech manufacturing overnight.
+              <p className="text-gray-600 leading-relaxed">
+                These are not market fluctuations — they are <strong className="text-gray-900">deliberate geopolitical instruments</strong> that can stall Indian green tech manufacturing overnight.
               </p>
             </DataCard>
           </div>
         </Section>
 
         {/* ═══ Section 2: Lithium-Ion Battery Deficit ═══ */}
-        <Section icon={<Zap className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />} title="The Lithium-Ion Cell Assembly Deficit">
+        <Section icon={<Zap className="w-8 h-8 text-yellow-600" />} title="The Lithium-Ion Cell Assembly Deficit">
 
           {/* Cell origin breakdown */}
           <PillarChart
@@ -192,27 +192,27 @@ export default function GreenTech() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The Assembly Illusion">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Dholera's "battery manufacturing" plants are building <strong className="text-gray-900 dark:text-white">pack assembly operations</strong> — assembling imported cylindrical/prismatic cells into framed modules. The actual electrochemistry is 100% foreign.<Ref n={4} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Dholera's "battery manufacturing" plants are building <strong className="text-gray-900">pack assembly operations</strong> — assembling imported cylindrical/prismatic cells into framed modules. The actual electrochemistry is 100% foreign.<Ref n={4} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                India lacks commercially viable domestic reserves of <strong className="text-gray-900 dark:text-white">battery-grade Lithium, Cobalt, and Nickel</strong> — and completely lacks the specialized refinement infrastructure for precursor chemicals.<Ref n={1} />
+              <p className="text-gray-600 leading-relaxed">
+                India lacks commercially viable domestic reserves of <strong className="text-gray-900">battery-grade Lithium, Cobalt, and Nickel</strong> — and completely lacks the specialized refinement infrastructure for precursor chemicals.<Ref n={1} />
               </p>
             </DataCard>
 
             <DataCard title="Urban Mining: A Decade-Long Band-Aid">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Dholera planners have initiated <strong className="text-gray-900 dark:text-white">"Urban Mining" programs</strong> — harvesting lithium and cobalt from end-of-life batteries to build a circular battery economy.<Ref n={5} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Dholera planners have initiated <strong className="text-gray-900">"Urban Mining" programs</strong> — harvesting lithium and cobalt from end-of-life batteries to build a circular battery economy.<Ref n={5} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                This localized circular economy is <strong className="text-gray-900 dark:text-white">vastly insufficient</strong> — it will take at least a decade of recycling networks to even dent primary import volumes.
+              <p className="text-gray-600 leading-relaxed">
+                This localized circular economy is <strong className="text-gray-900">vastly insufficient</strong> — it will take at least a decade of recycling networks to even dent primary import volumes.
               </p>
             </DataCard>
           </div>
         </Section>
 
         {/* ═══ Section 3: Solar PV Gap ═══ */}
-        <Section icon={<Sun className="w-8 h-8 text-orange-500 dark:text-orange-400" />} title="The Solar Photovoltaic Gap">
+        <Section icon={<Sun className="w-8 h-8 text-orange-500" />} title="The Solar Photovoltaic Gap">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="30 GW" label="Khavda RE Park" color="yellow" />
             <StatBox value="80%+" label="Wafers from China" color="red" />
@@ -220,12 +220,12 @@ export default function GreenTech() {
           </div>
 
           {/* Solar PV Value Chain — Domestic vs Imported */}
-          <div className="bg-white/70 dark:bg-dark-surface/70 p-8 md:p-10 rounded-3xl border border-gray-200 dark:border-dark-border shadow-xl backdrop-blur-md relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-64 h-64 bg-orange-200 dark:bg-orange-900 rounded-full blur-[80px] -ml-32 -mt-32 pointer-events-none" />
-            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2 text-gray-900 dark:text-white relative z-10">
+          <div className="bg-white/70 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl backdrop-blur-md relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-64 h-64 bg-orange-200 rounded-full blur-[80px] -ml-32 -mt-32 pointer-events-none" />
+            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2 text-gray-900 relative z-10">
               Solar PV Value Chain: Where Does India Actually Manufacture?
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-500 mb-8 italic font-serif relative z-10">
+            <p className="text-sm text-gray-500 mb-8 italic font-serif relative z-10">
               Figure 4: India can assemble modules — but the upstream physical components (polysilicon → wafer → cell) are virtually 100% Chinese. Source: The Wire / BNEF
             </p>
 
@@ -247,10 +247,10 @@ export default function GreenTech() {
                   className="space-y-2"
                 >
                   <div className="flex items-baseline justify-between">
-                    <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">{item.stage}</span>
+                    <span className="text-sm font-semibold text-gray-800">{item.stage}</span>
                     <span className="text-xs font-mono text-gray-500">{item.domestic}% domestic · {item.imported}% imported</span>
                   </div>
-                  <div className="w-full h-5 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden flex">
+                  <div className="w-full h-5 bg-gray-100 rounded-full overflow-hidden flex">
                     <motion.div
                       className="h-full bg-green-500 rounded-l-full"
                       initial={{ width: 0 }}
@@ -266,7 +266,7 @@ export default function GreenTech() {
                       transition={{ duration: 0.8, ease: 'easeOut', delay: i * 0.1 + 0.2 }}
                     />
                   </div>
-                  <p className="text-xs text-gray-400 dark:text-gray-600">{item.note}</p>
+                  <p className="text-xs text-gray-400">{item.note}</p>
                 </motion.div>
               ))}
             </div>
@@ -278,14 +278,14 @@ export default function GreenTech() {
           </div>
 
           <DataCard title="PLI Schemes: Failed Localization" alert={true}>
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-              The Indian government introduced <strong className="text-gray-900 dark:text-white">Production Linked Incentive (PLI) schemes</strong> to encourage domestic manufacturing spanning the entire solar value chain from quartz to module. Yet, upstream capacity for actual wafers and ingots remains <strong className="text-gray-900 dark:text-white">effectively nominal</strong> within India.<Ref n={6} /> The billions poured into scaling Gujarat's solar grid <strong className="text-gray-900 dark:text-white">directly underwrite Chinese solar infrastructure</strong>.
+            <p className="text-gray-700 text-lg leading-relaxed">
+              The Indian government introduced <strong className="text-gray-900">Production Linked Incentive (PLI) schemes</strong> to encourage domestic manufacturing spanning the entire solar value chain from quartz to module. Yet, upstream capacity for actual wafers and ingots remains <strong className="text-gray-900">effectively nominal</strong> within India.<Ref n={6} /> The billions poured into scaling Gujarat's solar grid <strong className="text-gray-900">directly underwrite Chinese solar infrastructure</strong>.
             </p>
           </DataCard>
         </Section>
 
         {/* ═══ Timeline ═══ */}
-        <Section icon={<Cpu className="w-8 h-8 text-cyan-600 dark:text-cyan-400" />} title="Timeline of GreenTech Vulnerability">
+        <Section icon={<Cpu className="w-8 h-8 text-cyan-600" />} title="Timeline of GreenTech Vulnerability">
           <div className="space-y-0">
             {[
               { year: '2019', event: 'National Mission on Transformative Mobility and Battery Storage launched — major EV incentives but raw material deficits highlighted.' },
@@ -307,7 +307,7 @@ export default function GreenTech() {
                 </div>
                 <div className="pb-8">
                   <span className="text-sm font-mono font-bold text-crimson tracking-wider">{item.year}</span>
-                  <p className="text-gray-700 dark:text-gray-300 mt-1 leading-relaxed">{item.event}</p>
+                  <p className="text-gray-700 mt-1 leading-relaxed">{item.event}</p>
                 </div>
               </motion.div>
             ))}

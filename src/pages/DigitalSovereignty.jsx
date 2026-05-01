@@ -54,11 +54,11 @@ export default function DigitalSovereignty() {
             <span className="hidden md:block w-8 h-px bg-crimson" />
             <span>INVISIBLE DEPENDENCY</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
             Digital Sovereignty & <span className="italic text-crimson">Data Dependency</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            Despite a 1,600 km coastline and the aspirational "GIFT City" IFSC, Gujarat has <strong className="font-semibold text-gray-900 dark:text-white">zero international submarine cable landings</strong>. Every packet — every UPI transaction, every cloud query, every IFSC trade — is backhauled through Mumbai or Chennai. The state that markets itself as India's digital future runs entirely on another state's infrastructure.
+          <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
+            Despite a 1,600 km coastline and the aspirational "GIFT City" IFSC, Gujarat has <strong className="font-semibold text-gray-900">zero international submarine cable landings</strong>. Every packet — every UPI transaction, every cloud query, every IFSC trade — is backhauled through Mumbai or Chennai. The state that markets itself as India's digital future runs entirely on another state's infrastructure.
           </p>
         </motion.div>
       </section>
@@ -66,7 +66,7 @@ export default function DigitalSovereignty() {
       <div className="space-y-20">
 
         {/* ═══ Section 1: Submarine Cable Void ═══ */}
-        <Section icon={<Cable className="w-8 h-8 text-blue-600 dark:text-blue-400" />} title="The Submarine Cable Void">
+        <Section icon={<Cable className="w-8 h-8 text-blue-600" />} title="The Submarine Cable Void">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="0" label="Cable Landings in Gujarat" color="crimson" />
             <StatBox value="17" label="India's Total Cable Landings" color="blue" />
@@ -90,27 +90,27 @@ export default function DigitalSovereignty() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="A 1,600 km Coastline with Zero Landings" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Gujarat has the <strong className="text-gray-900 dark:text-white">longest coastline of any Indian state</strong> — from Kutch through Jamnagar, Porbandar, Veraval, down to the Gulf of Khambhat. Yet not a single international submarine cable terminates on Gujarati soil.<Ref n={1} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Gujarat has the <strong className="text-gray-900">longest coastline of any Indian state</strong> — from Kutch through Jamnagar, Porbandar, Veraval, down to the Gulf of Khambhat. Yet not a single international submarine cable terminates on Gujarati soil.<Ref n={1} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 TeleGeography's public cable map confirms the asymmetry: every cable linking India to the Gulf, East Africa, Southeast Asia, and Europe lands at Mumbai, Chennai, Kochi, or Tuticorin. Gujarat is a digital island — its bandwidth is effectively rented from Maharashtra.<Ref n={3} />
               </p>
             </DataCard>
 
             <DataCard title="The Strategic Cost">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Every Gujarat-origin packet travelling internationally — whether from a Surat diamond exporter, a Jamnagar refinery operations terminal, or a GIFT City fintech — must first transit the <strong className="text-gray-900 dark:text-white">Mumbai backhaul</strong> before reaching a landing station.<Ref n={12} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Every Gujarat-origin packet travelling internationally — whether from a Surat diamond exporter, a Jamnagar refinery operations terminal, or a GIFT City fintech — must first transit the <strong className="text-gray-900">Mumbai backhaul</strong> before reaching a landing station.<Ref n={12} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                This isn't just a latency issue. It's a <strong className="text-gray-900 dark:text-white">sovereign redundancy failure</strong>: if Mumbai's cable infrastructure fails (cyclone, outage, or a Versova incident), Gujarat goes dark with it.
+              <p className="text-gray-600 leading-relaxed">
+                This isn't just a latency issue. It's a <strong className="text-gray-900">sovereign redundancy failure</strong>: if Mumbai's cable infrastructure fails (cyclone, outage, or a Versova incident), Gujarat goes dark with it.
               </p>
             </DataCard>
           </div>
         </Section>
 
         {/* ═══ Section 2: Versova Bottleneck ═══ */}
-        <Section icon={<AlertTriangle className="w-8 h-8 text-red-600 dark:text-red-400" />} title="The Versova Bottleneck">
+        <Section icon={<AlertTriangle className="w-8 h-8 text-red-600" />} title="The Versova Bottleneck">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="~15" label="Cables Within 6 km of Versova Beach" color="crimson" />
             <StatBox value="1" label="Beach Deciding India's Uptime" color="red" />
@@ -118,13 +118,13 @@ export default function DigitalSovereignty() {
           </div>
 
           <DataCard title="India's Single Point of Failure" alert={true}>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              A 2024 Rest of World investigation documented what telecom engineers have whispered about for years: roughly <strong className="text-gray-900 dark:text-white">15 of India's international submarine cables land within a 6-kilometre stretch at Versova beach, Mumbai</strong>.<Ref n={2} /> The cables are close enough together that a single anchor drag, a large construction incident, or a coastal cyclone could sever a significant fraction of India's international bandwidth at once.
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              A 2024 Rest of World investigation documented what telecom engineers have whispered about for years: roughly <strong className="text-gray-900">15 of India's international submarine cables land within a 6-kilometre stretch at Versova beach, Mumbai</strong>.<Ref n={2} /> The cables are close enough together that a single anchor drag, a large construction incident, or a coastal cyclone could sever a significant fraction of India's international bandwidth at once.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              For Gujarat, this is not a distant risk — it is <em>the</em> risk. Because Gujarat has no landing of its own, a Versova incident doesn't just slow Gujarat down; it <strong className="text-gray-900 dark:text-white">isolates</strong> it.<Ref n={12} />
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              For Gujarat, this is not a distant risk — it is <em>the</em> risk. Because Gujarat has no landing of its own, a Versova incident doesn't just slow Gujarat down; it <strong className="text-gray-900">isolates</strong> it.<Ref n={12} />
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               A west-coast landing at Mundra, Pipavav, or Hazira — any of Gujarat's major ports with existing subsea infrastructure — would create the geographic redundancy India currently lacks. No such project is under construction as of early 2026.
             </p>
           </DataCard>
@@ -148,7 +148,7 @@ export default function DigitalSovereignty() {
         </Section>
 
         {/* ═══ Section 3: GIFT City Latency Tax ═══ */}
-        <Section icon={<Server className="w-8 h-8 text-purple-600 dark:text-purple-400" />} title="The GIFT City Latency Tax">
+        <Section icon={<Server className="w-8 h-8 text-purple-600" />} title="The GIFT City Latency Tax">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="~45 ms" label="GIFT ↔ Singapore Latency" color="crimson" />
             <StatBox value="~15 ms" label="Singapore-Native Latency" color="green" />
@@ -172,19 +172,19 @@ export default function DigitalSovereignty() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Why Latency Matters for IFSC">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                International Financial Service Centres compete on a few axes: regulatory clarity, tax treatment, talent depth, and — critically for market-making, algorithmic trading, and derivatives — <strong className="text-gray-900 dark:text-white">round-trip latency to major liquidity venues</strong>.<Ref n={4} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                International Financial Service Centres compete on a few axes: regulatory clarity, tax treatment, talent depth, and — critically for market-making, algorithmic trading, and derivatives — <strong className="text-gray-900">round-trip latency to major liquidity venues</strong>.<Ref n={4} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                A 30 ms disadvantage versus Singapore is not a rounding error for high-frequency strategies. It is an <strong className="text-gray-900 dark:text-white">architectural tax</strong> that cannot be solved by regulation or incentives — only by physical cable infrastructure Gujarat does not control.
+              <p className="text-gray-600 leading-relaxed">
+                A 30 ms disadvantage versus Singapore is not a rounding error for high-frequency strategies. It is an <strong className="text-gray-900">architectural tax</strong> that cannot be solved by regulation or incentives — only by physical cable infrastructure Gujarat does not control.
               </p>
             </DataCard>
 
             <DataCard title="The Backhaul Paradox" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                GIFT City is marketed as India's answer to Dubai and Singapore. Yet a trade placed on an IFSC exchange from a GIFT-resident fund must route its order flow <strong className="text-gray-900 dark:text-white">to Mumbai, then to the cable landing at Versova, then under the sea</strong> to its destination.<Ref n={5} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                GIFT City is marketed as India's answer to Dubai and Singapore. Yet a trade placed on an IFSC exchange from a GIFT-resident fund must route its order flow <strong className="text-gray-900">to Mumbai, then to the cable landing at Versova, then under the sea</strong> to its destination.<Ref n={5} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 The obvious state-level solution — a direct Gujarat cable landing paired with a Tier-4 carrier-neutral exchange at GIFT — has been discussed in CAG audit recommendations without any commissioning date.
               </p>
             </DataCard>
@@ -192,7 +192,7 @@ export default function DigitalSovereignty() {
         </Section>
 
         {/* ═══ Section 4: Cloud Sovereignty Gap ═══ */}
-        <Section icon={<Cloud className="w-8 h-8 text-teal-600 dark:text-teal-400" />} title="The Cloud Sovereignty Gap">
+        <Section icon={<Cloud className="w-8 h-8 text-teal-600" />} title="The Cloud Sovereignty Gap">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="AWS / Azure" label="Primary Hosts for State e-Gov" color="crimson" />
             <StatBox value="Mumbai" label="Actual Physical Data Location" color="red" />
@@ -215,20 +215,20 @@ export default function DigitalSovereignty() {
           />
 
           <DataCard title="What It Means to Host iORA on AWS Mumbai" alert={true}>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+            <p className="text-gray-600 mb-4 leading-relaxed">
               When a Gujarat farmer in Junagadh checks a land-record mutation on iORA, the query hits an AWS Mumbai region endpoint. The packet crosses state lines twice (Gujarat → Maharashtra → Maharashtra → Gujarat) to fetch a record <em>about</em> Gujarati land.<Ref n={7} /> The data at rest is nominally sovereign (Indian legal jurisdiction applies), but the operational uptime of Gujarat's land-record system is tied to AWS ap-south-1's SLA and Maharashtra's grid/network.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              MeitY maintains an empanelled list of domestic cloud providers (<strong className="text-gray-900 dark:text-white">NIC MeghRaj, CtrlS, ESDS, Yotta, CDSL Ventures</strong>), but state adoption remains patchy — driven more by procurement inertia than by sovereignty policy.<Ref n={6} /><Ref n={15} />
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              MeitY maintains an empanelled list of domestic cloud providers (<strong className="text-gray-900">NIC MeghRaj, CtrlS, ESDS, Yotta, CDSL Ventures</strong>), but state adoption remains patchy — driven more by procurement inertia than by sovereignty policy.<Ref n={6} /><Ref n={15} />
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              The sovereignty gap isn't that Gujarat <em>can't</em> host its own services. It's that it currently <strong className="text-gray-900 dark:text-white">doesn't</strong>.
+            <p className="text-gray-600 leading-relaxed">
+              The sovereignty gap isn't that Gujarat <em>can't</em> host its own services. It's that it currently <strong className="text-gray-900">doesn't</strong>.
             </p>
           </DataCard>
         </Section>
 
         {/* ═══ Section 5: Fiberization Deficit ═══ */}
-        <Section icon={<Wifi className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />} title="5G Fiberization & Tower Backhaul">
+        <Section icon={<Wifi className="w-8 h-8 text-indigo-600" />} title="5G Fiberization & Tower Backhaul">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="~40%" label="Gujarat Tower Fiberization" color="crimson" />
             <StatBox value="~55%" label="TN / KA Fiberization" color="green" />
@@ -236,10 +236,10 @@ export default function DigitalSovereignty() {
           </div>
 
           <DataCard title="Fiber-to-Tower: The Quiet 5G Constraint">
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              True-5G (standalone, low-latency) requires that every cell tower be connected to the core by <strong className="text-gray-900 dark:text-white">dedicated fibre</strong>, not microwave backhaul.<Ref n={8} /> DoT and industry tracking place national fiberization at around 38–42% as of 2024–25. Gujarat sits close to the national average — behind Tamil Nadu, Karnataka, and Maharashtra on a per-tower basis.<Ref n={14} />
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              True-5G (standalone, low-latency) requires that every cell tower be connected to the core by <strong className="text-gray-900">dedicated fibre</strong>, not microwave backhaul.<Ref n={8} /> DoT and industry tracking place national fiberization at around 38–42% as of 2024–25. Gujarat sits close to the national average — behind Tamil Nadu, Karnataka, and Maharashtra on a per-tower basis.<Ref n={14} />
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               Without fiberization parity, Gujarat cannot offer the sub-10 ms mobile latency Industry 4.0 applications actually need — connected ports at Mundra, autonomous logistics, remote pharma QA. The gap between marketing and infrastructure is documented in the DoT QoS reports — it just isn't advertised.
             </p>
           </DataCard>
@@ -248,17 +248,17 @@ export default function DigitalSovereignty() {
         </Section>
 
         {/* ═══ Section 6: Cascading Outages ═══ */}
-        <Section icon={<Radio className="w-8 h-8 text-orange-600 dark:text-orange-400" />} title="Cascading Outages: UPI, Aadhaar, GSTN">
+        <Section icon={<Radio className="w-8 h-8 text-orange-600" />} title="Cascading Outages: UPI, Aadhaar, GSTN">
           <DataCard title="What Happens When the National Rails Go Down" alert={true}>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              Gujarat has aggressively digitised its service delivery — from ration-card authentication (Aadhaar) to merchant payments (UPI) to business compliance (GSTN). The consequence: a <strong className="text-gray-900 dark:text-white">national-rail outage becomes a state-level service halt</strong>.<Ref n={9} /><Ref n={10} /><Ref n={11} />
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Gujarat has aggressively digitised its service delivery — from ration-card authentication (Aadhaar) to merchant payments (UPI) to business compliance (GSTN). The consequence: a <strong className="text-gray-900">national-rail outage becomes a state-level service halt</strong>.<Ref n={9} /><Ref n={10} /><Ref n={11} />
             </p>
-            <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2 ml-2 mb-4">
-              <li><strong className="text-gray-900 dark:text-white">UPI:</strong> NPCI's public incident log records multiple multi-hour UPI degradation events per quarter. Each cascades into refused merchant payments at Surat textile wholesalers, Morbi ceramic distributors, and Ahmedabad retail.</li>
-              <li><strong className="text-gray-900 dark:text-white">Aadhaar:</strong> UIDAI authentication downtime freezes ration dispensation at Fair Price Shops, EPF claim verification, and bank KYC renewal — with no state fallback.</li>
-              <li><strong className="text-gray-900 dark:text-white">GSTN:</strong> Return-filing portal outages near quarterly deadlines have repeatedly forced CBIC to issue extension notifications — a de-facto admission that the digital infrastructure can't meet its own deadlines.</li>
+            <ul className="list-disc list-inside text-gray-600 space-y-2 ml-2 mb-4">
+              <li><strong className="text-gray-900">UPI:</strong> NPCI's public incident log records multiple multi-hour UPI degradation events per quarter. Each cascades into refused merchant payments at Surat textile wholesalers, Morbi ceramic distributors, and Ahmedabad retail.</li>
+              <li><strong className="text-gray-900">Aadhaar:</strong> UIDAI authentication downtime freezes ration dispensation at Fair Price Shops, EPF claim verification, and bank KYC renewal — with no state fallback.</li>
+              <li><strong className="text-gray-900">GSTN:</strong> Return-filing portal outages near quarterly deadlines have repeatedly forced CBIC to issue extension notifications — a de-facto admission that the digital infrastructure can't meet its own deadlines.</li>
             </ul>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               None of these systems are <em>Gujarat's</em> to fix. That is precisely the dependency.
             </p>
           </DataCard>
@@ -282,7 +282,7 @@ export default function DigitalSovereignty() {
         </Section>
 
         {/* ═══ Counter-argument ═══ */}
-        <Section icon={<Globe className="w-8 h-8 text-gray-600 dark:text-gray-400" />} title="The Debate">
+        <Section icon={<Globe className="w-8 h-8 text-gray-600" />} title="The Debate">
           <div>
         <div className="flex justify-end mb-4 pr-2 sm:pr-4">
           <GovResponseToggle checked={showGov} onChange={setShowGov} />

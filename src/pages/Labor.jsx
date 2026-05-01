@@ -56,11 +56,11 @@ export default function Labor() {
             <span className="hidden md:block w-8 h-px bg-crimson" />
             <span>DEPENDENCY ANALYSIS</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gray-900 leading-tight">
             Migrant Labor <span className="italic text-crimson">Ecosystem</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            Gujarat's multi-billion dollar manufacturing hubs — from Morbi's ceramics to Surat's diamonds and textiles — run on an <strong className="font-semibold text-gray-900 dark:text-white">imported human supply chain</strong>. When migrant workers leave, as they did during COVID-19 and the 2026 West Asia gas crisis, entire industries grind to a halt within days.
+          <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
+            Gujarat's multi-billion dollar manufacturing hubs — from Morbi's ceramics to Surat's diamonds and textiles — run on an <strong className="font-semibold text-gray-900">imported human supply chain</strong>. When migrant workers leave, as they did during COVID-19 and the 2026 West Asia gas crisis, entire industries grind to a halt within days.
           </p>
         </motion.div>
       </section>
@@ -68,7 +68,7 @@ export default function Labor() {
       <div className="space-y-20">
 
         {/* Morbi Ceramics */}
-        <Section icon={<Factory className="w-8 h-8 text-gray-600 dark:text-gray-400" />} title="Morbi: India's Ceramic Capital — Built on Migrant Hands">
+        <Section icon={<Factory className="w-8 h-8 text-gray-600" />} title="Morbi: India's Ceramic Capital — Built on Migrant Hands">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="1,200" label="Manufacturing Units" color="crimson" />
             <StatBox value="4 Lakh" label="Direct Workers" color="purple" />
@@ -77,19 +77,19 @@ export default function Labor() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The 'Mini India' Phenomenon">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Morbi produces <strong className="text-gray-900 dark:text-white">80-90% of India's ceramic tiles and sanitaryware</strong> with an annual turnover of Rs 50,000 crore and exports to 150+ countries.<Ref n={13} /> The cluster supports nearly 9 lakh livelihoods, with around 4 lakh workers directly employed.<Ref n={1} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Morbi produces <strong className="text-gray-900">80-90% of India's ceramic tiles and sanitaryware</strong> with an annual turnover of Rs 50,000 crore and exports to 150+ countries.<Ref n={13} /> The cluster supports nearly 9 lakh livelihoods, with around 4 lakh workers directly employed.<Ref n={1} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                About <strong className="text-gray-900 dark:text-white">70% of labourers are outsiders</strong>, primarily from Uttar Pradesh, Bihar, Odisha, and Jharkhand.<Ref n={2} /> Every third or fourth person in Morbi is a migrant — earning it the name "Mini India."<Ref n={2} />
+              <p className="text-gray-600 leading-relaxed">
+                About <strong className="text-gray-900">70% of labourers are outsiders</strong>, primarily from Uttar Pradesh, Bihar, Odisha, and Jharkhand.<Ref n={2} /> Every third or fourth person in Morbi is a migrant — earning it the name "Mini India."<Ref n={2} />
               </p>
             </DataCard>
 
             <DataCard title="2026 Gas Crisis: 400+ Units Shut" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Over 400 ceramic units suspended operations for 3+ weeks due to the West Asia conflict disrupting gas supply.<Ref n={3} /> Nearly <strong className="text-gray-900 dark:text-white">60% of Morbi units depend on propane</strong>, which was completely halted.<Ref n={11} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Over 400 ceramic units suspended operations for 3+ weeks due to the West Asia conflict disrupting gas supply.<Ref n={3} /> Nearly <strong className="text-gray-900">60% of Morbi units depend on propane</strong>, which was completely halted.<Ref n={11} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 Migrant workers began returning to their home states en masse — a pattern eerily similar to the 2020 COVID exodus. Industry observers warn: once workers leave, it takes months to bring them back.<Ref n={8} />
               </p>
             </DataCard>
@@ -108,35 +108,35 @@ export default function Labor() {
         </Section>
 
         {/* Surat Diamond & Textile */}
-        <Section icon={<Gem className="w-8 h-8 text-purple-600 dark:text-purple-400" />} title="Surat: The Diamond & Textile Dependency">
+        <Section icon={<Gem className="w-8 h-8 text-purple-600" />} title="Surat: The Diamond & Textile Dependency">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="Diamond Polishing Industry" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Surat is the <strong className="text-gray-900 dark:text-white">world's largest diamond polishing hub</strong>, with approximately 4,000 cutting-polishing units employing <strong>7.5-10 lakh workers</strong>.<Ref n={4} /> While the majority come from within Gujarat (Saurashtra and North Gujarat), about <strong className="text-gray-900 dark:text-white">10% are interstate migrants</strong> from UP, MP, and Bihar.<Ref n={9} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Surat is the <strong className="text-gray-900">world's largest diamond polishing hub</strong>, with approximately 4,000 cutting-polishing units employing <strong>7.5-10 lakh workers</strong>.<Ref n={4} /> While the majority come from within Gujarat (Saurashtra and North Gujarat), about <strong className="text-gray-900">10% are interstate migrants</strong> from UP, MP, and Bihar.<Ref n={9} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                During COVID-19, <strong className="text-gray-900 dark:text-white">more than two-thirds of workers fled</strong>, and many factories could not reopen for months.<Ref n={10} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                During COVID-19, <strong className="text-gray-900">more than two-thirds of workers fled</strong>, and many factories could not reopen for months.<Ref n={10} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                The <strong className="text-gray-900 dark:text-white">US tariff escalation of 2025-26</strong> dealt a devastating blow: with reciprocal tariffs making Indian polished diamonds uncompetitive in the American market (which absorbs 30% of Surat's output), an estimated <strong className="text-gray-900 dark:text-white">1.5 lakh workers were laid off or furloughed</strong>. Rough diamond imports fell 25% YoY, and multiple large units shifted to 4-day work weeks to avoid mass termination.
+              <p className="text-gray-600 leading-relaxed">
+                The <strong className="text-gray-900">US tariff escalation of 2025-26</strong> dealt a devastating blow: with reciprocal tariffs making Indian polished diamonds uncompetitive in the American market (which absorbs 30% of Surat's output), an estimated <strong className="text-gray-900">1.5 lakh workers were laid off or furloughed</strong>. Rough diamond imports fell 25% YoY, and multiple large units shifted to 4-day work weeks to avoid mass termination.
               </p>
             </DataCard>
 
             <DataCard title="Textile Industry: The Cash Economy">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Surat's textile industry employs approximately <strong className="text-gray-900 dark:text-white">10 lakh migrant workers</strong>, most of them interstate migrants from UP, Bihar, Jharkhand, Uttarakhand, and Odisha — without local ration cards, permanent addresses, or registered LPG connections.<Ref n={6} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Surat's textile industry employs approximately <strong className="text-gray-900">10 lakh migrant workers</strong>, most of them interstate migrants from UP, Bihar, Jharkhand, Uttarakhand, and Odisha — without local ration cards, permanent addresses, or registered LPG connections.<Ref n={6} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                An estimated <strong className="text-gray-900 dark:text-white">90-95% of wages are paid in cash</strong>. These workers remit around <strong>Rs 500 crore annually</strong> to their families in Odisha, Bihar, and UP.<Ref n={6} /> The 2016 demonetisation caused immediate reverse migration as cash wages evaporated overnight.<Ref n={12} />
+              <p className="text-gray-600 leading-relaxed">
+                An estimated <strong className="text-gray-900">90-95% of wages are paid in cash</strong>. These workers remit around <strong>Rs 500 crore annually</strong> to their families in Odisha, Bihar, and UP.<Ref n={6} /> The 2016 demonetisation caused immediate reverse migration as cash wages evaporated overnight.<Ref n={12} />
               </p>
             </DataCard>
           </div>
 
           <DataCard title="The Human Cost: 71 Suicides in 18 Months" alert={true}>
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+            <p className="text-gray-700 text-lg leading-relaxed">
               Job losses and factory closures in Surat's diamond sector pushed workers to breaking point — <strong>71 diamond workers died by suicide in just 18 months</strong>, according to The Print's investigation.<Ref n={5} /> The industry downturn was driven by falling global demand for lab-grown diamonds and reduced rough diamond imports.
             </p>
-            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-4 text-sm text-gray-600">
               Named cases from mainstream reporting:
               <StoryMarker storyId="diamond-pravin-sarvaiya" />
               <StoryMarker storyId="diamond-vinu-moradiya" />
@@ -148,7 +148,7 @@ export default function Labor() {
 
         {/* COVID Exodus */}
         <Section icon={<AlertTriangle className="w-8 h-8 text-red-500" />} title="The Exodus Pattern: COVID, Demonetisation & West Asia">
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
+          <p className="text-gray-700 text-lg leading-relaxed mb-8">
             Gujarat has experienced three mass migrant worker departures in six years, each crippling its manufacturing base within days:
           </p>
 
@@ -196,8 +196,8 @@ export default function Labor() {
         </Section>
 
         {/* Skill Gap & Automation Risk */}
-        <Section icon={<Cog className="w-8 h-8 text-orange-500 dark:text-orange-400" />} title="Skill Gap & Automation Risk: The Coming Squeeze">
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
+        <Section icon={<Cog className="w-8 h-8 text-orange-500" />} title="Skill Gap & Automation Risk: The Coming Squeeze">
+          <p className="text-gray-700 text-lg leading-relaxed mb-8">
             Gujarat's manufacturing workforce faces a structural paradox: industries depend on low-skill migrant labour that is simultaneously too scarce (during exodus events) and too vulnerable (to automation). A third of Gujarat's youth aged 15-29 are classified as NEET — not in education, employment, or training — while the state's ITI system remains misaligned with the demands of modern industry.<Ref n={14} />
           </p>
 
@@ -209,29 +209,29 @@ export default function Labor() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The Skills Vacuum">
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Despite having over <strong className="text-gray-900 dark:text-white">770 ITIs (274 government, 500+ private)</strong>, Gujarat's vocational training system remains focused on traditional trades and technologies — mismatched with the frontier skills demanded by its rapidly modernising industries.<Ref n={14} /> The ADB's labour market assessment identified seven priority sectors (logistics, automotive, manufacturing, IT, renewables, healthcare, agri-tech) where the skill demand-supply gap is widening.<Ref n={14} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Despite having over <strong className="text-gray-900">770 ITIs (274 government, 500+ private)</strong>, Gujarat's vocational training system remains focused on traditional trades and technologies — mismatched with the frontier skills demanded by its rapidly modernising industries.<Ref n={14} /> The ADB's labour market assessment identified seven priority sectors (logistics, automotive, manufacturing, IT, renewables, healthcare, agri-tech) where the skill demand-supply gap is widening.<Ref n={14} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Nationally, only <strong className="text-gray-900 dark:text-white">4% of Indians aged 15-59 report having received formal vocational training</strong> — compared to 52% in the US, 80% in Japan, and 96% in South Korea.<Ref n={14} /> The India Skills Report 2025 found that only 54.8% of Indian graduates are considered employable, underscoring the gap between education outputs and industry needs.<Ref n={17} />
+              <p className="text-gray-600 leading-relaxed">
+                Nationally, only <strong className="text-gray-900">4% of Indians aged 15-59 report having received formal vocational training</strong> — compared to 52% in the US, 80% in Japan, and 96% in South Korea.<Ref n={14} /> The India Skills Report 2025 found that only 54.8% of Indian graduates are considered employable, underscoring the gap between education outputs and industry needs.<Ref n={17} />
               </p>
             </DataCard>
 
             <DataCard title="Automation Arrives at the Factory Floor" alert={true}>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Surat's diamond industry is rapidly adopting <strong className="text-gray-900 dark:text-white">AI-driven cutting, robotic polishing systems, and automated quality control</strong> — technologies that operate 24/7 and reduce reliance on the skilled manual workforce that once defined the trade.<Ref n={15} /> Automated systems have compressed diamond processing timelines from months to days, while minimising material waste.<Ref n={15} />
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Surat's diamond industry is rapidly adopting <strong className="text-gray-900">AI-driven cutting, robotic polishing systems, and automated quality control</strong> — technologies that operate 24/7 and reduce reliance on the skilled manual workforce that once defined the trade.<Ref n={15} /> Automated systems have compressed diamond processing timelines from months to days, while minimising material waste.<Ref n={15} />
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                McKinsey research estimates that <strong className="text-gray-900 dark:text-white">approximately 30% of work hours globally could be automated by 2030</strong>, with middle-skill, routine-heavy positions most vulnerable.<Ref n={16} /> In India, a SAGE Journals study found that automation risk across all occupations has measurably increased between 2011-12 and 2020-21, with manufacturing roles bearing the highest exposure.<Ref n={16} />
+              <p className="text-gray-600 leading-relaxed">
+                McKinsey research estimates that <strong className="text-gray-900">approximately 30% of work hours globally could be automated by 2030</strong>, with middle-skill, routine-heavy positions most vulnerable.<Ref n={16} /> In India, a SAGE Journals study found that automation risk across all occupations has measurably increased between 2011-12 and 2020-21, with manufacturing roles bearing the highest exposure.<Ref n={16} />
               </p>
             </DataCard>
           </div>
 
           <DataCard title="The Compounding Trap: Low Skills Meet High Automation">
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              Gujarat's labour dependency is thus squeezed from both sides. The migrant workers who power Morbi's kilns, Surat's looms, and diamond polishing benches are overwhelmingly low-skill — over <strong className="text-gray-900 dark:text-white">70% of India's manufacturing labourers are either illiterate or educated below primary level</strong>.<Ref n={16} /> These workers cannot be easily reskilled for the automated production lines replacing their roles. Meanwhile, Gujarat's NEET rate of 33.9% among youth — rising to <strong className="text-gray-900 dark:text-white">56.2% for young women</strong> — means the state is not producing local replacements either.<Ref n={14} />
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              Gujarat's labour dependency is thus squeezed from both sides. The migrant workers who power Morbi's kilns, Surat's looms, and diamond polishing benches are overwhelmingly low-skill — over <strong className="text-gray-900">70% of India's manufacturing labourers are either illiterate or educated below primary level</strong>.<Ref n={16} /> These workers cannot be easily reskilled for the automated production lines replacing their roles. Meanwhile, Gujarat's NEET rate of 33.9% among youth — rising to <strong className="text-gray-900">56.2% for young women</strong> — means the state is not producing local replacements either.<Ref n={14} />
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               The Gujarat Textile Policy 2024 acknowledges this bind, offering free certification courses via the Gujarat Skill Development Mission alongside subsidies for automation adoption — policies that work at cross purposes.<Ref n={16} /> The state has also partnered with the ADB on a Skills Development Program (2025-2030) to bridge the gap, but the scale of the challenge — retraining lakhs of workers while industries automate — raises the question of whether Gujarat's manufacturing model can survive its own modernisation.<Ref n={14} />
             </p>
           </DataCard>
@@ -240,7 +240,7 @@ export default function Labor() {
       </div>
 
       {/* Wage & Working Conditions */}
-      <Section icon={<Users className="w-8 h-8 text-amber-600 dark:text-amber-500" />} title="Wage Structure & Working Conditions: The Hidden Economy">
+      <Section icon={<Users className="w-8 h-8 text-amber-600" />} title="Wage Structure & Working Conditions: The Hidden Economy">
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <StatBox value="Rs 350-500" label="Daily Wage (Morbi Unskilled)" color="amber" />
           <StatBox value="90-95%" label="Cash Payment (Textile)" color="crimson" />
@@ -265,23 +265,23 @@ export default function Labor() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <DataCard title="The Cash Economy: Invisible Workforce" alert={true}>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              An estimated <strong className="text-gray-900 dark:text-white">90-95% of wages in Surat's textile sector are paid in cash</strong> — keeping the entire workforce invisible to formal social security systems.<Ref n={6} /> Workers have no PF accounts, no ESI coverage, no formal contracts, and no registered addresses.
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              An estimated <strong className="text-gray-900">90-95% of wages in Surat's textile sector are paid in cash</strong> — keeping the entire workforce invisible to formal social security systems.<Ref n={6} /> Workers have no PF accounts, no ESI coverage, no formal contracts, and no registered addresses.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               This cash economy — estimated at <strong>Rs 500 crore in annual remittances</strong> from Surat alone — functions as an invisible GDP transfer from Gujarat to Bihar, UP, and Odisha.<Ref n={6} /> It also means that any shock to the cash system (as demonetisation proved) or the physical workplace (as the 2026 gas crisis showed) instantly triggers mass departure.
             </p>
           </DataCard>
 
           <DataCard title="Safety & Health: The Unrecorded Toll" alert={true}>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              In Morbi, a PTRC study found <strong className="text-gray-900 dark:text-white">29% of ceramic workers have direct silica contact</strong>, putting them at risk of silicosis, TB, and lung cancer. 92.65% reported having no ESI health coverage despite the area being under ESI since 1967.
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              In Morbi, a PTRC study found <strong className="text-gray-900">29% of ceramic workers have direct silica contact</strong>, putting them at risk of silicosis, TB, and lung cancer. 92.65% reported having no ESI health coverage despite the area being under ESI since 1967.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              The October 2022 Morbi suspension bridge collapse — which killed <strong className="text-gray-900 dark:text-white">135 people</strong>, many of them migrant workers and their families — exposed the broader infrastructure neglect in worker-dependent industrial towns.
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              The October 2022 Morbi suspension bridge collapse — which killed <strong className="text-gray-900">135 people</strong>, many of them migrant workers and their families — exposed the broader infrastructure neglect in worker-dependent industrial towns.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              The <strong className="text-gray-900 dark:text-white">Bharuch-Dahej chemical corridor recorded 90 major industrial accidents and 130 worker deaths</strong> between 2018-2025 — an average of one fatal incident every 3 weeks. Most victims were contractual migrant workers with no life insurance or compensation. The Surat powerloom belt — employing 6 lakh workers — reported <strong>Rs 100 crore/day in production losses</strong> during the March 2026 gas crisis, with workers left stranded without wages for weeks before migrating home.
+            <p className="text-gray-600 leading-relaxed">
+              The <strong className="text-gray-900">Bharuch-Dahej chemical corridor recorded 90 major industrial accidents and 130 worker deaths</strong> between 2018-2025 — an average of one fatal incident every 3 weeks. Most victims were contractual migrant workers with no life insurance or compensation. The Surat powerloom belt — employing 6 lakh workers — reported <strong>Rs 100 crore/day in production losses</strong> during the March 2026 gas crisis, with workers left stranded without wages for weeks before migrating home.
             </p>
           </DataCard>
         </div>
@@ -290,13 +290,13 @@ export default function Labor() {
       {/* Source State Competition */}
       <Section icon={<AlertTriangle className="w-8 h-8 text-orange-500" />} title="Source States Fighting Back: The New Competition">
         <DataCard title="UP, Bihar & Odisha: Building Local Industry">
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
-            The traditional source states for Gujarat's migrant labour are increasingly developing their own industrial ecosystems. <strong className="text-gray-900 dark:text-white">Uttar Pradesh's GSDP growth at 9.3% (FY25)</strong> is now competitive with Gujarat's. Bihar's industrial corridors — Hajipur, Patna, Muzaffarpur — and Odisha's steel and aluminium belt are creating local employment alternatives.
+          <p className="text-gray-700 text-lg leading-relaxed mb-4">
+            The traditional source states for Gujarat's migrant labour are increasingly developing their own industrial ecosystems. <strong className="text-gray-900">Uttar Pradesh's GSDP growth at 9.3% (FY25)</strong> is now competitive with Gujarat's. Bihar's industrial corridors — Hajipur, Patna, Muzaffarpur — and Odisha's steel and aluminium belt are creating local employment alternatives.
           </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          <p className="text-gray-700 leading-relaxed mb-4">
             The implications are structural: as source states industrialise, the <strong>wage premium Gujarat offers shrinks</strong>. A Morbi kiln worker earning Rs 400-500/day in Gujarat can now find Rs 300-400/day work in eastern UP or Jharkhand — without the costs and dislocation of migration. The 2026 exodus accelerated this trend, with workers discovering that <strong>returning home is now economically viable</strong>.
           </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-gray-700 leading-relaxed">
             The ADB's Gujarat Skills Development Program acknowledges this reality — the state must either automate, upskill, or permanently lose its labour advantage. The demographic window is closing.<Ref n={14} />
           </p>
         </DataCard>

@@ -3,37 +3,25 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin, Wheat, Cpu, FlaskConical, Cable } from 'lucide-react'
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip } from 'recharts'
-import { useSyncExternalStore } from 'react'
 import { SupplyChainMap } from '../components/SupplyChainMap'
 import { CascadeDiagram } from '../components/CascadeDiagram'
 import AnimatedCounter from '../components/AnimatedCounter'
 
-function subscribeDarkMode(callback) {
-  const observer = new MutationObserver(callback)
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-  return () => observer.disconnect()
-}
-function getIsDark() {
-  return document.documentElement.classList.contains('dark')
-}
-
 export default function Home() {
-  const isDark = useSyncExternalStore(subscribeDarkMode, getIsDark)
-
   const sectors = useMemo(() => [
-    { id: 'infrastructure', title: "Infrastructure & Logistics", icon: <Ship className="w-8 h-8 text-blue-600 dark:text-blue-400" />, desc: "Maritime gateway monopoly, bridge collapses, and zero digital connectivity.", path: "/infrastructure", stat: "500.8 MMT", statLabel: "APSEZ FY26 Cargo", sources: 18 },
-    { id: 'energy', title: "Energy Grid & Power Supply", icon: <Zap className="w-8 h-8 text-yellow-600 dark:text-yellow-500" />, desc: "Imported coal lock-in, 550 Morbi units shut, and grid collapse events.", path: "/energy", stat: "550+", statLabel: "Morbi Units Shut (2026)", sources: 18 },
-    { id: 'materials', title: "Industrial Raw Materials", icon: <Factory className="w-8 h-8 text-gray-600 dark:text-gray-400" />, desc: "Russia now #1 crude supplier, 65-70% Chinese APIs, 100% potash import.", path: "/materials", stat: "36%", statLabel: "Crude from Russia", sources: 17 },
-    { id: 'water', title: "Water Security", icon: <Droplets className="w-8 h-8 text-teal-600 dark:text-teal-500" />, desc: "Narmada single point of failure, fluoride at 17.5 mg/L, industry vs farms.", path: "/water", stat: "132%", statLabel: "Mehsana Extraction Rate", sources: 14 },
-    { id: 'labor', title: "Migrant Labor Ecosystem", icon: <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />, desc: "5-6 lakh workers fled in 2026, US tariffs crush diamonds, Rs 100 Cr/day losses.", path: "/labor", stat: "5-6L", statLabel: "Workers Fled (2026)", sources: 17 },
-    { id: 'economics', title: "Governance & Fiscal", icon: <TrendingUp className="w-8 h-8 text-green-600 dark:text-green-500" />, desc: "CAG flags overstated surplus, OTR at 4.9%, GIFT City 20-year tax holiday.", path: "/economics", stat: "15.3%", statLabel: "Debt-to-GSDP (FY25)", sources: 20 },
-    { id: 'education', title: "Education & Healthcare", icon: <GraduationCap className="w-8 h-8 text-pink-600 dark:text-pink-400" />, desc: "2.4 lakh dropouts (#1 in India), primary GER collapsed to 79.6%.", path: "/education", stat: "2.4L", statLabel: "Annual Dropouts (#1)", sources: 14 },
-    { id: 'environment', title: "Environment & Climate", icon: <TreePine className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />, desc: "Sabarmati 'cesspool' ruling, Deesa 21 dead, 36 sq km mangrove loss.", path: "/environment", stat: "21", statLabel: "Deesa Explosion Deaths", sources: 14 },
-    { id: 'migrant-discrimination', title: "Migrant Discrimination", icon: <ShieldAlert className="w-8 h-8 text-red-600 dark:text-red-500" />, desc: "2018 pogrom: 20,000+ fled. Language barriers, wage theft, bonded labour, zero welfare.", path: "/migrant-discrimination", stat: "20K+", statLabel: "Workers Attacked (2018)", sources: 33 },
-    { id: 'agriculture', title: "Agriculture & Agrarian Distress", icon: <Wheat className="w-8 h-8 text-green-700 dark:text-green-400" />, desc: "67% DAP imported, 100% MOP imported, Bt Cotton trap, groundwater at 132% over-extraction.", path: "/agriculture", stat: "100%", statLabel: "MOP Import Dependency", sources: 6 },
-    { id: 'greentech', title: "Green Tech Dependency", icon: <Cpu className="w-8 h-8 text-cyan-600 dark:text-cyan-400" />, desc: "90% rare earth processing by China, 80%+ PV wafers imported, Dholera SIR mirage.", path: "/greentech", stat: "90%", statLabel: "China RE Processing", sources: 7 },
-    { id: 'chemical-governance', title: "Chemical Governance & Toxicity", icon: <FlaskConical className="w-8 h-8 text-orange-600 dark:text-orange-400" />, desc: "400km Golden Corridor, Sabarmati BOD 292 mg/L, CETP failures, ₹100Cr+ NGT fines.", path: "/chemical-governance", stat: "292", statLabel: "BOD (mg/L) Sabarmati", sources: 8 },
-    { id: 'digital-sovereignty', title: "Digital Sovereignty & Data Dependency", icon: <Cable className="w-8 h-8 text-blue-600 dark:text-blue-400" />, desc: "0 submarine cable landings on a 1,600 km coastline. GIFT City backhauls via Mumbai. AWS hosts state e-gov.", path: "/digital-sovereignty", stat: "0", statLabel: "Intl. Cables in Gujarat", sources: 15 },
+    { id: 'infrastructure', title: "Infrastructure & Logistics", icon: <Ship className="w-8 h-8 text-blue-600" />, desc: "Maritime gateway monopoly, bridge collapses, and zero digital connectivity.", path: "/infrastructure", stat: "500.8 MMT", statLabel: "APSEZ FY26 Cargo", sources: 18 },
+    { id: 'energy', title: "Energy Grid & Power Supply", icon: <Zap className="w-8 h-8 text-yellow-600" />, desc: "Imported coal lock-in, 550 Morbi units shut, and grid collapse events.", path: "/energy", stat: "550+", statLabel: "Morbi Units Shut (2026)", sources: 18 },
+    { id: 'materials', title: "Industrial Raw Materials", icon: <Factory className="w-8 h-8 text-gray-600" />, desc: "Russia now #1 crude supplier, 65-70% Chinese APIs, 100% potash import.", path: "/materials", stat: "36%", statLabel: "Crude from Russia", sources: 17 },
+    { id: 'water', title: "Water Security", icon: <Droplets className="w-8 h-8 text-teal-600" />, desc: "Narmada single point of failure, fluoride at 17.5 mg/L, industry vs farms.", path: "/water", stat: "132%", statLabel: "Mehsana Extraction Rate", sources: 14 },
+    { id: 'labor', title: "Migrant Labor Ecosystem", icon: <Users className="w-8 h-8 text-purple-600" />, desc: "5-6 lakh workers fled in 2026, US tariffs crush diamonds, Rs 100 Cr/day losses.", path: "/labor", stat: "5-6L", statLabel: "Workers Fled (2026)", sources: 17 },
+    { id: 'economics', title: "Governance & Fiscal", icon: <TrendingUp className="w-8 h-8 text-green-600" />, desc: "CAG flags overstated surplus, OTR at 4.9%, GIFT City 20-year tax holiday.", path: "/economics", stat: "15.3%", statLabel: "Debt-to-GSDP (FY25)", sources: 20 },
+    { id: 'education', title: "Education & Healthcare", icon: <GraduationCap className="w-8 h-8 text-pink-600" />, desc: "2.4 lakh dropouts (#1 in India), primary GER collapsed to 79.6%.", path: "/education", stat: "2.4L", statLabel: "Annual Dropouts (#1)", sources: 14 },
+    { id: 'environment', title: "Environment & Climate", icon: <TreePine className="w-8 h-8 text-emerald-600" />, desc: "Sabarmati 'cesspool' ruling, Deesa 21 dead, 36 sq km mangrove loss.", path: "/environment", stat: "21", statLabel: "Deesa Explosion Deaths", sources: 14 },
+    { id: 'migrant-discrimination', title: "Migrant Discrimination", icon: <ShieldAlert className="w-8 h-8 text-red-600" />, desc: "2018 pogrom: 20,000+ fled. Language barriers, wage theft, bonded labour, zero welfare.", path: "/migrant-discrimination", stat: "20K+", statLabel: "Workers Attacked (2018)", sources: 33 },
+    { id: 'agriculture', title: "Agriculture & Agrarian Distress", icon: <Wheat className="w-8 h-8 text-green-700" />, desc: "67% DAP imported, 100% MOP imported, Bt Cotton trap, groundwater at 132% over-extraction.", path: "/agriculture", stat: "100%", statLabel: "MOP Import Dependency", sources: 6 },
+    { id: 'greentech', title: "Green Tech Dependency", icon: <Cpu className="w-8 h-8 text-cyan-600" />, desc: "90% rare earth processing by China, 80%+ PV wafers imported, Dholera SIR mirage.", path: "/greentech", stat: "90%", statLabel: "China RE Processing", sources: 7 },
+    { id: 'chemical-governance', title: "Chemical Governance & Toxicity", icon: <FlaskConical className="w-8 h-8 text-orange-600" />, desc: "400km Golden Corridor, Sabarmati BOD 292 mg/L, CETP failures, ₹100Cr+ NGT fines.", path: "/chemical-governance", stat: "292", statLabel: "BOD (mg/L) Sabarmati", sources: 8 },
+    { id: 'digital-sovereignty', title: "Digital Sovereignty & Data Dependency", icon: <Cable className="w-8 h-8 text-blue-600" />, desc: "0 submarine cable landings on a 1,600 km coastline. GIFT City backhauls via Mumbai. AWS hosts state e-gov.", path: "/digital-sovereignty", stat: "0", statLabel: "Intl. Cables in Gujarat", sources: 15 },
   ], [])
 
   const romanNumerals = useMemo(() => ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII'], [])
@@ -136,7 +124,7 @@ export default function Home() {
 
       {/* ═══════════════════ HERO ═══════════════════ */}
       <section className="text-center space-y-8 relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-crimson/10 dark:bg-white/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-crimson/10 blur-[120px] rounded-full pointer-events-none" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -144,25 +132,25 @@ export default function Home() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-crimson/10 dark:bg-crimson/20 text-crimson text-sm font-semibold tracking-widest uppercase mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-crimson/10 text-crimson text-sm font-semibold tracking-widest uppercase mb-8">
             <AlertTriangle className="w-4 h-4" />
             Critical Research Endeavor
           </div>
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold mb-6 leading-tight tracking-tight text-gray-900 dark:text-white">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold mb-6 leading-tight tracking-tight text-gray-900">
             Anatomy of a <br/><span className="text-crimson italic pr-4">Dependent State</span>
           </h1>
 
           {/* Author / Publication Header */}
-          <div className="flex items-center justify-center gap-3 text-sm tracking-widest uppercase text-gray-500 dark:text-gray-500 font-sans font-semibold mt-6">
+          <div className="flex items-center justify-center gap-3 text-sm tracking-widest uppercase text-gray-500 font-sans font-semibold mt-6">
             <span>Project Alphono 34</span>
-            <span className="w-px h-4 bg-gray-400 dark:bg-gray-600" />
+            <span className="w-px h-4 bg-gray-400" />
             <span>Research Division</span>
-            <span className="w-px h-4 bg-gray-400 dark:bg-gray-600" />
+            <span className="w-px h-4 bg-gray-400" />
             <span>April 2026</span>
           </div>
-          <hr className="border-gray-300 dark:border-dark-border w-24 mx-auto mt-6" />
+          <hr className="border-gray-300 w-24 mx-auto mt-6" />
 
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mt-8 font-light leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mt-8 font-light leading-relaxed">
             A critical analysis of the structural vulnerabilities, systemic dependencies, and external supply chains underpinning the state of Gujarat.
           </p>
 
@@ -185,9 +173,9 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 1 }}
       >
-        <blockquote className="font-serif italic text-2xl md:text-3xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto text-center border-t border-b border-gray-300 dark:border-dark-border py-10 leading-relaxed">
+        <blockquote className="font-serif italic text-2xl md:text-3xl text-gray-600 max-w-4xl mx-auto text-center border-t border-b border-gray-300 py-10 leading-relaxed">
           "The prosperity of a state measured only by its throughput — while blind to its input origins — is an accounting illusion, not economic strength."
-          <footer className="mt-6 text-sm not-italic tracking-widest uppercase text-gray-400 dark:text-gray-500 font-sans font-semibold">
+          <footer className="mt-6 text-sm not-italic tracking-widest uppercase text-gray-400 font-sans font-semibold">
             — Premise of this Research
           </footer>
         </blockquote>
@@ -202,16 +190,16 @@ export default function Home() {
         className="grid grid-cols-2 md:grid-cols-4 gap-6"
       >
         {headlines.map((h, i) => (
-          <div key={i} className="text-center p-6 rounded-2xl bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border backdrop-blur-sm">
+          <div key={i} className="text-center p-6 rounded-2xl bg-white/60 border border-gray-200 backdrop-blur-sm">
             <div className="text-3xl md:text-4xl font-bold text-crimson mb-2">
               <AnimatedCounter value={h.value} suffix={h.suffix} prefix={h.prefix} />
             </div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-widest font-semibold">{h.label}</div>
+            <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold">{h.label}</div>
           </div>
         ))}
       </motion.section>
 
-      <hr className="border-gray-300 dark:border-dark-border w-1/2 mx-auto" />
+      <hr className="border-gray-300 w-1/2 mx-auto" />
 
       {/* ═══════════════════ I. ABSTRACT ═══════════════════ */}
       <motion.section
@@ -221,14 +209,14 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto"
       >
-        <div className="border-2 border-gray-300 dark:border-dark-border p-10 md:p-12">
+        <div className="border-2 border-gray-300 p-10 md:p-12">
           <div className="flex items-center gap-3 mb-8">
             <span className="text-crimson text-lg font-sans font-bold">I.</span>
             <h2 className="text-sm uppercase tracking-[0.25em] text-crimson font-semibold font-sans">Abstract</h2>
           </div>
-          <div className="space-y-5 text-lg italic font-serif text-gray-700 dark:text-gray-300 leading-relaxed">
+          <div className="space-y-5 text-lg italic font-serif text-gray-700 leading-relaxed">
             <p>
-              Gujarat is widely celebrated as India's most industrialized and business-friendly state. This project does not dispute that economic output. Instead, it asks a different question: <strong className="text-gray-900 dark:text-white not-italic">how much of this output is structurally dependent on external inputs that Gujarat does not control?</strong>
+              Gujarat is widely celebrated as India's most industrialized and business-friendly state. This project does not dispute that economic output. Instead, it asks a different question: <strong className="text-gray-900 not-italic">how much of this output is structurally dependent on external inputs that Gujarat does not control?</strong>
             </p>
             <p>
               From imported Indonesian coal powering its coastal mega-plants, to Chinese APIs sustaining its pharma sector, to migrant workers from Bihar and Odisha running its factories, to a single dam supplying water to 3 crore people — the state's economic engine is built on supply chains that originate far beyond its borders.
@@ -250,10 +238,10 @@ export default function Home() {
       >
         <div className="flex items-center gap-3 mb-10">
           <span className="text-crimson text-lg font-sans font-bold">II.</span>
-          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">Table of Contents</h2>
+          <h2 className="text-3xl font-serif font-bold text-gray-900">Table of Contents</h2>
         </div>
         <Link to="/summary" className="group block mb-4">
-          <div className="flex items-center justify-between p-4 rounded-xl bg-crimson/5 dark:bg-crimson/10 border border-crimson/20 hover:border-crimson/40 transition-colors">
+          <div className="flex items-center justify-between p-4 rounded-xl bg-crimson/5 border border-crimson/20 hover:border-crimson/40 transition-colors">
             <div className="flex items-center gap-3">
               <FileText className="w-5 h-5 text-crimson" />
               <span className="font-serif text-lg font-bold text-crimson">Executive Summary</span>
@@ -262,11 +250,11 @@ export default function Home() {
           </div>
         </Link>
         <Link to="/global-trade" className="group block mb-4">
-          <div className="flex items-center justify-between p-4 rounded-xl bg-[#FDFBF7] dark:bg-dark-surface/80 border border-[#8D6E63] hover:border-[#3E2723] transition-colors relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(#E8E0D5_1px,transparent_1px)] dark:bg-[radial-gradient(#3E2723_1px,transparent_1px)] [background-size:20px_20px] opacity-20 pointer-events-none"></div>
+          <div className="flex items-center justify-between p-4 rounded-xl bg-[#FDFBF7] border border-[#8D6E63] hover:border-[#3E2723] transition-colors relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(#E8E0D5_1px,transparent_1px)],transparent_1px)] [background-size:20px_20px] opacity-20 pointer-events-none"></div>
             <div className="flex items-center gap-3 relative z-10">
               <svg className="w-5 h-5 text-[#8B0000]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
-              <span className="font-serif text-lg font-bold text-[#3E2723] dark:text-[#EBE3D5] tracking-widest uppercase">Index Mercantilis: Global Trade Cartography</span>
+              <span className="font-serif text-lg font-bold text-[#3E2723] tracking-widest uppercase">Index Mercantilis: Global Trade Cartography</span>
             </div>
             <ArrowRight className="w-5 h-5 text-[#8B0000] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all relative z-10" />
           </div>
@@ -275,13 +263,13 @@ export default function Home() {
         <div className="space-y-0">
           {sectors.map((sector, i) => (
             <Link key={sector.id} to={sector.path} className="group block">
-              <div className="flex items-baseline justify-between border-b border-dotted border-gray-300 dark:border-dark-border py-4 hover:border-crimson transition-colors">
+              <div className="flex items-baseline justify-between border-b border-dotted border-gray-300 py-4 hover:border-crimson transition-colors">
                 <div className="flex items-baseline gap-4">
                   <span className="text-crimson font-bold font-sans text-sm min-w-[2rem]">{romanNumerals[i]}.</span>
-                  <span className="font-serif text-lg text-gray-900 dark:text-white group-hover:text-crimson transition-colors">{sector.title}</span>
+                  <span className="font-serif text-lg text-gray-900 group-hover:text-crimson transition-colors">{sector.title}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-sm text-gray-500 dark:text-gray-500 font-semibold">{sector.stat}</span>
+                  <span className="text-sm text-gray-500 font-semibold">{sector.stat}</span>
                   <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-crimson group-hover:translate-x-1 transition-all" />
                 </div>
               </div>
@@ -290,7 +278,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <hr className="border-gray-300 dark:border-dark-border w-1/2 mx-auto" />
+      <hr className="border-gray-300 w-1/2 mx-auto" />
 
       {/* ═══════════════════ III. DEPENDENCY INDEX (RADAR CHART) ═══════════════════ */}
       <motion.section
@@ -301,20 +289,20 @@ export default function Home() {
       >
         <div className="flex items-center gap-3 mb-10 justify-center">
           <span className="text-crimson text-lg font-sans font-bold">III.</span>
-          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">Dependency Index</h2>
+          <h2 className="text-3xl font-serif font-bold text-gray-900">Dependency Index</h2>
         </div>
-        <div className="bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border rounded-2xl p-8 backdrop-blur-sm">
+        <div className="bg-white/60 border border-gray-200 rounded-2xl p-8 backdrop-blur-sm">
           <ResponsiveContainer width="100%" height={400}>
             <RadarChart data={dependencyData} cx="50%" cy="50%" outerRadius="75%">
-              <PolarGrid stroke={isDark ? '#333' : '#d1d5db'} />
+              <PolarGrid stroke="#d1d5db" />
               <PolarAngleAxis
                 dataKey="pillar"
-                tick={{ fill: isDark ? '#9CA3AF' : '#4B5563', fontSize: 13, fontFamily: 'Inter' }}
+                tick={{ fill: '#4B5563', fontSize: 13, fontFamily: 'Inter' }}
               />
               <PolarRadiusAxis
                 angle={90}
                 domain={[0, 100]}
-                tick={{ fill: isDark ? '#6B7280' : '#9CA3AF', fontSize: 11 }}
+                tick={{ fill: '#9CA3AF', fontSize: 11 }}
               />
               <Radar
                 name="Dependency %"
@@ -326,20 +314,20 @@ export default function Home() {
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: isDark ? '#1E1E1E' : '#fff',
-                  border: `1px solid ${isDark ? '#333' : '#e5e7eb'}`,
+                  backgroundColor: '#fff',
+                  border: '1px solid #e5e7eb',
                   borderRadius: '12px',
                   fontFamily: 'Inter',
                   fontSize: '13px',
-                  color: isDark ? '#f3f4f6' : '#111827',
+                  color: '#111827',
                 }}
-                labelStyle={{ color: isDark ? '#f3f4f6' : '#111827', fontWeight: 700, marginBottom: 4 }}
-                itemStyle={{ color: isDark ? '#e5e7eb' : '#1f2937' }}
+                labelStyle={{ color: '#111827', fontWeight: 700, marginBottom: 4 }}
+                itemStyle={{ color: '#1f2937' }}
                 formatter={(value) => [`${value}%`, 'External Dependency']}
               />
             </RadarChart>
           </ResponsiveContainer>
-          <p className="text-center text-sm text-gray-500 dark:text-gray-500 mt-4 italic font-serif">
+          <p className="text-center text-sm text-gray-500 mt-4 italic font-serif">
             Figure 1: Estimated external dependency index across six structural pillars (higher = more dependent on external inputs)
           </p>
         </div>
@@ -352,7 +340,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border rounded-2xl p-8 backdrop-blur-sm">
+        <div className="bg-white/60 border border-gray-200 rounded-2xl p-8 backdrop-blur-sm">
           <SupplyChainMap />
         </div>
       </motion.section>
@@ -366,17 +354,17 @@ export default function Home() {
       >
         <div className="flex items-center gap-3 mb-10 justify-center">
           <span className="text-crimson text-lg font-sans font-bold">III-B.</span>
-          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">Crisis Propagation Map</h2>
+          <h2 className="text-3xl font-serif font-bold text-gray-900">Crisis Propagation Map</h2>
         </div>
-        <div className="bg-white/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border rounded-2xl p-8 backdrop-blur-sm">
+        <div className="bg-white/60 border border-gray-200 rounded-2xl p-8 backdrop-blur-sm">
           <CascadeDiagram />
         </div>
-        <p className="text-center text-sm text-gray-500 dark:text-gray-500 mt-4 italic font-serif">
+        <p className="text-center text-sm text-gray-500 mt-4 italic font-serif">
           Figure 2: How the March 2026 West Asia crisis cascaded across Gujarat's structural pillars — each arrow represents a documented dependency failure
         </p>
       </motion.section>
 
-      <hr className="border-gray-300 dark:border-dark-border w-1/2 mx-auto" />
+      <hr className="border-gray-300 w-1/2 mx-auto" />
 
       {/* ═══════════════════ III-C. INTERACTIVE TOOLS ═══════════════════ */}
       <motion.section
@@ -388,16 +376,16 @@ export default function Home() {
         <div className="text-center mb-10">
           <div className="flex items-center gap-3 justify-center mb-4">
             <span className="text-crimson text-lg font-sans font-bold">III-C.</span>
-            <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white">Experience the Research</h2>
+            <h2 className="text-4xl font-serif font-bold text-gray-900">Experience the Research</h2>
           </div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Two interactive entry points — one lets you break the system, the other reminds you who pays when it breaks.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link
             to="/simulator"
-            className="group relative overflow-hidden rounded-2xl border border-crimson/40 bg-gradient-to-br from-crimson/10 via-white to-white dark:from-crimson/15 dark:via-dark-surface dark:to-dark-bg p-8 shadow-lg hover:shadow-2xl hover:border-crimson transition-all"
+            className="group relative overflow-hidden rounded-2xl border border-crimson/40 bg-gradient-to-br from-crimson/10 via-white to-white p-8 shadow-lg hover:shadow-2xl hover:border-crimson transition-all"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-crimson/10 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:bg-crimson/20 transition" />
             <div className="relative">
@@ -407,10 +395,10 @@ export default function Home() {
                 </div>
                 <span className="text-xs font-bold tracking-widest uppercase text-crimson">Interactive Simulation</span>
               </div>
-              <h3 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-3 group-hover:text-crimson transition-colors">
+              <h3 className="text-3xl font-serif font-bold text-gray-900 mb-3 group-hover:text-crimson transition-colors">
                 Break Simulator
               </h3>
-              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+              <p className="text-base text-gray-700 leading-relaxed mb-5">
                 Pull 8 levers — Russian crude, Chinese APIs, Versova cable, climate, labor pogroms — and watch Gujarat's
                 GDP, jobs, and 33 districts respond in real time. Four presets reproduce real 2018–2026 crisis cascades.
               </p>
@@ -422,20 +410,20 @@ export default function Home() {
 
           <Link
             to="/stories"
-            className="group relative overflow-hidden rounded-2xl border border-gray-300 dark:border-dark-border bg-gradient-to-br from-gray-100 via-white to-white dark:from-dark-surface dark:via-dark-surface dark:to-dark-bg p-8 shadow-lg hover:shadow-2xl hover:border-crimson/60 transition-all"
+            className="group relative overflow-hidden rounded-2xl border border-gray-300 bg-gradient-to-br from-gray-100 via-white to-white p-8 shadow-lg hover:shadow-2xl hover:border-crimson/60 transition-all"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gray-400/10 dark:bg-white/5 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:bg-crimson/10 transition" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gray-400/10 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:bg-crimson/10 transition" />
             <div className="relative">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-md">
+                <div className="p-3 rounded-xl bg-gray-900 text-white shadow-md">
                   <Users className="w-6 h-6" aria-hidden="true" />
                 </div>
-                <span className="text-xs font-bold tracking-widest uppercase text-gray-700 dark:text-gray-300">Named, Not Numbered</span>
+                <span className="text-xs font-bold tracking-widest uppercase text-gray-700">Named, Not Numbered</span>
               </div>
-              <h3 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-3 group-hover:text-crimson transition-colors">
+              <h3 className="text-3xl font-serif font-bold text-gray-900 mb-3 group-hover:text-crimson transition-colors">
                 Human Stories
               </h3>
-              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+              <p className="text-base text-gray-700 leading-relaxed mb-5">
                 27 named individuals behind the statistics — diamond polishers, silicosis-stricken tribal migrants,
                 Morbi bridge families, farmer suicides, Alang shipbreakers. Full narrative accounts, sourced from
                 mainstream journalism.
@@ -448,16 +436,16 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <hr className="border-gray-300 dark:border-dark-border w-1/2 mx-auto" />
+      <hr className="border-gray-300 w-1/2 mx-auto" />
 
       {/* ═══════════════════ IV. NINE PILLARS ═══════════════════ */}
       <section>
         <div className="text-center mb-16">
           <div className="flex items-center gap-3 justify-center mb-4">
             <span className="text-crimson text-lg font-sans font-bold">IV.</span>
-            <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white">Thirteen Pillars of Analysis</h2>
+            <h2 className="text-4xl font-serif font-bold text-gray-900">Thirteen Pillars of Analysis</h2>
           </div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Select a sector to explore the fully detailed research findings, quantitative dependencies, and bottlenecks.</p>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">Select a sector to explore the fully detailed research findings, quantitative dependencies, and bottlenecks.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -472,14 +460,14 @@ export default function Home() {
               style={{ perspective: 800 }}
             >
               <Link to={sector.path} className="group block h-full">
-                <div className="h-full flex items-stretch rounded-2xl border border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/60 backdrop-blur-sm shadow-sm hover:shadow-xl hover:border-crimson/30 dark:hover:border-crimson/30 transition-all duration-300 overflow-hidden">
+                <div className="h-full flex items-stretch rounded-2xl border border-gray-200 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-xl hover:border-crimson/30 transition-all duration-300 overflow-hidden">
                   {/* Left accent strip */}
                   <div className="w-1.5 shrink-0 bg-crimson/20 group-hover:bg-crimson transition-colors" />
 
                   {/* Content area */}
                   <div className="flex flex-1 items-center gap-5 p-5 min-w-0">
                     {/* Icon */}
-                    <div className="shrink-0 p-3 bg-gray-100 dark:bg-dark-bg rounded-xl">
+                    <div className="shrink-0 p-3 bg-gray-100 rounded-xl">
                       {sector.icon}
                     </div>
 
@@ -488,19 +476,19 @@ export default function Home() {
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-[11px] font-bold text-crimson/60 tracking-widest font-sans uppercase">Pillar {romanNumerals[index]}</span>
                       </div>
-                      <h3 className="text-lg font-serif font-bold text-gray-900 dark:text-white group-hover:text-crimson transition-colors leading-snug mb-1">{sector.title}</h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">{sector.desc}</p>
-                      <span className="inline-flex items-center gap-1 mt-2 px-2.5 py-0.5 rounded-full bg-gray-100 dark:bg-dark-bg text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-dark-border">
+                      <h3 className="text-lg font-serif font-bold text-gray-900 group-hover:text-crimson transition-colors leading-snug mb-1">{sector.title}</h3>
+                      <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">{sector.desc}</p>
+                      <span className="inline-flex items-center gap-1 mt-2 px-2.5 py-0.5 rounded-full bg-gray-100 text-[10px] font-semibold uppercase tracking-wider text-gray-500 border border-gray-200">
                         <FileText className="w-3 h-3" />
                         {sector.sources} sources
                       </span>
                     </div>
 
                     {/* Stat + Arrow */}
-                    <div className="shrink-0 text-right pl-4 border-l border-gray-200 dark:border-dark-border flex flex-col items-end justify-center gap-2">
+                    <div className="shrink-0 text-right pl-4 border-l border-gray-200 flex flex-col items-end justify-center gap-2">
                       <div>
-                        <div className="text-xl font-bold text-gray-900 dark:text-white leading-tight">{sector.stat}</div>
-                        <div className="text-[10px] text-gray-500 dark:text-gray-500 uppercase tracking-wider max-w-[110px] text-right leading-tight mt-0.5">{sector.statLabel}</div>
+                        <div className="text-xl font-bold text-gray-900 leading-tight">{sector.stat}</div>
+                        <div className="text-[10px] text-gray-500 uppercase tracking-wider max-w-[110px] text-right leading-tight mt-0.5">{sector.statLabel}</div>
                       </div>
                       <div className="flex items-center text-xs text-crimson font-semibold">
                         Read <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -514,7 +502,7 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="border-gray-300 dark:border-dark-border w-1/2 mx-auto" />
+      <hr className="border-gray-300 w-1/2 mx-auto" />
 
       {/* ═══════════════════ V. FINDINGS TABLE ═══════════════════ */}
       <motion.section
@@ -526,9 +514,9 @@ export default function Home() {
       >
         <div className="flex items-center gap-3 mb-10 justify-center">
           <span className="text-crimson text-lg font-sans font-bold">V.</span>
-          <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">Critical Findings at a Glance</h2>
+          <h2 className="text-3xl font-serif font-bold text-gray-900">Critical Findings at a Glance</h2>
         </div>
-        <div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-dark-border bg-white/60 dark:bg-dark-surface/40 backdrop-blur-sm">
+        <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white/60 backdrop-blur-sm">
           <table className="w-full border-collapse">
             <thead>
               <tr className="border-b-2 border-crimson">
@@ -543,14 +531,14 @@ export default function Home() {
                 <Fragment key={i}>
                   <tr
                     onClick={() => toggleRow(i)}
-                    className="border-b border-gray-200 dark:border-dark-border hover:bg-white/80 dark:hover:bg-dark-surface/60 transition-colors cursor-pointer select-none"
+                    className="border-b border-gray-200 hover:bg-white/80 transition-colors cursor-pointer select-none"
                   >
-                    <td className="py-4 px-6 text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider align-top">{f.pillar}</td>
-                    <td className="py-4 px-6 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{f.finding}</td>
+                    <td className="py-4 px-6 text-sm font-bold text-gray-500 uppercase tracking-wider align-top">{f.pillar}</td>
+                    <td className="py-4 px-6 text-sm text-gray-700 leading-relaxed">{f.finding}</td>
                     <td className="py-4 px-6 text-sm font-bold text-crimson whitespace-nowrap align-top">{f.metric}</td>
                     <td className="py-4 px-3 align-top">
                       <motion.div animate={{ rotate: expandedRows[i] ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronDown className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                        <ChevronDown className="w-4 h-4 text-gray-400" />
                       </motion.div>
                     </td>
                   </tr>
@@ -565,8 +553,8 @@ export default function Home() {
                             transition={{ duration: 0.25, ease: 'easeInOut' }}
                             className="overflow-hidden"
                           >
-                            <div className="px-6 py-4 bg-gray-50/80 dark:bg-dark-bg/60 border-b border-gray-200 dark:border-dark-border">
-                              <p className="text-[11px] uppercase tracking-widest text-gray-400 dark:text-gray-500 font-semibold mb-3">Key Sources</p>
+                            <div className="px-6 py-4 bg-gray-50/80 border-b border-gray-200">
+                              <p className="text-[11px] uppercase tracking-widest text-gray-400 font-semibold mb-3">Key Sources</p>
                               <div className="space-y-2">
                                 {f.citations.map((c, j) => (
                                   <a
@@ -575,7 +563,7 @@ export default function Home() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     onClick={(e) => e.stopPropagation()}
-                                    className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-crimson dark:hover:text-crimson transition-colors group"
+                                    className="flex items-start gap-2 text-sm text-gray-600 hover:text-crimson transition-colors group"
                                   >
                                     <span className="text-crimson font-bold shrink-0">[{j + 1}]</span>
                                     <span className="group-hover:underline">{c.text}</span>
@@ -597,22 +585,22 @@ export default function Home() {
       </motion.section>
 
       {/* Additional Explorations Section */}
-      <section className="py-24 border-t border-gray-200 dark:border-dark-border">
+      <section className="py-24 border-t border-gray-200">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-6">Explore the <span className="italic text-crimson">Database</span></h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">Explore the <span className="italic text-crimson">Database</span></h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
               Dive deeper into the critical findings through specialized geographic mapping and chronological analysis of state-level events.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <Link to="/map" className="group p-10 rounded-3xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface hover:border-crimson dark:hover:border-crimson transition-colors">
-              <div className="w-16 h-16 rounded-2xl bg-red-50 dark:bg-crimson/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <Link to="/map" className="group p-10 rounded-3xl border border-gray-200 bg-white hover:border-crimson transition-colors">
+              <div className="w-16 h-16 rounded-2xl bg-red-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <MapPin className="w-8 h-8 text-crimson" />
               </div>
-              <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4">Geographic District Database</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              <h3 className="text-2xl font-serif font-bold text-gray-900 mb-4">Geographic District Database</h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
                 Interactive mapping of Gujarat's 33 districts. Explore localized vulnerability metrics, specific structural dependencies, and records of industrial incidents across the state.
               </p>
               <span className="flex items-center text-crimson font-bold uppercase tracking-widest text-sm mt-auto">
@@ -620,12 +608,12 @@ export default function Home() {
               </span>
             </Link>
 
-            <Link to="/timeline" className="group p-10 rounded-3xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface hover:border-crimson dark:hover:border-crimson transition-colors">
-              <div className="w-16 h-16 rounded-2xl bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <Link to="/timeline" className="group p-10 rounded-3xl border border-gray-200 bg-white hover:border-crimson transition-colors">
+              <div className="w-16 h-16 rounded-2xl bg-orange-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <AlertTriangle className="w-8 h-8 text-orange-600" />
               </div>
-              <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4">The Compounding Crisis Timeline</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              <h3 className="text-2xl font-serif font-bold text-gray-900 mb-4">The Compounding Crisis Timeline</h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
                 A chronological mapping of systemic vulnerabilities, demonstrating the cascade of failures from the 2016 demonetization shocks through the 2026 twin-crisis.
               </p>
               <span className="flex items-center text-orange-600 font-bold uppercase tracking-widest text-sm mt-auto">
@@ -644,14 +632,14 @@ export default function Home() {
         transition={{ duration: 0.6 }}
         className="text-center max-w-3xl mx-auto"
       >
-        <div className="p-8 rounded-3xl bg-gray-100/60 dark:bg-dark-surface/40 border border-gray-200 dark:border-dark-border">
+        <div className="p-8 rounded-3xl bg-gray-100/60 border border-gray-200">
           <ExternalLink className="w-6 h-6 text-crimson mx-auto mb-4" />
           <div className="flex items-center gap-3 justify-center mb-3">
             <span className="text-crimson text-lg font-sans font-bold">VI.</span>
-            <h3 className="text-xl font-serif font-bold text-gray-900 dark:text-white">Methodology & Sources</h3>
+            <h3 className="text-xl font-serif font-bold text-gray-900">Methodology & Sources</h3>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-            Every data point in this analysis is backed by verifiable sources — government reports (NITI Aayog, CEA, Finance Commission), news organizations (Business Standard, The Print, Economic Times), and academic research. Each pillar page includes a full <strong className="text-gray-900 dark:text-white">Sources & References</strong> section with 10-14 cited URLs.
+          <p className="text-gray-600 leading-relaxed">
+            Every data point in this analysis is backed by verifiable sources — government reports (NITI Aayog, CEA, Finance Commission), news organizations (Business Standard, The Print, Economic Times), and academic research. Each pillar page includes a full <strong className="text-gray-900">Sources & References</strong> section with 10-14 cited URLs.
           </p>
         </div>
       </motion.section>
@@ -665,13 +653,13 @@ export default function Home() {
         className="max-w-2xl mx-auto"
         aria-labelledby="from-the-author-heading"
       >
-        <div className="p-6 md:p-8 rounded-2xl bg-parchment-100/70 dark:bg-dark-surface/30 border-l-4 border-crimson border-y border-r border-y-parchment-200 border-r-parchment-200 dark:border-y-dark-border dark:border-r-dark-border shadow-sm">
+        <div className="p-6 md:p-8 rounded-2xl bg-parchment-100/70 border-l-4 border-crimson border-y border-r border-y-parchment-200 border-r-parchment-200 shadow-sm">
           <div className="flex items-baseline gap-2 mb-3">
             <span className="text-crimson text-xs font-sans font-bold tracking-widest uppercase">VII · From the Author</span>
-            <span className="text-xs text-gray-500 dark:text-gray-500 italic">— not research, just experience</span>
+            <span className="text-xs text-gray-500 italic">— not research, just experience</span>
           </div>
           <h3 id="from-the-author-heading" className="sr-only">From the Author</h3>
-          <div className="font-serif text-gray-700 dark:text-gray-300 leading-relaxed space-y-3 text-sm md:text-base italic">
+          <div className="font-serif text-gray-700 leading-relaxed space-y-3 text-sm md:text-base italic">
             <p>
               The thirteen pillars above are sourced. This box is not. This is the part the
               footnotes cannot hold.
@@ -682,11 +670,11 @@ export default function Home() {
               the next person who arrives and feels gaslit by the internet's version of Gujarat
               has somewhere to land.
             </p>
-            <p className="not-italic font-semibold text-gray-900 dark:text-white">
+            <p className="not-italic font-semibold text-gray-900">
               You are not alone. People may change — slowly, over time. Build your own state so
               the next generation does not have to walk into this room at all.
             </p>
-            <p className="not-italic text-gray-700 dark:text-gray-300">
+            <p className="not-italic text-gray-700">
               If this is also your story, raise your voice. Tweet what actually happened to you
               with{' '}
               <span className="font-mono font-semibold text-crimson not-italic">

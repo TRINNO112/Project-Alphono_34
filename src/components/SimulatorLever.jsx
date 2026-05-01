@@ -25,16 +25,16 @@ const GROUP_BADGE = {
 }
 
 function severityBorder(severity, active) {
-  if (!active) return 'border-gray-200 dark:border-dark-border bg-white dark:bg-dark-surface'
+  if (!active) return 'border-gray-200 bg-white'
   switch (severity) {
     case 'high':
-      return 'border-crimson/70 bg-crimson/5 dark:bg-crimson/10'
+      return 'border-crimson/70 bg-crimson/5'
     case 'medium':
-      return 'border-crimson/40 bg-crimson/5 dark:bg-crimson/10'
+      return 'border-crimson/40 bg-crimson/5'
     case 'critical':
-      return 'border-crimson/60 bg-crimson/5 dark:bg-crimson/10'
+      return 'border-crimson/60 bg-crimson/5'
     default:
-      return 'border-crimson/60 bg-crimson/5 dark:bg-crimson/10'
+      return 'border-crimson/60 bg-crimson/5'
   }
 }
 
@@ -89,7 +89,7 @@ function SimulatorLeverBase({
       {showBadge && (
         <span
           aria-hidden="true"
-          className="absolute top-2 left-2 text-[9px] font-mono font-bold tracking-wider px-1.5 py-0.5 rounded bg-gray-100 dark:bg-dark-border text-gray-500 dark:text-gray-400"
+          className="absolute top-2 left-2 text-[9px] font-mono font-bold tracking-wider px-1.5 py-0.5 rounded bg-gray-100 text-gray-500"
         >
           {GROUP_BADGE[group]}
         </span>
@@ -99,12 +99,12 @@ function SimulatorLeverBase({
         <div className="flex-1 min-w-0">
           <label
             htmlFor={id}
-            className="block font-serif text-base font-semibold text-gray-900 dark:text-white leading-tight"
+            className="block font-serif text-base font-semibold text-gray-900 leading-tight"
           >
             {label}
           </label>
           {description && (
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed">
+            <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
               {description}
             </p>
           )}
@@ -119,7 +119,7 @@ function SimulatorLeverBase({
             aria-label={`${label}: ${value ? 'active' : 'off'}`}
             onClick={() => onChange(!value)}
             className={`shrink-0 relative w-11 h-6 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 ${
-              value ? 'bg-crimson' : 'bg-gray-300 dark:bg-dark-border'
+              value ? 'bg-crimson' : 'bg-gray-300'
             }`}
           >
             <span
@@ -131,7 +131,7 @@ function SimulatorLeverBase({
           </button>
         ) : (
           <span
-            className="shrink-0 font-mono text-sm font-bold tabular-nums text-crimson bg-red-50 dark:bg-red-900/20 px-2 py-0.5 rounded"
+            className="shrink-0 font-mono text-sm font-bold tabular-nums text-crimson bg-red-50 px-2 py-0.5 rounded"
             aria-hidden="true"
           >
             {value}
@@ -152,12 +152,12 @@ function SimulatorLeverBase({
             onChange={(e) => onChange(Number(e.target.value))}
             aria-valuetext={`${value}${valueUnit}`}
             aria-label={label}
-            className="w-full h-2 appearance-none rounded-full bg-gray-200 dark:bg-dark-border cursor-pointer focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 simulator-range"
+            className="w-full h-2 appearance-none rounded-full bg-gray-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 simulator-range"
             style={{
               backgroundImage: `linear-gradient(to right, var(--color-crimson) 0%, var(--color-crimson) ${percent}%, transparent ${percent}%, transparent 100%)`,
             }}
           />
-          <div className="flex justify-between text-[10px] font-mono text-gray-400 dark:text-gray-500 mt-1 tracking-wider">
+          <div className="flex justify-between text-[10px] font-mono text-gray-400 mt-1 tracking-wider">
             <span>
               {min}
               {valueUnit}
@@ -180,7 +180,7 @@ function SimulatorLeverBase({
               onMouseLeave={() => onPillarHover && onPillarHover(null)}
               onFocus={() => onPillarHover && onPillarHover(p.pillarId)}
               onBlur={() => onPillarHover && onPillarHover(null)}
-              className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-dashed border-gray-300 dark:border-dark-border bg-parchment-50 dark:bg-dark-surface text-gray-600 dark:text-gray-400 hover:border-crimson hover:text-crimson focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 transition-colors"
+              className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-dashed border-gray-300 bg-parchment-50 text-gray-600 hover:border-crimson hover:text-crimson focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-2 transition-colors"
             >
               {PILLAR_SHORT[p.pillarId] || p.pillarId} {Math.round(p.percent)}%
             </button>
@@ -201,7 +201,7 @@ function SimulatorLeverBase({
           </a>
         )}
         {timeToFailure && (
-          <span className="inline-flex items-center gap-1 text-[10px] font-mono text-gray-500 dark:text-gray-400 px-1.5 py-0.5 rounded bg-gray-100 dark:bg-dark-border">
+          <span className="inline-flex items-center gap-1 text-[10px] font-mono text-gray-500 px-1.5 py-0.5 rounded bg-gray-100">
             <Clock className="w-3 h-3" aria-hidden="true" />
             {timeToFailure}
           </span>
