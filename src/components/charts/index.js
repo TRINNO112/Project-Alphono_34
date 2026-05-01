@@ -1,0 +1,8 @@
+export { LollipopChart } from './LollipopChart'
+export { SlopeChart } from './SlopeChart'
+export { StackedProgress } from './StackedProgress'
+export { Treemap } from './Treemap'
+export { Waffle, WaffleGrid } from './Waffle'
+export { DotPlot } from './DotPlot'
+export { HorizontalRankedBars } from './HorizontalRankedBars'
+export { ThresholdGauge } from './ThresholdGauge'
