@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 
 export default function SEO({ title, description, path = '', keywords }) {
   const siteName = "Project Alphono 34 — Anatomy of a Dependent State";
-  const baseUrl = "https://alphono34.netlify.app";
+  const baseUrl = "https://alphono-34.netlify.app";
   const url = `${baseUrl}${path}`;
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
   const metaDesc = description || "Anatomy of a Dependent State — a thirteen-pillar critical investigation into Gujarat's structural vulnerabilities, migrant worker discrimination, linguistic exclusion of Hindi speakers, and the gap between the published image of the state and the experience of non-Gujaratis who live in it.";

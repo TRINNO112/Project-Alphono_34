@@ -3,7 +3,7 @@
 
   <!-- Home -->
   <url>
-    <loc>https://alphono34.netlify.app/</loc>
+    <loc>https://alphono-34.netlify.app/</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
   <!-- Author's Note (high-priority personal record) -->
   <url>
-    <loc>https://alphono34.netlify.app/authors-note</loc>
+    <loc>https://alphono-34.netlify.app/authors-note</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
@@ -19,79 +19,79 @@
 
   <!-- 13 Pillars -->
   <url>
-    <loc>https://alphono34.netlify.app/migrant-discrimination</loc>
+    <loc>https://alphono-34.netlify.app/migrant-discrimination</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/infrastructure</loc>
+    <loc>https://alphono-34.netlify.app/infrastructure</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/energy</loc>
+    <loc>https://alphono-34.netlify.app/energy</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/water</loc>
+    <loc>https://alphono-34.netlify.app/water</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/labor</loc>
+    <loc>https://alphono-34.netlify.app/labor</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/economics</loc>
+    <loc>https://alphono-34.netlify.app/economics</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/materials</loc>
+    <loc>https://alphono-34.netlify.app/materials</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/education</loc>
+    <loc>https://alphono-34.netlify.app/education</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/environment</loc>
+    <loc>https://alphono-34.netlify.app/environment</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/agriculture</loc>
+    <loc>https://alphono-34.netlify.app/agriculture</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/greentech</loc>
+    <loc>https://alphono-34.netlify.app/greentech</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/chemical-governance</loc>
+    <loc>https://alphono-34.netlify.app/chemical-governance</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/digital-sovereignty</loc>
+    <loc>https://alphono-34.netlify.app/digital-sovereignty</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -99,37 +99,37 @@
 
   <!-- Navigation / aggregate pages -->
   <url>
-    <loc>https://alphono34.netlify.app/summary</loc>
+    <loc>https://alphono-34.netlify.app/summary</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/timeline</loc>
+    <loc>https://alphono-34.netlify.app/timeline</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/map</loc>
+    <loc>https://alphono-34.netlify.app/map</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/methodology</loc>
+    <loc>https://alphono-34.netlify.app/methodology</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/sources</loc>
+    <loc>https://alphono-34.netlify.app/sources</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/source-graph</loc>
+    <loc>https://alphono-34.netlify.app/source-graph</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -137,25 +137,25 @@
 
   <!-- Interactive pages -->
   <url>
-    <loc>https://alphono34.netlify.app/simulator</loc>
+    <loc>https://alphono-34.netlify.app/simulator</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/stories</loc>
+    <loc>https://alphono-34.netlify.app/stories</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/brief</loc>
+    <loc>https://alphono-34.netlify.app/brief</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/global-trade</loc>
+    <loc>https://alphono-34.netlify.app/global-trade</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -163,43 +163,43 @@
 
   <!-- Deep district pages (the 7 with full analysis) -->
   <url>
-    <loc>https://alphono34.netlify.app/district/morbi</loc>
+    <loc>https://alphono-34.netlify.app/district/morbi</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/district/surat</loc>
+    <loc>https://alphono-34.netlify.app/district/surat</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/district/ahmedabad</loc>
+    <loc>https://alphono-34.netlify.app/district/ahmedabad</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/district/kutch</loc>
+    <loc>https://alphono-34.netlify.app/district/kutch</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/district/jamnagar</loc>
+    <loc>https://alphono-34.netlify.app/district/jamnagar</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/district/mehsana</loc>
+    <loc>https://alphono-34.netlify.app/district/mehsana</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alphono34.netlify.app/district/bharuch</loc>
+    <loc>https://alphono-34.netlify.app/district/bharuch</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -5,4 +5,4 @@ Allow: /
 Disallow: /404
 
 # Sitemap
-Sitemap: https://alphono34.netlify.app/sitemap.xml
+Sitemap: https://alphono-34.netlify.app/sitemap.xml
