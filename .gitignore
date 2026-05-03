@@ -33,3 +33,9 @@ free-claude-code
 # Plan files (context management)
 *_plan.md
 *_plan*.md
+
+# AI Tools & Temporary Files
+.gemini/
+GEMINI.md
+.claudesignore
+design.text

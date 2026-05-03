@@ -3,7 +3,6 @@ export const CHART_COLORS = {
   dangerStrong: '#991B1B',
   warning: '#F59E0B',
   safe: '#16A34A',
-  neutral: '#6B7280',
   accent: '#D32F2F',
   accentLight: '#FFEBEE',
   accentSoft: '#EF5350',

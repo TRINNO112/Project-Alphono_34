@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import { Ship, AlertTriangle, Hammer, CheckCircle, Wifi, Train, Plane } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { SlopeChart } from '../components/charts/SlopeChart'
+import { Treemap } from '../components/charts/Treemap'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
 import ScrollSpy from '../components/ScrollSpy'
@@ -95,17 +98,19 @@ export default function Infrastructure() {
             </DataCard>
           </div>
 
-          <PillarChart
-            type="bar"
-            data={[
-              { name: 'FY21', value: 130 },
-              { name: 'FY22', value: 148 },
-              { name: 'FY23', value: 160 },
-              { name: 'FY24', value: 178 },
-              { name: 'FY25', value: 200 },
+          <SlopeChart
+            start={{ label: 'FY21', value: 130 }}
+            end={{ label: 'FY25', value: 200 }}
+            midpoints={[
+              { label: 'FY22', value: 148 },
+              { label: 'FY23', value: 160 },
+              { label: 'FY24', value: 178 },
             ]}
-            title="Mundra Port Cargo Volume (MMT)"
+            unit=" MMT"
+            accentColor="#D32F2F"
+            title="Mundra Port Cargo Volume Growth"
             caption="Source: APSEZ Annual Reports, Marine Insight"
+            height={280}
           />
         </Section>
 
@@ -247,19 +252,19 @@ export default function Infrastructure() {
           <StatBox value="49" label="Total Ports (1 Major + 48 Minor)" color="green" />
         </div>
 
-        <PillarChart
-          type="bar"
+        <Treemap
           data={[
-            { name: 'Mundra', value: 200 },
-            { name: 'Kandla (DPA)', value: 160 },
-            { name: 'Hazira', value: 52 },
-            { name: 'Dahej', value: 45 },
-            { name: 'Pipavav', value: 38 },
-            { name: 'Others (43 ports)', value: 121.27 },
+            { name: 'Mundra', value: 200, color: '#D32F2F' },
+            { name: 'Kandla (DPA)', value: 160, color: '#2563EB' },
+            { name: 'Hazira', value: 52, color: '#16A34A' },
+            { name: 'Dahej', value: 45, color: '#CA8A04' },
+            { name: 'Pipavav', value: 38, color: '#9333EA' },
+            { name: 'Others (43 ports)', value: 121.27, color: '#6B7280' },
           ]}
-          title="Gujarat Port Cargo Distribution FY25 (MMT)"
+          unit=" MMT"
+          title="Gujarat Port Cargo Distribution FY25"
           caption="Top 2 ports handle 57% of the state's total cargo"
-          colors={['#D32F2F', '#2563EB', '#16A34A', '#CA8A04', '#9333EA', '#6B7280']}
+          height={320}
         />
 
         <DataCard title="The Pass-Through Paradox">

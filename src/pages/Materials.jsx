@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Factory, AlertTriangle, Fuel, Pill, Mountain, CheckCircle, Battery } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { SlopeChart } from '../components/charts/SlopeChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -109,22 +111,23 @@ export default function Materials() {
             ]}
             title="India's Crude Oil Sourcing FY26 (Updated %)"
             caption="Russia overtook Middle East as #1 supplier at 36% — up from 2% in 2021"
+            colors={['#991B1B', '#0891B2', '#10B981', '#F59E0B', '#3B82F6', '#6B7280']}
           />
 
           {/* Time-Series: Russia Crude Dependency Growth */}
-          <PillarChart
-            type="bar"
-            data={[
-              { name: 'FY21', value: 2 },
-              { name: 'FY22', value: 3 },
-              { name: 'FY23', value: 22 },
-              { name: 'FY24', value: 31 },
-              { name: 'FY25', value: 34 },
-              { name: 'FY26', value: 36 },
+          <SlopeChart
+            start={{ label: 'FY21', value: 2 }}
+            end={{ label: 'FY26', value: 36 }}
+            midpoints={[
+              { label: 'FY22', value: 3 },
+              { label: 'FY23', value: 22 },
+              { label: 'FY24', value: 31 },
+              { label: 'FY25', value: 34 },
             ]}
-            title="Russia's Share of India's Crude Imports (%) — Post-Ukraine Surge"
+            unit="%"
+            accentColor="#991B1B"
+            title="Russia's Share of India's Crude Imports — Post-Ukraine Surge"
             caption="From 2% to 36% in four years. Gujarat's Jamnagar and Nayara refineries are primary processors of Russian crude. Source: Bloomberg / Vortexa"
-            colors={['#9CA3AF', '#9CA3AF', '#F59E0B', '#EF4444', '#DC2626', '#991B1B']}
             height={280}
           />
         </Section>
@@ -160,17 +163,20 @@ export default function Materials() {
             </DataCard>
           </div>
 
-          <PillarChart
-            type="bar"
+          <LollipopChart
             data={[
+              { name: 'Streptomycin', value: 100, highlight: true },
+              { name: 'Vitamin B12', value: 98.1, highlight: true },
+              { name: 'Penicillin', value: 95.8, highlight: true },
               { name: 'Paracetamol', value: 91 },
-              { name: 'Penicillin', value: 95.8 },
-              { name: 'Streptomycin', value: 100 },
-              { name: 'Vitamin B12', value: 98.1 },
             ]}
-            title="Critical Drug API Dependency on China (%)"
+            valueSuffix="%"
+            accentColor="#3B82F6"
+            highlightColor="#9A0007"
+            thresholdLine={{ value: 50, label: 'Self-reliance threshold', color: '#16A34A' }}
+            title="Critical Drug API Dependency on China"
             caption="India's pharmaceutical sector is near-completely dependent on Chinese APIs for essential drugs"
-            colors={['#D32F2F', '#D32F2F', '#9A0007', '#D32F2F']}
+            sortDescending={true}
           />
 
           {/* Time-Series: API Import Value Growth */}

@@ -3,6 +3,8 @@ import { FlaskConical, Skull, Scale, Waves, AlertTriangle, Droplets } from 'luci
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import ScrollSpy from '../components/ScrollSpy'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { SlopeChart } from '../components/charts/SlopeChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -165,20 +167,20 @@ export default function ChemicalGovernance() {
         <Section icon={<FlaskConical className="w-8 h-8 text-orange-600" />} title="Common Effluent Treatment Plant (CETP) Failures">
 
           {/* CETP Performance Chart */}
-          <PillarChart
-            type="bar"
+          <LollipopChart
             title="CETP Performance: Inlet vs Outlet Toxicity (Indicative Scale)"
             caption="Figure 2: In certain documented cases, the 'treated' outlet effluent proved MORE toxic than raw waste influent — due to cross-contamination and bacterial death within malfunctioning tanks. Source: NGT / Down To Earth"
             data={[
               { name: 'Vapi (Inlet)', value: 85 },
               { name: 'Vapi (Outlet)', value: 72 },
               { name: 'Ankleshwar (In)', value: 90 },
-              { name: 'Ankleshwar (Out)', value: 88 },
+              { name: 'Ankleshwar (Out)', value: 88, highlight: true },
               { name: 'Bharuch (Inlet)', value: 78 },
-              { name: 'Bharuch (Outlet)', value: 82 },
-              { name: 'Safe Threshold', value: 20 },
+              { name: 'Bharuch (Outlet)', value: 82, highlight: true },
             ]}
-            colors={['#F59E0B', '#DC2626', '#F59E0B', '#991B1B', '#F59E0B', '#B91C1C', '#16A34A']}
+            thresholdLine={{ value: 20, label: 'Safe Threshold', color: '#16A34A' }}
+            accentColor="#F59E0B"
+            highlightColor="#991B1B"
             height={340}
           />
 
@@ -261,19 +263,19 @@ export default function ChemicalGovernance() {
         <Section icon={<Scale className="w-8 h-8 text-purple-600" />} title="Judicial Interventions & Regulatory Capture">
 
           {/* NGT Fines Over Time */}
-          <PillarChart
-            type="bar"
+          <SlopeChart
             title="NGT Environmental Compensation Fines — Gujarat Chemical Clusters (₹ Crores)"
             caption="Figure 4: Escalating NGT fines reflect deepening non-compliance. Despite hundreds of crores in penalties, the fundamental violations persist. Source: NGT Official Records"
-            data={[
-              { name: '2014-16', value: 25 },
-              { name: '2017-18', value: 45 },
-              { name: '2019-20', value: 65 },
-              { name: '2021', value: 100 },
-              { name: '2022-23', value: 80 },
-              { name: '2024-25', value: 120 },
+            start={{ label: '2014-16', value: 25 }}
+            end={{ label: '2024-25', value: 120 }}
+            midpoints={[
+              { label: '2017-18', value: 45 },
+              { label: '2019-20', value: 65 },
+              { label: '2021', value: 100 },
+              { label: '2022-23', value: 80 },
             ]}
-            colors={['#8B5CF6', '#7C3AED', '#6D28D9', '#5B21B6', '#4C1D95', '#DC2626']}
+            unit=" Cr"
+            accentColor="#7C3AED"
             height={300}
           />
 
