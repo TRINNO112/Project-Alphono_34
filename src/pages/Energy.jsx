@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Zap, AlertTriangle, Flame, Wind, CheckCircle, Atom } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
 import ScrollSpy from '../components/ScrollSpy'
@@ -147,6 +148,7 @@ export default function Energy() {
             ]}
             title="India's LNG Import Sources (Estimated %)"
             caption="69% of LNG transits the Strait of Hormuz (Qatar + UAE + Oman)"
+            colors={['#DC2626', '#F97316', '#F59E0B', '#3B82F6', '#8B5CF6', '#10B981', '#6B7280']}
           />
         </Section>
 
@@ -162,16 +164,18 @@ export default function Energy() {
             <StatBox value="58%" label="Coal Share in GUVNL" color="crimson" />
           </div>
 
-          <PillarChart
-            type="bar"
+          <LollipopChart
             data={[
-              { name: 'Imported Coal', value: 8620 },
+              { name: 'Imported Coal', value: 8620, highlight: true },
               { name: 'RE Installed', value: 42583 },
-              { name: 'RE Actual Gen (equiv MW)', value: 9400 },
+              { name: 'RE Actual Gen', value: 9400 },
             ]}
-            title="Capacity vs Reality: Energy Mix (MW)"
+            valueSuffix=" MW"
+            accentColor="#16A34A"
+            highlightColor="#D32F2F"
+            title="Capacity vs Reality: Energy Mix"
             caption="Installed RE capacity dramatically overstates actual generation contribution"
-            colors={['#D32F2F', '#16A34A', '#CA8A04']}
+            sortDescending={true}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

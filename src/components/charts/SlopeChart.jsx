@@ -1,5 +1,5 @@
-import { memo, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { memo, useMemo, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Figure } from './_shared/Figure'
 import { CHART_COLORS, CHART_TYPOGRAPHY } from './_shared/tokens'
 import { buildSlopeSummary } from './_shared/srSummary'
@@ -14,6 +14,8 @@ function SlopeChartInner({
   caption,
   height = 260,
 }) {
+  const [hoveredPoint, setHoveredPoint] = useState(null)
+
   const allPoints = useMemo(() => [start, ...midpoints, end], [start, end, midpoints])
   const values = allPoints.map((p) => p.value)
   const min = Math.min(...values)
@@ -30,7 +32,7 @@ function SlopeChartInner({
   const W = 600
   const H = height
   const padX = 80
-  const padY = 60
+  const padY = 70
   const innerW = W - padX * 2
   const innerH = H - padY * 2
 
@@ -47,6 +49,10 @@ function SlopeChartInner({
   const isUp = change >= 0
 
   const ariaSummary = buildSlopeSummary(start, end, unit)
+
+  // Determine value text color based on accent color brightness
+  const isDarkAccent = ['#DC2626', '#991B1B', '#7F1D1D', '#B91C1C', '#9A0007'].includes(accentColor)
+  const valueColor = isDarkAccent ? '#1F2937' : accentColor
 
   return (
     <Figure title={title} caption={caption} ariaLabel={`Slope chart: ${title || ''}. ${ariaSummary}`} srSummary={ariaSummary}>
@@ -81,43 +87,46 @@ function SlopeChartInner({
             />
           ))}
 
-          {/* Endpoint dots */}
+          {/* Endpoint dots with hover */}
           {[points[0], points[points.length - 1]].map((p, i) => (
             <motion.g key={i}>
               <motion.circle
                 cx={p.x}
                 cy={p.y}
-                r={9}
+                r={hoveredPoint === i ? 11 : 9}
                 fill={accentColor}
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i === 0 ? 0.2 : 1.1, ease: 'backOut' }}
+                onMouseEnter={() => setHoveredPoint(i)}
+                onMouseLeave={() => setHoveredPoint(null)}
+                style={{ cursor: 'pointer' }}
               />
               <motion.circle
                 cx={p.x}
                 cy={p.y}
-                r={9}
+                r={hoveredPoint === i ? 11 : 9}
                 fill="none"
                 stroke={accentColor}
                 strokeOpacity={0.25}
                 strokeWidth={6}
                 initial={{ scale: 0.5, opacity: 0 }}
-                whileInView={{ scale: 1.4, opacity: 1 }}
+                whileInView={{ scale: hoveredPoint === i ? 1.6 : 1.4, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i === 0 ? 0.3 : 1.2 }}
               />
             </motion.g>
           ))}
 
-          {/* Endpoint labels */}
+          {/* Endpoint labels - increased spacing */}
           {[points[0], points[points.length - 1]].map((p, i) => {
             const isStart = i === 0
             return (
               <g key={i}>
                 <text
                   x={p.x}
-                  y={isStart ? padY - 28 : padY - 28}
+                  y={isStart ? padY - 38 : padY - 38}
                   textAnchor="middle"
                   fontSize={11}
                   fontWeight={700}
@@ -130,11 +139,11 @@ function SlopeChartInner({
                 </text>
                 <text
                   x={p.x}
-                  y={padY - 10}
+                  y={padY - 14}
                   textAnchor="middle"
                   fontSize={28}
                   fontWeight={800}
-                  fill={accentColor}
+                  fill={valueColor}
                   fontFamily={CHART_TYPOGRAPHY.fontFamily}
                 >
                   {p.value}{unit}
@@ -172,6 +181,44 @@ function SlopeChartInner({
               {changeText}{unit} {isUp ? '↑' : '↓'}
             </text>
           </motion.g>
+
+          {/* Hover tooltip */}
+          <AnimatePresence>
+            {hoveredPoint !== null && (
+              <motion.g
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
+              >
+                <rect
+                  x={points[hoveredPoint].x - 60}
+                  y={points[hoveredPoint].y - 45}
+                  width={120}
+                  height={32}
+                  rx={6}
+                  fill="#1F2937"
+                  opacity={0.95}
+                />
+                <text
+                  x={points[hoveredPoint].x}
+                  y={points[hoveredPoint].y - 26}
+                  textAnchor="middle"
+                  fontSize={12}
+                  fontWeight={600}
+                  fill="#FFFFFF"
+                  fontFamily={CHART_TYPOGRAPHY.fontFamily}
+                >
+                  {points[hoveredPoint].label}: {points[hoveredPoint].value}{unit}
+                </text>
+                <polygon
+                  points={`${points[hoveredPoint].x - 6},${points[hoveredPoint].y - 13} ${points[hoveredPoint].x + 6},${points[hoveredPoint].y - 13} ${points[hoveredPoint].x},${points[hoveredPoint].y - 7}`}
+                  fill="#1F2937"
+                  opacity={0.95}
+                />
+              </motion.g>
+            )}
+          </AnimatePresence>
         </svg>
       </div>
     </Figure>

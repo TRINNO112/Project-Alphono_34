@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Factory, AlertTriangle, Wind, Droplets } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { SlopeChart } from '../components/charts/SlopeChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -71,20 +73,22 @@ export default function Environment() {
           </div>
 
           {/* Chart: CEPI Scores for Gujarat Industrial Clusters */}
-          <PillarChart
-            type="bar"
+          <LollipopChart
             title="CEPI Scores: Gujarat's Critically Polluted Industrial Clusters"
             caption="Figure 1: Six Gujarat industrial areas score above the CPCB critical threshold of 70. Vapi peaked at 90.75 — the highest in all of India. Source: CPCB/CAG"
             data={[
-              { name: 'Vapi', value: 90.75 },
-              { name: 'Ankleshwar', value: 88.50 },
+              { name: 'Vapi', value: 90.75, highlight: true },
+              { name: 'Ankleshwar', value: 88.50, highlight: true },
               { name: 'Ahmedabad', value: 75.28 },
               { name: 'Vatva', value: 74.77 },
               { name: 'Bhavnagar', value: 70.99 },
               { name: 'Junagadh', value: 70.82 },
             ]}
-            colors={['#991B1B', '#B91C1C', '#DC2626', '#EF4444', '#F87171', '#FCA5A5']}
-            height={320}
+            valueSuffix=""
+            accentColor="#DC2626"
+            highlightColor="#991B1B"
+            thresholdLine={{ value: 70, label: 'CPCB Critical Threshold', color: '#F59E0B' }}
+            sortDescending={true}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -126,18 +130,18 @@ export default function Environment() {
           </div>
 
           {/* Chart: Morbi SO2 Emissions Growth */}
-          <PillarChart
-            type="bar"
-            title="Morbi SO2 Emissions Detected by NASA OMI (kt/year)"
-            caption="Figure 3: NASA satellite data shows Morbi's SO2 emissions tripled from ~100 kt/year to ~300 kt/year between 2009-2016. Source: NASA Aura"
-            data={[
-              { name: '2009', value: 100 },
-              { name: '2011', value: 150 },
-              { name: '2013', value: 220 },
-              { name: '2015', value: 270 },
-              { name: '2016', value: 300 },
+          <SlopeChart
+            start={{ label: '2009', value: 100 }}
+            end={{ label: '2016', value: 300 }}
+            midpoints={[
+              { label: '2011', value: 150 },
+              { label: '2013', value: 220 },
+              { label: '2015', value: 270 },
             ]}
-            colors={['#F59E0B', '#F59E0B', '#EF4444', '#DC2626', '#991B1B']}
+            unit=" kt"
+            accentColor="#DC2626"
+            title="Morbi SO2 Emissions Detected by NASA OMI"
+            caption="Figure 3: NASA satellite data shows Morbi's SO2 emissions tripled from ~100 kt/year to ~300 kt/year between 2009-2016. Source: NASA Aura"
             height={280}
           />
 
@@ -183,12 +187,11 @@ export default function Environment() {
         {/* Coastal Erosion & Climate */}
         <Section icon={<Droplets className="w-8 h-8 text-blue-600" />} title="Coastal Erosion, Desertification & Climate">
           {/* Chart: Coastal Erosion by State */}
-          <PillarChart
-            type="bar"
+          <LollipopChart
             title="Coastline Under Erosion by State (%)"
             caption="Figure 2: Gujarat leads India with 27.6% of its coastline under active erosion — equivalent to 537.5 km. Source: NCCR 1990-2018 study"
             data={[
-              { name: 'Gujarat', value: 27.6 },
+              { name: 'Gujarat', value: 27.6, highlight: true },
               { name: 'West Bengal', value: 24.8 },
               { name: 'Kerala', value: 22.1 },
               { name: 'Tamil Nadu', value: 18.7 },
@@ -196,7 +199,9 @@ export default function Environment() {
               { name: 'Maharashtra', value: 15.9 },
               { name: 'Karnataka', value: 12.4 },
             ]}
-            colors={['#D32F2F', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280']}
+            valueSuffix="%"
+            accentColor="#D32F2F"
+            highlightColor="#991B1B"
             height={300}
           />
 

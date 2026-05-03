@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { TrendingUp, AlertTriangle, Landmark, Globe, CheckCircle, Building2 } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { SlopeChart } from '../components/charts/SlopeChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -100,19 +102,19 @@ export default function Economics() {
             </DataCard>
           </div>
 
-          <PillarChart
-            type="bar"
-            data={[
-              { name: '2012-13', value: 7.44 },
-              { name: '2016-17', value: 6.2 },
-              { name: '2020-21', value: 4.35 },
-              { name: '2022-23', value: 5.6 },
-              { name: '2024-25', value: 5.2 },
-              { name: '2026-27 (BE)', value: 4.9 },
+          <SlopeChart
+            start={{ label: '2012-13', value: 7.44 }}
+            end={{ label: '2026-27', value: 4.9 }}
+            midpoints={[
+              { label: '2016-17', value: 6.2 },
+              { label: '2020-21', value: 4.35 },
+              { label: '2022-23', value: 5.6 },
+              { label: '2024-25', value: 5.2 },
             ]}
+            unit="%"
+            accentColor="#9A0007"
             title="Own Tax Revenue as % of GSDP (Declining Trend)"
             caption="15-year decline from 7.44% to 4.9% — now 30% below national average"
-            colors={['#16A34A', '#CA8A04', '#D32F2F', '#D32F2F', '#D32F2F', '#9A0007']}
           />
         </Section>
 
@@ -138,17 +140,19 @@ export default function Economics() {
             </DataCard>
           </div>
 
-          <PillarChart
-            type="bar"
+          <LollipopChart
             data={[
-              { name: 'Gujarat', value: 8.7 },
-              { name: 'Median State', value: 19.9 },
               { name: 'Kerala', value: 25.1 },
+              { name: 'Median State', value: 19.9 },
               { name: 'Tamil Nadu', value: 16.8 },
+              { name: 'Gujarat', value: 8.7, highlight: true },
             ]}
+            valueSuffix="%"
+            accentColor="#0891B2"
+            highlightColor="#D32F2F"
             title="Revenue Receipts as % of GSDP (State Comparison)"
             caption="Gujarat collects less than half the median state's revenue relative to economic size"
-            colors={['#D32F2F', '#6B7280', '#2563EB', '#9333EA']}
+            sortDescending={true}
           />
 
           {/* Time-Series: Central Grants as % of GSDP */}
@@ -167,20 +171,19 @@ export default function Economics() {
           />
 
           {/* Time-Series: Debt-to-GSDP Ratio */}
-          <PillarChart
-            type="bar"
-            data={[
-              { name: 'FY20', value: 19.8 },
-              { name: 'FY21', value: 21.2 },
-              { name: 'FY22', value: 19.5 },
-              { name: 'FY23', value: 18.9 },
-              { name: 'FY24', value: 16.1 },
-              { name: 'FY25', value: 15.3 },
-              { name: 'FY27 (P)', value: 14.7 },
+          <SlopeChart
+            start={{ label: 'FY20', value: 19.8 }}
+            end={{ label: 'FY27', value: 14.7 }}
+            midpoints={[
+              { label: 'FY21', value: 21.2 },
+              { label: 'FY22', value: 19.5 },
+              { label: 'FY24', value: 16.1 },
+              { label: 'FY25', value: 15.3 },
             ]}
-            title="Debt-to-GSDP Ratio: Gujarat's Declining Trajectory (%)"
+            unit="%"
+            accentColor="#059669"
+            title="Debt-to-GSDP Ratio: Gujarat's Declining Trajectory"
             caption="The one genuinely positive fiscal metric — debt-to-GSDP remains India's lowest. Source: PRS India / FintechBizNews"
-            colors={['#EF4444', '#EF4444', '#F59E0B', '#F59E0B', '#16A34A', '#16A34A', '#059669']}
           />
         </Section>
 

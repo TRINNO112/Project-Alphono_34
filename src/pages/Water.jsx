@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Droplets, AlertTriangle, MapPin, CheckCircle, Factory } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { SlopeChart } from '../components/charts/SlopeChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { ComparisonTable } from '../components/ComparisonTable'
 import ScrollSpy from '../components/ScrollSpy'
@@ -89,6 +91,7 @@ export default function Water() {
             ]}
             title="Narmada Water Allocation by State (%)"
             caption="Gujarat receives only 9 MAF out of 28 MAF total allocation"
+            colors={['#0891B2', '#D32F2F', '#8B5CF6', '#F59E0B']}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -157,20 +160,21 @@ export default function Water() {
           />
 
           {/* Chart: District-Level Groundwater Extraction */}
-          <PillarChart
-            type="bar"
+          <LollipopChart
             data={[
-              { name: 'Mehsana', value: 132 },
-              { name: 'Banaskantha', value: 115 },
-              { name: 'Patan', value: 108 },
+              { name: 'Mehsana', value: 132, highlight: true },
+              { name: 'Banaskantha', value: 115, highlight: true },
+              { name: 'Patan', value: 108, highlight: true },
               { name: 'Sabarkantha', value: 95 },
               { name: 'Gandhinagar', value: 87 },
-              { name: 'Safe Limit', value: 70 },
             ]}
+            valueSuffix="%"
+            accentColor="#3B82F6"
+            highlightColor="#991B1B"
+            thresholdLine={{ value: 70, label: 'Safe Limit', color: '#16A34A' }}
             title="Groundwater Extraction as % of Annual Recharge (by District)"
             caption="Mehsana extracts 132% of its annual recharge — pumping 32% more than nature replaces. Source: CGWB / SANDRP"
-            colors={['#991B1B', '#B91C1C', '#DC2626', '#EF4444', '#F59E0B', '#16A34A']}
-            height={300}
+            sortDescending={true}
           />
 
           <DataCard title="20 Years of GRACE Satellite Data: The Verdict">
@@ -258,18 +262,13 @@ export default function Water() {
           </DataCard>
 
           {/* Chart: SAUNI Cost Overrun */}
-          <PillarChart
-            type="bar"
-            data={[
-              { name: 'Original Budget', value: 11000 },
-              { name: 'Phase 1-2 Actual', value: 8200 },
-              { name: 'Phase 3 Revised', value: 4500 },
-              { name: 'Phase 4 Revised', value: 5863 },
-              { name: 'Total Revised', value: 18563 },
-            ]}
-            title="SAUNI Scheme: Budget vs Actual Cost (Rs Crore)"
+          <SlopeChart
+            start={{ label: 'Original Budget', value: 11000 }}
+            end={{ label: 'Total Revised', value: 18563 }}
+            unit=" Cr"
+            accentColor="#0891B2"
+            title="SAUNI Scheme: Budget vs Actual Cost"
             caption="69% cost overrun — from Rs 11,000 Cr original estimate to Rs 18,563 Cr revised. And it creates no new water source."
-            colors={['#16A34A', '#F59E0B', '#EF4444', '#EF4444', '#991B1B']}
             height={280}
           />
 

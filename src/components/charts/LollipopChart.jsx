@@ -51,20 +51,21 @@ function LollipopChartInner({
   return (
     <Figure title={title} caption={caption} ariaLabel={`Lollipop chart: ${title || ''}. ${ariaSummary}`} srSummary={ariaSummary}>
       <div className="relative w-full" style={{ height: svgH }}>
-        {/* Threshold marker */}
+        {/* Threshold marker - fixed positioning */}
         {thresholdLine && (
           <div
             className="absolute top-0 bottom-6"
             style={{
-              left: `calc(${labelWidth + trackPadding}px + ${valueToPercent(thresholdLine.value)}% * (100% - ${labelWidth + trackPadding + valueWidth}px) / 100%)`,
+              left: `calc(${labelWidth + trackPadding}px + ${valueToPercent(thresholdLine.value)}% * (100% - ${labelWidth + trackPadding + valueWidth}px) / 100)`,
               width: 1,
-              borderLeft: `1.5px dashed ${thresholdLine.color || thresholdColor}`,
+              borderLeft: `2px dashed ${thresholdLine.color || thresholdColor}`,
+              zIndex: 0,
             }}
             aria-hidden="true"
           />
         )}
 
-        <ul className="space-y-0">
+        <ul className="space-y-0 relative" style={{ zIndex: 1 }}>
           {sorted.map((row, i) => {
             const pct = valueToPercent(row.value)
             const color = row.highlight ? highlightColor : accentColor
@@ -154,7 +155,7 @@ function LollipopChartInner({
           <div className="flex items-center gap-2 mt-3 ml-[140px] pl-4 text-xs" style={{ color: thresholdLine.color || thresholdColor }}>
             <span
               className="inline-block"
-              style={{ width: 18, height: 0, borderTop: `1.5px dashed ${thresholdLine.color || thresholdColor}` }}
+              style={{ width: 18, height: 0, borderTop: `2px dashed ${thresholdLine.color || thresholdColor}` }}
             />
             <span className="font-semibold">{thresholdLine.label}: {thresholdLine.value}{valueSuffix}</span>
           </div>

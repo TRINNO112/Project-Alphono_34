@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Users, AlertTriangle, Gem, Factory, CheckCircle, Cog } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { Timeline } from '../components/Timeline'
 import ScrollSpy from '../components/ScrollSpy'
@@ -103,7 +104,7 @@ export default function Labor() {
             ]}
             title="Morbi Ceramic Workforce Composition"
             caption="70% of Morbi's 4 lakh workers are interstate migrants"
-            colors={['#D32F2F', '#16A34A']}
+            colors={['#8B5CF6', '#10B981']}
           />
         </Section>
 
@@ -180,18 +181,19 @@ export default function Labor() {
           ]} />
 
           {/* Chart: Exodus Scale by Crisis Event */}
-          <PillarChart
-            type="bar"
+          <LollipopChart
             data={[
+              { name: '2020 COVID', value: 10, highlight: true },
+              { name: '2026 Twin Crisis', value: 5.5, highlight: true },
               { name: '2016 DeMon', value: 2 },
-              { name: '2020 COVID', value: 10 },
               { name: '2024 Diamond', value: 1.5 },
-              { name: '2026 Twin Crisis', value: 5.5 },
             ]}
-            title="Estimated Migrant Worker Exodus from Gujarat (Lakhs)"
+            valueSuffix=" lakh"
+            accentColor="#F59E0B"
+            highlightColor="#991B1B"
+            title="Estimated Migrant Worker Exodus from Gujarat"
             caption="Each crisis strips the industrial base of its workforce within days. The 2026 twin crisis (gas + US tariffs) displaced 5-6 lakh workers."
-            colors={['#F59E0B', '#DC2626', '#9333EA', '#991B1B']}
-            height={280}
+            sortDescending={true}
           />
         </Section>
 
@@ -248,19 +250,20 @@ export default function Labor() {
         </div>
 
         {/* Chart: Migrant Wage Comparison */}
-        <PillarChart
-          type="bar"
+        <LollipopChart
           data={[
             { name: 'Kerala', value: 750 },
             { name: 'Maharashtra', value: 550 },
-            { name: 'Gujarat', value: 425 },
+            { name: 'Gujarat', value: 425, highlight: true },
             { name: 'UP (Local)', value: 350 },
             { name: 'Bihar (Local)', value: 320 },
           ]}
+          valueSuffix=""
+          accentColor="#0891B2"
+          highlightColor="#D32F2F"
           title="Average Daily Wages for Unskilled Factory Workers (Rs)"
           caption="Gujarat's migrant wages are closer to Bihar's local rates than to Kerala's — as source states industrialize, the wage gap narrows and return migration becomes permanent."
-          colors={['#16A34A', '#2563EB', '#D32F2F', '#6B7280', '#6B7280']}
-          height={280}
+          sortDescending={true}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

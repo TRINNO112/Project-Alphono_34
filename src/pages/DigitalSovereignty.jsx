@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Cable, Cloud, Radio, Server, Globe, AlertTriangle, Wifi } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox, PendingDataBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { Treemap } from '../components/charts/Treemap'
 import { ComparisonTable } from '../components/ComparisonTable'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
@@ -73,8 +75,7 @@ export default function DigitalSovereignty() {
             <StatBox value="1,600 km" label="Gujarat Coastline" color="teal" />
           </div>
 
-          <PillarChart
-            type="bar"
+          <LollipopChart
             title="India's International Submarine Cable Landings — Concentration by State"
             caption="Figure 1: Of India's international submarine cable landings, Mumbai alone hosts the overwhelming majority. Gujarat — despite its coastline and the GIFT City IFSC ambition — has zero. Sources: TRAI Performance Indicator Report, TeleGeography Submarine Cable Map."
             data={[
@@ -82,9 +83,10 @@ export default function DigitalSovereignty() {
               { name: 'Chennai (TN)', value: 6 },
               { name: 'Kochi (KL)', value: 2 },
               { name: 'Tuticorin (TN)', value: 1 },
-              { name: 'Gujarat', value: 0 },
+              { name: 'Gujarat', value: 0, highlight: true },
             ]}
-            colors={['#2563EB', '#16A34A', '#9333EA', '#CA8A04', '#DC2626']}
+            accentColor="#2563EB"
+            highlightColor="#DC2626"
             height={320}
           />
 
@@ -199,18 +201,16 @@ export default function DigitalSovereignty() {
             <StatBox value="MeghRaj" label="Domestic Alt. (Underused)" color="teal" />
           </div>
 
-          <PillarChart
-            type="pie"
+          <Treemap
             title="Hosting Stack for Gujarat State e-Governance Workloads (Indicative)"
             caption="Figure 3: Gujarat's citizen-facing digital services (Digital Gujarat portal, iORA land records, utility portals) lean heavily on hyperscaler infrastructure physically located in Maharashtra. MeghRaj / NIC workloads exist but do not dominate. Sources: MeitY empanelled CSP list, state SDC disclosures, NIC cloud adoption reports."
             data={[
-              { name: 'AWS Mumbai', value: 42 },
-              { name: 'Azure India', value: 24 },
-              { name: 'State SDC (Gandhinagar)', value: 18 },
-              { name: 'NIC / MeghRaj', value: 10 },
-              { name: 'Other (GCP, hybrid)', value: 6 },
+              { name: 'AWS Mumbai', value: 42, color: '#F59E0B' },
+              { name: 'Azure India', value: 24, color: '#2563EB' },
+              { name: 'State SDC (Gandhinagar)', value: 18, color: '#16A34A' },
+              { name: 'NIC / MeghRaj', value: 10, color: '#9333EA' },
+              { name: 'Other (GCP, hybrid)', value: 6, color: '#6B7280' },
             ]}
-            colors={['#F59E0B', '#2563EB', '#16A34A', '#9333EA', '#6B7280']}
             height={340}
           />
 

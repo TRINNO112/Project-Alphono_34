@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Cpu, Zap, Sun, Battery, AlertTriangle, ArrowRight } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { Treemap } from '../components/charts/Treemap'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -134,19 +136,20 @@ export default function GreenTech() {
             height={340}
           />
 
-          <PillarChart
-            type="bar"
+          <LollipopChart
             title="China's Share Across the Green Tech Supply Chain (%)"
             caption="Figure 2: From rare earth mining to battery cell production to polysilicon wafers — China dominates every critical upstream stage. Source: CARE Ratings / BNEF"
             data={[
               { name: 'RE Mining', value: 70 },
-              { name: 'RE Processing', value: 90 },
+              { name: 'RE Processing', value: 90, highlight: true },
               { name: 'Li-ion Cells', value: 78 },
               { name: 'PV Wafers', value: 82 },
               { name: 'Polysilicon', value: 80 },
-              { name: 'NdFeB Magnets', value: 92 },
+              { name: 'NdFeB Magnets', value: 92, highlight: true },
             ]}
-            colors={['#DC2626', '#991B1B', '#EF4444', '#B91C1C', '#DC2626', '#7F1D1D']}
+            valueSuffix="%"
+            accentColor="#DC2626"
+            highlightColor="#7F1D1D"
             height={340}
           />
 
@@ -175,18 +178,16 @@ export default function GreenTech() {
         <Section icon={<Zap className="w-8 h-8 text-yellow-600" />} title="The Lithium-Ion Cell Assembly Deficit">
 
           {/* Cell origin breakdown */}
-          <PillarChart
-            type="pie"
+          <Treemap
             title="Li-ion Battery Cell Origins for Indian EV Assembly (%)"
             caption="Figure 3: India lacks domestic lithium, cobalt, and nickel reserves AND the refinement infrastructure. Dholera plants only 'assemble' imported cells into modules. Source: CARE Ratings / Marcellus"
             data={[
-              { name: 'China (CATL/BYD)', value: 62 },
-              { name: 'South Korea (LG)', value: 20 },
-              { name: 'Japan (Panasonic)', value: 10 },
-              { name: 'Taiwan', value: 5 },
-              { name: 'Domestic', value: 3 },
+              { name: 'China (CATL/BYD)', value: 62, color: '#DC2626' },
+              { name: 'South Korea (LG)', value: 20, color: '#3B82F6' },
+              { name: 'Japan (Panasonic)', value: 10, color: '#8B5CF6' },
+              { name: 'Taiwan', value: 5, color: '#F59E0B' },
+              { name: 'Domestic', value: 3, color: '#16A34A' },
             ]}
-            colors={['#DC2626', '#3B82F6', '#8B5CF6', '#F59E0B', '#16A34A']}
             height={340}
           />
 

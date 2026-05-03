@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { GraduationCap, Heart, AlertTriangle, CheckCircle } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { Treemap } from '../components/charts/Treemap'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -70,22 +72,23 @@ export default function Education() {
           </div>
 
           {/* Chart: Higher Education GER Comparison */}
-          <PillarChart
-            type="bar"
-            title="Higher Education GER: Gujarat vs Major States (%)"
+          <LollipopChart
+            title="Higher Education GER: Gujarat vs Major States"
             caption="Figure 1: Gujarat's Gross Enrolment Ratio in higher education (20.1%) trails the national average of 28.4%. Source: AISHE 2021-22"
             data={[
               { name: 'Tamil Nadu', value: 46.9 },
               { name: 'Kerala', value: 43.1 },
               { name: 'Karnataka', value: 32.8 },
               { name: 'Maharashtra', value: 32.5 },
-              { name: 'National Avg', value: 28.4 },
-              { name: 'Gujarat', value: 20.1 },
+              { name: 'Gujarat', value: 20.1, highlight: true },
               { name: 'Rajasthan', value: 18.3 },
               { name: 'Bihar', value: 14.8 },
             ]}
-            colors={['#2563EB', '#2563EB', '#2563EB', '#2563EB', '#6B7280', '#D32F2F', '#9CA3AF', '#9CA3AF']}
-            height={320}
+            valueSuffix="%"
+            accentColor="#8B5CF6"
+            highlightColor="#D32F2F"
+            thresholdLine={{ value: 28.4, label: 'National Avg', color: '#6B7280' }}
+            sortDescending={true}
           />
 
           {/* Chart: Dropout Numbers by State */}
@@ -169,18 +172,19 @@ export default function Education() {
           </div>
 
           {/* Chart: Specialist Doctor Vacancies at Rural CHCs */}
-          <PillarChart
-            type="bar"
-            title="Specialist Doctor Vacancies at Rural CHCs (%)"
+          <LollipopChart
+            title="Specialist Doctor Vacancies at Rural CHCs"
             caption="Figure 3: Between 86-97% of specialist posts at Gujarat's Community Health Centres remain unfilled. Source: DNA India / RHS"
             data={[
-              { name: 'Surgeons', value: 97 },
-              { name: 'OB-GYN', value: 86 },
-              { name: 'Physicians', value: 91 },
-              { name: 'Paediatricians', value: 89 },
+              { name: 'Surgeons', value: 97, highlight: true },
+              { name: 'Physicians', value: 91, highlight: true },
+              { name: 'Paediatricians', value: 89, highlight: true },
+              { name: 'OB-GYN', value: 86, highlight: true },
             ]}
-            colors={['#D32F2F', '#EF4444', '#DC2626', '#F87171']}
-            height={280}
+            valueSuffix="%"
+            accentColor="#DC2626"
+            highlightColor="#991B1B"
+            sortDescending={true}
           />
 
           {/* Chart: Health Expenditure as % of GSDP */}
@@ -319,19 +323,18 @@ export default function Education() {
           height={280}
         />
 
-        {/* Chart: Gujarat Budget Allocation Pie */}
-        <PillarChart
-          type="pie"
+        {/* Chart: Gujarat Budget Allocation Treemap */}
+        <Treemap
           title="Gujarat Budget 2024-25: Key Sectoral Allocation"
           caption="Figure 6: Education gets 15.1% of the budget while health receives just 5.6% — a ratio that perpetuates human capital deficits. Source: PRS India"
           data={[
-            { name: 'Education', value: 15.1 },
-            { name: 'Health', value: 5.6 },
-            { name: 'Rural Dev', value: 6.8 },
-            { name: 'Roads & Infra', value: 12.3 },
-            { name: 'Other', value: 60.2 },
+            { name: 'Education', value: 15.1, color: '#2563EB' },
+            { name: 'Roads & Infra', value: 12.3, color: '#F59E0B' },
+            { name: 'Rural Dev', value: 6.8, color: '#16A34A' },
+            { name: 'Health', value: 5.6, color: '#D32F2F' },
+            { name: 'Other', value: 60.2, color: '#6B7280' },
           ]}
-          colors={['#2563EB', '#D32F2F', '#16A34A', '#F59E0B', '#6B7280']}
+          unit="%"
           height={320}
         />
 

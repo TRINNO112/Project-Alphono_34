@@ -3,6 +3,7 @@ import { ShieldAlert, Skull, Scale, HeartCrack, Flame, Ban, AlertTriangle, MapPi
 import SEO from '../components/SEO'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -374,18 +375,20 @@ export default function MigrantDiscrimination() {
             highlightState="Gujarat"
           />
 
-          <PillarChart
-            type="bar"
+          <LollipopChart
             data={[
-              { name: 'Kerala', value: 850, fill: '#16A34A' },
-              { name: 'Tamil Nadu', value: 550, fill: '#2563EB' },
-              { name: 'Maharashtra', value: 450, fill: '#7C3AED' },
-              { name: 'Gujarat', value: 350, fill: '#D32F2F' },
-              { name: 'UP', value: 330, fill: '#F59E0B' },
-              { name: 'Bihar', value: 300, fill: '#6B7280' },
+              { name: 'Kerala', value: 850 },
+              { name: 'Tamil Nadu', value: 550 },
+              { name: 'Maharashtra', value: 450 },
+              { name: 'Gujarat', value: 350, highlight: true },
+              { name: 'UP', value: 330 },
+              { name: 'Bihar', value: 300 },
             ]}
             title="Average Non-Agricultural Daily Wage by State (₹)"
             caption="Gujarat's wages are closer to Bihar and UP than to Kerala or Tamil Nadu (RBI data, 2023-24)"
+            valueSuffix="₹"
+            accentColor="#7C3AED"
+            highlightColor="#D32F2F"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">

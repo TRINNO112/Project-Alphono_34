@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Wheat, Droplets, Bug, TrendingDown, AlertTriangle } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
+import { LollipopChart } from '../components/charts/LollipopChart'
+import { Treemap } from '../components/charts/Treemap'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -64,19 +66,17 @@ export default function Agriculture() {
           </div>
 
           {/* DAP Import Sources */}
-          <PillarChart
-            type="bar"
+          <Treemap
             title="India's DAP Import Sources — Share by Country (%)"
             caption="Figure 1: India imports ~67% of its total DAP requirement. Geopolitical disruptions in any single corridor (Red Sea, Suez) cause immediate price surges passed onto farmers. Source: Argus Media"
             data={[
-              { name: 'Morocco (OCP)', value: 28 },
-              { name: 'Saudi Arabia', value: 18 },
-              { name: 'Russia', value: 16 },
-              { name: 'Jordan', value: 12 },
-              { name: 'China', value: 8 },
-              { name: 'Others', value: 18 },
+              { name: 'Morocco (OCP)', value: 28, color: '#16A34A' },
+              { name: 'Saudi Arabia', value: 18, color: '#EAB308' },
+              { name: 'Russia', value: 16, color: '#DC2626' },
+              { name: 'Jordan', value: 12, color: '#F59E0B' },
+              { name: 'China', value: 8, color: '#EF4444' },
+              { name: 'Others', value: 18, color: '#6B7280' },
             ]}
-            colors={['#16A34A', '#EAB308', '#DC2626', '#F59E0B', '#EF4444', '#6B7280']}
             height={320}
           />
 
@@ -185,18 +185,19 @@ export default function Agriculture() {
           </div>
 
           {/* Groundwater Over-Extraction Chart */}
-          <PillarChart
-            type="bar"
+          <LollipopChart
             title="Groundwater: Extraction Rate vs Natural Recharge by Region"
             caption="Figure 4: In Mehsana, extraction routinely exceeds 132% of natural recharge — draining an unreplenishable fossil water bank. Pumps now reach 800-1000ft depths. Source: Down To Earth / CGWB"
             data={[
-              { name: 'Mehsana', value: 132 },
+              { name: 'Mehsana', value: 132, highlight: true },
               { name: 'Banaskantha', value: 118 },
               { name: 'Patan', value: 105 },
               { name: 'Sabarkantha', value: 95 },
-              { name: 'Safe Limit', value: 70 },
             ]}
-            colors={['#991B1B', '#DC2626', '#EF4444', '#F59E0B', '#16A34A']}
+            valueSuffix="%"
+            thresholdLine={{ value: 70, label: 'Safe Limit', color: '#16A34A' }}
+            accentColor="#DC2626"
+            highlightColor="#991B1B"
             height={300}
           />
 
