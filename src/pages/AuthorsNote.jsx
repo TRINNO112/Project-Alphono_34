@@ -50,6 +50,51 @@ export default function AuthorsNote() {
             </p>
 
             <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+              How I arrived
+            </h2>
+
+            <p>
+              I came to Gujarat as a child, in the fourth grade. From outside the state, the
+              picture was a good one: low crime, industrial growth, well-built roads, a culture
+              that took pride in itself and seemed to make room for the rest of the country. I
+              believed all of it. As a kid, you trust the picture you are handed. I thought I had
+              landed in one of the better corners of India.
+            </p>
+
+            <p>
+              The picture broke fast. The discrimination did not wait for me to settle in — it
+              arrived in the first year. A fourth-grader does not have language for what is
+              happening when a classroom sorts itself by who sounds local and who does not, but
+              you feel it. You feel it in which kids are picked for the group, who is laughed
+              at when they read aloud, which parents do not invite you over. There were a few
+              individuals who were kind — a teacher, a family on the street — and I want to be
+              honest about that, because I do not want to erase the people who treated me
+              decently. But the room itself, from year one, was not a welcoming one.
+            </p>
+
+            <p>
+              Things got significantly worse in 2018. A horrific crime took place in Surat —
+              the rape of a young child — and the accused turned out to be a migrant from a
+              northern state. Whatever sympathy the state had been willing to extend to
+              outsiders evaporated within days. Mobs attacked Hindi-speaking workers across
+              several districts. Thousands of migrant families fled the state. I was not
+              physically attacked, but the air in every shop, classroom, and street I walked
+              through changed overnight. People who had been curt became hostile. People who
+              had been hostile became openly contemptuous. The suspicion was no longer about
+              the person who committed the crime — it was about anyone who looked or sounded
+              like they had come from where I came from. That shift never fully reversed. It
+              just settled in, quieter than it started, and became the new normal.
+            </p>
+
+            <p>
+              I should also be honest that my reading of all this is shaped by where I lived.
+              The industrial belt I grew up in is one of the harder regions for an outsider — it
+              is possible the experience is gentler in other parts of the state, and I do not
+              want to claim I speak for every district. What I can speak for is the room I
+              actually sat in for a decade.
+            </p>
+
+            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
               What the data does not say
             </h2>
 
@@ -68,11 +113,17 @@ export default function AuthorsNote() {
             </p>
 
             <p>
-              I do not speak Gujarati. After ten years. I want to be honest about why: it is not
-              because the language is hard. It is because the environment that asked me to learn
-              it was hostile, and at some point the part of me that wanted to learn died. That is
-              what discrimination does over a long enough timeline. It does not just hurt you in
-              the moment — it deforms what you are capable of wanting.
+              I do not speak Gujarati. After ten years. I want to be very precise about why,
+              because the easy assumption is the wrong one. It is not because the language is
+              difficult — Gujarati is no harder than any other Indian language a child can pick
+              up in a year if the people around them want them to. It is not because I refused
+              the language out of pride. It is because of how I was treated by the people who
+              spoke it. The behaviour came first, and after enough of it, the part of me that
+              wanted to learn the language could not survive what learning the language had come
+              to feel like. The language itself is not the problem. The way it was used towards
+              me was. That is what discrimination does over a long enough timeline — it does not
+              just hurt you in the moment, it slowly closes off what you are even capable of
+              wanting.
             </p>
 
             <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
@@ -138,9 +189,11 @@ export default function AuthorsNote() {
               the anger comes back every time I try to write it down. I am aware that the anger
               I carry is itself a result of the discrimination. I am aware that it is not a
               clean kind of justice — it is a wound that is shaped like the thing that made it.
-              I am aware that calling a language ugly is what hurt people do when they are too
-              hurt to be careful. I am still going to publish this. The neutrality I cannot perform
-              is part of the record.
+              If, in earlier drafts of this page or in things I have said out loud over the
+              years, I have spoken harshly about the language or the culture itself rather than
+              about the behaviour that hurt me, I want to take that back here. The language is
+              not the problem. The culture is not the problem. People are. I am still going to
+              publish this. The neutrality I cannot perform is part of the record.
             </p>
 
             <p>
@@ -158,10 +211,11 @@ export default function AuthorsNote() {
             <p>
               I want to say one thing carefully because I do not want to be misread.{' '}
               <span className="font-semibold">Not every Gujarati is bad. Not every migrant is
-              good.</span> A lot of the suspicion the locals carry comes from the fact that
-              <em> some </em>migrants from northern states are dishonest, are cunning, do try to
-              fool people, and have given everyone else a bad name. That is real. I have seen
-              that too.
+              good.</span> Some of the suspicion the locals carry has a reason behind it —
+              <em> some </em>migrants from northern states have behaved dishonestly, have tried
+              to take advantage of people, and have made it harder for everyone who came after
+              them. That is real, and I have seen it too. Acknowledging it is part of being
+              fair.
             </p>
 
             <p>
@@ -203,6 +257,33 @@ export default function AuthorsNote() {
               us what we needed at home. If we make our home regions strong, the next
               generation will not have to walk into this room at all. That is the slow answer.
               It is the only one that actually fixes the problem.
+            </p>
+
+            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+              For Gujaratis reading this
+            </h2>
+
+            <p>
+              If you are Gujarati and you read this far, I am asking you for one thing —{' '}
+              <span className="font-semibold">propose a solution.</span> The problem this page
+              describes cannot be fixed without you. A record of what is broken is only half of
+              a useful document; the other half is what people from inside the community think
+              the answer might be.
+            </p>
+
+            <p>
+              Use{' '}
+              <span className="font-mono text-crimson">#GujaratSolutions</span> on Twitter / X.
+              The hashtag is for proposals, not arguments — what your community could do
+              differently, what you wish your generation had been told, where the published
+              story of this state and the lived experience of outsiders could meet again. If a
+              thread is honest and useful, I will add it to this site (with your permission),
+              the same way I am offering for migrant stories.
+            </p>
+
+            <p>
+              This is not a fight I am asking you to lose. It is a problem I am asking you to
+              help solve. The fact that you read this far means you are someone who could.
             </p>
 
             <p>
