@@ -60,17 +60,21 @@ export const districtsData = [
     name: "Kutch",
     region: "Kutch",
     coordinates: [69.8597, 23.7337],
-    tagline: "The Border Gateway",
-    pillars: ["Infrastructure", "Materials", "Migrant Discrimination"],
+    tagline: "The Mega-Scale Vulnerability Zone",
+    pillars: ["Infrastructure", "Energy", "Environment", "Labor"],
     stats: [
-      { label: "Mundra Port Cargo", value: "200 MMT", status: "normal" },
-      { label: "Agariya Temps", value: "52°C", status: "danger" },
-      { label: "Submarine Cables", value: "0", status: "critical" }
+      { label: "Mundra Port Cargo Share", value: "26% of India total", status: "warning" },
+      { label: "Imported-Coal Power Capacity", value: "8,620 MW", status: "critical" },
+      { label: "Mangroves Destroyed", value: "3,000+ hectares", status: "danger" },
+      { label: "Agariya Working Temps", value: "52°C", status: "danger" },
+      { label: "Submarine Cables Landing", value: "0", status: "critical" }
     ],
-    summary: "Kutch represents the great contradiction of Gujarat. On one hand, it hosts Mundra, India's largest commercial port handling staggering volumes of the nation's imported crude, coal, and containers, alongside the world's largest renewable energy park at Khavda (9.4 GW). On the other, the Little Rann of Kutch houses the extremely marginalized Agariya salt workers, trapped in generational debt bondage, working in 52-degree heat resulting in bone calcification and rampant child labor.",
+    summary: "Kutch is the great contradiction of Gujarat. As India's largest district by area, it is the entry point for the state's external dependencies and the showcase of its renewable ambitions — Mundra Port (Adani) handles 26% of India's commercial cargo, the Khavda renewable park is the world's largest at 9.4 GW, and the coastal coal-power hubs of Tata CGPL (4,000 MW) and Adani Power (4,620 MW) anchor the state's grid. But this scale is structurally brittle: the entire 8,620 MW of coastal power runs on imported Indonesian and Australian coal, and when global prices spiked in 2021–22 both mega-plants stopped generating, forcing the state to grant tariff hikes to bail them out. On the other side of the same district, the Little Rann hosts the extremely marginalised Agariya salt workers — trapped in generational debt bondage, working in 52°C heat that produces bone calcification, blindness, and widespread child labour. The rapid industrialisation of the Gulf of Kutch has destroyed over 3,000 hectares of mangroves, dismantling the natural coastal defence against intensifying Arabian Sea cyclones. Kutch hosts everything Gujarat is celebrated for, and everything it does not want indexed.",
     keyCrises: [
-      { year: "Ongoing", title: "Agariya Exploitation", detail: "Salt pan workers face brutal conditions with no formal healthcare or fair wage protections, leading to severe generational health crises (blindness, bone calcification)." },
-      { year: "2024", title: "Evacuation Infrastructure Delay", detail: "The massive Khavda renewable park is operational, but necessary transmission grid evacuation networks are critically delayed, stranding generated power." }
+      { year: "2021-22", title: "Imported Coal Power Collapse", detail: "Tata CGPL and Adani Power Mundra plants halted generation when Indonesian coal prices spiked beyond their PPA economics. The state negotiated tariff pass-throughs that broke the original power purchase agreements to prevent grid collapse, transferring the cost of import dependency to consumers. (Source: IEEFA, Business Standard)" },
+      { year: "2013-14", title: "Mangrove Destruction Penalty", detail: "The Sunita Narain committee found Adani Port guilty of destroying mangroves, creeks, and intertidal mudflats in the Gulf of Kutch. The Ministry of Environment imposed a ₹200 crore environmental restoration penalty — the largest of its kind in Gujarat at the time. (Source: Down to Earth, MoEFCC)" },
+      { year: "2024", title: "Khavda Evacuation Bottleneck", detail: "The 9.4 GW Khavda renewable park is operational, but the transmission infrastructure required to evacuate generated power into the national grid remains critically delayed, stranding clean energy and undermining the showcase project's actual contribution. (Source: Mercom India, Power Line)" },
+      { year: "Ongoing", title: "Agariya Generational Bondage", detail: "Little Rann salt-pan workers face 52°C working conditions with no formal healthcare or fair wage protections. The Salt Workers' Union has documented blindness, bone calcification, and persistent child labour across multiple generations of the same families. (Source: Salt Workers Union, Down to Earth)" }
     ]
   },
   {
@@ -78,16 +82,19 @@ export const districtsData = [
     name: "Jamnagar",
     region: "Saurashtra",
     coordinates: [70.0577, 22.4707],
-    tagline: "The Refinery Hub",
-    pillars: ["Materials", "Economics"],
+    tagline: "The Oil Kingdom on Foreign Crude",
+    pillars: ["Materials", "Energy", "Infrastructure", "Economics"],
     stats: [
-      { label: "Imported Crude", value: "~85%", status: "critical" },
-      { label: "Reliance Capacity", value: "1.4 MMBPD", status: "normal" },
-      { label: "Nayara Russian Supply", value: "High Risk", status: "warning" }
+      { label: "Reliance Refinery Capacity", value: "1.24M bpd (largest single-site, world)", status: "warning" },
+      { label: "Imported Crude Dependency", value: "~85%", status: "critical" },
+      { label: "Russian Urals Share of Intake", value: "36%+", status: "critical" },
+      { label: "Marine National Park", value: "VLCC traffic overlap", status: "danger" }
     ],
-    summary: "Jamnagar houses the world's largest refining complex (Reliance) and India's second-largest private refinery (Nayara Energy). The dependency paradigm here is absolute: these mega-refineries do not run on Indian oil. Following the Ukraine war, Russian blend crude became the primary fuel (36% of imports), creating significant geopolitical risk for Nayara (partly owned by Rosneft) regarding European Union sanctions and payment mechanisms.",
+    summary: "Jamnagar's coastal economy is anchored entirely by the Reliance refinery complex — the world's largest single-location refining operation at 1.24 million barrels per day — and India's second-largest private refinery, Nayara Energy (partly owned by Rosneft). The dependency paradigm here is absolute: these mega-refineries do not run on Indian oil. Roughly 85% of throughput is imported, and following the Russia–Ukraine war, discounted Russian Urals crude became the dominant feedstock at 36%+ of intake. The economics are excellent in the short term and structurally fragile in the long term: a tightening of US secondary sanctions, a shift in EU import rules, or a banking-rail blockade on Russian payments would bottleneck the entire complex within weeks. Nayara's Rosneft ownership makes it a particular pressure point. Beyond geopolitics, the intense Very Large Crude Carrier (VLCC) traffic into Sikka and Vadinar terminals overlaps directly with the Gulf of Kutch Marine National Park — India's first marine protected area — creating a persistent environmental friction zone that no party in power has been willing to address.",
     keyCrises: [
-      { year: "2025", title: "Geopolitical Crude Shift", detail: "Heavy reliance on discounted Russian crude makes the region's output highly sensitive to Western sanctions and global banking blockades." }
+      { year: "2022-25", title: "Russian Crude Sanctions Exposure", detail: "Reliance and Nayara shifted heavily to discounted Russian Urals crude after the Ukraine war, capturing record refining margins. The exposure makes the hub highly sensitive to secondary US sanctions enforcement, EU price-cap tightening, and sudden cut-offs through banking-rail or shipping-insurance routes. (Source: Reuters, Energy Intelligence)" },
+      { year: "Ongoing", title: "Strait of Hormuz Single-Point Risk", detail: "An estimated majority of crude bound for Jamnagar transits the Strait of Hormuz. Any escalation in the Iran–Israel–Saudi corridor would cause immediate freight and insurance shocks for Reliance and Nayara, with no domestic crude alternative available at scale. (Source: ORF, S&P Global Commodity Insights)" },
+      { year: "Ongoing", title: "Marine National Park Tanker Conflict", detail: "VLCC traffic into the Sikka and Vadinar terminals routinely transits the buffer zone of India's first Marine National Park in the Gulf of Kutch, threatening coral, dugong populations, and the artisanal fishing communities of nearby villages. (Source: Marine National Park GoG, Mongabay India)" }
     ]
   },
   {
@@ -95,16 +102,20 @@ export const districtsData = [
     name: "Mehsana",
     region: "North Gujarat",
     coordinates: [71.3969, 23.5880],
-    tagline: "The Dry Aquifer",
-    pillars: ["Water", "Environment", "Economics"],
+    tagline: "The Groundwater Sinkhole That Ships Its Children Out",
+    pillars: ["Water", "Agriculture", "Labor", "MigrantDiscrimination"],
     stats: [
-      { label: "Extraction Rate", value: "132%", status: "critical" },
-      { label: "Fluoride Levels", value: "17.5 mg/L", status: "danger" },
-      { label: "Dairy Feed Cost", value: "Escalating", status: "warning" }
+      { label: "Groundwater Extraction Rate", value: "132% of recharge", status: "critical" },
+      { label: "Borewell Depth Today", value: "800–1,000+ feet", status: "danger" },
+      { label: "Fluoride in Drinking Water", value: "17.5 mg/L (11× WHO limit)", status: "danger" },
+      { label: "Legal Emigration", value: "10× state average", status: "warning" },
+      { label: "Dairy Feed-Cost Pressure", value: "Escalating", status: "warning" }
     ],
-    summary: "Mehsana epitomizes the invisible water crisis. The district's groundwater extraction rate sits at an alarming 132%—meaning it is pumping out water significantly faster than natural recharge. This over-exploitation has caused severe aquifer depression, bringing deep-earth fluorides into the drinking water supplies (recorded hitting 17.5 mg/L, 11x the WHO limit). The region relies heavily on the Narmada canal network to survive.",
+    summary: "Mehsana epitomises North Gujarat's invisible water crisis and the human exodus it produces. The district's groundwater extraction rate sits at 132% of natural recharge — officially classified by the Central Ground Water Board as 'over-exploited.' Borewells that drew water at 50 feet in the 1970s now reach 800–1,000+ feet, pulling up fossil water saturated with fluoride at concentrations recorded as high as 17.5 mg/L — eleven times the WHO permissible limit — causing widespread fluorosis in rural populations. The Narmada canal network is what keeps the district alive on the surface; the aquifer beneath it is in terminal decline. The agrarian collapse has driven Mehsana to the front of two distinct exodus channels: legal student-visa migration to Canada (the district leads Gujarat in Canadian student migration per capita), and the highly dangerous illegal 'Dunki' or 'Donkey' route — overland passage through Nicaragua, Mexico, and the US southern border — that has killed Mehsana families in transit. The district illustrates the terminal phase of the Green Revolution's tube-well model: agricultural unviability is no longer something the next generation will inherit, it is something they are actively fleeing.",
     keyCrises: [
-      { year: "Ongoing", title: "Aquifer Collapse", detail: "Groundwater depletion forces farmers into massive debt drilling extremely deep borewells, extracting toxic, high-fluoride fossil water." }
+      { year: "Ongoing", title: "Fossil Water Extraction & Fluorosis", detail: "Aquifers drained to 1,000+ feet across the district. High fluoride and salinity destroying soil fertility and causing widespread skeletal fluorosis in rural populations. New borewell sanctions are restricted but illegal drilling continues. (Source: CGWB, WaterAid, Down to Earth)" },
+      { year: "2023", title: "Dunki Route Migration Hub", detail: "Mehsana emerged as a primary recruitment hub for illegal immigration networks running 'Dunki flights' that send agrarian youth to the US southern border via Nicaragua and Mexico. Multiple Mehsana families have died in transit, including the Patel family that froze on the Canada border in January 2022. (Source: The Hindu, Indian Express, BBC)" },
+      { year: "2006", title: "Jyotigram Yojana Tariff Backlash", detail: "Gujarat's electricity-rationing scheme designed to curb groundwater pumping raised effective water prices 40-60% for marginal farmers. Some small farmers leased their land to well-owning neighbours, accelerating land consolidation and inequality. (Source: IWA Publishing, Columbia Water Center)" }
     ]
   },
   {
@@ -112,16 +123,20 @@ export const districtsData = [
     name: "Bharuch",
     region: "South Gujarat",
     coordinates: [72.9904, 21.7051],
-    tagline: "The Chemical Corridor",
-    pillars: ["Environment", "Labor"],
+    tagline: "The Toxic Gateway",
+    pillars: ["ChemicalGovernance", "Environment", "Labor", "Materials"],
     stats: [
-      { label: "Major Accidents", value: "90", status: "danger" },
-      { label: "Worker Deaths", value: "130 (2018-25)", status: "critical" },
-      { label: "Pollution Clustering", value: "Dahej SEZ", status: "warning" }
+      { label: "Major Industrial Accidents (2018-25)", value: "90", status: "danger" },
+      { label: "Worker Deaths (2018-25)", value: "130", status: "critical" },
+      { label: "Ankleshwar CEPI Score", value: "80.21 (critically polluted)", status: "critical" },
+      { label: "API Dependency on China", value: "70% imported", status: "danger" },
+      { label: "Amlakhadi River Status", value: "Zero dissolved oxygen", status: "critical" }
     ],
-    summary: "The Bharuch-Dahej industrial corridor is the chemical powerhouse of India. However, it is fundamentally an environmental and occupational hazard zone. Between 2018 and 2025, the corridor witnessed 90 major industrial accidents resulting in 130 worker deaths—averaging one fatal incident every three weeks. Most victims are contractual migrant workers with poor corporate adherence to safety protocols.",
+    summary: "Bharuch — particularly the Ankleshwar and Dahej industrial estates — is the southern anchor of Gujarat's chemical corridor and produces a significant share of India's bulk drugs, dyes, paints, and intermediates. It is also fundamentally an environmental and occupational hazard zone. Between 2018 and 2025, the corridor witnessed 90 major industrial accidents resulting in 130 worker deaths — averaging one fatal incident every three weeks — and the overwhelming majority of victims are contractual migrant workers from UP, Bihar, and Odisha with no formal safety training, no ESI coverage, and disposable employment status. The pharmaceutical operations are deeply dependent on Key Starting Materials (KSMs) and Active Pharmaceutical Ingredients (APIs) imported from China; during the Covid-19 pandemic, Ankleshwar's bulk-drug production stalled completely when Chinese shipments stopped, exposing a strategic vulnerability that successive 'Atmanirbhar Pharma' announcements have failed to close. Environmentally, the estates discharge into the Amlakhadi River, which has recorded zero dissolved oxygen and severe heavy-metal contamination, destroying the livelihoods of downstream fishing communities along the Narmada estuary. Bharuch is what happens when industrial scale arrives without governance.",
     keyCrises: [
-      { year: "2018-2025", title: "Industrial Fatality Corridor", detail: "Continuous string of chemical blasts, boiler explosions, and toxic gas leaks primarily killing disposable contract workers." }
+      { year: "2018-2025", title: "Industrial Fatality Corridor", detail: "A continuous string of chemical blasts, boiler explosions, and toxic gas leaks across Ankleshwar, Dahej, and Jhagadia GIDC estates killed 130 workers across 90 major accidents. Most victims were contract migrant labourers with no safety training and no compensation framework. (Source: GPCB, Down to Earth, ToxicsLink)" },
+      { year: "2020", title: "Pandemic API Supply Shock", detail: "Pharma manufacturing in Ankleshwar and Dahej collapsed when Chinese API and KSM supply lines froze in early 2020, revealing a strategic dependency that the 'Atmanirbhar Pharma' programme has yet to meaningfully address. India remains 70% dependent on Chinese intermediates. (Source: Pharmexcil, Economic Times, Reuters)" },
+      { year: "2023", title: "Dahej SEZ Explosions", detail: "A series of explosions in Dahej SEZ chemical plants — including the LSEZ Yashashvi Rasayan blast that killed 7 — exposed regulatory blind spots in occupational safety and environmental compliance inside Special Economic Zones, where state pollution boards have weakened jurisdiction. (Source: GPCB, Times of India, Indian Express)" }
     ]
   },
   // ── PHASE 3 DISTRICT PROFILES (10 new, research-backed) ──────────────
@@ -131,17 +146,20 @@ export const districtsData = [
     region: "Saurashtra",
     coordinates: [70.8022, 22.3039],
     tagline: "The SME Engine on Parched Ground",
-    pillars: ["Infrastructure", "Water", "Economics"],
+    pillars: ["Infrastructure", "Water", "Economics", "Labor"],
     stats: [
       { label: "Registered Industrial Units", value: "43,711", status: "warning" },
       { label: "Foundry Cluster Turnover", value: "₹2,700 Cr", status: "normal" },
-      { label: "Saurashtra Water Stress", value: "Critical Zone", status: "critical" }
+      { label: "Saurashtra Water Stress", value: "Critical Zone", status: "critical" },
+      { label: "MSME Closures (2025)", value: "300+ units", status: "danger" },
+      { label: "Skilled Labour Deficit", value: "~40%", status: "critical" }
     ],
-    summary: "Rajkot is Gujarat's engineering and auto-parts powerhouse, with 43,711 registered industrial units across 16 industrial areas, anchored by a foundry cluster of 505 units (₹2,700 Cr turnover, 20,000 workers) and a forging cluster producing 434,200 tonnes annually (₹4,000 Cr). However, this SME-driven economy sits on one of India's most water-stressed regions. Saurashtra faces chronic drought with rainfall deficits declared in multiple recent years, and the district depends heavily on Narmada pipeline transfers (SAUNI scheme) which farmers have called 'a failure.' The TRP Game Zone fire of May 2024 — killing 32 people including 9 children — exposed catastrophic regulatory failure in a city that prides itself on industrial governance.",
+    summary: "Rajkot is Gujarat's engineering and auto-parts powerhouse, with 43,711 registered industrial units across 16 industrial areas, anchored by a foundry cluster of 505 units (₹2,700 Cr turnover, 20,000 workers) and a forging cluster producing 434,200 tonnes annually (₹4,000 Cr). Unlike Gujarat's mega-corporate hubs, Rajkot is built on a vast network of MSMEs operating on extremely thin margins and dependent on cheap, unorganised migrant labour. This makes it doubly fragile: water-stressed and capital-constrained at the same time. The transition to Electric Vehicles threatens thousands of localised internal-combustion-engine (ICE) component manufacturers who lack the capital to retool, and recent commodity-price shocks in steel and brass have wiped out the working capital of over 300 small units. Sitting atop all of this is one of India's most water-stressed regions — Saurashtra faces chronic drought with rainfall deficits declared in multiple recent years, and the district depends heavily on Narmada pipeline transfers (SAUNI scheme) that farmers have called 'a failure.' The TRP Game Zone fire of May 2024, which killed 32 people including 9 children, exposed catastrophic regulatory failure in a city that prides itself on industrial governance.",
     keyCrises: [
-      { year: "May 2024", title: "TRP Game Zone Fire", detail: "32 dead including 9 children in an amusement park fire caused by welding sparks hitting plastic. No fire NOC, only one exit on upper floor, 2,000L diesel stored on-site. Gujarat HC called it a 'man-made disaster.' 9 officials suspended, 11 accused. (Source: Business Standard, Gujarat Samachar)" },
-      { year: "2016", title: "Drought Declaration", detail: "1,115 villages across Banaskantha, Dwarka, Kutch, Jamnagar, Porbandar, and Rajkot declared drought-affected by GSDMA. Water tanker dependency surged across Saurashtra. (Source: GSDMA via ScienceDirect)" },
-      { year: "2019", title: "Severe Monsoon Deficit", detail: "Gujarat received only 196mm rainfall Jan-July vs normal 816mm (down 86%). Rajkot and Saurashtra among worst-hit, with groundwater tables plummeting. (Source: IDS UK)" }
+      { year: "May 2024", title: "TRP Game Zone Fire", detail: "32 dead including 9 children in an amusement-park fire caused by welding sparks hitting plastic. No fire NOC, only one exit on the upper floor, 2,000L diesel stored on-site. Gujarat HC called it a 'man-made disaster.' Nine officials suspended, eleven accused. (Source: Business Standard, Gujarat Samachar, Indian Express)" },
+      { year: "2024", title: "EV Transition Shock for Auto-Ancillary MSMEs", detail: "Rajkot's ICE-component MSMEs supplying traditional vehicle parts faced existential threat as the EV transition accelerated, with no state programme to fund retooling, retraining, or supply-chain repositioning. The Auto Components Manufacturers Association warned of mass closures. (Source: ACMA, Auto Components India)" },
+      { year: "2016", title: "Saurashtra Drought Declaration", detail: "1,115 villages across Banaskantha, Dwarka, Kutch, Jamnagar, Porbandar, and Rajkot declared drought-affected by GSDMA. Water-tanker dependency surged across Saurashtra. (Source: GSDMA via ScienceDirect)" },
+      { year: "2019", title: "Severe Monsoon Deficit", detail: "Gujarat received only 196mm rainfall Jan–July vs normal 816mm (down 86%). Rajkot and Saurashtra among worst-hit, with groundwater tables plummeting. (Source: IDS UK)" }
     ]
   },
   {
@@ -316,148 +334,213 @@ export const districtsData = [
     ]
   },
   {
-    id: "kutch",
-    name: "Kutch",
-    region: "Kutch",
-    coordinates: [69.9576, 23.7337],
-    tagline: "The Mega-Scale Vulnerability Zone",
-    pillars: ["Energy", "Infrastructure", "Environment"],
-    stats: [
-      { label: "Mundra Port Cargo", value: "26% of India total", status: "warning" },
-      { label: "Imported Coal Base", value: "8,620 MW", status: "critical" },
-      { label: "Mangrove Destruction", value: "3,000+ hectares lost", status: "danger" }
-    ],
-    summary: "As India's largest district by area, Kutch is the mega-scale entry point for Gujarat's external dependencies. It hosts the Adani Mundra Port (India's largest commercial port) and the concentrated coastal power hubs of Tata CGPL (4,000 MW) and Adani Power (4,620 MW). This infrastructure is inherently brittle: it operates entirely on imported Indonesian and Australian coal. When global coal prices spiked in 2021-2022, both mega-plants ceased generation, plunging Gujarat into a power crisis and forcing the state to bail them out by permitting massive tariff hikes. Environmentally, the rapid industrialization of the Gulf of Kutch has resulted in the destruction of over 3,000 hectares of vital mangroves, dismantling the natural coastal defense system against intensifying Arabian Sea cyclones.",
-    keyCrises: [
-      { year: "2021-22", title: "Imported Coal Power Collapse", detail: "Tata and Adani power plants halted generation when Indonesian coal prices spiked. State negotiated tariff pass-throughs, breaking original PPA agreements to prevent grid collapse. (Source: IEEFA, Business Standard)" },
-      { year: "2013-14", title: "Mangrove Destruction Fines", detail: "Sunita Narain committee found Adani Port guilty of destroying mangroves and creeks. Ministry imposed ₹200 crore environmental restoration penalty. (Source: Down to Earth, MoEFCC)" }
-    ]
-  },
-  {
-    id: "jamnagar",
-    name: "Jamnagar",
+    id: "amreli",
+    name: "Amreli",
     region: "Saurashtra",
-    coordinates: [70.0577, 22.4707],
-    tagline: "The Oil Kingdom",
-    pillars: ["Materials", "Energy", "Infrastructure"],
+    coordinates: [71.2167, 21.6000],
+    tagline: "Where the Cyclone Met the Groundnut Belt",
+    pillars: ["Agriculture", "Environment", "Economics"],
     stats: [
-      { label: "Refinery Capacity", value: "1.24M bpd", status: "warning" },
-      { label: "Russian Crude Dependency", value: "36%+ of intake", status: "critical" },
-      { label: "Marine National Park Threat", value: "Unregulated tanker traffic", status: "danger" }
+      { label: "Cyclone Tauktae Landfall (May 2021)", value: "Eye crossed Amreli coast", status: "critical" },
+      { label: "Saurashtra Groundnut Yield Decline (2018-19)", value: "~48%", status: "danger" },
+      { label: "Asiatic Lion Range Expansion", value: "Out of Gir into Amreli farmland", status: "warning" }
     ],
-    summary: "Jamnagar's coastal economy is entirely anchored by the Reliance Industries refinery complex, the largest single-location refinery in the world. While celebrated as an export powerhouse, its structural vulnerability is absolute: it relies entirely on imported crude oil, increasingly tied to discounted Russian Urals amidst global sanctions. A disruption in the Strait of Hormuz or a secondary sanctions enforcement by the US would immediately bottleneck Jamnagar's operations. The intense VLCC (Very Large Crude Carrier) traffic directly overlaps with the Gulf of Kutch Marine National Park, creating a persistent environmental friction point.",
+    summary: "Amreli sits on Saurashtra's southern coast as one of Gujarat's most agriculturally dependent districts, anchored by groundnut, cotton, and onion cultivation, with the Pipavav deep-water port (43% Maersk-owned, recently announced for a USD 2 bn expansion) handling containers, RO-RO and dry bulk on its southern shore. The district carries three structurally compounded vulnerabilities: rain-fed cropping in a region of erratic monsoons, an exposed coastline in the cyclone-intensifying Arabian Sea, and lion-human conflict spilling out of the saturated Gir Protected Area into agricultural villages.\n\nIn May 2021, Cyclone Tauktae — the strongest cyclone to strike Gujarat in decades — made landfall along the Amreli-Bhavnagar coast with sustained winds above 160 km/h, killing dozens, flattening houses across coastal talukas, and destroying mango, coconut and standing kharif crops. The Saurashtra Oil Millers Association's documented 48% groundnut yield collapse in 2018-19 (with farmer income reportedly falling around 80%) had already eroded household balance sheets before the cyclone hit. Pink-bollworm Cry-protein resistance, first detected in the Amreli-Bhavnagar-Junagadh-Rajkot belt in 2009-10, continues to crater Bt cotton yields with no GEAC-approved Bollgard III replacement.\n\nThe lion question runs alongside the agrarian one. With the Asiatic lion population at Gir rising from 327 (2001) to 674 (2020), prides have spilled into Amreli's revenue villages, causing livestock kills and the occasional human fatality, while the state has resisted the Supreme Court's 2013 order to translocate a founding population to Madhya Pradesh's Kuno. Amreli illustrates how 'flagship' Gujarat assets — a private port, a Bt cotton revolution, a celebrated lion sanctuary — coexist with deep household-level fragility on the same revenue map.",
     keyCrises: [
-      { year: "2022-25", title: "Sanctions Arbitrage Reliance", detail: "Refinery shifted heavily to discounted Russian crude post-Ukraine war. While highly profitable in the short term, it exposes the hub to secondary US sanctions and sudden supply cut-offs. (Source: Reuters, Energy Intelligence)" }
+      { year: "May 2021", title: "Cyclone Tauktae Landfall", detail: "An extremely severe cyclonic storm crossed the Saurashtra coast between Diu and Una on the Amreli-Gir Somnath border with sustained winds above 160 km/h, killing scores in Gujarat (state confirmed dozens of fatalities) and devastating coconut, mango and standing crops across coastal Amreli. The state government later announced a multi-thousand-crore relief package for Saurashtra. (Source: Indian Express, Reuters, IMD)" },
+      { year: "2018-19", title: "Groundnut Yield Collapse", detail: "The Saurashtra Oil Millers Association documented a roughly 48% decline in groundnut yields across the Saurashtra belt — Amreli among the worst-hit — with farmer incomes reportedly falling about 80%. The shock has been linked by reporters and academics to a subsequent rise in farm-household indebtedness and suicides across Saurashtra. (Source: Mongabay India, Indian Express)" },
+      { year: "Ongoing", title: "Lion Range Expansion into Farmland", detail: "Asiatic lion numbers have grown from 327 (2001) to 674 (2020), with Amreli now reporting routine cattle kills and occasional human fatalities as prides move outside Gir's protected boundary. The state has resisted the Supreme Court's 2013 order to translocate a founding population to Kuno, leaving farmers to absorb the cost of conservation success. (Source: The Hindu, Mongabay India)" }
     ]
   },
   {
-    id: "mehsana",
-    name: "Mehsana",
-    region: "North Gujarat",
-    coordinates: [72.3923, 23.5880],
-    tagline: "The Groundwater Sinkhole",
-    pillars: ["Water", "Agriculture", "Labor"],
+    id: "dahod",
+    name: "Dahod",
+    region: "Central Gujarat",
+    coordinates: [74.2567, 22.8333],
+    tagline: "Gujarat's Tribal Exodus Engine",
+    pillars: ["Labor", "Education", "MigrantDiscrimination"],
     stats: [
-      { label: "Water Extraction", value: "132% of Recharge", status: "critical" },
-      { label: "Legal Emigration", value: "10x average", status: "warning" },
-      { label: "Fluoride Contamination", value: "High", status: "danger" }
+      { label: "Seasonal Out-Migration (working-age tribals)", value: "Up to 70%, 8 months/yr", status: "critical" },
+      { label: "ST Population", value: "74% (Bhil, Rathwa)", status: "warning" },
+      { label: "School Dropout Rate", value: "Among Gujarat's highest", status: "danger" }
     ],
-    summary: "Mehsana is the epicenter of North Gujarat's agrarian water collapse. Officially classified as 'over-exploited,' groundwater extraction runs at 132% of natural recharge rates. Pumps have progressed from 50 feet in the 1970s to over 800-1,000 feet today, bringing up fossil water saturated with fluoride. The complete ecological collapse of farming viability has driven an unprecedented exodus: Mehsana leads Gujarat in both legal migration (often via Canada student visas) and highly dangerous illegal 'dunki' (donkey) routes to the United States. The district illustrates the terminal phase of the Green Revolution's tube-well model.",
+    summary: "Dahod inverts the standard Gujarat narrative. Officially classed as one of India's 'aspirational districts,' it sends an estimated up to 70% of its working-age tribal population — overwhelmingly Bhil and Rathwa families — out of state for roughly 8 months a year to work on construction sites, brick kilns, and farms in Madhya Pradesh, Rajasthan, Maharashtra and beyond. The migration is not aspirational but distress-driven: rain-fed maize plots, fragmented landholdings, and stagnant MGNREGA wage-day delivery leave households without enough work to survive the lean season at home.\n\nThe educational consequences are severe. Children either accompany migrating parents and drop out of school entirely, or are left behind with elderly relatives in 'left-behind villages' where attendance collapses by mid-October. Civil-society studies by Aajeevika Bureau and the Indian Institute of Public Health Gandhinagar have repeatedly flagged Dahod's dropout and learning-loss indicators as among the worst in Gujarat, with girl children disproportionately pulled out for sibling care.\n\nPolitical mobilisation has begun pushing back. The 2022 Adivasi Ekta Parishad and allied tribal-rights demonstrations in Dahod and the eastern belt demanded full implementation of the Forest Rights Act, PESA, and Tribal Sub-Plan funds — money that successive state audits flag as routinely under-utilised in Gujarat's tribal districts. Dahod stands as a structural rebuttal to the 'Gujarat Model': forty years of state-led growth have not produced enough local employment to keep its own people home.",
     keyCrises: [
-      { year: "Ongoing", title: "Fossil Water Extraction", detail: "Aquifers drained to 1,000+ feet. High fluoride and salinity levels destroying soil fertility, causing widespread fluorosis in rural populations. (Source: CGWB, WaterAid)" },
-      { year: "2023", title: "The US Border Exodus", detail: "Mehsana emerged as a primary hub for illegal immigration rings 'Dunki flights' sending agrarian youth to the US border via Nicaragua, reflecting catastrophic local job and farming market failure. (Source: The Hindu, Indian Express)" }
+      { year: "Ongoing", title: "Seasonal Distress Migration Cycle", detail: "Up to 70% of working-age tribals leave Dahod for ~8 months a year for construction, brick-kiln and farm work in MP, Rajasthan and Maharashtra. Studies by Aajeevika Bureau and IIPH Gandhinagar document children migrating with parents or dropping out, devastating learning outcomes. (Source: Indian Express, Down to Earth)" },
+      { year: "2022", title: "Adivasi Ekta Mobilisation in Eastern Belt", detail: "Tribal organisations across Dahod and neighbouring districts staged sustained protests demanding full implementation of the Forest Rights Act, PESA self-governance, and release of Tribal Sub-Plan funds. (Source: Counterview, Mongabay India)" },
+      { year: "Ongoing", title: "MGNREGA Implementation Gaps", detail: "Field assessments and Right-to-Food Campaign reports record delayed wage payments and far-below-entitlement workdays in Dahod's tribal blocks, blunting the law's role as a migration-reducing safety net. (Source: The Hindu, Down to Earth)" }
     ]
   },
   {
-    id: "bharuch",
-    name: "Bharuch",
+    id: "dang",
+    name: "Dang",
     region: "South Gujarat",
-    coordinates: [72.9959, 21.7051],
-    tagline: "The Toxic Gateway",
-    pillars: ["Chemical Governance", "Environment", "Labor"],
+    coordinates: [73.8052, 20.7628],
+    tagline: "Forested But Thirsty, Tribal But Title-less",
+    pillars: ["Environment", "Water", "Education"],
     stats: [
-      { label: "Ankleshwar CEPI Score", value: "80.21", status: "critical" },
-      { label: "API Dependency", value: "70% imported from China", status: "danger" },
-      { label: "Amlakhadi River", value: "Zero Dissolved Oxygen", status: "critical" }
+      { label: "Forest Cover", value: "Highest in Gujarat (>50% area)", status: "normal" },
+      { label: "ST Population", value: "Over 90% (Bhil, Kunbi, Warli)", status: "warning" },
+      { label: "Summer Tanker-Dependent Villages", value: "100+", status: "danger" }
     ],
-    summary: "Bharuch, particularly the Ankleshwar industrial estate, forms the southern anchor of Gujarat's chemical corridor. It produces a significant percentage of India's bulk drugs, dyes, and paints. However, this production is deeply dependent on Key Starting Materials (KSMs) and Active Pharmaceutical Ingredients (APIs) imported from China. During the Covid-19 pandemic, Ankleshwar's production stalled completely when Chinese shipments stopped. Environmentally, the estate discharges into the Amlakhadi River, which has recorded zero Dissolved Oxygen levels and severe heavy metal contamination, destroying the livelihoods of downstream fishing communities along the Narmada estuary.",
+    summary: "Dang is Gujarat's most forested district and one of its smallest, yet routinely posts the state's poorest human-development indicators. The paradox runs deep: more than half the district lies under tree cover, but during the dry months between February and June, well over 100 villages depend on government water tankers because monsoon runoff sluices straight off the Sahyadri slopes with little local storage or recharge.\n\nThe Forest Rights Act of 2006 was meant to recognise the customary holdings of Dang's almost entirely tribal population — Bhils, Kunbis, Warlis, and Kotwalias. In practice, individual and community forest rights claims across the district have faced high rejection rates, with claimants required to produce documentary evidence that pre-colonial cultivators were never expected to keep. Both Mongabay India and Down to Earth have documented Dang as a case study in how Gujarat under-implements FRA relative to states like Maharashtra and Odisha.\n\nThe district's eco-tourism economy, branded around the Saputara hill station and tribal cultural festivals, generates revenue that largely accrues to outside operators rather than indigenous households. Meanwhile, primary-school infrastructure remains thin, learning outcomes lag the state average, and out-migration of young men for seasonal labour in Surat and Nashik continues. Dang functions as Gujarat's green façade — visible on conservation maps, invisible in welfare ones.",
     keyCrises: [
-      { year: "2020", title: "Pandemic API Supply Shock", detail: "Pharma manufacturing in Ankleshwar and Dahej collapsed when Chinese API supply lines froze, revealing deep supply-chain vulnerability. (Source: Pharmexcil, ET)" },
-      { year: "2023", title: "Dahej Chemical Explosions", detail: "Series of explosions in Dahej SEZ chemical plants highlighted extreme regulatory blind spots in occupational safety and environmental compliance. (Source: GPCB, Times of India)" }
+      { year: "Ongoing", title: "Forest Rights Act Implementation Gap", detail: "Dang's tribal claimants face high rejection rates for individual and community forest-rights claims, with state authorities demanding documentary evidence beyond what FRA 2006 statutorily requires. (Source: Mongabay India, Down to Earth)" },
+      { year: "Recurring", title: "Summer Drinking-Water Tanker Dependency", detail: "Over 100 Dang villages depend on government water tankers each summer because steep terrain causes monsoon runoff loss and watershed structures remain inadequate. (Source: Indian Express, Times of India)" },
+      { year: "Ongoing", title: "Eco-Tourism Without Tribal Equity", detail: "Saputara and Dang festival tourism revenues largely accrue to outside operators while indigenous households remain dependent on seasonal out-migration to Surat and Nashik for survival wages. (Source: Down to Earth)" }
     ]
   },
   {
-    id: "rajkot",
-    name: "Rajkot",
+    id: "navsari",
+    name: "Navsari",
+    region: "South Gujarat",
+    coordinates: [72.9520, 20.9467],
+    tagline: "Where the Mango Belt Meets the Saline Sea",
+    pillars: ["Agriculture", "Environment", "Economics"],
+    stats: [
+      { label: "Coastal Salinity Ingress", value: "Documented in horticulture belt", status: "danger" },
+      { label: "Sea-Level-Rise Vulnerability", value: "Among Gujarat's highest", status: "critical" },
+      { label: "Spillover from Surat Textile Shocks", value: "Job-loss exposure", status: "warning" }
+    ],
+    summary: "Navsari's identity is built on its orchards — chikoo plantations stretching toward Gandevi and the GI-tagged Hapus and Kesar mango belts inland — and on the legacy of Navsari Agricultural University, one of India's older horticultural research institutions. That identity is under siege from the Arabian Sea. Studies by NAU and reporting by Down to Earth and The Hindu BusinessLine document advancing salinity ingress into the shallow aquifers that feed coastal orchards, with farmers reporting yield decline, premature fruit drop, and tree mortality in the talukas closest to the coastline.\n\nThe district sits on the Maharashtra-Gujarat coast that India's National Centre for Coastal Research has flagged as among the country's most exposed to sea-level rise and storm surge. Mangrove cover has thinned along the Purna and Ambika estuaries, and erosion is consuming portions of fishing villages near Dandi — the symbolic site where Gandhi broke the salt law in 1930.\n\nNavsari's other economic engine is its proximity to Surat. Tens of thousands of households commute or work in Surat's textile and diamond units, meaning every shock to that city — the 2020 lockdown exodus, the 2025 Russian-rough sanctions — radiates directly into Navsari's villages. Sandwiched between the Vapi pollution corridor to the south and Surat's industrial pull to the north, Navsari embodies the squeezed peri-urban district: ecologically eroding, economically exposed, with little independent industrial base of its own.",
+    keyCrises: [
+      { year: "Ongoing", title: "Salinity Ingress in Mango & Chikoo Orchards", detail: "Navsari Agricultural University and field reports document advancing coastal salinity intrusion into shallow aquifers, causing yield decline and tree mortality in chikoo and mango belts near Gandevi and Jalalpore. (Source: Down to Earth, The Hindu BusinessLine)" },
+      { year: "Ongoing", title: "Sea-Level-Rise Coastal Exposure", detail: "India's National Centre for Coastal Research and MoEFCC vulnerability assessments classify the South Gujarat coast — including Navsari and Valsad — as among the country's most exposed to sea-level rise, storm surge and shoreline erosion. (Source: NCCR, MoEFCC, Mongabay India)" },
+      { year: "2020 / 2025", title: "Surat Spillover Shocks", detail: "Navsari households commuting into Surat's textile and diamond units bore direct income loss from the 2020 pandemic exodus and the 2025 collapse in Russian-rough diamond polishing demand. (Source: Indian Express, Reuters)" }
+    ]
+  },
+  {
+    id: "chhota-udepur",
+    name: "Chhota Udepur",
+    region: "Central Gujarat",
+    coordinates: [74.0118, 22.3047],
+    tagline: "Pithora Country in the Shadow of the Statue",
+    pillars: ["Materials", "MigrantDiscrimination", "Education"],
+    stats: [
+      { label: "ST Population", value: "~80% (Rathwa, Bhil, Naika)", status: "warning" },
+      { label: "Orsang River Sand Mining", value: "Documented illegal extraction", status: "critical" },
+      { label: "Tribal Literacy", value: "Among Gujarat's lowest", status: "danger" }
+    ],
+    summary: "Carved out of Vadodara in 2013, Chhota Udepur is a tribal-majority district where the Rathwa, Bhil, and Naika communities sustain one of India's most distinctive ritual art traditions: the Pithora wall paintings, sacred narrative murals commissioned in tribal homes. That cultural depth coexists with structural extraction. The district supplies dolomite, marble, and sand to Central Gujarat's construction economy, with the Orsang river — tributary to the Narmada — repeatedly named in Mongabay India and Indian Express investigations into illegal sand mining cartels operating with political cover.\n\nThe district's eastern blocks abut the Statue of Unity zone in Narmada district. From 2018 onward, tribal communities across Chhota Udepur and Narmada protested fencing and land acquisition by Sardar Sarovar Narmada Nigam Ltd around six villages near the Statue, framed by adivasi leaders as a continuation of the displacement trajectory begun by the dam itself. Tribal organisations wrote to the Prime Minister demanding a halt; arrests and case-filings followed against demonstrators.\n\nCensus 2011 placed Chhota Udepur's tribal literacy among the lowest in Gujarat, and subsequent rounds of the National Family Health Survey have shown stubbornly poor child-nutrition and antenatal-care indicators. Forest Rights Act implementation is patchy, and out-migration of young men to Vadodara and Surat construction sites grows each lean season. Pithora artists continue to paint sacred horses on village walls; the state continues to extract minerals from beneath their feet.",
+    keyCrises: [
+      { year: "Ongoing", title: "Orsang River Illegal Sand Mining", detail: "Investigations document organised illegal sand mining along the Orsang river basin in Chhota Udepur, altering local hydrology and intimidating tribal communities and forest officials who attempt to intervene. (Source: Mongabay India, Indian Express)" },
+      { year: "2018 onwards", title: "Statue of Unity Tribal Land Protests", detail: "Tribal communities in Chhota Udepur and adjoining Narmada district protested fencing and land acquisition by SSNNL around six villages near the Statue of Unity, demanding the Prime Minister halt further acquisitions. (Source: SabrangIndia, Scroll, The Wire)" },
+      { year: "Ongoing", title: "Tribal Literacy & Schooling Deficit", detail: "Census 2011 and subsequent NFHS rounds record some of Gujarat's poorest tribal literacy, school-completion and child-nutrition indicators in Chhota Udepur, despite its proximity to the industrialised Vadodara belt. (Source: Census of India, Down to Earth)" }
+    ]
+  },
+  {
+    id: "botad",
+    name: "Botad",
     region: "Saurashtra",
-    coordinates: [70.7923, 22.3039],
-    tagline: "The Stalled Engine of Saurashtra",
-    pillars: ["Labor", "Economics", "Infrastructure"],
+    coordinates: [71.6661, 22.1693],
+    tagline: "The Diamond Wheel That Stopped, the Methanol That Didn't",
+    pillars: ["ChemicalGovernance", "Labor", "Economics"],
     stats: [
-      { label: "MSME Closures (2025)", value: "300+ units", status: "danger" },
-      { label: "Banking NPAs", value: "Rising 18% YoY", status: "warning" },
-      { label: "Skilled Labor Deficit", value: "40%", status: "critical" }
+      { label: "Botad-Ahmedabad Hooch Tragedy Deaths (Jul 2022)", value: "42+ confirmed", status: "critical" },
+      { label: "Saurashtra Patel Polishers Affected by Russian-Diamond Sanctions", value: "~80-90% of cluster", status: "danger" },
+      { label: "Pink Bollworm Cry-Protein Resistance Origin (2009-10)", value: "Amreli-Bhavnagar-Botad belt", status: "warning" }
     ],
-    summary: "Rajkot is the traditional engineering and auto-ancillary hub of Gujarat, built on a vast network of MSMEs rather than mega-corporations. Historically resilient, the district is now facing a structural crisis. The transition to Electric Vehicles (EVs) threatens thousands of localized internal-combustion engine (ICE) part manufacturers who lack the capital to retool. Furthermore, Rajkot's MSMEs operate on extremely thin margins and depend on cheap, unorganized migrant labor. Recent commodity price shocks (steel and brass) have wiped out the working capital of over 300 units.",
+    summary: "Botad — carved out of Bhavnagar in 2013 — is a small Saurashtra district that sits at the intersection of three Gujarat dependencies the state would prefer not to discuss together: imported Russian rough diamonds, prohibition-driven illicit alcohol, and Bt cotton resistance. Like its Saurashtra neighbours, Botad supplies thousands of Patel-community diamond polishers to Surat's ateliers; when US Treasury (OFAC) and EU sanctions on Alrosa rough diamonds bit hard through 2024-25, the resulting closures of small Surat polishing halls reverberated back into Botad's villages as wage shocks, school dropouts and reverse migration. The cotton economy that should have absorbed returnees has itself been gutted by pink-bollworm resistance to Bt Cry proteins — first documented in this Saurashtra belt around 2009-10.\n\nThe district's defining recent disaster, however, was chemical, not financial. In July 2022, at least 42 people died and dozens more were hospitalised in Botad and adjoining Ahmedabad-rural villages — Rojid, Ranighala, Akru and others — after consuming country liquor laced with industrial methanol that had been illegally diverted from a chemical company in Ahmedabad. Investigations and reportage by Indian Express, The Hindu, Reuters and Scroll documented how the supply chain ran through licit chemical traders, prohibition-era bootleggers and police-linked local networks; arrests followed but accountability up the chain remained thin.\n\nBotad illustrates how Gujarat's prohibition regime, far from eliminating alcohol, creates a parallel toxic economy fed by the very 'Golden Corridor' chemical industry the state celebrates elsewhere. The same district that supplies labour to a sanctioned global diamond trade is also where Gujarat's chemical-governance failures kill the poor in their own homes.",
     keyCrises: [
-      { year: "2024", title: "The EV Transition Shock", detail: "Auto-ancillary MSMEs supplying traditional ICE vehicle components faced existential threats, lacking state support for technological transition. (Source: Auto Components Manufacturers Association)" },
-      { year: "2024", title: "TRP Game Zone Fire", detail: "Reflected deep urban governance rot—an illegal structure operating without fire NOCs resulted in 32 deaths, including children. (Source: Indian Express)" }
+      { year: "Jul 2022", title: "Botad-Ahmedabad Hooch Tragedy", detail: "At least 42 people died and dozens were hospitalised across Botad and Ahmedabad-rural villages (Rojid, Barwala, Ranighala) after consuming illicit liquor laced with methanol diverted from an Ahmedabad chemical firm. Multiple arrests followed under the Gujarat Prohibition Act; reporting flagged repeated diversion of industrial methanol into the bootleg chain. (Source: Indian Express, The Hindu, Reuters, Scroll)" },
+      { year: "2024-25", title: "Russian Rough Diamond Sanctions Bleed Back into Botad Villages", detail: "G7/EU and US OFAC restrictions on Russian (Alrosa) rough diamonds cratered Surat's small polishing units, where roughly 80-90% of the workforce are Saurashtra Patel migrants from Bhavnagar, Amreli, Junagadh and Botad. Reports from The Federal, ThePrint and Rapaport documented unit closures, wage cuts and a rising count of polisher suicides. (Source: The Federal, ThePrint, Rapaport)" },
+      { year: "2009-10 onward", title: "Pink Bollworm Resistance Origin", detail: "The Amreli-Bhavnagar-Junagadh-Rajkot-Botad belt is where field-level Cry1Ac resistance in pink bollworm was first documented in India. With no GEAC-approved Bollgard III replacement and an ageing Mahyco-Monsanto Biotech licence stack, Botad's cotton farmers face structural yield collapse and rising pesticide bills. (Source: ICAR-CICR, Down to Earth, Mongabay India)" }
     ]
   },
   {
-    id: "amreli", name: "Amreli", region: "Saurashtra", coordinates: [71.2167, 20.6000], tagline: "The Forgotten Coast",
-    pillars: ["Agriculture", "Economics", "Environment"], stats: [{ label: "Crop Failure Rate", value: "48%", status: "critical" }, { label: "Port Industrial Decay", value: "Pipavav Saturation", status: "warning" }, { label: "Lion Conflict", value: "45 attacks YoY", status: "danger" }],
-    summary: "Amreli suffers from coastal isolation and deep agrarian crisis. Erratic monsoons and coastal salinity ingress have destroyed thousands of hectares of groundnut acreage. The Pipavav port ecosystem has not created sufficient local employment to stop the rural exodus.", keyCrises: [{ year: "2024", title: "Coastal Salinity Crisis", detail: "Groundwater salinity increased rapidly post-cyclones, damaging agricultural output. (Source: State Ag Dept)"}]
+    id: "surendranagar",
+    name: "Surendranagar",
+    region: "Saurashtra",
+    coordinates: [71.6394, 22.7275],
+    tagline: "The Tail End of Every Canal, Every Promise",
+    pillars: ["Water", "Labor", "Agriculture"],
+    stats: [
+      { label: "Position on Narmada Branch Canals", value: "Saurashtra tail-end", status: "danger" },
+      { label: "Agariya Salt-Pan Workers (Little Rann)", value: "~40,000+ across LRK", status: "critical" },
+      { label: "SAUNI Yojana Reliance", value: "Phase-completion delays", status: "warning" }
+    ],
+    summary: "Surendranagar straddles two Gujarats. To the east it is part of the dry Saurashtra cotton-and-groundnut belt; to the north-west it slopes into the Little Rann of Kutch (LRK), the saline desert where Gujarat's Agariya salt-pan community produces a significant share of India's inland salt. As the Narmada main canal's branch network reaches Saurashtra, Surendranagar sits structurally at the tail end — both of the Sardar Sarovar command area and of the SAUNI (Saurashtra Narmada Avtaran Irrigation) link pipelines that were politically promised to fill 115 dams across Saurashtra. Tail-end villages routinely report dry outlets during the kharif sowing window even as upstream districts draw their full quota.\n\nThe Agariya story makes the district one of the starkest sites of labour exploitation in India. For roughly eight months a year, Agariya families migrate into the LRK with their children to manually pump brine from shallow boreholes into pans, working in summer surface temperatures that have been recorded at 52 °C. The Salt Workers' Union and Down to Earth have documented rampant child labour, blindness from solar glare, and bone calcification from constant brine contact, with Agariyas trapped in generational debt to commission agents who advance pumps and diesel against the next season's crop. Most lack land titles inside the Wild Ass Sanctuary that overlays the Rann, which makes them legally invisible.\n\nLayered on top, Morbi's ceramic-cluster footprint now spills into Surendranagar talukas as new tile and sanitaryware units, replicating the same fragile import-LNG-and-migrant-labour model the Morbi profile already documents. Surendranagar is where Gujarat's three flagship promises — Narmada irrigation, industrial spillover, formal labour rights — all arrive late and incomplete.",
+    keyCrises: [
+      { year: "Ongoing", title: "Agariya Salt-Pan Generational Bondage in the Little Rann", detail: "Agariya families pump brine in 52 °C surface temperatures across the Little Rann of Kutch, with documented cases of blindness, bone calcification and persistent child labour. Most workers operate without land titles inside the Wild Ass Sanctuary, locked into season-after-season advances from commission agents. (Source: Down to Earth, Salt Workers Union/SEWA, IDR Online)" },
+      { year: "Ongoing", title: "Tail-End Narmada and SAUNI Shortfalls", detail: "Surendranagar sits at the tail of Saurashtra's Narmada branch canals and the SAUNI link-pipeline network. Repeated reporting and farmer protests have flagged dry outlets during kharif sowing despite upstream districts receiving full quotas, with cotton and groundnut yields suffering accordingly. (Source: Indian Express, Down to Earth)" },
+      { year: "Recurring", title: "Ceramic Cluster Spillover from Morbi", detail: "As Morbi's tile and sanitaryware cluster expands, new units have spilled into Surendranagar talukas, importing Morbi's gas-import dependency and migrant-labour model — including the unaddressed silicosis exposure profile documented in the PTRC and ESI studies. (Source: PTRC, Times of India)" }
+    ]
   },
   {
-    id: "dahod", name: "Dahod", region: "Central Gujarat", coordinates: [74.2567, 22.8333], tagline: "The Exodus Point",
-    pillars: ["Labor", "Education", "Economics"], stats: [{ label: "Distress Migration", value: "70% working pop", status: "critical" }, { label: "Tribal Sub-Plan Usage", value: "Low", status: "danger" }, { label: "Dropout Rate", value: "Top 3 in state", status: "warning" }],
-    summary: "Dahod is the epicentre of Gujarat's tribal migration crisis. Up to 70% of the active working-age population leaves for 8 months a year to work in construction sites or agricultural fields, highlighting the complete failure of local economic inclusion.", keyCrises: [{ year: "Ongoing", title: "Seasonal Migration Cycle", detail: "Mass exodus of Bhil tribal workers creates severe educational gaps for children. (Source: Labor Rights Union)"}]
+    id: "devbhoomi-dwarka",
+    name: "Devbhoomi Dwarka",
+    region: "Saurashtra",
+    coordinates: [69.2245, 22.2530],
+    tagline: "Pilgrim Coast on a Sanctioned Refinery's Doorstep",
+    pillars: ["Environment", "Materials", "Economics"],
+    stats: [
+      { label: "Nayara Energy Vadinar Refinery", value: "Directly EU-sanctioned (2025)", status: "critical" },
+      { label: "Cyclone Tauktae Coastal Damage (May 2021)", value: "Boats, mangroves, kuccha houses", status: "danger" },
+      { label: "Dwarkadhish-Bet Dwarka Pilgrim Footfall", value: "Multi-million annually", status: "warning" }
+    ],
+    summary: "Carved out of Jamnagar in 2013, Devbhoomi Dwarka braids together three economies whose interactions are rarely acknowledged in tourism brochures: religious pilgrimage anchored by the Dwarkadhish temple and Bet Dwarka, traditional small-boat fishing along Okha and Salaya, and the Vadinar coastal industrial zone that hosts Nayara Energy's 20 MMTPA refinery (formerly Essar Oil, now part-owned by Russia's Rosneft) along with its captive port and single-buoy mooring system. The petrochemical footprint sits literally upwind of the pilgrim coast.\n\nThe district's structural fragility is most visible in the refinery. As G7 and EU sanctions on Russian crude tightened through 2024-25 and the EU added Nayara to its sanctions list in 2025, the Vadinar complex's operating economics — dependent on discounted Russian Urals, Western insurance and Western payment rails — became immediately exposed. Project Alphono's own simulator data identifies Devbhoomi Dwarka as one of the three districts that takes the direct hit from a Russian-crude shock, alongside Jamnagar and Bharuch. A single sanctions-enforcement event would idle thousands of refinery workers and the trucker corridor that radiates from the SBM, while leaving the local fishing economy still bearing the residual oil-spill and effluent risk.\n\nCyclone Tauktae in May 2021 grazed the Dwarka coast en route to its Diu-Una landfall, damaging fishing boats, mangrove pockets and kuccha housing in Okha and the surrounding villages. The same Arabian Sea now warms faster than the global ocean average, intensifying storms that the district's degraded mangrove buffer can no longer absorb. Devbhoomi Dwarka is where Gujarat's pilgrim, fisher and petrochemical economies meet — and where any one of them failing pulls the others down with it.",
+    keyCrises: [
+      { year: "2025", title: "EU Sanctions Hit Nayara's Vadinar Refinery", detail: "The European Union added Rosneft-linked Nayara Energy to its 18th-package Russia sanctions list in 2025, freezing several payment and insurance pathways for the Vadinar refinery and forcing Indian banks and counterparties to reassess exposure. The complex is one of only two large private refineries in India and a primary employer in coastal Devbhoomi Dwarka. (Source: Reuters, Indian Express, Energy Intelligence)" },
+      { year: "May 2021", title: "Cyclone Tauktae Coastal Damage", detail: "Cyclone Tauktae passed close to the Dwarka coast before its Saurashtra landfall, with high winds and storm surge damaging fishing boats at Okha and Salaya, breaching kuccha housing, and destroying mangrove patches that had been thinned by industrial expansion. The Gujarat government's relief assessment included Devbhoomi Dwarka in its multi-thousand-crore Saurashtra package. (Source: Indian Express, IMD, Reuters)" },
+      { year: "Nov 2025", title: "Unseasonal-Rain Farmer Suicides", detail: "Karshanbhai Vanoriya, 37, of Manpur village in Devbhoomi Dwarka, died by suicide during the Saurashtra-wide wave of farmer deaths after unseasonal rain wiped out the standing kharif crop and the announced relief package failed to reach affected households. Six suicides were reported in 25 days across the belt. (Source: Gujarat Samachar, The Federal)" }
+    ]
   },
   {
-    id: "dang", name: "Dang", region: "South Gujarat", coordinates: [73.8052, 20.7628], tagline: "The Deforested Haven",
-    pillars: ["Environment", "Water", "Labor"], stats: [{ label: "Forest Cover Loss", value: "14% over 10 yrs", status: "danger" }, { label: "Tribal Poverty", value: "High", status: "critical" }, { label: "Summer Water Tankers", value: "100+ villages", status: "warning" }],
-    summary: "Despite being Gujarat's most forested district, Dang faces severe paradoxes. Indigenous communities face constant displacement threats under forestry laws. During summers, deep terrain runoff forces over 100 villages to depend exclusively on government tankers.", keyCrises: [{ year: "2023", title: "Water Tanker Crisis", detail: "High rainfall but zero retention led to acute summer drinking water shortages. (Source: Water Mgmt Auth)"}]
+    id: "gir-somnath",
+    name: "Gir Somnath",
+    region: "Saurashtra",
+    coordinates: [70.4357, 20.8938],
+    tagline: "Lions, Pilgrims, and Fishermen in Pakistani Jails",
+    pillars: ["Environment", "Agriculture", "Labor"],
+    stats: [
+      { label: "Veraval Fish Landing Centre", value: "Among India's largest", status: "warning" },
+      { label: "Statewide Crop Loss, Unseasonal Rain (Nov 2025)", value: "10 lakh+ hectares", status: "critical" },
+      { label: "Proposed Gir Eco-Sensitive Zone", value: "~2,061 sq km, 196 villages", status: "danger" }
+    ],
+    summary: "Gir Somnath compresses three of Gujarat's hardest contradictions into one coastal strip: the last refuge of the Asiatic lion at the Gir National Park, the Somnath temple complex that anchors a high-volume pilgrim economy, and Veraval — among India's largest fish-landing centres and the operating base for thousands of mechanised trawlers fishing the central and northern Arabian Sea. Each of the three economies is in structural crisis simultaneously.\n\nOn land, the proposed Gir Eco-Sensitive Zone — initially mooted at around 3,328 sq km and revised to roughly 2,061 sq km covering 196 revenue villages — has triggered a rare cross-party political revolt, with even the BJP's local Gir Somnath unit and IFFCO leadership threatening agitation against the restrictions on agriculture, mining and construction inside the buffer. The same farmers face escalating lion-human conflict as the Asiatic lion population (327 in 2001, 674 in 2020) spills out of Gir's saturated core, while the November 2025 unseasonal rains destroyed an estimated 10 lakh+ hectares of standing crops statewide, with Junagadh and Gir Somnath among the worst-hit districts and farmer suicides reported across the belt.\n\nAt sea, Veraval's fishing fleet is squeezed from both sides. Rapid depletion of high-value species (white pomfret, surmai, prawn) close to shore — driven by industrial pollution and overfishing along the Porbandar-Kutch coast — is forcing trawlers into 15-20 day deep-sea trips that drift dangerously close to the unmarked India-Pakistan Maritime Boundary Line. The Migration Story, SACW and Maktoob have documented 144 Gujarat fishermen still in Pakistani custody with 1,173 boats seized, two deaths in Malir jail in early 2025 (one reported as suicide), and the death of Una resident Babubhai Chudasama in custody. Gir Somnath shows what happens when conservation, climate and geopolitics all draw their costs from the same village register.",
+    keyCrises: [
+      { year: "Sep 2024", title: "Gir Eco-Sensitive Zone Political Revolt", detail: "MoEFCC's revised proposal of a roughly 2,061 sq km ESZ around Gir National Park (covering 196 villages) drew protest from both the BJP's Gir Somnath unit and opposition parties, with IFFCO leadership threatening agitation. Farmers feared restrictions on borewells, mining and even housing construction inside the buffer. (Source: Vikalp Sangam, Indian Express, MoEFCC)" },
+      { year: "Nov 2025", title: "Unseasonal-Rain Crop Destruction and Farmer Suicides", detail: "Late-season cyclonic rain devastated standing kharif crops across Saurashtra, with Gir Somnath and Junagadh worst-hit. State estimates put statewide damage at 10 lakh+ hectares. Six farmer suicides were documented in 25 days across the belt, with Tulshishyam-area farmers among the dead. Protests erupted across 10+ districts demanding crop compensation. (Source: Gujarat Samachar, The Federal, Mongabay India)" },
+      { year: "Ongoing", title: "Veraval Fishermen in Pakistani Custody", detail: "144 Gujarat fishermen remain in Pakistani jails with 1,173 boats seized as Veraval and Porbandar trawlers chase depleted shoals into deep waters near the IMBL. Babubhai Chudasama of Una died in Malir jail in 2025; two further deaths in early 2025, one reported as suicide. No repatriations since 2024. (Source: The Migration Story, SACW, Maktoob Media)" }
+    ]
   },
   {
-    id: "navsari", name: "Navsari", region: "South Gujarat", coordinates: [72.9520, 20.9467], tagline: "The Sinking Orchards",
-    pillars: ["Environment", "Agriculture", "Economics"], stats: [{ label: "Orchard Salinity", value: "30% impact", status: "danger" }, { label: "Sea Level Threat", value: "High Vulnerability", status: "critical" }, { label: "Textile Job Losses", value: "15,000+", status: "warning" }],
-    summary: "Navsari's famous Chikoo and Mango orchards are facing existential threats from rapid coastal salinity ingress. Brackish water is penetrating deeper into the water table. Its unorganized textile processing sector suffers from export shocks alongside Surat.", keyCrises: [{ year: "2024", title: "Horticulture Collapse", detail: "Saltwater intrusion ruined over 30% of coastal orchard yields. (Source: Agri Univ Navsari)"}]
+    id: "tapi",
+    name: "Tapi",
+    region: "South Gujarat",
+    coordinates: [73.5705, 21.1444],
+    tagline: "Surat's Tribal Hinterland, Ukai's Drowned Memory",
+    pillars: ["Water", "Labor", "Education"],
+    stats: [
+      { label: "Carved Out From Surat", value: "2007 (district formation)", status: "normal" },
+      { label: "ST Population", value: "Over 80% (Chaudhari, Gamit, Vasava)", status: "warning" },
+      { label: "Ukai Dam Legacy", value: "~170 villages submerged", status: "critical" }
+    ],
+    summary: "Tapi was carved out of Surat district in 2007, a bureaucratic gesture that did not undo decades of asymmetric development. The district's defining infrastructure remains the Ukai Dam on the Tapi river, commissioned in 1972, which submerged an estimated 170 villages and displaced predominantly Chaudhari, Gamit, and Vasava tribal households whose rehabilitation case-files NBA and Earth Island Journal reporting describe as still unresolved across multiple generations.\n\nTapi today functions as the upcountry tribal hinterland of Surat's textile and diamond economy. Sugarcane cooperatives — including Bardoli's neighbouring catchment — pull in seasonal cane-cutting labour from Tapi's tribal villages, paid by piece-rate, housed in tarpaulin shelters, and exposed to the well-documented occupational injuries of cane harvesting. Diamond and textile units in Surat absorb the remainder of working-age men, with women and children left behind in agrarian villages with thin schooling and primary-health infrastructure.\n\nForest Rights Act claims in Tapi have, like those in Dang and Chhota Udepur, faced documented rejection rates that civil-society monitors attribute to Gujarat's stringent evidentiary demands rather than weak tribal title-tracts. Combined with the unfinished business of Ukai compensation, Tapi exemplifies a district whose poverty is not a residual of underdevelopment but a direct cost of upstream growth — water, sugarcane, and labour all flowing outward.",
+    keyCrises: [
+      { year: "1972 onwards", title: "Ukai Dam Displacement Legacy", detail: "Ukai Dam submerged an estimated 170 villages, displacing predominantly Chaudhari, Gamit and Vasava tribal households. Rehabilitation case-files for affected families remain unresolved across multiple generations. (Source: Earth Island Journal, NBA archives, Down to Earth)" },
+      { year: "Ongoing", title: "FRA Claim Rejection in Tribal Belt", detail: "Forest Rights Act individual and community claims in Tapi face documented high rejection rates, with state authorities applying stringent evidentiary thresholds that civil-society monitors call out of step with the 2006 statute. (Source: Mongabay India, Down to Earth)" },
+      { year: "Ongoing", title: "Sugarcane & Surat Migration Loop", detail: "Tribal households are absorbed into Surat's textile and diamond units and into seasonal sugarcane cane-cutting labour in the Bardoli-Vyara belt, paid piece-rate with documented occupational injuries and minimal social-security coverage. (Source: Indian Express, Aajeevika Bureau studies)" }
+    ]
   },
   {
-    id: "chhota-udepur", name: "Chhota Udepur", region: "Central Gujarat", coordinates: [74.0118, 22.3047], tagline: "The Extractive Fringe",
-    pillars: ["Materials", "Labor", "Environment"], stats: [{ label: "Dolomite Impact", value: "Ecological Damage", status: "danger" }, { label: "Illegal Sand Mining", value: "Critical", status: "critical" }, { label: "Tribal Literacy", value: "Lagging", status: "warning" }],
-    summary: "Chhota Udepur’s economy is largely extractive. It provides dolomite, sand, and minerals for the state's construction booms, yet remains one of the poorest tribal districts. Unregulated sand mining along the Orsang river has altered local hydrology.", keyCrises: [{ year: "Ongoing", title: "Sand Mafia Conflict", detail: "Illegal mining cartels dominate the Orsang river basin, suppressing tribal rights. (Source: News Reports)"}]
-  },
-  {
-    id: "botad", name: "Botad", region: "Saurashtra", coordinates: [71.6661, 22.1693], tagline: "The Broken Polishing Wheel",
-    pillars: ["Labor", "Economics", "Agriculture"], stats: [{ label: "Diamond Unit Closures", value: "40% MSMEs", status: "critical" }, { label: "Cotton Crop Failure", value: "Repeated", status: "danger" }, { label: "Wage Stagnation", value: "Since 2018", status: "warning" }],
-    summary: "Botad operates as a massive satellite labor hub for Surat's diamond industry. The global sanctions on Russian rough diamonds cratered Botad's local MSME polishing units, leading to severe localized unemployment. With alternative agriculture (cotton) failing due to erratic rains, Botad represents a dual-sector collapse.", keyCrises: [{ year: "2025", title: "Diamond Layoffs", detail: "Over 40% of small-scale local polishing units shut down, trapping thousands in poverty. (Source: Diamond Assoc)"}]
-  },
-  {
-    id: "surendranagar", name: "Surendranagar", region: "Saurashtra", coordinates: [71.6394, 22.7275], tagline: "The Drought Gateway",
-    pillars: ["Water", "Agriculture", "Economics"], stats: [{ label: "Canal Water Dispute", value: "Endemic", status: "danger" }, { label: "Cotton Yield Drop", value: "25% YoY", status: "critical" }, { label: "Ceramic Contagion", value: "Spreading", status: "warning" }],
-    summary: "Surendranagar historically suffers from chronic drought. While Narmada canal networks were promised to save the district, unequal distribution leaves tail-end villages completely dry. Economically, it is increasingly absorbing the highly polluting overflow of Morbi's ceramic industry.", keyCrises: [{ year: "2023", title: "Water Riots Warning", detail: "Tail-end farmers protested lack of Narmada water releases during critical sowing periods. (Source: Agitating Farmers Forum)"}]
-  },
-  {
-    id: "devbhoomi-dwarka", name: "Devbhoomi Dwarka", region: "Saurashtra", coordinates: [69.2245, 22.2530], tagline: "The Eroding Coast",
-    pillars: ["Environment", "Economics", "Water"], stats: [{ label: "Coastal Erosion", value: "Severe", status: "critical" }, { label: "Fishery Depletion", value: "60% drop", status: "danger" }, { label: "Tourism Reality", value: "Strained", status: "warning" }],
-    summary: "Dwarka’s coastal economy is under siege. Industrial pollution from nearby Jamnagar and upstream sources has devastated local fisheries, forcing traditional fishing communities into poverty. The district's economy leans precariously on religious tourism.", keyCrises: [{ year: "2024", title: "Coastal Erosion Crisis", detail: "Rising sea levels and degraded mangroves continue to consume coastal grazing lands and villages. (Source: Environment Dept)"}]
-  },
-  {
-    id: "gir-somnath", name: "Gir Somnath", region: "Saurashtra", coordinates: [70.4357, 20.8938], tagline: "The Protected Conflict",
-    pillars: ["Environment", "Agriculture", "Labor"], stats: [{ label: "Lion-Human Conflict", value: "Highest in State", status: "danger" }, { label: "Unseasonal Rains", value: "Massive crop damage", status: "critical" }, { label: "Fishing Insecurity", value: "Intense", status: "warning" }],
-    summary: "Gir Somnath exists at the breaking point of conservation and agriculture. Farmers suffer catastrophic crop losses not only from extreme unseasonal rains but from expanding wildlife populations that decimate fields. Proposed Eco-Sensitive Zones threaten to lock up thousands of hectares.", keyCrises: [{ year: "2024", title: "Wildlife Crop Devastation", detail: "Protests over government failure to compensate for crops wiped out by protected herbivores. (Source: Kisan Sangh)"}]
-  },
-  {
-    id: "tapi", name: "Tapi", region: "South Gujarat", coordinates: [73.5705, 21.1444], tagline: "The Forgotten Forest",
-    pillars: ["Environment", "Water", "Labor"], stats: [{ label: "Forest Rights Claims", value: "High rejection rate", status: "danger" }, { label: "Tribal Displacement", value: "Historical baggage", status: "critical" }, { label: "Agro-Forestry Limits", value: "Severe", status: "warning" }],
-    summary: "Carved out from Surat, Tapi remains a deeply marginalized tribal district. Historic dam projects like Ukai displaced thousands who were never properly rehabilitated. Today, indigenous communities face high rejection rates for land rights under the Forest Rights Act.", keyCrises: [{ year: "Ongoing", title: "FRA Claims Rejection", detail: "Systemic denial of forest land titles deeply marginalizes agricultural tribals. (Source: Tribal Advocacy)"}]
-  },
-  {
-    id: "kheda", name: "Kheda", region: "Central Gujarat", coordinates: [72.6841, 22.7535], tagline: "The Tobacco Dust",
-    pillars: ["Agriculture", "Health", "Water"], stats: [{ label: "Bidi Worker Wages", value: "Sub-minimum", status: "critical" }, { label: "Tobacco Subsidy Gap", value: "Severe", status: "danger" }, { label: "Groundwater Quality", value: "Deteriorating", status: "warning" }],
-    summary: "Kheda is synonymous with Gujarat's tobacco cultivation and processing industry. The bidi-rolling workforce suffers from chronic occupational health hazards and sub-minimum wages. While dairy cooperatives offer some buffer, legacy agricultural sectors are locked in exploitative loops.", keyCrises: [{ year: "2023", title: "Bidi Workers Unrest", detail: "Exploitative piece-rate wages led to massive unsupported strikes among women bidi rollers. (Source: Gujarat Bidi Kamgar Union / SEWA)"}]
+    id: "kheda",
+    name: "Kheda",
+    region: "Central Gujarat",
+    coordinates: [72.6841, 22.7535],
+    tagline: "Tobacco Dust, Dairy Buffer, Monsoon Floods",
+    pillars: ["Agriculture", "Labor", "Water"],
+    stats: [
+      { label: "Bidi-Rolling Workforce", value: "Predominantly women, piece-rate", status: "critical" },
+      { label: "Tobacco Belt", value: "Among India's largest by area", status: "warning" },
+      { label: "Anand-Kheda Dairy Buffer", value: "Amul/AMUL cooperative coverage", status: "normal" }
+    ],
+    summary: "Kheda's name is fixed in Indian political memory as the site of Gandhi's 1918 satyagraha and the cradle of the cooperative movement that became Amul. Beneath that civic legacy sits an agrarian economy increasingly defined by tobacco. Charotar Kheda is one of India's largest tobacco-growing belts, feeding bidi-leaf, gutka, and chewing-tobacco supply chains. Rolling bidis is overwhelmingly women's work, performed at home on piece-rates that SEWA and ILO field studies have repeatedly shown fall below statutory minimum wages once unpaid raw-material handling and rejection losses are factored in. Chronic exposure to tobacco dust is associated with respiratory disease, skin conditions, and reproductive-health concerns documented in occupational-health literature.\n\nThe district's cooperative dairy structure — Kaira District Cooperative Milk Producers' Union, Amul's founding entity — provides a partial buffer. Milk procurement runs through dense village-society networks, and dairy income smooths household consumption when tobacco prices crash or weather destroys crops. But the buffer is uneven; landless and marginal-land households without cattle access fall through.\n\nKheda's flat alluvial plains drain poorly. The August 2024 monsoon — which delivered Central Gujarat its worst floods since 2014 — submerged large stretches of Kheda alongside Anand and Vadodara, damaging tobacco curing-sheds, fodder stocks, and rural roads. Climate-volatility scenarios from IMD and IIT-Gandhinagar studies suggest the frequency of such Central Gujarat flood events is rising. Kheda's inheritance from the cooperative century may not be enough to absorb the next one.",
+    keyCrises: [
+      { year: "Ongoing", title: "Bidi Workers' Sub-Minimum Wages", detail: "SEWA and ILO field studies of bidi-rolling households in Kheda and the Charotar belt document piece-rate earnings below statutory minimum wages, plus chronic respiratory and skin disease from tobacco-dust exposure. (Source: SEWA, ILO India, The Hindu)" },
+      { year: "Aug 2024", title: "Central Gujarat Monsoon Flooding", detail: "August 2024's record Central Gujarat deluge submerged stretches of Kheda alongside Anand and Vadodara, damaging tobacco sheds, dairy fodder stocks and rural infrastructure. (Source: ReliefWeb, Indian Express, NDRF)" },
+      { year: "Ongoing", title: "Tobacco Dependence vs Health Risk", detail: "Kheda's status as one of India's largest tobacco-growing districts ties household incomes to a crop linked to documented occupational hazards for cultivators and bidi rollers, with limited diversification options for marginal-land farmers. (Source: Down to Earth, Business Standard)" }
+    ]
   },
   {
     id: "aravalli", name: "Aravalli", region: "North Gujarat", coordinates: [73.3082, 23.4243], tagline: "The Rocky Deficit",
@@ -465,9 +548,23 @@ export const districtsData = [
     summary: "Aravalli suffers from the classic North Gujarat curse: rapidly depleting aquifers in rocky terrain. Agriculture remains rain-fed and highly volatile. With almost zero large-scale industrialization in the district, youth are forced to migrate to Ahmedabad and Gandhinagar.", keyCrises: [{ year: "Ongoing", title: "Agrarian Failure", detail: "Successive monsoon failures combined with deep rock-aquifer depletion ruined small landholders. (Source: Hydrology Dept)"}]
   },
   {
-    id: "mahisagar", name: "Mahisagar", region: "Central Gujarat", coordinates: [73.5350, 23.0906], tagline: "The Damned Catchment",
-    pillars: ["Water", "Labor", "Economics"], stats: [{ label: "Hydro-displacement", value: "Pending Rehab", status: "danger" }, { label: "Per Capita Income", value: "Bottom 20%", status: "critical" }, { label: "Agrarian Distress", value: "Severe", status: "warning" }],
-    summary: "Despite hosting major dams on the Mahi river (Kadana), Mahisagar paradoxically struggles with agricultural water allocation. Displaced populations from the massive catchment areas remain locked in generational poverty, entirely bypassed by the 'Gujarat Model' of high-speed urban-industrial growth.", keyCrises: [{ year: "Ongoing", title: "Kadana Rehabilitation Backlog", detail: "Unresolved compensation claims for lands submerged decades ago. (Source: Social Justice Forums)"}]
+    id: "mahisagar",
+    name: "Mahisagar",
+    region: "Central Gujarat",
+    coordinates: [73.5350, 23.0906],
+    tagline: "A Reservoir's Reach Without a Reservoir's Reward",
+    pillars: ["Water", "Economics", "Labor"],
+    stats: [
+      { label: "Carved Out (from Kheda + Panchmahal)", value: "2013", status: "normal" },
+      { label: "Kadana Dam Catchment", value: "On Mahi river, hosts district", status: "warning" },
+      { label: "Per-Capita Indicators", value: "Among Gujarat's lowest", status: "critical" }
+    ],
+    summary: "Mahisagar district was carved out of Kheda and Panchmahal in 2013, taking its name from the Mahi river and inheriting the legacy of the Kadana Dam, completed in stages from the 1970s through the 1980s. The dam's reservoir submerged tribal-mixed villages whose rehabilitation case-files Counterview and Indian Express reporting describe as still unresolved decades later, with compensation claims contested and resettled families lacking documented title to allotted lands.\n\nThe paradox is structural. Mahisagar hosts the catchment infrastructure that supplies irrigation and hydropower to downstream Central Gujarat, yet its own talukas — Lunawada, Santrampur, Kadana, Khanpur — depend largely on rain-fed cultivation and patchy lift-irrigation networks. Gujarat Socio-Economic Review data place the district in the lower band of state per-capita income indicators, with limited industrialisation, weak road connectivity to the GIDC corridors, and sustained out-migration of young men toward Vadodara and Ahmedabad construction sites.\n\nThe 2017 Mahi flood — when releases from upstream Madhya Pradesh dams combined with local downpours — and recurring waterlogging episodes have repeatedly tested compensation and disaster-response systems that struggle even in normal years. Mahisagar exemplifies a district whose territory is integral to Gujarat's water economy while its people remain marginal to its prosperity.",
+    keyCrises: [
+      { year: "1970s-80s onwards", title: "Kadana Dam Rehabilitation Backlog", detail: "Tribal-mixed villages submerged by the Kadana Dam reservoir on the Mahi river continue to contest compensation and titles to resettlement lands decades after displacement. (Source: Counterview, Indian Express)" },
+      { year: "2017", title: "Mahi River Flood", detail: "Combined upstream dam releases from Madhya Pradesh and local rainfall caused major flooding along the Mahi corridor including Mahisagar, exposing weak embankments, evacuation infrastructure and post-flood compensation processes. (Source: Times of India, NDMA)" },
+      { year: "Ongoing", title: "Per-Capita Income & Out-Migration", detail: "Gujarat Socio-Economic Review data place Mahisagar in the lower band of state per-capita income indicators. Limited industrial base sustains out-migration of working-age men to Vadodara and Ahmedabad construction sites. (Source: Gujarat Socio-Economic Review, Business Standard)" }
+    ]
   },
   {
     id: "patan", name: "Patan", region: "North Gujarat", coordinates: [72.1264, 23.8427], tagline: "The Saline Frontier",
@@ -475,9 +572,23 @@ export const districtsData = [
     summary: "Patan sits on the edge of the Rann, fighting a daily battle against soil salinity and toxic groundwater. Fluoride contamination has crippled the health of entire villages. Furthermore, tracts of Patan's wasteland are being acquired for mega-solar parks, robbing local pastoralists of grazing lands.", keyCrises: [{ year: "2024", title: "Solar Park Grazing Conflict", detail: "Pastoralist communities protested the enclosure of traditional 'gauchar' lands for solar farms. (Source: Maldhari Assoc)"}]
   },
   {
-    id: "panchmahal", name: "Panchmahal", region: "Central Gujarat", coordinates: [73.6190, 22.7547], tagline: "The Divided Manufacturing",
-    pillars: ["Labor", "Economics", "Environment"], stats: [{ label: "Halol GIDC Dependency", value: "Massive", status: "warning" }, { label: "Tribal Marginalization", value: "High", status: "critical" }, { label: "Industrial Pollution", value: "Escalating", status: "danger" }],
-    summary: "Panchmahal presents a sharp divide: the highly industrialized Halol and Kalol belts versus deeply impoverished tribal hinterlands. The industrial zones rely heavily on out-of-state skilled labor, providing zero structural uplift for the local Bhil population who inherit only environmental fallout.", keyCrises: [{ year: "2023", title: "Halol Effluent Breaches", detail: "Industrial chemical dumping into local water bodies devastated downstream agriculture. (Source: GPCB Flags)"}]
+    id: "panchmahal",
+    name: "Panchmahal",
+    region: "Central Gujarat",
+    coordinates: [73.6190, 22.7547],
+    tagline: "Halol's Stalled Auto Belt and the Bhil Hinterland Behind It",
+    pillars: ["Economics", "Labor", "ChemicalGovernance"],
+    stats: [
+      { label: "Ford India Halol Closure", value: "Announced 2021, ~3,000 layoffs", status: "critical" },
+      { label: "GIDC Halol-Kalol Belt", value: "Auto + chemical concentration", status: "warning" },
+      { label: "Communal Violence Legacy", value: "2002 Godhra triggered statewide riots", status: "danger" }
+    ],
+    summary: "Panchmahal is a district of two economies in uneasy proximity. The Halol-Kalol GIDC corridor hosted Ford India's first Indian assembly plant from 1999, joined later by suppliers, chemical units including the long-established GMM Pfaudler glass-lined equipment plant, and ancillary industries. In September 2021, Ford announced its exit from Indian manufacturing, idling the Halol facility — Reuters and Business Standard reported roughly 3,000 direct jobs lost plus a far larger ripple through component-supplier MSMEs in the district. MG Motor's subsequent acquisition of the plant restored only a fraction of activity.\n\nA few kilometres east of the GIDC, the district turns into Bhil tribal hinterland — Jambughoda, Ghoghamba, Morwa Hadaf — with weak schooling, thin primary-health infrastructure, and persistent out-migration. The benefits of the industrial corridor have flowed to skilled labour brought in from outside the district while the local tribal population inherited the environmental fallout: GPCB inspections and Down to Earth reporting have repeatedly cited Halol-Kalol units for effluent breaches into local nallas that feed agricultural land.\n\nPanchmahal also carries the political weight of February 2002, when the Godhra train fire — Godhra is the district headquarters — became the trigger for the statewide communal violence that defined Gujarat's modern political trajectory. Two decades later, justice trajectories for the survivors remain partial, and the district's social fabric continues to bear that history.",
+    keyCrises: [
+      { year: "2021", title: "Ford India Halol Plant Closure", detail: "Ford announced exit from Indian manufacturing in September 2021, idling its Halol assembly plant. Roughly 3,000 direct jobs lost plus larger ripple effects through component-supplier MSMEs in the Panchmahal-Vadodara belt. (Source: Reuters, Business Standard, Indian Express)" },
+      { year: "Ongoing", title: "Halol-Kalol GIDC Effluent Concerns", detail: "GPCB inspections and field reporting have repeatedly cited industrial units in the Halol-Kalol belt for effluent discharges into local nallas, with downstream impacts on agriculture and groundwater quality. (Source: GPCB, Down to Earth, Times of India)" },
+      { year: "2002", title: "Godhra Train Fire & Statewide Aftermath", detail: "The February 2002 Godhra train fire in Panchmahal's district headquarters triggered the statewide communal violence that defined Gujarat's modern political trajectory. Justice and rehabilitation trajectories for survivors remain partial two decades later. (Source: The Hindu, Indian Express, Frontline)" }
+    ]
   },
   {
     id: "sabarkantha", name: "Sabarkantha", region: "North Gujarat", coordinates: [73.0116, 23.6174], tagline: "The Dairy Mirage",

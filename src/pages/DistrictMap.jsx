@@ -11,27 +11,24 @@ const geoUrl = "/geo/gujarat.geojson";
 // Normalize district strings from the GeoJSON to match our local IDs (e.g., "Gir Somnath" -> "gir-somnath")
 const normalizeId = (name) => name ? name.toLowerCase().replace(/\s+/g, '-') : '';
 
+// Aliases from GeoJSON spelling (post-normalize) → our internal id where the two diverge.
+const GEO_ALIASES = {
+  'devbhumi-dwarka': 'devbhoomi-dwarka',
+  'chhota-udaipur': 'chhota-udepur',
+};
+const resolveDistrictId = (geoName) => {
+  const id = normalizeId(geoName);
+  return GEO_ALIASES[id] || id;
+};
+
 export default function DistrictMap() {
   const districts = getDistricts()
   const [selectedNode, setSelectedNode] = useState(null)
   const [hoveredNode, setHoveredNode] = useState(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
-  // Match the geo JSON district to our local district data
   const handleMapClick = (geo) => {
-    const geoId = normalizeId(geo.properties.district);
-    
-    // There might be some misspellings or variant names in the GeoJSON vs our data.
-    // e.g. 'arachalli' vs 'aravalli', 'kachchh' vs 'kutch', 'mahesana' vs 'mehsana'
-    let mappedId = geoId;
-    if (geoId === 'kachchh') mappedId = 'kutch';
-    if (geoId === 'mahesana') mappedId = 'mehsana';
-    if (geoId === 'panch mahals') mappedId = 'panchmahal';
-    if (geoId === 'sabar kantha') mappedId = 'sabarkantha';
-    if (geoId === 'banas kantha') mappedId = 'banaskantha';
-    if (geoId === 'devbhumi dwarka') mappedId = 'devbhoomi-dwarka';
-    if (geoId === 'chhota udaipur') mappedId = 'chhota-udepur';
-
+    const mappedId = resolveDistrictId(geo.properties.district);
     const foundDistrict = districts.find(d => d.id === mappedId);
     
     if (foundDistrict) {
@@ -115,16 +112,7 @@ export default function DistrictMap() {
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => {
-                  const geoId = normalizeId(geo.properties.district);
-                  let mappedId = geoId;
-                  if (geoId === 'kachchh') mappedId = 'kutch';
-                  if (geoId === 'mahesana') mappedId = 'mehsana';
-                  if (geoId === 'panch mahals') mappedId = 'panchmahal';
-                  if (geoId === 'sabar kantha') mappedId = 'sabarkantha';
-                  if (geoId === 'banas kantha') mappedId = 'banaskantha';
-                  if (geoId === 'devbhumi dwarka') mappedId = 'devbhoomi-dwarka';
-                  if (geoId === 'chhota udaipur') mappedId = 'chhota-udepur';
-
+                  const mappedId = resolveDistrictId(geo.properties.district);
                   const localDist = districts.find(d => d.id === mappedId);
                   const hasData = localDist?.pillars?.length > 0;
                   const isSelected = selectedNode?.id === mappedId;
