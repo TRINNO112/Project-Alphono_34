@@ -3,7 +3,7 @@ import { useState } from 'react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps'
-import { ArrowRight, ShieldAlert } from 'lucide-react'
+import { ArrowRight, ShieldAlert } from './Icons'
 
 // === Local GeoJSON files (bundled in public/geo/ for offline reliability) ===
 const indiaUrl = "/geo/india.geojson";

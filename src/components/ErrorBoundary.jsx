@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { AlertTriangle } from 'lucide-react'
+import { AlertTriangle } from './Icons'
 
 /**
  * ErrorBoundary - Class component that catches JavaScript errors in child component tree

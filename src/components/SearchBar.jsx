@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search } from 'lucide-react'
+import { Search } from './Icons'
 import { useNavigate } from 'react-router-dom'
 import { searchIndex } from '../data/searchIndex'
 import { useDebounce } from '../hooks/useDebounce'
