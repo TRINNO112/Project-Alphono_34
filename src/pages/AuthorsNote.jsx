@@ -120,10 +120,22 @@ export default function AuthorsNote() {
               arrived in the first year. A fourth-grader does not have language for what is
               happening when a classroom sorts itself by who sounds local and who does not, but
               you feel it. You feel it in which kids are picked for the group, who is laughed
-              at when they read aloud, which parents do not invite you over. There were a few
-              individuals who were kind — a teacher, a family on the street — and I want to be
-              honest about that, because I do not want to erase the people who treated me
-              decently. But the room itself, from year one, was not a welcoming one.
+              at when they read aloud, which parents do not invite you over.
+            </p>
+
+            <p>
+              I want to be honest about this too — there were good people. Some neighbors were kind.
+              Some teachers treated me well. There were moments when I felt like I belonged, however briefly.
+              I do not want to erase the people who treated me decently. But the room itself, from year one,
+              was not a welcoming one.
+            </p>
+
+            <p>
+              What hurt the most was that this wasn't just adults. The discrimination was passed down to kids.
+              Children learned to sort themselves by who sounded local and who did not. They learned who to
+              include and who to exclude. They learned it from watching their parents, from hearing the way
+              adults talked about outsiders, from the way the room itself was arranged. A fourth-grader does
+              not invent this on their own. They inherit it.
             </p>
 
             {/* Timeline graphic for 2018 turning point */}
@@ -236,8 +248,8 @@ export default function AuthorsNote() {
               <Quote className="absolute top-4 left-4 w-8 h-8 text-crimson/20" aria-hidden="true" />
               <p className="text-2xl font-serif text-gray-900 leading-relaxed relative z-10">
                 The infrastructure of Gujarat is great. The roads, the ports, the power, the
-                industrial scale — all of it works. <span className="text-crimson font-semibold">The people
-                  are the problem.</span> That distinction matters.
+                industrial scale — all of it works. <span className="text-crimson font-semibold">The problem
+                  is not the state. The problem is how people behave towards outsiders.</span> That distinction matters.
               </p>
             </motion.blockquote>
 
@@ -247,6 +259,14 @@ export default function AuthorsNote() {
               find on tourism sites, business press, diaspora threads on the internet — is that
               everyone is welcome here and the language and culture make space for you. That story
               is a lie I lived inside for eight years before I admitted it was a lie.
+            </p>
+
+            <p>
+              The real problem is not discrimination as some abstract concept. The real problem is
+              people's behavior and attitude towards outsiders. It is the way they look at you when
+              you speak Hindi. It is the way they sort themselves in classrooms. It is the way they
+              pass this down to their children. It is the way they make you feel like you do not belong,
+              no matter how long you have lived here. That is what needs to change.
             </p>
 
             <p>
