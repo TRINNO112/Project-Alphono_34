@@ -1,16 +1,63 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Quote, ArrowRight } from 'lucide-react'
+import { motion, useScroll, useSpring } from 'framer-motion'
+import { Quote, ArrowRight, ArrowUp, Calendar, AlertTriangle } from 'lucide-react'
 import SEO from '../components/SEO'
+import ScrollSpy from '../components/ScrollSpy'
+
+const sections = [
+  { id: 'how-i-arrived', label: 'How I arrived' },
+  { id: 'what-data-does-not-say', label: 'What the data does not say' },
+  { id: 'what-this-project-is-not', label: 'What this project is not' },
+  { id: 'why-publish-before-leaving', label: 'Why publish before leaving' },
+  { id: 'about-the-anger', label: 'About the anger' },
+  { id: 'on-who-is-to-blame', label: 'On who is to blame' },
+  { id: 'for-the-reader', label: 'For the reader who is also living this' },
+  { id: 'for-gujaratis', label: 'For Gujaratis reading this' },
+]
 
 export default function AuthorsNote() {
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       <SEO
-        title="Author's Note — A Decade in Gujarat as a Hindi Speaker"
-        description="A first-person record by a non-Gujarati migrant who lived in Gujarat for over ten years. The infrastructure is great. The people are the problem. Documented before leaving."
+        title="Author's Note — Eight Years in Gujarat as a Hindi Speaker"
+        description="A first-person record by a non-Gujarati migrant who lived in Gujarat for eight years. The infrastructure is great. The people are the problem. Documented before leaving."
         path="/authors-note"
       />
+
+      {/* Scroll progress bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-crimson origin-left z-50 shadow-[0_0_10px_rgba(211,47,47,0.5)] pointer-events-none"
+        style={{ scaleX }}
+        aria-hidden="true"
+      />
+
+      {/* Back to top button */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ margin: '-100px' }}
+        onClick={scrollToTop}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="Back to top"
+        className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-crimson text-white shadow-lg hover:shadow-xl hover:bg-crimson-dark transition-all flex items-center justify-center"
+      >
+        <ArrowUp className="w-5 h-5" aria-hidden="true" />
+      </motion.button>
+
+      {/* ScrollSpy sidebar */}
+      <ScrollSpy sections={sections} />
 
       <main className="max-w-3xl mx-auto px-6 pt-32 pb-32">
         <motion.div
@@ -33,8 +80,8 @@ export default function AuthorsNote() {
 
           <section className="prose prose-lg max-w-none space-y-6 text-gray-800 font-serif leading-relaxed">
             <p>
-              I am a Hindi speaker. I have lived in Gujarat for more than ten years.
-              I am not from here, and after a decade in this state, I have learned that I will
+              I am a Hindi speaker. I have lived in Gujarat for eight years.
+              I am not from here, and after nearly a decade in this state, I have learned that I will
               never be allowed to be from here.
             </p>
 
@@ -49,7 +96,14 @@ export default function AuthorsNote() {
               . The other twelve grew around it.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+            {/* Section divider */}
+            <div className="flex items-center gap-4 py-8">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+              <span className="text-xs text-gray-400 uppercase tracking-widest">Part I</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+            </div>
+
+            <h2 id="how-i-arrived" className="text-3xl font-bold text-gray-900 !mt-12 !mb-4 scroll-mt-32">
               How I arrived
             </h2>
 
@@ -72,29 +126,59 @@ export default function AuthorsNote() {
               decently. But the room itself, from year one, was not a welcoming one.
             </p>
 
-            <p>
-              Things got significantly worse in 2018. A horrific crime took place in Surat —
-              the rape of a young child — and the accused turned out to be a migrant from a
-              northern state. Whatever sympathy the state had been willing to extend to
-              outsiders evaporated within days. Mobs attacked Hindi-speaking workers across
-              several districts. Thousands of migrant families fled the state. I was not
-              physically attacked, but the air in every shop, classroom, and street I walked
-              through changed overnight. People who had been curt became hostile. People who
-              had been hostile became openly contemptuous. The suspicion was no longer about
-              the person who committed the crime — it was about anyone who looked or sounded
-              like they had come from where I came from. That shift never fully reversed. It
-              just settled in, quieter than it started, and became the new normal.
-            </p>
+            {/* Timeline graphic for 2018 turning point */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              className="my-10 p-6 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl border border-red-100"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-crimson/10 flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-crimson" aria-hidden="true" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="w-4 h-4 text-crimson" aria-hidden="true" />
+                    <span className="text-sm font-semibold text-crimson uppercase tracking-wider">
+                      The Turning Point
+                    </span>
+                  </div>
+                  <p className="text-gray-800 font-medium mb-3">
+                    Things got significantly worse in 2018. A horrific crime took place in Surat —
+                    the rape of a young child — and the accused turned out to be a migrant from a
+                    northern state.
+                  </p>
+                  <p className="text-gray-600 text-sm">
+                    Whatever sympathy the state had been willing to extend to outsiders evaporated within days.
+                    Mobs attacked Hindi-speaking workers across several districts. Thousands of migrant families fled the state.
+                    I was not physically attacked, but the air in every shop, classroom, and street I walked
+                    through changed overnight. People who had been curt became hostile. People who
+                    had been hostile became openly contemptuous. The suspicion was no longer about
+                    the person who committed the crime — it was about anyone who looked or sounded
+                    like they had come from where I came from. That shift never fully reversed. It
+                    just settled in, quieter than it started, and became the new normal.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
             <p>
               I should also be honest that my reading of all this is shaped by where I lived.
               The industrial belt I grew up in is one of the harder regions for an outsider — it
               is possible the experience is gentler in other parts of the state, and I do not
               want to claim I speak for every district. What I can speak for is the room I
-              actually sat in for a decade.
+              actually sat in for eight years.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+            {/* Section divider */}
+            <div className="flex items-center gap-4 py-8">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+              <span className="text-xs text-gray-400 uppercase tracking-widest">Part II</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+            </div>
+
+            <h2 id="what-data-does-not-say" className="text-3xl font-bold text-gray-900 !mt-12 !mb-4 scroll-mt-32">
               What the data does not say
             </h2>
 
@@ -104,7 +188,7 @@ export default function AuthorsNote() {
             </p>
 
             <p>
-              In ten years I have not made a single Gujarati best friend. Not for lack of trying
+              In eight years I have not made a single Gujarati best friend. Not for lack of trying
               in the early years — for lack of the trying being returned. The word{' '}
               <span className="font-semibold italic">Hindira</span> (હિંદીરા) is what people like
               me get called. You will not find it in any newspaper. You will hear it on a Tuesday
@@ -113,7 +197,7 @@ export default function AuthorsNote() {
             </p>
 
             <p>
-              I do not speak Gujarati. After ten years. I want to be very precise about why,
+              I do not speak Gujarati. After eight years. I want to be very precise about why,
               because the easy assumption is the wrong one. It is not because the language is
               difficult — Gujarati is no harder than any other Indian language a child can pick
               up in a year if the people around them want them to. It is not because I refused
@@ -126,7 +210,14 @@ export default function AuthorsNote() {
               wanting.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+            {/* Section divider */}
+            <div className="flex items-center gap-4 py-8">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+              <span className="text-xs text-gray-400 uppercase tracking-widest">Part III</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+            </div>
+
+            <h2 id="what-this-project-is-not" className="text-3xl font-bold text-gray-900 !mt-12 !mb-4 scroll-mt-32">
               What this project is not
             </h2>
 
@@ -135,20 +226,27 @@ export default function AuthorsNote() {
               thin and I have walked close to it.
             </p>
 
-            <blockquote className="border-l-4 border-crimson pl-6 py-2 not-italic">
-              <p className="text-2xl font-serif text-gray-900">
+            {/* Enhanced blockquote */}
+            <motion.blockquote
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative my-8 p-8 bg-gradient-to-br from-gray-50 to-parchment-50 rounded-2xl border-l-4 border-crimson shadow-sm"
+            >
+              <Quote className="absolute top-4 left-4 w-8 h-8 text-crimson/20" aria-hidden="true" />
+              <p className="text-2xl font-serif text-gray-900 leading-relaxed relative z-10">
                 The infrastructure of Gujarat is great. The roads, the ports, the power, the
-                industrial scale — all of it works. <span className="text-crimson">The people
-                are the problem.</span> That distinction matters.
+                industrial scale — all of it works. <span className="text-crimson font-semibold">The people
+                  are the problem.</span> That distinction matters.
               </p>
-            </blockquote>
+            </motion.blockquote>
 
             <p>
               I am not writing this because I want to tear down a state. The state has built things
               worth admiring. I am writing this because the official story of Gujarat — the one you
               find on tourism sites, business press, diaspora threads on the internet — is that
               everyone is welcome here and the language and culture make space for you. That story
-              is a lie I lived inside for ten years before I admitted it was a lie.
+              is a lie I lived inside for eight years before I admitted it was a lie.
             </p>
 
             <p>
@@ -159,7 +257,14 @@ export default function AuthorsNote() {
               of them is indexed.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+            {/* Section divider */}
+            <div className="flex items-center gap-4 py-8">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+              <span className="text-xs text-gray-400 uppercase tracking-widest">Part IV</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+            </div>
+
+            <h2 id="why-publish-before-leaving" className="text-3xl font-bold text-gray-900 !mt-12 !mb-4 scroll-mt-32">
               Why publish before leaving
             </h2>
 
@@ -169,18 +274,32 @@ export default function AuthorsNote() {
               than me, somewhere in north India or the northeast or the south, who will arrive in
               Surat or Ahmedabad next year, full of the optimism the rest of the country tells you
               to have about Gujarat, and within six months they will be in the same room I have
-              been in for ten years. They will search for what they are feeling. They will not
+              been in for eight years. They will search for what they are feeling. They will not
               find it. Maybe they will find this.
             </p>
 
-            <blockquote className="border-l-4 border-crimson pl-6 py-3 not-italic my-8">
-              <p className="text-3xl md:text-4xl font-serif font-bold text-gray-900 leading-tight">
+            {/* Enhanced blockquote */}
+            <motion.blockquote
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative my-8 p-10 bg-crimson text-white rounded-2xl shadow-lg"
+            >
+              <Quote className="absolute top-6 right-6 w-12 h-12 text-white/20" aria-hidden="true" />
+              <p className="text-3xl md:text-4xl font-serif font-bold leading-tight relative z-10">
                 I am not the last person who will publish this.{' '}
-                <span className="text-crimson">I would like to be one of the first.</span>
+                <span className="text-white/90">I would like to be one of the first.</span>
               </p>
-            </blockquote>
+            </motion.blockquote>
 
-            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+            {/* Section divider */}
+            <div className="flex items-center gap-4 py-8">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+              <span className="text-xs text-gray-400 uppercase tracking-widest">Part V</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+            </div>
+
+            <h2 id="about-the-anger" className="text-3xl font-bold text-gray-900 !mt-12 !mb-4 scroll-mt-32">
               About the anger
             </h2>
 
@@ -204,14 +323,21 @@ export default function AuthorsNote() {
               the document does not disappear.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+            {/* Section divider */}
+            <div className="flex items-center gap-4 py-8">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+              <span className="text-xs text-gray-400 uppercase tracking-widest">Part VI</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+            </div>
+
+            <h2 id="on-who-is-to-blame" className="text-3xl font-bold text-gray-900 !mt-12 !mb-4 scroll-mt-32">
               On who is to blame
             </h2>
 
             <p>
               I want to say one thing carefully because I do not want to be misread.{' '}
               <span className="font-semibold">Not every Gujarati is bad. Not every migrant is
-              good.</span> Some of the suspicion the locals carry has a reason behind it —
+                good.</span> Some of the suspicion the locals carry has a reason behind it —
               <em> some </em>migrants from northern states have behaved dishonestly, have tried
               to take advantage of people, and have made it harder for everyone who came after
               them. That is real, and I have seen it too. Acknowledging it is part of being
@@ -224,11 +350,18 @@ export default function AuthorsNote() {
               dream. If the room we walked into were less hostile, the experience would not look
               like hell. The deeper problem is not language and it is not state — it is{' '}
               <span className="font-semibold">the corruption of the mind that money and greed
-              produce</span>, and that corruption exists in every state, including the ones we
+                produce</span>, and that corruption exists in every state, including the ones we
               came from.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+            {/* Section divider */}
+            <div className="flex items-center gap-4 py-8">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+              <span className="text-xs text-gray-400 uppercase tracking-widest">Part VII</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+            </div>
+
+            <h2 id="for-the-reader" className="text-3xl font-bold text-gray-900 !mt-12 !mb-4 scroll-mt-32">
               For the reader who is also living this
             </h2>
 
@@ -259,7 +392,14 @@ export default function AuthorsNote() {
               It is the only one that actually fixes the problem.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 !mt-12 !mb-4">
+            {/* Section divider */}
+            <div className="flex items-center gap-4 py-8">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+              <span className="text-xs text-gray-400 uppercase tracking-widest">Part VIII</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-parchment-300 to-transparent" />
+            </div>
+
+            <h2 id="for-gujaratis" className="text-3xl font-bold text-gray-900 !mt-12 !mb-4 scroll-mt-32">
               For Gujaratis reading this
             </h2>
 
@@ -296,7 +436,7 @@ export default function AuthorsNote() {
             </p>
 
             <p className="text-right italic text-gray-600 !mt-12">
-              — The author<br/>
+              — The author<br />
               Gujarat, April 2026
             </p>
           </section>
