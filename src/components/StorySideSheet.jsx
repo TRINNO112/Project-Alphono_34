@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ExternalLink, MapPin, Calendar } from 'lucide-react'
+import { X, ExternalLink, MapPin, Calendar } from './Icons'
 import { useStories } from '../context/useStories'
 import { getStoryById } from '../data/humanStories'
 

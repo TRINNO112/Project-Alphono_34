@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useSpring } from 'framer-motion'
-import { Quote, ArrowRight, ArrowUp, Calendar, AlertTriangle } from 'lucide-react'
+import { Quote, ArrowRight, ArrowUp, Calendar, AlertTriangle } from '../components/Icons'
 import SEO from '../components/SEO'
 import ScrollSpy from '../components/ScrollSpy'
 

@@ -1,6 +1,6 @@
 import { memo, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Copy, Check } from 'lucide-react'
+import { Copy, Check } from './Icons'
 
 /**
  * Section - Animated section wrapper with icon and title

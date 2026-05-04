@@ -1,6 +1,6 @@
 import { memo, useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUp, ArrowDown, ChevronDown } from 'lucide-react'
+import { ArrowUp, ArrowDown, ChevronDown } from './Icons'
 
 function ComparisonTableInner({ title, columns, rows, highlightState = 'Gujarat' }) {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' })
