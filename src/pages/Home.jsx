@@ -52,71 +52,97 @@ export default function Home() {
   const toggleRow = (i) => setExpandedRows(prev => ({ ...prev, [i]: !prev[i] }))
 
   const findings = [
-    { pillar: "Infrastructure", finding: "APSEZ crossed 500.8 MMT (FY26), controlling 28% of India's port volumes. Gambhira Bridge collapse killed 22. Zero submarine cable landing stations despite 1,600 km coastline.", metric: "500.8 MMT / 0 cables", citations: [
-      { text: "Adani's Mundra Port Makes History — First in India to Handle 200 MMT", url: "https://www.marineinsight.com/shipping-news/adanis-mundra-port-makes-history-becomes-first-in-india-to-handle-200-mmt-cargo/" },
-      { text: "Delhi-Mumbai Expressway Package-Wise Update on Gujarat Section", url: "https://deshgujarat.com/2026/01/26/delhi-mumbai-expressway-latest-package-wise-update-on-gujarat-section/" },
-      { text: "India's Undersea Cable Vulnerability in War Zones", url: "https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929" },
-    ]},
-    { pillar: "Energy", finding: "550+ Morbi units shut in 2026 gas crisis. Tata Mundra UMPP offline for 9 months. South Gujarat grid collapsed — 4,000 MW dropped in 90 minutes. Khavda 9.4 GW but evacuation only 60% complete.", metric: "550+ units / 9-month shutdown", citations: [
-      { text: "Mundra Thermal Power Project — Global Energy Monitor", url: "https://www.gem.wiki/Mundra_Thermal_Power_Project_(Adani)" },
-      { text: "West Asia Tensions Threaten LNG Flows as Hormuz Risk Intensifies", url: "https://www.businesstoday.in/latest/economy/story/west-asia-tensions-threaten-lng-flows-to-india-as-hormuz-chokepoint-risk-intensifies-whats-at-stake-519504-2026-03-06" },
-      { text: "Gujarat Emerges as India's Largest Renewable Energy Contributor", url: "https://www.angelone.in/news/economy/gujarat-emerges-as-india-s-largest-renewable-energy-contributor-with-42-583-gw-capacity" },
-    ]},
-    { pillar: "Water", finding: "Mehsana aquifer at 132% extraction. Fluoride at 17.5 mg/L (11x WHO limit). SSNNL earns Rs 545 Cr from industry vs Rs 11.72 Cr from agriculture. SAUNI at Rs 18,563 Cr (69% cost overrun).", metric: "132% extraction / 17.5 mg/L F", citations: [
-      { text: "Sardar Sarovar Dam — Wikipedia", url: "https://en.wikipedia.org/wiki/Sardar_Sarovar_Dam" },
-      { text: "Groundwater 2025: Depletion and Contamination Rising", url: "https://sandrp.in/2026/03/25/groundwater-2025-depletion-and-contamination-rising/" },
-      { text: "Drought-Hit Gujarat Has Water for Factories, Not for Farmers", url: "https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers" },
-    ]},
-    { pillar: "Labor", finding: "5-6 lakh migrant workers fled in 2026 twin shocks (gas crisis + US tariffs). 1.5 lakh diamond jobs lost. Surat powerloom losses Rs 100 Cr/day. Bharuch: 130 worker deaths (2018-25).", metric: "5-6L fled / 1.5L jobs lost", citations: [
-      { text: "A War in the Gulf, a Crisis in Gujarat's Morbi — The Print", url: "https://theprint.in/economy/a-war-in-the-gulf-a-crisis-in-gujarats-morbi-indias-ceramics-capital-counts-the-cost/2877673/" },
-      { text: "Over 400 Ceramic Units Shut Due to Gas Crisis", url: "https://deshgujarat.com/2026/03/18/over-400-ceramic-units-in-morbi-shut-due-to-gas-crisis-amid-west-asia-war/" },
-      { text: "71 Suicides Among Surat's Diamond Workers in 18 Months", url: "https://theprint.in/india/job-losses-factory-closures-pushing-surats-diamond-workers-to-the-edge-71-suicides-in-18-months/2339805/" },
-    ]},
-    { pillar: "Fiscal", finding: "CAG flags Rs 11,929 Cr overstated surplus. OTR declining to 4.9% of GSDP. Central grants crashed to 0.53%. GIFT City tax holiday doubled to 20 years. FDI dropped from top 3.", metric: "4.9% OTR / 0.53% grants", citations: [
-      { text: "NITI Aayog Macro Fiscal Landscape — Gujarat Summary", url: "https://www.niti.gov.in/sites/default/files/2025-03/Summary-Report-Gujarat.pdf" },
-      { text: "CAG Flags Gujarat's Fiscal Paradox: Growth Amid Declining Revenues", url: "https://deshgujarat.com/2026/03/26/cag-flags-gujarats-fiscal-paradox-10-15-growth-amid-declining-revenues-overstated-surplus/" },
-      { text: "Central Grants to Gujarat Fall to 0.53% of GSDP", url: "https://english.gujaratsamachar.com/news/gujarat/central-grants-to-gujarat-fall-to-0-53-of-gsdp-in-202425-down-13-000-cr-in-4-years-cag-11584368371.html" },
-    ]},
-    { pillar: "Materials", finding: "Russia now #1 crude supplier at 36%. Nayara (Rosneft) faces EU sanctions risk. API imports hit $3.6B. 100% potash imported. 93% rare earth magnets from China.", metric: "36% Russia / $3.6B APIs", citations: [
-      { text: "Jamnagar Refinery — Wikipedia", url: "https://en.wikipedia.org/wiki/Jamnagar_refinery" },
-      { text: "Reliance Resumes Russian Oil Imports for Jamnagar — Bloomberg", url: "https://www.bloomberg.com/news/articles/2025-12-24/reliance-resumes-russian-oil-imports-to-feed-jamnagar-refinery" },
-      { text: "How Rare Earth Shortages Stall India's EV Sector — Al Jazeera", url: "https://www.aljazeera.com/economy/2025/8/28/how-rare-earth-shortages-are-stalling-indias-burgeoning-ev-sector" },
-    ]},
-    { pillar: "Education", finding: "2.4 lakh annual dropouts (#1 in India). Primary GER collapsed to 79.6%. 1,027 schools closed. PARAKH scores below national average. 97% specialist doctor vacancies at rural CHCs.", metric: "2.4L dropouts / 79.6% GER", citations: [
-      { text: "Teacher Shortage: 32,000+ Vacancies in Gujarat Schools", url: "https://www.prokerala.com/news/articles/a1560997.html" },
-      { text: "Gujarat Slips in NIRF 2025 Rankings", url: "https://english.gujaratsamachar.com/news/gujarat/gujarat-slips-in-nirf-2025-rankings-iit-gn-only-institute-in-overall-top-100" },
-      { text: "Over 90% Specialist Doctor Posts Vacant in Rural Gujarat", url: "https://www.dnaindia.com/ahmedabad/report-over-90-specialist-doctor-posts-vacant-in-rural-gujarat-2774771" },
-    ]},
-    { pillar: "Environment", finding: "Gujarat HC calls Sabarmati a 'cesspool'. Deesa explosion killed 21. 36.39 sq km mangrove loss. Alang volume down 75%. Ahmedabad is a CPCB non-attainment city.", metric: "21 dead / 36 sq km lost", citations: [
-      { text: "Vapi Among World's Most Polluted Places — TIME", url: "https://content.time.com/time/specials/2007/article/0,28804,1661031_1661028_1661019,00.html" },
-      { text: "74% of Gujarat Rivers Severely Polluted — Down to Earth", url: "https://www.downtoearth.org.in/news/water/despite-efforts-clean-water-is-scarce-in-india-s-industrial-gujarat-state-57603" },
-      { text: "Alang Ship-Breaking: A Dangerous Environmental Time Bomb", url: "https://www.marineinsight.com/environment/alang-gujarat-the-world%E2%80%99s-biggest-ship-breaking-yard-a-dangerous-environmental-time-bomb/" },
-    ]},
-    { pillar: "Migrant Rights", finding: "2018: 20,000+ workers fled after anti-migrant violence across 6+ districts. 2020: workers walked 1,000+ km home. 92.65% without ESI. 38 silicosis deaths in 2024-25. Wages closer to Bihar than Kerala.", metric: "20K+ fled / 38 silicosis deaths", citations: [
-      { text: "Attacks on Migrant Workers: 500 Rounded Up, 20,000 Flee — Scroll.in", url: "https://scroll.in/article/897402/attacks-on-migrant-workers-in-gujarat-over-500-rounded-up-20000-flee-state" },
-      { text: "Gujarat Migrant Attacks: How Social Media Fuelled Hate — NDTV", url: "https://www.ndtv.com/india-news/gujarat-migrant-worker-attacks-how-social-media-fuelled-anti-outsider-hate-1929893" },
-      { text: "2018 Gujarat Attacks on Migrant Workers — Wikipedia", url: "https://en.wikipedia.org/wiki/2018_Gujarat_attacks_on_migrant_workers" },
-    ]},
-    { pillar: "Agriculture", finding: "67% DAP imported, 100% MOP imported from sanctioned nations. Bt Cotton pesticide treadmill. Groundwater at 132% over-extraction in Mehsana. Narmada water diverted to industry.", metric: "100% MOP / 132% extraction", citations: [
-      { text: "India's Fertilizer Import Dependencies — Argus Media", url: "https://argusmedia.com/fertilizers/india-import-data" },
-      { text: "Groundwater Depletion in Mehsana — Down To Earth", url: "https://downtoearth.org.in/water/narmada-diversion" },
-      { text: "Drought-Hit Gujarat Has Water for Factories, Not Farmers — IndiaSpend", url: "https://indiaspend.com/gujarat-water-crisis" },
-    ]},
-    { pillar: "Green Tech", finding: "90% rare earth processing controlled by China. 80%+ PV wafers imported. Dholera gigafactories assemble imported cells. Gallium/Germanium export controls weaponized.", metric: "90% China / 80%+ wafers", citations: [
-      { text: "China's Export Controls on Rare Earths — SCMP", url: "https://scmp.com/economy/china-economy" },
-      { text: "How Rare Earth Shortages Stall India's EV Sector — Al Jazeera", url: "https://aljazeera.com/economy/india-ev-rare-earths" },
-      { text: "Global Rare Earth Processing Market Share — BNEF", url: "https://bnef.com/rare-earth-mining" },
-    ]},
-    { pillar: "Chem Gov", finding: "400km Golden Corridor: Sabarmati BOD 292 mg/L (97× safe). CETPs from 1990s discharge MORE toxic than influent. ₹100Cr+ NGT fines with zero lasting compliance. AMR superbugs incubating.", metric: "292 BOD / ₹100Cr+ fines", citations: [
-      { text: "Sabarmati River: Dark Underbelly of Ahmedabad — Mongabay", url: "https://india.mongabay.com/sabarmati-pollution" },
-      { text: "AMR in Gujarat's Rivers — India Water Portal", url: "https://indiawaterportal.org/amr-gujarat" },
-      { text: "Vapi & Ankleshwar Crisis — Down To Earth", url: "https://downtoearth.org.in/pollution/vapi-ankleshwar" },
-    ]},
-    { pillar: "Digital", finding: "Zero submarine cable landings on Gujarat's 1,600 km coastline — all international traffic backhauls via Mumbai. ~15 cables within 6 km of Versova beach = single-point-of-failure. GIFT City IFSC carries a ~30 ms latency penalty vs Singapore. State e-gov (iORA, Digital Gujarat) hosted on AWS Mumbai.", metric: "0 cables / ~30 ms penalty", citations: [
-      { text: "India Submarine Cable Landings — TeleGeography", url: "https://www.submarinecablemap.com/country/india" },
-      { text: "Why the World's Internet Quietly Routes Through Mumbai — Rest of World", url: "https://restofworld.org/2024/mumbai-submarine-cables/" },
-      { text: "TRAI Indian Telecom Services Performance Indicators", url: "https://www.trai.gov.in/release-publication/reports/performance-indicators-reports" },
-    ]},
+    {
+      pillar: "Infrastructure", finding: "APSEZ crossed 500.8 MMT (FY26), controlling 28% of India's port volumes. Gambhira Bridge collapse killed 22. Zero submarine cable landing stations despite 1,600 km coastline.", metric: "500.8 MMT / 0 cables", citations: [
+        { text: "Adani's Mundra Port Makes History — First in India to Handle 200 MMT", url: "https://www.marineinsight.com/shipping-news/adanis-mundra-port-makes-history-becomes-first-in-india-to-handle-200-mmt-cargo/" },
+        { text: "Delhi-Mumbai Expressway Package-Wise Update on Gujarat Section", url: "https://deshgujarat.com/2026/01/26/delhi-mumbai-expressway-latest-package-wise-update-on-gujarat-section/" },
+        { text: "India's Undersea Cable Vulnerability in War Zones", url: "https://www.businessworld.in/article/india-cheap-internet-undersea-cable-vulnerability-war-zones-2026-598929" },
+      ]
+    },
+    {
+      pillar: "Energy", finding: "550+ Morbi units shut in 2026 gas crisis. Tata Mundra UMPP offline for 9 months. South Gujarat grid collapsed — 4,000 MW dropped in 90 minutes. Khavda 9.4 GW but evacuation only 60% complete.", metric: "550+ units / 9-month shutdown", citations: [
+        { text: "Mundra Thermal Power Project — Global Energy Monitor", url: "https://www.gem.wiki/Mundra_Thermal_Power_Project_(Adani)" },
+        { text: "West Asia Tensions Threaten LNG Flows as Hormuz Risk Intensifies", url: "https://www.businesstoday.in/latest/economy/story/west-asia-tensions-threaten-lng-flows-to-india-as-hormuz-chokepoint-risk-intensifies-whats-at-stake-519504-2026-03-06" },
+        { text: "Gujarat Emerges as India's Largest Renewable Energy Contributor", url: "https://www.angelone.in/news/economy/gujarat-emerges-as-india-s-largest-renewable-energy-contributor-with-42-583-gw-capacity" },
+      ]
+    },
+    {
+      pillar: "Water", finding: "Mehsana aquifer at 132% extraction. Fluoride at 17.5 mg/L (11x WHO limit). SSNNL earns Rs 545 Cr from industry vs Rs 11.72 Cr from agriculture. SAUNI at Rs 18,563 Cr (69% cost overrun).", metric: "132% extraction / 17.5 mg/L F", citations: [
+        { text: "Sardar Sarovar Dam — Wikipedia", url: "https://en.wikipedia.org/wiki/Sardar_Sarovar_Dam" },
+        { text: "Groundwater 2025: Depletion and Contamination Rising", url: "https://sandrp.in/2026/03/25/groundwater-2025-depletion-and-contamination-rising/" },
+        { text: "Drought-Hit Gujarat Has Water for Factories, Not for Farmers", url: "https://www.indiaspend.com/drought-hit-gujarat-has-water-for-factories-but-not-for-farmers" },
+      ]
+    },
+    {
+      pillar: "Labor", finding: "5-6 lakh migrant workers fled in 2026 twin shocks (gas crisis + US tariffs). 1.5 lakh diamond jobs lost. Surat powerloom losses Rs 100 Cr/day. Bharuch: 130 worker deaths (2018-25).", metric: "5-6L fled / 1.5L jobs lost", citations: [
+        { text: "A War in the Gulf, a Crisis in Gujarat's Morbi — The Print", url: "https://theprint.in/economy/a-war-in-the-gulf-a-crisis-in-gujarats-morbi-indias-ceramics-capital-counts-the-cost/2877673/" },
+        { text: "Over 400 Ceramic Units Shut Due to Gas Crisis", url: "https://deshgujarat.com/2026/03/18/over-400-ceramic-units-in-morbi-shut-due-to-gas-crisis-amid-west-asia-war/" },
+        { text: "71 Suicides Among Surat's Diamond Workers in 18 Months", url: "https://theprint.in/india/job-losses-factory-closures-pushing-surats-diamond-workers-to-the-edge-71-suicides-in-18-months/2339805/" },
+      ]
+    },
+    {
+      pillar: "Fiscal", finding: "CAG flags Rs 11,929 Cr overstated surplus. OTR declining to 4.9% of GSDP. Central grants crashed to 0.53%. GIFT City tax holiday doubled to 20 years. FDI dropped from top 3.", metric: "4.9% OTR / 0.53% grants", citations: [
+        { text: "NITI Aayog Macro Fiscal Landscape — Gujarat Summary", url: "https://www.niti.gov.in/sites/default/files/2025-03/Summary-Report-Gujarat.pdf" },
+        { text: "CAG Flags Gujarat's Fiscal Paradox: Growth Amid Declining Revenues", url: "https://deshgujarat.com/2026/03/26/cag-flags-gujarats-fiscal-paradox-10-15-growth-amid-declining-revenues-overstated-surplus/" },
+        { text: "Central Grants to Gujarat Fall to 0.53% of GSDP", url: "https://english.gujaratsamachar.com/news/gujarat/central-grants-to-gujarat-fall-to-0-53-of-gsdp-in-202425-down-13-000-cr-in-4-years-cag-11584368371.html" },
+      ]
+    },
+    {
+      pillar: "Materials", finding: "Russia now #1 crude supplier at 36%. Nayara (Rosneft) faces EU sanctions risk. API imports hit $3.6B. 100% potash imported. 93% rare earth magnets from China.", metric: "36% Russia / $3.6B APIs", citations: [
+        { text: "Jamnagar Refinery — Wikipedia", url: "https://en.wikipedia.org/wiki/Jamnagar_refinery" },
+        { text: "Reliance Resumes Russian Oil Imports for Jamnagar — Bloomberg", url: "https://www.bloomberg.com/news/articles/2025-12-24/reliance-resumes-russian-oil-imports-to-feed-jamnagar-refinery" },
+        { text: "How Rare Earth Shortages Stall India's EV Sector — Al Jazeera", url: "https://www.aljazeera.com/economy/2025/8/28/how-rare-earth-shortages-are-stalling-indias-burgeoning-ev-sector" },
+      ]
+    },
+    {
+      pillar: "Education", finding: "2.4 lakh annual dropouts (#1 in India). Primary GER collapsed to 79.6%. 1,027 schools closed. PARAKH scores below national average. 97% specialist doctor vacancies at rural CHCs.", metric: "2.4L dropouts / 79.6% GER", citations: [
+        { text: "Teacher Shortage: 32,000+ Vacancies in Gujarat Schools", url: "https://www.prokerala.com/news/articles/a1560997.html" },
+        { text: "Gujarat Slips in NIRF 2025 Rankings", url: "https://english.gujaratsamachar.com/news/gujarat/gujarat-slips-in-nirf-2025-rankings-iit-gn-only-institute-in-overall-top-100" },
+        { text: "Over 90% Specialist Doctor Posts Vacant in Rural Gujarat", url: "https://www.dnaindia.com/ahmedabad/report-over-90-specialist-doctor-posts-vacant-in-rural-gujarat-2774771" },
+      ]
+    },
+    {
+      pillar: "Environment", finding: "Gujarat HC calls Sabarmati a 'cesspool'. Deesa explosion killed 21. 36.39 sq km mangrove loss. Alang volume down 75%. Ahmedabad is a CPCB non-attainment city.", metric: "21 dead / 36 sq km lost", citations: [
+        { text: "Vapi Among World's Most Polluted Places — TIME", url: "https://content.time.com/time/specials/2007/article/0,28804,1661031_1661028_1661019,00.html" },
+        { text: "74% of Gujarat Rivers Severely Polluted — Down to Earth", url: "https://www.downtoearth.org.in/news/water/despite-efforts-clean-water-is-scarce-in-india-s-industrial-gujarat-state-57603" },
+        { text: "Alang Ship-Breaking: A Dangerous Environmental Time Bomb", url: "https://www.marineinsight.com/environment/alang-gujarat-the-world%E2%80%99s-biggest-ship-breaking-yard-a-dangerous-environmental-time-bomb/" },
+      ]
+    },
+    {
+      pillar: "Migrant Rights", finding: "2018: 20,000+ workers fled after anti-migrant violence across 6+ districts. 2020: workers walked 1,000+ km home. 92.65% without ESI. 38 silicosis deaths in 2024-25. Wages closer to Bihar than Kerala.", metric: "20K+ fled / 38 silicosis deaths", citations: [
+        { text: "Attacks on Migrant Workers: 500 Rounded Up, 20,000 Flee — Scroll.in", url: "https://scroll.in/article/897402/attacks-on-migrant-workers-in-gujarat-over-500-rounded-up-20000-flee-state" },
+        { text: "Gujarat Migrant Attacks: How Social Media Fuelled Hate — NDTV", url: "https://www.ndtv.com/india-news/gujarat-migrant-worker-attacks-how-social-media-fuelled-anti-outsider-hate-1929893" },
+        { text: "2018 Gujarat Attacks on Migrant Workers — Wikipedia", url: "https://en.wikipedia.org/wiki/2018_Gujarat_attacks_on_migrant_workers" },
+      ]
+    },
+    {
+      pillar: "Agriculture", finding: "67% DAP imported, 100% MOP imported from sanctioned nations. Bt Cotton pesticide treadmill. Groundwater at 132% over-extraction in Mehsana. Narmada water diverted to industry.", metric: "100% MOP / 132% extraction", citations: [
+        { text: "India's Fertilizer Import Dependencies — Argus Media", url: "https://argusmedia.com/fertilizers/india-import-data" },
+        { text: "Groundwater Depletion in Mehsana — Down To Earth", url: "https://downtoearth.org.in/water/narmada-diversion" },
+        { text: "Drought-Hit Gujarat Has Water for Factories, Not Farmers — IndiaSpend", url: "https://indiaspend.com/gujarat-water-crisis" },
+      ]
+    },
+    {
+      pillar: "Green Tech", finding: "90% rare earth processing controlled by China. 80%+ PV wafers imported. Dholera gigafactories assemble imported cells. Gallium/Germanium export controls weaponized.", metric: "90% China / 80%+ wafers", citations: [
+        { text: "China's Export Controls on Rare Earths — SCMP", url: "https://scmp.com/economy/china-economy" },
+        { text: "How Rare Earth Shortages Stall India's EV Sector — Al Jazeera", url: "https://aljazeera.com/economy/india-ev-rare-earths" },
+        { text: "Global Rare Earth Processing Market Share — BNEF", url: "https://bnef.com/rare-earth-mining" },
+      ]
+    },
+    {
+      pillar: "Chem Gov", finding: "400km Golden Corridor: Sabarmati BOD 292 mg/L (97× safe). CETPs from 1990s discharge MORE toxic than influent. ₹100Cr+ NGT fines with zero lasting compliance. AMR superbugs incubating.", metric: "292 BOD / ₹100Cr+ fines", citations: [
+        { text: "Sabarmati River: Dark Underbelly of Ahmedabad — Mongabay", url: "https://india.mongabay.com/sabarmati-pollution" },
+        { text: "AMR in Gujarat's Rivers — India Water Portal", url: "https://indiawaterportal.org/amr-gujarat" },
+        { text: "Vapi & Ankleshwar Crisis — Down To Earth", url: "https://downtoearth.org.in/pollution/vapi-ankleshwar" },
+      ]
+    },
+    {
+      pillar: "Digital", finding: "Zero submarine cable landings on Gujarat's 1,600 km coastline — all international traffic backhauls via Mumbai. ~15 cables within 6 km of Versova beach = single-point-of-failure. GIFT City IFSC carries a ~30 ms latency penalty vs Singapore. State e-gov (iORA, Digital Gujarat) hosted on AWS Mumbai.", metric: "0 cables / ~30 ms penalty", citations: [
+        { text: "India Submarine Cable Landings — TeleGeography", url: "https://www.submarinecablemap.com/country/india" },
+        { text: "Why the World's Internet Quietly Routes Through Mumbai — Rest of World", url: "https://restofworld.org/2024/mumbai-submarine-cables/" },
+        { text: "TRAI Indian Telecom Services Performance Indicators", url: "https://www.trai.gov.in/release-publication/reports/performance-indicators-reports" },
+      ]
+    },
   ]
 
   return (
@@ -137,7 +163,7 @@ export default function Home() {
             Critical Research Endeavor
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold mb-6 leading-tight tracking-tight text-gray-900">
-            Anatomy of a <br/><span className="text-crimson italic pr-4">Dependent State</span>
+            Anatomy of a <br /><span className="text-crimson italic pr-4">Dependent State</span>
           </h1>
 
           {/* Author / Publication Header */}
@@ -253,7 +279,7 @@ export default function Home() {
           <div className="flex items-center justify-between p-4 rounded-xl bg-[#FDFBF7] border border-[#8D6E63] hover:border-[#3E2723] transition-colors relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(#E8E0D5_1px,transparent_1px)],transparent_1px)] [background-size:20px_20px] opacity-20 pointer-events-none"></div>
             <div className="flex items-center gap-3 relative z-10">
-              <svg className="w-5 h-5 text-[#8B0000]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+              <svg className="w-5 h-5 text-[#8B0000]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><circle cx="12" cy="11" r="3" /></svg>
               <span className="font-serif text-lg font-bold text-[#3E2723] tracking-widest uppercase">Index Mercantilis: Global Trade Cartography</span>
             </div>
             <ArrowRight className="w-5 h-5 text-[#8B0000] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all relative z-10" />
@@ -665,7 +691,7 @@ export default function Home() {
               footnotes cannot hold.
             </p>
             <p>
-              I have lived here for over ten years as a Hindi speaker. The infrastructure is
+              I have lived here for over eight years as a Hindi speaker. The infrastructure is
               great. The people are the problem. I am writing this down before I leave so that
               the next person who arrives and feels gaslit by the internet's version of Gujarat
               has somewhere to land.
