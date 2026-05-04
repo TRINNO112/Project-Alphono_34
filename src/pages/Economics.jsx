@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { TrendingUp, AlertTriangle, Landmark, Globe, CheckCircle, Building2 } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
-import { PillarChart } from '../components/PillarChart'
 import { LollipopChart } from '../components/charts/LollipopChart'
 import { SlopeChart } from '../components/charts/SlopeChart'
+import { ErosionPillar } from '../components/charts/ErosionPillar'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -155,19 +155,19 @@ export default function Economics() {
             sortDescending={true}
           />
 
-          {/* Time-Series: Central Grants as % of GSDP */}
-          <PillarChart
-            type="bar"
-            data={[
-              { name: 'FY21', value: 1.68 },
-              { name: 'FY22', value: 1.32 },
-              { name: 'FY23', value: 1.05 },
-              { name: 'FY24', value: 0.78 },
-              { name: 'FY25', value: 0.53 },
+          {/* Time-Series: Central Grants as % of GSDP — Erosion Pillar */}
+          <ErosionPillar
+            strata={[
+              { label: 'FY21', value: 1.68 },
+              { label: 'FY22', value: 1.32 },
+              { label: 'FY23', value: 1.05 },
+              { label: 'FY24', value: 0.78 },
+              { label: 'FY25', value: 0.53, note: 'a stub' },
             ]}
-            title="Central Grants to Gujarat as % of GSDP (Crashing Trajectory)"
+            unit="%"
+            title="Central Grants to Gujarat as % of GSDP (The Pillar Erodes)"
             caption="A Rs 13,000 crore decline in 4 years — from 1.68% to 0.53% of GSDP. Source: CAG / Gujarat Samachar"
-            colors={['#16A34A', '#CA8A04', '#F59E0B', '#EF4444', '#991B1B']}
+            lossLabel="−Rs 13,000 cr · 68% of the pillar gone"
           />
 
           {/* Time-Series: Debt-to-GSDP Ratio */}

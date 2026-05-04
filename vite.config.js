@@ -19,21 +19,16 @@ export default defineConfig({
     // Chunk splitting strategy
     rollupOptions: {
       output: {
-        manualChunks: {
-          // React and React DOM
-          'react-vendor': ['react', 'react-dom'],
-          // React Router
-          'router-vendor': ['react-router-dom'],
-          // Framer Motion
-          'motion-vendor': ['framer-motion'],
-          // Recharts (heavy charting library)
-          'charts-vendor': ['recharts'],
-          // D3 and map libraries
-          'maps-vendor': ['d3-geo', 'react-simple-maps', 'topojson-client'],
-          // Lucide icons
-          'icons-vendor': ['lucide-react'],
-          // Other utilities
-          'utils-vendor': ['clsx', 'tailwind-merge', 'prop-types'],
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return
+          if (id.includes('react-router')) return 'router-vendor'
+          if (id.includes('framer-motion')) return 'motion-vendor'
+          if (id.includes('recharts') || id.includes('victory-vendor') || id.includes('d3-shape') || id.includes('d3-scale')) return 'charts-vendor'
+          if (id.includes('d3-geo') || id.includes('react-simple-maps') || id.includes('topojson')) return 'maps-vendor'
+          if (id.includes('lucide-react')) return 'icons-vendor'
+          if (id.includes('clsx') || id.includes('tailwind-merge') || id.includes('prop-types')) return 'utils-vendor'
+          if (id.includes('react-helmet-async')) return 'helmet-vendor'
+          if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('scheduler')) return 'react-vendor'
         },
         // Optimize chunk file names for better caching
         chunkFileNames: 'assets/[name]-[hash].js',
@@ -49,22 +44,18 @@ export default defineConfig({
     },
     // Target modern browsers
     target: 'es2020',
-    // Minify options
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug']
-      },
-      format: {
-        comments: false
-      }
-    },
+    // Minify with oxc (Vite 8 / rolldown default)
+    minify: 'oxc',
     // Chunk size warning limit
     chunkSizeWarningLimit: 500,
     // Report bundle size
     reportCompressedSize: true
+  },
+  // Drop console logs in production via oxc
+  oxc: {
+    transform: {
+      drop: ['console', 'debugger'],
+    },
   },
   // Server optimizations
   server: {

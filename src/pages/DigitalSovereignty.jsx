@@ -2,13 +2,13 @@ import { motion } from 'framer-motion'
 import { Cable, Cloud, Radio, Server, Globe, AlertTriangle, Wifi } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox, PendingDataBox } from '../components/Shared'
 import { PillarChart } from '../components/PillarChart'
-import { LollipopChart } from '../components/charts/LollipopChart'
 import { Treemap } from '../components/charts/Treemap'
 import { ComparisonTable } from '../components/ComparisonTable'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
 import ScrollSpy from '../components/ScrollSpy'
+import NetworkDependencyMap from '../components/NetworkDependencyMap'
 
 const sources = [
   { title: "International Bandwidth — Submarine Cable Landings in India", publication: "TRAI Indian Telecom Services Performance Indicators (Jan–Mar 2025)", url: "https://www.trai.gov.in/release-publication/reports/performance-indicators-reports" },
@@ -75,20 +75,7 @@ export default function DigitalSovereignty() {
             <StatBox value="1,600 km" label="Gujarat Coastline" color="teal" />
           </div>
 
-          <LollipopChart
-            title="India's International Submarine Cable Landings — Concentration by State"
-            caption="Figure 1: Of India's international submarine cable landings, Mumbai alone hosts the overwhelming majority. Gujarat — despite its coastline and the GIFT City IFSC ambition — has zero. Sources: TRAI Performance Indicator Report, TeleGeography Submarine Cable Map."
-            data={[
-              { name: 'Mumbai (MH)', value: 15 },
-              { name: 'Chennai (TN)', value: 6 },
-              { name: 'Kochi (KL)', value: 2 },
-              { name: 'Tuticorin (TN)', value: 1 },
-              { name: 'Gujarat', value: 0, highlight: true },
-            ]}
-            accentColor="#2563EB"
-            highlightColor="#DC2626"
-            height={320}
-          />
+          <NetworkDependencyMap />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="A 1,600 km Coastline with Zero Landings" alert={true}>

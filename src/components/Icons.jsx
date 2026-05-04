@@ -64,6 +64,7 @@ export {
   Briefcase,
   AlertTriangle,
   AlertCircle,
+  HelpCircle,
   Info,
   CheckCircle,
   XCircle,
