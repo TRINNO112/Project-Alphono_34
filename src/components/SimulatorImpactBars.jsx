@@ -1,6 +1,6 @@
 import { memo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { HelpCircle, X } from 'lucide-react'
+import { HelpCircle, X } from './Icons'
 import { PILLAR_IDS, PILLAR_LABELS } from '../data/simulatorCoefficients'
 
 function colorFor(percent) {

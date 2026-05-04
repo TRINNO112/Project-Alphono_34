@@ -1,6 +1,6 @@
 import { memo, useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { RotateCcw } from 'lucide-react'
+import { RotateCcw } from './Icons'
 
 /**
  * CascadeTicker — animated vertical timeline of CascadeStep items.

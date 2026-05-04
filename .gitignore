@@ -38,3 +38,8 @@ free-claude-code
 .gemini/
 GEMINI.md
 .claudesignore
+.claude/*
+
+# Session summaries
+SESSION_SUMMARY_*.md
+session_summary_*.md

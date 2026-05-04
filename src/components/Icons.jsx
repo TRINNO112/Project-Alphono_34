@@ -83,6 +83,7 @@ export {
   Minus,
   Filter,
   RefreshCw,
+  RotateCcw,
   Download,
   Upload,
   Share2,

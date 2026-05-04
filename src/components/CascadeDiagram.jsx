@@ -1,6 +1,6 @@
 import { memo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { AlertTriangle, Zap, Factory, Users, TrendingDown, Droplets, Ship } from 'lucide-react'
+import { AlertTriangle, Zap, Factory, Users, TrendingDown, Droplets, Ship } from './Icons'
 
 const nodes = [
   {

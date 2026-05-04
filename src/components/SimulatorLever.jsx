@@ -1,5 +1,5 @@
 import { memo, useId } from 'react'
-import { ExternalLink, Clock } from 'lucide-react'
+import { ExternalLink, Clock } from './Icons'
 
 const PILLAR_SHORT = {
   infrastructure: 'Infra',

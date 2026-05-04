@@ -1,6 +1,6 @@
 import { memo, useMemo, useState } from 'react'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
-import { X } from 'lucide-react'
+import { X } from './Icons'
 
 const GUJARAT_URL = '/geo/gujarat.geojson'
 
