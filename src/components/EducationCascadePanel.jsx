@@ -1,5 +1,5 @@
 import { memo, useId } from 'react'
-import { GraduationCap } from 'lucide-react'
+import { GraduationCap } from './Icons'
 
 /**
  * EducationCascadePanel — narrative mini-cards that show how active levers

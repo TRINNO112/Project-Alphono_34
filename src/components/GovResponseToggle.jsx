@@ -1,4 +1,4 @@
-import { ShieldCheck } from 'lucide-react'
+import { ShieldCheck } from './Icons'
 
 export function GovResponseToggle({ checked, onChange }) {
   return (

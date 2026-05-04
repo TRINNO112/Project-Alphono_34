@@ -1,6 +1,6 @@
 import { memo, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { HelpCircle, X } from 'lucide-react'
+import { HelpCircle, X } from './Icons'
 
 /**
  * WhyThisPercent — popover that explains how a per-pillar % was derived.

@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { User } from 'lucide-react'
+import { User } from './Icons'
 import { useStories } from '../context/useStories'
 import { getStoryById } from '../data/humanStories'
 

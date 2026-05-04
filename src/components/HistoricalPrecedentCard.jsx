@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from 'react'
-import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ExternalLink } from './Icons'
 
 /**
  * HistoricalPrecedentCard — pageable card of HistoricalAnalogue items.
