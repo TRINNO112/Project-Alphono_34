@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import { TrendingUp, AlertTriangle, Landmark, Globe, CheckCircle, Building2 } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
-import { LollipopChart } from '../components/charts/LollipopChart'
-import { SlopeChart } from '../components/charts/SlopeChart'
-import { PillarChart } from '../components/PillarChart'
+import { GrantsCollapse } from '../components/charts/GrantsCollapse'
+import { OTRErosion } from '../components/charts/OTRErosion'
+import { DebtToGSDP } from '../components/charts/DebtToGSDP'
+import { RevenueBeeswarm } from '../components/charts/RevenueBeeswarm'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -102,19 +103,31 @@ export default function Economics() {
             </DataCard>
           </div>
 
-          <SlopeChart
-            start={{ label: '2012-13', value: 7.44 }}
-            end={{ label: '2026-27', value: 4.9 }}
-            midpoints={[
-              { label: '2016-17', value: 6.2 },
-              { label: '2020-21', value: 4.35 },
-              { label: '2022-23', value: 5.6 },
-              { label: '2024-25', value: 5.2 },
+          {/* Reader primer: explain Own Tax Revenue and GSDP */}
+          <DataCard title="Reading the next chart: what is 'Own Tax Revenue' and 'GSDP'?">
+            <p className="text-gray-600 mb-3 leading-relaxed">
+              <strong className="text-gray-900">Own Tax Revenue (OTR)</strong> is the money a state collects directly from its residents and businesses — state GST, stamp duty, land revenue, motor vehicle tax, and state excise. It does <em>not</em> include money the centre sends as grants or tax devolution.
+            </p>
+            <p className="text-gray-600 mb-3 leading-relaxed">
+              <strong className="text-gray-900">GSDP</strong> (Gross State Domestic Product) is the total economic output of the state in a year — the sum of all goods and services produced. Expressing OTR as a percentage of GSDP is the standard way to measure a state's fiscal health relative to its economic size.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              A healthy state typically collects 6-8% of its GSDP as own tax revenue. Gujarat peaked at 7.44% in 2012-13 but has been declining since — hitting a low of 4.35% in 2020-21 and projected to fall further to 4.9% by FY27. This is now <strong className="text-gray-900">30% below the national average</strong> for states.<Ref n={4} />
+            </p>
+          </DataCard>
+
+          <OTRErosion
+            data={[
+              { year: '2012-13', value: 7.44 },
+              { year: '2016-17', value: 6.2 },
+              { year: '2020-21', value: 4.35 },
+              { year: '2022-23', value: 5.6 },
+              { year: '2024-25', value: 5.2 },
+              { year: '2026-27', value: 4.9 },
             ]}
             unit="%"
-            accentColor="#9A0007"
-            title="Own Tax Revenue as % of GSDP (Declining Trend)"
-            caption="15-year decline from 7.44% to 4.9% — now 30% below national average"
+            title="Own Tax Revenue as % of GSDP (15-Year Decline)"
+            caption="Figure 1: Hover any year for that year's reading and its delta from the 2012-13 peak. Source: NITI Aayog Macro-Fiscal Report 2025."
           />
         </Section>
 
@@ -140,51 +153,88 @@ export default function Economics() {
             </DataCard>
           </div>
 
-          <LollipopChart
-            data={[
-              { name: 'Kerala', value: 25.1 },
-              { name: 'Median State', value: 19.9 },
-              { name: 'Tamil Nadu', value: 16.8 },
-              { name: 'Gujarat', value: 8.7, highlight: true },
-            ]}
-            valueSuffix="%"
-            accentColor="#0891B2"
-            highlightColor="#D32F2F"
-            title="Revenue Receipts as % of GSDP (State Comparison)"
-            caption="Gujarat collects less than half the median state's revenue relative to economic size"
-            sortDescending={true}
-          />
+          {/* Reader primer: explain Revenue Receipts */}
+          <DataCard title="Reading the next chart: what are 'Revenue Receipts'?">
+            <p className="text-gray-600 mb-3 leading-relaxed">
+              <strong className="text-gray-900">Revenue Receipts</strong> are all the money a state earns in a year without creating debt — own tax revenue, non-tax revenue (interest, dividends, fees), and central grants. This is the money available to run schools, hospitals, roads, and public services.
+            </p>
+            <p className="text-gray-600 mb-3 leading-relaxed">
+              Expressing revenue receipts as a percentage of GSDP allows fair comparison across states regardless of their economic size. The <strong className="text-gray-900">median Indian state collects 19.9% of its GSDP as revenue receipts</strong> — meaning for every Rs 100 of economic output, the state earns Rs 19.90 to spend on public services.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Gujarat collects only <strong className="text-gray-900">8.7% of GSDP</strong> — less than half the median. This is the core of the fiscal paradox: the state has a booming economy but captures very little of that economic activity as public revenue.<Ref n={1} />
+            </p>
+          </DataCard>
 
-          {/* Time-Series: Central Grants as % of GSDP — placeholder pending D3 step-line */}
-          <PillarChart
-            type="bar"
-            title="Central Grants to Gujarat as % of GSDP"
-            caption="Figure 2 (placeholder): A Rs 13,000 crore decline in 4 years — from 1.68% to 0.53% of GSDP. Source: CAG / Gujarat Samachar"
+          <RevenueBeeswarm
             data={[
-              { name: 'FY21', value: 1.68 },
-              { name: 'FY22', value: 1.32 },
-              { name: 'FY23', value: 1.05 },
-              { name: 'FY24', value: 0.78 },
-              { name: 'FY25', value: 0.53 },
-            ]}
-            colors={['#991B1B', '#B91C1C', '#DC2626', '#EF4444', '#F87171']}
-            height={320}
-          />
-
-          {/* Time-Series: Debt-to-GSDP Ratio */}
-          <SlopeChart
-            start={{ label: 'FY20', value: 19.8 }}
-            end={{ label: 'FY27', value: 14.7 }}
-            midpoints={[
-              { label: 'FY21', value: 21.2 },
-              { label: 'FY22', value: 19.5 },
-              { label: 'FY24', value: 16.1 },
-              { label: 'FY25', value: 15.3 },
+              { state: 'Kerala', value: 25.1 },
+              { state: 'Punjab', value: 22.4 },
+              { state: 'West Bengal', value: 21.2 },
+              { state: 'Maharashtra', value: 12.4 },
+              { state: 'Tamil Nadu', value: 16.8 },
+              { state: 'Karnataka', value: 14.6 },
+              { state: 'Gujarat', value: 8.7 },
+              { state: 'Madhya Pradesh', value: 13.8 },
+              { state: 'Rajasthan', value: 15.2 },
+              { state: 'Uttar Pradesh', value: 11.9 },
             ]}
             unit="%"
-            accentColor="#059669"
+            title="Revenue Receipts as % of GSDP (State Comparison)"
+            caption="Figure 3: Hover any state for its revenue receipts as % of GSDP and rank. Gujarat (8.7%) is highlighted in crimson. Source: NITI Aayog Macro-Fiscal Report 2025."
+          />
+
+          {/* Reader primer: explain the chart in plain language */}
+          <DataCard title="Reading the next chart: what is a 'central grant'?">
+            <p className="text-gray-600 mb-3 leading-relaxed">
+              India's states get money from the centre in two ways. First, <strong className="text-gray-900">tax devolution</strong> — a fixed share of all central taxes, calculated by the Finance Commission. Second, <strong className="text-gray-900">central grants</strong> — discretionary top-ups for specific schemes (rural roads, health missions, disaster relief, infrastructure projects).
+            </p>
+            <p className="text-gray-600 mb-3 leading-relaxed">
+              The chart below tracks <em>only</em> the second bucket — grants — measured against Gujarat's <strong className="text-gray-900">GSDP</strong> (Gross State Domestic Product, the total economic output of the state in a year). Expressing grants as a percentage of GSDP is the standard way to compare across years even as the economy grows.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              In FY21 grants equalled 1.68% of GSDP. By FY25 they had fallen to 0.53% — barely a third of where they started. In rupee terms that is roughly <strong className="text-gray-900">Rs 13,000 crore less</strong> flowing into the state's discretionary fiscal space over four years.<Ref n={1} />
+            </p>
+          </DataCard>
+
+          <GrantsCollapse
+            data={[
+              { year: 'FY21', value: 1.68 },
+              { year: 'FY22', value: 1.32 },
+              { year: 'FY23', value: 1.05 },
+              { year: 'FY24', value: 0.78 },
+              { year: 'FY25', value: 0.53 },
+            ]}
+            unit="%"
+            title="Central Grants to Gujarat as % of GSDP"
+            caption="Figure 2: Hover any year for that year's reading and its delta from FY21. Source: CAG Gujarat fiscal audit, reported by Gujarat Samachar."
+          />
+
+          {/* Reader primer: explain FRBM and Debt-to-GSDP */}
+          <DataCard title="Reading the next chart: what is 'FRBM' and 'Debt-to-GSDP'?">
+            <p className="text-gray-600 mb-3 leading-relaxed">
+              <strong className="text-gray-900">Debt-to-GSDP ratio</strong> measures a state's total debt against its economic output. A lower ratio means the state owes less relative to what it produces — generally a sign of fiscal health.
+            </p>
+            <p className="text-gray-600 mb-3 leading-relaxed">
+              <strong className="text-gray-900">FRBM</strong> (Fiscal Responsibility and Budget Management Act) sets legal limits on state borrowing. The original ceiling was 25% of GSDP, but the Union government revised it to 27.6% in 2025 to give states more fiscal space during economic stress.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Gujarat's debt-to-GSDP ratio has been declining — from 19.8% in FY20 to a projected 14.7% in FY27. This is the <strong className="text-gray-900">lowest among India's 21 major states</strong>. However, the declining trend masks a deeper concern: as GSDP growth slows, debt may rise faster than revenue, tightening fiscal space.<Ref n={2} />
+            </p>
+          </DataCard>
+
+          <DebtToGSDP
+            data={[
+              { year: 'FY20', value: 19.8 },
+              { year: 'FY21', value: 21.2 },
+              { year: 'FY22', value: 19.5 },
+              { year: 'FY24', value: 16.1 },
+              { year: 'FY25', value: 15.3 },
+              { year: 'FY27', value: 14.7 },
+            ]}
+            unit="%"
             title="Debt-to-GSDP Ratio: Gujarat's Declining Trajectory"
-            caption="The one genuinely positive fiscal metric — debt-to-GSDP remains India's lowest. Source: PRS India / FintechBizNews"
+            caption="Figure 4: Hover any year for that year's reading and its delta from FY20. The red dashed line shows the original FRBM ceiling (25%), the gray band shows the revised ceiling (27.6%). Source: PRS India / FintechBizNews."
           />
         </Section>
 
