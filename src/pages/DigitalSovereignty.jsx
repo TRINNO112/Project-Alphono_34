@@ -8,7 +8,6 @@ import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
 import ScrollSpy from '../components/ScrollSpy'
-import NetworkDependencyMap from '../components/NetworkDependencyMap'
 
 const sources = [
   { title: "International Bandwidth — Submarine Cable Landings in India", publication: "TRAI Indian Telecom Services Performance Indicators (Jan–Mar 2025)", url: "https://www.trai.gov.in/release-publication/reports/performance-indicators-reports" },
@@ -75,7 +74,7 @@ export default function DigitalSovereignty() {
             <StatBox value="1,600 km" label="Gujarat Coastline" color="teal" />
           </div>
 
-          <NetworkDependencyMap />
+          {/* Cable landings scatter — to be added (D3) */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="A 1,600 km Coastline with Zero Landings" alert={true}>

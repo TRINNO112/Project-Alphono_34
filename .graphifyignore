@@ -1,0 +1,13 @@
+node_modules/
+dist/
+free-claude-code/
+**/free-claude-code/**
+graphify-out/
+.agent/
+.agents/
+.git/
+.claude/
+.gemini/
+ms.text
+package-lock.json
+

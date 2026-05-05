@@ -43,3 +43,8 @@ GEMINI.md
 # Session summaries
 SESSION_SUMMARY_*.md
 session_summary_*.md
+
+# Graphify & Agent Configs
+graphify-out/
+.agent/
+.agents/

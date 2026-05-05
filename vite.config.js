@@ -23,8 +23,9 @@ export default defineConfig({
           if (!id.includes('node_modules')) return
           if (id.includes('react-router')) return 'router-vendor'
           if (id.includes('framer-motion')) return 'motion-vendor'
-          if (id.includes('recharts') || id.includes('victory-vendor') || id.includes('d3-shape') || id.includes('d3-scale')) return 'charts-vendor'
           if (id.includes('d3-geo') || id.includes('react-simple-maps') || id.includes('topojson')) return 'maps-vendor'
+          if (id.includes('/d3') || id.includes('/internmap/') || id.includes('/delaunator/') || id.includes('/robust-predicates/')) return 'd3-vendor'
+          if (id.includes('recharts') || id.includes('victory-vendor')) return 'charts-vendor'
           if (id.includes('lucide-react')) return 'icons-vendor'
           if (id.includes('clsx') || id.includes('tailwind-merge') || id.includes('prop-types')) return 'utils-vendor'
           if (id.includes('react-helmet-async')) return 'helmet-vendor'

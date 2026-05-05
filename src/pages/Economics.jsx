@@ -3,7 +3,7 @@ import { TrendingUp, AlertTriangle, Landmark, Globe, CheckCircle, Building2 } fr
 import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { LollipopChart } from '../components/charts/LollipopChart'
 import { SlopeChart } from '../components/charts/SlopeChart'
-import { ErosionPillar } from '../components/charts/ErosionPillar'
+import { PillarChart } from '../components/PillarChart'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -155,19 +155,20 @@ export default function Economics() {
             sortDescending={true}
           />
 
-          {/* Time-Series: Central Grants as % of GSDP — Erosion Pillar */}
-          <ErosionPillar
-            strata={[
-              { label: 'FY21', value: 1.68 },
-              { label: 'FY22', value: 1.32 },
-              { label: 'FY23', value: 1.05 },
-              { label: 'FY24', value: 0.78 },
-              { label: 'FY25', value: 0.53, note: 'a stub' },
+          {/* Time-Series: Central Grants as % of GSDP — placeholder pending D3 step-line */}
+          <PillarChart
+            type="bar"
+            title="Central Grants to Gujarat as % of GSDP"
+            caption="Figure 2 (placeholder): A Rs 13,000 crore decline in 4 years — from 1.68% to 0.53% of GSDP. Source: CAG / Gujarat Samachar"
+            data={[
+              { name: 'FY21', value: 1.68 },
+              { name: 'FY22', value: 1.32 },
+              { name: 'FY23', value: 1.05 },
+              { name: 'FY24', value: 0.78 },
+              { name: 'FY25', value: 0.53 },
             ]}
-            unit="%"
-            title="Central Grants to Gujarat as % of GSDP (The Pillar Erodes)"
-            caption="A Rs 13,000 crore decline in 4 years — from 1.68% to 0.53% of GSDP. Source: CAG / Gujarat Samachar"
-            lossLabel="−Rs 13,000 cr · 68% of the pillar gone"
+            colors={['#991B1B', '#B91C1C', '#DC2626', '#EF4444', '#F87171']}
+            height={320}
           />
 
           {/* Time-Series: Debt-to-GSDP Ratio */}
