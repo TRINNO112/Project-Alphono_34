@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { Cable, Cloud, Radio, Server, Globe, AlertTriangle, Wifi } from 'lucide-react'
 import { Section, DataCard, Ref, SourceList, StatBox, PendingDataBox } from '../components/Shared'
-import { PillarChart } from '../components/PillarChart'
 import { Treemap } from '../components/charts/Treemap'
+import { CableLandingsScatter } from '../components/charts/CableLandingsScatter'
+import { LatencyDotPlot } from '../components/charts/LatencyDotPlot'
 import { ComparisonTable } from '../components/ComparisonTable'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
@@ -74,7 +75,22 @@ export default function DigitalSovereignty() {
             <StatBox value="1,600 km" label="Gujarat Coastline" color="teal" />
           </div>
 
-          {/* Cable landings scatter — to be added (D3) */}
+          {/* Cable landings scatter */}
+          <CableLandingsScatter
+            data={[
+              { state: 'Maharashtra', cables: 15, coastline: 720 },
+              { state: 'Tamil Nadu', cables: 7, coastline: 1076 },
+              { state: 'Kerala', cables: 2, coastline: 580 },
+              { state: 'Andhra Pradesh', cables: 2, coastline: 974 },
+              { state: 'Odisha', cables: 1, coastline: 480 },
+              { state: 'West Bengal', cables: 1, coastline: 350 },
+              { state: 'Gujarat', cables: 0, coastline: 1600 },
+              { state: 'Goa', cables: 0, coastline: 105 },
+              { state: 'Karnataka', cables: 0, coastline: 320 },
+            ]}
+            title="International Submarine Cable Landings by Coastal State"
+            caption="Figure 1: Hover any state for its cable landing count and coastline length. Gujarat (0 cables, 1,600 km coastline) is highlighted in crimson. Source: TeleGeography Submarine Cable Map 2025."
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="A 1,600 km Coastline with Zero Landings" alert={true}>
@@ -143,10 +159,7 @@ export default function DigitalSovereignty() {
             <StatBox value="3x" label="Latency Penalty for GIFT Fintech" color="red" />
           </div>
 
-          <PillarChart
-            type="bar"
-            title="Round-Trip Latency to Singapore (ap-southeast-1) — by Origin"
-            caption="Figure 2: GIFT City's fintech and IFSC ambitions compete with Singapore, Hong Kong, and Dubai. Every packet leaving GIFT backhauls through Mumbai first, adding ~30 ms of avoidable latency. For low-latency trading, that gap is decisive. Sources: AWS public latency maps, CAG GIFT City audit FY24."
+          <LatencyDotPlot
             data={[
               { name: 'Singapore (native)', value: 15 },
               { name: 'Hong Kong', value: 32 },
@@ -154,8 +167,9 @@ export default function DigitalSovereignty() {
               { name: 'GIFT City (via MH)', value: 45 },
               { name: 'Delhi (via MH)', value: 55 },
             ]}
-            colors={['#16A34A', '#2563EB', '#CA8A04', '#DC2626', '#EF4444']}
-            height={320}
+            unit="ms"
+            title="Round-Trip Latency to Singapore (ap-southeast-1) — by Origin"
+            caption="Figure 2: GIFT City's fintech and IFSC ambitions compete with Singapore, Hong Kong, and Dubai. Every packet leaving GIFT backhauls through Mumbai first, adding ~30 ms of avoidable latency. For low-latency trading, that gap is decisive. Sources: AWS public latency maps, CAG GIFT City audit FY24."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

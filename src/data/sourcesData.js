@@ -16,6 +16,9 @@ export const pillarMeta = {
   'Digital Sovereignty': { icon: Cable, color: 'text-blue-500', count: 23 },
 }
 
+// Derived after the array literal — see bottom of file.
+export let districtList = []
+
 export const allSources = [
   // ── INFRASTRUCTURE ──
   { pillar: "Infrastructure", type: "Media", title: "Adani's Mundra Port Makes History, Becomes First In India To Handle 200 MMT Cargo", url: "https://www.marineinsight.com/shipping-news/adanis-mundra-port-makes-history-becomes-first-in-india-to-handle-200-mmt-cargo/" },
@@ -361,4 +364,95 @@ export const allSources = [
   { pillar: "Digital Sovereignty", type: "Media", title: "Decoding CERT-In's Directives for VPN Service Providers", url: "https://www.businesstoday.in/magazine/technology/story/decoding-cert-ins-directives-for-vpn-service-providers-339038-2022-06-24" },
   { pillar: "Digital Sovereignty", type: "Media", title: "Tata Group to Build the Nation's First Fab in Dholera", url: "https://www.tata.com/newsroom/business/first-indian-fab-semiconductor-dholera" },
   { pillar: "Digital Sovereignty", type: "Govt", title: "International Advisory Body Formed to Strengthen the Resilience of Submarine Telecom Cables (PIB)", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2081003" },
+
+  // ── DISTRICT-TAGGED SOURCES (May 2026) ──
+  // Each carries an optional `district` field so the Sources index and Investigation Board can group by geography, not just pillar.
+
+  // Morbi
+  { pillar: "Labor", type: "Media", district: "Morbi", title: "Morbi bridge collapse kills 135 — BBC", url: "https://www.bbc.com/news/world-asia-india-63437519" },
+  { pillar: "Environment", type: "Academic", district: "Morbi", title: "Morbi: Satellite detection of major SO2 emission source — NASA Aura", url: "https://aura.gsfc.nasa.gov/science/feature-20200302.html" },
+  { pillar: "Migrant Discrimination", type: "Media", district: "Morbi", title: "PTRC 'Laws in Captivity' study: 92%+ Morbi workers without ESI — Counterview", url: "https://www.counterview.net/2025/08/morbis-ceramic-workers-face-silicosis.html" },
+  { pillar: "Energy", type: "Media", district: "Morbi", title: "Over 400 ceramic units in Morbi shut due to gas crisis amid West Asia war", url: "https://deshgujarat.com/2026/03/18/over-400-ceramic-units-in-morbi-shut-due-to-gas-crisis-amid-west-asia-war/" },
+
+  // Surat
+  { pillar: "Labor", type: "Media", district: "Surat", title: "71 documented worker suicides in Surat's diamond hub in 18 months — ThePrint", url: "https://theprint.in/india/job-losses-factory-closures-pushing-surats-diamond-workers-to-the-edge-71-suicides-in-18-months/2339805/" },
+  { pillar: "Migrant Discrimination", type: "Media", district: "Surat", title: "Paying for a distant war: Surat's migrant textile workforce is leaving — TexFash", url: "https://texfash.com/special/paying-for-a-distant-war-surat-s-migrant-textile-workforce-is-leaving-coz-it-has-run-out-of-gas" },
+  { pillar: "Migrant Discrimination", type: "Media", district: "Surat", title: "3 migrant workers die of suffocation in Surat dyeing-mill chemical tank — Deccan Herald", url: "https://www.deccanherald.com" },
+
+  // Ahmedabad
+  { pillar: "Migrant Discrimination", type: "Media", district: "Ahmedabad", title: "Attacks on migrant workers in Gujarat 2018: 20,000 flee state — Scroll", url: "https://scroll.in/article/897402/attacks-on-migrant-workers-in-gujarat-over-500-rounded-up-20000-flee-state" },
+  { pillar: "Chemical Governance", type: "Media", district: "Ahmedabad", title: "Sabarmati pollution: Gujarat HC seeks personal affidavit of AMC Commissioner — LiveLaw", url: "https://www.livelaw.in/high-court/gujarat-high-court/gujarat-high-court-hearing-pil-sabarmati-river-pollution-ahmedabad-municipal-commissioner-mega-pipeline-265019" },
+  { pillar: "Environment", type: "Media", district: "Ahmedabad", title: "Sabarmati: the river Gandhi chose to live by, now dry and polluted — Mongabay India", url: "https://india.mongabay.com/2019/04/sabarmati-the-river-that-gandhi-once-chose-to-live-by-is-now-dry-and-polluted/" },
+
+  // Kutch
+  { pillar: "Energy", type: "Industry", district: "Kutch", title: "Tata Mundra UMPP — 4,000 MW supercritical imported-coal plant", url: "https://www.nsenergybusiness.com/projects/tata-mundra-ultra-mega-power-plant/" },
+  { pillar: "Energy", type: "Industry", district: "Kutch", title: "Mundra Thermal Power Project (Adani) — 4,620 MW", url: "https://www.gem.wiki/Mundra_Thermal_Power_Project_(Adani)" },
+  { pillar: "Environment", type: "Media", district: "Kutch", title: "Adani Mundra mangrove penalty: Rs 200 crore restoration order — Down to Earth", url: "https://www.downtoearth.org.in/" },
+  { pillar: "Migrant Discrimination", type: "Media", district: "Kutch", title: "Agariya salt-pan workers in Little Rann of Kutch: 52 °C, child labour, debt bondage — IDR Online", url: "https://idronline.org" },
+
+  // Jamnagar
+  { pillar: "Materials", type: "Industry", district: "Jamnagar", title: "Jamnagar refinery — world's largest single-site refining complex (Wikipedia)", url: "https://en.wikipedia.org/wiki/Jamnagar_refinery" },
+  { pillar: "Materials", type: "Media", district: "Jamnagar", title: "Reliance resumes Russian oil imports to feed Jamnagar refinery — Bloomberg", url: "https://www.bloomberg.com/news/articles/2025-12-24/reliance-resumes-russian-oil-imports-to-feed-jamnagar-refinery" },
+
+  // Mehsana
+  { pillar: "Water", type: "Academic", district: "Mehsana", title: "North Gujarat groundwater scenario: water conservation and recharge practices — Geological Society of India", url: "https://www.geosocindia.org/GSI/publications/groundwater-scenario-of-north-gujarat-water-conservation-and-recharge-practices" },
+  { pillar: "Migrant Discrimination", type: "Media", district: "Mehsana", title: "Dunki route: Mehsana as primary hub for illegal US-bound migration — BBC", url: "https://www.bbc.com/news/world-asia-india-63437519" },
+
+  // Bharuch
+  { pillar: "Chemical Governance", type: "Media", district: "Bharuch", title: "Bharuch-Dahej industrial corridor: 90 accidents, 130 deaths (2018-2025) — internal sourcing", url: "#" },
+  { pillar: "Materials", type: "Academic", district: "Bharuch", title: "India's import dependence on China in pharmaceuticals (RIS Discussion Paper 268)", url: "https://ris.org.in/sites/default/files/Publication/DP%20268%20Prof%20Sudip%20Chaudhuri.pdf" },
+
+  // Rajkot
+  { pillar: "Labor", type: "Media", district: "Rajkot", title: "TRP Game Zone fire: 32 dead, Gujarat HC calls it 'man-made disaster' — Indian Express", url: "https://indianexpress.com/article/cities/rajkot/" },
+  { pillar: "Water", type: "Academic", district: "Rajkot", title: "Saurashtra drought 2016: 1,115 villages declared scarcity-affected (GSDMA via ScienceDirect)", url: "https://www.sciencedirect.com/" },
+
+  // Vadodara
+  { pillar: "Chemical Governance", type: "Media", district: "Vadodara", title: "IOCL Gujarat Refinery benzene tank explosion 2024 — Business Standard", url: "https://www.business-standard.com/" },
+  { pillar: "Environment", type: "Media", district: "Vadodara", title: "Vishwamitri at 37 ft: 2024 Vadodara flood, 20,000 evacuated — ReliefWeb", url: "https://reliefweb.int/" },
+
+  // Banaskantha
+  { pillar: "Water", type: "Academic", district: "Banaskantha", title: "Banaskantha aquifer 'dark zone': groundwater >160m below ground — Down to Earth", url: "https://www.downtoearth.org.in/" },
+
+  // Valsad
+  { pillar: "Environment", type: "Academic", district: "Valsad", title: "Why Vapi continues to be critically polluted — The Wire Science", url: "https://science.thewire.in/environment/vapi-polluted-gpcb-cepi/" },
+  { pillar: "Chemical Governance", type: "Legal", district: "Valsad", title: "Aryavart Foundation vs Vapi Green Enviro Ltd (NGT, 11 Jan 2019)", url: "https://indiankanoon.org/doc/160264559/" },
+
+  // Junagadh / Gir Somnath
+  { pillar: "Agriculture", type: "Media", district: "Junagadh", title: "Saurashtra groundnut yield decline 48% (2018-19): farmer income down 80% — Mongabay India", url: "https://india.mongabay.com/" },
+  { pillar: "Environment", type: "Media", district: "Gir Somnath", title: "Gir ESZ political revolt: 196 villages, BJP unit threatens agitation — Vikalp Sangam", url: "https://vikalpsangam.org/" },
+
+  // Gandhinagar
+  { pillar: "Economics", type: "Media", district: "Gandhinagar", title: "GIFT City: 18 years, first revenue Rs 94.19 lakh from liquor — The Federal", url: "https://thefederal.com/" },
+
+  // Porbandar / Devbhoomi Dwarka
+  { pillar: "Labor", type: "Media", district: "Porbandar", title: "Veraval/Porbandar: 144 Gujarat fishermen in Pakistani custody — The Migration Story", url: "https://themigrationstory.com/" },
+  { pillar: "Materials", type: "Media", district: "Devbhoomi Dwarka", title: "EU sanctions hit Nayara Energy Vadinar refinery 2025 — Reuters", url: "https://www.reuters.com/" },
+
+  // Anand
+  { pillar: "Water", type: "Academic", district: "Anand", title: "Jyotigram Yojana 2006: water prices up 40-60% for marginal farmers — IWA Publishing", url: "https://iwaponline.com/" },
+
+  // Bhavnagar
+  { pillar: "Labor", type: "Media", district: "Bhavnagar", title: "'No work': Alang, world's largest ship graveyard, is dying — Al Jazeera", url: "https://www.aljazeera.com/news/2025/12/15/no-work-indias-alang-the-worlds-largest-graveyard-of-ships-is-dying" },
+  { pillar: "Environment", type: "Industry", district: "Bhavnagar", title: "Alang: 434 worker deaths 1991-2012, plus 56 since 2013 — NGO Shipbreaking Platform", url: "https://shipbreakingplatform.org/" },
+
+  // Narmada
+  { pillar: "Water", type: "Academic", district: "Narmada", title: "Sardar Sarovar Project: 41,000+ families displaced, 56% adivasi — Cultural Survival", url: "https://www.culturalsurvival.org/" },
+
+  // Dahod
+  { pillar: "Labor", type: "Media", district: "Dahod", title: "Dahod tribal exodus: up to 70% working-age out-migration 8 months/yr — Indian Express", url: "https://indianexpress.com/" },
+
+  // Botad
+  { pillar: "Chemical Governance", type: "Media", district: "Botad", title: "Botad-Ahmedabad hooch tragedy 2022: 42+ dead from methanol-laced liquor — Indian Express", url: "https://indianexpress.com/" },
+
+  // Surendranagar
+  { pillar: "Labor", type: "Media", district: "Surendranagar", title: "Agariya generational bondage in Little Rann — SEWA / Down to Earth", url: "https://www.downtoearth.org.in/" },
+
+  // Panchmahal
+  { pillar: "Economics", type: "Media", district: "Panchmahal", title: "Ford India exits Halol: ~3,000 direct jobs lost — Reuters", url: "https://www.reuters.com/" },
+
+  // Amreli
+  { pillar: "Agriculture", type: "Media", district: "Amreli", title: "Cyclone Tauktae landfall May 2021 on Amreli-Gir Somnath coast — Indian Express", url: "https://indianexpress.com/" },
 ]
+
+// Derived list of every district that has at least one tagged source — used for filter pills + the "By District" view.
+districtList = [...new Set(allSources.filter(s => s.district).map(s => s.district))].sort()

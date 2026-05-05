@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ExternalLink, ArrowLeft, ChevronRight } from 'lucide-react'
+import { ExternalLink, ArrowLeft, ChevronRight, MapPin, Layers } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
-import { allSources, pillarMeta } from '../data/sourcesData'
+import { allSources, pillarMeta, districtList } from '../data/sourcesData'
 
 const TYPE_STRIPE = {
   Govt: '#2563eb',
@@ -46,15 +46,24 @@ function hostOf(url) {
 
 export default function SourceGraph() {
   const [openPillar, setOpenPillar] = useState(null)
+  const [groupMode, setGroupMode] = useState('pillar') // 'pillar' | 'district'
 
   const grouped = useMemo(() => {
     const map = {}
-    for (const s of allSources) {
-      if (!map[s.pillar]) map[s.pillar] = []
-      map[s.pillar].push(s)
+    if (groupMode === 'pillar') {
+      for (const s of allSources) {
+        if (!map[s.pillar]) map[s.pillar] = []
+        map[s.pillar].push(s)
+      }
+    } else {
+      for (const s of allSources) {
+        if (!s.district) continue
+        if (!map[s.district]) map[s.district] = []
+        map[s.district].push(s)
+      }
     }
     return map
-  }, [])
+  }, [groupMode])
 
   const typeTotals = useMemo(() => {
     const acc = {}
@@ -63,6 +72,7 @@ export default function SourceGraph() {
   }, [])
 
   const pillarNames = Object.keys(pillarMeta)
+  const sectionNames = groupMode === 'pillar' ? pillarNames : districtList
 
   return (
     <div className="ib-page">
@@ -97,13 +107,44 @@ export default function SourceGraph() {
         ))}
       </div>
 
-      {pillarNames.map((name, pi) => {
+      {/* Group-mode toggle */}
+      <div style={{ display: 'flex', gap: 8, margin: '12px 0 24px', flexWrap: 'wrap' }}>
+        <button
+          onClick={() => { setGroupMode('pillar'); setOpenPillar(null) }}
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            padding: '6px 14px', fontSize: 12, fontWeight: 700, letterSpacing: '0.05em',
+            border: groupMode === 'pillar' ? '1px solid #D32F2F' : '1px solid #d4c8a8',
+            background: groupMode === 'pillar' ? 'rgba(211,47,47,0.08)' : 'transparent',
+            color: groupMode === 'pillar' ? '#D32F2F' : '#5a4a2a',
+            cursor: 'pointer', borderRadius: 4, textTransform: 'uppercase',
+          }}
+        >
+          <Layers className="w-3.5 h-3.5" /> By Pillar
+        </button>
+        <button
+          onClick={() => { setGroupMode('district'); setOpenPillar(null) }}
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            padding: '6px 14px', fontSize: 12, fontWeight: 700, letterSpacing: '0.05em',
+            border: groupMode === 'district' ? '1px solid #D32F2F' : '1px solid #d4c8a8',
+            background: groupMode === 'district' ? 'rgba(211,47,47,0.08)' : 'transparent',
+            color: groupMode === 'district' ? '#D32F2F' : '#5a4a2a',
+            cursor: 'pointer', borderRadius: 4, textTransform: 'uppercase',
+          }}
+        >
+          <MapPin className="w-3.5 h-3.5" /> By District
+        </button>
+      </div>
+
+      {sectionNames.map((name, pi) => {
         const sources = grouped[name] || []
-        const meta = pillarMeta[name]
-        const Icon = meta?.icon
-        const note = PILLAR_NOTES[name]
+        const meta = groupMode === 'pillar' ? pillarMeta[name] : null
+        const Icon = meta?.icon || (groupMode === 'district' ? MapPin : null)
+        const note = groupMode === 'pillar' ? PILLAR_NOTES[name] : null
         const isOpen = openPillar === name
         const previewSources = sources.slice(0, 3)
+        if (sources.length === 0) return null
 
         return (
           <section key={name} className="ib-section" aria-labelledby={`ib-h-${pi}`}>
@@ -126,7 +167,7 @@ export default function SourceGraph() {
                   className={`ib-chevron ${isOpen ? 'ib-chevron--open' : ''}`}
                   aria-hidden="true"
                 />
-                {Icon && <Icon className={`w-6 h-6 ${meta.color || ''}`} aria-hidden="true" />}
+                {Icon && <Icon className={`w-6 h-6 ${meta?.color || 'text-amber-600'}`} aria-hidden="true" />}
                 {name}
               </h2>
               <span className="ib-section-count">

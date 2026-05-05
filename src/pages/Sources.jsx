@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Database, Network, ExternalLink, Search, Filter } from 'lucide-react'
+import { Database, Network, ExternalLink, Search, Filter, MapPin } from 'lucide-react'
 import SEO from '../components/SEO'
-import { pillarMeta, allSources } from '../data/sourcesData'
+import { pillarMeta, allSources, districtList } from '../data/sourcesData'
 
 
 const typeColors = {
@@ -16,20 +16,23 @@ const typeColors = {
 
 const allTypes = ['All', 'Govt', 'Media', 'Academic', 'Industry', 'Legal']
 const allPillars = ['All', ...Object.keys(pillarMeta)]
+const allDistricts = ['All', ...districtList]
 
 export default function Sources() {
   const [typeFilter, setTypeFilter] = useState('All')
   const [pillarFilter, setPillarFilter] = useState('All')
+  const [districtFilter, setDistrictFilter] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
 
   const filtered = useMemo(() => {
     return allSources.filter(s => {
       if (typeFilter !== 'All' && s.type !== typeFilter) return false
       if (pillarFilter !== 'All' && s.pillar !== pillarFilter) return false
+      if (districtFilter !== 'All' && s.district !== districtFilter) return false
       if (searchQuery && !s.title.toLowerCase().includes(searchQuery.toLowerCase())) return false
       return true
     })
-  }, [typeFilter, pillarFilter, searchQuery])
+  }, [typeFilter, pillarFilter, districtFilter, searchQuery])
 
   // Group by pillar for display
   const grouped = useMemo(() => {
@@ -138,6 +141,27 @@ export default function Sources() {
               })}
             </div>
           </div>
+
+          {/* District filter */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+            <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider shrink-0">District:</span>
+            <div className="flex gap-1.5 flex-wrap">
+              {allDistricts.map(d => (
+                <button
+                  key={d}
+                  onClick={() => setDistrictFilter(d)}
+                  className={`px-2.5 py-1 text-xs font-medium rounded-lg border transition-all ${
+                    districtFilter === d
+                      ? 'bg-crimson/10 border-crimson/30 text-crimson'
+                      : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300'
+                  }`}
+                >
+                  {d}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Results count */}
@@ -175,8 +199,13 @@ export default function Sources() {
                         <p className="text-sm font-medium text-gray-800 group-hover:text-crimson transition-colors leading-snug">
                           {source.title}
                         </p>
-                        <p className="text-xs text-gray-400 mt-1 truncate">
-                          {source.url.replace(/^https?:\/\//, '').split('/')[0]}
+                        <p className="text-xs text-gray-400 mt-1 truncate flex items-center gap-2">
+                          <span>{source.url.replace(/^https?:\/\//, '').split('/')[0]}</span>
+                          {source.district && (
+                            <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-semibold">
+                              <MapPin className="w-2.5 h-2.5" />{source.district}
+                            </span>
+                          )}
                         </p>
                       </div>
                       <span className={`shrink-0 px-2 py-0.5 text-[10px] font-bold rounded border ${typeColors[source.type]}`}>
