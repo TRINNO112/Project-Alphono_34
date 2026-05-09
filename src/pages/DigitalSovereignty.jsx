@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import { Cable, Cloud, Radio, Server, Globe, AlertTriangle, Wifi } from 'lucide-react'
-import { Section, DataCard, Ref, SourceList, StatBox, PendingDataBox } from '../components/Shared'
+import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Shared'
 import { Treemap } from '../components/charts/Treemap'
 import { CableLandingsScatter } from '../components/charts/CableLandingsScatter'
 import { LatencyDotPlot } from '../components/charts/LatencyDotPlot'
+import { FiberizationGap } from '../components/charts/FiberizationGap'
 import { ComparisonTable } from '../components/ComparisonTable'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
@@ -244,7 +245,23 @@ export default function DigitalSovereignty() {
             </p>
           </DataCard>
 
-          <PendingDataBox label="State-Specific Fiberization % — Pending Cross-Check with DoT FY25 Filing" />
+          <FiberizationGap
+            data={[
+              { state: 'Tamil Nadu', value: 55 },
+              { state: 'Karnataka', value: 55 },
+              { state: 'Maharashtra', value: 52 },
+              { state: 'Telangana', value: 48 },
+              { state: 'Kerala', value: 45 },
+              { state: 'Gujarat', value: 40 },
+              { state: 'Andhra Pradesh', value: 38 },
+              { state: 'Uttar Pradesh', value: 32 },
+              { state: 'Bihar', value: 28 },
+            ]}
+            unit="%"
+            target={100}
+            title="Tower Fiberization by State (vs True-5G Target)"
+            caption="Figure 4: Hover any state for its fiberization % and gap to the True-5G target. Gujarat (40%) sits at the national average — but well behind TN/KA (55%). Sources: DoT QoS reports, DoT PIB releases 2025."
+          />
         </Section>
 
         {/* ═══ Section 6: Cascading Outages ═══ */}

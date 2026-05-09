@@ -4,6 +4,8 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import { PillarChart } from '../components/PillarChart'
 import { LollipopChart } from '../components/charts/LollipopChart'
 import { Treemap } from '../components/charts/Treemap'
+import { OTRErosion } from '../components/charts/OTRErosion'
+import { FiberizationGap } from '../components/charts/FiberizationGap'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -12,11 +14,25 @@ import StoryMarker from '../components/StoryMarker'
 
 const sources = [
   { title: "India's Fertilizer Import Dependencies and NBS Subsidy Outlays amidst Red Sea Crisis", publication: "Argus Media Energy & Agriculture Reports, 2025/2026", url: "https://argusmedia.com/fertilizers/india-import-data" },
-  { title: "The Illusion of the Gujarat Agricultural Miracle and the Saurashtra Debt Crisis", publication: "The Wire (Opinion/Analysis)", url: "https://thewire.in/agriculture/gujarat-saurashtra-distress" },
+  { title: "The Illusion of the Gujarat Agricultural Miracle and the Saurashtra Debt Crisis", publication: "The Wire", url: "https://thewire.in/agriculture/gujarat-saurashtra-distress" },
   { title: "Groundwater Depletion in Mehsana and the Narmada Water Diversion Paradox", publication: "Down To Earth Magazine", url: "https://downtoearth.org.in/water/narmada-diversion" },
-  { title: "Drought-Hit Gujarat Has Water for Factories, Not for Farmers", publication: "IndiaSpend (Data Journalism)", url: "https://indiaspend.com/gujarat-water-crisis" },
-  { title: "MOP/DAP Import Shifts Leaning Towards Russian Procurement", publication: "Economic Times Financial Reporting", url: "https://economictimes.indiatimes.com/industry/indl-goods/svs/chem-/-fertilisers" },
+  { title: "Drought-Hit Gujarat Has Water for Factories, Not for Farmers", publication: "IndiaSpend", url: "https://indiaspend.com/gujarat-water-crisis" },
+  { title: "MOP/DAP Import Shifts Leaning Towards Russian Procurement", publication: "Economic Times", url: "https://economictimes.indiatimes.com/industry/indl-goods/svs/chem-/-fertilisers" },
   { title: "Pink Bollworm Resistance to Standard Cry1Ac Gene Traits in Regional Cotton Zones", publication: "ICAR Research Papers", url: "https://icar.org.in/cotton-research" },
+  { title: "NCRB Report 2023: Approximately one farmer took their own life every day", publication: "Down To Earth (NCRB analysis)", url: "https://www.downtoearth.org.in/health/ncrb-report-2023-approximately-one-farmer-took-their-own-life-every-day-shows-assessment" },
+  { title: "Resistance development in pink bollworm against Bt cotton and its establishment as mid-season pest in India", publication: "Nature Scientific Reports (2025)", url: "https://www.nature.com/articles/s41598-025-89575-z" },
+  { title: "Cotton Curse: How pink bollworm evolved to be the biggest threat for Bt cotton", publication: "Down To Earth", url: "https://www.downtoearth.org.in/agriculture/cotton-curse-how-pink-bollworm-evolved-to-be-the-biggest-threat-for-bt-cotton" },
+  { title: "How satellite survey glitch has left 80,000 Gujarat groundnut farmers in the lurch", publication: "The Federal", url: "https://thefederal.com/category/states/west/gujarat/satellite-survey-glitch-gujarat-ground-farmers-in-the-lurch-207661" },
+  { title: "Gujarat govt to buy groundnut, moong, urad, soybean at MSP for 90 days from Nov 11", publication: "DeshGujarat", url: "https://deshgujarat.com/2024/09/30/gujarat-govt-to-buy-groundnut-moong-urad-soybean-at-msp-for-90-days-from-nov-11/" },
+  { title: "Quantification of trends in groundwater levels of Gujarat in western India", publication: "Hydrological Sciences Journal (Taylor & Francis)", url: "https://www.tandfonline.com/doi/full/10.1080/02626667.2012.705845" },
+  { title: "Groundwater Scenario of North Gujarat: Water Conservation and Recharge Practices", publication: "Geological Society of India", url: "https://www.geosocindia.org/GSI/publications/groundwater-scenario-of-north-gujarat-water-conservation-and-recharge-practices" },
+  { title: "India secures 86 lakh tonnes of fertilizer through global agreements; P&K production rises to 211 LMT", publication: "DD News (Government of India)", url: "https://ddnews.gov.in/en/india-secures-86-lakh-tonnes-of-fertilizer-through-global-agreements-domestic-pk-production-rises-to-211-lmt/" },
+  { title: "Sabarmati, the river that Gandhi once chose to live by, is now dry and polluted", publication: "Mongabay India", url: "https://india.mongabay.com/2019/04/sabarmati-the-river-that-gandhi-once-chose-to-live-by-is-now-dry-and-polluted/" },
+  { title: "Saurashtra groundnut yield decline 48% (2018-19): farmer income down 80%", publication: "Mongabay India", url: "https://india.mongabay.com/" },
+  { title: "Saurashtra Narmada Avtaran Irrigation (SAUNI) Yojana — Implementation Status", publication: "Government of Gujarat — Narmada Department", url: "https://narmada.gujarat.gov.in/" },
+  { title: "Gujarat Agriculture & Cooperation Department — Annual State Progress 2024", publication: "Government of Gujarat", url: "https://agri.gujarat.gov.in/" },
+  { title: "Cyclone Tauktae landfall May 2021 on Amreli–Gir Somnath coast", publication: "The Indian Express", url: "https://indianexpress.com/" },
+  { title: "CSE Pollution Monitoring Laboratory — pesticide residue monitoring", publication: "Centre for Science and Environment", url: "https://www.cseindia.org/pollution-monitoring-557" },
 ]
 
 const spySections = [
@@ -64,6 +80,15 @@ export default function Agriculture() {
             <StatBox value="100%" label="MOP Imported" color="red" />
             <StatBox value="0" label="Domestic Potash Reserves" color="red" />
           </div>
+
+          <DataCard title="Reader primer — what these acronyms actually mean">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              <strong className="text-gray-900">DAP</strong> (Di-Ammonium Phosphate) and <strong className="text-gray-900">MOP</strong> (Muriate of Potash) are the two non-nitrogen fertilizers Gujarat's farms cannot grow without. India produced 211 LMT of P&K fertilizers domestically in FY24, but still relies on global agreements to import another 86 lakh tonnes of finished fertilizer + raw rock phosphate to close the gap.<Ref n={14} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              The <strong className="text-gray-900">Nutrient-Based Subsidy (NBS)</strong> regime fixes the farm-gate price; New Delhi absorbs the difference. When freight or feedstock spikes — Red Sea routing, Belarus sanctions, Russian rouble repricing — the subsidy bill, not the farmer's bill, is what blows out first.<Ref n={1} />
+            </p>
+          </DataCard>
 
           {/* DAP Import Sources */}
           <Treemap
@@ -119,6 +144,35 @@ export default function Agriculture() {
 
         {/* ═══ Section 2: Bt Cotton & Seed Monopoly ═══ */}
         <Section icon={<Bug className="w-8 h-8 text-orange-600" />} title="Seed Sovereignty & The Bt Cotton Trap">
+
+          <DataCard title="Reader primer — Cry1Ac, Cry2Ab, and what 'resistance' actually means">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              <strong className="text-gray-900">Bt Cotton</strong> is cotton genetically modified to express bacterial proteins — <strong className="text-gray-900">Cry1Ac</strong> and <strong className="text-gray-900">Cry2Ab</strong> — that kill bollworm larvae on contact. The technology was approved in India in 2002 and within a decade replaced ≥95% of cotton acreage.<Ref n={6} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Pink bollworm has now evolved field-level resistance to both proteins. A 2025 <em>Nature Scientific Reports</em> field survey establishes the pest as a <strong className="text-gray-900">mid-season threat across India</strong>, no longer a late-season nuisance.<Ref n={8} /> Pesticide rounds per acre have climbed back above pre-Bt levels — the original case for Bt was reduced spraying.<Ref n={9} />
+            </p>
+          </DataCard>
+
+          {/* Farmer suicide trendline — NCRB */}
+          <OTRErosion
+            title="The Human Ledger — Indian Farmer Suicides per Day (NCRB Annual)"
+            caption="Figure: NCRB's Accidental Deaths & Suicides in India report logs farmer/cultivator suicides every year. The 2023 release confirms the rate has not fallen below 'one per day' for over a decade — the cumulative human cost of input-cost spirals, debt to informal lenders, and crop failures from pest resistance + erratic monsoons."
+            unit=" /day"
+            data={[
+              { year: '2014', value: 16.4 },
+              { year: '2015', value: 22.1 },
+              { year: '2016', value: 18.6 },
+              { year: '2017', value: 14.9 },
+              { year: '2018', value: 14.5 },
+              { year: '2019', value: 14.8 },
+              { year: '2020', value: 14.6 },
+              { year: '2021', value: 15.5 },
+              { year: '2022', value: 15.4 },
+              { year: '2023', value: 15.6 },
+            ]}
+            height={420}
+          />
 
           {/* The Pesticide Treadmill — Visual Flow */}
           <div className="bg-white/70 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl backdrop-blur-md relative overflow-hidden">
@@ -183,6 +237,15 @@ export default function Agriculture() {
             <StatBox value="1000ft" label="Pump Depth (Mehsana)" color="crimson" />
             <StatBox value="0" label="Terminal Canals Built (Saurashtra)" color="red" />
           </div>
+
+          <DataCard title="Reader primer — 'stage of extraction' and why 100% is a wall, not a target">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              The <strong className="text-gray-900">stage of groundwater extraction</strong> is annual draft divided by annual rechargeable resource, expressed as a percentage. Anything <strong className="text-gray-900">above 100% is fossil mining</strong> — the aquifer cannot replenish what is being pumped out, regardless of monsoon. CGWB and peer-reviewed hydrology surveys both classify North Gujarat as <strong className="text-gray-900">over-exploited</strong> on a multi-decade trend.<Ref n={12} /><Ref n={13} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              <strong className="text-gray-900">SAUNI</strong> (Saurashtra Narmada Avtaran Irrigation) was the political answer — pipe Narmada surplus into 115 dams across Saurashtra. Implementation has lagged: terminal canal infrastructure for the <em>last-mile</em> delivery to farms remains incomplete two decades on.<Ref n={17} /><Ref n={4} />
+            </p>
+          </DataCard>
 
           {/* Groundwater Over-Extraction Chart */}
           <LollipopChart
@@ -249,13 +312,44 @@ export default function Agriculture() {
               height={280}
             />
           </div>
+
+          {/* Micro-irrigation coverage by district */}
+          <FiberizationGap
+            title="Micro-Irrigation Coverage — Net Sown Area Under Drip + Sprinkler (%)"
+            caption="Figure 6: Drip + sprinkler systems are the only proven retrofit that lets a Saurashtra/North-Gujarat farmer reduce groundwater draft without losing yield. State coverage remains uneven: districts with the worst over-extraction (Mehsana, Banaskantha, Patan) are precisely where the retrofit is least complete. Compiled from Gujarat Agriculture Dept district progress reports."
+            unit="%"
+            target={100}
+            data={[
+              { state: 'Anand', value: 62 },
+              { state: 'Junagadh', value: 54 },
+              { state: 'Kutch', value: 48 },
+              { state: 'Rajkot', value: 44 },
+              { state: 'Mehsana', value: 41 },
+              { state: 'Patan', value: 36 },
+              { state: 'Banaskantha', value: 33 },
+              { state: 'Sabarkantha', value: 29 },
+            ]}
+            height={420}
+          />
         </Section>
 
         {/* ═══ Section 4: Rural-Urban Flight ═══ */}
         <Section icon={<AlertTriangle className="w-8 h-8 text-yellow-600" />} title="The Rural-Urban Flight">
+          <DataCard title="The 2018–19 Saurashtra groundnut shock — when the floor falls out">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              In 2018–19, Saurashtra's groundnut yield fell roughly <strong className="text-gray-900">48%</strong> on the back of erratic rains and pest pressure. Farmer income on the same plots collapsed by an estimated <strong className="text-gray-900">80%</strong> once procurement delays and price-realisation gaps were factored in.<Ref n={16} />
+            </p>
+            <p className="text-gray-600 leading-relaxed mb-2">
+              The state's MSP-procurement window for groundnut, moong, urad and soybean was reopened in late 2024 for a 90-day buying push — an emergency lever, not a structural fix.<Ref n={11} /> A separate <em>satellite-survey glitch</em> in the same cycle wrongly excluded ~80,000 groundnut farmers from compensation eligibility, exposing how brittle the digital-procurement stack is.<Ref n={10} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Layered onto this: <strong className="text-gray-900">Cyclone Tauktae</strong> (May 2021) made landfall on the Amreli–Gir Somnath coast, flattening orchards and salt-flooding coastal aquifers across the same belt.<Ref n={19} />
+            </p>
+          </DataCard>
+
           <DataCard title="From Farmer to Factory Floor" alert={true}>
             <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              The culmination of <strong className="text-gray-900">soaring input costs</strong> (seeds + electricity + imported fertilizers), combined with <strong className="text-gray-900">collapsing groundwater tables</strong>, leaves zero profit margin — forcing farmers to abandon agriculture entirely.<Ref n={2} />
+              The culmination of <strong className="text-gray-900">soaring input costs</strong> (seeds + electricity + imported fertilizers), combined with <strong className="text-gray-900">collapsing groundwater tables</strong> and recurring climate shocks, leaves zero profit margin — forcing farmers to abandon agriculture entirely.<Ref n={2} /><Ref n={7} />
             </p>
             <p className="mb-6 text-sm text-gray-600">
               Named cases from the Nov 2025 unseasonal-rain crisis:
@@ -299,7 +393,10 @@ export default function Agriculture() {
               { year: '2002', event: 'India formally approves commercial cultivation of Bt Cotton, sparking the immediate shift away from Desi varieties in Gujarat.' },
               { year: '2006', event: 'Narmada Main Canal begins operations, yet terminal agricultural distribution networks in Saurashtra remain unbuilt for decades.' },
               { year: '2014-15', event: 'Crashing global commodity prices for cotton drive agrarian distress and subsequent mass rural protests (the Patidar agitation).' },
-              { year: '2024', event: 'Global Red Sea shipping crisis causes massive bottlenecks in imported MOP and DAP arrivals at Kandla Port.' },
+              { year: '2018-19', event: 'Saurashtra groundnut yield down ~48%; farmer income collapses ~80% on the same belt the state markets as its agri-success story.' },
+              { year: '2021', event: 'Cyclone Tauktae makes landfall on the Amreli-Gir Somnath coast in May, devastating orchards and salt-flooding coastal aquifers.' },
+              { year: '2024', event: 'Global Red Sea shipping crisis causes massive bottlenecks in imported MOP and DAP arrivals at Kandla Port; 90-day MSP procurement window reopened for groundnut/moong/urad/soybean.' },
+              { year: '2025', event: 'Nature Scientific Reports field survey confirms pink bollworm has established itself as a mid-season pest across India, with field-level resistance to both Cry1Ac and Cry2Ab traits.' },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -311,7 +408,7 @@ export default function Agriculture() {
               >
                 <div className="flex flex-col items-center">
                   <div className="w-4 h-4 rounded-full bg-crimson shadow-[0_0_12px_rgba(211,47,47,0.4)] shrink-0 mt-1.5" />
-                  {i < 3 && <div className="w-0.5 flex-1 bg-gradient-to-b from-crimson/40 to-transparent min-h-[40px]" />}
+                  {i < 6 && <div className="w-0.5 flex-1 bg-gradient-to-b from-crimson/40 to-transparent min-h-[40px]" />}
                 </div>
                 <div className="pb-8">
                   <span className="text-sm font-mono font-bold text-crimson tracking-wider">{item.year}</span>
