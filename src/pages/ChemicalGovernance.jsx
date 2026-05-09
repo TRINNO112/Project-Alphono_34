@@ -5,19 +5,34 @@ import ScrollSpy from '../components/ScrollSpy'
 import { PillarChart } from '../components/PillarChart'
 import { LollipopChart } from '../components/charts/LollipopChart'
 import { SlopeChart } from '../components/charts/SlopeChart'
+import { FiberizationGap } from '../components/charts/FiberizationGap'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
 
 const sources = [
-  { title: "NGT Principal Bench Directives — Fines against Vapi Green Enviro Ltd, Naroda Enviro Projects Ltd, and Ankleshwar CETPs", publication: "National Green Tribunal (NGT) Official Court Records", url: "https://greentribunal.gov.in" },
-  { title: "The Sabarmati River: The Dark Underbelly of Ahmedabad's Industrial Growth", publication: "Mongabay India (Investigative Hydrology)", url: "https://india.mongabay.com/sabarmati-pollution" },
-  { title: "Pharmaceutical Residue and the Rise of Antimicrobial Resistance in Gujarat's Rivers", publication: "India Water Portal / Peer-Reviewed Studies", url: "https://indiawaterportal.org/amr-gujarat" },
-  { title: "Critically Polluted Industrial Areas: The Evolving Vapi and Ankleshwar Crisis", publication: "Down To Earth Magazine (Special Coverage)", url: "https://downtoearth.org.in/pollution/vapi-ankleshwar" },
+  { title: "NGT Principal Bench Directives — Fines against Vapi Green Enviro Ltd, Naroda Enviro Projects Ltd, Ankleshwar CETPs", publication: "National Green Tribunal", url: "https://greentribunal.gov.in" },
+  { title: "The Sabarmati River: The Dark Underbelly of Ahmedabad's Industrial Growth", publication: "Mongabay India", url: "https://india.mongabay.com/sabarmati-pollution" },
+  { title: "Pharmaceutical Residue and the Rise of Antimicrobial Resistance in Gujarat's Rivers", publication: "India Water Portal", url: "https://indiawaterportal.org/amr-gujarat" },
+  { title: "Critically Polluted Industrial Areas: The Evolving Vapi and Ankleshwar Crisis", publication: "Down To Earth", url: "https://downtoearth.org.in/pollution/vapi-ankleshwar" },
   { title: "Environmental Justice and Industrial Pollution Impact on Marginalized Communities", publication: "PUCL (People's Union for Civil Liberties)", url: "https://pucl.org/gujarat-environment" },
-  { title: "Deep Sea Pipelines: Hiding the Effluent Problem by Pumping it into the Ocean", publication: "The Wire (Environmental Desk)", url: "https://thewire.in/environment/gujarat-marine-outfall" },
-  { title: "Socio-Economic Destruction of Coastal Fishing Livelihoods Due to Chemical Marine Outfall", publication: "ICSF (International Collective in Support of Fishworkers)", url: "https://icsf.net/india-fisheries-pollution" },
+  { title: "Deep Sea Pipelines: Hiding the Effluent Problem by Pumping it into the Ocean", publication: "The Wire", url: "https://thewire.in/environment/gujarat-marine-outfall" },
+  { title: "Socio-Economic Destruction of Coastal Fishing Livelihoods Due to Chemical Marine Outfall", publication: "ICSF", url: "https://icsf.net/india-fisheries-pollution" },
   { title: "National CEPI Index Reports and Historical Moratorium Documents — Gujarat Golden Corridor", publication: "Central Pollution Control Board (CPCB)", url: "https://cpcb.nic.in/cepi" },
+  { title: "Why Does Vapi in Gujarat Continue to Be Critically Polluted?", publication: "The Wire — Science", url: "https://science.thewire.in/environment/vapi-polluted-gpcb-cepi/" },
+  { title: "Critically polluted: Treated effluents from Vapi CETP don't meet safety standards (CPCB findings)", publication: "Down To Earth", url: "https://www.downtoearth.org.in/governance/critically-polluted-treated-effluents-from-vapi-cetp-don-t-meet-safety-standards-find-pollution-control-boards-89547" },
+  { title: "Aryavart Foundation vs M/S Vapi Green Enviro Ltd (NGT, 11 Jan 2019)", publication: "Indian Kanoon (NGT order)", url: "https://indiankanoon.org/doc/160264559/" },
+  { title: "NGT orders closure of over 300 units violating environmental laws", publication: "Business Standard", url: "https://www.business-standard.com/article/news-ians/ngt-orders-closure-of-over-300-units-violating-environmental-laws-116011301256_1.html" },
+  { title: "Status of CETPs in Gujarat", publication: "Gujarat Pollution Control Board (GPCB)", url: "https://gpcb.gujarat.gov.in/webcontroller/viewpage/status-of-cetps-in-gujarat" },
+  { title: "Sabarmati pollution: Gujarat HC seeks personal affidavit of AMC Commissioner — mega-pipeline PIL", publication: "LiveLaw", url: "https://www.livelaw.in/high-court/gujarat-high-court/gujarat-high-court-hearing-pil-sabarmati-river-pollution-ahmedabad-municipal-commissioner-mega-pipeline-265019" },
+  { title: "Sabarmati pollution: Inspect all industrial effluent treatment plants, Gujarat HC tells government", publication: "Down To Earth", url: "https://www.downtoearth.org.in/pollution/sabarmati-pollution-inspect-all-industrial-effluent-treatment-plants-gujarat-hc-tells-government-81137" },
+  { title: "India's Rise as Global Pharmacy Masks Deep Dependence on China", publication: "Observer Research Foundation (ORF)", url: "https://www.orfonline.org/expert-speak/india-s-rise-as-global-pharmacy-masks-deep-dependence-on-china" },
+  { title: "India's Import Dependence on China in Pharmaceuticals: Status, Issues and Policy Options", publication: "RIS — Sudip Chaudhuri (Discussion Paper 268)", url: "https://ris.org.in/sites/default/files/Publication/DP%20268%20Prof%20Sudip%20Chaudhuri.pdf" },
+  { title: "Jambusar Bulk Drug Park completion by March 2027; Gujarat CM visits the site", publication: "DeshGujarat", url: "https://deshgujarat.com/2025/08/04/jambusar-bulk-drug-park-completion-by-march-2027-gujarat-cm-visits-the-site/" },
+  { title: "NGT panel finds 12 illegal dumping sites for gasifier wastewater in Morbi", publication: "Down To Earth", url: "https://www.downtoearth.org.in/waste/ngt-panel-finds-12-illegal-dumping-sites-for-gasifier-wastewater-in-morbi-64519" },
+  { title: "Botad-Ahmedabad hooch tragedy 2022: 42+ dead from methanol-laced liquor", publication: "The Indian Express", url: "https://indianexpress.com/" },
+  { title: "IOCL Gujarat (Vadodara) Refinery benzene tank explosion 2024", publication: "Business Standard", url: "https://www.business-standard.com/" },
+  { title: "Dahej PCPIR Master Plan & Industrial Approvals", publication: "Government of Gujarat — PCPIR", url: "https://pcpir.gujarat.gov.in/" },
 ]
 
 const spySections = [
@@ -25,6 +40,7 @@ const spySections = [
   { id: 'common-effluent-treatment-plant-cetp-failures', label: 'CETP Failures' },
   { id: 'deep-sea-marine-outfall-out-of-sight-out-of-mind', label: 'Marine Outfall' },
   { id: 'judicial-interventions-regulatory-capture', label: 'Judicial Capture' },
+  { id: 'pharmacy-of-india-on-a-chinese-shelf', label: 'Pharma KSM Trap' },
   { id: 'timeline-of-toxicity-events', label: 'Toxicity Timeline' },
 ]
 
@@ -74,7 +90,16 @@ export default function ChemicalGovernance() {
 
         {/* ═══ Section 1: Sabarmati River Collapse ═══ */}
         <Section icon={<Droplets className="w-8 h-8 text-blue-600" />} title="The Total Collapse of the Sabarmati River">
-          
+
+          <DataCard title="Reader primer — BOD, COD, DO and what 'biologically dead' actually means">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              <strong className="text-gray-900">BOD</strong> (Biological Oxygen Demand) measures how much dissolved oxygen microbes need to break down organic pollution — high BOD means the river is suffocating itself digesting waste. <strong className="text-gray-900">COD</strong> (Chemical Oxygen Demand) catches what BOD misses: industrial solvents, dyes, and pharma residues that don't break down biologically. <strong className="text-gray-900">DO</strong> (Dissolved Oxygen) is what's left for fish, plants, and aerobic bacteria — anything below ~4 mg/L is hostile life support.<Ref n={2} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              CPCB's drinking-water standard for BOD is ≤3 mg/L. A river with BOD 292 + COD 580 + DO 0 is not "polluted" in the colloquial sense — it is <strong className="text-gray-900">classified anoxic</strong>: a chemical sluiceway, not a water body. The Gujarat HC has held marathon Sabarmati-pollution PILs since 2017, repeatedly demanding personal affidavits from Ahmedabad's Municipal Commissioner.<Ref n={14} /><Ref n={15} />
+            </p>
+          </DataCard>
+
           {/* BOD/COD Gauge Visualization */}
           <div className="bg-white/70 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl backdrop-blur-md relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-red-200 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
@@ -165,6 +190,15 @@ export default function ChemicalGovernance() {
 
         {/* ═══ Section 2: CETP Failures ═══ */}
         <Section icon={<FlaskConical className="w-8 h-8 text-orange-600" />} title="Common Effluent Treatment Plant (CETP) Failures">
+
+          <DataCard title="Reader primer — CETP, CEPI, and the moratorium machine">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              A <strong className="text-gray-900">CETP</strong> (Common Effluent Treatment Plant) is shared treatment infrastructure that small-and-medium chemical units pipe their effluent into. It only works if (a) units actually pre-treat to spec before discharging, and (b) the CETP can handle the chemistry mix. Both assumptions break in Vapi, Ankleshwar, Naroda — units secretly dump heavy-metal cocktails the CETP was never designed to process.<Ref n={10} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              <strong className="text-gray-900">CEPI</strong> (Comprehensive Environmental Pollution Index) is CPCB's 0–100 score for a cluster's pollution load. <strong className="text-gray-900">A score above 70 triggers "Critically Polluted Area" status</strong> and an automatic moratorium on new units. Vapi has bounced in and out of this list since 2010; the moratorium has been imposed, lifted, re-imposed, lifted again — the political cycle the science can't keep up with.<Ref n={9} /><Ref n={4} />
+            </p>
+          </DataCard>
 
           {/* CETP Performance Chart */}
           <LollipopChart
@@ -264,15 +298,13 @@ export default function ChemicalGovernance() {
 
           {/* NGT Fines Over Time */}
           <SlopeChart
-            title="NGT Environmental Compensation Fines — Gujarat Chemical Clusters (₹ Crores)"
-            caption="Figure 4: Escalating NGT fines reflect deepening non-compliance. Despite hundreds of crores in penalties, the fundamental violations persist. Source: NGT Official Records"
-            start={{ label: '2014-16', value: 25 }}
-            end={{ label: '2024-25', value: 120 }}
+            title="NGT Environmental Compensation — Selected Gujarat Orders (₹ Crores)"
+            caption="Figure 4: Headline NGT/Tribunal compensation orders in Gujarat — none of which dent the underlying CETP non-compliance. Vapi Green Enviro ₹10 cr (Damanganga discharge), Morbi 337 ceramic units ₹122.05 cr (illegal coal-gasifier wastewater), Kutch Lignite TPS ₹223 cr. Source: NGT records / PropNewsTime / Down To Earth."
+            start={{ label: 'Vapi 2016', value: 10 }}
+            end={{ label: 'Kutch 2024', value: 223 }}
             midpoints={[
-              { label: '2017-18', value: 45 },
-              { label: '2019-20', value: 65 },
-              { label: '2021', value: 100 },
-              { label: '2022-23', value: 80 },
+              { label: 'Aryavart 2019', value: 25 },
+              { label: 'Morbi 2024', value: 122 },
             ]}
             unit=" Cr"
             accentColor="#7C3AED"
@@ -282,10 +314,10 @@ export default function ChemicalGovernance() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="NGT: The Last Line of Defense">
               <p className="text-gray-600 mb-4 leading-relaxed">
-                The NGT has taken <strong className="text-gray-900">suo motu cognizance</strong> of total environmental devastation in the Ankleshwar and Vapi mega-chemical belts. Invoking the <strong className="text-gray-900">"Polluter Pays" principle</strong>, it levied unprecedented fines — often hundreds of crores.<Ref n={1} />
+                The NGT has taken <strong className="text-gray-900">suo motu cognizance</strong> of total environmental devastation in the Ankleshwar and Vapi mega-chemical belts. Invoking the <strong className="text-gray-900">"Polluter Pays" principle</strong>, it levied unprecedented fines — often hundreds of crores. In Jan 2016 alone, NGT ordered <strong className="text-gray-900">closure of 300+ units</strong> for environmental violations.<Ref n={12} />
               </p>
               <p className="text-gray-600 leading-relaxed">
-                The Gujarat High Court ordered forced surprise inspections, <strong className="text-gray-900">power disconnections, and sealing of non-compliant units</strong>. Moratoriums on new industrial expansion were imposed in Critically Polluted Areas.
+                In <em>Aryavart Foundation v. M/S Vapi Green Enviro Ltd</em> (NGT, 11 Jan 2019), the Tribunal documented that the cluster's flagship CETP was systematically dumping non-compliant treated effluent — and ordered forced surprise inspections, <strong className="text-gray-900">power disconnections, and sealing of non-compliant units</strong>. Moratoriums on new industrial expansion in Critically Polluted Areas have been imposed and lifted on a roughly biennial cycle.<Ref n={11} /><Ref n={9} />
               </p>
             </DataCard>
 
@@ -338,6 +370,78 @@ export default function ChemicalGovernance() {
               <p className="text-sm text-gray-500 italic font-serif mt-2">The cycle repeats endlessly. No structural reform — only periodic crackdowns.</p>
             </div>
           </div>
+
+          <DataCard title="The accident ledger — Bharuch–Dahej, 2018–2025" alert={true}>
+            <p className="text-gray-600 leading-relaxed mb-2">
+              Per Directorate of Industrial Safety &amp; Health (DISH) compilations: roughly <strong className="text-gray-900">90 accidents and 130+ deaths in the Bharuch–Dahej corridor between 2020 and 2024 alone</strong>, with earlier years reporting 188 (2019) and 236 (2018) injuries.<Ref n={20} />
+            </p>
+            <p className="text-gray-600 leading-relaxed mb-2">
+              Selected events the corridor would rather you forget:
+            </p>
+            <ul className="text-gray-600 leading-relaxed list-disc pl-5 space-y-1">
+              <li><strong className="text-gray-900">3 Jun 2020 — Yashashvi Rasayan, Dahej:</strong> reactor explosion; <strong className="text-gray-900">8 dead, 50+ injured, 4,800 evacuated</strong> across two villages.</li>
+              <li><strong className="text-gray-900">25 Jul 2022 — Botad/Ahmedabad hooch tragedy:</strong> <strong className="text-gray-900">42 dead, ~97 hospitalised</strong> after 600 L of 98.7%-pure industrial methanol was diverted from an Ahmedabad chemical packaging firm into bootleg country liquor; 15 arrests.<Ref n={19} /></li>
+              <li><strong className="text-gray-900">11 Nov 2024 — IOCL Koyali (Vadodara) Refinery:</strong> benzene tank explosion at 3:30 PM; 2 contractual workers killed; 10 fire tenders, full-shift evacuation.<Ref n={21} /></li>
+              <li><strong className="text-gray-900">28 Dec 2024 — Gujarat Fluorochemicals, Dahej:</strong> toxic-gas pipe leak kills 4 workers; ₹30 lakh ex-gratia each.</li>
+            </ul>
+          </DataCard>
+        </Section>
+
+        {/* ═══ Section 5: Pharma KSM Trap ═══ */}
+        <Section icon={<FlaskConical className="w-8 h-8 text-emerald-600" />} title="Pharmacy of India — On a Chinese Shelf">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <StatBox value="~70%" label="APIs from China" color="red" />
+            <StatBox value="₹3,490Cr" label="6-APA Imports FY24" color="crimson" />
+            <StatBox value="94.1%" label="6-APA from China" color="red" />
+          </div>
+
+          <DataCard title="Reader primer — APIs, KSMs, and why 'Pharmacy of India' is a half-truth">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              An <strong className="text-gray-900">API</strong> (Active Pharmaceutical Ingredient) is the molecule that does the actual work in a tablet — paracetamol, amoxicillin, ciprofloxacin. A <strong className="text-gray-900">KSM</strong> (Key Starting Material) is the upstream chemical you start the synthesis from — penicillin G for amoxicillin, 6-APA for the cephalosporin family, etc. India is the world's largest <em>generic formulation</em> exporter, but the molecules and their starting materials are overwhelmingly Chinese.<Ref n={16} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              In FY24, India imported <strong className="text-gray-900">₹2,066 cr of penicillin G (77% from China)</strong> and <strong className="text-gray-900">₹3,490 cr of 6-APA (94.1% from China)</strong>. Antibiotics overall: <strong className="text-gray-900">87% by value from China (2024)</strong>. Specific molecules are even more concentrated: paracetamol 91%, ibuprofen 95.2%, streptomycin 100%, vitamin B12 98.1%, rifampicin 97.3%, norfloxacin 99.6%.<Ref n={17} />
+            </p>
+          </DataCard>
+
+          {/* Chart: API import dependency by molecule */}
+          <FiberizationGap
+            title="China Share of India's Imports — by Molecule (% of Quantity, 2023–24)"
+            caption="Figure 5: Beneath the 'Pharmacy of India' headline, the underlying KSM and API dependency on China is near-total for several flagship antibiotics and analgesics. The Jambusar Bulk Drug Park (₹3,920 cr, 2,015 acres, target completion March 2027) is Gujarat's flagship bid to reverse this. Source: RIS Discussion Paper 268 (Sudip Chaudhuri); ORF; Business Standard."
+            unit="%"
+            target={100}
+            data={[
+              { state: 'Streptomycin', value: 100 },
+              { state: 'Norfloxacin', value: 99.6 },
+              { state: 'Vitamin B12', value: 98.1 },
+              { state: 'Rifampicin', value: 97.3 },
+              { state: 'Penicillin', value: 95.8 },
+              { state: 'Ibuprofen', value: 95.2 },
+              { state: 'Paracetamol', value: 91 },
+              { state: 'APIs (overall)', value: 70 },
+            ]}
+            height={420}
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <DataCard title="Jambusar Bulk Drug Park — A Late, Concentrated Bet" alert={true}>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                The <strong className="text-gray-900">Jambusar Bulk Drug Park</strong> (Bharuch district) is Gujarat's flagship attempt to localize KSM/API manufacturing — <strong className="text-gray-900">₹3,920 cr outlay, 2,015 acres, ₹1,000 cr central grant</strong>, with completion targeted for March 2027 and ~400 firms expected to invest a further ₹8,000 cr.<Ref n={18} />
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                But the underlying chemistry — fermentation, multi-step synthesis, expensive solvent recovery — has been deliberately ceded to China for two decades. <strong className="text-gray-900">Catching up takes more than a park</strong>; it takes a fermentation industry, an effluent regime, and a power tariff that doesn't exist yet.<Ref n={16} />
+              </p>
+            </DataCard>
+
+            <DataCard title="The AMR Loop — Effluent meets Antibiotic Manufacturing">
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                The same clusters that make India's antibiotics also discharge their effluent. The benchmark study — <strong className="text-gray-900">Larsson et al., Patancheru, 2007</strong> — found <strong className="text-gray-900">ciprofloxacin up to 31,000 µg/L</strong> in CETP effluent serving 90 bulk-drug units, the highest concentration ever recorded in industrial wastewater.<Ref n={3} />
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                India-wide 2025 surface-water surveys still find ciprofloxacin and sulfamethoxazole at risk-quotient &gt; 1 across most sites tested. As Gujarat scales antibiotic API production at Jambusar, <strong className="text-gray-900">downstream AMR risk scales with it</strong> unless effluent regulation precedes capacity.
+              </p>
+            </DataCard>
+          </div>
         </Section>
 
         {/* ═══ Timeline ═══ */}
@@ -346,9 +450,11 @@ export default function ChemicalGovernance() {
             {[
               { year: '2007', event: 'Vapi industrial estate receives global notoriety — listed as one of the most polluted places on earth by the Blacksmith Institute.' },
               { year: '2010', event: 'CPCB introduces the CEPI index, placing a moratorium on new Ankleshwar industries.' },
-              { year: '2014-16', event: 'Periodic lifting and re-imposing of industrial expansion bans as CETPs repeatedly fail NGT mandated inspection parameters.' },
-              { year: '2021', event: 'Massive NGT fines totaling over Rs 100 Crore levied against multiple Gujarat chemical clusters for groundwater contamination.' },
-              { year: '2025-26', event: 'AMR studies definitively link API concentrations in the Sabarmati to the specific pharmaceutical output of the Vatva and Naroda clusters.' },
+              { year: '2014-16', event: 'NGT orders closure of 300+ units across Indian industrial estates for environmental violations; Vapi/Ankleshwar moratoriums periodically lifted and re-imposed.' },
+              { year: 'Jan 2019', event: 'NGT ruling in Aryavart Foundation v. Vapi Green Enviro Ltd documents systemic CETP non-compliance; orders Polluter-Pays compensation.' },
+              { year: 'Jul 2022', event: 'Botad-Ahmedabad hooch tragedy: 42+ deaths from methanol-laced country liquor traced to industrial-grade methanol diversion from chemical units.' },
+              { year: '2024', event: 'IOCL Gujarat (Vadodara) Refinery benzene tank explosion — multiple casualties, evacuation of nearby colonies.' },
+              { year: '2025-26', event: 'AMR studies link antibiotic concentrations in the Sabarmati to API output of Vatva and Naroda clusters; Jambusar Bulk Drug Park targeted for completion March 2027 to localize KSM production.' },
             ].map((item, i) => (
               <motion.div
                 key={i}

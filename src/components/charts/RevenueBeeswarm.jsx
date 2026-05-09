@@ -87,7 +87,11 @@ function RevenueBeeswarmInner({
 
   const xTicks = xScale.ticks(5)
   const gujaratNode = nodes.find((n) => n.state === highlightState)
-  const gujaratRank = data.findIndex((d) => d.state === highlightState) + 1
+  const rankedStates = useMemo(
+    () => [...data].sort((a, b) => b.value - a.value).map((d) => d.state),
+    [data]
+  )
+  const gujaratRank = rankedStates.indexOf(highlightState) + 1
 
   const ariaSummary = data.map((d) => `${d.state}: ${d.value}${unit}`).join('; ')
 
@@ -161,44 +165,60 @@ function RevenueBeeswarmInner({
                 )
               })}
 
-              {/* Gujarat label */}
-              {gujaratNode && (
-                <motion.g
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -10 }}
-                  transition={{ duration: 0.5, delay: isVisible ? 1.2 : 0 }}
-                >
-                  <text
-                    x={gujaratNode.x}
-                    y={gujaratNode.y - 14}
-                    textAnchor="middle"
-                    fontSize={10}
-                    fontWeight={800}
-                    letterSpacing="0.1em"
-                    fill={accentColor}
-                    fontFamily={CHART_TYPOGRAPHY.fontFamily}
+              {/* Gujarat callout — leader line above the dot, labels offset */}
+              {gujaratNode && (() => {
+                const calloutY = Math.max(18, gujaratNode.y - 48)
+                const labelRight = gujaratNode.x > dims.boundedWidth - 90
+                const labelAnchorX = labelRight ? gujaratNode.x - 8 : gujaratNode.x + 8
+                const textAnchor = labelRight ? 'end' : 'start'
+                return (
+                  <motion.g
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: isVisible ? 1 : 0 }}
+                    transition={{ duration: 0.5, delay: isVisible ? 1.2 : 0 }}
                   >
-                    RANK #{gujaratRank}
-                  </text>
-                  <text
-                    x={gujaratNode.x}
-                    y={gujaratNode.y - 2}
-                    textAnchor="middle"
-                    fontSize={14}
-                    fontWeight={800}
-                    fill={accentColor}
-                    fontFamily={CHART_TYPOGRAPHY.fontFamily}
-                  >
-                    {gujaratNode.value}{unit}
-                  </text>
-                </motion.g>
-              )}
+                    <line
+                      x1={gujaratNode.x}
+                      y1={gujaratNode.y - gujaratNode.r - 2}
+                      x2={gujaratNode.x}
+                      y2={calloutY + 4}
+                      stroke={accentColor}
+                      strokeWidth={1}
+                      strokeDasharray="2,2"
+                      opacity={0.6}
+                    />
+                    <text
+                      x={labelAnchorX}
+                      y={calloutY - 14}
+                      textAnchor={textAnchor}
+                      fontSize={10}
+                      fontWeight={800}
+                      letterSpacing="0.12em"
+                      fill={accentColor}
+                      fontFamily={CHART_TYPOGRAPHY.fontFamily}
+                    >
+                      GUJARAT · RANK #{gujaratRank}
+                    </text>
+                    <text
+                      x={labelAnchorX}
+                      y={calloutY}
+                      textAnchor={textAnchor}
+                      fontSize={14}
+                      fontWeight={800}
+                      fill={accentColor}
+                      fontFamily={CHART_TYPOGRAPHY.fontFamily}
+                    >
+                      {gujaratNode.value}{unit}
+                    </text>
+                  </motion.g>
+                )
+              })()}
 
               {/* hover tooltip */}
               {hovered && (() => {
                 const d = nodes.find((n) => n.state === hovered)
                 if (!d) return null
-                const rank = data.findIndex((item) => item.state === hovered) + 1
+                const rank = rankedStates.indexOf(hovered) + 1
                 const tipRight = d.x > dims.boundedWidth - 80
                 return (
                   <g pointerEvents="none">

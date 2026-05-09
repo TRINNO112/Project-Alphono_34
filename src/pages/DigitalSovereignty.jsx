@@ -61,7 +61,7 @@ export default function DigitalSovereignty() {
             Digital Sovereignty & <span className="italic text-crimson">Data Dependency</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed max-w-4xl border-l-4 border-crimson pl-6 mt-10">
-            Despite a 1,600 km coastline and the aspirational "GIFT City" IFSC, Gujarat has <strong className="font-semibold text-gray-900">zero international submarine cable landings</strong>. Every packet — every UPI transaction, every cloud query, every IFSC trade — is backhauled through Mumbai or Chennai. The state that markets itself as India's digital future runs entirely on another state's infrastructure.
+            Despite a 1,600 km coastline and the aspirational "GIFT City" IFSC, Gujarat has <strong className="font-semibold text-gray-900">zero international submarine cable landings</strong>.<Ref n={1} /><Ref n={3} /> Every packet — every UPI transaction, every cloud query, every IFSC trade — is backhauled through Mumbai or Chennai. The state that markets itself as India's digital future runs entirely on another state's infrastructure.
           </p>
         </motion.div>
       </section>
@@ -105,7 +105,7 @@ export default function DigitalSovereignty() {
 
             <DataCard title="The Strategic Cost">
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Every Gujarat-origin packet travelling internationally — whether from a Surat diamond exporter, a Jamnagar refinery operations terminal, or a GIFT City fintech — must first transit the <strong className="text-gray-900">Mumbai backhaul</strong> before reaching a landing station.<Ref n={12} />
+                Every Gujarat-origin packet travelling internationally — whether from a Surat diamond exporter, a Jamnagar refinery operations terminal, or a GIFT City fintech — must first transit the <strong className="text-gray-900">Mumbai backhaul</strong> before reaching a landing station.<Ref n={12} /><Ref n={13} />
               </p>
               <p className="text-gray-600 leading-relaxed">
                 This isn't just a latency issue. It's a <strong className="text-gray-900">sovereign redundancy failure</strong>: if Mumbai's cable infrastructure fails (cyclone, outage, or a Versova incident), Gujarat goes dark with it.
@@ -130,7 +130,7 @@ export default function DigitalSovereignty() {
               For Gujarat, this is not a distant risk — it is <em>the</em> risk. Because Gujarat has no landing of its own, a Versova incident doesn't just slow Gujarat down; it <strong className="text-gray-900">isolates</strong> it.<Ref n={12} />
             </p>
             <p className="text-gray-600 leading-relaxed">
-              A west-coast landing at Mundra, Pipavav, or Hazira — any of Gujarat's major ports with existing subsea infrastructure — would create the geographic redundancy India currently lacks. No such project is under construction as of early 2026.
+              A west-coast landing at Mundra, Pipavav, or Hazira — any of Gujarat's major ports with existing subsea infrastructure — would create the geographic redundancy India currently lacks. No such project is under construction as of early 2026.<Ref n={2} />
             </p>
           </DataCard>
 
@@ -179,7 +179,7 @@ export default function DigitalSovereignty() {
                 International Financial Service Centres compete on a few axes: regulatory clarity, tax treatment, talent depth, and — critically for market-making, algorithmic trading, and derivatives — <strong className="text-gray-900">round-trip latency to major liquidity venues</strong>.<Ref n={4} />
               </p>
               <p className="text-gray-600 leading-relaxed">
-                A 30 ms disadvantage versus Singapore is not a rounding error for high-frequency strategies. It is an <strong className="text-gray-900">architectural tax</strong> that cannot be solved by regulation or incentives — only by physical cable infrastructure Gujarat does not control.
+                A 30 ms disadvantage versus Singapore is not a rounding error for high-frequency strategies.<Ref n={5} /> It is an <strong className="text-gray-900">architectural tax</strong> that cannot be solved by regulation or incentives — only by physical cable infrastructure Gujarat does not control.
               </p>
             </DataCard>
 
@@ -188,7 +188,7 @@ export default function DigitalSovereignty() {
                 GIFT City is marketed as India's answer to Dubai and Singapore. Yet a trade placed on an IFSC exchange from a GIFT-resident fund must route its order flow <strong className="text-gray-900">to Mumbai, then to the cable landing at Versova, then under the sea</strong> to its destination.<Ref n={5} />
               </p>
               <p className="text-gray-600 leading-relaxed">
-                The obvious state-level solution — a direct Gujarat cable landing paired with a Tier-4 carrier-neutral exchange at GIFT — has been discussed in CAG audit recommendations without any commissioning date.
+                The obvious state-level solution — a direct Gujarat cable landing paired with a Tier-4 carrier-neutral exchange at GIFT — has been discussed in CAG audit recommendations without any commissioning date.<Ref n={4} />
               </p>
             </DataCard>
           </div>
@@ -241,7 +241,7 @@ export default function DigitalSovereignty() {
               True-5G (standalone, low-latency) requires that every cell tower be connected to the core by <strong className="text-gray-900">dedicated fibre</strong>, not microwave backhaul.<Ref n={8} /> DoT and industry tracking place national fiberization at around 38–42% as of 2024–25. Gujarat sits close to the national average — behind Tamil Nadu, Karnataka, and Maharashtra on a per-tower basis.<Ref n={14} />
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Without fiberization parity, Gujarat cannot offer the sub-10 ms mobile latency Industry 4.0 applications actually need — connected ports at Mundra, autonomous logistics, remote pharma QA. The gap between marketing and infrastructure is documented in the DoT QoS reports — it just isn't advertised.
+              Without fiberization parity, Gujarat cannot offer the sub-10 ms mobile latency Industry 4.0 applications actually need — connected ports at Mundra, autonomous logistics, remote pharma QA.<Ref n={14} /> The gap between marketing and infrastructure is documented in the DoT QoS reports — it just isn't advertised.<Ref n={8} />
             </p>
           </DataCard>
 
@@ -271,9 +271,9 @@ export default function DigitalSovereignty() {
               Gujarat has aggressively digitised its service delivery — from ration-card authentication (Aadhaar) to merchant payments (UPI) to business compliance (GSTN). The consequence: a <strong className="text-gray-900">national-rail outage becomes a state-level service halt</strong>.<Ref n={9} /><Ref n={10} /><Ref n={11} />
             </p>
             <ul className="list-disc list-inside text-gray-600 space-y-2 ml-2 mb-4">
-              <li><strong className="text-gray-900">UPI:</strong> NPCI's public incident log records multiple multi-hour UPI degradation events per quarter. Each cascades into refused merchant payments at Surat textile wholesalers, Morbi ceramic distributors, and Ahmedabad retail.</li>
-              <li><strong className="text-gray-900">Aadhaar:</strong> UIDAI authentication downtime freezes ration dispensation at Fair Price Shops, EPF claim verification, and bank KYC renewal — with no state fallback.</li>
-              <li><strong className="text-gray-900">GSTN:</strong> Return-filing portal outages near quarterly deadlines have repeatedly forced CBIC to issue extension notifications — a de-facto admission that the digital infrastructure can't meet its own deadlines.</li>
+              <li><strong className="text-gray-900">UPI:</strong> NPCI's public incident log records multiple multi-hour UPI degradation events per quarter.<Ref n={10} /> Each cascades into refused merchant payments at Surat textile wholesalers, Morbi ceramic distributors, and Ahmedabad retail.</li>
+              <li><strong className="text-gray-900">Aadhaar:</strong> UIDAI authentication downtime freezes ration dispensation at Fair Price Shops, EPF claim verification, and bank KYC renewal — with no state fallback.<Ref n={9} /></li>
+              <li><strong className="text-gray-900">GSTN:</strong> Return-filing portal outages near quarterly deadlines have repeatedly forced CBIC to issue extension notifications — a de-facto admission that the digital infrastructure can't meet its own deadlines.<Ref n={11} /></li>
             </ul>
             <p className="text-gray-600 leading-relaxed">
               None of these systems are <em>Gujarat's</em> to fix. That is precisely the dependency.
