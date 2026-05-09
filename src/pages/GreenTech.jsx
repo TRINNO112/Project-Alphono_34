@@ -4,6 +4,7 @@ import { Section, DataCard, Ref, SourceList, StatBox } from '../components/Share
 import { PillarChart } from '../components/PillarChart'
 import { LollipopChart } from '../components/charts/LollipopChart'
 import { Treemap } from '../components/charts/Treemap'
+import { FiberizationGap } from '../components/charts/FiberizationGap'
 import { CounterArgument } from '../components/CounterArgument'
 import { useLocalStorageToggle } from '../hooks/useLocalStorageToggle'
 import { GovResponseToggle } from '../components/GovResponseToggle'
@@ -13,17 +14,33 @@ const spySections = [
   { id: 'dholera-sir-the-ev-mirage', label: 'EV Mirage' },
   { id: 'the-lithium-ion-cell-assembly-deficit', label: 'Li-ion Deficit' },
   { id: 'the-solar-photovoltaic-gap', label: 'Solar PV Gap' },
+  { id: 'green-hydrogen-a-mission-without-a-stack', label: 'Green Hydrogen' },
   { id: 'timeline-of-greentech-vulnerability', label: 'Timeline' },
 ]
 
 const sources = [
   { title: "India's EV Supply Chain and Critical Mineral Dependencies", publication: "CARE Ratings / Market Reports, 2025", url: "https://careratings.com/research/ev-supply-chain" },
-  { title: "China's Export Controls on Rare Earths and the Global Ripple Effect", publication: "South China Morning Post (SCMP)", url: "https://scmp.com/economy/china-economy" },
-  { title: "How Rare Earth Shortages Stall India's Booming EV Sector", publication: "Al Jazeera Economic Reports", url: "https://aljazeera.com/economy/india-ev-rare-earths" },
-  { title: "The Atmanirbhar Bharat Battery Challenge: Localizing the Cell", publication: "Marcellus Investment Managers Research", url: "https://marcellus.in/blogs/battery-challenge" },
-  { title: "Urban Mining and Localized EV Recycling Initiatives within the SIR", publication: "Dholera News (Official)", url: "https://dholera.news/ev-recycling-hub" },
-  { title: "Upstream Polysilicon Import Ratios for Khavda Solar Park vs Domestic PLI Production", publication: "The Wire / Energy Trackers", url: "https://thewire.in/energy/khavda-solar-imports" },
-  { title: "Global Rare Earth Processing Market Share Analytics (2025)", publication: "Bloomberg New Energy Finance (BNEF)", url: "https://bnef.com/rare-earth-mining" },
+  { title: "China's Export Controls on Rare Earths and the Global Ripple Effect", publication: "South China Morning Post", url: "https://scmp.com/economy/china-economy" },
+  { title: "How Rare Earth Shortages Stall India's Booming EV Sector", publication: "Al Jazeera", url: "https://aljazeera.com/economy/india-ev-rare-earths" },
+  { title: "The Atmanirbhar Bharat Battery Challenge: Localizing the Cell", publication: "Marcellus Investment Managers", url: "https://marcellus.in/blogs/battery-challenge" },
+  { title: "Urban Mining and Localized EV Recycling Initiatives within the SIR", publication: "Dholera News", url: "https://dholera.news/ev-recycling-hub" },
+  { title: "Upstream Polysilicon Import Ratios for Khavda Solar Park vs Domestic PLI Production", publication: "The Wire", url: "https://thewire.in/energy/khavda-solar-imports" },
+  { title: "Global Rare Earth Processing Market Share Analytics (2025)", publication: "Bloomberg New Energy Finance", url: "https://bnef.com/rare-earth-mining" },
+  { title: "India's Solar Surge: Navigating China's Supply Chain Dominance", publication: "Down To Earth", url: "https://www.downtoearth.org.in/energy/indias-solar-success-is-riding-high-but-remains-wired-to-the-dragon" },
+  { title: "As India tries to wean its solar sector off imports, cutting China link might not work out", publication: "ThePrint", url: "https://theprint.in/environment/as-india-tries-to-wean-its-solar-sector-off-imports-cutting-china-link-might-not-work-out/2452602/" },
+  { title: "India's photovoltaic manufacturing capacity set to surge", publication: "IEEFA (Institute for Energy Economics & Financial Analysis)", url: "https://ieefa.org/resources/indias-photovoltaic-manufacturing-capacity-set-surge" },
+  { title: "Assessing the effectiveness of India's solar Production Linked Incentive scheme", publication: "IEEFA", url: "https://ieefa.org/resources/assessing-effectiveness-indias-solar-production-linked-incentive-scheme" },
+  { title: "PLI scheme: 18.5 GW of 48 GW solar module capacity awarded now operational (Aug 2025)", publication: "PV Magazine India", url: "https://www.pv-magazine-india.com/2025/08/07/18-5-gw-of-48-gw-solar-module-capacity-awarded-under-pli-scheme-now-operational/" },
+  { title: "Adani Group begins producing ingots and wafers in India for Gujarat PV module factory", publication: "PV-Tech", url: "https://www.pv-tech.org/adani-group-begins-producing-ingots-wafers/" },
+  { title: "Adani Starts Construction of its 30,000 MTPA Polysilicon Manufacturing Facility", publication: "Mercom India", url: "https://www.mercomindia.com/adani-construction-30000-mtpa-polysilicon-facility" },
+  { title: "Green Hydrogen: India's Billion-Dollar Opportunity", publication: "CEEW (Council on Energy, Environment and Water)", url: "https://www.ceew.in/publications/green-hydrogen-indias-billion-dollar-opportunity" },
+  { title: "Bharat Cleantech Manufacturing Platform: Green Hydrogen Indigenisation Pathways", publication: "CEEW", url: "https://www.ceew.in/publications/bharat-cleantech-manufacturing-platform-green-hydrogen-indigenisation-pathways" },
+  { title: "Can India sustainably manufacture and recycle EV batteries?", publication: "Mongabay India", url: "https://india.mongabay.com/2023/11/explainer-can-india-sustainably-manufacture-and-recycle-ev-batteries/" },
+  { title: "India needs end-of-life collection and recycling for battery manufacturing to succeed", publication: "Energy Storage News (RMI India)", url: "https://www.energy-storage.news/india-needs-end-of-life-collection-and-recycling-for-battery-manufacturing-to-succeed-rmi-india-says/" },
+  { title: "Reliance Industries to launch 40 GWh battery gigafactory in 2026", publication: "ESS News", url: "https://www.ess-news.com/2025/09/01/reliance-industries-to-launch-40-gwh-battery-gigafactory-in-2026/" },
+  { title: "National Green Hydrogen Mission will establish India as global market leader", publication: "Down To Earth", url: "https://www.downtoearth.org.in/renewable-energy/national-green-hydrogen-mission-will-establish-india-as-global-market-leader-experts-87009" },
+  { title: "Gujarat Energy Development Agency (GEDA) — 100 GW Target Roadmap", publication: "Government of Gujarat", url: "https://geda.gujarat.gov.in/" },
+  { title: "Dholera SIR 5000 MW Solar Park Investment Profile", publication: "Government of Gujarat", url: "https://dholera.gujarat.gov.in/" },
 ]
 
 export default function GreenTech() {
@@ -120,6 +137,15 @@ export default function GreenTech() {
             <StatBox value="100%" label="Lithium Imported" color="red" />
           </div>
 
+          <DataCard title="Reader primer — what is a rare earth, and why does processing matter more than mining?">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              <strong className="text-gray-900">Rare earths</strong> are the 17 elements (Nd, Dy, Pr, Tb, etc.) that go into EV traction motors, wind-turbine generators, and precision sensors. They are not actually rare in the earth's crust — they are <em>rare to separate</em>. Pulling 17 chemically near-identical metals out of a single ore body needs hundreds of solvent-extraction stages and produces toxic radioactive tailings.<Ref n={1} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              That is why mining share (China ~70%) understates the chokepoint. <strong className="text-gray-900">Processing share (~90%)</strong> is the real lever — Australia and the US can dig ore but ship it to Chinese refineries because no one else has the capacity, the environmental tolerance, or the multi-decade head start.<Ref n={7} /><Ref n={2} />
+            </p>
+          </DataCard>
+
           {/* China Rare Earth Dominance */}
           <PillarChart
             type="pie"
@@ -145,7 +171,7 @@ export default function GreenTech() {
               { name: 'Li-ion Cells', value: 78 },
               { name: 'PV Wafers', value: 82 },
               { name: 'Polysilicon', value: 80 },
-              { name: 'NdFeB Magnets', value: 92, highlight: true },
+              { name: 'NdFeB Magnets', value: 85, highlight: true },
             ]}
             valueSuffix="%"
             accentColor="#DC2626"
@@ -156,19 +182,24 @@ export default function GreenTech() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The NdFeB Magnet Chokepoint" alert={true}>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                EV traction motors require ultra-strong <strong className="text-gray-900">Neodymium-Iron-Boron (NdFeB)</strong> permanent magnets. China holds <strong className="text-gray-900">~92% of global NdFeB production</strong>.<Ref n={7} />
+                EV traction motors require ultra-strong <strong className="text-gray-900">Neodymium-Iron-Boron (NdFeB)</strong> permanent magnets. China produces <strong className="text-gray-900">~85% of global NdFeB output</strong> — roughly 220–240 kt of finished sintered magnet in 2024.<Ref n={7} />
               </p>
               <p className="text-gray-600 leading-relaxed">
-                Dholera's multi-billion dollar EV assembly lines exist entirely <strong className="text-gray-900">at the mercy of Chinese state export licensing</strong> — supply can be throttled overnight for diplomatic leverage.<Ref n={1} />
+                Dholera's multi-billion-dollar EV assembly lines exist entirely <strong className="text-gray-900">at the mercy of Chinese state export licensing</strong>. In <strong className="text-gray-900">April 2025</strong>, Beijing expanded its rare-earth license regime to cover Sm, Gd, Tb, Dy, Lu, Sc, Y; in <strong className="text-gray-900">October 2025</strong>, Li-ion cells ≥300 Wh/kg, LFP cathode chemistries and graphite anode tech were added to the export-control list — a chokepoint that can throttle supply overnight.<Ref n={1} />
               </p>
             </DataCard>
 
             <DataCard title="Export Controls as Weapons of State">
               <p className="text-gray-600 mb-4 leading-relaxed">
-                In 2023-2025, China's Ministry of Commerce implemented <strong className="text-gray-900">stringent export controls on Gallium, Germanium</strong>, and rare earth extraction technologies.<Ref n={2} />
+                The escalation is documented and dated:<br/>
+                · <strong className="text-gray-900">Aug 2023</strong> — gallium + germanium licensing<br/>
+                · <strong className="text-gray-900">Dec 2023</strong> — graphite licensing enforced<br/>
+                · <strong className="text-gray-900">Sep 2024</strong> — antimony controls live<br/>
+                · <strong className="text-gray-900">Apr 2025</strong> — rare-earth licensing expanded to 7 elements<br/>
+                · <strong className="text-gray-900">Oct 2025</strong> — Li-ion cells, LFP cathodes, graphite-anode tech added.<Ref n={2} />
               </p>
               <p className="text-gray-600 leading-relaxed">
-                These are not market fluctuations — they are <strong className="text-gray-900">deliberate geopolitical instruments</strong> that can stall Indian green tech manufacturing overnight.
+                These are not market fluctuations — they are <strong className="text-gray-900">deliberate geopolitical instruments</strong>. India's FY25 Li-ion battery imports from China alone reached <strong className="text-gray-900">USD 2.2 bn</strong> — up from US$385 m in FY19.<Ref n={3} />
               </p>
             </DataCard>
           </div>
@@ -177,16 +208,25 @@ export default function GreenTech() {
         {/* ═══ Section 2: Lithium-Ion Battery Deficit ═══ */}
         <Section icon={<Zap className="w-8 h-8 text-yellow-600" />} title="The Lithium-Ion Cell Assembly Deficit">
 
+          <DataCard title="Reader primer — 'cell' vs 'pack', and why that distinction matters">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              A <strong className="text-gray-900">cell</strong> is the actual electrochemistry — cathode, anode, electrolyte, separator — sealed in a cylindrical, prismatic, or pouch format. A <strong className="text-gray-900">pack</strong> is hundreds or thousands of cells screwed into a frame with cooling, BMS, and a connector. India has lots of <em>pack</em> capacity. India has almost no <em>cell</em> capacity.<Ref n={4} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              The result: in FY24, <strong className="text-gray-900">~75% of India's battery imports came from China</strong>; on the lithium-ion line specifically, China supplies <strong className="text-gray-900">~94%</strong>.<Ref n={3} /> Reliance's flagship 40 GWh gigafactory at the Jamnagar Green Energy Giga Complex begins as <em>pack assembly</em> in 2026, with cell + chemistry backward integration scheduled later.<Ref n={19} />
+            </p>
+          </DataCard>
+
           {/* Cell origin breakdown */}
           <Treemap
             title="Li-ion Battery Cell Origins for Indian EV Assembly (%)"
-            caption="Figure 3: India lacks domestic lithium, cobalt, and nickel reserves AND the refinement infrastructure. Dholera plants only 'assemble' imported cells into modules. Source: CARE Ratings / Marcellus"
+            caption="Figure 3: India lacks domestic lithium, cobalt, and nickel reserves AND the refinement infrastructure. Dholera/Jamnagar plants 'assemble' imported cells into modules. China supplies ~94% of Li-ion imports; FY25 China-origin imports alone hit USD 2.2 bn. Source: Takshashila / GTAIC 2025."
             data={[
-              { name: 'China (CATL/BYD)', value: 62, color: '#DC2626' },
-              { name: 'South Korea (LG)', value: 20, color: '#3B82F6' },
-              { name: 'Japan (Panasonic)', value: 10, color: '#8B5CF6' },
-              { name: 'Taiwan', value: 5, color: '#F59E0B' },
-              { name: 'Domestic', value: 3, color: '#16A34A' },
+              { name: 'China (CATL/BYD)', value: 75, color: '#DC2626' },
+              { name: 'South Korea (LG/Samsung)', value: 14, color: '#3B82F6' },
+              { name: 'Japan (Panasonic)', value: 6, color: '#8B5CF6' },
+              { name: 'Other (Taiwan/Vietnam)', value: 3, color: '#F59E0B' },
+              { name: 'Domestic', value: 2, color: '#16A34A' },
             ]}
             height={340}
           />
@@ -194,19 +234,19 @@ export default function GreenTech() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <DataCard title="The Assembly Illusion">
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Dholera's "battery manufacturing" plants are building <strong className="text-gray-900">pack assembly operations</strong> — assembling imported cylindrical/prismatic cells into framed modules. The actual electrochemistry is 100% foreign.<Ref n={4} />
+                Dholera's "battery manufacturing" plants are <strong className="text-gray-900">pack assembly operations</strong> — imported cylindrical/prismatic cells dropped into framed modules. The actual electrochemistry is 100% foreign.<Ref n={4} />
               </p>
               <p className="text-gray-600 leading-relaxed">
-                India lacks commercially viable domestic reserves of <strong className="text-gray-900">battery-grade Lithium, Cobalt, and Nickel</strong> — and completely lacks the specialized refinement infrastructure for precursor chemicals.<Ref n={1} />
+                India lacks commercially viable domestic reserves of <strong className="text-gray-900">battery-grade Lithium, Cobalt, and Nickel</strong> — and completely lacks the specialized refinement infrastructure for precursor chemicals.<Ref n={1} /><Ref n={17} />
               </p>
             </DataCard>
 
             <DataCard title="Urban Mining: A Decade-Long Band-Aid">
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Dholera planners have initiated <strong className="text-gray-900">"Urban Mining" programs</strong> — harvesting lithium and cobalt from end-of-life batteries to build a circular battery economy.<Ref n={5} />
+                RMI India projects that <strong className="text-gray-900">closed-loop battery recycling could supply &gt;40% of India's Li/Ni/Co by 2050</strong> — implying current recovery is minimal, and the circularity market is sized at ~₹75,500 cr (US$ 9 bn).<Ref n={18} />
               </p>
               <p className="text-gray-600 leading-relaxed">
-                This localized circular economy is <strong className="text-gray-900">vastly insufficient</strong> — it will take at least a decade of recycling networks to even dent primary import volumes.
+                Battery <strong className="text-gray-900">demand will grow ~40× by 2050</strong>, far outpacing recycling supply. End-of-life collection in India remains informal; without formal RPO mandates, recycling can supplement, not substitute for, primary imports.<Ref n={17} />
               </p>
             </DataCard>
           </div>
@@ -216,9 +256,18 @@ export default function GreenTech() {
         <Section icon={<Sun className="w-8 h-8 text-orange-500" />} title="The Solar Photovoltaic Gap">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <StatBox value="30 GW" label="Khavda RE Park" color="yellow" />
-            <StatBox value="80%+" label="Wafers from China" color="red" />
-            <StatBox value="~0%" label="Domestic Polysilicon" color="crimson" />
+            <StatBox value="~95%" label="Polysilicon Imported" color="red" />
+            <StatBox value="3.3 GW" label="Domestic Polysilicon Cap." color="crimson" />
           </div>
+
+          <DataCard title="Reader primer — the 'inverted pyramid' of Indian solar">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              India's solar manufacturing stack, as of June 2025 per IEEFA: <strong className="text-gray-900">Polysilicon 3.3 GW · Wafer 5.3 GW · Cell 29 GW · Module 120 GW</strong>. Domestic polysilicon is <strong className="text-gray-900">under 5%</strong> of module capacity — meaning 95%+ of the actual silicon is imported, then wrapped in glass + aluminium frames here and counted as "Made in India".<Ref n={10} /><Ref n={8} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Adani's <strong className="text-gray-900">30,000 MTPA polysilicon facility at Mundra SEZ</strong> (640.89-acre EMC plot, EIL as owner's engineer) and <strong className="text-gray-900">10 GW polysilicon-to-module integrated</strong> target — slipping past 2025 — is the only meaningful play to reverse this. Until it commissions, every Khavda panel rides a Chinese supply chain.<Ref n={13} /><Ref n={14} />
+            </p>
+          </DataCard>
 
           {/* Solar PV Value Chain — Domestic vs Imported */}
           <div className="bg-white/70 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl backdrop-blur-md relative overflow-hidden">
@@ -233,11 +282,10 @@ export default function GreenTech() {
             {/* Waterfall visualization */}
             <div className="space-y-4 relative z-10">
               {[
-                { stage: 'Quartz → Polysilicon', domestic: 2, imported: 98, note: 'Virtually zero domestic capacity. Chinese state-backed corps in Xinjiang, Inner Mongolia.' },
-                { stage: 'Polysilicon → Ingots', domestic: 5, imported: 95, note: 'Capital-intensive slicing process monopolized by Chinese facilities.' },
-                { stage: 'Ingots → Wafers', domestic: 8, imported: 92, note: '80%+ of wafers arrive from specific Chinese suppliers.' },
-                { stage: 'Wafers → Cells', domestic: 25, imported: 75, note: 'Some domestic capacity emerging under PLI scheme, still majority imported.' },
-                { stage: 'Cells → Modules', domestic: 70, imported: 30, note: 'India\'s strength: assembly of finished cells into solar modules with glass & aluminum frames.' },
+                { stage: 'Quartz → Polysilicon', domestic: 5, imported: 95, note: 'Domestic capacity 3.3 GW vs 120 GW module capacity (IEEFA, Jun 2025). Adani Mundra 30,000 MTPA facility under construction — yet to commission.' },
+                { stage: 'Polysilicon → Ingots/Wafers', domestic: 8, imported: 92, note: 'Domestic wafer capacity ~5.3 GW. Adani has begun ingot/wafer production — first Indian-made wafers shipped 2025.' },
+                { stage: 'Wafers → Cells', domestic: 35, imported: 65, note: '~29 GW domestic cell capacity online; PLI scheme accelerating but ALMM list still tilted toward Chinese-origin wafers.' },
+                { stage: 'Cells → Modules', domestic: 95, imported: 5, note: 'Cumulative ALMM module capacity 91.6 GW. India can frame, glass, junction-box and stamp — that is genuinely "Made in India" on the surface only.' },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -278,9 +326,45 @@ export default function GreenTech() {
             </div>
           </div>
 
-          <DataCard title="PLI Schemes: Failed Localization" alert={true}>
+          {/* PLI Achievement Chart — FiberizationGap shape */}
+          <FiberizationGap
+            title="Solar PLI Achievement — Operational Capacity vs Awarded (% of Award Realised, Jun 2025)"
+            caption="Figure 5: Of the 48.3 GW awarded under Solar PLI Tranches I + II, only 18.5 GW of modules and 9.7 GW of cells are operational — and just 0.46 GW of the polysilicon target is online. The further upstream you go, the further behind India falls. Source: PV Magazine India / IEEFA."
+            unit="%"
+            target={100}
+            data={[
+              { state: 'Modules', value: 38 },
+              { state: 'Cells', value: 31 },
+              { state: 'Ingot/Wafer', value: 10 },
+              { state: 'Polysilicon', value: 4 },
+            ]}
+            height={340}
+          />
+
+          <DataCard title="PLI Schemes: Achievement, not failure — but inverted" alert={true}>
+            <p className="text-gray-700 text-lg leading-relaxed mb-4">
+              The Indian PLI for solar has spent <strong className="text-gray-900">~Rs 48,120 cr</strong> against a Rs 94,000 cr target and produced <strong className="text-gray-900">31 GW of operational capacity out of 65 GW commissioned</strong>. Awarded module capacity is 59% online, cells 31%, ingot/wafer 10%, polysilicon ~4%.<Ref n={12} /><Ref n={11} />
+            </p>
             <p className="text-gray-700 text-lg leading-relaxed">
-              The Indian government introduced <strong className="text-gray-900">Production Linked Incentive (PLI) schemes</strong> to encourage domestic manufacturing spanning the entire solar value chain from quartz to module. Yet, upstream capacity for actual wafers and ingots remains <strong className="text-gray-900">effectively nominal</strong> within India.<Ref n={6} /> The billions poured into scaling Gujarat's solar grid <strong className="text-gray-900">directly underwrite Chinese solar infrastructure</strong>.
+              That shape is the dependency: the further upstream the value chain, <strong className="text-gray-900">the further India falls behind</strong>. Until the Adani Mundra polysilicon line commissions, billions poured into scaling Gujarat's solar grid still <strong className="text-gray-900">underwrite Chinese chemistry</strong>.<Ref n={6} /><Ref n={9} />
+            </p>
+          </DataCard>
+        </Section>
+
+        {/* ═══ Section 4: Green Hydrogen Mission — promise vs commission ═══ */}
+        <Section icon={<Zap className="w-8 h-8 text-emerald-600" />} title="Green Hydrogen — A Mission Without a Stack">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <StatBox value="5 MMT" label="2030 Target (NGHM)" color="green" />
+            <StatBox value="125 GW" label="RE Capacity Tied" color="yellow" />
+            <StatBox value="₹19,744 cr" label="Outlay Approved" color="red" />
+          </div>
+
+          <DataCard title="Reader primer — what is 'green' hydrogen, and why is the cost the whole problem?">
+            <p className="text-gray-600 leading-relaxed mb-2">
+              <strong className="text-gray-900">Green hydrogen</strong> is hydrogen produced by electrolysing water with renewable electricity. <em>Grey</em> hydrogen comes from cracking natural gas; <em>blue</em> is grey + carbon capture. The problem is cost: green H₂ today is roughly 2–3× the cost of grey, and the gap is dominated by <strong className="text-gray-900">electrolyser CAPEX</strong> — most of which India still imports.<Ref n={15} /><Ref n={16} />
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              The <strong className="text-gray-900">National Green Hydrogen Mission</strong> (PIB approved 4 Jan 2023, Rs 19,744 cr outlay) targets <strong className="text-gray-900">5 MMT/yr by 2030</strong>, requiring an additional <strong className="text-gray-900">125 GW of renewable capacity</strong> dedicated to electrolysis alone — roughly the size of all of India's <em>current</em> solar fleet.<Ref n={20} />
             </p>
           </DataCard>
         </Section>
@@ -290,9 +374,11 @@ export default function GreenTech() {
           <div className="space-y-0">
             {[
               { year: '2019', event: 'National Mission on Transformative Mobility and Battery Storage launched — major EV incentives but raw material deficits highlighted.' },
-              { year: '2023', event: 'China announces sudden export restrictions on Gallium and Germanium — critical for chip manufacturing and green tech — stalling Indian supply chains.' },
-              { year: '2024', event: 'Deepening import dependence noted: over 80% of upstream PV wafers arriving from specific Chinese suppliers.' },
-              { year: '2025-26', event: 'Dholera SIR gigafactories begin breaking ground but face intense scrutiny over long-term lithium sourcing contracts.' },
+              { year: 'Jan 2023', event: 'Cabinet approves National Green Hydrogen Mission — Rs 19,744 cr outlay, 5 MMT/yr target by 2030 with 125 GW associated RE.' },
+              { year: 'Aug 2023', event: 'China imposes export licensing on gallium + germanium. December: graphite licensing enforced — first dominoes of the critical-mineral export-control regime.' },
+              { year: 'Mar 2024', event: 'First 1 GW of Khavda Renewable Park (target 30 GW on 72,600 ha in Kutch) commissioned — but built almost entirely on imported wafers.' },
+              { year: '2025', event: 'Solar PLI Tranches I+II: 48.3 GW awarded, 18.5 GW operational. April: China expands rare-earth licensing to Sm/Gd/Tb/Dy/Lu/Sc/Y. October: Li-ion ≥300 Wh/kg + LFP cathode + graphite-anode tech added to control list.' },
+              { year: '2026', event: 'Reliance 40 GWh battery gigafactory at Jamnagar begins commissioning (initial pack assembly, scaling to 100 GWh with cell + chemistry backward integration).' },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -304,7 +390,7 @@ export default function GreenTech() {
               >
                 <div className="flex flex-col items-center">
                   <div className="w-4 h-4 rounded-full bg-crimson shadow-[0_0_12px_rgba(211,47,47,0.4)] shrink-0 mt-1.5" />
-                  {i < 3 && <div className="w-0.5 flex-1 bg-gradient-to-b from-crimson/40 to-transparent min-h-[40px]" />}
+                  {i < 5 && <div className="w-0.5 flex-1 bg-gradient-to-b from-crimson/40 to-transparent min-h-[40px]" />}
                 </div>
                 <div className="pb-8">
                   <span className="text-sm font-mono font-bold text-crimson tracking-wider">{item.year}</span>
