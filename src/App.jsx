@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
 import { useEffect, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -63,12 +63,50 @@ function RouteFallback() {
   )
 }
 
+const SCROLL_KEY = 'alphono:scrollMemory'
+
+function readScrollMemory() {
+  try {
+    const raw = sessionStorage.getItem(SCROLL_KEY)
+    return raw ? JSON.parse(raw) : {}
+  } catch {
+    return {}
+  }
+}
+
+function writeScrollMemory(map) {
+  try {
+    sessionStorage.setItem(SCROLL_KEY, JSON.stringify(map))
+  } catch {
+    // ignore quota / disabled storage
+  }
+}
+
 function AnimatedRoutes() {
   const location = useLocation()
+  const navigationType = useNavigationType()
 
+  // Persist scroll on the way out
   useEffect(() => {
-    window.scrollTo(0, 0)
+    const path = location.pathname
+    return () => {
+      const map = readScrollMemory()
+      map[path] = window.scrollY
+      writeScrollMemory(map)
+    }
   }, [location.pathname])
+
+  // On nav: restore for POP (back/forward), reset to top for PUSH/REPLACE
+  useEffect(() => {
+    if (navigationType === 'POP') {
+      const map = readScrollMemory()
+      const y = map[location.pathname] ?? 0
+      // Wait one frame so the new route has mounted before we scroll
+      requestAnimationFrame(() => window.scrollTo(0, y))
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [location.pathname, navigationType])
 
   return (
     <AnimatePresence mode="wait">
