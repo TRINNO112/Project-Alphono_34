@@ -6,7 +6,7 @@ function FooterLink({ to, children, highlight }) {
     <li>
       <Link
         to={to}
-        className={`relative inline-flex items-center min-h-[44px] py-2 transition-colors hover:text-crimson ${
+        className={`relative inline-flex items-center py-1 transition-colors hover:text-crimson ${
           highlight ? 'text-crimson font-medium' : ''
         } group`}
       >

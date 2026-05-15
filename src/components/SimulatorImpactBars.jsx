@@ -38,7 +38,7 @@ function SimulatorImpactBarsBase({ pillarPercent, derivations, onPillarFocus }) 
       className="rounded-2xl border border-gray-200 bg-white p-5"
     >
       <figcaption className="sr-only">
-        Horizontal bar chart showing percent disruption for each of the 13 pillars under the current lever settings.
+        Horizontal bar chart showing percent disruption for each of the 14 pillars under the current lever settings.
       </figcaption>
       <h3 className="font-serif font-bold text-lg text-gray-900 mb-4">Pillar Disruption</h3>
       <ul className="space-y-2.5">

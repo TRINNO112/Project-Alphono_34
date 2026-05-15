@@ -339,7 +339,7 @@ export default function BreakSimulator() {
     <main className="w-full max-w-7xl mx-auto px-6 pt-32 pb-32 space-y-16">
       <SEO
         title="Break Simulator"
-        description="War-game Gujarat's structural dependencies. 20 cited levers, named populations, historical analogues, and cascading damage across 13 pillars."
+        description="War-game Gujarat's structural dependencies. 20 cited levers, named populations, historical analogues, and cascading damage across 14 pillars."
         path="/simulator"
       />
 
@@ -364,7 +364,7 @@ export default function BreakSimulator() {
             from the pillar dependencies mapped throughout this project.
           </p>
           <p className="mt-3 text-sm font-mono uppercase tracking-widest text-gray-500 pl-6">
-            {LEVERS.length} levers · 13 pillars · cited arithmetic
+            {LEVERS.length} levers · 14 pillars · cited arithmetic
           </p>
           <p className="mt-4 text-sm text-gray-500 italic max-w-3xl pl-6">
             This is a stress-test tool, not a forecast. Coefficients are upper-bound

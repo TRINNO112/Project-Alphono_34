@@ -449,7 +449,7 @@ export default function Summary() {
         className="text-center"
       >
         <p className="text-gray-500 italic font-serif">
-          This summary synthesizes findings from 227+ cited sources across 13 pillars plus the Index Mercantilis global-trade module. See individual pillar pages for full references and source URLs.
+          This summary synthesizes findings from 436+ cited sources across 14 pillars plus the Index Mercantilis global-trade module. See individual pillar pages for full references and source URLs.
         </p>
       </motion.section>
     </main>

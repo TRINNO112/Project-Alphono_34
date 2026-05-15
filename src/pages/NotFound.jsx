@@ -25,7 +25,7 @@ export default function NotFound() {
           </h1>
 
           <p className="text-lg text-gray-600 border-l-4 border-crimson pl-6 text-left">
-            The URL you followed does not match any of the 13 pillars, districts, or reference pages
+            The URL you followed does not match any of the 14 pillars, districts, or reference pages
             in this dataset. It may have been renamed, or never existed.
           </p>
 
