@@ -1,4 +1,4 @@
-import { Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert, Wheat, Cpu, FlaskConical, Cable } from 'lucide-react'
+import { Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert, Wheat, Cpu, FlaskConical, Cable, Landmark } from 'lucide-react'
 
 export const pillarMeta = {
   Infrastructure: { icon: Ship, color: 'text-blue-500', count: 22 },
@@ -10,10 +10,11 @@ export const pillarMeta = {
   Education: { icon: GraduationCap, color: 'text-pink-500', count: 20 },
   Environment: { icon: TreePine, color: 'text-emerald-500', count: 22 },
   'Migrant Discrimination': { icon: ShieldAlert, color: 'text-red-500', count: 33 },
-  'Agriculture': { icon: Wheat, color: 'text-green-700', count: 22 },
-  'Green Tech': { icon: Cpu, color: 'text-cyan-500', count: 22 },
-  'Chemical Governance': { icon: FlaskConical, color: 'text-orange-500', count: 22 },
+  'Agriculture': { icon: Wheat, color: 'text-green-700', count: 47 },
+  'Green Tech': { icon: Cpu, color: 'text-cyan-500', count: 49 },
+  'Chemical Governance': { icon: FlaskConical, color: 'text-orange-500', count: 42 },
   'Digital Sovereignty': { icon: Cable, color: 'text-blue-500', count: 23 },
+  'Banking': { icon: Landmark, color: 'text-amber-600', count: 30 },
 }
 
 // Derived after the array literal — see bottom of file.
@@ -399,7 +400,7 @@ export const allSources = [
   { pillar: "Migrant Discrimination", type: "Media", district: "Mehsana", title: "Dunki route: Mehsana as primary hub for illegal US-bound migration — BBC", url: "https://www.bbc.com/news/world-asia-india-63437519" },
 
   // Bharuch
-  { pillar: "Chemical Governance", type: "Media", district: "Bharuch", title: "Bharuch-Dahej industrial corridor: 90 accidents, 130 deaths (2018-2025) — internal sourcing", url: "#" },
+  { pillar: "Chemical Governance", type: "Media", district: "Bharuch", title: "Bharuch blast exposes massive safety violations in Gujarat's industrial hub (VK Pharmachem) — The Federal", url: "https://thefederal.com/category/states/west/gujarat/bharuch-blast-massive-safety-violations-industrial-hub-vk-pharmachem-216609" },
   { pillar: "Materials", type: "Academic", district: "Bharuch", title: "India's import dependence on China in pharmaceuticals (RIS Discussion Paper 268)", url: "https://ris.org.in/sites/default/files/Publication/DP%20268%20Prof%20Sudip%20Chaudhuri.pdf" },
 
   // Rajkot
@@ -407,7 +408,7 @@ export const allSources = [
   { pillar: "Water", type: "Academic", district: "Rajkot", title: "Saurashtra drought 2016: 1,115 villages declared scarcity-affected (GSDMA via ScienceDirect)", url: "https://www.sciencedirect.com/" },
 
   // Vadodara
-  { pillar: "Chemical Governance", type: "Media", district: "Vadodara", title: "IOCL Gujarat Refinery benzene tank explosion 2024 — Business Standard", url: "https://www.business-standard.com/" },
+  { pillar: "Chemical Governance", type: "Media", district: "Vadodara", title: "Vadodara IOCL refinery fire: Toll rises to 2; probe into cause ongoing — Business Standard", url: "https://www.business-standard.com/india-news/vadodara-iocl-refinery-fire-toll-rises-to-2-probe-into-cause-ongoing-124111200291_1.html" },
   { pillar: "Environment", type: "Media", district: "Vadodara", title: "Vishwamitri at 37 ft: 2024 Vadodara flood, 20,000 evacuated — ReliefWeb", url: "https://reliefweb.int/" },
 
   // Banaskantha
@@ -452,6 +453,139 @@ export const allSources = [
 
   // Amreli
   { pillar: "Agriculture", type: "Media", district: "Amreli", title: "Cyclone Tauktae landfall May 2021 on Amreli-Gir Somnath coast — Indian Express", url: "https://indianexpress.com/" },
+
+  // ── BANKING ──
+  { pillar: "Banking", type: "Industry", district: "Ahmedabad", title: "Madhavpura Mercantile Cooperative Bank — collapse overview (secondary aggregation, primary refs validated)", url: "https://en.wikipedia.org/wiki/Madhavpura_Mercantile_Cooperative_Bank" },
+  { pillar: "Banking", type: "Media", district: "Ahmedabad", title: "Gujarat's urban cooperative banks — post-MMCB autopsy (Business Standard, 4 July 2012)", url: "https://www.business-standard.com/article/finance/gujarat-s-urban-cooperative-banks-112070400046_1.html" },
+  { pillar: "Banking", type: "Media", district: "Ahmedabad", title: "RBI cancels licence of scam-tainted Madhavpura Mercantile Bank (Moneylife, 5 June 2012)", url: "https://www.moneylife.in/article/rbi-cancels-licence-of-scamtainted-madhavpura-mercantile-bank/26275.html" },
+  { pillar: "Banking", type: "Media", district: "Ahmedabad", title: "45,000 Madhavpura bank depositors to get their money back — 17 years later (DNA India, 12 April 2018)", url: "https://www.dnaindia.com/ahmedabad/report-gujarat-45000-madhavpura-bank-depositors-to-get-their-money-back-2670580" },
+  { pillar: "Banking", type: "Govt", district: "Ahmedabad", title: "RBI Press Release on Madhavpura licence cancellation (4 June 2012)", url: "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=26606" },
+  { pillar: "Banking", type: "Govt", district: "Mehsana", title: "Visnagar Nagrik Sahakari Bank Ltd v DICGC — Gujarat HC judgement (6 July 2015)", url: "https://lextechsuite.com/The-Visnagar-Nagrik-Sahakari-Bank-Ltd-Under-Liquidation-and-Others-Versus-Deposit-Insurance-and-Credit-Guarantee-Corporation-and-Others-2015-07-06" },
+  { pillar: "Banking", type: "Media", district: "Mehsana", title: "Gujarat panel to probe Visnagar scam (Business Standard, 5 September 2002)", url: "https://www.business-standard.com/article/finance/gujarat-panel-to-probe-visnagar-scam-102090501028_1.html" },
+  { pillar: "Banking", type: "Media", district: "Vadodara", title: "Shree Mahalaxmi Mercantile Cooperative Bank licence cancelled (Moneylife, 12 January 2024)", url: "https://www.moneylife.in/article/shree-mahalaxmi-mercantile-cooperative-bank-and-hiriyur-urban-cooperative-banks-licence-cancelled/73130.html" },
+  { pillar: "Banking", type: "Media", district: "Ahmedabad", title: "RBI cancels banking licence of Colour Merchants Co-op Bank, Ahmedabad (Indian Cooperative, 17 April 2025)", url: "https://www.indiancooperative.com/from-states/ahmedabad-rbi-cancels-banking-licence-of-colour-merchants-co-op-bank/" },
+  { pillar: "Banking", type: "Media", district: "Mehsana", title: "RBI Cancels Sarvodaya Commercial Co-operative Bank's Licence (The420.in, 15 November 2024)", url: "https://the420.in/rbi-sarvodaya-cooperative-bank-licence-cancelled-depositor-protection/" },
+  { pillar: "Banking", type: "Media", district: "Banaskantha", title: "Nirav Modi case — How PNB was defrauded of ₹11,400 crore (Business Today, 15 February 2018)", url: "https://www.businesstoday.in/sectors/banks/nirav-modi-case-pnb-fraud-11400-crore-scam-ed-cbi-raid/story/270708.html" },
+  { pillar: "Banking", type: "Industry", title: "Punjab National Bank Scam — timeline + actors (Wikipedia, validates BS/BT primary reporting)", url: "https://en.wikipedia.org/wiki/Punjab_National_Bank_Scam" },
+  { pillar: "Banking", type: "Media", title: "What is the PNB Scam (Business Standard, 14 February 2018)", url: "https://www.business-standard.com/about/what-is-pnb-scam" },
+  { pillar: "Banking", type: "Media", title: "CBI files 3 fresh FIRs against Mehul Choksi in ₹6,700 cr fraud case (Outlook India, 28 May 2022)", url: "https://www.outlookindia.com/national/pnb-fraud-case-cbi-files-3-fresh-firs-against-mehul-choksi-in-over-rs-6-700-cr-fraud-case-news-245689" },
+  { pillar: "Banking", type: "Media", title: "Who is Mehul Choksi? (Business Standard, 15 April 2025)", url: "https://www.business-standard.com/about/who-is-mehul-choksi" },
+  { pillar: "Banking", type: "Govt", title: "SLBC Gujarat 182nd Meeting Agenda — June 2024 banking parameters (Bank of Baroda)", url: "https://slbcgujarat.in/wp-content/uploads/2024/08/182-SLBC-Agenda-Final.pdf" },
+  { pillar: "Banking", type: "Academic", title: "Credit-Deposit Ratio reaches a high of 80% as RBI Governor flags concerns (FACTLY, 22 August 2024)", url: "https://factly.in/data-credit-deposit-ratio-cdr-reaches-a-high-of-80-as-rbi-governor-flags-concerns/" },
+  { pillar: "Banking", type: "Govt", title: "Credit-Deposit Ratio of Scheduled Commercial Banks in Gujarat — Place of Sanction vs Utilisation (Indiastat, December 2024)", url: "https://www.indiastat.com/gujarat-state/data/banks-and-financial-institutions/credit-deposit-c-d-ratio" },
+  { pillar: "Banking", type: "Media", district: "Gandhinagar", title: "GIFT City's IFSC banking assets cross USD 106 billion (The Tribune, 18 February 2026)", url: "https://www.tribuneindia.com/news/business/gift-citys-ifsc-banking-assets-surge-over-7x-in-five-years-cross-usd-106-billion/" },
+  { pillar: "Banking", type: "Industry", district: "Gandhinagar", title: "The GIFT City Advantage — EY-HSBC report on IFSC banking 2024-25 (December 2025)", url: "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-in/newsroom/2025/12/ey-the-gift-city-advantage-doing-business-in-india-s-international-financial-services-centre.pdf" },
+  { pillar: "Banking", type: "Industry", district: "Gandhinagar", title: "Banking in GIFT IFSC — April 2024 baseline report (PwC India)", url: "https://www.pwc.in/assets/pdfs/banking-in-gift-ifsc.pdf" },
+  { pillar: "Banking", type: "Media", title: "India's gold imports surge to record $71.98 bn in FY26 (Business Standard, 13 May 2026)", url: "https://www.business-standard.com/economy/news/india-s-gold-policy-trap-cut-duty-to-curb-smuggling-raise-to-save-rupee-126051301012_1.html" },
+  { pillar: "Banking", type: "Media", title: "India's goods trade deficit October 2025 — gold imports surge 200% YoY (CNBC, 18 November 2025)", url: "https://www.cnbc.com/2025/11/18/indias-goods-trade-deficit-october-record-high-tariffs-gold-imports-.html" },
+  { pillar: "Banking", type: "Media", district: "Surat", title: "Job losses, factory closures pushing Surat's diamond workers to the edge — 71 suicides in 18 months (The Print, 25 November 2024)", url: "https://theprint.in/india/job-losses-factory-closures-pushing-surats-diamond-workers-to-the-edge-71-suicides-in-18-months/2339805/" },
+  { pillar: "Banking", type: "Media", district: "Surat", title: "US tariffs ruin education dreams for children in India's diamond hub (Al Jazeera, 9 December 2025)", url: "https://www.aljazeera.com/economy/2025/12/9/us-tariffs-ruin-education-dreams-for-children-in-indias-diamond-hub" },
+  { pillar: "Banking", type: "Media", title: "SBI's total exposure to Adani Group at ₹27,000 crore (Business Today, 3 February 2023)", url: "https://www.businesstoday.in/latest/corporate/story/adani-hindenburg-row-sbis-total-exposure-to-adani-group-is-09-of-overall-loan-book-says-chairman-368869-2023-02-03" },
+  { pillar: "Banking", type: "Media", title: "India's LIC and public sector banks are reassessing Adani stakes (Quartz India, 9 February 2023)", url: "https://qz.com/indias-lic-and-public-banks-reassess-adani-stakes-1850052061" },
+  { pillar: "Banking", type: "Media", title: "To pacify stakeholders, top banks declare their exposure to Adani Group (Business Standard, 7 February 2023)", url: "https://www.business-standard.com/amp/article/companies/to-pacify-stakeholders-top-banks-declare-their-exposure-to-adani-group-123020700508_1.html" },
+  { pillar: "Banking", type: "Media", title: "Timeline of crises that brought India's $370 billion shadow banking sector to its knees (Quartz India, 4 June 2020)", url: "https://qz.com/india/1860466/how-indias-nbfc-crisis-deepened-from-ilfs-defaults-to-covid-19" },
+  { pillar: "Banking", type: "Media", title: "The NBFC Real Estate Crisis After IL&FS Defaults (Moneylife, 16 September 2019)", url: "https://www.moneylife.in/article/the-nbfc-real-estate-crisis-after-ilfs-defaults-what-why-and-what-next/55845.html" },
+
+  // ── AGRICULTURE ADDENDUM (May 2026) ──
+  // Theme: Groundwater overdraft / falling water tables (North Gujarat)
+  { pillar: "Agriculture", type: "Media", district: "Banaskantha", title: "India's groundwater quality report underscores systemic inertia (Down To Earth, 8 Jan 2025)", url: "https://www.downtoearth.org.in/water/indias-groundwater-quality-report-underscores-systemic-inertia-and-fragmented-efforts-undermining-water-security" },
+  { pillar: "Agriculture", type: "Academic", district: "Banaskantha", title: "Groundwater 2024: Top Ten stories on alarming depletion — SANDRP (18 Feb 2025)", url: "https://sandrp.in/2025/02/18/groundwater-2024-top-ten-stories-on-how-depletion-continues-alarmingly/" },
+  { pillar: "Agriculture", type: "Academic", district: "Mehsana", title: "Depleting Groundwater & Fluoride in Mehsana villages — HIC-HLRN (Nov 2022)", url: "https://hic-net.org/depleting-groundwater-levels-and-increasing-fluoride-concentration-in-villages-of-mehsana-district-gujarat-india-cost-to-economy-and-health/" },
+  { pillar: "Agriculture", type: "Academic", district: "Mehsana", title: "Groundwater: Rising Depletion and Contamination in 2025 — SANDRP (25 Mar 2026)", url: "https://sandrp.in/2026/03/25/groundwater-2025-depletion-and-contamination-rising/" },
+  // Theme: BT cotton / Pink bollworm crisis
+  { pillar: "Agriculture", type: "Academic", district: "Bhavnagar", title: "Widespread distribution of pink bollworm in Bt cotton regions of India — Crop Protection / ScienceDirect (Apr 2025)", url: "https://www.sciencedirect.com/science/article/abs/pii/S0261219425001498" },
+  { pillar: "Agriculture", type: "Media", district: "Amreli", title: "Cotton production hit by rains, pink bollworm infestation — AgroPages/Reuters (30 Sept 2020)", url: "https://news.agropages.com/News/NewsDetail---37209.htm" },
+  { pillar: "Agriculture", type: "Media", district: "Devbhoomi Dwarka", title: "Gujarat farmer distress: Where cotton clouds hang heavy — The Hindu / VisionIAS (6 Dec 2025)", url: "https://visionias.in/current-affairs/upsc-daily-news-summary/article/2025-12-06/the-hindu/geography/gujarat-farmer-distress-where-cotton-clouds-hang-heavy" },
+  { pillar: "Agriculture", type: "Media", district: "Devbhoomi Dwarka", title: "Gujarat's farmers erupt in protest after suicide over crop loss, debt — The Federal (4 Nov 2025)", url: "https://thefederal.com/category/states/west/gujarat/gujarats-farmers-erupt-in-protest-after-suicide-over-crop-loss-debt-214551" },
+  // Theme: Monoculture risk (castor / cumin / groundnut)
+  { pillar: "Agriculture", type: "Media", district: "Kachchh", title: "As castor fields expand, traditional mixed farming shrinks — Mongabay India (29 Apr 2025)", url: "https://india.mongabay.com/2025/04/as-castor-fields-expand-a-traditional-mixed-farming-system-shrinks/" },
+  { pillar: "Agriculture", type: "Industry", district: "Mehsana", title: "Castor Oil Market — Balancing Demand with Supply Constraints — ChemAnalyst (15 Nov 2024)", url: "https://www.chemanalyst.com/NewsAndDeals/NewsDetails/castor-oil-market-trends-balancing-demand-with-supply-constraints-anticipates-31330" },
+  { pillar: "Agriculture", type: "Media", district: "Junagadh", title: "Gujarat groundnut crop steady as expansion meets adverse weather — Agro Spectrum (13 Oct 2025)", url: "https://agrospectrumindia.com/2025/10/13/gujarat-groundnut-crop-steady-as-expansion-meets-adverse-weather.html" },
+  { pillar: "Agriculture", type: "Media", district: "Mehsana", title: "Jeera Prices Fall as Daily Arrivals Rise to 15,000 Bags in Unjha — Investing.com / Kedia (4 Dec 2024)", url: "https://in.investing.com/news/commodities-news/jeera-prices-fall-as-daily-arrivals-rise-to-15000-bags-in-unjha-4504749" },
+  // Theme: Farmer suicides
+  { pillar: "Agriculture", type: "Media", title: "Farmer suicides in India: What 28 years of data shows — Down To Earth (2 Oct 2025)", url: "https://www.downtoearth.org.in/agriculture/farmer-suicides-in-india-what-28-years-of-data-shows" },
+  // Theme: MSP / crop insurance gaps
+  { pillar: "Agriculture", type: "Academic", title: "Gujarat exits PM crop insurance scheme citing premium burden — CFA (4 Sept 2020)", url: "https://www.cenfa.org/gujarat-too-exits-pm-crop-insurance-scheme-citing-premium-burden/" },
+  { pillar: "Agriculture", type: "Media", title: "When Crop Insurance Fails Farmers: PMFBY Needs Urgent Reform — Down To Earth (22 May 2025)", url: "https://www.downtoearth.org.in/agriculture/when-crop-insurance-fails-farmers-pmfby-needs-a-rethink" },
+  // Theme: Climate stress / salinity ingress
+  { pillar: "Agriculture", type: "Media", district: "Bhavnagar", title: "Gujarat coastline shrinks: 765 km eroded, salinity puts farmland at risk — Gujarat Samachar (9 Jun 2025)", url: "https://english.gujaratsamachar.com/news/gujarat/gujarat-coastline-shrinks-765-km-eroded-salinity-puts-farmland-at-risk" },
+  { pillar: "Agriculture", type: "Media", district: "Kachchh", title: "Gujarat: Climate hotspot in Kutch — cyclone warnings, heatwaves — ICSF (11 Mar 2025)", url: "https://icsf.net/newss/gujarat-climate-hotspot-in-kutch-morecyclone-warnings-heatwaves-upend-peoples-lives/" },
+  { pillar: "Agriculture", type: "Industry", district: "Amreli", title: "Coast to coast — Coastal Salinity Prevention Cell — Tata Trusts Horizons (Aug 2024)", url: "https://horizons.tatatrusts.org/2024/august/tata-trusts-coastal-salinity-prevention-cell.html" },
+  // Theme: Narmada tail-end deprivation
+  { pillar: "Agriculture", type: "Media", district: "Kachchh", title: "Kutch, Saurashtra thirsting 71 years after Narmada canal launch — The Federal (12 Apr 2024)", url: "https://thefederal.com/states/west/gujarat/kutch-saurashtra-thirsting-for-water-71-years-after-launch-of-narmada-canal" },
+  { pillar: "Agriculture", type: "Media", district: "Narmada", title: "Huge allocation for Statue of Unity tourism, none for compensation — The Federal (4 Feb 2024)", url: "https://thefederal.com/category/states/west/gujarat/huge-allocation-for-statue-of-unity-tourism-in-gujarat-budget-none-for-compensation-109203" },
+  // Theme: Bonus
+  { pillar: "Agriculture", type: "Media", district: "Kachchh", title: "Drought-hit Gujarat has water for factories, but no water for Kutch farmers — Business Standard (16 Apr 2019)", url: "https://www.business-standard.com/amp/article/current-affairs/drought-hit-gujarat-has-water-for-factories-but-no-water-for-kutch-farmers-119041600121_1.html" },
+  { pillar: "Agriculture", type: "Media", district: "Anand", title: "Behind Amul price revisions, a battle against soaring costs in Gujarat's dairies — The Print (23 Apr 2023)", url: "https://theprint.in/india/no-other-option-behind-amul-price-revisions-a-battle-against-soaring-costs-in-gujarats-dairies/1512061/" },
+  { pillar: "Agriculture", type: "Media", district: "Bhavnagar", title: "Mahuva onion farmers lose Rs 50,000 per acre as prices crash — ETV Bharat (12 Feb 2023)", url: "https://www.etvbharat.com/english/bharat/gujarat-onion-farmers-cry-foul-as-prices-crash-lose-rs-50k-per-acre/na20230212091332076076026" },
+  { pillar: "Agriculture", type: "Media", title: "Pulses of Change: NCCF contract farming to reduce import dependency — Swarajya (8 Sep 2024)", url: "https://swarajymag.com/economy/pulses-of-change-3-years-after-repeal-of-farm-laws-centre-embraces-contract-farming-to-reduce-import-dependency" },
+  { pillar: "Agriculture", type: "Govt", title: "Appropriation Accounts 2023-24 — Govt of Gujarat (CAG, 28 Feb 2025)", url: "https://cag.gov.in/uploads/state_accounts_report/account-report-Appropriation-Accounts-2023-24-067ebc9f9d38c57-06861389.pdf" },
+
+  // ── GREEN TECH ADDENDUM (May 2026) ──
+  // Theme: Khavda / Kutch RE Park ecology and land politics
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "Mega RE park in Kutch could have adverse environmental impact — Mongabay India (15 Sep 2020)", url: "https://india.mongabay.com/2020/09/mega-renewable-energy-park-in-kutch-could-have-potentially-adverse-environmental-impact/" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "How Adani bagged an energy project on India-Pak border, defence rules relaxed — Scroll.in (1 Aug 2025)", url: "https://scroll.in/article/1076846/how-adani-bagged-an-energy-project-on-india-pak-border-for-which-defence-rules-were-relaxed" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "Solar Power Park at Khavda submerged, works suspended — DeshGujarat (12 Sep 2025)", url: "https://deshgujarat.com/2025/09/12/solar-power-park-at-khavda-in-rann-of-kutch-submerged-works-suspended/" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "While Banni readies for cheetah, native pastoralists demand land rights — Mongabay India (9 Jan 2024)", url: "https://india.mongabay.com/2024/01/while-banni-readies-for-cheetah-native-pastoralists-demand-land-rights/" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "On the path to reclaiming their land: Banni and its Maldharis — Mongabay India (17 Jun 2021)", url: "https://india.mongabay.com/2021/06/on-the-path-to-reclaiming-their-land-the-story-of-banni-and-its-maldharis/" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "Prosopis juliflora is disrupting the nomadic way of life — Scroll.in (22 Apr 2020)", url: "https://scroll.in/article/947957/in-this-gujarat-grassland-a-plant-introduced-in-the-1950s-is-disrupting-the-nomadic-way-of-life" },
+  // Theme: Bird mortality, transmission lines, GIB extinction
+  { pillar: "Green Tech", type: "Legal", district: "Kutch", title: "NGT wants underground power lines, bird diverters at GIB habitat — Down to Earth (25 Dec 2020)", url: "https://www.downtoearth.org.in/news/wildlife-&-biodiversity/amp/ngt-wants-underground-power-lines-bird-diverters-at-great-indian-bustard-habitat-74759" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "SC ruling on power lines is lifeline for Critically Endangered bustard — BirdLife International (14 Jul 2021)", url: "https://www.birdlife.org/news/2021/07/14/new-india-powerline-ruling-is-lifeline-for-critically-endangered-bustard/" },
+  { pillar: "Green Tech", type: "Academic", district: "Kutch", title: "High bird mortality due to power lines in tropical desert — Biological Conservation / WII (Aug 2021)", url: "https://www.sciencedirect.com/science/article/abs/pii/S0006320721003141" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "Solar Projects stranded awaiting SC order on Great Indian Bustard — Mercom India (19 Mar 2024)", url: "https://www.mercomindia.com/solar-projects-stranded-great-indian-bustard" },
+  // Theme: Manufacturing dependence (polysilicon / wafers / ingots)
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "India wants to build a solar manufacturing ecosystem to rival China — Climate Home (Oct 2024)", url: "https://cleanenergyfrontier.climatechangenews.com/india-wants-own-solar-industry-break-reliance-china/" },
+  { pillar: "Green Tech", type: "Academic", district: "Kutch", title: "India: The Rising Power in Global Solar PV Supply Chains — ORF America (Nov 2024)", url: "https://orfamerica.org/newresearch/solar-rising-india" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "Adani begins commercial output of wafers, ingots for solar — The Print (12 Feb 2025)", url: "https://theprint.in/india/adani-begins-commercial-output-of-wafers-ingots-for-solar-power/2031480/" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "Indian imports of monocrystalline silicon wafers from China surged 91% — Communications Today (Apr 2024)", url: "https://www.communicationstoday.co.in/indian-imports-of-monocrystalline-silicon-wafers-from-china-have-surged-why/" },
+  // Theme: Battery cells / lithium
+  { pillar: "Green Tech", type: "Industry", district: "Ahmedabad", title: "Local sourcing of battery cells key to competitiveness — Tata Motors / Autocar Professional (21 Jan 2025)", url: "https://www.autocarpro.in/news/local-sourcing-of-battery-cells-key-to-competitiveness-in-long-term-tata-motors-124592" },
+  { pillar: "Green Tech", type: "Industry", district: "Ahmedabad", title: "Tata to start construction of 20 GWh lithium battery plant in Gujarat — pv magazine India (11 Jan 2024)", url: "https://www.pv-magazine-india.com/2024/01/11/tata-to-start-construction-of-20-gwh-lithium-battery-plant-in-gujarat/" },
+  { pillar: "Green Tech", type: "Media", district: "Ahmedabad", title: "PM Modi Flags Off Maruti Suzuki eVitara, Inaugurates EV Battery Plant Gujarat — Republic World (Aug 2025)", url: "https://www.republicworld.com/automobile/big-push-for-make-in-india-pm-modi-flags-off-maruti-suzuki-evitara-inaugurates-ev-battery-plant-in-gujarat" },
+  { pillar: "Green Tech", type: "Media", title: "India's lithium mining plans in Kashmir halted, no bidders — Rest of World (Jul 2024)", url: "https://restofworld.org/2024/india-lithium-reserves-halted/" },
+  { pillar: "Green Tech", type: "Media", title: "J&K's 5.9 mn tonne lithium reserve to be re-explored after failed auction — Business Standard (17 Oct 2024)", url: "https://www.business-standard.com/industry/news/j-k-s-5-9-mn-tonne-lithium-reserve-to-be-re-explored-after-failed-auction-124101700933_1.html" },
+  // Theme: Grid bottlenecks / curtailment
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "Curtailment, transmission bottlenecks dominate power transition outlook — Down to Earth (Feb 2026)", url: "https://www.downtoearth.org.in/energy/curtailment-transmission-bottlenecks-and-storage-gaps-dominate-indias-power-transition-outlook" },
+  { pillar: "Green Tech", type: "Media", district: "Kutch", title: "Gridlock On The Green Path: Transmission Delays Trigger Massive Power Waste — The Core (Feb 2026)", url: "https://www.thecore.in/economy/india-solar-energy-renewable-net-zero-rajasthan-gujarat-859376" },
+  { pillar: "Green Tech", type: "Industry", district: "Kutch", title: "35 GW RE Capacity Curtailment Risk in FY27: CRISIL — SaurEnergy (Mar 2026)", url: "https://www.saurenergy.com/solar-energy-news/a-curtailment-risk-35-gw-re-capacity-due-to-grid-issues-in-fy27-crisil-11220048" },
+  // Theme: Carbon credit integrity & Adani solar bribery
+  { pillar: "Green Tech", type: "Media", title: "Nine projects in India produced 'problematic' carbon credits in 2024 — Mongabay India (Jul 2025)", url: "https://india.mongabay.com/2025/07/nine-projects-in-india-produced-problematic-carbon-credits-in-2024-says-report/" },
+  { pillar: "Green Tech", type: "Media", district: "Ahmedabad", title: "Adani founder indicted in US over solar contract bribes — DCD (21 Nov 2024)", url: "https://www.datacenterdynamics.com/en/news/adani-founder-indicted-in-the-us-over-solar-contract-bribes/" },
+  // Theme: Just transition gap
+  { pillar: "Green Tech", type: "Media", district: "Bharuch", title: "Invisible fallout of thermal power plant closures on local economies — Mongabay India (Oct 2025)", url: "https://india.mongabay.com/2025/10/the-invisible-fallout-of-thermal-power-plant-closures-on-local-economies/" },
+  { pillar: "Green Tech", type: "Academic", title: "How to structure thermal decommissioning in India — CEEW (2024)", url: "https://www.ceew.in/gfc/quick-reads/analysis/how-to-structure-thermal-decommissioning-in-india" },
+  // Theme: Rare earths & permanent magnets
+  { pillar: "Green Tech", type: "Media", title: "India's Strategic Shift: Reducing Reliance on China for Rare Earth Elements — Open The Magazine (Jun 2025)", url: "https://openthemagazine.com/business/indias-strategic-shift-reducing-reliance-on-china-for-rare-earth-elements" },
+
+  // ── CHEMICAL GOVERNANCE ADDENDUM (May 2026) ──
+  // Theme: CETP / NGT enforcement
+  { pillar: "Chemical Governance", type: "Media", district: "Bharuch", title: "Daily Court Digest: NGT Orders on Oil Drilling, Mine Effluents, Groundwater — Down To Earth (12 May 2026)", url: "https://www.downtoearth.org.in/environment/daily-court-digest-major-environment-orders-may-12-2026" },
+  { pillar: "Chemical Governance", type: "Govt", district: "Valsad", title: "CPCB Joint Inspection Report on Vapi CETP (NGT OA 95/2018) — CPCB (Oct 2022)", url: "https://cpcb.nic.in/NGT/14-REP-JOINTINSPECT-CETP-VAPI.pdf" },
+  { pillar: "Chemical Governance", type: "Legal", district: "Valsad", title: "Aryavart Foundation v. Vapi Green Enviro — Full NGT judgment (11 Jan 2019) — CaseMine", url: "https://www.casemine.com/judgement/in/5d89c08e714d583c03448e48" },
+  { pillar: "Chemical Governance", type: "Legal", title: "CEPI Score NGT Order, 29 Aug 2022 (full text) — NGT/Down To Earth CDN", url: "https://cdn.downtoearth.org.in/iep/CEPI-score-NGT-order-Aug29-2022.pdf" },
+  // Theme: CEPI scores
+  { pillar: "Chemical Governance", type: "Media", district: "Valsad", title: "Vapi tops list of critically polluted areas — Down To Earth (22 Dec 2009)", url: "https://www.downtoearth.org.in/environment/vapi-tops-list-of-critically-polluted-areas--38260" },
+  { pillar: "Chemical Governance", type: "Media", district: "Bharuch", title: "New units banned in 8 industrial areas; ban lifted from 10 others — Down To Earth (15 Mar 2014)", url: "https://www.downtoearth.org.in/news/new-units-banned-in-8-industrial-areas-ban-lifted-from-10-others-42233" },
+  { pillar: "Chemical Governance", type: "Academic", district: "Vadodara", title: "UP, Maharashtra have most critically polluted industrial regions: CSE — Down To Earth (28 Jul 2021)", url: "https://www.downtoearth.org.in/pollution/up-maharashtra-have-most-critically-polluted-industrial-regions-cse-76201" },
+  // Theme: Damanganga / Kolak fisherfolk
+  { pillar: "Chemical Governance", type: "Media", district: "Valsad", title: "Kolak fisherfolk in distress as Vapi chemicals destroy river catch — Down To Earth (26 Apr 2023)", url: "https://www.downtoearth.org.in/pollution/critically-polluted-kolak-fisherfolk-in-distress-as-chemicals-from-vapi-industries-destroy-river-catch-89560" },
+  // Theme: Worker deaths / chemical accidents
+  { pillar: "Chemical Governance", type: "Media", district: "Surat", title: "6 Dead, 22 Hospitalised After Inhaling Toxic Fumes in Surat's GIDC — India.com (6 Jan 2022)", url: "https://www.india.com/gujarat/surat-chemical-gas-leak-incident-sachin-gidc-area-gujarat-tanker-gas-leak-several-dead-injured-hospitalised-5172624/" },
+  { pillar: "Chemical Governance", type: "Media", district: "Surat", title: "GPCB closure notice to Anupam Rasayan after 5 laborer deaths — DeshGujarat (23 Sep 2022)", url: "https://deshgujarat.com/2022/09/23/gpcb-issues-closure-notice-to-anupam-rasayans-surat-unit-after-deaths-of-5-laborers/" },
+  { pillar: "Chemical Governance", type: "Media", district: "Bharuch", title: "4 die after inhaling toxic gas at chemical unit in Gujarat's Bharuch — Business Standard (29 Dec 2024)", url: "https://www.business-standard.com/india-news/4-die-after-inhaling-toxic-gas-at-gujarat-fluorochemicals-dahej-124122900497_1.html" },
+  // Theme: GPCB regulatory capacity
+  { pillar: "Chemical Governance", type: "Media", title: "Over 30% Posts Vacant In CPCB, More Than Half In State Pollution Boards — ETV Bharat (20 Mar 2025)", url: "https://www.etvbharat.com/en/bharat/over-30-percent-posts-vacant-in-cpcb-more-than-half-positions-empty-in-state-pollution-boards-enn26032004497" },
+  { pillar: "Chemical Governance", type: "Media", title: "46% posts in pollution boards vacant, states miss NGT deadline — Carbon Copy (Feb 2025)", url: "https://carboncopy.info/46-posts-in-pollution-boards-vacant-states-and-uts-miss-ngt-deadline-to-fill-these/" },
+  // Theme: Pharma effluent / AMR
+  { pillar: "Chemical Governance", type: "Academic", district: "Bharuch", title: "Limiting antibiotic manufacturing discharge in Indian wastewater — European Pharmaceutical Review (Jan 2020)", url: "https://www.europeanpharmaceuticalreview.com/article/115074/limiting-antibiotic-manufacturing-discharge-in-indian-wastewater/" },
+  // Theme: Heavy metals / soil contamination
+  { pillar: "Chemical Governance", type: "Academic", district: "Bharuch", title: "Heavy metal contamination in soil & leafy vegetables in Bharuch industrial belt — Vegetos/Springer (2024)", url: "https://link.springer.com/article/10.1007/s42535-024-01049-1" },
+  { pillar: "Chemical Governance", type: "Academic", district: "Valsad", title: "Effects of industrial pollution on respiratory morbidity (Vapi study) — IJOEM/PubMed (2008)", url: "https://pubmed.ncbi.nlm.nih.gov/18628080/" },
+  // Theme: Bhopal successor liability
+  { pillar: "Chemical Governance", type: "Media", title: "Bhopal Gas Tragedy: Toxic Waste Finally Removed After 40 Years — Down To Earth (2 Jan 2025)", url: "https://www.downtoearth.org.in/environment/toxic-waste-leaves-bhopal-gas-tragedy-site-after-40-years" },
+  // Theme: Journalist harassment / press freedom
+  { pillar: "Chemical Governance", type: "Media", district: "Ahmedabad", title: "Journalist Mahesh Langa Booked Again by Gujarat Police — The Wire (28 Oct 2024)", url: "https://m.thewire.in/article/media/mahesh-langa-booked-again-gujarat-police" },
 ]
 
 // Derived list of every district that has at least one tagged source — used for filter pills + the "By District" view.

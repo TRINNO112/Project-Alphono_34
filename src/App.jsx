@@ -32,6 +32,7 @@ const Agriculture = lazy(() => import('./pages/Agriculture'))
 const GreenTech = lazy(() => import('./pages/GreenTech'))
 const ChemicalGovernance = lazy(() => import('./pages/ChemicalGovernance'))
 const DigitalSovereignty = lazy(() => import('./pages/DigitalSovereignty'))
+const Banking = lazy(() => import('./pages/Banking'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const GlobalTradeIndex = lazy(() => import('./pages/GlobalTradeIndex'))
 const BreakSimulator = lazy(() => import('./pages/BreakSimulator'))
@@ -132,6 +133,7 @@ function AnimatedRoutes() {
           <Route path="/greentech" element={<PageTransition><GreenTech /></PageTransition>} />
           <Route path="/chemical-governance" element={<PageTransition><ChemicalGovernance /></PageTransition>} />
           <Route path="/digital-sovereignty" element={<PageTransition><DigitalSovereignty /></PageTransition>} />
+          <Route path="/banking" element={<PageTransition><Banking /></PageTransition>} />
           <Route path="/global-trade" element={<PageTransition><GlobalTradeIndex /></PageTransition>} />
           <Route path="/simulator" element={<PageTransition><BreakSimulator /></PageTransition>} />
           <Route path="/stories" element={<PageTransition><Stories /></PageTransition>} />

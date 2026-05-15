@@ -6,12 +6,12 @@ function FooterLink({ to, children, highlight }) {
     <li>
       <Link
         to={to}
-        className={`relative inline-block transition-colors hover:text-crimson ${
+        className={`relative inline-flex items-center min-h-[44px] py-2 transition-colors hover:text-crimson ${
           highlight ? 'text-crimson font-medium' : ''
         } group`}
       >
         {children}
-        <span className="absolute left-0 -bottom-0.5 h-px w-0 bg-crimson transition-all duration-300 group-hover:w-full" />
+        <span className="absolute left-0 bottom-1.5 h-px w-0 bg-crimson transition-all duration-300 group-hover:w-full" />
       </Link>
     </li>
   )
@@ -51,6 +51,7 @@ export default function Footer() {
               <FooterLink to="/greentech">Green Tech Dependency</FooterLink>
               <FooterLink to="/chemical-governance">Chemical Governance</FooterLink>
               <FooterLink to="/digital-sovereignty">Digital Sovereignty</FooterLink>
+              <FooterLink to="/banking">Banking & Finance</FooterLink>
             </ul>
           </div>
 

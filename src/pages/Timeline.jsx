@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { ChevronLeft, ChevronRight, AlertTriangle, ShieldAlert, BarChart3, Play, Pause, Banknote, Flame, Footprints, Building2, Skull, Gem, Ship } from 'lucide-react'
+import { ChevronLeft, ChevronRight, AlertTriangle, ShieldAlert, BarChart3, Play, Pause, Banknote, Flame, Footprints, Building2, Skull, Gem, Ship, Landmark } from 'lucide-react'
 import SEO from '../components/SEO'
 
 const EventIcon = ({ name, className = "" }) => {
-  const icons = { Banknote, Flame, Footprints, Building2, Skull, Gem, Ship }
+  const icons = { Banknote, Flame, Footprints, Building2, Skull, Gem, Ship, Landmark }
   const Icon = icons[name]
   return Icon ? <Icon className={className} /> : null
 }
@@ -26,6 +26,23 @@ const timelineEvents = [
       { label: "SME Sector Drop", value: "-22%", status: "danger" }
     ],
     impact: "First realization of the fragility of unbanked migrant dependencies in the secondary sector."
+  },
+  {
+    year: "2018",
+    title: "PNB-Nirav Modi LoU Fraud",
+    category: "Banking",
+    iconName: "Landmark",
+    iconColor: "text-amber-400",
+    iconBg: "bg-amber-500/10 border-amber-500/20",
+    gradient: "from-amber-500/20 to-amber-900/5",
+    accent: "amber",
+    desc: "Palanpur-born Nirav Modi and his uncle Mehul Choksi (Gitanjali Gems) orchestrated India's largest banking fraud — fraudulent SWIFT Letters of Undertaking issued from PNB's Brady House branch to overseas branches of Allahabad, Axis, and Union Bank, bypassing core banking. Both flee India BEFORE the complaint is filed.",
+    stats: [
+      { label: "Total Fraud Size", value: "₹14,357 Cr", status: "critical" },
+      { label: "Multiple of PNB Q3 Profit", value: "49x", status: "danger" },
+      { label: "Days Between Flight & FIR", value: "2", status: "critical" }
+    ],
+    impact: "Exposed Gujarat's diamond-trade trust networks as a fraud vector at national scale; RBI banned LoUs entirely two months later."
   },
   {
     year: "2018",

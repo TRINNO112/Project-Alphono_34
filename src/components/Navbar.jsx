@@ -41,6 +41,7 @@ const pillarLinks = [
   { to: '/greentech', label: 'Green Tech' },
   { to: '/chemical-governance', label: 'Chemical Governance' },
   { to: '/digital-sovereignty', label: 'Digital Sovereignty' },
+  { to: '/banking', label: 'Banking & Finance' },
 ]
 
 const resourceLinks = [
@@ -114,7 +115,7 @@ export default function Navbar() {
                 key={link.to}
                 to={link.to}
                 aria-current={active ? 'page' : undefined}
-                className={`relative py-1 transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-4 rounded ${
+                className={`relative inline-flex items-center min-h-[44px] py-3 transition-colors focus-visible:outline-2 focus-visible:outline-crimson focus-visible:outline-offset-4 rounded ${
                   active
                     ? 'text-crimson'
                     : 'text-gray-500 hover:text-crimson'
@@ -217,7 +218,7 @@ export default function Navbar() {
               </nav>
 
               <nav aria-label="Pillars">
-                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 mb-3">13 Pillars</h2>
+                <h2 className="text-xs font-bold tracking-widest uppercase text-gray-500 mb-3">14 Pillars</h2>
                 <ul className="grid grid-cols-1 gap-x-4 gap-y-1">
                   {pillarLinks.map((link) => {
                     const active = isActivePath(link.to)
@@ -226,7 +227,7 @@ export default function Navbar() {
                         <Link
                           to={link.to}
                           aria-current={active ? 'page' : undefined}
-                          className={`block py-2 text-sm ${active ? 'text-crimson font-semibold' : link.highlight ? 'text-crimson font-medium' : 'text-gray-800 hover:text-crimson'}`}
+                          className={`flex items-center min-h-[44px] py-2 text-sm ${active ? 'text-crimson font-semibold' : link.highlight ? 'text-crimson font-medium' : 'text-gray-800 hover:text-crimson'}`}
                         >
                           {link.label}
                         </Link>

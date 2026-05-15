@@ -48,3 +48,13 @@ session_summary_*.md
 graphify-out/
 .agent/
 .agents/
+
+# Research dossiers & source addenda (kept local only — raw notes, not for repo)
+*_research.md
+*_sources_addendum.md
+*_addendum.md
+
+# Lighthouse audit artifacts
+lighthouse-*.json
+lighthouse-*.html
+.lighthouseci/
