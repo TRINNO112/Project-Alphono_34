@@ -10,11 +10,11 @@ const fade = (delay = 0) => ({
 })
 
 const sourceBreakdown = [
-  { type: "Government & Institutional", pct: 24, count: 55, color: "bg-blue-500", examples: "CAG Reports, NITI Aayog, Finance Commission, RBI, NPCIL, GPCB, CPCB, MeitY, TRAI, DGH" },
-  { type: "Investigative Journalism", pct: 36, count: 81, color: "bg-crimson", examples: "The Print, Scroll.in, IndiaSpend, Down To Earth, Business Standard, The Wire, Mongabay, Reuters" },
-  { type: "Academic & Research", pct: 16, count: 37, color: "bg-purple-500", examples: "Peer-reviewed journals, RIS Discussion Papers, ICAR, WHO/LANCET studies, ORF, CSIS, VIF" },
-  { type: "Industry & Domain Reports", pct: 18, count: 40, color: "bg-amber-500", examples: "Kpler, Vortexa, S&P Global, Argus, Fastmarkets, Global Energy Monitor, BNEF, IBEF, TeleGeography" },
-  { type: "Legal & Court Records", pct: 6, count: 14, color: "bg-emerald-500", examples: "Gujarat HC rulings, Supreme Court orders, NGT directives, CAG audit objections" },
+  { type: "Investigative Journalism", pct: 56, count: 243, color: "bg-crimson", examples: "The Print, Scroll.in, IndiaSpend, Down To Earth, Business Standard, The Wire, Mongabay, Reuters, The Federal, The Hindu" },
+  { type: "Industry & Domain Reports", pct: 15, count: 64, color: "bg-amber-500", examples: "Kpler, Vortexa, S&P Global, Argus, Fastmarkets, Global Energy Monitor, BNEF, IBEF, TeleGeography, CRISIL, EY-HSBC" },
+  { type: "Government & Institutional", pct: 13, count: 57, color: "bg-blue-500", examples: "CAG Reports, NITI Aayog, Finance Commission, RBI, NPCIL, GPCB, CPCB, MeitY, TRAI, DGH, SLBC Gujarat" },
+  { type: "Academic & Research", pct: 13, count: 57, color: "bg-purple-500", examples: "Peer-reviewed journals, SANDRP, ORF America, CEEW, Vegetos/Springer, Biological Conservation, ICAR, WHO/LANCET" },
+  { type: "Legal & Court Records", pct: 3, count: 15, color: "bg-emerald-500", examples: "Gujarat HC rulings, Supreme Court orders, NGT directives (Aryavart, CEPI), CaseMine, CAG audit objections" },
 ]
 
 const verificationSteps = [
@@ -82,7 +82,7 @@ export default function Methodology() {
           <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">Data Collection Protocol</h2>
 
           <p className="text-gray-600 leading-relaxed mb-8">
-            A total of <strong className="text-gray-900">227 sources</strong> across 13 pillars plus the Index Mercantilis trade-route module were collected, verified, and cited. Sources are classified into five categories:
+            A total of <strong className="text-gray-900">436 sources</strong> across 14 pillars, tagged to 25 districts, plus the Index Mercantilis trade-route module were collected, verified, and cited. Sources are classified into five categories:
           </p>
 
           {/* Source breakdown bars */}
