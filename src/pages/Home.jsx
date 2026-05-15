@@ -1,11 +1,14 @@
-import { useState, Fragment, useMemo } from 'react'
+import { useState, Fragment, useMemo, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin, Wheat, Cpu, FlaskConical, Cable } from 'lucide-react'
+import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin, Wheat, Cpu, FlaskConical, Cable, Landmark } from 'lucide-react'
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip } from 'recharts'
-import { SupplyChainMap } from '../components/SupplyChainMap'
-import { CascadeDiagram } from '../components/CascadeDiagram'
 import AnimatedCounter from '../components/AnimatedCounter'
+
+const SupplyChainMap = lazy(() => import('../components/SupplyChainMap').then(m => ({ default: m.SupplyChainMap })))
+const CascadeDiagram = lazy(() => import('../components/CascadeDiagram').then(m => ({ default: m.CascadeDiagram })))
+const HeavyChunkFallback = () => <div className="h-96 w-full animate-pulse bg-parchment-100 rounded-lg" aria-label="Loading visualization" />
+
 
 export default function Home() {
   const sectors = useMemo(() => [
@@ -22,9 +25,10 @@ export default function Home() {
     { id: 'greentech', title: "Green Tech Dependency", icon: <Cpu className="w-8 h-8 text-cyan-600" />, desc: "90% rare earth processing by China, 80%+ PV wafers imported, Dholera SIR mirage.", path: "/greentech", stat: "90%", statLabel: "China RE Processing", sources: 7 },
     { id: 'chemical-governance', title: "Chemical Governance & Toxicity", icon: <FlaskConical className="w-8 h-8 text-orange-600" />, desc: "400km Golden Corridor, Sabarmati BOD 292 mg/L, CETP failures, ₹100Cr+ NGT fines.", path: "/chemical-governance", stat: "292", statLabel: "BOD (mg/L) Sabarmati", sources: 8 },
     { id: 'digital-sovereignty', title: "Digital Sovereignty & Data Dependency", icon: <Cable className="w-8 h-8 text-blue-600" />, desc: "0 submarine cable landings on a 1,600 km coastline. GIFT City backhauls via Mumbai. AWS hosts state e-gov.", path: "/digital-sovereignty", stat: "0", statLabel: "Intl. Cables in Gujarat", sources: 15 },
+    { id: 'banking', title: "Banking & Extractive Finance", icon: <Landmark className="w-8 h-8 text-amber-600" />, desc: "MMCB ₹1,200 cr; Nirav Modi-PNB ₹14,357 cr; GIFT City $106 B 'assets' vs $8 B real deposits; LIC ₹74,000 cr Adani exposure.", path: "/banking", stat: "₹14,357 cr", statLabel: "PNB-Nirav Modi Fraud", sources: 30 },
   ], [])
 
-  const romanNumerals = useMemo(() => ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII'], [])
+  const romanNumerals = useMemo(() => ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV'], [])
 
   const headlines = useMemo(() => [
     { value: 186, suffix: '', prefix: '', label: "Cited Sources" },
@@ -201,7 +205,7 @@ export default function Home() {
       >
         <blockquote className="font-serif italic text-2xl md:text-3xl text-gray-600 max-w-4xl mx-auto text-center border-t border-b border-gray-300 py-10 leading-relaxed">
           "The prosperity of a state measured only by its throughput — while blind to its input origins — is an accounting illusion, not economic strength."
-          <footer className="mt-6 text-sm not-italic tracking-widest uppercase text-gray-400 font-sans font-semibold">
+          <footer className="mt-6 text-sm not-italic tracking-widest uppercase text-gray-600 font-sans font-semibold">
             — Premise of this Research
           </footer>
         </blockquote>
@@ -367,7 +371,9 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="bg-white/60 border border-gray-200 rounded-2xl p-8 backdrop-blur-sm">
-          <SupplyChainMap />
+          <Suspense fallback={<HeavyChunkFallback />}>
+            <SupplyChainMap />
+          </Suspense>
         </div>
       </motion.section>
 
@@ -383,7 +389,9 @@ export default function Home() {
           <h2 className="text-3xl font-serif font-bold text-gray-900">Crisis Propagation Map</h2>
         </div>
         <div className="bg-white/60 border border-gray-200 rounded-2xl p-8 backdrop-blur-sm">
-          <CascadeDiagram />
+          <Suspense fallback={<HeavyChunkFallback />}>
+            <CascadeDiagram />
+          </Suspense>
         </div>
         <p className="text-center text-sm text-gray-500 mt-4 italic font-serif">
           Figure 2: How the March 2026 West Asia crisis cascaded across Gujarat's structural pillars — each arrow represents a documented dependency failure

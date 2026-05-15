@@ -1,12 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { compression } from 'vite-plugin-compression2'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    compression({ algorithm: 'gzip', threshold: 1024 }),
+    compression({ algorithm: 'brotliCompress', threshold: 1024 }),
   ],
   optimizeDeps: {
     include: ['react-simple-maps', 'prop-types']
