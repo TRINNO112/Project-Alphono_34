@@ -12,7 +12,9 @@ import { tradeNodes, tradeArcs, tradeRouteSources, gujaratPortPortfolio } from "
 
 // === GeoJSON endpoints (bundled locally in /public/geo) ====================
 const worldGeoUrl = "/geo/world.geojson";
-const indiaGeoUrl = "/geo/india.geojson";
+// State-level dissolved geojson (374KB vs 3.7MB district file). MercantileTradeMap
+// only fills India as a single tinted region — no district-level needed.
+const indiaGeoUrl = "/geo/india_states.geojson";
 const shippingGeoUrl = "/geo/shipping_lanes.geojson";
 const indiaDensityGeoUrl = "/geo/india_marine_density.geojson";
 

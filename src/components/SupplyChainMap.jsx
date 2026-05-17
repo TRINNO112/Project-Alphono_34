@@ -6,7 +6,9 @@ import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simpl
 import { ArrowRight, ShieldAlert } from './Icons'
 
 // === Local GeoJSON files (bundled in public/geo/ for offline reliability) ===
-const indiaUrl = "/geo/india.geojson";
+// Use the state-level (dissolved) india geojson — 374KB instead of 3.7MB district file.
+// SupplyChainMap only consults `properties.st_nm`, so district detail is unused here.
+const indiaUrl = "/geo/india_states.geojson";
 
 /**
  * SupplyChainMap - Interactive world map showing Gujarat's external supply chain dependencies

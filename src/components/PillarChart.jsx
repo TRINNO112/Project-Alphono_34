@@ -14,7 +14,7 @@ import {
 } from 'recharts'
 import { CHART_COLORS, CHART_TYPOGRAPHY, CHART_ANIMATION, TOOLTIP_STYLE } from './charts/_shared/tokens'
 
-const DEFAULT_COLORS = ['#D32F2F', '#2563EB', '#16A34A', '#CA8A04', '#9333EA', '#6B7280']
+const DEFAULT_COLORS = ['#B84A3E', '#2563EB', '#16A34A', '#CA8A04', '#9333EA', '#6B7280']
 const TICK_FILL = '#374151'
 const GRID_STROKE = '#E5E7EB'
 const TOOLTIP_ITEM_STYLE = { color: '#1f2937' }

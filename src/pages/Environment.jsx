@@ -200,7 +200,7 @@ export default function Environment() {
               { name: 'Karnataka', value: 12.4 },
             ]}
             valueSuffix="%"
-            accentColor="#D32F2F"
+            accentColor="#B84A3E"
             highlightColor="#991B1B"
             height={300}
           />
@@ -252,7 +252,7 @@ export default function Environment() {
                   { name: 'Tamil Nadu', value: 1.9 },
                   { name: 'Kerala', value: 0.9 },
                 ]}
-                colors={['#D32F2F', '#9CA3AF', '#9CA3AF', '#6B7280', '#9CA3AF', '#9CA3AF', '#16A34A']}
+                colors={['#B84A3E', '#9CA3AF', '#9CA3AF', '#6B7280', '#9CA3AF', '#9CA3AF', '#16A34A']}
                 height={280}
               />
             </div>
@@ -282,7 +282,7 @@ export default function Environment() {
             { name: 'Bangalore', value: 32 },
             { name: 'WHO Limit', value: 15 },
           ]}
-          colors={['#6B7280', '#D32F2F', '#DC2626', '#EF4444', '#F87171', '#6B7280', '#6B7280', '#16A34A']}
+          colors={['#6B7280', '#B84A3E', '#DC2626', '#EF4444', '#F87171', '#6B7280', '#6B7280', '#16A34A']}
           height={320}
         />
 

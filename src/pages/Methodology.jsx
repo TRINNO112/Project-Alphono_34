@@ -25,7 +25,7 @@ const verificationSteps = [
 ]
 
 const limitations = [
-  "Deep audits are currently active for 17 districts. The remaining 16 placeholder districts are presently mapped using predictive gap-analysis and state-aggregate overlays pending Phase 3 on-the-ground validation.",
+  "Deep audits — district-specific case-files anchoring three or more documented crises with named populations, source citations and economic data — are available for 30 of Gujarat's 33 districts. The remaining 3 districts (Aravalli, Patan, Sabarkantha in North Gujarat) carry summary audits drawing on state-aggregate indicators pending further field validation.",
   "Corporate financial data relies on publicly filed documents; internal operational data (e.g., Adani port efficiency metrics) is not independently verifiable.",
   "Migrant worker statistics are inherently undercounted — no comprehensive interstate migration registry exists in India. Figures represent best available estimates.",
   "Environmental monitoring data from GPCB has known reliability issues flagged by CAG — we note this where applicable but cannot independently re-test.",

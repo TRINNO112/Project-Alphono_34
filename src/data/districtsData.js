@@ -1,6 +1,7 @@
 export const districtsData = [
   {
     id: "morbi",
+    tier: "deep",
     name: "Morbi",
     region: "Saurashtra",
     coordinates: [70.8322, 22.8222],
@@ -20,6 +21,7 @@ export const districtsData = [
   },
   {
     id: "surat",
+    tier: "deep",
     name: "Surat",
     region: "South Gujarat",
     coordinates: [72.8311, 21.1702],
@@ -39,6 +41,7 @@ export const districtsData = [
   },
   {
     id: "ahmedabad",
+    tier: "deep",
     name: "Ahmedabad",
     region: "Central Gujarat",
     coordinates: [72.5714, 23.0225],
@@ -57,6 +60,7 @@ export const districtsData = [
   },
   {
     id: "kutch",
+    tier: "deep",
     name: "Kutch",
     region: "Kutch",
     coordinates: [69.8597, 23.7337],
@@ -79,6 +83,7 @@ export const districtsData = [
   },
   {
     id: "jamnagar",
+    tier: "deep",
     name: "Jamnagar",
     region: "Saurashtra",
     coordinates: [70.0577, 22.4707],
@@ -99,6 +104,7 @@ export const districtsData = [
   },
   {
     id: "mehsana",
+    tier: "deep",
     name: "Mehsana",
     region: "North Gujarat",
     coordinates: [71.3969, 23.5880],
@@ -120,6 +126,7 @@ export const districtsData = [
   },
   {
     id: "bharuch",
+    tier: "deep",
     name: "Bharuch",
     region: "South Gujarat",
     coordinates: [72.9904, 21.7051],
@@ -142,6 +149,7 @@ export const districtsData = [
   // ── PHASE 3 DISTRICT PROFILES (10 new, research-backed) ──────────────
   {
     id: "rajkot",
+    tier: "deep",
     name: "Rajkot",
     region: "Saurashtra",
     coordinates: [70.8022, 22.3039],
@@ -164,6 +172,7 @@ export const districtsData = [
   },
   {
     id: "vadodara",
+    tier: "deep",
     name: "Vadodara",
     region: "Central Gujarat",
     coordinates: [73.1812, 22.3072],
@@ -183,6 +192,7 @@ export const districtsData = [
   },
   {
     id: "banaskantha",
+    tier: "deep",
     name: "Banaskantha",
     region: "North Gujarat",
     coordinates: [71.2190, 24.1717],
@@ -202,6 +212,7 @@ export const districtsData = [
   },
   {
     id: "valsad",
+    tier: "deep",
     name: "Valsad",
     region: "South Gujarat",
     coordinates: [72.9342, 20.5992],
@@ -221,6 +232,7 @@ export const districtsData = [
   },
   {
     id: "junagadh",
+    tier: "deep",
     name: "Junagadh",
     region: "Saurashtra",
     coordinates: [70.4579, 21.5222],
@@ -240,6 +252,7 @@ export const districtsData = [
   },
   {
     id: "gandhinagar",
+    tier: "deep",
     name: "Gandhinagar",
     region: "Central Gujarat",
     coordinates: [72.6369, 23.2156],
@@ -259,6 +272,7 @@ export const districtsData = [
   },
   {
     id: "porbandar",
+    tier: "deep",
     name: "Porbandar",
     region: "Saurashtra",
     coordinates: [69.6293, 21.6417],
@@ -278,6 +292,7 @@ export const districtsData = [
   },
   {
     id: "anand",
+    tier: "deep",
     name: "Anand",
     region: "Central Gujarat",
     coordinates: [72.9289, 22.5645],
@@ -297,6 +312,7 @@ export const districtsData = [
   },
   {
     id: "bhavnagar",
+    tier: "deep",
     name: "Bhavnagar",
     region: "Saurashtra",
     coordinates: [72.1519, 21.7645],
@@ -316,6 +332,7 @@ export const districtsData = [
   },
   {
     id: "narmada",
+    tier: "deep",
     name: "Narmada",
     region: "South Gujarat",
     coordinates: [73.4980, 21.8787],
@@ -335,6 +352,7 @@ export const districtsData = [
   },
   {
     id: "amreli",
+    tier: "deep",
     name: "Amreli",
     region: "Saurashtra",
     coordinates: [71.2167, 21.6000],
@@ -354,6 +372,7 @@ export const districtsData = [
   },
   {
     id: "dahod",
+    tier: "deep",
     name: "Dahod",
     region: "Central Gujarat",
     coordinates: [74.2567, 22.8333],
@@ -373,6 +392,7 @@ export const districtsData = [
   },
   {
     id: "dang",
+    tier: "deep",
     name: "Dang",
     region: "South Gujarat",
     coordinates: [73.8052, 20.7628],
@@ -392,6 +412,7 @@ export const districtsData = [
   },
   {
     id: "navsari",
+    tier: "deep",
     name: "Navsari",
     region: "South Gujarat",
     coordinates: [72.9520, 20.9467],
@@ -411,6 +432,7 @@ export const districtsData = [
   },
   {
     id: "chhota-udepur",
+    tier: "deep",
     name: "Chhota Udepur",
     region: "Central Gujarat",
     coordinates: [74.0118, 22.3047],
@@ -430,6 +452,7 @@ export const districtsData = [
   },
   {
     id: "botad",
+    tier: "deep",
     name: "Botad",
     region: "Saurashtra",
     coordinates: [71.6661, 22.1693],
@@ -449,6 +472,7 @@ export const districtsData = [
   },
   {
     id: "surendranagar",
+    tier: "deep",
     name: "Surendranagar",
     region: "Saurashtra",
     coordinates: [71.6394, 22.7275],
@@ -468,6 +492,7 @@ export const districtsData = [
   },
   {
     id: "devbhoomi-dwarka",
+    tier: "deep",
     name: "Devbhoomi Dwarka",
     region: "Saurashtra",
     coordinates: [69.2245, 22.2530],
@@ -487,6 +512,7 @@ export const districtsData = [
   },
   {
     id: "gir-somnath",
+    tier: "deep",
     name: "Gir Somnath",
     region: "Saurashtra",
     coordinates: [70.4357, 20.8938],
@@ -506,6 +532,7 @@ export const districtsData = [
   },
   {
     id: "tapi",
+    tier: "deep",
     name: "Tapi",
     region: "South Gujarat",
     coordinates: [73.5705, 21.1444],
@@ -525,6 +552,7 @@ export const districtsData = [
   },
   {
     id: "kheda",
+    tier: "deep",
     name: "Kheda",
     region: "Central Gujarat",
     coordinates: [72.6841, 22.7535],
@@ -543,12 +571,13 @@ export const districtsData = [
     ]
   },
   {
-    id: "aravalli", name: "Aravalli", region: "North Gujarat", coordinates: [73.3082, 23.4243], tagline: "The Rocky Deficit",
+    id: "aravalli", tier: "simple", name: "Aravalli", region: "North Gujarat", coordinates: [73.3082, 23.4243], tagline: "The Rocky Deficit",
     pillars: ["Agriculture", "Water", "Economics"], stats: [{ label: "Groundwater Level", value: "Critical Depletion", status: "danger" }, { label: "Industrial Growth", value: "Stagnant", status: "critical" }, { label: "Youth Out-Migration", value: "High", status: "warning" }],
     summary: "Aravalli suffers from the classic North Gujarat curse: rapidly depleting aquifers in rocky terrain. Agriculture remains rain-fed and highly volatile. With almost zero large-scale industrialization in the district, youth are forced to migrate to Ahmedabad and Gandhinagar.", keyCrises: [{ year: "Ongoing", title: "Agrarian Failure", detail: "Successive monsoon failures combined with deep rock-aquifer depletion ruined small landholders. (Source: Hydrology Dept)"}]
   },
   {
     id: "mahisagar",
+    tier: "deep",
     name: "Mahisagar",
     region: "Central Gujarat",
     coordinates: [73.5350, 23.0906],
@@ -567,12 +596,13 @@ export const districtsData = [
     ]
   },
   {
-    id: "patan", name: "Patan", region: "North Gujarat", coordinates: [72.1264, 23.8427], tagline: "The Saline Frontier",
+    id: "patan", tier: "simple", name: "Patan", region: "North Gujarat", coordinates: [72.1264, 23.8427], tagline: "The Saline Frontier",
     pillars: ["Water", "Agriculture", "Environment"], stats: [{ label: "Fluoride Levels", value: "Beyond Limits", status: "critical" }, { label: "Farm Salinity", value: "Expanding", status: "danger" }, { label: "Renewable Paradox", value: "Solar land conflicts", status: "warning" }],
     summary: "Patan sits on the edge of the Rann, fighting a daily battle against soil salinity and toxic groundwater. Fluoride contamination has crippled the health of entire villages. Furthermore, tracts of Patan's wasteland are being acquired for mega-solar parks, robbing local pastoralists of grazing lands.", keyCrises: [{ year: "2024", title: "Solar Park Grazing Conflict", detail: "Pastoralist communities protested the enclosure of traditional 'gauchar' lands for solar farms. (Source: Maldhari Assoc)"}]
   },
   {
     id: "panchmahal",
+    tier: "deep",
     name: "Panchmahal",
     region: "Central Gujarat",
     coordinates: [73.6190, 22.7547],
@@ -591,7 +621,7 @@ export const districtsData = [
     ]
   },
   {
-    id: "sabarkantha", name: "Sabarkantha", region: "North Gujarat", coordinates: [73.0116, 23.6174], tagline: "The Dairy Mirage",
+    id: "sabarkantha", tier: "simple", name: "Sabarkantha", region: "North Gujarat", coordinates: [73.0116, 23.6174], tagline: "The Dairy Mirage",
     pillars: ["Water", "Agriculture", "Economics"], stats: [{ label: "Dairy Monopoly Pressure", value: "Intense", status: "warning" }, { label: "Groundwater Plunge", value: "1,000+ feet", status: "critical" }, { label: "BT Cotton Collapse", value: "Recurrent", status: "danger" }],
     summary: "Sabarkantha leans heavily on its dairy cooperative structures to mask underlying agrarian decay. The absolute collapse of the water table (pumped from 1000+ feet) means agriculture, particularly BT cotton, is becoming economically unviable, forcing farmers into brutal water-subsidy trade-offs.", keyCrises: [{ year: "Ongoing", title: "Deep Aquifer Extinction", detail: "The reliance on un-replenishable fossil water guarantees long-term geographical unviability. (Source: Water Mgmt Inst)"}]
   }
@@ -612,6 +642,7 @@ const placeholderData = placeholderIds.map(id => {
   const name = id.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   return {
     id: id,
+    tier: "minimal",
     name: name,
     region: "Gujarat Region",
     coordinates: [72.0, 23.0], // Generic center

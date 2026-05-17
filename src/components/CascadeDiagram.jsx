@@ -10,7 +10,7 @@ const nodes = [
     icon: AlertTriangle,
     tier: 0,
     col: 1,
-    color: '#D32F2F',
+    color: '#B84A3E',
     detail: 'Escalation in the Persian Gulf region threatens Strait of Hormuz — 11-day partial disruption. Global LNG and crude prices spike 30-40%.',
     sources: ['Business Today — "West Asia Tensions Threaten LNG Flows" (Mar 2026)', 'The Print — "A War in the Gulf, a Crisis in Gujarat\'s Morbi" (Mar 2026)'],
   },
@@ -428,7 +428,7 @@ export function CascadeDiagram() {
       {/* Legend */}
       <div className="flex flex-wrap items-center justify-center gap-4 text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
         {[
-          { color: '#D32F2F', label: 'Trigger Event' },
+          { color: '#B84A3E', label: 'Trigger Event' },
           { color: '#F59E0B', label: 'Energy Shock' },
           { color: '#7C3AED', label: 'Trade & Labor' },
           { color: '#059669', label: 'Fiscal Impact' },

@@ -107,7 +107,7 @@ export default function Infrastructure() {
               { label: 'FY24', value: 178 },
             ]}
             unit=" MMT"
-            accentColor="#D32F2F"
+            accentColor="#B84A3E"
             title="Mundra Port Cargo Volume Growth"
             caption="Source: APSEZ Annual Reports, Marine Insight"
             height={280}
@@ -254,7 +254,7 @@ export default function Infrastructure() {
 
         <Treemap
           data={[
-            { name: 'Mundra', value: 200, color: '#D32F2F' },
+            { name: 'Mundra', value: 200, color: '#B84A3E' },
             { name: 'Kandla (DPA)', value: 160, color: '#2563EB' },
             { name: 'Hazira', value: 52, color: '#16A34A' },
             { name: 'Dahej', value: 45, color: '#CA8A04' },

@@ -172,7 +172,7 @@ export default function Energy() {
             ]}
             valueSuffix=" MW"
             accentColor="#16A34A"
-            highlightColor="#D32F2F"
+            highlightColor="#B84A3E"
             title="Capacity vs Reality: Energy Mix"
             caption="Installed RE capacity dramatically overstates actual generation contribution"
             sortDescending={true}

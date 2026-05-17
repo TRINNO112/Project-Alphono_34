@@ -91,7 +91,7 @@ export default function Water() {
             ]}
             title="Narmada Water Allocation by State (%)"
             caption="Gujarat receives only 9 MAF out of 28 MAF total allocation"
-            colors={['#0891B2', '#D32F2F', '#8B5CF6', '#F59E0B']}
+            colors={['#0891B2', '#B84A3E', '#8B5CF6', '#F59E0B']}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -156,7 +156,7 @@ export default function Water() {
             ]}
             title="North Gujarat Aquifer Balance (km³/year)"
             caption="Only 0.34 km³ buffer between recharge and withdrawal — razor-thin margin"
-            colors={['#16A34A', '#D32F2F', '#CA8A04']}
+            colors={['#16A34A', '#B84A3E', '#CA8A04']}
           />
 
           {/* Chart: District-Level Groundwater Extraction */}

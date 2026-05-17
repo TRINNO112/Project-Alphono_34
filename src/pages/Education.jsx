@@ -86,7 +86,7 @@ export default function Education() {
             ]}
             valueSuffix="%"
             accentColor="#8B5CF6"
-            highlightColor="#D32F2F"
+            highlightColor="#B84A3E"
             thresholdLine={{ value: 28.4, label: 'National Avg', color: '#6B7280' }}
             sortDescending={true}
           />
@@ -104,7 +104,7 @@ export default function Education() {
               { name: 'Bihar', value: 1.5 },
               { name: 'Karnataka', value: 0.9 },
             ]}
-            colors={['#D32F2F', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280']}
+            colors={['#B84A3E', '#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280']}
             height={280}
           />
 
@@ -201,7 +201,7 @@ export default function Education() {
               { name: 'Maharashtra', value: 0.9 },
               { name: 'Gujarat', value: 0.8 },
             ]}
-            colors={['#16A34A', '#2563EB', '#2563EB', '#2563EB', '#6B7280', '#9CA3AF', '#D32F2F']}
+            colors={['#16A34A', '#2563EB', '#2563EB', '#2563EB', '#6B7280', '#9CA3AF', '#B84A3E']}
             height={280}
           />
 
@@ -319,7 +319,7 @@ export default function Education() {
             { name: 'Gujarat', value: 2.8 },
             { name: 'Maharashtra', value: 2.7 },
           ]}
-          colors={['#16A34A', '#2563EB', '#2563EB', '#2563EB', '#6B7280', '#D32F2F', '#9CA3AF']}
+          colors={['#16A34A', '#2563EB', '#2563EB', '#2563EB', '#6B7280', '#B84A3E', '#9CA3AF']}
           height={280}
         />
 
@@ -331,7 +331,7 @@ export default function Education() {
             { name: 'Education', value: 15.1, color: '#2563EB' },
             { name: 'Roads & Infra', value: 12.3, color: '#F59E0B' },
             { name: 'Rural Dev', value: 6.8, color: '#16A34A' },
-            { name: 'Health', value: 5.6, color: '#D32F2F' },
+            { name: 'Health', value: 5.6, color: '#B84A3E' },
             { name: 'Other', value: 60.2, color: '#6B7280' },
           ]}
           unit="%"
