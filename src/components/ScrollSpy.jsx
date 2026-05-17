@@ -128,7 +128,7 @@ export default function ScrollSpy({ sections }) {
                   <motion.span
                     key={s.id}
                     animate={{
-                      backgroundColor: s.id === activeId ? '#D32F2F' : 'rgba(156,163,175,0.45)',
+                      backgroundColor: s.id === activeId ? '#B84A3E' : 'rgba(156,163,175,0.45)',
                       scale: s.id === activeId ? 1.4 : 1,
                     }}
                     transition={{ duration: 0.25 }}
@@ -205,7 +205,7 @@ export default function ScrollSpy({ sections }) {
                           >
                             <motion.span
                               animate={{
-                                backgroundColor: isActive ? '#D32F2F' : 'rgba(156,163,175,0.45)',
+                                backgroundColor: isActive ? '#B84A3E' : 'rgba(156,163,175,0.45)',
                                 scale: isActive ? 1.5 : 1,
                               }}
                               transition={{ duration: 0.25 }}

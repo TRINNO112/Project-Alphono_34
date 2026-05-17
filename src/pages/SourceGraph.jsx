@@ -7,7 +7,7 @@ import { allSources, pillarMeta, districtList } from '../data/sourcesData'
 
 const TYPE_COLOR = {
   Govt: '#2563eb',
-  Media: '#D32F2F',
+  Media: '#B84A3E',
   Academic: '#7c3aed',
   Industry: '#ca8a04',
   Legal: '#059669',

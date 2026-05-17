@@ -157,7 +157,7 @@ const PAGE_CSS = `
     background: linear-gradient(105deg, transparent calc(50% - 1px), #1a1a1a calc(50% - 1px), #1a1a1a calc(50% + 1px), transparent calc(50% + 1px));
   }
   .progress-bar {
-    background: linear-gradient(to right, #d32f2f var(--p), rgba(0,0,0,0.1) var(--p));
+    background: linear-gradient(to right, #B84A3E var(--p), rgba(0,0,0,0.1) var(--p));
   }
 `
 

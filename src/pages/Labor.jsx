@@ -260,7 +260,7 @@ export default function Labor() {
           ]}
           valueSuffix=""
           accentColor="#0891B2"
-          highlightColor="#D32F2F"
+          highlightColor="#B84A3E"
           title="Average Daily Wages for Unskilled Factory Workers (Rs)"
           caption="Gujarat's migrant wages are closer to Bihar's local rates than to Kerala's — as source states industrialize, the wage gap narrows and return migration becomes permanent."
           sortDescending={true}

@@ -337,8 +337,8 @@ export default function Home() {
               <Radar
                 name="Dependency %"
                 dataKey="dependency"
-                stroke="#D32F2F"
-                fill="#D32F2F"
+                stroke="#B84A3E"
+                fill="#B84A3E"
                 fillOpacity={0.2}
                 strokeWidth={2}
               />

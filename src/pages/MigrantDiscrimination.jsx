@@ -388,7 +388,7 @@ export default function MigrantDiscrimination() {
             caption="Gujarat's wages are closer to Bihar and UP than to Kerala or Tamil Nadu (RBI data, 2023-24)"
             valueSuffix="₹"
             accentColor="#7C3AED"
-            highlightColor="#D32F2F"
+            highlightColor="#B84A3E"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">

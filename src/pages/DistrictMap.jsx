@@ -23,6 +23,9 @@ const resolveDistrictId = (geoName) => {
 
 export default function DistrictMap() {
   const districts = getDistricts()
+  const deepCount = districts.filter(d => d.tier === 'deep').length
+  const simpleCount = districts.filter(d => d.tier === 'simple').length
+  const totalCount = districts.length
   const [selectedNode, setSelectedNode] = useState(null)
   const [hoveredNode, setHoveredNode] = useState(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -71,12 +74,16 @@ export default function DistrictMap() {
             <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 border-b border-gray-100 pb-2">Index Scope</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-3xl font-serif font-black text-gray-900">33</p>
+                <p className="text-3xl font-serif font-black text-gray-900">{totalCount}</p>
                 <p className="text-sm font-medium text-gray-500 tracking-wide uppercase">Total Sectors</p>
               </div>
               <div>
-                <p className="text-3xl font-serif font-black text-crimson">33</p>
-                <p className="text-sm font-medium text-gray-500 tracking-wide uppercase">Deep Audits Active</p>
+                <p className="text-3xl font-serif font-black text-crimson">{deepCount}</p>
+                <p className="text-sm font-medium text-gray-500 tracking-wide uppercase">Deep Audits</p>
+              </div>
+              <div>
+                <p className="text-3xl font-serif font-black text-red-400">{simpleCount}</p>
+                <p className="text-sm font-medium text-gray-500 tracking-wide uppercase">Summary Audits</p>
               </div>
             </div>
           </div>
@@ -114,8 +121,17 @@ export default function DistrictMap() {
                 geographies.map((geo) => {
                   const mappedId = resolveDistrictId(geo.properties.district);
                   const localDist = districts.find(d => d.id === mappedId);
-                  const hasData = localDist?.pillars?.length > 0;
+                  const tier = localDist?.tier || "minimal";
                   const isSelected = selectedNode?.id === mappedId;
+
+                  const baseFill = isSelected
+                    ? "#991B1B"
+                    : tier === "deep" ? "#DC2626"
+                    : tier === "simple" ? "#FCA5A5"
+                    : "#E5E7EB";
+                  const hoverFill = tier === "deep" ? "#B91C1C"
+                    : tier === "simple" ? "#F87171"
+                    : "#D1D5DB";
 
                   return (
                   <Geography
@@ -125,22 +141,22 @@ export default function DistrictMap() {
                     onMouseEnter={() => setHoveredNode(localDist || { id: mappedId, name: geo.properties.district })}
                     onMouseLeave={() => setHoveredNode(null)}
                     style={{
-                      default: { 
-                        fill: hasData ? (isSelected ? "#DC2626" : "#FCA5A5") : "#E5E7EB", 
+                      default: {
+                        fill: baseFill,
                         outline: "none",
-                        stroke: "#111827", // Dark boundaries instead of white
+                        stroke: "#111827",
                         strokeWidth: 1,
                         transition: "all 300ms ease-in-out"
                       },
-                      hover: { 
-                        fill: hasData ? "#EF4444" : "#D1D5DB", 
+                      hover: {
+                        fill: hoverFill,
                         outline: "none",
                         stroke: "#111827",
                         strokeWidth: 1.5,
                         cursor: "pointer"
                       },
-                      pressed: { 
-                        fill: "#991B1B", 
+                      pressed: {
+                        fill: "#7F1D1D",
                         outline: "none",
                         stroke: "#111827",
                       },
@@ -168,7 +184,9 @@ export default function DistrictMap() {
                 <div className="bg-gray-900/90 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-xl border border-gray-700">
                   <p className="font-serif font-bold">{hoveredNode.name}</p>
                   <p className="text-[10px] uppercase tracking-widest text-gray-300">
-                    {hoveredNode.pillars?.length > 0 ? 'Click to inspect data' : 'No data available'}
+                    {hoveredNode.tier === 'deep' ? 'Deep audit · Click to inspect'
+                      : hoveredNode.tier === 'simple' ? 'Summary audit · Click to inspect'
+                      : 'No audit available'}
                   </p>
                 </div>
               </motion.div>
@@ -243,16 +261,20 @@ export default function DistrictMap() {
             <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 border-b border-gray-100 pb-2">Map Legend</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-md bg-[#DC2626] border border-gray-300"></div>
+                <div className="w-6 h-6 rounded-md bg-[#991B1B] border border-gray-300"></div>
                 <span className="text-sm font-semibold text-gray-700">Active Selection</span>
               </div>
               <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-md bg-[#DC2626] border border-gray-300"></div>
+                <span className="text-sm font-semibold text-gray-700">Deep Audit</span>
+              </div>
+              <div className="flex items-center gap-3">
                 <div className="w-6 h-6 rounded-md bg-[#FCA5A5] border border-gray-300"></div>
-                <span className="text-sm font-semibold text-gray-700">Deep Audit Data</span>
+                <span className="text-sm font-semibold text-gray-700">Summary Audit</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-6 h-6 rounded-md bg-[#E5E7EB] border border-gray-300"></div>
-                <span className="text-sm font-semibold text-gray-700">Awaiting Sync</span>
+                <span className="text-sm font-semibold text-gray-700">No Audit Yet</span>
               </div>
             </div>
           </div>
