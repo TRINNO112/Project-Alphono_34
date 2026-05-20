@@ -193,24 +193,17 @@ export default function DistrictMap() {
             )}
           </AnimatePresence>
 
-          {/* Overlay popup (Click) */}
+          {/* Overlay popup (Click) — mobile: bottom sheet pinned to viewport. md+: floating center over the map. */}
           <AnimatePresence>
             {selectedNode && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 5, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="fixed md:absolute shadow-2xl z-50 pointer-events-auto"
-                style={{
-                  left: window.innerWidth < 768 ? '50%' : '50%',
-                  top: window.innerWidth < 768 ? 'clamp(100px, 30%, 300px)' : '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '90%',
-                  maxWidth: '320px'
-                }}
+                className="fixed left-3 right-3 bottom-4 mx-auto w-auto max-w-[calc(100vw-1.5rem)] md:left-1/2 md:right-auto md:bottom-auto md:top-1/2 md:w-[90%] md:max-w-[320px] md:-translate-x-1/2 md:-translate-y-1/2 shadow-2xl z-50 pointer-events-auto"
               >
-                <div className="bg-white/95/95 backdrop-blur-md border border-gray-200 p-5 rounded-2xl relative shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+                <div className="bg-white/95 backdrop-blur-md border border-gray-200 p-5 rounded-2xl relative shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
                   <button 
                     onClick={() => setSelectedNode(null)}
                     className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition"

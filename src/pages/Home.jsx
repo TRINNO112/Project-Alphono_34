@@ -1,13 +1,34 @@
-import { useState, Fragment, useMemo, lazy, Suspense } from 'react'
+import { useState, Fragment, useMemo, useEffect, useRef, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin, Wheat, Cpu, FlaskConical, Cable, Landmark } from 'lucide-react'
-import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip } from 'recharts'
 import AnimatedCounter from '../components/AnimatedCounter'
 
+const DependencyRadar = lazy(() => import('../components/DependencyRadar'))
 const SupplyChainMap = lazy(() => import('../components/SupplyChainMap').then(m => ({ default: m.SupplyChainMap })))
 const CascadeDiagram = lazy(() => import('../components/CascadeDiagram').then(m => ({ default: m.CascadeDiagram })))
 const HeavyChunkFallback = () => <div className="h-96 w-full animate-pulse bg-parchment-100 rounded-lg" aria-label="Loading visualization" />
+
+function LazyOnVisible({ children, fallback, rootMargin = '200px' }) {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    if (visible || !ref.current) return
+    const node = ref.current
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          io.disconnect()
+        }
+      },
+      { rootMargin }
+    )
+    io.observe(node)
+    return () => io.disconnect()
+  }, [visible, rootMargin])
+  return <div ref={ref}>{visible ? children : fallback}</div>
+}
 
 
 export default function Home() {
@@ -322,41 +343,13 @@ export default function Home() {
           <h2 className="text-3xl font-serif font-bold text-gray-900">Dependency Index</h2>
         </div>
         <div className="bg-white/60 border border-gray-200 rounded-2xl p-8 backdrop-blur-sm">
-          <ResponsiveContainer width="100%" height={400}>
-            <RadarChart data={dependencyData} cx="50%" cy="50%" outerRadius="75%">
-              <PolarGrid stroke="#d1d5db" />
-              <PolarAngleAxis
-                dataKey="pillar"
-                tick={{ fill: '#4B5563', fontSize: 13, fontFamily: 'Inter' }}
-              />
-              <PolarRadiusAxis
-                angle={90}
-                domain={[0, 100]}
-                tick={{ fill: '#9CA3AF', fontSize: 11 }}
-              />
-              <Radar
-                name="Dependency %"
-                dataKey="dependency"
-                stroke="#B84A3E"
-                fill="#B84A3E"
-                fillOpacity={0.2}
-                strokeWidth={2}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: '#fff',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '12px',
-                  fontFamily: 'Inter',
-                  fontSize: '13px',
-                  color: '#111827',
-                }}
-                labelStyle={{ color: '#111827', fontWeight: 700, marginBottom: 4 }}
-                itemStyle={{ color: '#1f2937' }}
-                formatter={(value) => [`${value}%`, 'External Dependency']}
-              />
-            </RadarChart>
-          </ResponsiveContainer>
+          <LazyOnVisible
+            fallback={<div style={{ height: 400 }} className="w-full animate-pulse bg-parchment-100 rounded-lg" aria-label="Loading chart" />}
+          >
+            <Suspense fallback={<div style={{ height: 400 }} className="w-full animate-pulse bg-parchment-100 rounded-lg" aria-label="Loading chart" />}>
+              <DependencyRadar data={dependencyData} />
+            </Suspense>
+          </LazyOnVisible>
           <p className="text-center text-sm text-gray-500 mt-4 italic font-serif">
             Figure 1: Estimated external dependency index across six structural pillars (higher = more dependent on external inputs)
           </p>
