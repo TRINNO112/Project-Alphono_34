@@ -1385,3 +1385,21 @@
   .reel-cta-row { gap: 12px; }
 }
 
+/* Source Graph Upgrades */
+@keyframes sg-flow-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.sg-flow-line {
+  stroke-dasharray: 6, 12;
+  animation: sg-flow-dash 2.5s linear infinite;
+}
+
+.sg-flow-line-active {
+  stroke-dasharray: 4, 8;
+  animation: sg-flow-dash 1.2s linear infinite;
+}
+
+

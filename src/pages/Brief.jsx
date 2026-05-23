@@ -137,7 +137,7 @@ export default function Brief() {
     <div ref={rootRef} className="bf-root" onMouseMove={handleMove}>
       <SEO
         title="Case Brief · Project Alphono 34"
-        description="A cinematic prosecution of Gujarat's structural dependencies. 14 pillars. 436 citations. One case file."
+        description="A cinematic prosecution of Gujarat's structural dependencies. 14 pillars. 473 citations. One case file."
         path="/brief"
       />
 
@@ -344,7 +344,7 @@ export default function Brief() {
               </Link>
             </motion.div>
             <div className="bf-cta-meta">
-              14 pillars · 436 citations · 25 districts · CASE NO. 34/GJ/2026
+              14 pillars · 473 citations · 28 districts · CASE NO. 34/GJ/2026
             </div>
           </div>
         </Reveal>

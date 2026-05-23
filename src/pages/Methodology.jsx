@@ -25,7 +25,7 @@ const verificationSteps = [
 ]
 
 const limitations = [
-  "Deep audits — district-specific case-files anchoring three or more documented crises with named populations, source citations and economic data — are available for 30 of Gujarat's 33 districts. The remaining 3 districts (Aravalli, Patan, Sabarkantha in North Gujarat) carry summary audits drawing on state-aggregate indicators pending further field validation.",
+  "Deep audits — district-specific case-files anchoring three or more documented crises with named populations, source citations and economic data — are now available for all 33 of Gujarat's districts. The last three remaining summary-tier districts (Aravalli, Patan, Sabarkantha in North Gujarat) were upgraded to deep-tier in May 2026 with five sourced crises each, full metrics rows and multi-year time-series.",
   "Corporate financial data relies on publicly filed documents; internal operational data (e.g., Adani port efficiency metrics) is not independently verifiable.",
   "Migrant worker statistics are inherently undercounted — no comprehensive interstate migration registry exists in India. Figures represent best available estimates.",
   "Environmental monitoring data from GPCB has known reliability issues flagged by CAG — we note this where applicable but cannot independently re-test.",
@@ -82,7 +82,7 @@ export default function Methodology() {
           <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">Data Collection Protocol</h2>
 
           <p className="text-gray-600 leading-relaxed mb-8">
-            A total of <strong className="text-gray-900">436 sources</strong> across 14 pillars, tagged to 25 districts, plus the Index Mercantilis trade-route module were collected, verified, and cited. Sources are classified into five categories:
+            A total of <strong className="text-gray-900">473 sources</strong> across 14 pillars, tagged to 28 districts, plus the Index Mercantilis trade-route module were collected, verified, and cited. Sources are classified into five categories:
           </p>
 
           {/* Source breakdown bars */}

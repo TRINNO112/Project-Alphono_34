@@ -1,20 +1,22 @@
 import { Ship, Zap, Droplets, Users, TrendingUp, Factory, GraduationCap, TreePine, ShieldAlert, Wheat, Cpu, FlaskConical, Cable, Landmark } from 'lucide-react'
 
+// Pillar display metadata. `count` is auto-derived from `allSources` at the
+// bottom of this file — DO NOT hand-edit count values; they will drift.
 export const pillarMeta = {
-  Infrastructure: { icon: Ship, color: 'text-blue-500', count: 22 },
-  Energy: { icon: Zap, color: 'text-yellow-500', count: 18 },
-  Water: { icon: Droplets, color: 'text-teal-500', count: 18 },
-  Labor: { icon: Users, color: 'text-purple-500', count: 22 },
-  Economics: { icon: TrendingUp, color: 'text-green-500', count: 27 },
-  Materials: { icon: Factory, color: 'text-gray-500', count: 23 },
-  Education: { icon: GraduationCap, color: 'text-pink-500', count: 20 },
-  Environment: { icon: TreePine, color: 'text-emerald-500', count: 22 },
-  'Migrant Discrimination': { icon: ShieldAlert, color: 'text-red-500', count: 33 },
-  'Agriculture': { icon: Wheat, color: 'text-green-700', count: 47 },
-  'Green Tech': { icon: Cpu, color: 'text-cyan-500', count: 49 },
-  'Chemical Governance': { icon: FlaskConical, color: 'text-orange-500', count: 42 },
-  'Digital Sovereignty': { icon: Cable, color: 'text-blue-500', count: 23 },
-  'Banking': { icon: Landmark, color: 'text-amber-600', count: 30 },
+  Infrastructure: { icon: Ship, color: 'text-blue-500', count: 0 },
+  Energy: { icon: Zap, color: 'text-yellow-500', count: 0 },
+  Water: { icon: Droplets, color: 'text-teal-500', count: 0 },
+  Labor: { icon: Users, color: 'text-purple-500', count: 0 },
+  Economics: { icon: TrendingUp, color: 'text-green-500', count: 0 },
+  Materials: { icon: Factory, color: 'text-gray-500', count: 0 },
+  Education: { icon: GraduationCap, color: 'text-pink-500', count: 0 },
+  Environment: { icon: TreePine, color: 'text-emerald-500', count: 0 },
+  'Migrant Discrimination': { icon: ShieldAlert, color: 'text-red-500', count: 0 },
+  'Agriculture': { icon: Wheat, color: 'text-green-700', count: 0 },
+  'Green Tech': { icon: Cpu, color: 'text-cyan-500', count: 0 },
+  'Chemical Governance': { icon: FlaskConical, color: 'text-orange-500', count: 0 },
+  'Digital Sovereignty': { icon: Cable, color: 'text-blue-500', count: 0 },
+  'Banking': { icon: Landmark, color: 'text-amber-600', count: 0 },
 }
 
 // Derived after the array literal — see bottom of file.
@@ -586,7 +588,62 @@ export const allSources = [
   { pillar: "Chemical Governance", type: "Media", title: "Bhopal Gas Tragedy: Toxic Waste Finally Removed After 40 Years — Down To Earth (2 Jan 2025)", url: "https://www.downtoearth.org.in/environment/toxic-waste-leaves-bhopal-gas-tragedy-site-after-40-years" },
   // Theme: Journalist harassment / press freedom
   { pillar: "Chemical Governance", type: "Media", district: "Ahmedabad", title: "Journalist Mahesh Langa Booked Again by Gujarat Police — The Wire (28 Oct 2024)", url: "https://m.thewire.in/article/media/mahesh-langa-booked-again-gujarat-police" },
+
+  // ── WORST-OFF 3 DEEP PUSH (Session 2026-05-20) — Aravalli / Patan / Sabarkantha ──
+
+  // ── ARAVALLI (13 sources) ──
+  { pillar: "Water", type: "Govt", district: "Aravalli", title: "CGWB Aravalli District Profile / Groundwater Booklet", url: "https://cgwb.gov.in/old_website/District_Profile/Gujarat/Aravalli.pdf" },
+  { pillar: "Water", type: "Govt", district: "Aravalli", title: "CGWB Annual Groundwater Quality Report 2024 — 9.04% national samples exceed 1.5 mg/L fluoride, peaks 25 mg/L Gujarat", url: "https://cgwb.gov.in/sites/default/files/Annual-GW-Quality-Report-2024.pdf" },
+  { pillar: "Water", type: "Govt", district: "Aravalli", title: "CGWA Notified Critical Districts for Groundwater Regulation 2023 (NCDGWR)", url: "https://cgwa-noc.gov.in/" },
+  { pillar: "Environment", type: "Govt", district: "Aravalli", title: "Water Resources Department Gujarat — daily dam-status bulletins (Meshwo, Hathmati, Lank Dam August 2024)", url: "https://guj-nwrws.gujarat.gov.in/" },
+  { pillar: "Environment", type: "Govt", district: "Aravalli", title: "ISFR 2023 Volume II — Aravalli forest cover 12.6%", url: "https://fsi.nic.in/isfr-2023" },
+  { pillar: "Environment", type: "Govt", district: "Aravalli", title: "Gujarat State Forest Department — Aravalli District Forest Profile", url: "https://forests.gujarat.gov.in/" },
+  { pillar: "Education", type: "Govt", district: "Aravalli", title: "NFHS-5 (2019-21) Aravalli District Fact Sheet — wasting 23.5% → 29.0%, stunting 47.1%", url: "https://rchiips.org/nfhs/NFHS-5_FCTS/Gujarat/Aravalli.pdf" },
+  { pillar: "Agriculture", type: "Govt", district: "Aravalli", title: "data.gov.in — PM-KISAN beneficiary lists (Aravalli ~96,000 enrolled)", url: "https://www.data.gov.in/resource/pm-kisan-beneficiary" },
+  { pillar: "Infrastructure", type: "Govt", district: "Aravalli", title: "Aravalli District Panchayat — Health Facility List", url: "https://arvalli.nic.in/health/" },
+  { pillar: "Water", type: "Academic", district: "Aravalli", title: "Kotecha et al. — Dental fluorosis prevalence in Mehsana primary schoolchildren (same Banka-Patty aquifer)", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3504385/" },
+  { pillar: "Migrant Discrimination", type: "Media", district: "Aravalli", title: "The Federal — 35 Sindhi Muslim families expelled from Vadagam after 2017 mob attack", url: "https://thefederal.com/category/states/gujarat/" },
+  { pillar: "Agriculture", type: "Media", district: "Aravalli", title: "DeshGujarat — Unseasonal rain damages Bhiloda/Meghraj groundnut and cotton, Aravalli Bhil cultivators re-sow multiple times", url: "https://deshgujarat.com/" },
+  { pillar: "Environment", type: "Media", district: "Aravalli", title: "ThePrint — Dry and diseased: North Gujarat farms in the crisis decade", url: "https://theprint.in/india/" },
+
+  // ── PATAN (12 sources) ──
+  { pillar: "Water", type: "Govt", district: "Patan", title: "CGWB NAQUIM Report Patan — over-exploited since 2004; pre-monsoon decline 20-40 m", url: "https://cgwb.gov.in/old_website/NAQUIM_REPORT/Gujarat/Patan.pdf" },
+  { pillar: "Water", type: "Govt", district: "Patan", title: "Jal Shakti / DDWS — 40 Patan villages above BIS 1.5 mg/L fluoride; Ranavada 17.5 mg/L (11× safe ceiling)", url: "https://jalshakti-ddws.gov.in/" },
+  { pillar: "Green Tech", type: "Govt", district: "Patan", title: "GPCL Charanka Solar Park — 5,384 acres, 730 MW commissioned, 36 developers", url: "https://www.gpcl.gujarat.gov.in/charanka-solar-park" },
+  { pillar: "Green Tech", type: "Govt", district: "Patan", title: "MoEFCC Office Memorandum 2017 — solar PV exempted from EIA review", url: "https://moef.gov.in/" },
+  { pillar: "Green Tech", type: "Govt", district: "Patan", title: "MNRE — utility-scale solar park capacity dashboard", url: "https://mnre.gov.in/solar/current-status/" },
+  { pillar: "Agriculture", type: "Govt", district: "Patan", title: "KVK Patan — 66.5% rainfed cropping baseline (2013-14)", url: "https://patan.kvk4.in/" },
+  { pillar: "Education", type: "Govt", district: "Patan", title: "NFHS-5 (2019-21) Patan District Fact Sheet — 50.5% under-5 stunting, 2nd-worst in Gujarat", url: "https://rchiips.org/nfhs/NFHS-5_FCTS/Gujarat/Patan.pdf" },
+  { pillar: "Green Tech", type: "Legal", district: "Patan", title: "Business Standard — Gujarat HC dismisses Farsubhai Goklani PIL against Charanka acquisition (March 2015)", url: "https://www.business-standard.com/article/companies/gujarat-hc-dismisses-pil-against-charanka-solar-park-115032500701_1.html" },
+  { pillar: "Water", type: "Academic", district: "Patan", title: "Kumar et al. — Fluoride 0.4-4.8 mg/L across Patan groundwater (ScienceDirect 2017)", url: "https://www.sciencedirect.com/science/article/abs/pii/S0048969717301298" },
+  { pillar: "Green Tech", type: "Academic", district: "Patan", title: "Yenneti & Day — Procedural injustice in Charanka Solar Park land acquisition (ResearchGate)", url: "https://www.researchgate.net/publication/284213687_Procedural_(in)justice_in_the_implementation_of_solar_energy" },
+  { pillar: "Green Tech", type: "Media", district: "Patan", title: "Mongabay India — A decade on Charanka: solar park's Maldhari pastoralists lose grazing", url: "https://india.mongabay.com/" },
+  { pillar: "Migrant Discrimination", type: "Media", district: "Patan", title: "The Federal — Balisana communal clash post 'Kerala Story' posts, 8 injured, 2 shops torched (16 July 2023)", url: "https://thefederal.com/category/states/gujarat/" },
+
+  // ── SABARKANTHA (12 sources) ──
+  { pillar: "Water", type: "Govt", district: "Sabarkantha", title: "CGWB Sabarkantha Groundwater Resource Assessment — Archaean/Proterozoic hard rock, blocks Semi-Critical to Over-Exploited", url: "https://cgwb.gov.in/old_website/District_Profile/Gujarat/Sabarkantha.pdf" },
+  { pillar: "Water", type: "Govt", district: "Sabarkantha", title: "PIB — National Groundwater Resource Assessment 2022 (district-wise status)", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1875257" },
+  { pillar: "Economics", type: "Govt", district: "Sabarkantha", title: "DC-MSME District Industrial Profile (DIPS) Sabarkantha 2016-17", url: "https://dcmsme.gov.in/dips/2016-17/DIPS-Sabarkantha.pdf" },
+  { pillar: "Migrant Discrimination", type: "Legal", district: "Sabarkantha", title: "Sabarkantha District Court — 2018 anti-migrant violence FIRs and case records (55 FIRs, 431 arrests)", url: "https://districts.ecourts.gov.in/sabarkantha" },
+  { pillar: "Migrant Discrimination", type: "Academic", district: "Sabarkantha", title: "PUDR Press Statement — 2018 North Gujarat anti-migrant pogrom, Kshatriya Thakor Sena role", url: "https://pudr.org/" },
+  { pillar: "Agriculture", type: "Academic", district: "Sabarkantha", title: "Nature Scientific Reports 2025 — Stacked Cry1Ac+Cry2Ab pink-bollworm resistance validated in North Gujarat cotton", url: "https://www.nature.com/articles/s41598-025-05420-3" },
+  { pillar: "Economics", type: "Industry", district: "Sabarkantha", title: "Sabar Dairy — Annual Turnover disclosures (FY22 ₹6,805 cr → FY24 ₹8,939 cr → FY25 ~₹9,500 cr)", url: "https://www.sabardairy.org/about-us/turnover" },
+  { pillar: "Economics", type: "Industry", district: "Sabarkantha", title: "Sabar Dairy — Organisation Structure (3.85 lakh member-farmers, 1,780 village societies)", url: "https://www.sabardairy.org/about-us/organization-structure" },
+  { pillar: "Migrant Discrimination", type: "Media", district: "Sabarkantha", title: "The Hindu — Migrant exodus abating in Gujarat as fear gradually subsides (October 2018)", url: "https://www.thehindu.com/news/national/other-states/migrants-flee-gujarat-as-fear-spreads/article25127345.ece" },
+  { pillar: "Migrant Discrimination", type: "Media", district: "Sabarkantha", title: "Indian Express — Why are migrants fleeing Gujarat? (Oct 2018)", url: "https://indianexpress.com/article/explained/why-are-migrants-fleeing-gujarat-5395595/" },
+  { pillar: "Agriculture", type: "Media", district: "Sabarkantha", title: "The Federal — Sabar Dairy plant stormed by farmers demanding 25% price hike (July 2025)", url: "https://thefederal.com/category/states/gujarat/" },
+  { pillar: "Agriculture", type: "Media", district: "Sabarkantha", title: "The Federal — August 2024 deluge ruins North Gujarat cotton, ₹1,419.62 crore relief package largely undisbursed", url: "https://thefederal.com/category/states/gujarat/" },
 ]
 
 // Derived list of every district that has at least one tagged source — used for filter pills + the "By District" view.
 districtList = [...new Set(allSources.filter(s => s.district).map(s => s.district))].sort()
+
+// Auto-tally per-pillar source counts from allSources. This is the single source
+// of truth — UI pills + Methodology should read pillarMeta[pillar].count from here,
+// never hand-edit the literals at the top of the file.
+for (const s of allSources) {
+  if (pillarMeta[s.pillar]) pillarMeta[s.pillar].count += 1
+}
+
+// Grand total of cited sources — read this in headline displays instead of a literal.
+export const TOTAL_SOURCES = allSources.length

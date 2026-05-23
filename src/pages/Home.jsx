@@ -52,7 +52,7 @@ export default function Home() {
   const romanNumerals = useMemo(() => ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV'], [])
 
   const headlines = useMemo(() => [
-    { value: 436, suffix: '', prefix: '', label: "Cited Sources" },
+    { value: 473, suffix: '', prefix: '', label: "Cited Sources" },
     { value: 14, suffix: '', prefix: '', label: "Pillars of Analysis" },
     { value: 40, suffix: '%', prefix: '', label: "India's Cargo via Gujarat" },
     { value: 40, suffix: 'B+', prefix: '$', label: "Gujarat NRI Deposits" },
