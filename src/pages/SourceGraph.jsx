@@ -223,8 +223,12 @@ export default function SourceGraph() {
         const targetNode = nodes.find(n => n.id === targetId)
         return targetNode ? targetNode.color : '#475569'
       })
-      .style('stroke-opacity', l => l.type === 'center-link' ? 0.35 : 0.15)
-      .style('stroke-width', l => l.type === 'center-link' ? 2 : 1)
+      .style('stroke-opacity', l => {
+        return l.type === 'center-link' ? 0.35 : 0.15;
+      })
+      .style('stroke-width', l => {
+        return l.type === 'center-link' ? 2 : 1;
+      })
 
     // Flowing pulse overlay paths
     const flowLink = root.append('g')
@@ -240,8 +244,12 @@ export default function SourceGraph() {
         return targetNode ? targetNode.color : '#3b82f6'
       })
       .attr('class', 'sg-flow-line')
-      .style('stroke-opacity', l => l.type === 'center-link' ? 0.45 : 0.25)
-      .style('stroke-width', l => l.type === 'center-link' ? 2 : 1)
+      .style('stroke-opacity', l => {
+        return l.type === 'center-link' ? 0.45 : 0.25;
+      })
+      .style('stroke-width', l => {
+        return l.type === 'center-link' ? 2 : 1;
+      })
       .style('pointer-events', 'none')
 
     // Setup Physics Simulation based on initial layoutMode
@@ -634,6 +642,8 @@ export default function SourceGraph() {
           </button>
         </div>
 
+
+
         <div className="flex items-center gap-1 ml-auto">
           <button onClick={() => handleZoom('out')} aria-label="Zoom out" className="p-2 border border-gray-300 rounded hover:border-crimson hover:text-crimson transition-colors">
             <ZoomOut className="w-4 h-4" />
@@ -714,8 +724,12 @@ export default function SourceGraph() {
         </span>
       </div>
 
-      {/* Graph Container (Dark Mode Sci-Fi aesthetic) */}
-      <div ref={containerRef} className="relative w-full border border-gray-800 rounded-xl bg-slate-950 overflow-hidden shadow-2xl" style={{ minHeight: 600 }}>
+      {/* Graph Container */}
+      <div 
+        ref={containerRef} 
+        className="relative w-full border border-gray-800 bg-slate-950 rounded-xl overflow-hidden shadow-2xl transition-all duration-500"
+        style={{ minHeight: 600 }}
+      >
         
         {/* Subtle grid background to enhance the command-center feel */}
         <div className="absolute inset-0 pointer-events-none opacity-20" 
@@ -733,22 +747,22 @@ export default function SourceGraph() {
         {/* Hover tooltip */}
         {hover && (
           <div
-            className="absolute top-4 left-4 max-w-md p-4 bg-slate-900/95 backdrop-blur-md border border-slate-700 rounded-xl shadow-2xl pointer-events-none z-50 transition-all"
+            className="absolute top-4 left-4 max-w-md p-4 backdrop-blur-md bg-slate-900/95 border border-slate-700 text-slate-200 rounded-xl shadow-2xl pointer-events-none z-50 transition-all"
           >
             {hover.type === 'center' ? (
                <>
                  <div className="text-[10px] uppercase tracking-widest font-bold text-slate-400">
                    Network Core
                  </div>
-                 <div className="font-serif font-bold text-white text-xl mt-1">{hover.label}</div>
-                 <div className="text-xs text-slate-400 mt-2">Connecting {Object.keys(pillarMeta).length} pillars and {allSources.length} data streams.</div>
+                 <div className="font-serif font-bold text-xl mt-1 text-white">{hover.label}</div>
+                 <div className="text-xs mt-2 text-slate-400">Connecting {Object.keys(pillarMeta).length} pillars and {allSources.length} data streams.</div>
                </>
             ) : hover.type === 'pillar' ? (
               <>
                 <div className="text-[10px] uppercase tracking-widest font-bold" style={{ color: hover.color }}>
                   Data Pillar · {hover.count} sources
                 </div>
-                <div className="font-serif font-bold text-white text-lg mt-1">{hover.label}</div>
+                <div className="font-serif font-bold text-lg mt-1 text-white">{hover.label}</div>
               </>
             ) : (
               <>
@@ -758,11 +772,11 @@ export default function SourceGraph() {
                     {hover.kind}
                   </div>
                 </div>
-                <div className="text-[11px] text-slate-400 mt-1 uppercase tracking-wider font-semibold">
+                <div className="text-[11px] mt-1 uppercase tracking-wider font-semibold text-slate-400">
                   {hover.pillar}{hover.district ? ` · ${hover.district}` : ''}
                 </div>
-                <div className="text-sm text-slate-200 mt-2 leading-relaxed line-clamp-3 font-medium">{hover.title}</div>
-                <div className="text-[10px] text-slate-500 mt-3 font-mono uppercase tracking-widest">click to inspect stream</div>
+                <div className="text-sm mt-2 leading-relaxed line-clamp-3 font-medium text-slate-200">{hover.title}</div>
+                <div className="text-[10px] mt-3 font-mono uppercase tracking-widest text-slate-500">click to inspect stream</div>
               </>
             )}
           </div>
@@ -776,7 +790,7 @@ export default function SourceGraph() {
 
       {/* Cinematic Side Sheet panel */}
       <div 
-        className={`fixed top-0 right-0 h-full w-full sm:w-[420px] bg-slate-950/95 backdrop-blur-md border-l border-slate-800 text-slate-200 z-[60] shadow-[0_0_50px_rgba(0,0,0,0.8)] transition-transform duration-500 ease-in-out transform flex flex-col ${
+        className={`fixed top-0 right-0 h-full w-full sm:w-[420px] backdrop-blur-md bg-slate-950/95 border-l border-slate-800 text-slate-200 shadow-[0_0_50px_rgba(0,0,0,0.8)] z-[60] transition-transform duration-500 ease-in-out transform flex flex-col ${
           selected ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -786,7 +800,7 @@ export default function SourceGraph() {
             <div className="p-6 border-b border-slate-800 flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Source Dossier</span>
-                <h3 className="text-lg font-serif font-bold text-white mt-0.5">Terminal Inspection</h3>
+                <h3 className="text-lg font-serif font-bold mt-0.5 text-white">Terminal Inspection</h3>
               </div>
               <button 
                 onClick={() => {
@@ -800,7 +814,7 @@ export default function SourceGraph() {
                       .call(zoomRef.current.transform, d3.zoomIdentity.translate(w/2, h/2).scale(0.8).translate(-w/2, -h/2))
                   }
                 }}
-                className="p-2 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-full transition-all"
+                className="p-2 rounded-full text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 transition-all"
                 aria-label="Close dossier"
               >
                 <X className="w-4 h-4" />
@@ -817,7 +831,7 @@ export default function SourceGraph() {
                   {selected.kind}
                 </span>
                 {selected.district && (
-                  <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded border border-slate-800 bg-slate-900 text-slate-300 flex items-center gap-1">
+                  <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded border flex items-center gap-1 border-slate-800 bg-slate-900 text-slate-300">
                     <MapPin className="w-3 h-3 text-crimson" /> {selected.district}
                   </span>
                 )}
@@ -828,29 +842,29 @@ export default function SourceGraph() {
 
               {/* Title */}
               <div>
-                <h4 className="text-xl font-serif font-bold text-white leading-snug">
+                <h4 className="text-xl font-serif font-bold leading-snug text-white">
                   {selected.title}
                 </h4>
               </div>
 
               {/* District Cross-Connections */}
               {selected.district && (
-                <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800">
+                <div className="p-4 bg-slate-900/60 border border-slate-800 rounded-lg">
                   <div className="text-[10px] font-mono uppercase tracking-widest text-crimson font-bold flex items-center gap-1.5 mb-2">
                     <Layers className="w-3.5 h-3.5" /> District Cross-Connections
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs leading-relaxed text-slate-400">
                     This source targets <strong className="text-slate-200">{selected.district}</strong>. The active connections spotlight other critical supply chain vulnerabilities in the same geography.
                   </p>
                   
                   {/* List matching sources */}
                   <div className="mt-3 space-y-2">
-                    <div className="text-[10px] font-mono text-slate-500 uppercase">Linked Citations ({
+                    <div className="text-[10px] font-mono uppercase text-slate-500">Linked Citations ({
                       nodes.filter(n => n.type === 'source' && n.district === selected.district && n.id !== selected.id).length
                     }):</div>
                     <ul className="space-y-1.5 max-h-40 overflow-y-auto pr-1">
                       {nodes.filter(n => n.type === 'source' && n.district === selected.district && n.id !== selected.id).map(n => (
-                        <li key={n.id} className="text-[11px] text-slate-300 hover:text-white flex items-start gap-1.5 transition-colors">
+                        <li key={n.id} className="text-[11px] flex items-start gap-1.5 text-slate-300 hover:text-white transition-colors">
                           <span className="inline-block w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: n.color }}></span>
                           <span className="line-clamp-2">{n.title}</span>
                         </li>
@@ -863,7 +877,7 @@ export default function SourceGraph() {
               {/* Verification Context */}
               <div className="space-y-3">
                 <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Verification Integrity</div>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs leading-relaxed text-slate-400">
                   Every source in the Alphono 34 repository has been cross-referenced with government publications, official audited records, or peer-reviewed academic literature to ensure accuracy of the stress-test simulator models.
                 </p>
               </div>

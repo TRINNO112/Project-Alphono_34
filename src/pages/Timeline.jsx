@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { ChevronLeft, ChevronRight, AlertTriangle, ShieldAlert, BarChart3, Play, Pause, Banknote, Flame, Footprints, Building2, Skull, Gem, Ship, Landmark } from 'lucide-react'
+import { ChevronLeft, ChevronRight, AlertTriangle, ShieldAlert, BarChart3, Play, Pause, Banknote, Flame, Footprints, Building2, Skull, Gem, Ship, Landmark, MapPin, X } from 'lucide-react'
 import SEO from '../components/SEO'
 
 const EventIcon = ({ name, className = "" }) => {
@@ -15,10 +15,12 @@ const timelineEvents = [
     title: "Demonetization Shock",
     category: "Economics",
     iconName: "Banknote",
-    iconColor: "text-amber-400",
+    iconColor: "text-amber-500 dark:text-amber-400",
     iconBg: "bg-amber-500/10 border-amber-500/20",
     gradient: "from-amber-500/20 to-amber-900/5",
     accent: "amber",
+    stressWeight: 10,
+    district: "Surat & Ahmedabad",
     desc: "Surat's textile and diamond sectors, heavily reliant on cash transactions to pay massive unorganized migrant workforces, suffer immediate paralysis.",
     stats: [
       { label: "Unpaid Wages Logged", value: "₹450 Cr+", status: "critical" },
@@ -32,11 +34,13 @@ const timelineEvents = [
     title: "PNB-Nirav Modi LoU Fraud",
     category: "Banking",
     iconName: "Landmark",
-    iconColor: "text-amber-400",
+    iconColor: "text-amber-500 dark:text-amber-400",
     iconBg: "bg-amber-500/10 border-amber-500/20",
     gradient: "from-amber-500/20 to-amber-900/5",
     accent: "amber",
-    desc: "Palanpur-born Nirav Modi and his uncle Mehul Choksi (Gitanjali Gems) orchestrated India's largest banking fraud — fraudulent SWIFT Letters of Undertaking issued from PNB's Brady House branch to overseas branches of Allahabad, Axis, and Union Bank, bypassing core banking. Both flee India BEFORE the complaint is filed.",
+    stressWeight: 10,
+    district: "Palanpur",
+    desc: "Palanpur-born Nirav Modi and his uncle Mehul Choksi (Gitanjali Gems) orchestrated India's largest banking fraud — fraudulent SWIFT Letters of Undertaking issued from PNB's Brady House branch to overseas branches of bank partners, bypassing core banking systems.",
     stats: [
       { label: "Total Fraud Size", value: "₹14,357 Cr", status: "critical" },
       { label: "Multiple of PNB Q3 Profit", value: "49x", status: "danger" },
@@ -49,10 +53,12 @@ const timelineEvents = [
     title: "Anti-Migrant Pogrom",
     category: "Social Reality",
     iconName: "Flame",
-    iconColor: "text-orange-400",
+    iconColor: "text-orange-500 dark:text-orange-400",
     iconBg: "bg-orange-500/10 border-orange-500/20",
     gradient: "from-orange-500/20 to-orange-900/5",
     accent: "orange",
+    stressWeight: 15,
+    district: "Sabarkantha & Mehsana",
     desc: "Following a local crime, organized mobs target Hindi-speaking workers across 6 districts. Mass exoduses occur as state protection fails.",
     stats: [
       { label: "Workers Displaced", value: "20,000+", status: "critical" },
@@ -66,10 +72,12 @@ const timelineEvents = [
     title: "COVID-19 Lockdown Exodus",
     category: "Labor",
     iconName: "Footprints",
-    iconColor: "text-purple-400",
+    iconColor: "text-purple-500 dark:text-purple-400",
     iconBg: "bg-purple-500/10 border-purple-500/20",
     gradient: "from-purple-500/20 to-purple-900/5",
     accent: "purple",
+    stressWeight: 20,
+    district: "Statewide Industrial Corridors",
     desc: "Millions of migrant workers are abandoned by contractors and the state apparatus. Without housing or food guarantees, they walk 1,000+ km home.",
     stats: [
       { label: "Total Exodus", value: "~15 Lakh", status: "critical" },
@@ -83,10 +91,12 @@ const timelineEvents = [
     title: "Morbi Bridge Collapse",
     category: "Infrastructure",
     iconName: "Building2",
-    iconColor: "text-red-400",
+    iconColor: "text-red-500 dark:text-red-400",
     iconBg: "bg-red-500/10 border-red-500/20",
     gradient: "from-red-500/20 to-red-900/5",
     accent: "red",
+    stressWeight: 10,
+    district: "Morbi",
     desc: "141 civilian deaths when a privately managed suspension bridge collapses due to structural negligence and unregulated privatization.",
     stats: [
       { label: "Fatalities", value: "141", status: "critical" },
@@ -100,10 +110,12 @@ const timelineEvents = [
     title: "Sabarmati 'Cesspool' Ruling",
     category: "Environment",
     iconName: "Skull",
-    iconColor: "text-emerald-400",
+    iconColor: "text-emerald-500 dark:text-emerald-400",
     iconBg: "bg-emerald-500/10 border-emerald-500/20",
     gradient: "from-emerald-500/20 to-emerald-900/5",
     accent: "emerald",
+    stressWeight: 10,
+    district: "Ahmedabad (Narol)",
     desc: "The Gujarat High Court declares the Sabarmati river a 'cesspool' due to rampant, unchecked industrial effluent dumping from Narol clusters.",
     stats: [
       { label: "Toxicity Level", value: "Severe", status: "critical" },
@@ -117,10 +129,12 @@ const timelineEvents = [
     title: "Surat Diamond Crisis",
     category: "Labor & Supply Chain",
     iconName: "Gem",
-    iconColor: "text-sky-400",
+    iconColor: "text-sky-500 dark:text-sky-400",
     iconBg: "bg-sky-500/10 border-sky-500/20",
     gradient: "from-sky-500/20 to-sky-900/5",
     accent: "sky",
+    stressWeight: 10,
+    district: "Surat",
     desc: "US and EU sanctions on Alrosa (Russian rough diamonds) crash Surat's supply chain, triggering massive, unmitigated unemployment.",
     stats: [
       { label: "Workers Fired", value: "~1.5 Lakh", status: "critical" },
@@ -134,10 +148,12 @@ const timelineEvents = [
     title: "Morbi Gas Twin Shock",
     category: "Energy",
     iconName: "Ship",
-    iconColor: "text-rose-400",
+    iconColor: "text-rose-500 dark:text-rose-400",
     iconBg: "bg-rose-500/10 border-rose-500/20",
     gradient: "from-rose-500/20 to-rose-900/5",
     accent: "rose",
+    stressWeight: 15,
+    district: "Morbi",
     desc: "Red Sea shipping attacks spike LNG prices. Morbi's unhedged ceramic units cannot absorb the costs while US tariffs simultaneously hit exports.",
     stats: [
       { label: "Units Shut Down", value: "550+", status: "critical" },
@@ -148,91 +164,131 @@ const timelineEvents = [
   }
 ]
 
-// Animated number/text that reveals character by character
-function RevealText({ text, delay = 0 }) {
-  return (
-    <motion.span
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay }}
-    >
-      {text}
-    </motion.span>
-  )
+const getProgressWidth = (value) => {
+  const match = value.match(/[0-9.]+/);
+  if (!match) return 50;
+  const val = parseFloat(match[0]);
+  
+  if (value.includes('%')) {
+    return Math.min(100, Math.max(10, val));
+  }
+  if (value.includes('Lakh') || value.includes('L')) {
+    return Math.min(100, Math.max(10, (val / 15) * 100));
+  }
+  if (value.includes('Cr')) {
+    return Math.min(100, Math.max(10, (val / 15000) * 100));
+  }
+  if (val > 100) {
+    return Math.min(100, Math.max(10, (val / 600) * 100));
+  }
+  return Math.min(100, Math.max(10, val));
 }
 
-function StatCard({ stat, index }) {
-  const statusColors = {
-    critical: 'border-red-500/50 bg-red-500/5 text-red-500',
-    danger: 'border-crimson/40 bg-crimson/5 text-crimson',
-  }
-  const dotColors = {
-    critical: 'bg-red-500',
+function StatProgressBar({ stat, sIdx }) {
+  const progress = getProgressWidth(stat.value);
+  const colorMap = {
+    critical: 'bg-red-500 dark:bg-red-600',
     danger: 'bg-crimson',
-  }
+  };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.5, delay: 0.4 + index * 0.12 }}
-      className={`relative border rounded-2xl p-5 backdrop-blur-sm ${statusColors[stat.status] || statusColors.danger}`}
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.4, delay: sIdx * 0.1 }}
+      className="space-y-1.5"
     >
-      <div className="flex items-center gap-2 mb-3">
-        <div className={`w-2 h-2 rounded-full ${dotColors[stat.status] || dotColors.danger} animate-pulse`} />
-        <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-          {stat.label}
-        </span>
+      <div className="flex justify-between text-xs font-mono">
+        <span className="text-gray-500 dark:text-gray-400 uppercase tracking-wide">{stat.label}</span>
+        <span className="text-gray-900 dark:text-gray-150 font-bold">{stat.value}</span>
       </div>
-      <p className="text-2xl md:text-3xl font-black font-mono tracking-tight">
-        <RevealText text={stat.value} delay={0.6 + index * 0.12} />
-      </p>
+      <div className="w-full h-2 bg-gray-100 dark:bg-slate-900 border border-gray-250/20 dark:border-slate-800/60 rounded-full overflow-hidden">
+        <div 
+          className={`h-full ${colorMap[stat.status] || colorMap.danger} transition-all duration-700 ease-out`}
+          style={{ width: `${progress}%` }}
+        />
+      </div>
     </motion.div>
-  )
+  );
 }
 
 export default function Timeline() {
-  const [currentIndex, setCurrentIndex] = useState(timelineEvents.length - 1)
-  const [direction, setDirection] = useState(0)
+  const [activeIndices, setActiveIndices] = useState(new Set([0]))
+  const [focusedIndex, setFocusedIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(false)
+  const [isHudVisible, setIsHudVisible] = useState(true)
+  
   const autoPlayRef = useRef(null)
-  const touchStartX = useRef(0)
   const containerRef = useRef(null)
 
-  const event = timelineEvents[currentIndex]
+  const handleScroll = useCallback(() => {
+    const rowElements = document.querySelectorAll('.timeline-row')
+    let currentFocus = 0
+    const activeSet = new Set([0])
+    
+    rowElements.forEach((el, idx) => {
+      const rect = el.getBoundingClientRect()
+      // If middle of row crosses past 60% of viewport
+      if (rect.top < window.innerHeight * 0.6) {
+        activeSet.add(idx)
+        currentFocus = idx
+      }
+    })
+    
+    setActiveIndices(activeSet)
+    setFocusedIndex(currentFocus)
+  }, [])
 
-  const goTo = useCallback((index) => {
-    if (index < 0 || index >= timelineEvents.length) return
-    setDirection(index > currentIndex ? 1 : -1)
-    setCurrentIndex(index)
-  }, [currentIndex])
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    
+    // Defer initial scroll measurement to next frame to avoid synchronous cascading renders
+    const frameId = requestAnimationFrame(handleScroll)
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      cancelAnimationFrame(frameId)
+    }
+  }, [handleScroll])
+
+  const scrollToRow = useCallback((idx) => {
+    const el = document.getElementById(`event-row-${idx}`)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }, [])
 
   const goNext = useCallback(() => {
-    if (currentIndex < timelineEvents.length - 1) {
-      setDirection(1)
-      setCurrentIndex(i => i + 1)
-    } else if (isAutoPlaying) {
-      setDirection(1)
-      setCurrentIndex(0)
-    }
-  }, [currentIndex, isAutoPlaying])
+    setFocusedIndex(prev => {
+      const nextIdx = (prev + 1) % timelineEvents.length
+      scrollToRow(nextIdx)
+      return nextIdx
+    })
+  }, [scrollToRow])
 
-  const goPrev = useCallback(() => {
-    if (currentIndex > 0) {
-      setDirection(-1)
-      setCurrentIndex(i => i - 1)
+  useEffect(() => {
+    if (isAutoPlaying) {
+      autoPlayRef.current = setInterval(goNext, 5000)
+    } else {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current)
     }
-  }, [currentIndex])
+    return () => {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current)
+    }
+  }, [isAutoPlaying, goNext])
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         e.preventDefault()
-        goNext()
+        const nextIdx = (focusedIndex + 1) % timelineEvents.length
+        scrollToRow(nextIdx)
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         e.preventDefault()
-        goPrev()
+        const prevIdx = (focusedIndex - 1 + timelineEvents.length) % timelineEvents.length
+        scrollToRow(prevIdx)
       } else if (e.key === ' ') {
         e.preventDefault()
         setIsAutoPlaying(p => !p)
@@ -240,93 +296,54 @@ export default function Timeline() {
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [goNext, goPrev])
+  }, [focusedIndex, scrollToRow])
 
-  // Touch/swipe support
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX
-  }
-  const handleTouchEnd = (e) => {
-    const diff = touchStartX.current - e.changedTouches[0].clientX
-    if (Math.abs(diff) > 60) {
-      if (diff > 0) goNext()
-      else goPrev()
-    }
-  }
+  // Calculate Cumulative Stress Score
+  const cumulativeStress = Math.min(
+    100,
+    Array.from(activeIndices).reduce((acc, idx) => acc + (timelineEvents[idx]?.stressWeight || 0), 0)
+  )
 
-  // Auto-play
-  useEffect(() => {
-    if (isAutoPlaying) {
-      autoPlayRef.current = setInterval(goNext, 5000)
-    }
-    return () => { if (autoPlayRef.current) clearInterval(autoPlayRef.current) }
-  }, [isAutoPlaying, goNext])
-
-  const slideVariants = {
-    enter: (dir) => ({ x: dir > 0 ? '60%' : '-60%', opacity: 0, scale: 0.92 }),
-    center: { x: 0, opacity: 1, scale: 1 },
-    exit: (dir) => ({ x: dir > 0 ? '-60%' : '60%', opacity: 0, scale: 0.92 }),
-  }
+  const focusedEvent = timelineEvents[focusedIndex]
 
   return (
     <main
       ref={containerRef}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      className="w-full relative min-h-screen bg-gray-50 font-sans overflow-hidden"
+      className="w-full relative min-h-screen bg-parchment-50 dark:bg-slate-950 font-sans overflow-x-hidden blueprint-grid-paper"
     >
       <SEO
-        title="Chronology of Crises"
-        description="A timeline of structural failures, exoduses, and industrial disasters in Gujarat from 2016 to 2026."
+        title="Chronology of Crises · Project Alphono 34"
+        description="Continuous scroll stress-timeline mapping the cumulative shocks of Gujarat's structural dependencies and accidents."
         path="/timeline"
       />
 
-      {/* Background ambient glow — follows the current event's accent */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2 }}
-          className={`absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-radial ${event.gradient} blur-3xl`}
-        />
-        <motion.div
-          key={`bottom-${currentIndex}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
-          transition={{ duration: 1.5, delay: 0.3 }}
-          className={`absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-radial ${event.gradient} blur-3xl`}
-        />
-      </div>
-
-      {/* Subtle grid pattern overlay */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
-        style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+      {/* Grid line overlay */}
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.02]"
+        style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '30px 30px' }}
       />
 
-      {/* ── Top bar: Year navigation ── */}
-      <div className="fixed top-16 left-0 right-0 z-30 pt-4 pb-3 bg-gray-50/80 backdrop-blur-xl border-b border-gray-200/50">
+      {/* ── Top Bar Year Navigation ── */}
+      <div className="fixed top-16 left-0 right-0 z-30 pt-4 pb-3 bg-parchment-50/80 dark:bg-slate-950/85 backdrop-blur-xl border-b border-gray-200/50 dark:border-slate-800/60 select-none">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-stretch justify-center">
+          <div className="flex items-stretch justify-center gap-1 md:gap-2">
             {timelineEvents.map((ev, idx) => {
-              const isActive = idx === currentIndex
-              const isPast = idx < currentIndex
+              const isActive = idx === focusedIndex
+              const isPast = activeIndices.has(idx) && idx < focusedIndex
               return (
                 <button
                   key={idx}
-                  onClick={() => goTo(idx)}
-                  className={`group relative flex flex-col items-center px-3 md:px-5 py-2 transition-all duration-300 ${
-                    isActive ? '' : 'hover:bg-gray-100/60'
+                  onClick={() => scrollToRow(idx)}
+                  className={`group relative flex flex-col items-center px-2 md:px-4 py-2 transition-all duration-300 ${
+                    isActive ? '' : 'hover:bg-gray-250/20 dark:hover:bg-slate-900/50'
                   }`}
+                  aria-label={`Scroll to year ${ev.year}: ${ev.title}`}
                 >
-                  {/* Icon */}
                   <div className={`w-8 h-8 md:w-9 md:h-9 rounded-xl border flex items-center justify-center mb-1.5 transition-all duration-300 ${
                     isActive
-                      ? `${ev.iconBg} shadow-sm`
+                      ? `${ev.iconBg} shadow-sm ring-1 ring-crimson/20`
                       : isPast
-                        ? 'bg-gray-100 border-gray-200'
-                        : 'bg-gray-50 border-gray-200/60 group-hover:border-gray-300'
+                        ? 'bg-crimson/10 border-crimson/20'
+                        : 'bg-white dark:bg-slate-900 border-gray-200/80 dark:border-slate-800'
                   }`}>
                     <EventIcon
                       name={ev.iconName}
@@ -334,24 +351,20 @@ export default function Timeline() {
                         isActive
                           ? ev.iconColor
                           : isPast
-                            ? 'text-gray-400'
-                            : 'text-gray-300 group-hover:text-gray-400'
+                            ? 'text-crimson/80'
+                            : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600'
                       }`}
                     />
                   </div>
-
-                  {/* Year */}
-                  <span className={`text-xs md:text-sm font-mono font-bold tracking-wide transition-all duration-300 ${
+                  <span className={`text-[10px] md:text-xs font-mono font-bold tracking-wide transition-all duration-300 ${
                     isActive
-                      ? 'text-gray-900'
+                      ? 'text-gray-900 dark:text-white'
                       : isPast
-                        ? 'text-gray-500'
-                        : 'text-gray-350 group-hover:text-gray-500'
+                        ? 'text-crimson/80'
+                        : 'text-gray-450 dark:text-gray-500'
                   }`}>
                     {ev.year}
                   </span>
-
-                  {/* Active indicator bar */}
                   {isActive && (
                     <motion.div
                       layoutId="activeYearBar"
@@ -366,190 +379,414 @@ export default function Timeline() {
         </div>
       </div>
 
-      {/* ── Main Slide Area ── */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center pt-44 pb-28 px-4 md:px-8">
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={currentIndex}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ type: 'spring', stiffness: 200, damping: 30, mass: 1 }}
-            className="w-full max-w-6xl mx-auto"
-          >
-            {/* Slide Content */}
-            <div className="grid lg:grid-cols-[2fr_3fr] gap-8 lg:gap-16 items-center">
 
-              {/* ── LEFT: Year + Icon hero ── */}
-              <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
-                {/* Giant year */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5, y: 40 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.6, type: 'spring', stiffness: 150 }}
-                  className="relative mb-6"
-                >
-                  <span className="text-[120px] md:text-[180px] lg:text-[220px] font-serif font-black text-gray-100 leading-none select-none">
-                    {event.year}
-                  </span>
-                  {/* Icon overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+
+      {/* ── Main Timeline Container ── */}
+      <div className="max-w-6xl mx-auto px-4 lg:px-8 pt-44 lg:pt-36 pb-36 relative z-10">
+        <div className="space-y-24 lg:space-y-16">
+          {timelineEvents.map((ev, idx) => {
+            const isActive = idx === focusedIndex
+            const isPast = activeIndices.has(idx) && idx < focusedIndex
+            const isActiveOrPast = activeIndices.has(idx)
+            const isEven = idx % 2 === 0
+
+            return (
+              <section
+                key={idx}
+                id={`event-row-${idx}`}
+                className="timeline-row grid grid-cols-[45px_1fr] lg:grid-cols-[1fr_80px_1fr] gap-4 lg:gap-0 items-center scroll-mt-48 lg:scroll-mt-40"
+              >
+                
+                {/* 1. Left Section (Dossier Card for even, Year for odd) */}
+                <div className={`${isEven ? '' : 'hidden lg:block'} col-start-2 col-end-3 lg:col-start-1 lg:col-end-2 ${
+                  isEven ? 'lg:pr-8' : 'lg:pl-8 lg:text-right flex flex-col items-center lg:items-end'
+                } order-2 lg:order-none`}>
+                  
+                  {isEven ? (
+                    // Dossier Card for Even
                     <motion.div
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
-                      className={`w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-3xl border-2 ${event.iconBg} backdrop-blur-sm flex items-center justify-center shadow-2xl`}
+                      initial={{ opacity: 0, x: -40 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={{ duration: 0.6, type: 'spring', stiffness: 90 }}
+                      className={`relative border rounded-2xl p-6 bg-white/70 dark:bg-slate-900/60 backdrop-blur border-gray-200/80 dark:border-slate-800/80 shadow-md hover:shadow-xl transition-all duration-300 group ${
+                        isActive ? 'ring-1 ring-crimson/30 dark:ring-crimson/25 shadow-lg' : ''
+                      }`}
                     >
-                      <EventIcon name={event.iconName} className={`w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 ${event.iconColor}`} />
+                      {/* Giant background Year */}
+                      <span className="absolute right-6 top-4 text-7xl lg:text-8xl font-serif font-black text-gray-100/70 dark:text-slate-800/10 select-none z-0 pointer-events-none">
+                        {ev.year}
+                      </span>
+                      
+                      <div className="relative z-10 space-y-4">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono tracking-widest text-crimson font-bold uppercase">
+                            CASE FILE #{ev.year}-0{idx + 1}
+                          </span>
+                          <span className="text-gray-300 dark:text-slate-700">/</span>
+                          <span className="text-[10px] font-mono tracking-wider text-gray-500 uppercase">
+                            {ev.category}
+                          </span>
+                        </div>
+                        
+                        <h2 className="text-xl lg:text-2xl font-serif font-bold text-gray-900 dark:text-white group-hover:text-crimson transition-colors">
+                          {ev.title}
+                        </h2>
+                        
+                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-light">
+                          {ev.desc}
+                        </p>
+                        
+                        {/* Stats list with progress bars */}
+                        <div className="border-t border-gray-100 dark:border-slate-800/50 pt-4 space-y-3">
+                          {ev.stats.map((stat, sIdx) => (
+                            <StatProgressBar key={sIdx} stat={stat} sIdx={sIdx} />
+                          ))}
+                        </div>
+
+                        {/* Impact footer */}
+                        <div className="border-t border-gray-100 dark:border-slate-800/50 pt-4 flex gap-2 items-start text-xs font-mono text-gray-500 dark:text-gray-400">
+                          <AlertTriangle className="w-4 h-4 text-crimson shrink-0 mt-0.5" />
+                          <p className="leading-relaxed">
+                            <strong className="text-crimson uppercase">Impact: </strong>{ev.impact}
+                          </p>
+                        </div>
+                      </div>
                     </motion.div>
-                  </div>
-                </motion.div>
-
-                {/* Category badge */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-crimson/10 border border-crimson/20 text-crimson text-xs font-bold uppercase tracking-[0.2em] rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
-                    {event.category}
-                  </span>
-                </motion.div>
-
-                {/* Slide counter */}
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="mt-4 text-xs font-mono text-gray-400 tracking-widest"
-                >
-                  {String(currentIndex + 1).padStart(2, '0')} / {String(timelineEvents.length).padStart(2, '0')}
-                </motion.p>
-              </div>
-
-              {/* ── RIGHT: Content + Stats ── */}
-              <div className="space-y-8">
-                {/* Title */}
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.15 }}
-                  className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-[1.1] tracking-tight"
-                >
-                  {event.title}
-                </motion.h1>
-
-                {/* Description */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.25 }}
-                  className="text-lg md:text-xl text-gray-600 leading-relaxed font-light max-w-xl"
-                >
-                  {event.desc}
-                </motion.p>
-
-                {/* Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-                  {event.stats.map((stat, idx) => (
-                    <StatCard key={`${currentIndex}-${idx}`} stat={stat} index={idx} />
-                  ))}
+                  ) : (
+                    // Year / Category description label for Odd rows (Desktop display)
+                    <div className="hidden lg:block space-y-3">
+                      <div className="text-5xl font-serif font-black text-gray-300 dark:text-slate-800">
+                        {ev.year}
+                      </div>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-crimson/5 dark:bg-crimson/10 border border-crimson/20 text-crimson text-[10px] font-mono uppercase tracking-widest rounded-md">
+                        <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
+                        {ev.category}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500 font-mono justify-end">
+                        <MapPin className="w-3.5 h-3.5 text-crimson" />
+                        <span>{ev.district}</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {/* Impact Box */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                  className="relative p-6 rounded-2xl bg-white/50 border border-gray-200/60 backdrop-blur-sm"
-                >
-                  <div className="absolute top-0 left-6 w-12 h-1 bg-crimson rounded-b-full" />
-                  <div className="flex items-start gap-3 pt-2">
-                    <AlertTriangle className="w-5 h-5 text-crimson shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-crimson mb-2">Forensic Impact</p>
-                      <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
-                        {event.impact}
-                      </p>
-                    </div>
+                {/* 2. Middle Seismograph Column */}
+                <div className="col-start-1 col-end-2 lg:col-start-2 lg:col-end-3 h-full order-1 lg:order-none">
+                  <div className="flex flex-col items-center h-full min-h-[360px]">
+                    
+                    {/* Top connector line */}
+                    <div className={`w-[2px] flex-1 transition-colors duration-500 ${
+                      isPast ? 'bg-crimson/50' : 'bg-gray-200 dark:bg-slate-800/50'
+                    }`} />
+                    
+                    {/* Seismograph spike */}
+                    <svg width="80" height="160" viewBox="0 0 80 160" fill="none" className="shrink-0 my-2 select-none pointer-events-none">
+                      {/* Tech grid ticks */}
+                      <line x1="10" y1="0" x2="10" y2="160" stroke="currentColor" strokeWidth="0.5" className="text-gray-200/50 dark:text-slate-900" strokeDasharray="2 4" />
+                      <line x1="70" y1="0" x2="70" y2="160" stroke="currentColor" strokeWidth="0.5" className="text-gray-200/50 dark:text-slate-900" strokeDasharray="2 4" />
+                      
+                      {/* Spike path */}
+                      <path
+                        d="M 40,0 L 40,55 L 25,65 L 55,75 L 15,90 L 65,105 L 35,115 L 40,125 L 40,160"
+                        stroke={isActive ? "var(--color-crimson)" : isPast ? "rgba(184, 74, 62, 0.4)" : "rgba(156, 163, 175, 0.25)"}
+                        strokeWidth={isActive ? "2.5" : "1.5"}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="transition-all duration-500"
+                      />
+
+                      {/* Concentric rings at epicenter */}
+                      {isActive ? (
+                        <>
+                          <circle cx="40" cy="90" r="14" className="fill-crimson/10 stroke-crimson/15 blueprint-pulse" style={{ transformOrigin: '40px 90px' }} />
+                          <circle cx="40" cy="90" r="6" className="fill-crimson stroke-white dark:stroke-slate-950" strokeWidth="1.5" />
+                        </>
+                      ) : isPast ? (
+                        <circle cx="40" cy="90" r="4.5" className="fill-crimson/60 stroke-white dark:stroke-slate-950" strokeWidth="1" />
+                      ) : (
+                        <circle cx="40" cy="90" r="4" className="fill-gray-300 dark:fill-slate-700 stroke-white dark:stroke-slate-950" strokeWidth="1" />
+                      )}
+                    </svg>
+                    
+                    {/* Bottom connector line */}
+                    <div className={`w-[2px] flex-1 transition-colors duration-500 ${
+                      isActiveOrPast ? 'bg-crimson/50' : 'bg-gray-200 dark:bg-slate-800/50'
+                    }`} />
                   </div>
-                </motion.div>
+                </div>
+
+                {/* 3. Right Section (Year for even, Dossier Card for odd) */}
+                <div className={`${isEven ? 'hidden lg:block' : ''} col-start-2 col-end-3 lg:col-start-3 lg:col-end-4 ${
+                  isEven ? 'lg:pl-8 flex flex-col items-center lg:items-start' : 'lg:pl-8'
+                } order-3 lg:order-none`}>
+                  
+                  {isEven ? (
+                    // Year / Category description label for Even rows (Desktop display)
+                    <div className="hidden lg:block space-y-3">
+                      <div className="text-5xl font-serif font-black text-gray-300 dark:text-slate-800">
+                        {ev.year}
+                      </div>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-crimson/5 dark:bg-crimson/10 border border-crimson/20 text-crimson text-[10px] font-mono uppercase tracking-widest rounded-md">
+                        <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
+                        {ev.category}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500 font-mono">
+                        <MapPin className="w-3.5 h-3.5 text-crimson" />
+                        <span>{ev.district}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    // Dossier Card for Odd
+                    <motion.div
+                      initial={{ opacity: 0, x: 40 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={{ duration: 0.6, type: 'spring', stiffness: 90 }}
+                      className={`relative border rounded-2xl p-6 bg-white/70 dark:bg-slate-900/60 backdrop-blur border-gray-200/80 dark:border-slate-800/80 shadow-md hover:shadow-xl transition-all duration-300 group ${
+                        isActive ? 'ring-1 ring-crimson/30 dark:ring-crimson/25 shadow-lg' : ''
+                      }`}
+                    >
+                      {/* Giant background Year */}
+                      <span className="absolute right-6 top-4 text-7xl lg:text-8xl font-serif font-black text-gray-100/70 dark:text-slate-800/10 select-none z-0 pointer-events-none">
+                        {ev.year}
+                      </span>
+                      
+                      <div className="relative z-10 space-y-4">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono tracking-widest text-crimson font-bold uppercase">
+                            CASE FILE #{ev.year}-0{idx + 1}
+                          </span>
+                          <span className="text-gray-300 dark:text-slate-700">/</span>
+                          <span className="text-[10px] font-mono tracking-wider text-gray-500 uppercase">
+                            {ev.category}
+                          </span>
+                        </div>
+                        
+                        <h2 className="text-xl lg:text-2xl font-serif font-bold text-gray-900 dark:text-white group-hover:text-crimson transition-colors">
+                          {ev.title}
+                        </h2>
+                        
+                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-light">
+                          {ev.desc}
+                        </p>
+                        
+                        {/* Stats list with progress bars */}
+                        <div className="border-t border-gray-100 dark:border-slate-800/50 pt-4 space-y-3">
+                          {ev.stats.map((stat, sIdx) => (
+                            <StatProgressBar key={sIdx} stat={stat} sIdx={sIdx} />
+                          ))}
+                        </div>
+
+                        {/* Impact footer */}
+                        <div className="border-t border-gray-100 dark:border-slate-800/50 pt-4 flex gap-2 items-start text-xs font-mono text-gray-500 dark:text-gray-400">
+                          <AlertTriangle className="w-4 h-4 text-crimson shrink-0 mt-0.5" />
+                          <p className="leading-relaxed">
+                            <strong className="text-crimson uppercase">Impact: </strong>{ev.impact}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              </section>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* ── Sticky Telemetry HUD (Desktop right margin) ── */}
+      {isHudVisible && (
+        <aside className="fixed right-8 top-36 w-80 z-30 hidden xl:block select-none pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-slate-900/95 border border-slate-800 text-slate-200 rounded-2xl p-5 shadow-2xl space-y-4 font-mono text-xs backdrop-blur pointer-events-auto"
+          >
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="text-gray-400 font-bold uppercase tracking-widest text-[9px]">Telemetry HUD v1.0</span>
+              <div className="flex items-center gap-2">
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-450 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                </span>
+                <button 
+                  onClick={() => setIsHudVisible(false)}
+                  className="p-1 rounded hover:bg-slate-800 text-gray-500 hover:text-white transition cursor-pointer"
+                  aria-label="Close HUD"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          
+          <div className="space-y-2.5">
+            <div className="flex justify-between">
+              <span className="text-gray-500">FOCUS YEAR:</span>
+              <span className="text-white font-bold">{focusedEvent.year}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500">SECTOR / PILLAR:</span>
+              <span className="text-crimson font-bold uppercase tracking-wider">{focusedEvent.category}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500">TARGET REGION:</span>
+              <span className="text-white font-bold uppercase truncate max-w-[170px]" title={focusedEvent.district}>
+                {focusedEvent.district}
+              </span>
+            </div>
+          </div>
+
+          <div className="border-t border-slate-800 pt-3.5 space-y-2">
+            <div className="flex justify-between items-center">
+              <span className="text-gray-500">CUMULATIVE STRESS:</span>
+              <span className="text-red-500 font-bold text-sm">{cumulativeStress}%</span>
+            </div>
+            <div className="w-full h-2 bg-slate-850 border border-slate-800/40 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-amber-500 to-red-600 transition-all duration-500" 
+                style={{ width: `${cumulativeStress}%` }}
+              />
+            </div>
+          </div>
+
+          <div className="border-t border-slate-800 pt-3 text-[10px] text-gray-500 space-y-1">
+            <div className="flex gap-1.5 items-center">
+              <ShieldAlert className="w-3.5 h-3.5 text-crimson" />
+              <span>STRESS LOG READOUT ACTIVE</span>
+            </div>
+            <p className="leading-relaxed text-gray-500">
+              Crisis events correlate to systemic dependencies in imported coal, rare metals, subsea bandwidth, and labor channels.
+            </p>
+            </div>
+          </motion.div>
+        </aside>
+      )}
+
+      {/* ── Mobile-only compact Telemetry HUD (Fixed above capsule bar) ── */}
+      {isHudVisible && (
+        <div className="fixed bottom-20 left-0 right-0 z-20 px-4 xl:hidden select-none pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-md mx-auto bg-slate-900/95 border border-slate-800/80 backdrop-blur-md rounded-xl p-3.5 shadow-xl pointer-events-auto font-mono text-[10px] text-slate-300 space-y-2.5"
+          >
+            <div className="flex justify-between items-center text-[9px] uppercase tracking-wider text-gray-500 border-b border-slate-800/60 pb-1.5">
+              <span>Telemetry HUD (Mobile)</span>
+              <div className="flex items-center gap-2">
+                <span className="text-crimson font-bold">{focusedEvent.year}</span>
+                <button
+                  onClick={() => setIsHudVisible(false)}
+                  className="p-0.5 rounded hover:bg-slate-800 text-gray-500 hover:text-white transition cursor-pointer"
+                  aria-label="Close Mobile HUD"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+            
+            <div className="space-y-1">
+              <div className="flex justify-between gap-2">
+                <span className="text-gray-500">SECTOR:</span>
+                <span className="text-crimson font-bold uppercase truncate max-w-[200px]">{focusedEvent.category}</span>
+              </div>
+              <div className="flex justify-between gap-2">
+                <span className="text-gray-500">REGION:</span>
+                <span className="text-white font-bold truncate max-w-[200px]" title={focusedEvent.district}>
+                  {focusedEvent.district}
+                </span>
+              </div>
+            </div>
+
+            <div className="space-y-1.5 pt-1 border-t border-slate-800/40">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-500">CUMULATIVE STRESS:</span>
+                <span className="text-red-500 font-bold">{cumulativeStress}%</span>
+              </div>
+              <div className="w-full h-1.5 bg-slate-850 border border-slate-800/30 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-amber-500 to-red-600 transition-all duration-500" 
+                  style={{ width: `${cumulativeStress}%` }}
+                />
               </div>
             </div>
           </motion.div>
-        </AnimatePresence>
-      </div>
+        </div>
+      )}
 
-      {/* ── Bottom Controls ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-30 pb-6 pt-4 bg-gradient-to-t from-gray-50 via-gray-50/80 to-transparent">
-        <div className="max-w-lg mx-auto flex items-center justify-center gap-4">
-          {/* Prev */}
+      {/* ── Floating Controls Capsule Bar (Unified play & navigation) ── */}
+      <div className="fixed bottom-6 left-0 right-0 z-30 px-4 pointer-events-none select-none">
+        <div className="max-w-md mx-auto bg-slate-900/90 border border-slate-800 backdrop-blur-md rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-2xl flex items-center justify-between pointer-events-auto gap-2 sm:gap-4">
           <button
-            onClick={goPrev}
-            disabled={currentIndex === 0}
-            className="w-12 h-12 rounded-full border border-gray-200 bg-white/80 backdrop-blur-sm flex items-center justify-center text-gray-600 hover:border-crimson hover:text-crimson transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-gray-200 disabled:hover:text-gray-600"
+            onClick={() => {
+              const prevIdx = (focusedIndex - 1 + timelineEvents.length) % timelineEvents.length
+              scrollToRow(prevIdx)
+            }}
+            className="w-8 h-8 rounded-full border border-slate-700 bg-slate-850 text-slate-300 flex items-center justify-center hover:text-white transition duration-200"
+            aria-label="Previous event"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-4 h-4" />
           </button>
-
-          {/* Progress Dots */}
-          <div className="flex items-center gap-2">
-            {timelineEvents.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => goTo(idx)}
-                className="group relative p-1"
-              >
-                <div className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
-                  idx === currentIndex
-                    ? 'bg-crimson scale-125 shadow-md shadow-crimson/40'
-                    : idx < currentIndex
-                      ? 'bg-crimson/40 group-hover:bg-crimson/60'
-                      : 'bg-gray-300 group-hover:bg-gray-400'
-                }`} />
-              </button>
-            ))}
-          </div>
-
-          {/* Auto-play */}
+          
           <button
             onClick={() => setIsAutoPlaying(p => !p)}
-            className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all ${
-              isAutoPlaying
-                ? 'border-crimson bg-crimson/10 text-crimson'
-                : 'border-gray-200 bg-white/80 text-gray-500 hover:border-crimson hover:text-crimson'
-            } backdrop-blur-sm`}
+            className={`w-8 h-8 rounded-full border flex items-center justify-center transition duration-200 ${
+              isAutoPlaying 
+                ? 'border-crimson bg-crimson/25 text-crimson' 
+                : 'border-slate-700 bg-slate-850 text-slate-300 hover:text-white'
+            }`}
+            aria-label={isAutoPlaying ? "Pause auto scroll" : "Play auto scroll"}
           >
-            {isAutoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+            {isAutoPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
           </button>
 
-          {/* Next */}
+          <div className="text-center font-mono text-[9px] sm:text-[10px] text-slate-300 flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+            <span><strong className="text-crimson">YEAR:</strong> {timelineEvents[focusedIndex].year}</span>
+            <span className="text-slate-700">|</span>
+            <span><strong className="text-crimson">EVENT:</strong> {focusedIndex + 1}/{timelineEvents.length}</span>
+            <span className="text-slate-700">|</span>
+            <span><strong className="text-red-500">STRESS:</strong> {cumulativeStress}%</span>
+          </div>
+
           <button
-            onClick={goNext}
-            disabled={currentIndex === timelineEvents.length - 1 && !isAutoPlaying}
-            className="w-12 h-12 rounded-full border border-gray-200 bg-white/80 backdrop-blur-sm flex items-center justify-center text-gray-600 hover:border-crimson hover:text-crimson transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-gray-200 disabled:hover:text-gray-600"
+            onClick={() => setIsHudVisible(p => !p)}
+            className={`w-8 h-8 rounded-full border flex items-center justify-center transition duration-200 ${
+              isHudVisible 
+                ? 'border-crimson bg-crimson/25 text-crimson' 
+                : 'border-slate-700 bg-slate-850 text-slate-300 hover:text-white'
+            }`}
+            aria-label={isHudVisible ? "Hide Telemetry HUD" : "Show Telemetry HUD"}
+            title="Toggle Telemetry HUD"
           >
-            <ChevronRight className="w-5 h-5" />
+            <BarChart3 className="w-3.5 h-3.5" />
           </button>
-        </div>
 
-        {/* Keyboard hint */}
-        <p className="text-center text-[10px] text-gray-400 mt-3 tracking-wider font-mono">
-          ← → NAVIGATE &nbsp;·&nbsp; SPACE AUTOPLAY &nbsp;·&nbsp; SWIPE ON MOBILE
-        </p>
-
-        {/* Data verification line */}
-        <div className="flex items-center justify-center gap-2 mt-2 text-[10px] text-gray-400">
-          <ShieldAlert className="w-3 h-3" />
-          <span>Data verified against primary research and civil reports</span>
-          <span>·</span>
-          <BarChart3 className="w-3 h-3" />
-          <span>{timelineEvents.length} crisis events indexed</span>
+          <button
+            onClick={() => {
+              const nextIdx = (focusedIndex + 1) % timelineEvents.length
+              scrollToRow(nextIdx)
+            }}
+            className="w-8 h-8 rounded-full border border-slate-700 bg-slate-850 text-slate-300 flex items-center justify-center hover:text-white transition duration-200"
+            aria-label="Next event"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
+
+      {/* Restore HUD button for desktop */}
+      {!isHudVisible && (
+        <div className="fixed right-8 bottom-24 z-30 hidden xl:block select-none pointer-events-none">
+          <button
+            onClick={() => setIsHudVisible(true)}
+            className="bg-slate-900/90 border border-slate-800 text-slate-300 hover:text-white rounded-full px-4 py-2.5 shadow-2xl pointer-events-auto transition flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase backdrop-blur cursor-pointer"
+          >
+            <BarChart3 className="w-4 h-4 text-crimson" />
+            <span>Telemetry HUD</span>
+          </button>
+        </div>
+      )}
     </main>
   )
 }

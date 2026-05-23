@@ -4,6 +4,17 @@ import { Link } from 'react-router-dom'
 import { Zap, Factory, Droplets, Users, TrendingUp, Ship, ArrowRight, AlertTriangle, ExternalLink, GraduationCap, TreePine, FileText, ShieldAlert, ChevronDown, MapPin, Wheat, Cpu, FlaskConical, Cable, Landmark } from 'lucide-react'
 import AnimatedCounter from '../components/AnimatedCounter'
 
+const TICKER_ITEMS = [
+  { label: "Mundra Cargo flows", status: "stable", text: "APSEZ port operations running at 500.8 MMT baseline capacity." },
+  { label: "Russian Crude Supply", status: "warn", text: "Feedstock dependency at 36% average. Western sanctions risk high." },
+  { label: "Indonesian Coal Stocks", status: "critical", text: "Morbi coal gas shut. Coastal baseload thermal plants running on 12-day buffer." },
+  { label: "Subsea Cable landing", status: "critical", text: "0 cable landings. GIFT City IFSC routes fiber traffic via Mumbai loops." },
+  { label: "Narmada Canal levels", status: "warn", text: "SSNNL core inflow at 84% baseline. Salinity intrusion warning active on south coast." },
+  { label: "Pharma API Import", status: "critical", text: "Chinese chemical dependency at 70% average. Supply constraints active." },
+  { label: "Surat Influx", status: "warn", text: "Migrant departures from Bihar/Odisha limit loom capacity." },
+  { label: "Khavda Grid Connection", status: "warn", text: "Evacuation lines only 60% complete. Curtailment risk high in summer." }
+];
+
 const DependencyRadar = lazy(() => import('../components/DependencyRadar'))
 const SupplyChainMap = lazy(() => import('../components/SupplyChainMap').then(m => ({ default: m.SupplyChainMap })))
 const CascadeDiagram = lazy(() => import('../components/CascadeDiagram').then(m => ({ default: m.CascadeDiagram })))
@@ -174,8 +185,94 @@ export default function Home() {
     <main className="w-full max-w-6xl mx-auto px-6 pt-28 md:pt-40 pb-20 md:pb-32 space-y-20 md:space-y-28">
 
       {/* ═══════════════════ HERO ═══════════════════ */}
-      <section className="text-center space-y-8 relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-crimson/10 blur-[120px] rounded-full pointer-events-none" />
+      <section className="text-center relative overflow-hidden rounded-3xl py-16 px-6 border border-parchment-200/60 dark:border-slate-800/60 bg-white/30 dark:bg-slate-950/20 shadow-sm backdrop-blur-[2px]">
+        <svg 
+          className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 opacity-30 dark:opacity-15"
+          viewBox="0 0 800 400"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          <defs>
+            <pattern id="blueprint-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gray-300 dark:text-slate-800" />
+            </pattern>
+          </defs>
+
+          {/* Background grid */}
+          <rect width="100%" height="100%" fill="url(#blueprint-grid)" />
+
+          {/* Schematic/Technical concentric radar circles */}
+          <circle cx="500" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 6" className="text-gray-300 dark:text-slate-800" />
+          <circle cx="250" cy="150" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" className="text-gray-300 dark:text-slate-800" />
+          <circle cx="580" cy="380" r="50" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" className="text-blue-200 dark:text-slate-800" />
+
+          {/* Lat/Long blueprint lines */}
+          <line x1="0" y1="200" x2="800" y2="200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="10 10" className="text-gray-300 dark:text-slate-800" />
+          <line x1="400" y1="0" x2="400" y2="400" stroke="currentColor" strokeWidth="0.5" strokeDasharray="10 10" className="text-gray-300 dark:text-slate-800" />
+          <text x="410" y="15" className="font-sans text-[8px] fill-gray-400 dark:fill-gray-600 tracking-widest uppercase">Grid Ref: 23.0225° N, 72.5714° E</text>
+
+          {/* Connection Lines representing supply lines */}
+          <g className="stroke-crimson/30 dark:stroke-crimson/25 fill-none" strokeWidth="1.5">
+            {/* Jamnagar - Mundra */}
+            <path d="M 200,220 Q 225,185 250,150" strokeDasharray="4 4" />
+            {/* Mundra - Ahmedabad */}
+            <path d="M 250,150 Q 375,110 500,100" />
+            {/* Jamnagar - Ahmedabad */}
+            <path d="M 200,220 Q 350,160 500,100" strokeDasharray="2 2" />
+            {/* Dahej - Ahmedabad */}
+            <path d="M 520,240 L 500,100" />
+            {/* Dahej - Surat */}
+            <path d="M 520,240 L 550,290" />
+            {/* Surat - Mumbai */}
+            <path d="M 550,290 Q 565,335 580,380" strokeDasharray="3 3" />
+            {/* Ahmedabad - Mumbai loop */}
+            <path d="M 500,100 Q 600,240 580,380" strokeDasharray="5 5" className="stroke-blue-500/25 dark:stroke-blue-400/20" />
+          </g>
+
+          {/* Nodes and Labels */}
+          {/* Ahmedabad */}
+          <g>
+            <circle cx="500" cy="100" r="4.5" className="fill-crimson" />
+            <circle cx="500" cy="100" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '500px 100px' }} />
+            <text x="500" y="82" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="middle">AHMEDABAD HUB</text>
+          </g>
+
+          {/* Mundra */}
+          <g>
+            <circle cx="250" cy="150" r="4.5" className="fill-crimson" />
+            <circle cx="250" cy="150" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '250px 150px' }} />
+            <text x="250" y="132" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="middle">MUNDRA PORT</text>
+          </g>
+
+          {/* Jamnagar */}
+          <g>
+            <circle cx="200" cy="220" r="4.5" className="fill-crimson" />
+            <circle cx="200" cy="220" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '200px 220px' }} />
+            <text x="200" y="242" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="middle">JAMNAGAR REFINERY</text>
+          </g>
+
+          {/* Dahej */}
+          <g>
+            <circle cx="520" cy="240" r="4.5" className="fill-crimson" />
+            <circle cx="520" cy="240" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '520px 240px' }} />
+            <text x="505" y="255" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="end">DAHEJ PORT</text>
+          </g>
+
+          {/* Surat */}
+          <g>
+            <circle cx="550" cy="290" r="4.5" className="fill-crimson" />
+            <circle cx="550" cy="290" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '550px 290px' }} />
+            <text x="565" y="294" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="start">SURAT CORRIDOR</text>
+          </g>
+
+          {/* Mumbai */}
+          <g>
+            <circle cx="580" cy="380" r="4.5" className="fill-blue-500" />
+            <circle cx="580" cy="380" r="12" className="fill-blue-500/20 blueprint-pulse" style={{ transformOrigin: '580px 380px' }} />
+            <text x="580" y="362" className="font-mono text-[9px] tracking-wider font-bold fill-blue-600 dark:fill-blue-400 uppercase" textAnchor="middle">MUMBAI CABLE LOOP</text>
+          </g>
+        </svg>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-crimson/10 blur-[120px] rounded-full pointer-events-none z-0" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -183,16 +280,16 @@ export default function Home() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-crimson/10 text-crimson text-sm font-semibold tracking-widest uppercase mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-crimson/10 text-crimson text-sm font-semibold tracking-widest uppercase mb-8 select-none">
             <AlertTriangle className="w-4 h-4" />
             Critical Research Endeavor
           </div>
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold mb-6 leading-tight tracking-tight text-gray-900">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold mb-6 leading-tight tracking-tight text-gray-900 select-none">
             Anatomy of a <br /><span className="text-crimson italic pr-4">Dependent State</span>
           </h1>
 
           {/* Author / Publication Header */}
-          <div className="flex items-center justify-center gap-3 text-sm tracking-widest uppercase text-gray-500 font-sans font-semibold mt-6">
+          <div className="flex items-center justify-center gap-3 text-sm tracking-widest uppercase text-gray-500 font-sans font-semibold mt-6 select-none">
             <span>Project Alphono 34</span>
             <span className="w-px h-4 bg-gray-400" />
             <span>Research Division</span>
@@ -201,18 +298,46 @@ export default function Home() {
           </div>
           <hr className="border-gray-300 w-24 mx-auto mt-6" />
 
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mt-8 font-light leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mt-8 font-light leading-relaxed select-none">
             A critical analysis of the structural vulnerabilities, systemic dependencies, and external supply chains underpinning the state of Gujarat.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
             <Link
               to="/brief"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-crimson text-crimson hover:bg-crimson hover:text-white transition-colors text-xs tracking-[0.2em] uppercase font-semibold"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border border-crimson text-crimson bg-parchment-50/50 hover:bg-crimson hover:text-white transition-colors text-xs tracking-[0.2em] uppercase font-semibold"
             >
               Open the Case Brief <ArrowRight className="w-3.5 h-3.5" />
             </Link>
+          </div>
 
+          {/* Live Threat Ticker */}
+          <div className="mt-16 max-w-4xl mx-auto rounded-xl overflow-hidden border threat-ticker-container select-none z-10 relative">
+            <div className="flex items-center bg-crimson text-white px-4 py-2.5 text-xs font-mono font-bold tracking-wider shrink-0 gap-2 uppercase">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              Live Vulnerability Feeds:
+            </div>
+            <div className="w-full overflow-hidden py-3.5 relative flex items-center bg-white/40 dark:bg-black/10">
+              <div className="threat-ticker-track flex items-center gap-12">
+                {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3 whitespace-nowrap">
+                    <span className={`threat-badge ${
+                      item.status === 'stable' ? 'threat-status-stable' :
+                      item.status === 'warn' ? 'threat-status-warn' : 'threat-status-critical'
+                    }`}>
+                      {item.label}
+                    </span>
+                    <span className="text-xs font-mono font-semibold text-gray-700 dark:text-gray-300">
+                      {item.text}
+                    </span>
+                    <span className="text-crimson/30 font-bold font-sans">//</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
