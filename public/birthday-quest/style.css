@@ -892,4 +892,52 @@ canvas {
   .keyboard-legend {
     display: none !important;
   }
+
+  /* Tighter Birthday Card layout to prevent cut-offs on phone landscapes */
+  .card-container {
+    max-width: 320px;
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+  
+  .card-cake-container {
+    margin-bottom: 4px;
+    transform: scale(0.7);
+    height: 32px;
+  }
+
+  .pixel-cake {
+    top: -5px;
+  }
+  
+  .card-title-main {
+    font-size: 10px;
+    margin-bottom: 2px;
+  }
+  
+  .card-title-sub {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+  
+  .card-divider {
+    margin: 6px 0;
+  }
+  
+  .card-letter-content {
+    max-height: 70px;
+    font-size: 9.5px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  
+  .card-footer-buttons {
+    margin-top: 4px;
+    gap: 8px;
+  }
+  
+  .pixel-btn-sm {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
 }
