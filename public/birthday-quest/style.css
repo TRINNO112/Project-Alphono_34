@@ -408,7 +408,6 @@ canvas {
 }
 
 .letter-body-text {
-  border-l: 2px solid rgba(236, 72, 153, 0.5);
   border-left: 2px solid rgba(236, 72, 153, 0.5);
   padding-left: 10px;
   color: #e2e8f0;

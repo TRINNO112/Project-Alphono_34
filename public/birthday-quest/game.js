@@ -80,7 +80,7 @@
 
   // Image assets
   const avatarImg = new Image();
-  avatarImg.src = '../avatar.png'; // point to the avatar image in parent directory
+  avatarImg.src = '../birthday_avatar.png'; // point to the avatar image in parent directory (public/)
   let avatarLoaded = false;
   avatarImg.onload = () => { avatarLoaded = true; };
 
@@ -417,6 +417,7 @@
     }, 30);
   }
 
+  // Dialogue button click advancement
   function advanceDialogue() {
     playSfx('click');
     if (dialogueIdx < dialogueLines.length - 1) {
