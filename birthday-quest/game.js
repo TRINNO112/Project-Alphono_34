@@ -1,4 +1,9 @@
 (function() {
+  // Detect touch device and add class to body
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    document.body.classList.add('has-touch');
+  }
+
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
   
@@ -79,10 +84,23 @@
     "Yeah, really. Happy birthday!";
 
   // Image assets
-  const avatarImg = new Image();
-  avatarImg.src = '../avatar.png'; // point to the avatar image in parent directory
-  let avatarLoaded = false;
-  avatarImg.onload = () => { avatarLoaded = true; };
+  const anims = {
+    idleLeft: { src: './idle_left.png', img: new Image(), loaded: false },
+    idleRight: { src: './idle_right.png', img: new Image(), loaded: false },
+    walkLeft: { src: './walk_left.png', img: new Image(), loaded: false },
+    walkRight: { src: './walk_right.png', img: new Image(), loaded: false },
+    jumpLeft: { src: './jump_left.png', img: new Image(), loaded: false },
+    jumpRight: { src: './jump_right.png', img: new Image(), loaded: false }
+  };
+
+  let animsLoadedCount = 0;
+  for (let key in anims) {
+    anims[key].img.src = anims[key].src;
+    anims[key].img.onload = () => {
+      anims[key].loaded = true;
+      animsLoadedCount++;
+    };
+  }
 
   // DOM Elements
   const titleScreen = document.getElementById('titleScreen');
@@ -373,20 +391,47 @@
 
   function explodeFirework(x, y, color) {
     playSfx('collect');
-    const particleCount = 24 + Math.floor(Math.random() * 12);
-    for (let i = 0; i < particleCount; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 2.2 + 0.8;
-      fireworks.push({
-        type: 'particle',
-        x: x,
-        y: y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        life: 1.0,
-        decay: 0.02 + Math.random() * 0.015,
-        color: color
-      });
+    const isHeart = Math.random() < 0.35;
+    
+    if (isHeart) {
+      // Heart-shaped firework burst
+      const steps = 30;
+      for (let i = 0; i < steps; i++) {
+        const t = (i / steps) * Math.PI * 2;
+        const hx = 16 * Math.pow(Math.sin(t), 3);
+        const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+        const scale = 0.12;
+        fireworks.push({
+          type: 'particle',
+          x: x,
+          y: y,
+          vx: hx * scale + (Math.random() - 0.5) * 0.15,
+          vy: hy * scale + (Math.random() - 0.5) * 0.15,
+          life: 1.3,
+          decay: 0.012 + Math.random() * 0.008,
+          color: '#ff477e' // Pink heart particles
+        });
+      }
+    } else {
+      // Normal radial burst or ring burst
+      const isRing = Math.random() < 0.4;
+      const particleCount = isRing ? 20 : (30 + Math.floor(Math.random() * 15));
+      const ringSpeed = 1.2 + Math.random() * 0.8;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const angle = (i / particleCount) * Math.PI * 2;
+        const speed = isRing ? ringSpeed : (Math.random() * 2.5 + 0.5);
+        fireworks.push({
+          type: 'particle',
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1.0,
+          decay: 0.015 + Math.random() * 0.015,
+          color: color
+        });
+      }
     }
   }
 
@@ -562,14 +607,14 @@
       }
     }
 
-    // 3. Ending celebration simulation (Celebrate state)
-    if (gameState === 'CELEBRATE') {
+    // 3. Ending celebration simulation (Celebrate, Dialogue, and Card states)
+    if (gameState === 'CELEBRATE' || gameState === 'DIALOGUE' || gameState === 'CARD') {
       // Auto-centering camera on final platform
       const targetCamX = 1542 + 7 - GW / 2;
       camera.x += (targetCamX - camera.x) * 0.08;
 
-      // Launch fireworks occasionally
-      if (Math.random() < 0.02) {
+      // Launch fireworks occasionally (increased frequency for premium density)
+      if (Math.random() < 0.05) {
         launchFirework();
       }
 
@@ -628,92 +673,55 @@
     const px = Math.round(p.x - camera.x);
     const py = Math.round(p.y);
 
-    if (!avatarLoaded) {
+    if (animsLoadedCount < 6) {
       ctx.fillStyle = '#78a2e8';
       ctx.fillRect(px, py, p.width, p.height);
       return;
     }
 
-    const drawW = 20;
-    const drawH = 20;
-    const legHeight = 3;
-    
-    // 1. Calculate discrete integer bobbing to avoid sub-pixel scaling shimmer
-    let bobY = 0;
+    const drawW = 48;
+    const drawH = 64;
+
+    // Determine current action sprite sheet
+    let activeSheet = null;
+    let frameIdx = 0;
+
     if (!p.isGrounded) {
-      bobY = 0;
+      // Jumping / Airborne
+      activeSheet = p.facingLeft ? anims.jumpLeft.img : anims.jumpRight.img;
+      // Select jump frame based on vertical velocity for high-fidelity response
+      if (p.vy < -2) frameIdx = 1;
+      else if (p.vy < 0) frameIdx = 2;
+      else if (p.vy < 1.5) frameIdx = 4;
+      else if (p.vy < 4) frameIdx = 5;
+      else frameIdx = 6;
     } else if (Math.abs(p.vx) > 0.1) {
-      // Bob up and down by exactly 1 pixel every 6 frames
-      bobY = Math.floor(frameCount / 6) % 2;
+      // Walking
+      activeSheet = p.facingLeft ? anims.walkLeft.img : anims.walkRight.img;
+      frameIdx = Math.floor(frameCount / 5) % 8;
     } else {
-      // Gentle idle breathing bob of 1 pixel every 24 frames
+      // Idle
+      activeSheet = p.facingLeft ? anims.idleLeft.img : anims.idleRight.img;
+      frameIdx = Math.floor(frameCount / 7) % 8;
+    }
+
+    // Gentle vertical bobbing offset if grounded and idle
+    let bobY = 0;
+    if (p.isGrounded && Math.abs(p.vx) <= 0.1) {
       bobY = Math.floor(frameCount / 24) % 2;
     }
 
     ctx.save();
     // Center translation at character base (integer coordinates)
-    ctx.translate(px + Math.round(p.width / 2), py + p.height - 3);
-    
-    if (p.facingLeft) {
-      ctx.scale(-1, 1);
-    }
+    ctx.translate(px + Math.round(p.width / 2), py + p.height);
 
-    // 2. Draw discrete walking legs underneath the character
-    // Using simple filled pixel rectangles
-    ctx.fillStyle = '#0f2444'; // Shorts connection color
-
-    if (!p.isGrounded) {
-      // Jumping/Airborne legs (drawn static, tucked up)
-      ctx.fillRect(-4, -legHeight, 2, legHeight);
-      ctx.fillRect(2, -legHeight, 2, legHeight);
-      ctx.fillStyle = '#111'; // Shoes
-      ctx.fillRect(-5, -1, 3, 2);
-      ctx.fillRect(2, -1, 3, 2);
-    } else if (Math.abs(p.vx) > 0.1) {
-      // 4-frame walk cycle for legs (discrete pixel shifting)
-      const cycle = Math.floor(frameCount / 6) % 4;
-      
-      let leg1X = -4, leg1Y = 0;
-      let leg2X = 2, leg2Y = 0;
-      
-      if (cycle === 0) {
-        leg1X = -5; leg1Y = 0;
-        leg2X = 2;  leg2Y = 0;
-      } else if (cycle === 1 || cycle === 3) {
-        leg1X = -3; leg1Y = 1;
-        leg2X = 1;  leg2Y = 1;
-      } else if (cycle === 2) {
-        leg1X = 1;  leg1Y = 0;
-        leg2X = -4; leg2Y = 0;
-      }
-
-      // Leg 1
-      ctx.fillStyle = '#4b75ff'; // Sock
-      ctx.fillRect(leg1X + 1, -legHeight, 1, legHeight + leg1Y);
-      ctx.fillStyle = '#111'; // Shoe
-      ctx.fillRect(leg1X, leg1Y, 3, 2);
-
-      // Leg 2
-      ctx.fillStyle = '#4b75ff';
-      ctx.fillRect(leg2X + 1, -legHeight, 1, legHeight + leg2Y);
-      ctx.fillStyle = '#111';
-      ctx.fillRect(leg2X, leg2Y, 3, 2);
-    } else {
-      // Standing legs (static)
-      ctx.fillRect(-4, -legHeight, 2, legHeight);
-      ctx.fillRect(2, -legHeight, 2, legHeight);
-      ctx.fillStyle = '#111'; // Shoes
-      ctx.fillRect(-5, 0, 3, 2);
-      ctx.fillRect(1, 0, 3, 2);
-    }
-
-    // 3. Draw the main static avatar sprite crisp and clear (bobbed by 1 pixel, no rotate/scale)
+    // Draw the active frame from the sprite sheet
+    // Source frame size is 48x64. Frame index sx = frameIdx * 48, sy = 0
     ctx.drawImage(
-      avatarImg,
-      -drawW / 2,
-      -drawH - (legHeight - 1) + bobY, // Apply integer bobbing offset
-      drawW,
-      drawH
+      activeSheet,
+      frameIdx * 48, 0, 48, 64,
+      -drawW / 2, -drawH + 20 + bobY,
+      drawW, drawH
     );
 
     ctx.restore();
@@ -872,7 +880,7 @@
     drawPlayer(player);
 
     // 12. Celebrate state: Happy Birthday text + Floating envelope
-    if (gameState === 'CELEBRATE') {
+    if (gameState === 'CELEBRATE' || gameState === 'DIALOGUE' || gameState === 'CARD') {
       // Big Pixel style "HAPPY BIRTHDAY"
       ctx.fillStyle = '#ff3b68';
       ctx.font = 'bold 12px "Press Start 2P", monospace';
@@ -927,6 +935,24 @@
     }
   }
 
+  // Cheat function to warp to the end
+  function triggerCheatWarp() {
+    if (gameState !== 'PLAY') return;
+    heartsCollected = 17;
+    hearts.forEach(h => h.collected = true);
+    heartCountEl.textContent = `HEARTS: 17/17`;
+    player.x = 1515; // Warp to final platform right before the end
+    player.y = 110;
+    player.vx = 0;
+    player.vy = 0;
+    player.isGrounded = true;
+    camera.x = 1515 - GW / 2;
+    playSfx('unlock');
+    createSparkles(player.x + player.width / 2 - camera.x, player.y, '#ffd13b', 20);
+  }
+
+  // Mobile touch cheat bypassed (as requested, cheat is keyboard-only for developer testing)
+
   // Canvas click listener to open the letter
   canvas.addEventListener('click', (e) => {
     if (gameState !== 'CELEBRATE' || !letter.spawned || letter.clicked) return;
@@ -971,6 +997,9 @@
     if (e.key === ' ' || e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
       e.preventDefault();
       setKey('jump', true);
+    }
+    if (e.key === 'c' || e.key === 'C') {
+      triggerCheatWarp();
     }
   });
 
