@@ -81,7 +81,16 @@
       <div id="cardScreen" class="overlay-screen hidden card-overlay">
         <div class="star-backdrop opacity-30"></div>
         <div class="card-container">
-          <div class="card-glow-icon">★</div>
+          <div class="card-cake-container">
+            <div class="pixel-cake">
+              <div class="candle">
+                <div class="flame"></div>
+              </div>
+              <div class="cake-body">
+                <div class="frosting"></div>
+              </div>
+            </div>
+          </div>
           <h1 class="card-title-main">HAPPY BIRTHDAY</h1>
           <h2 class="card-title-sub">Sakshi Pandey! 🎉</h2>
           
@@ -92,13 +101,20 @@
             <p>📅 <strong>Timeline:</strong> June 2009 ➔ June 2026</p>
             <div id="letterText" class="letter-body-text"></div>
           </div>
-
-          <button id="restartBtn" class="pixel-btn-sm inline-flex">
-            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-            </svg>
-            <span>PLAY AGAIN</span>
-          </button>
+          <div class="card-footer-buttons">
+            <button id="closeCardBtn" class="pixel-btn-sm inline-flex secondary-btn">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+              <span>CLOSE</span>
+            </button>
+            <button id="restartBtn" class="pixel-btn-sm inline-flex">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+              <span>PLAY AGAIN</span>
+            </button>
+          </div>
         </div>
       </div>
 

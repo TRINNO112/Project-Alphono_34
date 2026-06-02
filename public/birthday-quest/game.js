@@ -59,6 +59,7 @@
   let clouds = [];
   let particles = [];
   let fireworks = []; // active rockets and explosions
+  let confetti = []; // falling confetti rain at the end
 
   // Audio Context
   let audioCtx = null;
@@ -113,6 +114,7 @@
   const startBtn = document.getElementById('startBtn');
   const dialogueBtn = document.getElementById('dialogueBtn');
   const restartBtn = document.getElementById('restartBtn');
+  const closeCardBtn = document.getElementById('closeCardBtn');
   const muteBtn = document.getElementById('muteBtn');
   const unmutedIcon = document.getElementById('unmutedIcon');
   const mutedIcon = document.getElementById('mutedIcon');
@@ -184,6 +186,7 @@
 
     particles = [];
     fireworks = [];
+    confetti = [];
   }
 
   // Ground and platforms (virtual coordinates)
@@ -619,6 +622,33 @@
         launchFirework();
       }
 
+      // Spawn falling confetti / hearts rain
+      if (Math.random() < 0.2) {
+        confetti.push({
+          x: Math.random() * LEVEL_WIDTH,
+          y: -10,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: 0.5 + Math.random() * 0.8,
+          w: 3 + Math.random() * 2,
+          h: 2 + Math.random() * 2,
+          color: `hsl(${Math.random() * 360}, 100%, 75%)`,
+          angle: Math.random() * Math.PI * 2,
+          rotationSpeed: (Math.random() - 0.5) * 0.06,
+          isHeart: Math.random() < 0.25 // 25% heart shapes
+        });
+      }
+
+      // Update confetti positions
+      for (let i = confetti.length - 1; i >= 0; i--) {
+        const c = confetti[i];
+        c.x += c.vx + Math.sin(frameCount * 0.02 + c.angle) * 0.15;
+        c.y += c.vy;
+        c.angle += c.rotationSpeed;
+        if (c.y > GH + 10) {
+          confetti.splice(i, 1);
+        }
+      }
+
       // Update fireworks (using safe backward loop to handle splicing and newly pushed elements)
       for (let i = fireworks.length - 1; i >= 0; i--) {
         const f = fireworks[i];
@@ -877,21 +907,50 @@
     });
     ctx.globalAlpha = 1.0;
 
+    // Confetti Rain celebration
+    confetti.forEach(c => {
+      const cx = c.x - camera.x;
+      if (cx < -10 || cx > GW + 10) return;
+
+      ctx.save();
+      ctx.translate(cx, c.y);
+      ctx.rotate(c.angle);
+      ctx.fillStyle = c.color;
+      if (c.isHeart) {
+        // Draw small pink pixel heart
+        ctx.fillRect(-2, -1, 2, 2);
+        ctx.fillRect(1, -1, 2, 2);
+        ctx.fillRect(-3, 1, 7, 2);
+        ctx.fillRect(-2, 3, 5, 2);
+        ctx.fillRect(-1, 5, 3, 1);
+      } else {
+        ctx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h);
+      }
+      ctx.restore();
+    });
+
     // 11. Draw Player Character
     drawPlayer(player);
 
     // 12. Celebrate state: Happy Birthday text + Floating envelope
     if (gameState === 'CELEBRATE' || gameState === 'DIALOGUE' || gameState === 'CARD') {
-      // Big Pixel style "HAPPY BIRTHDAY"
-      ctx.fillStyle = '#ff3b68';
+      // Big Pixel style "HAPPY BIRTHDAY" with shifting color shimmer
+      const hue1 = (frameCount * 2.5) % 360;
+      const hue2 = (frameCount * 2.5 + 180) % 360;
+      ctx.fillStyle = `hsl(${hue1}, 100%, 65%)`;
       ctx.font = 'bold 12px "Press Start 2P", monospace';
       ctx.textAlign = 'center';
       
-      const txtY = 32 + Math.sin(frameCount * 0.06) * 2;
-      ctx.shadowColor = 'rgba(236,72,153,0.5)';
-      ctx.shadowBlur = 4;
+      const txtY = 32 + Math.sin(frameCount * 0.06) * 2.5;
+      
+      // Neon pulsing shadow blur
+      const shadowPulse = 4 + Math.sin(frameCount * 0.1) * 3;
+      ctx.shadowColor = `hsl(${hue1}, 100%, 50%)`;
+      ctx.shadowBlur = shadowPulse;
       ctx.fillText("HAPPY BIRTHDAY", 1542 + 7 - camera.x, txtY);
-      ctx.fillStyle = '#ffd13b';
+      
+      ctx.fillStyle = `hsl(${hue2}, 100%, 70%)`;
+      ctx.shadowColor = `hsl(${hue2}, 100%, 55%)`;
       ctx.fillText("SAKSHI!", 1542 + 7 - camera.x, txtY + 15);
       
       // Reset shadows
@@ -902,6 +961,30 @@
         const lx = letter.x - camera.x;
         const ly = letter.y + Math.sin(frameCount * 0.05) * 3;
         
+        // Fading golden envelope glow base
+        ctx.save();
+        ctx.translate(lx, ly);
+        ctx.beginPath();
+        const envelopeGlowRadius = 15 + Math.sin(frameCount * 0.1) * 3;
+        const envelopeGlowGrad = ctx.createRadialGradient(0, 0, 2, 0, 0, envelopeGlowRadius);
+        envelopeGlowGrad.addColorStop(0, 'rgba(255, 210, 59, 0.45)');
+        envelopeGlowGrad.addColorStop(1, 'rgba(255, 210, 59, 0)');
+        ctx.fillStyle = envelopeGlowGrad;
+        ctx.arc(0, 0, envelopeGlowRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        // Orbiting magic sparks
+        const orbitRadius = 18;
+        const orbitParticleCount = 3;
+        for (let i = 0; i < orbitParticleCount; i++) {
+          const orbitAngle = (frameCount * 0.04) + (i * (Math.PI * 2 / orbitParticleCount));
+          const ox = lx + Math.cos(orbitAngle) * orbitRadius;
+          const oy = ly + Math.sin(orbitAngle) * (orbitRadius * 0.4);
+          ctx.fillStyle = `hsl(${(frameCount * 2 + i * 120) % 360}, 100%, 75%)`;
+          ctx.fillRect(ox - 1, oy - 1, 2, 2);
+        }
+
         ctx.save();
         ctx.translate(lx, ly);
 
@@ -952,8 +1035,6 @@
     createSparkles(player.x + player.width / 2 - camera.x, player.y, '#ffd13b', 20);
   }
 
-  // Mobile touch cheat bypassed (as requested, cheat is keyboard-only for developer testing)
-
   // Canvas click listener to open the letter
   canvas.addEventListener('click', (e) => {
     if (gameState !== 'CELEBRATE' || !letter.spawned || letter.clicked) return;
@@ -976,12 +1057,28 @@
     if (clickX >= lMinX && clickX <= lMaxX && clickY >= lMinY && clickY <= lMaxY) {
       letter.clicked = true;
       playSfx('unlock');
-      createSparkles(letter.x + 8, letter.y + 5, '#ff477e', 35);
+      
+      // Starburst spiral explosion
+      const starburstCount = 60;
+      for (let i = 0; i < starburstCount; i++) {
+        const angle = (i / starburstCount) * Math.PI * 8; // spiral pattern
+        const speed = 0.5 + (i / starburstCount) * 2.5;
+        particles.push({
+          x: letter.x,
+          y: letter.y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: Math.random() * 2 + 1,
+          life: 1.5,
+          decay: 0.012 + Math.random() * 0.008,
+          color: `hsl(${(i * 12) % 360}, 100%, 70%)` // Rainbow burst
+        });
+      }
       
       // Wait for sparkles then launch dialogue typewriter
       setTimeout(() => {
         startDialogue();
-      }, 500);
+      }, 750);
     }
   });
 
@@ -1041,6 +1138,13 @@
     titleScreen.classList.remove('hidden');
     gameState = 'TITLE';
     initLevel();
+  });
+
+  closeCardBtn.addEventListener('click', () => {
+    playSfx('click');
+    cardScreen.classList.add('hidden');
+    letter.clicked = false; // envelope floats and is clickable again
+    gameState = 'CELEBRATE';
   });
 
   muteBtn.addEventListener('click', () => {
