@@ -37,9 +37,6 @@ function LollipopChartInner({
   const totalH = sorted.length * rowH + 36
   const svgH = height || totalH
 
-  const trackX = labelWidth + trackPadding
-  const trackEndX = `calc(100% - ${valueWidth}px)`
-
   const valueToPercent = (v) => {
     const [min, max] = computedDomain
     if (max === min) return 0

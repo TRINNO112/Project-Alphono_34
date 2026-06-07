@@ -58,3 +58,6 @@ graphify-out/
 lighthouse-*.json
 lighthouse-*.html
 .lighthouseci/
+
+# Birthday Quest (decoupled/standalone copy)
+/birthday-quest/

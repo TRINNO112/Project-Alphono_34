@@ -35,12 +35,14 @@ export default function SearchBar() {
 
   const debouncedQuery = useDebounce(query, 300)
 
-  const results = debouncedQuery.trim()
-    ? searchIndex.filter(item =>
-        item.claim.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
-        item.keywords.some(kw => kw.includes(debouncedQuery.toLowerCase()))
-      ).slice(0, 20)
-    : []
+  const results = useMemo(() => {
+    return debouncedQuery.trim()
+      ? searchIndex.filter(item =>
+          item.claim.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
+          item.keywords.some(kw => kw.includes(debouncedQuery.toLowerCase()))
+        ).slice(0, 20)
+      : []
+  }, [debouncedQuery])
 
   // Group results by pillar
   const grouped = useMemo(() => {

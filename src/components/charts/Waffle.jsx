@@ -71,7 +71,6 @@ function WaffleGridInner({
   emptyColor = '#E5E7EB',
   title,
   caption,
-  columns = 3,
 }) {
   const ariaSummary =
     items.map((it) => `${it.label} ${it.value}%`).join('; ') + '.'

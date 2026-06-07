@@ -87,7 +87,6 @@ function OTRErosionInner({
     return () => observer.disconnect()
   }, [ref])
 
-  const first = data[0]
   const last = data[data.length - 1]
   const peak = data.reduce((max, d) => d.value > max.value ? d : max, data[0])
   const trough = data.reduce((min, d) => d.value < min.value ? d : min, data[0])

@@ -60,6 +60,7 @@ function WhyThisPercentBase({
     const rect = triggerRef.current.getBoundingClientRect()
     const estimatedH = Math.min(window.innerHeight * 0.6, 480)
     const spaceBelow = window.innerHeight - rect.bottom
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFlipUp(spaceBelow < estimatedH + 16 && rect.top > spaceBelow)
   }, [open])
 

@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { memo, useState } from 'react'
 import { ChevronLeft, ChevronRight, ExternalLink } from './Icons'
 
 /**
@@ -13,11 +13,12 @@ function HistoricalPrecedentCardBase({
   emptyState = 'No historical analogue available for the active lever.',
 }) {
   const [idx, setIdx] = useState(0)
+  const [prevAnalogues, setPrevAnalogues] = useState(analogues)
 
-  // Reset pager when the analogue list changes
-  useEffect(() => {
+  if (analogues !== prevAnalogues) {
+    setPrevAnalogues(analogues)
     setIdx(0)
-  }, [analogues])
+  }
 
   if (!analogues || analogues.length === 0) {
     return (

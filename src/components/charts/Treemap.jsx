@@ -74,7 +74,7 @@ function squarify(data, x, y, w, h) {
 function TreemapInner({ data, unit = '', valueFormatter, title, caption, height = 360 }) {
   const W = 800
   const H = height
-  const tiles = useMemo(() => squarify(data, 0, 0, W, H), [data])
+  const tiles = useMemo(() => squarify(data, 0, 0, W, H), [data, H])
 
   const total = useMemo(() => data.reduce((s, d) => s + d.value, 0), [data])
   const ariaSummary = buildRankedSummary(data, unit)

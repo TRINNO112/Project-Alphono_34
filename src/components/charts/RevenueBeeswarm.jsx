@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useRef, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { scaleLinear } from 'd3-scale'
 import { forceSimulation, forceX, forceCollide, forceY } from 'd3-force'
@@ -32,7 +32,6 @@ function RevenueBeeswarmInner({
 
   const [hovered, setHovered] = useState(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [nodes, setNodes] = useState([])
 
   const xScale = useMemo(() =>
     scaleLinear()
@@ -40,9 +39,9 @@ function RevenueBeeswarmInner({
       .range([0, dims.boundedWidth])
   , [data, dims.boundedWidth])
 
-  // Run force simulation
-  useEffect(() => {
-    if (!dims.boundedWidth || !dims.boundedHeight) return
+  // Run force simulation synchronously via useMemo
+  const nodes = useMemo(() => {
+    if (!dims.boundedWidth || !dims.boundedHeight || !data || data.length === 0) return []
 
     const initialNodes = data.map((d) => ({
       ...d,
@@ -62,7 +61,7 @@ function RevenueBeeswarmInner({
       sim.tick()
     }
 
-    setNodes(initialNodes)
+    return initialNodes
   }, [data, dims.boundedWidth, dims.boundedHeight, xScale, highlightState])
 
   // Scroll-triggered animation

@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useRef, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { scaleLinear, scaleBand } from 'd3-scale'
 import { Figure } from './_shared/Figure'
