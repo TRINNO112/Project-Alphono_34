@@ -185,16 +185,16 @@ export default function Home() {
     <main className="w-full max-w-6xl mx-auto px-6 pt-28 md:pt-40 pb-20 md:pb-32 space-y-20 md:space-y-28">
 
       {/* ═══════════════════ HERO ═══════════════════ */}
-      <section className="text-center relative overflow-hidden rounded-3xl py-16 px-6 border border-parchment-200/60 dark:border-slate-800/60 bg-white/30 dark:bg-slate-950/20 shadow-sm backdrop-blur-[2px]">
+      <section className="text-center relative overflow-hidden rounded-3xl py-16 px-6 border border-parchment-200/60 bg-white/30 shadow-sm backdrop-blur-[2px]">
         <svg 
-          className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 opacity-30 dark:opacity-15"
+          className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 opacity-30"
           viewBox="0 0 800 400"
           preserveAspectRatio="xMidYMid slice"
           aria-hidden="true"
         >
           <defs>
             <pattern id="blueprint-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gray-300 dark:text-slate-800" />
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gray-300" />
             </pattern>
           </defs>
 
@@ -202,17 +202,17 @@ export default function Home() {
           <rect width="100%" height="100%" fill="url(#blueprint-grid)" />
 
           {/* Schematic/Technical concentric radar circles */}
-          <circle cx="500" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 6" className="text-gray-300 dark:text-slate-800" />
-          <circle cx="250" cy="150" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" className="text-gray-300 dark:text-slate-800" />
-          <circle cx="580" cy="380" r="50" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" className="text-blue-200 dark:text-slate-800" />
+          <circle cx="500" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 6" className="text-gray-300" />
+          <circle cx="250" cy="150" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" className="text-gray-300" />
+          <circle cx="580" cy="380" r="50" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" className="text-blue-200" />
 
           {/* Lat/Long blueprint lines */}
-          <line x1="0" y1="200" x2="800" y2="200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="10 10" className="text-gray-300 dark:text-slate-800" />
-          <line x1="400" y1="0" x2="400" y2="400" stroke="currentColor" strokeWidth="0.5" strokeDasharray="10 10" className="text-gray-300 dark:text-slate-800" />
-          <text x="410" y="15" className="font-sans text-[8px] fill-gray-400 dark:fill-gray-600 tracking-widest uppercase">Grid Ref: 23.0225° N, 72.5714° E</text>
+          <line x1="0" y1="200" x2="800" y2="200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="10 10" className="text-gray-300" />
+          <line x1="400" y1="0" x2="400" y2="400" stroke="currentColor" strokeWidth="0.5" strokeDasharray="10 10" className="text-gray-300" />
+          <text x="410" y="15" className="font-sans text-[8px] fill-gray-400 tracking-widest uppercase">Grid Ref: 23.0225° N, 72.5714° E</text>
 
           {/* Connection Lines representing supply lines */}
-          <g className="stroke-crimson/30 dark:stroke-crimson/25 fill-none" strokeWidth="1.5">
+          <g className="stroke-crimson/30 fill-none" strokeWidth="1.5">
             {/* Jamnagar - Mundra */}
             <path d="M 200,220 Q 225,185 250,150" strokeDasharray="4 4" />
             {/* Mundra - Ahmedabad */}
@@ -226,7 +226,7 @@ export default function Home() {
             {/* Surat - Mumbai */}
             <path d="M 550,290 Q 565,335 580,380" strokeDasharray="3 3" />
             {/* Ahmedabad - Mumbai loop */}
-            <path d="M 500,100 Q 600,240 580,380" strokeDasharray="5 5" className="stroke-blue-500/25 dark:stroke-blue-400/20" />
+            <path d="M 500,100 Q 600,240 580,380" strokeDasharray="5 5" className="stroke-blue-500/25" />
           </g>
 
           {/* Nodes and Labels */}
@@ -234,42 +234,42 @@ export default function Home() {
           <g>
             <circle cx="500" cy="100" r="4.5" className="fill-crimson" />
             <circle cx="500" cy="100" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '500px 100px' }} />
-            <text x="500" y="82" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="middle">AHMEDABAD HUB</text>
+            <text x="500" y="82" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 uppercase" textAnchor="middle">AHMEDABAD HUB</text>
           </g>
 
           {/* Mundra */}
           <g>
             <circle cx="250" cy="150" r="4.5" className="fill-crimson" />
             <circle cx="250" cy="150" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '250px 150px' }} />
-            <text x="250" y="132" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="middle">MUNDRA PORT</text>
+            <text x="250" y="132" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 uppercase" textAnchor="middle">MUNDRA PORT</text>
           </g>
 
           {/* Jamnagar */}
           <g>
             <circle cx="200" cy="220" r="4.5" className="fill-crimson" />
             <circle cx="200" cy="220" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '200px 220px' }} />
-            <text x="200" y="242" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="middle">JAMNAGAR REFINERY</text>
+            <text x="200" y="242" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 uppercase" textAnchor="middle">JAMNAGAR REFINERY</text>
           </g>
 
           {/* Dahej */}
           <g>
             <circle cx="520" cy="240" r="4.5" className="fill-crimson" />
             <circle cx="520" cy="240" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '520px 240px' }} />
-            <text x="505" y="255" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="end">DAHEJ PORT</text>
+            <text x="505" y="255" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 uppercase" textAnchor="end">DAHEJ PORT</text>
           </g>
 
           {/* Surat */}
           <g>
             <circle cx="550" cy="290" r="4.5" className="fill-crimson" />
             <circle cx="550" cy="290" r="12" className="fill-crimson/20 blueprint-pulse" style={{ transformOrigin: '550px 290px' }} />
-            <text x="565" y="294" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 dark:fill-gray-400 uppercase" textAnchor="start">SURAT CORRIDOR</text>
+            <text x="565" y="294" className="font-mono text-[9px] tracking-wider font-bold fill-gray-500 uppercase" textAnchor="start">SURAT CORRIDOR</text>
           </g>
 
           {/* Mumbai */}
           <g>
             <circle cx="580" cy="380" r="4.5" className="fill-blue-500" />
             <circle cx="580" cy="380" r="12" className="fill-blue-500/20 blueprint-pulse" style={{ transformOrigin: '580px 380px' }} />
-            <text x="580" y="362" className="font-mono text-[9px] tracking-wider font-bold fill-blue-600 dark:fill-blue-400 uppercase" textAnchor="middle">MUMBAI CABLE LOOP</text>
+            <text x="580" y="362" className="font-mono text-[9px] tracking-wider font-bold fill-blue-600 uppercase" textAnchor="middle">MUMBAI CABLE LOOP</text>
           </g>
         </svg>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-crimson/10 blur-[120px] rounded-full pointer-events-none z-0" />
@@ -320,7 +320,7 @@ export default function Home() {
               </span>
               Live Vulnerability Feeds:
             </div>
-            <div className="w-full overflow-hidden py-3.5 relative flex items-center bg-white/40 dark:bg-black/10">
+            <div className="w-full overflow-hidden py-3.5 relative flex items-center bg-white/40">
               <div className="threat-ticker-track flex items-center gap-12">
                 {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-3 whitespace-nowrap">
@@ -330,7 +330,7 @@ export default function Home() {
                     }`}>
                       {item.label}
                     </span>
-                    <span className="text-xs font-mono font-semibold text-gray-700 dark:text-gray-300">
+                    <span className="text-xs font-mono font-semibold text-gray-700">
                       {item.text}
                     </span>
                     <span className="text-crimson/30 font-bold font-sans">//</span>

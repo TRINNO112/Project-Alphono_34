@@ -15,7 +15,7 @@ const timelineEvents = [
     title: "Demonetization Shock",
     category: "Economics",
     iconName: "Banknote",
-    iconColor: "text-amber-500 dark:text-amber-400",
+    iconColor: "text-amber-500",
     iconBg: "bg-amber-500/10 border-amber-500/20",
     gradient: "from-amber-500/20 to-amber-900/5",
     accent: "amber",
@@ -34,7 +34,7 @@ const timelineEvents = [
     title: "PNB-Nirav Modi LoU Fraud",
     category: "Banking",
     iconName: "Landmark",
-    iconColor: "text-amber-500 dark:text-amber-400",
+    iconColor: "text-amber-500",
     iconBg: "bg-amber-500/10 border-amber-500/20",
     gradient: "from-amber-500/20 to-amber-900/5",
     accent: "amber",
@@ -53,7 +53,7 @@ const timelineEvents = [
     title: "Anti-Migrant Pogrom",
     category: "Social Reality",
     iconName: "Flame",
-    iconColor: "text-orange-500 dark:text-orange-400",
+    iconColor: "text-orange-500",
     iconBg: "bg-orange-500/10 border-orange-500/20",
     gradient: "from-orange-500/20 to-orange-900/5",
     accent: "orange",
@@ -72,7 +72,7 @@ const timelineEvents = [
     title: "COVID-19 Lockdown Exodus",
     category: "Labor",
     iconName: "Footprints",
-    iconColor: "text-purple-500 dark:text-purple-400",
+    iconColor: "text-purple-500",
     iconBg: "bg-purple-500/10 border-purple-500/20",
     gradient: "from-purple-500/20 to-purple-900/5",
     accent: "purple",
@@ -91,7 +91,7 @@ const timelineEvents = [
     title: "Morbi Bridge Collapse",
     category: "Infrastructure",
     iconName: "Building2",
-    iconColor: "text-red-500 dark:text-red-400",
+    iconColor: "text-red-500",
     iconBg: "bg-red-500/10 border-red-500/20",
     gradient: "from-red-500/20 to-red-900/5",
     accent: "red",
@@ -110,7 +110,7 @@ const timelineEvents = [
     title: "Sabarmati 'Cesspool' Ruling",
     category: "Environment",
     iconName: "Skull",
-    iconColor: "text-emerald-500 dark:text-emerald-400",
+    iconColor: "text-emerald-500",
     iconBg: "bg-emerald-500/10 border-emerald-500/20",
     gradient: "from-emerald-500/20 to-emerald-900/5",
     accent: "emerald",
@@ -129,7 +129,7 @@ const timelineEvents = [
     title: "Surat Diamond Crisis",
     category: "Labor & Supply Chain",
     iconName: "Gem",
-    iconColor: "text-sky-500 dark:text-sky-400",
+    iconColor: "text-sky-500",
     iconBg: "bg-sky-500/10 border-sky-500/20",
     gradient: "from-sky-500/20 to-sky-900/5",
     accent: "sky",
@@ -148,7 +148,7 @@ const timelineEvents = [
     title: "Morbi Gas Twin Shock",
     category: "Energy",
     iconName: "Ship",
-    iconColor: "text-rose-500 dark:text-rose-400",
+    iconColor: "text-rose-500",
     iconBg: "bg-rose-500/10 border-rose-500/20",
     gradient: "from-rose-500/20 to-rose-900/5",
     accent: "rose",
@@ -187,7 +187,7 @@ const getProgressWidth = (value) => {
 function StatProgressBar({ stat, sIdx }) {
   const progress = getProgressWidth(stat.value);
   const colorMap = {
-    critical: 'bg-red-500 dark:bg-red-600',
+    critical: 'bg-red-500',
     danger: 'bg-crimson',
   };
 
@@ -200,10 +200,10 @@ function StatProgressBar({ stat, sIdx }) {
       className="space-y-1.5"
     >
       <div className="flex justify-between text-xs font-mono">
-        <span className="text-gray-500 dark:text-gray-400 uppercase tracking-wide">{stat.label}</span>
-        <span className="text-gray-900 dark:text-gray-150 font-bold">{stat.value}</span>
+        <span className="text-gray-500 uppercase tracking-wide">{stat.label}</span>
+        <span className="text-gray-900 font-bold">{stat.value}</span>
       </div>
-      <div className="w-full h-2 bg-gray-100 dark:bg-slate-900 border border-gray-250/20 dark:border-slate-800/60 rounded-full overflow-hidden">
+      <div className="w-full h-2 bg-gray-100 border border-gray-200 rounded-full overflow-hidden">
         <div 
           className={`h-full ${colorMap[stat.status] || colorMap.danger} transition-all duration-700 ease-out`}
           style={{ width: `${progress}%` }}
@@ -309,7 +309,7 @@ export default function Timeline() {
   return (
     <main
       ref={containerRef}
-      className="w-full relative min-h-screen bg-parchment-50 dark:bg-slate-950 font-sans overflow-x-hidden blueprint-grid-paper"
+      className="w-full relative min-h-screen bg-parchment-50 font-sans overflow-x-hidden blueprint-grid-paper"
     >
       <SEO
         title="Chronology of Crises · Project Alphono 34"
@@ -323,7 +323,7 @@ export default function Timeline() {
       />
 
       {/* ── Top Bar Year Navigation ── */}
-      <div className="fixed top-16 left-0 right-0 z-30 pt-4 pb-3 bg-parchment-50/80 dark:bg-slate-950/85 backdrop-blur-xl border-b border-gray-200/50 dark:border-slate-800/60 select-none">
+      <div className="fixed top-16 left-0 right-0 z-30 pt-4 pb-3 bg-parchment-50/80 backdrop-blur-xl border-b border-gray-200/50 select-none">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex items-stretch justify-center gap-1 md:gap-2">
             {timelineEvents.map((ev, idx) => {
@@ -334,7 +334,7 @@ export default function Timeline() {
                   key={idx}
                   onClick={() => scrollToRow(idx)}
                   className={`group relative flex flex-col items-center px-2 md:px-4 py-2 transition-all duration-300 ${
-                    isActive ? '' : 'hover:bg-gray-250/20 dark:hover:bg-slate-900/50'
+                    isActive ? '' : 'hover:bg-parchment-200/50'
                   }`}
                   aria-label={`Scroll to year ${ev.year}: ${ev.title}`}
                 >
@@ -343,7 +343,7 @@ export default function Timeline() {
                       ? `${ev.iconBg} shadow-sm ring-1 ring-crimson/20`
                       : isPast
                         ? 'bg-crimson/10 border-crimson/20'
-                        : 'bg-white dark:bg-slate-900 border-gray-200/80 dark:border-slate-800'
+                        : 'bg-white border-gray-200/80'
                   }`}>
                     <EventIcon
                       name={ev.iconName}
@@ -352,16 +352,16 @@ export default function Timeline() {
                           ? ev.iconColor
                           : isPast
                             ? 'text-crimson/80'
-                            : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600'
+                            : 'text-gray-400 group-hover:text-gray-600'
                       }`}
                     />
                   </div>
                   <span className={`text-[10px] md:text-xs font-mono font-bold tracking-wide transition-all duration-300 ${
                     isActive
-                      ? 'text-gray-900 dark:text-white'
+                      ? 'text-gray-900'
                       : isPast
                         ? 'text-crimson/80'
-                        : 'text-gray-450 dark:text-gray-500'
+                        : 'text-gray-500'
                   }`}>
                     {ev.year}
                   </span>
@@ -409,12 +409,12 @@ export default function Timeline() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-60px" }}
                       transition={{ duration: 0.6, type: 'spring', stiffness: 90 }}
-                      className={`relative border rounded-2xl p-6 bg-white/70 dark:bg-slate-900/60 backdrop-blur border-gray-200/80 dark:border-slate-800/80 shadow-md hover:shadow-xl transition-all duration-300 group ${
-                        isActive ? 'ring-1 ring-crimson/30 dark:ring-crimson/25 shadow-lg' : ''
+                      className={`relative border rounded-2xl p-6 bg-white/70 backdrop-blur border-gray-200/80 shadow-md hover:shadow-xl transition-all duration-300 group ${
+                        isActive ? 'ring-1 ring-crimson/30 shadow-lg' : ''
                       }`}
                     >
                       {/* Giant background Year */}
-                      <span className="absolute right-6 top-4 text-7xl lg:text-8xl font-serif font-black text-gray-100/70 dark:text-slate-800/10 select-none z-0 pointer-events-none">
+                      <span className="absolute right-6 top-4 text-7xl lg:text-8xl font-serif font-black text-gray-200/60 select-none z-0 pointer-events-none">
                         {ev.year}
                       </span>
                       
@@ -423,29 +423,29 @@ export default function Timeline() {
                           <span className="text-[10px] font-mono tracking-widest text-crimson font-bold uppercase">
                             CASE FILE #{ev.year}-0{idx + 1}
                           </span>
-                          <span className="text-gray-300 dark:text-slate-700">/</span>
+                          <span className="text-gray-300">/</span>
                           <span className="text-[10px] font-mono tracking-wider text-gray-500 uppercase">
                             {ev.category}
                           </span>
                         </div>
                         
-                        <h2 className="text-xl lg:text-2xl font-serif font-bold text-gray-900 dark:text-white group-hover:text-crimson transition-colors">
+                        <h2 className="text-xl lg:text-2xl font-serif font-bold text-gray-900 group-hover:text-crimson transition-colors">
                           {ev.title}
                         </h2>
                         
-                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-light">
+                        <p className="text-sm text-gray-600 leading-relaxed font-light">
                           {ev.desc}
                         </p>
                         
                         {/* Stats list with progress bars */}
-                        <div className="border-t border-gray-100 dark:border-slate-800/50 pt-4 space-y-3">
+                        <div className="border-t border-gray-100 pt-4 space-y-3">
                           {ev.stats.map((stat, sIdx) => (
                             <StatProgressBar key={sIdx} stat={stat} sIdx={sIdx} />
                           ))}
                         </div>
 
                         {/* Impact footer */}
-                        <div className="border-t border-gray-100 dark:border-slate-800/50 pt-4 flex gap-2 items-start text-xs font-mono text-gray-500 dark:text-gray-400">
+                        <div className="border-t border-gray-100 pt-4 flex gap-2 items-start text-xs font-mono text-gray-500">
                           <AlertTriangle className="w-4 h-4 text-crimson shrink-0 mt-0.5" />
                           <p className="leading-relaxed">
                             <strong className="text-crimson uppercase">Impact: </strong>{ev.impact}
@@ -456,10 +456,10 @@ export default function Timeline() {
                   ) : (
                     // Year / Category description label for Odd rows (Desktop display)
                     <div className="hidden lg:block space-y-3">
-                      <div className="text-5xl font-serif font-black text-gray-300 dark:text-slate-800">
+                      <div className="text-5xl font-serif font-black text-gray-300">
                         {ev.year}
                       </div>
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-crimson/5 dark:bg-crimson/10 border border-crimson/20 text-crimson text-[10px] font-mono uppercase tracking-widest rounded-md">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-crimson/5 border border-crimson/20 text-crimson text-[10px] font-mono uppercase tracking-widest rounded-md">
                         <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
                         {ev.category}
                       </div>
@@ -477,14 +477,14 @@ export default function Timeline() {
                     
                     {/* Top connector line */}
                     <div className={`w-[2px] flex-1 transition-colors duration-500 ${
-                      isPast ? 'bg-crimson/50' : 'bg-gray-200 dark:bg-slate-800/50'
+                      isPast ? 'bg-crimson/50' : 'bg-gray-200'
                     }`} />
                     
                     {/* Seismograph spike */}
                     <svg width="80" height="160" viewBox="0 0 80 160" fill="none" className="shrink-0 my-2 select-none pointer-events-none">
                       {/* Tech grid ticks */}
-                      <line x1="10" y1="0" x2="10" y2="160" stroke="currentColor" strokeWidth="0.5" className="text-gray-200/50 dark:text-slate-900" strokeDasharray="2 4" />
-                      <line x1="70" y1="0" x2="70" y2="160" stroke="currentColor" strokeWidth="0.5" className="text-gray-200/50 dark:text-slate-900" strokeDasharray="2 4" />
+                      <line x1="10" y1="0" x2="10" y2="160" stroke="currentColor" strokeWidth="0.5" className="text-gray-200/50" strokeDasharray="2 4" />
+                      <line x1="70" y1="0" x2="70" y2="160" stroke="currentColor" strokeWidth="0.5" className="text-gray-200/50" strokeDasharray="2 4" />
                       
                       {/* Spike path */}
                       <path
@@ -500,18 +500,18 @@ export default function Timeline() {
                       {isActive ? (
                         <>
                           <circle cx="40" cy="90" r="14" className="fill-crimson/10 stroke-crimson/15 blueprint-pulse" style={{ transformOrigin: '40px 90px' }} />
-                          <circle cx="40" cy="90" r="6" className="fill-crimson stroke-white dark:stroke-slate-950" strokeWidth="1.5" />
+                          <circle cx="40" cy="90" r="6" className="fill-crimson stroke-white" strokeWidth="1.5" />
                         </>
                       ) : isPast ? (
-                        <circle cx="40" cy="90" r="4.5" className="fill-crimson/60 stroke-white dark:stroke-slate-950" strokeWidth="1" />
+                        <circle cx="40" cy="90" r="4.5" className="fill-crimson/60 stroke-white" strokeWidth="1" />
                       ) : (
-                        <circle cx="40" cy="90" r="4" className="fill-gray-300 dark:fill-slate-700 stroke-white dark:stroke-slate-950" strokeWidth="1" />
+                        <circle cx="40" cy="90" r="4" className="fill-gray-300 stroke-white" strokeWidth="1" />
                       )}
                     </svg>
                     
                     {/* Bottom connector line */}
                     <div className={`w-[2px] flex-1 transition-colors duration-500 ${
-                      isActiveOrPast ? 'bg-crimson/50' : 'bg-gray-200 dark:bg-slate-800/50'
+                      isActiveOrPast ? 'bg-crimson/50' : 'bg-gray-200'
                     }`} />
                   </div>
                 </div>
@@ -524,10 +524,10 @@ export default function Timeline() {
                   {isEven ? (
                     // Year / Category description label for Even rows (Desktop display)
                     <div className="hidden lg:block space-y-3">
-                      <div className="text-5xl font-serif font-black text-gray-300 dark:text-slate-800">
+                      <div className="text-5xl font-serif font-black text-gray-300">
                         {ev.year}
                       </div>
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-crimson/5 dark:bg-crimson/10 border border-crimson/20 text-crimson text-[10px] font-mono uppercase tracking-widest rounded-md">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-crimson/5 border border-crimson/20 text-crimson text-[10px] font-mono uppercase tracking-widest rounded-md">
                         <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
                         {ev.category}
                       </div>
@@ -543,12 +543,12 @@ export default function Timeline() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-60px" }}
                       transition={{ duration: 0.6, type: 'spring', stiffness: 90 }}
-                      className={`relative border rounded-2xl p-6 bg-white/70 dark:bg-slate-900/60 backdrop-blur border-gray-200/80 dark:border-slate-800/80 shadow-md hover:shadow-xl transition-all duration-300 group ${
-                        isActive ? 'ring-1 ring-crimson/30 dark:ring-crimson/25 shadow-lg' : ''
+                      className={`relative border rounded-2xl p-6 bg-white/70 backdrop-blur border-gray-200/80 shadow-md hover:shadow-xl transition-all duration-300 group ${
+                        isActive ? 'ring-1 ring-crimson/30 shadow-lg' : ''
                       }`}
                     >
                       {/* Giant background Year */}
-                      <span className="absolute right-6 top-4 text-7xl lg:text-8xl font-serif font-black text-gray-100/70 dark:text-slate-800/10 select-none z-0 pointer-events-none">
+                      <span className="absolute right-6 top-4 text-7xl lg:text-8xl font-serif font-black text-gray-200/60 select-none z-0 pointer-events-none">
                         {ev.year}
                       </span>
                       
@@ -557,29 +557,29 @@ export default function Timeline() {
                           <span className="text-[10px] font-mono tracking-widest text-crimson font-bold uppercase">
                             CASE FILE #{ev.year}-0{idx + 1}
                           </span>
-                          <span className="text-gray-300 dark:text-slate-700">/</span>
+                          <span className="text-gray-300">/</span>
                           <span className="text-[10px] font-mono tracking-wider text-gray-500 uppercase">
                             {ev.category}
                           </span>
                         </div>
                         
-                        <h2 className="text-xl lg:text-2xl font-serif font-bold text-gray-900 dark:text-white group-hover:text-crimson transition-colors">
+                        <h2 className="text-xl lg:text-2xl font-serif font-bold text-gray-900 group-hover:text-crimson transition-colors">
                           {ev.title}
                         </h2>
                         
-                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-light">
+                        <p className="text-sm text-gray-600 leading-relaxed font-light">
                           {ev.desc}
                         </p>
                         
                         {/* Stats list with progress bars */}
-                        <div className="border-t border-gray-100 dark:border-slate-800/50 pt-4 space-y-3">
+                        <div className="border-t border-gray-100 pt-4 space-y-3">
                           {ev.stats.map((stat, sIdx) => (
                             <StatProgressBar key={sIdx} stat={stat} sIdx={sIdx} />
                           ))}
                         </div>
 
                         {/* Impact footer */}
-                        <div className="border-t border-gray-100 dark:border-slate-800/50 pt-4 flex gap-2 items-start text-xs font-mono text-gray-500 dark:text-gray-400">
+                        <div className="border-t border-gray-100 pt-4 flex gap-2 items-start text-xs font-mono text-gray-500">
                           <AlertTriangle className="w-4 h-4 text-crimson shrink-0 mt-0.5" />
                           <p className="leading-relaxed">
                             <strong className="text-crimson uppercase">Impact: </strong>{ev.impact}

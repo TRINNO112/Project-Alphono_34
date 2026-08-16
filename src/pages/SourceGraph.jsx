@@ -625,17 +625,17 @@ export default function SourceGraph() {
             className={`px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors ${
               layoutMode === 'force'
                 ? 'bg-crimson text-white'
-                : 'bg-white dark:bg-slate-900 hover:bg-gray-100 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-300'
+                : 'bg-white hover:bg-gray-100 text-gray-700'
             }`}
           >
             Board Layout
           </button>
           <button
             onClick={() => setLayoutMode('radial')}
-            className={`px-3 py-2 text-xs font-semibold uppercase tracking-wider border-l border-gray-300 dark:border-slate-800 transition-colors ${
+            className={`px-3 py-2 text-xs font-semibold uppercase tracking-wider border-l border-gray-300 transition-colors ${
               layoutMode === 'radial'
                 ? 'bg-crimson text-white'
-                : 'bg-white dark:bg-slate-900 hover:bg-gray-100 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-300'
+                : 'bg-white hover:bg-gray-100 text-gray-700'
             }`}
           >
             Constellation

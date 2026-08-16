@@ -13,13 +13,24 @@
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
+:root, html {
+  color-scheme: light only;
+  supported-color-schemes: light;
+}
+
 @layer base {
+  html {
+    color-scheme: light only;
+    background-color: var(--color-parchment-50);
+  }
+
   body {
     background-color: var(--color-parchment-50);
     color: #111827;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    color-scheme: light only;
   }
 
   h1, h2, h3, h4, h5, h6 {
